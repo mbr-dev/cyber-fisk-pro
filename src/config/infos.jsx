@@ -1,0 +1,1 @@
+export const URL_HMLG = 'https://cyberhomolog.fisk.com.br:172/cyberfisk30/';

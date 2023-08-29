@@ -8,4 +8,5 @@ export const colors= {
   stepLessonError: '#E0131C',
   btnCloseMenu: '#E0131C',
   stepLesson: '#EFEFEF',
+  white: '#FFFFFF',
 };
