@@ -9,4 +9,5 @@ export const colors= {
   btnCloseMenu: '#E0131C',
   stepLesson: '#EFEFEF',
   white: '#FFFFFF',
+  black: '#000000',
 };

@@ -32,7 +32,7 @@ export const Game4 = (props) => {
         }
         temp = temp.sort(() => Math.random() - 0.5);
         setSortNum(temp);
-        setSound(`Images/pro/game4/Task2F_${temp[rodada]}.mp3`);
+        setSound(`Images/pro/game4/ess1_l1/Task2F_${temp[rodada]}.mp3`);
         setTipo(L1_T2_Facil[temp[rodada]].tipo);
         let tempResp = [];
         console.log('TIPO ==> ', L1_T2_Facil[temp[rodada]].tipo);
@@ -51,7 +51,7 @@ export const Game4 = (props) => {
     }
 
     const newRodada = (num) => {
-        setSound(`Images/pro/game4/Task2F_${sortNum[num]}.mp3`);
+        setSound(`Images/pro/game4/ess1_l1/Task2F_${sortNum[num]}.mp3`);
         setTipo(L1_T2_Facil[sortNum[num]].tipo);
         let tempResp = [];
         let tempSortNum = L1_T2_Facil[sortNum[num]].tipo === 3 ? idTipo3 : idTipo4;
