@@ -1,14 +1,16 @@
-import { AvatarImageContainer, AvatarName } from "./styles";
+import { AvatarImageContainer, AvatarName, AvatarPhoto } from "./styles";
 
-import Woman from "./Images/OBJECTS.svg";
+import Woman from "./Images/OBJECTS.png";
 
 export function AvatarImage({ userName }) {
-    return(
-        <AvatarImageContainer>
-            <img src={Woman} />
-            <AvatarName>
-                <p>{userName}</p>
-            </AvatarName>
-        </AvatarImageContainer>
-    )
+  return(
+    <AvatarImageContainer>
+      <AvatarPhoto>
+        <img src={Woman} alt="Avatar usuário" />
+      </AvatarPhoto>
+      <AvatarName>
+        <p>{userName}</p>
+      </AvatarName>
+    </AvatarImageContainer>
+  )
 }

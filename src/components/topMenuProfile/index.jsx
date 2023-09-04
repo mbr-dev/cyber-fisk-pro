@@ -1,28 +1,38 @@
+import { useContext } from "react";
 import { AlignJustify, X } from "lucide-react";
+
+import { CyberContext } from "../../context/cyber";
 
 import { AvatarImage } from "../AvatarImage";
 
-import Camada1 from "./images/Camada_1.svg";
+import LogoFisk from "./images/logoFisk.png";
 
 import { BottomMenuHeader, TopMenuButton, TopMenuHeader, TopMenuProfileContainer, TopCloseButton } from "./styles";
 
 export function TopMenuProfile() {
-    return (
-        <TopMenuProfileContainer>
-            <TopMenuHeader>
-                <TopMenuButton>
-                    <AlignJustify />
-                </TopMenuButton>
-                <p>Profile</p>
-                <TopCloseButton>
-                    <X />
-                </TopCloseButton>
-            </TopMenuHeader>
+  const { selectLanguage } = useContext(CyberContext);
 
-            <BottomMenuHeader>
-                <AvatarImage userName="Julia Santdawdawdos" />
-                <img src={Camada1} />
-            </BottomMenuHeader>
-        </TopMenuProfileContainer>
-    )
+  return (
+    <TopMenuProfileContainer>
+      <TopMenuHeader>
+        <TopMenuButton>
+          <AlignJustify />
+        </TopMenuButton>
+
+        {selectLanguage === 0 && <p>Perfil</p>}
+        {selectLanguage === 1 && <p>Profile</p>}
+        {selectLanguage === 2 && <p>Perfil</p>}
+
+        <TopCloseButton>
+          <X />
+        </TopCloseButton>
+      </TopMenuHeader>
+
+      <BottomMenuHeader>
+        <AvatarImage userName="Camila Eduarda" />          
+          
+        <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
+      </BottomMenuHeader>
+    </TopMenuProfileContainer>
+  )
 }

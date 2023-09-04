@@ -1,52 +1,97 @@
+import { useState, useContext } from "react";
+import { CalendarDays, Mail, School, User } from "lucide-react";
+
 import { TopMenuProfile } from "../../components/topMenuProfile";
+
+import { textTranslate } from "../../utils/profileTranslate";
+import { CyberContext } from "../../context/cyber"
+
+import Brazil from "./images/Brazil.svg";
+import Eua from "./images/Eua.svg";
+import Spain from "./images/Spain.svg";
 
 import { ProfileContainer, ProfileContent, ProfileForm, ProfileInput, ProfileSelect, Feature, ProfileButtonHome, ProfileAreaInput } from "./styles";
 
 export function Profile() {
-    return(
-        <ProfileContainer>
-            <TopMenuProfile />
+  const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
-            <ProfileContent>
+  function handleSelectLanguage(e) {
+    e.preventDefault()
 
-                <ProfileForm>
-                    <ProfileAreaInput>
-                        <label>Escolha o idoma</label>
-                        <ProfileSelect>
-                            <option value="portugues">Português</option>
-                            <option value="english">Inglês</option>
-                            <option value="spanish">Espanhol</option>
-                        </ProfileSelect>
-                    </ProfileAreaInput>
+    chooseLanguage(e)
+  }
+  
+  return(
+    <ProfileContainer>
+      <TopMenuProfile />
 
-                    <ProfileAreaInput>
-                        <label htmlFor="">Nome:</label>
-                        <ProfileInput type="text" placeholder="Camila Eduarda Campos" />
-                    </ProfileAreaInput>
+      <ProfileContent>
 
-                    <ProfileAreaInput>
-                        <label htmlFor="">Data de nascimento:</label>
-                        <ProfileInput type="date" placeholder="Camila Eduarda Campos" />
-                    </ProfileAreaInput>
+        <ProfileForm>
+          <ProfileAreaInput>
+            {selectLanguage === 0 && <label>{textTranslate[0].selectLanguage}</label>}
+            {selectLanguage === 1 && <label>{textTranslate[1].selectLanguage}</label>}
+            {selectLanguage === 2 && <label>{textTranslate[2].selectLanguage}</label>}
+            
+            {selectLanguage === 0 && <img src={Brazil} alt="Flag Brazil" />}
+            {selectLanguage === 1 && <img src={Eua} alt="Flag Eua" />}
+            {selectLanguage === 2 && <img src={Spain} alt="Flag Espanha" />}
+              
+            <ProfileSelect className="language" value={selectLanguage} onChange={handleSelectLanguage}>
+              <option value="0" >
+                Português
+              </option>
+              <option value="1">
+                Inglês
+              </option>
+              <option value="2">
+                Espanhol
+              </option>
+            </ProfileSelect>
+          </ProfileAreaInput>
 
-                    <ProfileAreaInput>
-                        <label htmlFor="">Unidade:</label>
-                        <ProfileSelect>
-                            <option value="portugues">São Paulo</option>
-                            <option value="english">Rio Janeiro</option>
-                        </ProfileSelect>
-                    </ProfileAreaInput>
+            <ProfileAreaInput>
+              {selectLanguage === 0 && <label>{textTranslate[0].name}</label>}
+              {selectLanguage === 1 && <label>{textTranslate[1].name}</label>}
+              {selectLanguage === 2 && <label>{textTranslate[2].name}</label>}
 
-                    <ProfileAreaInput>
-                        <label htmlFor="">E-mail:</label>
-                        <ProfileInput type="email" placeholder="camilaeduarda@gmail.com" />
-                    </ProfileAreaInput>
+              <User size={16} />
+              <ProfileInput type="text" placeholder="Camila Eduarda Campos" readOnly />
+            </ProfileAreaInput>
 
-                    <Feature></Feature>
+            <ProfileAreaInput>
+              {selectLanguage === 0 && <label>{textTranslate[0].date}</label>}
+              {selectLanguage === 1 && <label>{textTranslate[1].date}</label>}
+              {selectLanguage === 2 && <label>{textTranslate[2].date}</label>}
+              
+              <CalendarDays size={16} />
+              <ProfileInput type="date" className="inputDate" readOnly />
+            </ProfileAreaInput>
 
-                    <ProfileButtonHome>Home</ProfileButtonHome>
-                </ProfileForm>
-            </ProfileContent>
-        </ProfileContainer>
-    )
+            <ProfileAreaInput>
+              {selectLanguage === 0 && <label>{textTranslate[0].local}</label>}
+              {selectLanguage === 1 && <label>{textTranslate[1].local}</label>}
+              {selectLanguage === 2 && <label>{textTranslate[2].local}</label>}
+
+              <School size={16} />
+              <ProfileSelect readOnly>
+                <option value="portugues">São Paulo</option>
+              </ProfileSelect>
+            </ProfileAreaInput>
+
+            <ProfileAreaInput>
+              {selectLanguage === 0 && <label>{textTranslate[0].email}</label>}
+              {selectLanguage === 1 && <label>{textTranslate[1].email}</label>}
+              {selectLanguage === 2 && <label>{textTranslate[2].email}</label>}
+              <Mail size={16} />
+              <ProfileInput type="email" placeholder="camilaeduarda@gmail.com" readOnly />
+            </ProfileAreaInput>
+
+            <Feature></Feature>
+
+            <ProfileButtonHome>Home</ProfileButtonHome>
+        </ProfileForm>
+      </ProfileContent>
+    </ProfileContainer>
+  )
 }

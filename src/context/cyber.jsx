@@ -7,6 +7,20 @@ function CyberProvider({children}){
     id:'',
     name:'Essentials 1'
   });
+  const [selectLanguage, setSelectLanguage] = useState(0);
+
+
+  function chooseLanguage(e) {
+    const selectedOption = e.target.value
+
+    if (selectedOption === "0") {
+      setSelectLanguage(0)
+    } else if (selectedOption === "1") {
+      setSelectLanguage(1)
+    } else if (selectedOption === "2") {
+      setSelectLanguage(2)
+    }
+  }
 
   const newBook = (data) => {
     setbook(data);
@@ -17,6 +31,8 @@ function CyberProvider({children}){
       value={{
         book,
         newBook,
+        selectLanguage,
+        chooseLanguage,
       }}
     >
       {children}
@@ -24,4 +40,4 @@ function CyberProvider({children}){
   )
 }
 
-export {CyberProvider, CyberContext}
+export { CyberProvider, CyberContext }
