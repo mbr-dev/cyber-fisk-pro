@@ -1,4 +1,4 @@
-export const colors= {
+export const defaultTheme = {
   white: '#FFFFFF',
   black: '#000000',
 
@@ -24,4 +24,4 @@ export const colors= {
   stepLessonError: '#E0131C',
   btnCloseMenu: '#E0131C',
   stepLesson: '#EFEFEF',
-};
+}

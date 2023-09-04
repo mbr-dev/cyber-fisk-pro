@@ -7,11 +7,13 @@ import { Game4 } from './components/game4';
 import { Game5 } from './components/game5';
 import { Game6 } from './components/game6';
 import { GameSL1 } from './components/game_sl1';
+import { Profile } from './pages/Profile';
 
 function Router() {
   return(
     <Routes>
       <Route path = '/' element={<SelectLesson />}/>
+      <Route path='/Profile' element={<Profile/>} />
       <Route path = '/Game1' element={<Game1 />}/>
       <Route path = '/Game2' element={<Game2 />}/>
       <Route path = '/Game3' element={<Game3 />}/>
