@@ -1,4 +1,4 @@
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
 import { TopMenuProfile } from "../../components/topMenuProfile";
@@ -17,7 +17,6 @@ export function Profile() {
 
   function handleSelectLanguage(e) {
     e.preventDefault()
-
     chooseLanguage(e)
   }
   
