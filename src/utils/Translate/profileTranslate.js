@@ -1,4 +1,4 @@
-export const textTranslate = [
+export const profileTranslate = [
   {
     id: 0,
     language: "Português",

@@ -1,37 +1,34 @@
 import { useContext } from "react";
-import { AlignJustify, X } from "lucide-react";
 
 import { CyberContext } from "../../context/cyber";
 
-import { AvatarImage } from "../AvatarImage";
+import { ButtonMenuHeader } from "../ButtonMenuHeader";
+import { ButtonCloseHeader } from "../ButtonCloseHeader";
 
+import { AvatarImage } from "../AvatarImage";
 import LogoFisk from "../../assets/logoFisk.png";
 
-import { BottomMenuHeader, TopMenuButton, TopMenuHeader, TopMenuProfileContainer, TopCloseButton } from "./styles";
+import { BottomHeader, TopHeader, TopMenuProfileContainer } from "./styles";
 
 export function TopMenuProfile() {
   const { selectLanguage } = useContext(CyberContext);
 
   return (
     <TopMenuProfileContainer>
-      <TopMenuHeader>
-        <TopMenuButton>
-          <AlignJustify />
-        </TopMenuButton>
+      <TopHeader>
+        <ButtonMenuHeader />
 
         {selectLanguage === 0 && <p>Perfil</p>}
         {selectLanguage === 1 && <p>Profile</p>}
         {selectLanguage === 2 && <p>Perfil</p>}
 
-        <TopCloseButton>
-          <X />
-        </TopCloseButton>
-      </TopMenuHeader>
+        <ButtonCloseHeader />
+      </TopHeader>
 
-      <BottomMenuHeader>
+      <BottomHeader>
         <AvatarImage userName="Camila Eduarda" />          
         <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
-      </BottomMenuHeader>
+      </BottomHeader>
     </TopMenuProfileContainer>
   )
 }

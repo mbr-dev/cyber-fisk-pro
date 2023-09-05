@@ -1,15 +1,15 @@
 import { useContext } from "react";
-import { AlignJustify } from "lucide-react";
 
 import { AvatarImage } from "../../components/AvatarImage";
 import { Footer } from "../../components/Footer";
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 
 import { CyberContext } from "../../context/cyber";
-import { homeCards } from "../../utils/homeCards";
+import { homeCardsTranslate } from "../../utils/Translate/homeCardsTranslate";
 
 import LogoFisk from "../../assets/logoFisk.png";
 
-import { HomeContainer, HomeHeader, TopMenuButton, BottomMenuHeader, HomeMain, MainCard, MainCards } from "./styles";
+import { HomeContainer, HomeHeader, BottomHeader, HomeMain, MainCard, MainCards, TopHeader } from "./styles";
 
 export function Home() {
   const { selectLanguageHome } = useContext(CyberContext);
@@ -17,19 +17,19 @@ export function Home() {
   return(
     <HomeContainer>
       <HomeHeader>
-        <TopMenuButton>
-          <AlignJustify />
-        </TopMenuButton>
+        <TopHeader>
+          <ButtonMenuHeader />
+        </TopHeader>
 
-        <BottomMenuHeader>
+        <BottomHeader>
           <AvatarImage userName="Camila Eduarda" />          
           <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
-        </BottomMenuHeader>
+        </BottomHeader>
       </HomeHeader>
 
       <HomeMain>
         <MainCards>
-          {homeCards.map(homeCard => {
+          {homeCardsTranslate.map(homeCard => {
             return (
               <MainCard key={homeCard.id}>
                 <img src={homeCard.img} alt="" />
