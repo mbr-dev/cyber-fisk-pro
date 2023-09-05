@@ -8,6 +8,8 @@ export const FooterContainer = styled.footer`
   flex-direction: column;
   align-items: center;
   padding-bottom: 0.875rem;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
 `;
 
 export const FooterDiv = styled.div`

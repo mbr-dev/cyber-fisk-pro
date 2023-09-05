@@ -1,13 +1,12 @@
 import { styled } from "styled-components";
-import { colors } from "../../config/colors";
 
 export const ProfileContainer = styled.div`
-    width: 100vw;
+  width: 100vw;
 `;
 
 export const ProfileContent = styled.main`
   width: 100%;
-  margin-top: 1.5rem;
+  margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,11 +14,11 @@ export const ProfileContent = styled.main`
 
 export const ProfileForm = styled.form`
   width: 18.75rem;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 0.75rem;
 `;
 
 export const ProfileAreaInput = styled.div`
@@ -67,7 +66,7 @@ export const ProfileAreaInput = styled.div`
 `;
 
 export const ProfileInput = styled.input`
-  height: 2rem;
+  height: 2.25rem;
   padding-left: 2rem;
   border: 1px solid ${props => props.theme["gray-400"]};
   border-radius: 8px;
@@ -78,25 +77,9 @@ export const ProfileInput = styled.input`
 `;
 
 export const ProfileSelect = styled.select`
-  height: 2rem;
+  height: 2.25rem;
   padding-left: 2rem;
   border: 1px solid ${props => props.theme["gray-400"]};
   border-radius: 8px;
   color: ${props => props.theme["gray-600"]};
 `;
-
-export const Feature = styled.span`
-  width: 100%;
-  height: 1px;
-  background-color: ${props => props.theme["gray-200"]};
-`
-
-export const ProfileButtonHome = styled.button`
-  width: 15.625rem;
-  display: flex;
-  margin-top: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-300"]};
-  color: ${props => props.theme.white};
-`

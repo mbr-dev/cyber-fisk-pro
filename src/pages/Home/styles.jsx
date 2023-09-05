@@ -9,28 +9,20 @@ export const HomeContainer = styled.div`
 
 export const HomeHeader = styled.header`
   width: 100vw;
-  height: 11rem;
+  height: 10rem;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
   background-color: ${props => props.theme['gray-200']};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
 `;
 
-export const TopMenuButton = styled.header`
-  width: 2rem;
-  height: 2rem;
-  display: flex;
-  align-items: center;
-  margin: 1rem 0 0 2rem;
-  justify-content: center;
-  background-color: ${props => props.theme['red-200']};
-  border-radius: 6px;
-  color: ${props => props.theme.white};
+export const TopHeader = styled.div`
+  padding: 0.625rem 1.125rem 0 1.125rem;
 `;
 
-export const BottomMenuHeader = styled.div`
+export const BottomHeader = styled.div`
+  padding-top: 0.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -44,7 +36,7 @@ export const BottomMenuHeader = styled.div`
 export const HomeMain = styled.div`
   width: 100%;
   flex: 1;
-  padding-top: 0.5rem;
+  padding-top: 1rem;
   background-color: ${props => props.theme.white};
 
   @media(min-width: 768px) {

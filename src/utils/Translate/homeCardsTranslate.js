@@ -1,11 +1,11 @@
-import Livros from "../assets/bookImage.png";
-import Cursor from "../assets/iconeImage.png";
-import Medalha from "../assets/medalhaImage.png";
-import Micro from "../assets/microImage.png";
-import Note from "../assets/noteImage.png";
-import Reporte from "../assets/reporteImage.png";
+import Livros from "../../assets/bookImage.png";
+import Cursor from "../../assets/iconeImage.png";
+import Medalha from "../../assets/medalhaImage.png";
+import Micro from "../../assets/microImage.png";
+import Note from "../../assets/noteImage.png";
+import Reporte from "../../assets/reporteImage.png";
 
-export const homeCards = [
+export const homeCardsTranslate = [
   { 
     id: 0, 
     name: ["Livros", "Books", "Libros"],
