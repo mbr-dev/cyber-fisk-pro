@@ -1,18 +1,19 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { useState } from 'react';
+import './App.css';
 import { BrowserRouter } from 'react-router-dom';
 import Router from './Router';
 import { CyberProvider } from './context/cyber';
+import { LessonProvider } from './context/lesson';
 
 function App() {
   return (
     <>
       <CyberProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <LessonProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </LessonProvider>
       </CyberProvider>
     </>
   )
