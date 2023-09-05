@@ -5,7 +5,7 @@ import { CyberContext } from "../../context/cyber";
 
 import { AvatarImage } from "../AvatarImage";
 
-import LogoFisk from "./images/logoFisk.png";
+import LogoFisk from "../../assets/logoFisk.png";
 
 import { BottomMenuHeader, TopMenuButton, TopMenuHeader, TopMenuProfileContainer, TopCloseButton } from "./styles";
 
@@ -30,7 +30,6 @@ export function TopMenuProfile() {
 
       <BottomMenuHeader>
         <AvatarImage userName="Camila Eduarda" />          
-          
         <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
       </BottomMenuHeader>
     </TopMenuProfileContainer>

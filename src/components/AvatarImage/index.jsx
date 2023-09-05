@@ -6,7 +6,7 @@ export function AvatarImage({ userName }) {
   return(
     <AvatarImageContainer>
       <AvatarPhoto>
-        <img src={Woman} alt="Avatar usuário" />
+        <img src={Woman} alt="Avatar usuário" className="avatarImg" />
       </AvatarPhoto>
       <AvatarName>
         <p>{userName}</p>
