@@ -1,0 +1,29 @@
+{
+  "response": [
+    {
+      "question": "I ___ a book yesterday.",
+      "options": ["read", "ate", "watched", "played", "cooks"],
+      "fullAnswer": "I read a book yesterday."
+    },
+    {
+      "question": "She ___ to the store every day.",
+      "options": ["goes", "runs", "drives", "sleeps", "ate"],
+      "fullAnswer": "She goes to the store every day."
+    },
+    {
+      "question": "They ___ playing soccer in the park.",
+      "options": ["enjoy", "hate", "finish", "stop", "drinks"],
+      "fullAnswer": "They enjoy playing soccer in the park."
+    },
+    {
+      "question": "He ___ his breakfast at 7 AM.",
+      "options": ["eats", "drinks", "cooks", "reads", "drives"],
+      "fullAnswer": "He eats his breakfast at 7 AM."
+    },
+    {
+      "question": "My dog ___ very fast.",
+      "options": ["runs", "jumps", "barks", "flies", "finish"],
+      "fullAnswer": "My dog runs very fast."
+    }
+  ]
+}
