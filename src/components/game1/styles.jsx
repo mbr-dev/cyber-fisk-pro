@@ -1,30 +1,31 @@
 import styled from "styled-components";
 
-export const Game3Container = styled.div`
+export const Game1Container = styled.div`
   width: 100vw;
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-`;
+  `;
 
-export const Game3Content = styled.div`
-  flex: 1;
+export const Game1Main = styled.main``;
+
+export const Content = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 3rem;
+  gap: 1.5rem;
+  margin-top: 1.875rem;
 
   .btn{
-    width: 14.5rem;
-    height: 4rem;
+    width: 9rem;
+    height: 7.5rem;
+    padding: 1rem;
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 1.375rem;
-    border-radius: 10px;
+    
+    border-radius: 20px;
     box-shadow:  2px 2px 6px #ccc;
+    padding-top: 10px;
+    padding-bottom: 10px;
     transition: all .2s ease-in-out;
   }
 
@@ -32,22 +33,17 @@ export const Game3Content = styled.div`
     transform: scale(1.1); 
   }
 
-  p {
-    font-size: 1.375rem;
-    color: ${props => props.theme.black};
-    font-weight: bold;
+  .img{
+    height: 80%;
   }
 
   @media(max-width: 320px) {
+    margin-top: 1rem;
     gap: 1rem;
 
     .btn{
-      width: 14rem;
-      height: 3rem;
-    }
-
-    p {
-      font-size: 1rem;
+      width: 8rem;
+      height: 6rem;
     }
   }
 
@@ -55,16 +51,10 @@ export const Game3Content = styled.div`
     flex-direction: column;
 
     .btn{
-      width: 300px;
-      height: 65px;
+      width: 165px;
+      height: 138px;
       margin-bottom: 20px;
       border-radius: 15px;
-    }
-
-    .desc{
-      font-size: 22px;
-      text-transform: none;
-      color: black; 
     }
   }
 
@@ -72,16 +62,10 @@ export const Game3Content = styled.div`
     flex-direction: column;
 
     .btn{
-      width: 300px;
-      height: 65px;
+      width: 165px;
+      height: 138px;
       margin-bottom: 20px;
       border-radius: 15px;
-    }
-
-    .desc{
-      font-size: 22px;
-      text-transform: none;
-      color: black; 
     }
   } */
 `

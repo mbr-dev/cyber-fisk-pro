@@ -1,12 +1,13 @@
-import React from 'react';
-import Content from './style';
+import React from "react";
+import { SubtitleLessonContainer } from "./styles";
 
-export const SubtitleLesson = (props) => {
-    return(
-        <>
-            <Content>
-                <span className='title'>{props.title}</span>
-            </Content>
-        </>
-    )
+
+export function SubtitleLesson({ title }) {
+  return(
+    <>
+      <SubtitleLessonContainer>
+        <span className='title'>{title}</span>
+      </SubtitleLessonContainer>
+    </>
+  )
 }

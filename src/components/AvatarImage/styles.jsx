@@ -1,8 +1,8 @@
 import { styled } from "styled-components";
 
 export const AvatarImageContainer = styled.div`
-  width: 5rem;
-  height: 4.75rem;
+  width: 5.375rem;
+  height: 5rem;
   padding-top: 0.25rem;
   display: flex;
   flex-direction: column;
@@ -14,19 +14,17 @@ export const AvatarImageContainer = styled.div`
 `;
 
 export const AvatarPhoto = styled.div`
-  width: 14rem;
-  position: relative;
+  
 
   .avatarImg {
-    width: 3.25rem;
-    margin-top: 0.5rem;
+    width: 3.625rem;
+    object-fit: cover;
   }
 `
 
 export const AvatarName = styled.div`
-  width: 6rem;
-  height: 1.75rem;
-  padding-inline: 0.25rem;
+  width: 6.5rem;
+  padding: 0.5rem;
   margin-top: -0.375rem;
   display: flex;
   align-items: center;

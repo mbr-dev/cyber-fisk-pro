@@ -10,22 +10,18 @@ export const ButtonContainer = styled.button`
   justify-content: center;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
-  border: 1px solid ${props => props.theme["red-300"]};
-  border-right: 3px solid ${props => props.theme["red-300"]};
-  border-bottom: 3px solid ${props => props.theme["red-300"]};
+  border: 3px solid ${props => props.theme["red-300"]};
+  border-bottom: 4px solid ${props => props.theme["red-300"]};
   border-radius: 10px;
   transition: all 0.2s;
   cursor: pointer;
 
   p {
     font-size: 1.25rem;
-    font-weight: 500;
+    font-weight: bold;
   }
 
   &:hover {
     opacity: 0.8;
-    border: 1px solid ${props => props.theme["red-300"]};
-    border-right: 3px solid ${props => props.theme["red-300"]};
-    border-bottom: 3px solid ${props => props.theme["red-300"]};
   }
 `;

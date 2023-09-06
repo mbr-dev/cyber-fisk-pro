@@ -19,7 +19,7 @@ export const BooksHeader = styled.header`
 `;
 
 export const TopHeader = styled.div`
-  padding: 0.625rem 1.125rem 0 1.125rem;
+  padding: 1rem 1.125rem 0 1.125rem;
   height: 2rem;
   display: flex;
   justify-content: space-between;
@@ -27,13 +27,13 @@ export const TopHeader = styled.div`
 
   p {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
   }
 `;
 
 export const BottomHeader = styled.div`
   display: flex;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
   justify-content: center;
   
   .logoFisk {
@@ -51,28 +51,33 @@ export const BooksMain = styled.main`
 
 export const BooksArea = styled.div`
   width: 18.75rem;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  margin-top: 1.5rem;
 
   p {
     text-align: left;
-    font-weight: bold;
+    font-weight: 500;
     font-size: 1.125rem;
   }
 `;
 
 export const CurrentBooksArea = styled.div`
   width: 100%;
-  margin-bottom: 1.25rem;
+  margin-bottom: 1.5rem;
+
+  p {
+    margin-bottom: 1.5rem;
+  }
 `;
 
 export const Line = styled.div`
   width: 100%;
   height: 1.5px;
   background-color: ${props => props.theme["gray-200"]};
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
 `;
 
 export const BooksImagesArea = styled.div`
@@ -98,7 +103,7 @@ export const PreviousBooksArea = styled.div`
   width: 100%;
 
   p {
-    margin-top: 1px;
+    margin-bottom: 1.5rem;
   }
 
   img {

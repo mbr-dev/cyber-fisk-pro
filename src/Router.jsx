@@ -3,7 +3,7 @@ import {Routes, Route} from "react-router-dom";
 import { Home } from "./pages/Home";
 import { Books } from "./pages/Books";
 import { Profile } from "./pages/Profile";
-import SelectLesson from "./pages/selectLesson";
+import { SelectLesson } from "./pages/SelectLesson";
 
 import { Game1 } from "./components/game1";
 import { Game2 } from "./components/game2";

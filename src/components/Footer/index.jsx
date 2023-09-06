@@ -1,4 +1,4 @@
-import { FooterContainer, FooterBottom, FooterDiv } from "./styles";
+import { FooterContainer, FooterBottom } from "./styles";
 
 import logoFisk from "./images/logofiskFooter.png";
 import Facebook from "./images/iconFacebook.svg";
@@ -8,7 +8,6 @@ import Instagram from "./images/iconInstagram.svg";
 export function Footer() {
   return (
     <FooterContainer>
-      <FooterDiv>
         <p>Para dicas e informações</p>
 
         <FooterBottom>
@@ -18,7 +17,6 @@ export function Footer() {
           <img src={Instagram} alt="icon instagram" className="iconFooter" />
           <img src={Facebook} alt="icon facebook" className="iconFooter" />
         </FooterBottom>
-      </FooterDiv>
     </FooterContainer>
   )
 }

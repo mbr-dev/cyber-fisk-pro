@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const Game3Container = styled.div`
+export const Game2Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
 `;
 
-export const Game3Content = styled.div`
+export const Game2Content = styled.div`
   flex: 1;
   width: 100%;
   display: flex;
@@ -22,7 +22,6 @@ export const Game3Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 1.375rem;
     border-radius: 10px;
     box-shadow:  2px 2px 6px #ccc;
     transition: all .2s ease-in-out;
@@ -55,7 +54,7 @@ export const Game3Content = styled.div`
     flex-direction: column;
 
     .btn{
-      width: 300px;
+      width: 265px;
       height: 65px;
       margin-bottom: 20px;
       border-radius: 15px;
@@ -64,7 +63,7 @@ export const Game3Content = styled.div`
     .desc{
       font-size: 22px;
       text-transform: none;
-      color: black; 
+      color: black;
     }
   }
 
@@ -72,7 +71,7 @@ export const Game3Content = styled.div`
     flex-direction: column;
 
     .btn{
-      width: 300px;
+      width: 265px;
       height: 65px;
       margin-bottom: 20px;
       border-radius: 15px;
@@ -81,7 +80,7 @@ export const Game3Content = styled.div`
     .desc{
       font-size: 22px;
       text-transform: none;
-      color: black; 
+      color: black;
     }
   } */
 `

@@ -7,15 +7,14 @@ export const FooterContainer = styled.footer`
   display: flex;
   flex-direction: column;
   align-items: center;
+  gap: 0.5rem;
+  padding-top: 0.5rem;
   padding-bottom: 0.875rem;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
-`;
-
-export const FooterDiv = styled.div`
-  margin-top: -0.75rem;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 
   p {
+    font-weight: normal;
     color: ${props => props.theme.white};
   }
 `;

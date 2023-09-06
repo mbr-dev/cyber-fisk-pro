@@ -12,19 +12,19 @@ export const TopMenuProfileContainer = styled.header`
 
 export const TopHeader = styled.div`
   height: 2rem;
-  padding: 0.625rem 1.125rem 0 1.125rem;
+  padding: 1rem 1.125rem 0 1.125rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   p {
     font-size: 1.5rem;
-    font-weight: bold;
+    font-weight: 500;
   }
 `;
 
 export const BottomHeader = styled.div`
-  padding-top: 0.625rem;
+  margin-top: 1rem;
   display: flex;
   justify-content: center;
   gap: 2rem;

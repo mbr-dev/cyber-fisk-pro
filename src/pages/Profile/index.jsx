@@ -55,7 +55,7 @@ export function Profile() {
               {selectLanguage === 1 && <label>{profileTranslate[1].name}</label>}
               {selectLanguage === 2 && <label>{profileTranslate[2].name}</label>}
 
-              <User size={16} />
+              <User size={16} strokeWidth={2.5} />
               <ProfileInput type="text" placeholder="Camila Eduarda Campos" readOnly />
             </ProfileAreaInput>
 
@@ -64,7 +64,7 @@ export function Profile() {
               {selectLanguage === 1 && <label>{profileTranslate[1].date}</label>}
               {selectLanguage === 2 && <label>{profileTranslate[2].date}</label>}
               
-              <CalendarDays size={16} />
+              <CalendarDays size={16} strokeWidth={2.5} />
               <ProfileInput type="date" className="inputDate" readOnly />
             </ProfileAreaInput>
 
@@ -73,9 +73,10 @@ export function Profile() {
               {selectLanguage === 1 && <label>{profileTranslate[1].local}</label>}
               {selectLanguage === 2 && <label>{profileTranslate[2].local}</label>}
 
-              <School size={16} />
+              <School size={16} strokeWidth={2.5} />
               <ProfileSelect readOnly>
                 <option value="portugues">São Paulo</option>
+                <option value="portugues">Rio Janeiro</option>
               </ProfileSelect>
             </ProfileAreaInput>
 
@@ -83,7 +84,7 @@ export function Profile() {
               {selectLanguage === 0 && <label>{profileTranslate[0].email}</label>}
               {selectLanguage === 1 && <label>{profileTranslate[1].email}</label>}
               {selectLanguage === 2 && <label>{profileTranslate[2].email}</label>}
-              <Mail size={16} />
+              <Mail size={16} strokeWidth={2.5} />
               <ProfileInput type="email" placeholder="camilaeduarda@gmail.com" readOnly />
             </ProfileAreaInput>
 

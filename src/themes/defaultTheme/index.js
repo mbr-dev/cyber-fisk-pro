@@ -4,6 +4,7 @@ export const defaultTheme = {
 
   "gray-100": "#EFEFEF",
   "gray-200": "#E6E6E6",
+  "gray-300": "#D9D9D926",
   "gray-400": "#959595",
   "gray-500": "#888888",
   "gray-600": "#4f4f4f",
@@ -15,6 +16,8 @@ export const defaultTheme = {
   "red-300": "#B20008",
 
   "yellow-100": "#FFB800",
+
+  "blue-100": "#0072BC",
 
   backgroundTopLesson: "#E6E6E6",
   backgroundSubTitleLesson: "#E6E6E6",

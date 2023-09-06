@@ -69,6 +69,7 @@ export const MainCard = styled.a`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   background-color: ${props => props.theme.white};
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
@@ -81,7 +82,7 @@ export const MainCard = styled.a`
   }
 
   p {
-    font-weight: bold;
+    font-weight: 500;
     color: ${props => props.theme.black};
   }
 `;
