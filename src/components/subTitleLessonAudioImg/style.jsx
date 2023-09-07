@@ -1,61 +1,40 @@
 import styled from 'styled-components';
-import {colors} from '../../config/colors';
 
-const Content = styled.div`
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    background-color: ${colors.backgroundSubTitleLesson};
-    padding-top: 10px;
-    padding-bottom: 10px;
+export const SubtitleLessonAudioImgContent = styled.div`
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: ${props => props.theme["gray-200"]};
+  padding-top: 0.625rem;
+  
+  .img2 {
+    width: 50%;
+    margin-right: 0.75rem;
+  }
 
-    .title{
-        font-size: 64px;
+  @media(max-width: 320px) {
+    .img2 {
+      width: 40%;
     }
-    .btn{
-        width: 182px;
-        height: 182px;
-        background-color: ${colors.stepLessonError};
-        border-radius: 20px;
-        transition: all .2s ease-in-out;
+  }
+
+  /* @media only screen and (max-width: 600px){
+    .img {
+      width: 50%;
     }
-    
-    .btn:hover { 
-        transform: scale(0.8); 
+    .img2 {
+      width: 50%;
     }
-    @media only screen and (max-width: 600px){
-        .title{
-            font-size: 28px;
-        }
-        .btn{
-            width: 102px;
-            height: 102px;
-        }
-        .img{
-            width: 50%;
-        }
-        .img2{
-            width: 50%;
-        }
+  }
+
+  @media only screen and (max-width: 1024px){
+    .img {
+      width: 50%;
     }
 
-    @media only screen and (max-width: 1024px){
-        .title{
-            font-size: 28px;
-        }
-        .btn{
-            width: 102px;
-            height: 102px;
-        }
-        .img{
-            width: 50%;
-        }
-        .img2{
-            width: 50%;
-        }
+    .img2 {
+      width: 50%;
     }
+  } */
 `
-
-export default Content;

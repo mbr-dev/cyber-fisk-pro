@@ -1,4 +1,4 @@
-import React, { useState, useContext,useEffect } from "react";
+import React, { useState, useContext, useEffect } from "react";
 
 import { TitleLesson } from "../titleLesson";
 import { SubtitleLesson } from "../subtitleLesson";
@@ -9,8 +9,9 @@ import { TrocaAtividade } from "../../utils/regras";
 import Button from "@mui/material/Button";
 import { URL_HMLG } from "../../config/infos";
 
-import { Content, Game1Container, Game1Main } from "./styles";
+import { Game1Content, Game1Container, Game1Main } from "./styles";
 import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 
 export function Game1(props) {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
@@ -23,9 +24,7 @@ export function Game1(props) {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [bloqueia, setBloqueia] = useState(true);
-
-  console.log("acerto", acertos)
-  console.log("bloqueaia: ", bloqueia)
+  const [isloading, setIsLoading] = useState(false);
 
   function loadLesson() {
     const tam = L1_T1_Facil.length;
@@ -40,17 +39,17 @@ export function Game1(props) {
 
     setSortNum(temp);
     setPergunta(L1_T1_Facil[temp[rodada]].pergunta);
-    
+
     let tempImg = [];
     let tempSortNum = idClick;
-    
+
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     setIdClick(tempSortNum);
-    
-    for (let a = 0; a < 3; a ++) {            
+
+    for (let a = 0; a < 3; a++) {
       tempImg.push(`Images/pro/game1/F_${temp[rodada]}_${tempSortNum[a]}.png`);
     }
-    
+
     setImages(tempImg);
     setBloqueia(false);
   }
@@ -63,7 +62,7 @@ export function Game1(props) {
 
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     setIdClick(tempSortNum);
-    for (let a = 0; a < 3; a ++) {
+    for (let a = 0; a < 3; a++) {
       tempImg.push(`Images/pro/game1/F_${sortNum[num]}_${tempSortNum[a]}.png`);
     }
     setImages(tempImg);
@@ -71,8 +70,8 @@ export function Game1(props) {
   }
 
   function handleClick(id) {
-    if(bloqueia){
-      return 
+    if (bloqueia) {
+      return
     }
 
     setBloqueia(true);
@@ -81,7 +80,7 @@ export function Game1(props) {
 
     if (idClick[id] === 0) {
       tempA++;
-      setNewPontos(0,(tempA));
+      setNewPontos(0, (tempA));
       setAcertos(tempA);
     } else {
       let tempE = erros;
@@ -99,53 +98,60 @@ export function Game1(props) {
     // playAudio.play();
     //troca de nivel
     if (tempA == 2) {
-      setTimeout(() =>{
+      setTimeout(() => {
         setNewLesson(1);
-      },1000);
+      }, 1000);
     }
 
-    const regra = TrocaAtividade(0,tempGeral,tempA,tempR);
+    const regra = TrocaAtividade(0, tempGeral, tempA, tempR);
 
     if (regra === "Continua") {
-      setTimeout(() =>{
+      setTimeout(() => {
         newRodada(tempR);
       }, 1000);
     } else if (regra === "Game over") {
-      setNewPontos(0,0);
-      setTimeout(() =>{
+      setNewPontos(0, 0);
+      setTimeout(() => {
         alert('GAME OVER!!');
         setNewContainer(1);
-      },1000);
+      }, 1000);
     } else {
       //troca de nivel
-      setTimeout(() =>{
+      setTimeout(() => {
         setNewLesson(1);
       }, 1000);
     }
   }
 
-  useEffect(() => { 
+  useEffect(() => {
     loadLesson();
   }, [])
 
-  return(
+  return (
     <Game1Container>
+      {isloading &&
+        <Loading />
+      }
 
-      <HeaderLesson numStart={`Task 1`} numEnd={`Task ${rodada + 1}`}  />
+      <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} />
 
       {images.length > 0 &&
         <Game1Main>
-          <TitleLesson title="Choose the correct alternative"/>
-          <SubtitleLesson title={pergunta}/>
-          <Content>
+          <TitleLesson title="Choose the correct alternative" />
+          <SubtitleLesson title={pergunta} />
+
+          <Game1Content>
             {images.map((image, index) => {
               return (
-                <Button key={index} className="btn" onClick={() => {handleClick(index)}}>
-                  <img src={`${URL_HMLG}${image}`} className="img"/>
+                <Button key={index}
+                  className="btn"
+                  onClick={() => { handleClick(index) }}
+                >
+                  <img src={`${URL_HMLG}${image}`} className="img" />
                 </Button>
               )
             })}
-          </Content>
+          </Game1Content>
         </Game1Main>
       }
     </Game1Container>

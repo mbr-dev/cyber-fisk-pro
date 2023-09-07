@@ -10,6 +10,7 @@ import { L1_T1_Medio } from "../../utils/lesson1_Task1";
 import { TrocaAtividade } from "../../utils/regras";
 
 import { Game2Container, Game2Content } from "./styles";
+import { Loading } from "../Loading";
 
 export function Game2(props) {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
@@ -24,6 +25,7 @@ export function Game2(props) {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [bloqueia, setBloqueia] = useState(true);
+  const [isloading, setIsLoading] = useState(false);
 
   function loadLesson() {
     const tam = L1_T1_Medio.length;
@@ -119,7 +121,11 @@ export function Game2(props) {
     
   return (
     <Game2Container>
-    <HeaderLesson numStart={`Task 2`} numEnd={`Task ${rodada + 1}`} />
+      {isloading &&
+        <Loading />
+      }
+
+      <HeaderLesson numStart="Task 2" numEnd="Task 3" />
 
       <TitleLesson title="Choose the correct alternative"/>
       <SubtitleLesson title={pergunta}/>

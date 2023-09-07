@@ -2,11 +2,19 @@ import styled from "styled-components";
 
 export const Game1Container = styled.div`
   width: 100vw;
-  `;
+`;
 
-export const Game1Main = styled.main``;
+export const Game1Main = styled.main`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 
-export const Content = styled.div`
+  .loading {
+    margin-top: 100px;
+  }
+`;
+
+export const Game1Content = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -30,7 +38,7 @@ export const Content = styled.div`
   }
 
   .btn:hover { 
-    transform: scale(1.1); 
+    transform: scale(1.05); 
   }
 
   .img{
@@ -39,11 +47,11 @@ export const Content = styled.div`
 
   @media(max-width: 320px) {
     margin-top: 1rem;
-    gap: 1rem;
+    gap: 0.75rem;
 
     .btn{
-      width: 8rem;
-      height: 6rem;
+      width: 6rem;
+      height: 5rem;
     }
   }
 

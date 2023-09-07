@@ -11,6 +11,7 @@ import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 
 import { Game3Container, Game3Content } from "./style";
 import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 
 export function Game3 (props) {
   const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
@@ -23,6 +24,7 @@ export function Game3 (props) {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [bloqueia, setBloqueia] = useState(true);
+  const [isloading, setIsLoading] = useState(false);
 
 
   function loadLesson() {
@@ -108,7 +110,7 @@ export function Game3 (props) {
               frequencia++;
 
               if (frequencia === 4) {
-                  alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
               }
 
               localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
@@ -138,7 +140,11 @@ export function Game3 (props) {
 
   return(
     <Game3Container>
-      <HeaderLesson numStart={`Task 3`} numEnd={`Task ${rodada + 1}`} />
+      {isloading &&
+        <Loading />
+      }
+
+      <HeaderLesson numStart="Task 3" numEnd="Task 4" />
 
       <TitleLesson title="Choose the correct alternative"/>
       <SubtitleLesson title={pergunta}/>

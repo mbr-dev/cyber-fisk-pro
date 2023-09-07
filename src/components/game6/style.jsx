@@ -1,79 +1,60 @@
 import styled from 'styled-components';
 
-const Content = styled.div`
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+export const Game6Container = styled.div``;
+
+export const Game6Content = styled.div`
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, auto);
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+
+  .btn {
+    width: 170px;
+    height: 50px;
     display: flex;
-    width: 100%;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    border-radius: 9px;
+    box-shadow:  2px 2px 6px #ccc;
+    transition: all .2s ease-in-out;
+    text-transform: none;
+  }
 
-    .btn{
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        width: 458px;
-        height: 95px;
-        border-radius: 20px;
-        box-shadow:  2px 2px 6px #ccc;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        transition: all .2s ease-in-out;
-        margin-bottom: 40px;
-        margin-right: 40px;
-        text-transform: none !important;
-    }
-    .btn:hover { 
-        transform: scale(1.1); 
-    }
-    .desc{
-        font-size: 32px;
-        color: black;
-    }
-    .boxBtn{
-        display: grid;
-        grid-template-columns: auto auto;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    @media only screen and (max-width: 600px){
-        flex-direction: column;
-        .btn{
-            width: 280px;
-            height: 50px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        .boxBtn{
-            flex-direction: column;
-        }
-        .desc{
-            font-size: 18px; 
-        }
+  .btn:hover { 
+    transform: scale(1.05); 
+  }
+
+  p {
+    font-size: 1rem;
+    color: ${props => props.theme.black};
+    line-height: 1.125rem;
+  }
+
+  @media(max-width: 378px) {
+    gap: 1rem;
+
+    .btn {
+      width: 150px;
     }
 
-    @media only screen and (max-width: 1024px){
-        flex-direction: column;
-        .btn{
-            width: 280px;
-            height: 50px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        .boxBtn{
-            flex-direction: column;
-        }
-        .desc{
-            font-size: 18px; 
-        }
+    p {
+      font-size: 0.875rem;
     }
+  }
+
+  @media(max-width: 320px) {
+    margin-top: 1rem;
+
+    .btn {
+      width: 130px;
+    }
+
+    p {
+      line-height: 1rem;
+      font-size: 0.75rem;
+    }
+  }
 `
-
-export default Content;

@@ -1,31 +1,34 @@
-import React,  { useContext } from 'react';
-import Content from './style';
+import { useContext } from "react";
+import { Volume2 } from "lucide-react";
+
 import Button from "@mui/material/Button";
-import imgSom from './images/Modo_de_isolamento.png';
-import { LessonContext } from '../../context/lesson';
+import { LessonContext } from "../../context/lesson";
 
-export const SubtitleLessonAudio = (props) => {
-    const {newStatusPlay, playAudio} = useContext(LessonContext);
+import { SubtitleLessonAudioContainer, SubtitleLessonAudioButton } from "./style";
 
-    const click = () =>{
-        if(playAudio){
-            return;
-        }
-        const audio = new Audio(props.audio);
-        audio.play();
-        newStatusPlay(true);
-        audio.addEventListener('ended', () => {
-            newStatusPlay(false);
-        });
+export function SubtitleLessonAudio(props) {
+  const { newStatusPlay, playAudio } = useContext(LessonContext);
+
+  function handleClick() {
+    if (playAudio) {
+      return;
     }
 
-    return(
-        <>
-            <Content>
-                <Button className='btn' onClick={() => {click()}}>
-                    <img src={imgSom} className='img' alt='icon'/>
-                </Button>
-            </Content>
-        </>
-    )
+    const audio = new Audio(props.audio);
+
+    audio.play();
+    newStatusPlay(true);
+
+    audio.addEventListener('ended', () => {
+      newStatusPlay(false);
+    });
+  }
+
+  return (
+    <SubtitleLessonAudioContainer>
+      <SubtitleLessonAudioButton onClick={() => handleClick()}>
+        <Volume2 size={32} strokeWidth={2.5} />
+      </SubtitleLessonAudioButton>
+    </SubtitleLessonAudioContainer>
+  )
 }

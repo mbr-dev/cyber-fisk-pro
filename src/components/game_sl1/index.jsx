@@ -1,135 +1,146 @@
-import React, { useState, useContext, useEffect } from 'react';
-import Content from './style';
-import Button from "@mui/material/Button";
-import { TitleLesson } from '../titleLesson';
-import { SubtitleSuperLesson } from '../subtitleSuperLesson';
-import { LessonContext } from '../../context/lesson';
+import { useState, useContext, useEffect } from "react";
 
-export const GameSL1 = (props) => {
-    const respostas = ['American','Canadian','Brazilian','French','Italian','Spanish'];
-    const letras = ['A','B','C','D','E','F','H','I','J','M','N','P','R','S','T','Z'];
-    const tempo = 30;
+import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
+import { SubtitleSuperLesson } from "../subtitleSuperLesson";
 
-    const [numClick, setNumClick] = useState(0);
-    const {superTask, setNewsuperTask, setNewContainer} = useContext(LessonContext);
-    let [tempoRestante, setTempoRestante] = useState(tempo);
-    const [pauseTime, setPauseTime] = useState(false);
-    const [addTime, setAddTime] = useState(false);
-    const [respondido, setRespondido] = useState([]);
-    const [rodada, setRodada] = useState(0);
-    const [palavraRodada, setPalavraRodada] = useState('');
+import { LessonContext } from "../../context/lesson";
 
-    const click = (str) =>{
-        let temp = superTask;
-        let tempNum = numClick;
-        temp[tempNum] = str;
-        tempNum++;
-        setNewsuperTask(temp);
-        setNumClick(tempNum);
-        let res = '';
-        superTask.map((x) => {
-            res += x;
-        });
-        //setPauseTime(true);
-        respostas.map((el) => {
-            if(res.toUpperCase() === el.toUpperCase()){
-                //setAddTime(true);
-                if(respondido.includes(el)){
-                    alert(`Voce já acertou esta palavra: ${el}`);
-                }else{
-                    let temp = respondido;
-                    temp.push(el);
-                    setRespondido(temp);
-                    alert(`Acertou a palavra: ${el}, restam ${(respostas.length - temp.length)} palavra(s)`);
-                }
-                clearFields();
-                //setTempoRestante(tempoRestante += 30);
-            }
-        })
-        if(tempNum > 8){
-            clearFields();
-        }
-        //setPauseTime(false);
-    }
+import { GameSL1Content, GameSL1Container, BoxBtn, BoxBtnClear, ButtonLetter, ButtonClear } from "./style";
 
-    const clearField = () => {
-        let temp = superTask;
-        let tempNum = numClick;
-        tempNum--;
-        temp[tempNum] = '';
-        if(tempNum < 1){
-            tempNum = 0;
-        }
-        setNewsuperTask(temp);
-        setNumClick(tempNum);
-    }
+export function GameSL1(props) {
+  const respostas = ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"];
+  const letras = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "M", "N", "P", "R", "S", "T", "Z"];
+  const tempo = 30;
 
-    const clearFields = () => {
-        let temp = ['','','','','','','','',''];
-        setNumClick(0);
-        setNewsuperTask(temp);
-    }
+  const [numClick, setNumClick] = useState(0);
+  const { superTask, setNewsuperTask, setNewContainer } = useContext(LessonContext);
+  let [tempoRestante, setTempoRestante] = useState(tempo);
+  const [pauseTime, setPauseTime] = useState(false);
+  const [addTime, setAddTime] = useState(false);
+  const [respondido, setRespondido] = useState([]);
+  const [rodada, setRodada] = useState(0);
+  const [palavraRodada, setPalavraRodada] = useState('');
 
-    const startTimer = () => {
-        setTimeout(() => {
-            if(!pauseTime){
-                if (tempoRestante > 0) {
-                    setTempoRestante(tempoRestante -= 1);
-                }else{
-                    alert('GAME OVER!!');
-                    setPauseTime(true);
-                    setNewContainer(1);
-                }
-            }
-        }, 1000)
-    }
+  function handleClick(str) {
+    let temp = superTask;
+    let tempNum = numClick;
+    temp[tempNum] = str;
+    tempNum++;
+    setNewsuperTask(temp);
+    setNumClick(tempNum);
+    let res = '';
 
-    const formataTempo = (time) => {
-        const minutes = Math.floor(time / 60);
-        let seconds = time % 60;
-        if (seconds < 10) {
-            seconds = `0${seconds}`;
+    superTask.map((x) => {
+      res += x;
+    });
+    //setPauseTime(true);
+    respostas.map((el) => {
+      if (res.toUpperCase() === el.toUpperCase()) {
+        //setAddTime(true);
+        if (respondido.includes(el)) {
+          alert(`Voce já acertou esta palavra: ${el}`);
+        } else {
+          let temp = respondido;
+          temp.push(el);
+          setRespondido(temp);
+          alert(`Acertou a palavra: ${el}, restam ${(respostas.length - temp.length)} palavra(s)`);
         }
 
-        return `${minutes}:${seconds}`;
-    }
-
-    const calculaFracao = () => {
-        return tempoRestante / tempo;
-    }
-
-    const btn = (el) =>{
-        return(
-            <Button className='btn' onClick={() => {click(el)}}>
-                <text className='desc'>{el}</text>
-            </Button>
-        )
-    }
-
-    useEffect(() => {
         clearFields();
-    }, []);
-    //startTimer();
+        //setTempoRestante(tempoRestante += 30);
+      }
+    })
 
-    return(
-        <>
-            <TitleLesson title='How many nationalities can you write with these letters?'/>
-            <SubtitleSuperLesson palavra={palavraRodada}/>
-            <Content>
-                {/* <div className='boxTimer'>
-                    <span>{formataTempo(tempoRestante)} {addTime ? <span>+ 30</span>: <></>}</span>
-                </div> */}
-                <div className='boxBtn'>
-                    {letras.map((x) =>{
-                        return(btn(x))
-                    })}
-                </div>                
-                <div className='boxBtnClear'>
-                    <Button className='btnClear' onClick={() => {clearField()}}>
-                        <text className='descClear'>Clear</text>
-                    </Button>
-                </div>
-            </Content>
-        </>
-    )
+    if (tempNum > 8) {
+      clearFields();
+    }
+
+    //setPauseTime(false);
+  }
+
+  function handleClearField() {
+    let temp = superTask;
+    let tempNum = numClick;
+    tempNum--;
+    temp[tempNum] = '';
+    if (tempNum < 1) {
+      tempNum = 0;
+    }
+    setNewsuperTask(temp);
+    setNumClick(tempNum);
+  }
+
+  function clearFields() {
+    let temp = ['', '', '', '', '', '', '', '', ''];
+    setNumClick(0);
+    setNewsuperTask(temp);
+  }
+
+  function startTimer() {
+    setTimeout(() => {
+      if (!pauseTime) {
+        if (tempoRestante > 0) {
+          setTempoRestante(tempoRestante -= 1);
+        } else {
+          alert('GAME OVER!!');
+          setPauseTime(true);
+          setNewContainer(1);
+        }
+      }
+    }, 1000)
+  }
+
+  function formataTempo(time) {
+    const minutes = Math.floor(time / 60);
+    let seconds = time % 60;
+    if (seconds < 10) {
+      seconds = `0${seconds}`;
+    }
+
+    return `${minutes}:${seconds}`;
+  }
+
+  function calculaFracao() {
+    return tempoRestante / tempo;
+  }
+
+  useEffect(() => {
+    clearFields();
+  }, []);
+  //startTimer();
+
+  return (
+    <GameSL1Container>
+      <HeaderLesson icon="super" numStart="Super task" numEnd="Task 3" />
+
+      <TitleLesson title="How many nationalities can you write with these letters?" />
+      <SubtitleSuperLesson palavra={palavraRodada} />
+
+      <GameSL1Content>
+        {/* <div className='boxTimer'>
+            <span>{formataTempo(tempoRestante)} {addTime ? <span>+ 30</span>: <></>}</span>
+        </div> */}
+        <BoxBtn>
+          {letras.map((letra, index) => {
+            return (
+              <ButtonLetter key={index}
+                onClick={() => handleClick(letra)}
+              >
+                <p>{letra}</p>
+              </ButtonLetter>
+            )
+          })}
+        </BoxBtn>
+
+        <BoxBtnClear>
+          <ButtonClear 
+            onClick={() => handleClearField()}
+          >
+            <p>Clear</p>
+          </ButtonClear>
+        </BoxBtnClear>
+      </GameSL1Content>
+    </GameSL1Container>
+  )
 }

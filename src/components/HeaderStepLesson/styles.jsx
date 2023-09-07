@@ -6,9 +6,8 @@ export const HeaderStepLessonContent = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   background-color: ${props => props.theme["gray-200"]};
-  border-right: 1px solid ${props => props.theme.black};
-  border-top: 1px solid ${props => props.theme.black};
-  border-bottom: 1px solid ${props => props.theme.black};
+  border: 1px solid ${props => props.theme.black};
+  border-left: transparent;
 
   @media(max-width: 320px) {
     width: 1.125rem;

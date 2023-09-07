@@ -1,54 +1,31 @@
 import styled from 'styled-components';
-import {colors} from '../../config/colors';
 
-const Content = styled.div`
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    background-color: ${colors.backgroundSubTitleLesson};
-    padding-top: 10px;
-    padding-bottom: 10px;
-
-    .title{
-        font-size: 64px;
-    }
-    .btn{
-        width: 182px;
-        height: 182px;
-        background-color: ${colors.stepLessonError};
-        border-radius: 20px;
-        transition: all .2s ease-in-out;
-    }
-    .btn:hover { 
-        transform: scale(0.8); 
-    }
-    @media only screen and (max-width: 600px){
-        .title{
-            font-size: 28px;
-        }
-        .btn{
-            width: 102px;
-            height: 102px;
-        }
-        .img{
-            width: 50%;
-        }
-    }
-
-    @media only screen and (max-width: 1024px){
-        .title{
-            font-size: 28px;
-        }
-        .btn{
-            width: 102px;
-            height: 102px;
-        }
-        .img{
-            width: 50%;
-        }
-    }
+export const SubtitleLessonAudioContainer = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme["gray-200"]};
+  padding-block: 0.625rem;
 `
 
-export default Content;
+export const SubtitleLessonAudioButton = styled.div`
+  width: 4rem;
+  height: 4rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border-radius: 20px;
+  transition: all .2s ease-in-out;
+
+  &:hover {
+    transform: scale(0.9);
+  }
+
+  @media(min-width: 360px) {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+`;

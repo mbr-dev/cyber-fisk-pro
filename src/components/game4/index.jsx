@@ -11,7 +11,8 @@ import { TrocaAtividade } from "../../utils/regras";
 import { URL_HMLG } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Game4Container, Content } from "./style";
+import { Game4Container, Game4Content } from "./styles";
+import { Loading } from "../Loading";
 
 export function Game4(props) {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
@@ -28,6 +29,7 @@ export function Game4(props) {
   const [tipo, setTipo] = useState(null);
   const [sound, setSound] = useState(null);
   const [contClick, setContClick] = useState(0);
+  const [isloading, setIsLoading] = useState(false);
 
   function loadLesson() {
     const tam = L1_T2_Facil.length;
@@ -36,12 +38,13 @@ export function Game4(props) {
     for (let a = 0; a < tam; a++) {
       temp.push(a);
     }
+
     temp = temp.sort(() => Math.random() - 0.5);
     setSortNum(temp);
     setSound(`Images/pro/game4/ess1_l1/Task2F_${temp[rodada]}.mp3`);
     setTipo(L1_T2_Facil[temp[rodada]].tipo);
     let tempResp = [];
-    console.log('TIPO ==> ', L1_T2_Facil[temp[rodada]].tipo);
+    //console.log('TIPO ==> ', L1_T2_Facil[temp[rodada]].tipo);
     let tempSortNum = L1_T2_Facil[temp[rodada]].tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
 
@@ -188,30 +191,34 @@ export function Game4(props) {
     <Game4Container>
       {tipo !== null &&
         <>
-          <HeaderLesson numStart={`Task 4`} numEnd={`Task ${rodada + 1}`} />
+          {isloading &&
+            <Loading />
+          }
+
+          <HeaderLesson numStart="Task 4" numEnd="Task 5" />
 
           <TitleLesson title='Choose the correct alternative'/>
-          <SubtitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
+          <div className="buttonOfAudio">
+            <SubtitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
+          </div>
 
-          <Content>
-            <div className='boxBtn'>
-                {respostas.map((respostas, index) => {
-                  // return(
-                  //   btn(tipo, respostas, index)
-                  // )
+          <Game4Content>
+            {respostas.map((respostas, index) => {
+              // return(
+              //   btn(tipo, respostas, index)
+              // )
 
-                  return (
-                    <Button key={index}
-                      className={tipo === 3 ? 'btn' : 'btn2'} 
-                      onClick={() => {handleClick(index)}} 
-                      style={{backgroundColor: idClick[index] === 0 ? defaultTheme.white : defaultTheme["green-200"]}}
-                    >
-                      <text className={tipo === 3 ? 'desc' : 'desc2'}>{respostas}</text>
-                    </Button>
-                  )
-                })}
-            </div>
-          </Content>
+              return (
+                <Button key={index}
+                  className={tipo === 3 ? 'btn' : 'btn2'} 
+                  onClick={() => {handleClick(index)}} 
+                  style={{backgroundColor: idClick[index] === 0 ? defaultTheme.white : defaultTheme["green-200"]}}
+                >
+                  <p className={tipo === 3 ? 'desc' : 'desc2'}>{respostas}</p>
+                </Button>
+              )
+            })}
+          </Game4Content>
         </>
       }
     </Game4Container>

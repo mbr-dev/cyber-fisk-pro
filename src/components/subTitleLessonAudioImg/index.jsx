@@ -1,24 +1,19 @@
-import React from 'react';
-import Content from './style';
-import Button from "@mui/material/Button";
-import imgSom from './images/Modo_de_isolamento.png';
-import img from './images/img.png';
+import { SubtitleLessonAudio } from "../subtitleLessonAudio";
 
-export const SubtitleLessonAudioImg = (props) => {
+import img from "./images/img.png";
+import { SubtitleLessonAudioImgContent } from "./style";
 
-    const click = () =>{
-        const audio = new Audio(props.audio);
-        audio.play();
-    }
+export function SubtitleLessonAudioImg (props) {
 
-    return(
-        <>
-            <Content>
-                <Button className='btn' onClick={() => {click()}}>
-                    <img src={imgSom} className='img' alt='icon'/>
-                </Button>
-                    <img src={img} className='img2' alt='image'/>
-            </Content>
-        </>
-    )
+  function handleClick() {
+    const audio = new Audio(props.audio);
+    audio.play();
+  }
+
+  return (
+    <SubtitleLessonAudioImgContent>
+      <SubtitleLessonAudio onClick={() => handleClick()} />
+      <img src={img} className='img2' alt='image' />
+    </SubtitleLessonAudioImgContent>
+  )
 }

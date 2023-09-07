@@ -11,65 +11,19 @@ export const HeaderLessonContent = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: flex-start;
-  gap: 1.25rem;
+  gap: 0.75rem;
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
 
   @media(max-width: 360px) {
-    gap: 0.5rem;
+    gap: 0.25rem;
   }
-
-  /* @media only screen and (max-width: 600px){
-    border-radius: 0px 0px 25px 25px;
-    padding: 20px 0px 20px 0px;
-    .iconStart{
-      padding-right: 5px;
-      width: 50%;
-      height: auto;
-    }
-    .iconEnd{
-      padding-right: 5px;
-      width: 50%;
-      height: auto;
-      margin-top: 5px;
-    }
-    .titleIcon{
-      font-size: 20px;
-    }
-    .barraStep{
-      width: 90%;
-      height: 61px;
-    }
-  }
-
-  @media only screen and (max-width: 1024px) and (min-width: 600px){
-    border-radius: 0px 0px 25px 25px;
-    padding: 20px 0px 20px 0px;
-    .iconStart{
-      padding-right: 5px;
-      width: 50%;
-      height: auto;
-    }
-    .iconEnd{
-      padding-right: 5px;
-      width: 50%;
-      height: auto;
-      margin-top: 5px;
-    }
-    .titleIcon{
-      font-size: 20px;
-    }
-    .barraStep{
-      width: 70%;
-      height: 61px;
-    }
-  } */
 `
 
 export const BarStep = styled.div`
-  padding: 0.5rem 0.75rem;
   display: flex;
+  padding: 0.5rem 0.75rem;
   justify-content: center;
   background-color: ${props => props.theme.white};
   border-radius: 8px;

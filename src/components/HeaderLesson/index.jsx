@@ -47,7 +47,7 @@ export function HeaderLesson({ numStart, numEnd }) {
           <HeaderStepLesson 
             color={rodadaGeral === 7 ? defaultTheme["yellow-100"] : rodadaGeral < 7 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
           />
-          <HeaderStepLesson 
+          <HeaderStepLesson
             color={rodadaGeral === 8 ? defaultTheme["yellow-100"] : rodadaGeral < 8 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
           />
 

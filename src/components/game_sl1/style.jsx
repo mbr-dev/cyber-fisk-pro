@@ -1,85 +1,23 @@
-import {colors} from '../../config/colors';
 import styled from 'styled-components';
 
-const Content = styled.div`
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+export const GameSL1Container = styled.div``;
 
-    .btn{
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        width: 80px;
-        height: 95px;
-        border-radius: 20px;
-        box-shadow:  2px 2px 6px #ccc;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        transition: all .2s ease-in-out;
-        margin-bottom: 40px;
-        margin-right: 40px;
-        text-transform: none !important;
-    }
-    .btn:hover { 
-        transform: scale(1.1); 
-    }
-    .btnClear{
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        width: 215px;
-        height: 99px;
-        border-radius: 20px;
-        box-shadow:  2px 2px 6px #ccc;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        transition: all .2s ease-in-out;
-        margin-bottom: 40px;
-        margin-right: 40px;
-        text-transform: none !important;
-        background-color: ${colors.lessonError}
-    }
-    .btnClear:hover { 
-        transform: scale(1.1);
-        background-color: ${colors.stepLessonError} 
-    }
-    .desc{
-        font-size: 48px;
-        color: ${colors.black};
-    }
-    .descClear{
-        font-size: 48px;
-        color: ${colors.white};
-    }
-    .boxBtn{
-        display: grid;
-        grid-template-columns: auto auto auto auto;
-        justify-content: center;
-        align-items: center;
-    }
-    .boxBtnClear{
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-    }
-    .boxTimer{
-        display: flex;
-        flex-direction: row;
-        font-size: 20px;
-        padding-bottom: 20px;
-        font-weight: bold; 
-    }
-    .base-timer {
+export const GameSL1Content = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  margin-top: 2rem;
+
+  .boxTimer{
+    display: flex;
+    flex-direction: row;
+    font-size: 20px;
+    padding-bottom: 20px;
+    font-weight: bold; 
+  }
+
+  .base-timer {
     position: relative;
     width: 300px;
     height: 300px;
@@ -119,50 +57,64 @@ const Content = styled.div`
     justify-content: center;
     font-size: 48px;
   }
-
-    @media only screen and (max-width: 600px){
-        .btn{
-            width: 55px;
-            height: 65px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        .btnClear{
-            width: 190px;
-            height: 60px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        .descClear{
-            font-size: 24px;
-        }
-        .desc{
-            font-size: 22px; 
-        }
-    }
-
-    @media only screen and (max-width: 1024px) and (min-width: 600px){
-        .btn{
-            width: 55px;
-            height: 65px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-        
-        .desc{
-            font-size: 22px; 
-        }
-        .btnClear{
-            width: 190px;
-            height: 60px;
-            margin-bottom: 20px;
-            margin-right: 20px;
-            border-radius: 10px;
-        }
-    }
 `
 
-export default Content;
+export const BoxBtn = styled.div`
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+  justify-content: center;
+  align-items: center;
+  gap: 1.25rem;
+`;
+
+export const ButtonLetter = styled.button`
+  all: unset;
+  width: 3.5rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 9px;
+  box-shadow:  2px 2px 6px #ccc;
+  transition: all .2s ease-in-out;
+  text-transform: none;
+
+  &:hover { 
+    transform: scale(1.05); 
+  }
+
+  p {
+    font-size: 1.75rem;
+    font-weight: bold;
+  }
+`;
+
+export const ButtonClear = styled.button`
+  all: unset;
+  width: 12rem;
+  height: 4rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  box-shadow:  2px 2px 6px #ccc;
+  transition: all .2s ease-in-out;
+  text-transform: none;
+  background-color: ${props => props.theme["red-300"]};
+
+  &:hover { 
+    transform: scale(1.05);
+    background-color: ${props => props.theme["red-200"]} ;
+  }
+
+  p {
+    font-size: 1rem;
+    color: ${props => props.theme.white};
+  }
+`;
+
+export const BoxBtnClear = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;

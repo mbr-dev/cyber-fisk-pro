@@ -6,8 +6,7 @@ export const TitleLessonContainer = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding-top: 0.625rem;
-  padding-bottom: 0.625rem;
+  padding: 0.625rem 1rem;
   text-align: center;
   margin-block: 0.5rem;
   text-align: center;
@@ -29,17 +28,4 @@ export const TitleLessonContainer = styled.div`
       font-size: 1.25rem;
     }
   }
-
-  /* @media(max-width: 600px){
-    .title{
-      font-size: 1.375rem;
-    }
-  }
-
-
-  @media(max-width: 1024px){
-    .title{
-      font-size: 1.375rem;
-    }
-  } */
 `

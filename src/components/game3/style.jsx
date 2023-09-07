@@ -29,13 +29,14 @@ export const Game3Content = styled.div`
   }
 
   .btn:hover { 
-    transform: scale(1.1); 
+    transform: scale(1.05); 
   }
 
   p {
     font-size: 1.375rem;
     color: ${props => props.theme.black};
     font-weight: bold;
+    text-transform: capitalize;
   }
 
   @media(max-width: 320px) {
@@ -50,38 +51,4 @@ export const Game3Content = styled.div`
       font-size: 1rem;
     }
   }
-
-  /* @media only screen and (max-width: 600px){
-    flex-direction: column;
-
-    .btn{
-      width: 300px;
-      height: 65px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-    }
-
-    .desc{
-      font-size: 22px;
-      text-transform: none;
-      color: black; 
-    }
-  }
-
-  @media only screen and (max-width: 1024px){
-    flex-direction: column;
-
-    .btn{
-      width: 300px;
-      height: 65px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-    }
-
-    .desc{
-      font-size: 22px;
-      text-transform: none;
-      color: black; 
-    }
-  } */
 `
