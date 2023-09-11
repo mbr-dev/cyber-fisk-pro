@@ -28,4 +28,9 @@ export const SubtitleLessonAudioButton = styled.div`
     width: 4.5rem;
     height: 4.5rem;
   }
+
+  @media(min-width: 600px) {
+    width: 7rem;
+    height: 7rem;
+  }
 `;

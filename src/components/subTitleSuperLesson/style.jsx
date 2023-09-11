@@ -12,6 +12,10 @@ export const SubtitleSuperLessonContent = styled.div`
   gap: 0.5rem;
   background-color: ${props=> props.theme["gray-200"]};
   padding-block: 0.625rem;
+
+  @media(min-width: 600px) {
+    gap: 1rem;
+  }
 `
 
 export const BoxLetters = styled.div`
@@ -26,5 +30,14 @@ export const BoxLetters = styled.div`
 
   p {
     font-size: 1rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 3rem;
+    height: 4rem;
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;

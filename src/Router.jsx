@@ -18,7 +18,6 @@ import { GameSL1 } from "./components/game_sl1";
 function Router() {
   return(
     <Routes>
-      
       <Route path = "/" element={<SelectLesson />}/>
       <Route path="/Home" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
@@ -32,7 +31,6 @@ function Router() {
       <Route path = "/Game6" element={<Game6 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/loading" element={<Loading />}/>
-      
     </Routes>
   )
 }

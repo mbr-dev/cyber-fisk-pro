@@ -53,8 +53,22 @@ export const Game6Content = styled.div`
     }
 
     p {
-      line-height: 1rem;
+      line-height: 1.3;
       font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    gap: 1.75rem;
+    
+    .btn {
+      width: 15rem;
+      height: 6rem;
+
+      p {
+        font-size: 1.5rem;
+        line-height: 1.5;
+      }
     }
   }
 `
