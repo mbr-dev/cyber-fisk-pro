@@ -13,7 +13,7 @@ import { URL_HMLG } from "../../config/infos";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Game6Container, Game6Content } from "./style";
 
-export function Game6(props) {
+export const Game6 = (props) => {
   const [idTipo, setIdTipo] = useState([0, 1, 2, 3, 4, 5]);
   const [idClick, setIdClick] = useState([0, 0, 0, 0, 0, 0]);
   const { playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM } = useContext(LessonContext);
@@ -26,7 +26,7 @@ export function Game6(props) {
   const [sound, setSound] = useState(null);
   const [contClick, setContClick] = useState(0);
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T2_Dificil.length;
     let temp = [];
 
@@ -35,8 +35,10 @@ export function Game6(props) {
     }
 
     temp = temp.sort(() => Math.random() - 0.5);
+  
     setSortNum(temp);
     setSound(`Images/pro/game4/ess1_l1/Task2D_${temp[rodada]}.mp3`);
+    
     let tempResp = [];
     let tempSortNum = idTipo;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
@@ -50,7 +52,7 @@ export function Game6(props) {
     setBloqueia(false);
   }
 
-  function newRodada(num) {
+  const newRodada = (num) => {
     setSound(`Images/pro/game4/ess1_l1/Task2D_${sortNum[num]}.mp3`);
     let tempResp = [];
     let tempSortNum = idTipo;
@@ -65,7 +67,7 @@ export function Game6(props) {
     setBloqueia(false);
   }
 
-  function handleClick(id)  {
+  const handleClick = (id) => {
     if (bloqueia) {
       return;
     }

@@ -10,7 +10,7 @@ import LogoFisk from "../../assets/logoFisk.png";
 
 import { BottomHeader, TopHeader, TopMenuProfileContainer } from "./styles";
 
-export function TopMenuProfile() {
+export const TopMenuProfile = ({ title }) => {
   const { selectLanguage } = useContext(CyberContext);
 
   return (

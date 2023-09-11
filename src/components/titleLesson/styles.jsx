@@ -15,17 +15,23 @@ export const TitleLessonContainer = styled.div`
     font-size: 1.375rem;
   }
 
+  @media(max-width: 360px) {
+    margin-block: 0;
+
+    span {
+      font-size: 1.25rem;
+    }
+  }
+
   @media(max-width: 320px) {
     span {
       font-size: 1.125rem;
     }
   }
 
-  @media(max-width: 360px) {
-    margin-block: 0;
-
+  @media(min-width: 600px) {
     span {
-      font-size: 1.25rem;
+      font-size: 2rem;
     }
   }
 `

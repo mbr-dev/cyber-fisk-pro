@@ -14,7 +14,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Game4Container, Game4Content } from "./styles";
 import { Loading } from "../Loading";
 
-export function Game4(props) {
+export const Game4 = (props) => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
 
   const [idTipo3, setIdTipo3] = useState([0,1,2,3,4,5]);
@@ -31,7 +31,7 @@ export function Game4(props) {
   const [contClick, setContClick] = useState(0);
   const [isloading, setIsLoading] = useState(false);
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T2_Facil.length;
     let temp = [];
 
@@ -62,7 +62,7 @@ export function Game4(props) {
     setBloqueia(false);
   }
 
-  function newRodada(num) {
+  const newRodada = (num) => {
     setSound(`Images/pro/game4/ess1_l1/Task2F_${sortNum[num]}.mp3`);
     setTipo(L1_T2_Facil[sortNum[num]].tipo);
     let tempResp = [];
@@ -83,7 +83,7 @@ export function Game4(props) {
     setBloqueia(false);
   }
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if(bloqueia) {
       return;
     }

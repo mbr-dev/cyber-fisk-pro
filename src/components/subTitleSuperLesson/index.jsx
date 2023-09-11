@@ -4,7 +4,7 @@ import { LessonContext } from "../../context/lesson";
 
 import { SubtitleSuperLessonContainer, SubtitleSuperLessonContent, BoxLetters } from "./style";
 
-export function SubtitleSuperLesson(props) {
+export const SubtitleSuperLesson = (props) => {
   const { superTask } = useContext(LessonContext);
 
  /*  const fields = (el) => {

@@ -12,7 +12,7 @@ import { TrocaAtividade } from "../../utils/regras";
 import { Game2Container, Game2Content } from "./styles";
 import { Loading } from "../Loading";
 
-export function Game2(props) {
+export const Game2 = (props) => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
 
   console.log(rodadaGeral)
@@ -27,7 +27,7 @@ export function Game2(props) {
   const [bloqueia, setBloqueia] = useState(true);
   const [isloading, setIsLoading] = useState(false);
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T1_Medio.length;
     let temp = [];
 
@@ -54,7 +54,7 @@ export function Game2(props) {
     setBloqueia(false);
   }
 
-  function newRodada(num) {
+  const newRodada = (num) => {
     setPergunta(L1_T1_Medio[sortNum[num]].pergunta);
     let tempResp = [];
     let tempSortNum = idClick;
@@ -69,7 +69,7 @@ export function Game2(props) {
     setBloqueia(false);
   }
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if(bloqueia){
       return;
     }

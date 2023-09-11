@@ -13,7 +13,7 @@ import { Game1Content, Game1Container, Game1Main } from "./styles";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 
-export function Game1(props) {
+export const Game1 = () => {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
   const [idClick, setIdClick] = useState([0, 1, 2]);
@@ -24,26 +24,25 @@ export function Game1(props) {
   const [acertos, setAcertos] = useState(0);
   const [erros, setErros] = useState(0);
   const [bloqueia, setBloqueia] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T1_Facil.length;
-
     let temp = [];
 
     for (let a = 0; a < tam; a++) {
       temp.push(a);
     }
 
-    temp = temp.sort(() => Math.random() - 0.5);
+    temp = temp.sort(() => Math.random() - 0.5); // embaralha o array
 
     setSortNum(temp);
-    setPergunta(L1_T1_Facil[temp[rodada]].pergunta);
+    setPergunta(L1_T1_Facil[temp[rodada]].pergunta); // pega o valor da rodada
 
     let tempImg = [];
     let tempSortNum = idClick;
 
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
+    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5); // embaralha as resposta
     setIdClick(tempSortNum);
 
     for (let a = 0; a < 3; a++) {
@@ -54,7 +53,7 @@ export function Game1(props) {
     setBloqueia(false);
   }
 
-  function newRodada(num) {
+  const newRodada = (num) => {
     setPergunta(L1_T1_Facil[sortNum[num]].pergunta);
 
     let tempImg = [];
@@ -62,20 +61,21 @@ export function Game1(props) {
 
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     setIdClick(tempSortNum);
+
     for (let a = 0; a < 3; a++) {
       tempImg.push(`Images/pro/game1/F_${sortNum[num]}_${tempSortNum[a]}.png`);
     }
+
     setImages(tempImg);
     setBloqueia(false);
   }
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if (bloqueia) {
       return
     }
 
     setBloqueia(true);
-
     let tempA = acertos;
 
     if (idClick[id] === 0) {
@@ -129,7 +129,7 @@ export function Game1(props) {
 
   return (
     <Game1Container>
-      {isloading &&
+      {isLoading &&
         <Loading />
       }
 
@@ -145,7 +145,7 @@ export function Game1(props) {
               return (
                 <Button key={index}
                   className="btn"
-                  onClick={() => { handleClick(index) }}
+                  onClick={() => {handleClick(index)}}
                 >
                   <img src={`${URL_HMLG}${image}`} className="img" />
                 </Button>

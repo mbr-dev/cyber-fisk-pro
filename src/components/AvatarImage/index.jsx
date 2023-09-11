@@ -2,7 +2,7 @@ import { AvatarImageContainer, AvatarName, AvatarPhoto } from "./styles";
 
 import Woman from "./Images/OBJECTS.png";
 
-export function AvatarImage({ userName }) {
+export const AvatarImage = ({ userName }) => {
   return(
     <AvatarImageContainer>
       <AvatarPhoto>

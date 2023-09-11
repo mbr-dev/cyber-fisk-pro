@@ -1,11 +1,12 @@
-import { SubtitleLessonAudio } from "../subtitleLessonAudio";
+import { SubtitleLessonAudio } from "../subTitleLessonAudio";
 
 import img from "./images/img.png";
+
 import { SubtitleLessonAudioImgContent } from "./style";
 
-export function SubtitleLessonAudioImg (props) {
+export const SubtitleLessonAudioImg = (props) => {
 
-  function handleClick() {
+  const handleClick = () => {
     const audio = new Audio(props.audio);
     audio.play();
   }

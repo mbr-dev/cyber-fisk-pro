@@ -45,7 +45,7 @@ export const Game4Content = styled.div`
     justify-content: center;
     align-items: center;
     border-radius: 20px;
-    line-height: 1.375rem;
+    line-height: 1.375;
     box-shadow:  2px 2px 6px #ccc;
     transition: all .2s ease-in-out;
   }
@@ -83,6 +83,26 @@ export const Game4Content = styled.div`
     
     .desc2{
       font-size: 1.25rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    .btn{
+      width: 9rem;
+      height: 9rem;
+    }
+
+    .btn2{
+      width: 18.75rem;
+      height: 6rem;
+    }
+
+    .desc{
+      font-size: 3rem;
+    }
+    
+    .desc2{
+      font-size: 2rem;
     }
   }
 `

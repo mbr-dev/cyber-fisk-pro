@@ -55,25 +55,12 @@ export const Game1Content = styled.div`
     }
   }
 
-  /* @media only screen and (max-width: 600px){
-    flex-direction: column;
+  @media(min-width: 600px) {
+    margin-top: 3rem;
 
     .btn{
-      width: 165px;
-      height: 138px;
-      margin-bottom: 20px;
-      border-radius: 15px;
+      width: 14rem;
+      height: 11rem;
     }
   }
-
-  @media only screen and (max-width: 1024px){
-    flex-direction: column;
-
-    .btn{
-      width: 165px;
-      height: 138px;
-      margin-bottom: 20px;
-      border-radius: 15px;
-    }
-  } */
-`
+`;

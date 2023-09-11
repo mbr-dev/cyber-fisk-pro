@@ -13,7 +13,7 @@ import { Game3Container, Game3Content } from "./style";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 
-export function Game3 (props) {
+export const Game3 = (props) => {
   const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
 
   const [idClick, setIdClick] = useState([0,1,2]);
@@ -27,7 +27,7 @@ export function Game3 (props) {
   const [isloading, setIsLoading] = useState(false);
 
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T1_Dificil.length;
     let temp = [];
 
@@ -36,10 +36,13 @@ export function Game3 (props) {
     }
 
     temp = temp.sort(() => Math.random() - 0.5);
+
     setSortNum(temp);
     setPergunta(L1_T1_Dificil[temp[rodada]].pergunta);
+
     let tempResp = [];
     let tempSortNum = idClick;
+
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     setIdClick(tempSortNum);
 
@@ -51,10 +54,12 @@ export function Game3 (props) {
     setBloqueia(false);
   }
 
-  function newRodada (num) {
+  const newRodada =  (num) => {
     setPergunta(L1_T1_Dificil[sortNum[num]].pergunta);
+
     let tempResp = [];
     let tempSortNum = idClick;
+
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     setIdClick(tempSortNum);
 
@@ -66,7 +71,7 @@ export function Game3 (props) {
     setBloqueia(false);
   }
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if(bloqueia){
       return;
     }
@@ -76,7 +81,7 @@ export function Game3 (props) {
 
     if (idClick[id] === 0) {
       tempA = tempA + 3;
-      setNewPontos(2,(tempA));
+      setNewPontos(2, (tempA));
       setAcertos(tempA);
     } else {
       let tempE = erros;

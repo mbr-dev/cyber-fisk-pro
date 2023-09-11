@@ -11,14 +11,24 @@ export const AvatarImageContainer = styled.div`
   border: 1px solid ${props => props.theme['red-200']};
   border-radius: 8px;
   background-color: ${props => props.theme.white};
+
+  @media (max-width: 320px) {
+    width: 5rem;
+    height: 4.5rem;
+    margin-bottom: 1.875rem;
+  }
 `;
 
 export const AvatarPhoto = styled.div`
-  
-
   .avatarImg {
     width: 3.625rem;
     object-fit: cover;
+  }
+
+  @media (max-width: 320px) {
+    .avatarImg {
+      width: 3.5rem;
+    }
   }
 `
 

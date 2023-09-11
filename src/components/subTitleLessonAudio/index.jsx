@@ -1,15 +1,14 @@
 import { useContext } from "react";
 import { Volume2 } from "lucide-react";
 
-import Button from "@mui/material/Button";
 import { LessonContext } from "../../context/lesson";
 
 import { SubtitleLessonAudioContainer, SubtitleLessonAudioButton } from "./style";
 
-export function SubtitleLessonAudio(props) {
+export const SubtitleLessonAudio = (props) => {
   const { newStatusPlay, playAudio } = useContext(LessonContext);
 
-  function handleClick() {
+  const handleClick = () => {
     if (playAudio) {
       return;
     }

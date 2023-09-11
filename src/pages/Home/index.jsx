@@ -1,31 +1,19 @@
 import { useContext } from "react";
 
-import { AvatarImage } from "../../components/AvatarImage";
 import { Footer } from "../../components/Footer";
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
 
 import { CyberContext } from "../../context/cyber";
 import { homeCardsTranslate } from "../../utils/Translate/homeCardsTranslate";
 
-import LogoFisk from "../../assets/logoFisk.png";
+import { HomeContainer, HomeMain, MainCard, MainCards } from "./styles";
 
-import { HomeContainer, HomeHeader, BottomHeader, HomeMain, MainCard, MainCards, TopHeader } from "./styles";
-
-export function Home() {
+export const Home = () => {
   const { selectLanguageHome } = useContext(CyberContext);
 
   return(
     <HomeContainer>
-      <HomeHeader>
-        <TopHeader>
-          <ButtonMenuHeader />
-        </TopHeader>
-
-        <BottomHeader>
-          <AvatarImage userName="Camila Eduarda" />          
-          <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
-        </BottomHeader>
-      </HomeHeader>
+      <TopMenuHeader hasAvatar />
 
       <HomeMain>
         <MainCards>

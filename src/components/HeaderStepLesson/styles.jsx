@@ -14,13 +14,8 @@ export const HeaderStepLessonContent = styled.div`
     height: 1.125rem;
   }
 
- /*  @media only screen and (max-width: 600px){
-    width: 20px;
-    height: 22px;
+  @media(min-width: 600px) {
+    width: 2rem;
+    height: 2rem;
   }
-
-  @media only screen and (max-width: 1024px) and (min-width: 600px){
-    width: 55px;
-    height: 35px;
-  } */
-`
+`;

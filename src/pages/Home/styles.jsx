@@ -7,32 +7,6 @@ export const HomeContainer = styled.div`
   flex-direction: column;
 `;
 
-export const HomeHeader = styled.header`
-  width: 100vw;
-  height: 10rem;
-  display: flex;
-  flex-direction: column;
-  background-color: ${props => props.theme['gray-200']};
-  border-end-end-radius: 24px;
-  border-end-start-radius: 24px;
-`;
-
-export const TopHeader = styled.div`
-  padding: 0.625rem 1.125rem 0 1.125rem;
-`;
-
-export const BottomHeader = styled.div`
-  padding-top: 0.625rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 2rem;
-  
-  .logoFisk {
-    width: 10rem;
-  }
-`;
-
 export const HomeMain = styled.div`
   width: 100%;
   flex: 1;
@@ -60,6 +34,10 @@ export const MainCards = styled.div`
     grid-template-columns: repeat(3, auto);
     gap: 3rem;
   }
+
+  @media(max-width: 320px) {
+    margin-bottom: 0.5rem;
+  }
 `;
 
 export const MainCard = styled.a`
@@ -74,6 +52,7 @@ export const MainCard = styled.a`
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
   cursor: pointer;
+  transition: all ease 0.3s;
 
   img {
     width: 3rem;
@@ -84,5 +63,9 @@ export const MainCard = styled.a`
   p {
     font-weight: 500;
     color: ${props => props.theme.black};
+  }
+
+  &:hover {
+    scale: 1.05;
   }
 `;

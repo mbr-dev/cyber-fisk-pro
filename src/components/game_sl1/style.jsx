@@ -8,6 +8,16 @@ export const GameSL1Content = styled.div`
   flex-direction: column;
   gap: 1.25rem;
   margin-top: 2rem;
+  
+  @media(max-width: 320px) {
+    margin-top: 0.5rem;
+    gap: 0.5rem;
+  }
+
+  @media(max-width: 376px) {
+    margin-top: 0.75rem;
+    gap: 0.75rem;
+  }
 
   .boxTimer{
     display: flex;
@@ -65,6 +75,10 @@ export const BoxBtn = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1.25rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const ButtonLetter = styled.button`
@@ -86,6 +100,11 @@ export const ButtonLetter = styled.button`
   p {
     font-size: 1.75rem;
     font-weight: bold;
+  }
+
+  @media(max-width: 320px) {
+    width: 3rem;
+    height: 2.5rem;
   }
 `;
 
@@ -110,6 +129,11 @@ export const ButtonClear = styled.button`
   p {
     font-size: 1rem;
     color: ${props => props.theme.white};
+  }
+
+  @media(max-width: 320px) {
+    width: 12rem;
+    height: 3rem;
   }
 `;
 

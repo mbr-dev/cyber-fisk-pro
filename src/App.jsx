@@ -8,7 +8,7 @@ import { LessonProvider } from "./context/lesson";
 import { defaultTheme } from "./themes/defaultTheme";
 import { GlobalStyled } from "./themes/globalTheme";
 
-export function App() {
+export const App = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
       <CyberProvider>

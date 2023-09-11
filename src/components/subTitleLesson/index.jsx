@@ -1,8 +1,8 @@
 import React from "react";
+
 import { SubtitleLessonContainer } from "./styles";
 
-
-export function SubtitleLesson({ title }) {
+export const SubtitleLesson = ({ title }) => {
   return(
     <>
       <SubtitleLessonContainer>

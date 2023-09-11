@@ -13,7 +13,7 @@ import { Game5Content, Game5Container } from "./styles";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 
-export function Game5(props) {
+export const Game5 = (props) => {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
 
   const [idClick, setIdClick] = useState([0, 1, 2]);
@@ -26,7 +26,7 @@ export function Game5(props) {
   const [sound, setSound] = useState(null);
   const [isloading, setIsLoading] = useState(false);
 
-  function loadLesson() {
+  const loadLesson = () => {
     const tam = L1_T2_Medio.length;
     let temp = [];
 
@@ -50,7 +50,7 @@ export function Game5(props) {
     setBloqueia(false);
   }
 
-  function newRodada(num) {
+  const newRodada = (num) => {
     setSound(`Images/pro/game5/ess1_l1/Task2M_${sortNum[num]}.mp3`);
     let tempResp = [];
     let tempSortNum = idClick;
@@ -65,7 +65,7 @@ export function Game5(props) {
     setBloqueia(false);
   }
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if (bloqueia) {
       return;
     }

@@ -1,10 +1,13 @@
+import { ButtonRed } from "../ButtonRed";
+
 import { AreaButtonBottomContainer, LineSeparator } from "./styles";
 
-export function AreaButtonBottom({ children }) {
+export const AreaButtonBottom = () => {
   return (
     <AreaButtonBottomContainer>
       <LineSeparator />
-      {children}
+      
+      <ButtonRed title="Home" />
     </AreaButtonBottomContainer>
   )
 }

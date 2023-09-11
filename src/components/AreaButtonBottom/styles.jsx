@@ -7,6 +7,10 @@ export const AreaButtonBottomContainer = styled.div`
   align-items: center;
   margin-top: 0.5rem;
   padding-bottom: 1rem;
+
+  @media(min-width: 600px) {
+    width: 38rem;
+  }
 `;
 
 export const LineSeparator = styled.div`

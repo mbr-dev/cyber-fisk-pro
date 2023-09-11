@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { Books } from "./pages/Books";
 import { Profile } from "./pages/Profile";
 import { SelectLesson } from "./pages/SelectLesson";
+import { LessonSelection } from "./pages/LessonSelection";
 
 import { Game1 } from "./components/game1";
 import { Game2 } from "./components/game2";
@@ -22,6 +23,7 @@ function Router() {
       <Route path="/Home" element={<Home/>} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="Books" element={<Books />} />
+      <Route path="LessonSelection" element={<LessonSelection />} />
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
       <Route path = "/Game3" element={<Game3 />}/>

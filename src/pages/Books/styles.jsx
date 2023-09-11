@@ -8,39 +8,6 @@ export const BooksContainer = styled.div`
   align-items: center;
 `;
 
-export const BooksHeader = styled.header`
-  width: 100vw;
-  height: 10rem;
-  display: flex;
-  flex-direction: column;
-  background-color: ${props => props.theme["gray-200"]};
-  border-end-end-radius: 24px;
-  border-end-start-radius: 24px;
-`;
-
-export const TopHeader = styled.div`
-  padding: 1rem 1.125rem 0 1.125rem;
-  height: 2rem;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-
-  p {
-    font-size: 1.5rem;
-    font-weight: 500;
-  }
-`;
-
-export const BottomHeader = styled.div`
-  display: flex;
-  padding-top: 1.5rem;
-  justify-content: center;
-  
-  .logoFisk {
-    width: 10rem;
-  }
-`;
-
 export const BooksMain = styled.main`
   flex: 1;
   width: 100vw;

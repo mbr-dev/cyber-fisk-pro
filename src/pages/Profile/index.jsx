@@ -14,7 +14,7 @@ import Spain from "./images/Spain.svg";
 import { ProfileContainer, ProfileContent, ProfileForm, ProfileInput, ProfileSelect, ProfileAreaInput } from "./styles";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
-export function Profile() {
+export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
   function handleSelectLanguage(e) {

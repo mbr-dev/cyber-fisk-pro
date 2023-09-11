@@ -2,7 +2,7 @@ import React from 'react';
 import { Button } from '@mui/material';
 import Content from './style';
 
-export const BtnClose = () =>{
+export const BtnClose = () => {
   return(
     <>
       <Content>

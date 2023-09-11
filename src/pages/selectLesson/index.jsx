@@ -5,7 +5,7 @@ import { ButtonRed } from "../../components/ButtonRed";
 
 import { ButtonLesson, SelectLessonContainer, SelectLessonHeader, SelectLessonMain, SelectLessonArea } from "./styles";
 
-export function SelectLesson() {
+export const SelectLesson = () => {
 
   return (
     <SelectLessonContainer>

@@ -50,4 +50,19 @@ export const Game2Content = styled.div`
       font-size: 1rem;
     }
   }
+
+  @media(min-width: 600px) {
+    gap: 3rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+
+    .btn{
+      width: 16rem;
+      height: 6rem;
+    }
+
+    p {
+      font-size: 1.75rem;
+    }
+  }
 `

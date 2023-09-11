@@ -22,15 +22,9 @@ export const SubtitleLessonContainer = styled.div`
     }
   }
 
-  /* @media only screen and (max-width: 600px){
-    .title{
-      font-size: 24px;
+  @media(min-width: 600px) {
+    span {
+      font-size: 2rem;
     }
   }
-
-  @media only screen and (max-width: 1024px){
-    .title{
-      font-size: 24px;
-    }
-  } */
 `

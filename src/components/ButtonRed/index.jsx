@@ -1,6 +1,6 @@
 import { ButtonContainer } from "./styles";
 
-export function ButtonRed({ title }) {
+export const ButtonRed = ({ title }) => {
   return (
     <ButtonContainer>
       <p>{title}</p>

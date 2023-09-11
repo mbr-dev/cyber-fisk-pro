@@ -22,7 +22,7 @@ export const Game3Content = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    line-height: 1.375rem;
+    line-height: 1.3;
     border-radius: 10px;
     box-shadow:  2px 2px 6px #ccc;
     transition: all .2s ease-in-out;
@@ -49,6 +49,21 @@ export const Game3Content = styled.div`
 
     p {
       font-size: 1rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    gap: 3rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+
+    .btn{
+      width: 19rem;
+      height: 6rem;
+    }
+
+    p {
+      font-size: 1.75rem;
     }
   }
 `

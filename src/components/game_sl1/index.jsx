@@ -8,7 +8,7 @@ import { LessonContext } from "../../context/lesson";
 
 import { GameSL1Content, GameSL1Container, BoxBtn, BoxBtnClear, ButtonLetter, ButtonClear } from "./style";
 
-export function GameSL1(props) {
+export const GameSL1 = (props) => {
   const respostas = ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"];
   const letras = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "M", "N", "P", "R", "S", "T", "Z"];
   const tempo = 30;
@@ -22,7 +22,7 @@ export function GameSL1(props) {
   const [rodada, setRodada] = useState(0);
   const [palavraRodada, setPalavraRodada] = useState('');
 
-  function handleClick(str) {
+  const handleClick = (str) => {
     let temp = superTask;
     let tempNum = numClick;
     temp[tempNum] = str;
@@ -59,7 +59,7 @@ export function GameSL1(props) {
     //setPauseTime(false);
   }
 
-  function handleClearField() {
+  const handleClearField = () => {
     let temp = superTask;
     let tempNum = numClick;
     tempNum--;
@@ -71,13 +71,13 @@ export function GameSL1(props) {
     setNumClick(tempNum);
   }
 
-  function clearFields() {
+  const clearFields = () => {
     let temp = ['', '', '', '', '', '', '', '', ''];
     setNumClick(0);
     setNewsuperTask(temp);
   }
 
-  function startTimer() {
+  const startTimer = () => {
     setTimeout(() => {
       if (!pauseTime) {
         if (tempoRestante > 0) {
@@ -91,7 +91,7 @@ export function GameSL1(props) {
     }, 1000)
   }
 
-  function formataTempo(time) {
+  const formataTempo = (time) => {
     const minutes = Math.floor(time / 60);
     let seconds = time % 60;
     if (seconds < 10) {
@@ -101,7 +101,7 @@ export function GameSL1(props) {
     return `${minutes}:${seconds}`;
   }
 
-  function calculaFracao() {
+  const calculaFracao = () => {
     return tempoRestante / tempo;
   }
 

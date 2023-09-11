@@ -19,6 +19,10 @@ export const HeaderLessonContent = styled.div`
   @media(max-width: 360px) {
     gap: 0.25rem;
   }
+
+  @media(min-width: 600px) {
+    gap: 3rem;
+  }
 `
 
 export const BarStep = styled.div`
@@ -28,6 +32,10 @@ export const BarStep = styled.div`
   background-color: ${props => props.theme.white};
   border-radius: 8px;
   box-shadow: 0px 4px 4px 0px #00000040;
+
+  @media(min-width: 600px) {
+    padding: 1rem 1.5rem;
+  }
 `;
 
 export const HeaderLessonIcon = styled.div`
@@ -52,6 +60,16 @@ export const HeaderLessonIcon = styled.div`
 
     img {
       width: 28px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    p {
+      font-size: 1.75rem;
+    }
+
+    img {
+      width: 42px;
     }
   }
 `;
