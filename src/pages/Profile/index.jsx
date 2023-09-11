@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
-import { TopMenuProfile } from "../../components/TopMenuProfile";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { ButtonRed } from "../../components/ButtonRed";
+import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
 import { profileTranslate } from "../../utils/Translate/profileTranslate";
 import { CyberContext } from "../../context/cyber"
@@ -11,8 +12,7 @@ import Brazil from "./images/Brazil.svg";
 import Eua from "./images/Eua.svg";
 import Spain from "./images/Spain.svg";
 
-import { ProfileContainer, ProfileContent, ProfileForm, ProfileInput, ProfileSelect, ProfileAreaInput } from "./styles";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { ProfileContainer, ProfileMain, ProfileForm, ProfileInput, ProfileSelect, ProfileAreaInput } from "./styles";
 
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
@@ -24,9 +24,14 @@ export const Profile = () => {
   
   return(
     <ProfileContainer>
-      <TopMenuProfile />
+      {selectLanguage === 0 &&
+        <TopMenuHeader hasAvatar hasLogo title="Perfil" />}
+      {selectLanguage === 1 &&
+        <TopMenuHeader hasAvatar hasLogo title="Profile" />}
+      {selectLanguage === 2 &&
+        <TopMenuHeader hasAvatar hasLogo title="Perfil" />}
 
-      <ProfileContent>
+      <ProfileMain>
         <ProfileForm>
           <ProfileAreaInput>
             {selectLanguage === 0 && <label>{profileTranslate[0].selectLanguage}</label>}
@@ -50,49 +55,49 @@ export const Profile = () => {
             </ProfileSelect>
           </ProfileAreaInput>
 
-            <ProfileAreaInput>
-              {selectLanguage === 0 && <label>{profileTranslate[0].name}</label>}
-              {selectLanguage === 1 && <label>{profileTranslate[1].name}</label>}
-              {selectLanguage === 2 && <label>{profileTranslate[2].name}</label>}
+          <ProfileAreaInput>
+            {selectLanguage === 0 && <label>{profileTranslate[0].name}</label>}
+            {selectLanguage === 1 && <label>{profileTranslate[1].name}</label>}
+            {selectLanguage === 2 && <label>{profileTranslate[2].name}</label>}
 
-              <User size={16} strokeWidth={2.5} />
-              <ProfileInput type="text" placeholder="Camila Eduarda Campos" readOnly />
-            </ProfileAreaInput>
+            <User size={16} strokeWidth={2.5} />
+            <ProfileInput type="text" placeholder="Camila Eduarda Campos" readOnly />
+          </ProfileAreaInput>
 
-            <ProfileAreaInput>
-              {selectLanguage === 0 && <label>{profileTranslate[0].date}</label>}
-              {selectLanguage === 1 && <label>{profileTranslate[1].date}</label>}
-              {selectLanguage === 2 && <label>{profileTranslate[2].date}</label>}
-              
-              <CalendarDays size={16} strokeWidth={2.5} />
-              <ProfileInput type="date" className="inputDate" readOnly />
-            </ProfileAreaInput>
+          <ProfileAreaInput>
+            {selectLanguage === 0 && <label>{profileTranslate[0].date}</label>}
+            {selectLanguage === 1 && <label>{profileTranslate[1].date}</label>}
+            {selectLanguage === 2 && <label>{profileTranslate[2].date}</label>}
+            
+            <CalendarDays size={16} strokeWidth={2.5} />
+            <ProfileInput type="date" className="inputDate" readOnly />
+          </ProfileAreaInput>
 
-            <ProfileAreaInput>
-              {selectLanguage === 0 && <label>{profileTranslate[0].local}</label>}
-              {selectLanguage === 1 && <label>{profileTranslate[1].local}</label>}
-              {selectLanguage === 2 && <label>{profileTranslate[2].local}</label>}
+          <ProfileAreaInput>
+            {selectLanguage === 0 && <label>{profileTranslate[0].local}</label>}
+            {selectLanguage === 1 && <label>{profileTranslate[1].local}</label>}
+            {selectLanguage === 2 && <label>{profileTranslate[2].local}</label>}
 
-              <School size={16} strokeWidth={2.5} />
-              <ProfileSelect readOnly>
-                <option value="portugues">São Paulo</option>
-                <option value="portugues">Rio Janeiro</option>
-              </ProfileSelect>
-            </ProfileAreaInput>
+            <School size={16} strokeWidth={2.5} />
+            <ProfileSelect readOnly>
+              <option value="portugues">São Paulo</option>
+              <option value="portugues">Rio Janeiro</option>
+            </ProfileSelect>
+          </ProfileAreaInput>
 
-            <ProfileAreaInput>
-              {selectLanguage === 0 && <label>{profileTranslate[0].email}</label>}
-              {selectLanguage === 1 && <label>{profileTranslate[1].email}</label>}
-              {selectLanguage === 2 && <label>{profileTranslate[2].email}</label>}
-              <Mail size={16} strokeWidth={2.5} />
-              <ProfileInput type="email" placeholder="camilaeduarda@gmail.com" readOnly />
-            </ProfileAreaInput>
-
-            <AreaButtonBottom>
-              <ButtonRed title="Home" />
-            </AreaButtonBottom>
+          <ProfileAreaInput>
+            {selectLanguage === 0 && <label>{profileTranslate[0].email}</label>}
+            {selectLanguage === 1 && <label>{profileTranslate[1].email}</label>}
+            {selectLanguage === 2 && <label>{profileTranslate[2].email}</label>}
+            <Mail size={16} strokeWidth={2.5} />
+            <ProfileInput type="email" placeholder="camilaeduarda@gmail.com" readOnly />
+          </ProfileAreaInput>
         </ProfileForm>
-      </ProfileContent>
+      </ProfileMain>
+
+      <AreaButtonBottom>
+        <ButtonRed title="Home" />
+      </AreaButtonBottom>
     </ProfileContainer>
   )
 }

@@ -2,14 +2,18 @@ import { styled } from "styled-components";
 
 export const ProfileContainer = styled.div`
   width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const ProfileContent = styled.main`
+export const ProfileMain = styled.main`
   width: 100%;
   margin-top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin-bottom: 1rem;
 `;
 
 export const ProfileForm = styled.form`

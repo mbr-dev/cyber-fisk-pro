@@ -2,16 +2,15 @@ import styled from "styled-components";
 
 export const TopMenuHeaderContainer = styled.header`
   width: 100vw;
-  height: 10rem;
   display: flex;
   flex-direction: column;
+  padding: 1rem 1rem 0 1rem;
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
 `;
 
 export const TopHeader = styled.div`
-  padding: 1rem 1.125rem 0 1.125rem;
   height: 2rem;
   display: flex;
   justify-content: space-between;
@@ -34,7 +33,7 @@ export const BottomHeader = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
   
   .logoFisk {
     width: 160px;

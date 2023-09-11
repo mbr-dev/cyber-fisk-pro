@@ -13,7 +13,7 @@ export const Home = () => {
 
   return(
     <HomeContainer>
-      <TopMenuHeader hasAvatar />
+      <TopMenuHeader hasAvatar hasLogo />
 
       <HomeMain>
         <MainCards>

@@ -31,11 +31,11 @@ export const Books = () => {
     <BooksContainer>
 
       {selectLanguageBooks === 0 && 
-        <TopMenuHeader title={booksTranslate.title[0]} />}
+        <TopMenuHeader hasLogo title={booksTranslate.title[0]} />}
       {selectLanguageBooks === 1 && 
-        <TopMenuHeader title={booksTranslate.title[1]} />}
+        <TopMenuHeader hasLogo title={booksTranslate.title[1]} />}
       {selectLanguageBooks === 2 && 
-        <TopMenuHeader title={booksTranslate.title[2]} />}
+        <TopMenuHeader hasLogo title={booksTranslate.title[2]} />}
 
       <BooksMain>
         <BooksArea>
