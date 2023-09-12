@@ -1,11 +1,31 @@
+import { useState, useEffect } from "react";
+
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 import { ButtonRed } from "../../components/ButtonRed";
 
+import { apiBookLessons } from "../../lib/apiBookLessons"
+
 import { ButtonLesson, SelectLessonContainer, SelectLessonHeader, SelectLessonMain, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
+  const [activity, setActivity] = useState([
+    { id: 1, numero: 1, label: "Lesson" },
+    { id: 2, numero: 2, label: "Lesson" },
+    { id: 3, numero: 3, label: "Lesson" },
+    { id: 4, numero: 4, label: "Lesson" },
+  ]);
+
+  async function fetchLessons() {
+    const response = await apiBookLessons.get()
+
+    console.log(response);
+  }
+
+  useEffect(() => {
+    fetchLessons();
+  }, [])
 
   return (
     <SelectLessonContainer>
@@ -17,55 +37,14 @@ export const SelectLesson = () => {
 
       <SelectLessonMain>
         <SelectLessonArea>
-          <ButtonLesson>
-            <p>1</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>2</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>3</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>4</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>5</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>6</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>7</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>8</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>9</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>10</p>
-            <span>Activity</span>
-          </ButtonLesson>
+          {activity.map((item) => {
+            return (
+              <ButtonLesson key={item.id}>
+                <p>{item.numero}</p>
+                <span>{item.label}</span>
+              </ButtonLesson>
+            )
+          })}
         </SelectLessonArea>
       </SelectLessonMain>
 

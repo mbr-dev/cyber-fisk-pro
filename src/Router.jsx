@@ -15,6 +15,7 @@ import { Game5 } from "./components/game5";
 import { Game6 } from "./components/game6";
 import { Loading } from "./components/Loading";
 import { GameSL1 } from "./components/game_sl1";
+import { GameWordle } from "./components/GameWordle";
 
 function Router() {
   return(
@@ -32,6 +33,7 @@ function Router() {
       <Route path = "/Game5" element={<Game5 />}/>
       <Route path = "/Game6" element={<Game6 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
+      <Route path = "/GameWordle" element={<GameWordle />}/>
       <Route path = "/loading" element={<Loading />}/>
     </Routes>
   )

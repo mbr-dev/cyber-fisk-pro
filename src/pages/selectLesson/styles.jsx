@@ -38,7 +38,7 @@ export const SelectLessonArea = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 5rem);
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 1rem;
 `;
 
