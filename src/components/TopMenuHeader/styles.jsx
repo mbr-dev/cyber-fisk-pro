@@ -8,10 +8,13 @@ export const TopMenuHeaderContainer = styled.header`
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
+  
+  @media(max-width: 320px) {
+    gap: 0.25rem;
+  }
 `;
 
 export const TopHeader = styled.div`
-  height: 2rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -41,6 +44,7 @@ export const BottomHeader = styled.div`
 
   @media(max-width: 320px) {
     align-items: flex-start;
+    padding-bottom: 0;
     
     .logoFisk {
       width: 132px;

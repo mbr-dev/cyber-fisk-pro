@@ -8,12 +8,16 @@ export const ProfileContainer = styled.div`
 `;
 
 export const ProfileMain = styled.main`
+  flex: 1;
   width: 100%;
-  margin-top: 1rem;
+  margin-block: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-bottom: 1rem;
+
+  @media(max-width: 320px) {
+    margin-block: 0.5rem;
+  }
 `;
 
 export const ProfileForm = styled.form`
@@ -23,6 +27,11 @@ export const ProfileForm = styled.form`
   justify-content: center;
   align-items: center;
   gap: 0.75rem;
+
+  @media(max-width: 320px) {
+    width: 15rem;
+    gap: 0.5rem;
+  }
 `;
 
 export const ProfileAreaInput = styled.div`
@@ -73,6 +82,26 @@ export const ProfileAreaInput = styled.div`
   .inputDate::-webkit-calendar-picker-indicator {
     display: none;
   }
+
+  @media(max-width: 320px) {
+    .language {
+      font-size: 1rem;
+    }
+
+    label {
+      font-size: 1rem;
+      padding-left: 0.75rem;
+    }
+
+    svg {
+      top: 32px;
+    }
+    
+    img {
+      width: 1rem;
+      top: 34px;
+    }
+  }
 `;
 
 export const ProfileInput = styled.input`
@@ -86,6 +115,14 @@ export const ProfileInput = styled.input`
     font-family: "Ubuntu", sans-serif;
     font-size: 1rem;
     color: ${props => props.theme["gray-600"]};
+  }
+
+  @media(max-width: 320px) {
+    height: 2.25rem;
+
+    &::placeholder {
+    font-size: 0.875rem;
+  }
   }
 `;
 

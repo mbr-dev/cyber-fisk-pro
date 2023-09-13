@@ -4,18 +4,17 @@ import Button from "@mui/material/Button"
 import { TitleLesson } from "../titleLesson";
 import { SubtitleLesson } from "../subtitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Medio } from "../../utils/lesson1_Task1";
 import { TrocaAtividade } from "../../utils/regras";
 
 import { Game2Container, Game2Content } from "./styles";
-import { Loading } from "../Loading";
 
-export const Game2 = (props) => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
-
-  console.log(rodadaGeral)
+export const Game2 = () => {
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idClick, setIdClick] = useState([0,1,2]);
   const [rodada, setRodada] = useState(0);
@@ -118,6 +117,21 @@ export const Game2 = (props) => {
   useEffect(() => { 
     loadLesson();
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
     
   return (
     <Game2Container>

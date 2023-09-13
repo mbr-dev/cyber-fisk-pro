@@ -4,6 +4,7 @@ import { Home } from "./pages/Home";
 import { Books } from "./pages/Books";
 import { Profile } from "./pages/Profile";
 import { Ranking } from "./pages/Ranking";
+import { WellDone } from "./pages/WellDone";
 import { SelectLesson } from "./pages/SelectLesson";
 import { LessonSelection } from "./pages/LessonSelection";
 
@@ -22,19 +23,20 @@ function Router() {
     <Routes>
       <Route path = "/" element={<SelectLesson />}/>
       <Route path="/Home" element={<Home/>} />
-      <Route path="/Profile" element={<Profile/>} />
       <Route path="/Books" element={<Books />} />
-      <Route path="/LessonSelection" element={<LessonSelection />} />
-      <Route path="/Ranking" element={<Ranking />} />
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
       <Route path = "/Game3" element={<Game3 />}/>
       <Route path = "/Game4" element={<Game4 />}/>
       <Route path = "/Game5" element={<Game5 />}/>
       <Route path = "/Game6" element={<Game6 />}/>
-      <Route path = "/GameSL1" element={<GameSL1 />}/>
-      <Route path = "/GameWordle" element={<GameWordle />}/>
+      <Route path="/Profile" element={<Profile/>} />
+      <Route path="/Ranking" element={<Ranking />} />
       <Route path = "/loading" element={<Loading />}/>
+      <Route path = "/GameSL1" element={<GameSL1 />}/>
+      <Route path="/WellDone" element={<WellDone />} />
+      <Route path = "/GameWordle" element={<GameWordle />}/>
+      <Route path="/LessonSelection" element={<LessonSelection />} />
     </Routes>
   )
 }

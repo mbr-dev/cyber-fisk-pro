@@ -1,13 +1,11 @@
 import { useState, useEffect } from "react";
 
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
-import { ButtonRed } from "../../components/ButtonRed";
 
 import { apiBookLessons } from "../../lib/apiBookLessons"
 
-import { ButtonLesson, SelectLessonContainer, SelectLessonHeader, SelectLessonMain, SelectLessonArea } from "./styles";
+import { ButtonLesson, SelectLessonContainer, SelectLessonMain, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
   const [activity, setActivity] = useState([
@@ -15,6 +13,11 @@ export const SelectLesson = () => {
     { id: 2, numero: 2, label: "Lesson" },
     { id: 3, numero: 3, label: "Lesson" },
     { id: 4, numero: 4, label: "Lesson" },
+    { id: 5, numero: 4, label: "Lesson" },
+    { id: 6, numero: 4, label: "Lesson" },
+    { id: 7, numero: 4, label: "Lesson" },
+    { id: 8, numero: 4, label: "Lesson" },
+    { id: 9, numero: 4, label: "Lesson" },
   ]);
 
   async function fetchLessons() {
@@ -29,11 +32,7 @@ export const SelectLesson = () => {
 
   return (
     <SelectLessonContainer>
-      <SelectLessonHeader>
-        <ButtonMenuHeader />
-        <p>Essentials 1</p>
-        <ButtonCloseHeader />
-      </SelectLessonHeader>
+      <TopMenuHeader title="Essentials" />
 
       <SelectLessonMain>
         <SelectLessonArea>
@@ -48,9 +47,7 @@ export const SelectLesson = () => {
         </SelectLessonArea>
       </SelectLessonMain>
 
-      <AreaButtonBottom>
-        <ButtonRed title="Home" />
-      </AreaButtonBottom>
+      <AreaButtonBottom />
     </SelectLessonContainer>
   )
 }

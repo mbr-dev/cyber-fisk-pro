@@ -1,20 +1,21 @@
-import React, { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect } from "react";
 
+import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 import { SubtitleLesson } from "../subtitleLesson";
 import { LessonContext } from "../../context/lesson";
 
-import { L1_T1_Facil } from "../../utils/lesson1_Task1";
 import { TrocaAtividade } from "../../utils/regras";
 import Button from "@mui/material/Button";
 import { URL_HMLG } from "../../config/infos";
+import { L1_T1_Facil } from "../../utils/lesson1_Task1";
 
 import { Game1Content, Game1Container, Game1Main } from "./styles";
-import { HeaderLesson } from "../HeaderLesson";
-import { Loading } from "../Loading";
 
 export const Game1 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [rodada, setRodada] = useState(0);
@@ -126,6 +127,21 @@ export const Game1 = () => {
   useEffect(() => {
     loadLesson();
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
 
   return (
     <Game1Container>

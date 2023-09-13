@@ -11,6 +11,10 @@ export const AreaButtonBottomContainer = styled.footer`
   @media(min-width: 600px) {
     width: 38rem;
   }
+
+  @media(max-width: 320px) {
+    width: 15rem;
+  }
 `;
 
 export const LineSeparator = styled.div`

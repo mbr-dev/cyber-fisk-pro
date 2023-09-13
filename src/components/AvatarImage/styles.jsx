@@ -50,4 +50,8 @@ export const AvatarName = styled.div`
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  @media(max-width: 320px) {
+    padding: 0.325rem;
+  }
 `;

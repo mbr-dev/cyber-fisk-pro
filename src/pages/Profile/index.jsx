@@ -42,7 +42,11 @@ export const Profile = () => {
             {selectLanguage === 1 && <img src={Eua} alt="Flag Eua" />}
             {selectLanguage === 2 && <img src={Spain} alt="Flag Espanha" />}
               
-            <ProfileSelect className="language" value={selectLanguage} onChange={handleSelectLanguage}>
+            <ProfileSelect 
+              className="language" 
+              value={selectLanguage} 
+              onChange={handleSelectLanguage}
+            >
               <option value="0" >
                 Português
               </option>

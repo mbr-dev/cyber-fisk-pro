@@ -13,8 +13,10 @@ export const GameSL1 = (props) => {
   const letras = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "M", "N", "P", "R", "S", "T", "Z"];
   const tempo = 30;
 
+  const { superTask, setNewsuperTask, setNewContainer, setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
+
   const [numClick, setNumClick] = useState(0);
-  const { superTask, setNewsuperTask, setNewContainer } = useContext(LessonContext);
   let [tempoRestante, setTempoRestante] = useState(tempo);
   const [pauseTime, setPauseTime] = useState(false);
   const [addTime, setAddTime] = useState(false);
@@ -109,6 +111,18 @@ export const GameSL1 = (props) => {
     clearFields();
   }, []);
   //startTimer();
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed])
 
   return (
     <GameSL1Container>

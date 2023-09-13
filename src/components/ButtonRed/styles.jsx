@@ -24,4 +24,14 @@ export const ButtonContainer = styled.button`
   &:hover {
     opacity: 0.8;
   }
+
+  @media(max-width: 320px) {
+    width: 11rem;
+    height: 2rem;
+    margin-top: 0;
+
+    p {
+      font-size: 1rem;
+    }
+  }
 `;

@@ -1,21 +1,22 @@
-import { useState, createContext } from "react";
+import { useState, createContext, useContext, useEffect } from "react";
 
 import { Board } from "./components/Board";
 import { KeyBoard } from "./components/KeyBoard";
 import { Notifications } from "../Notifications";
 import { HeaderLesson } from "../HeaderLesson";
 
+import { LessonContext } from "../../context/lesson";
+
 import { GameWordleContainer, GameWordleMain } from "./styles";
 
 export const GameWordleContext = createContext();
 
 export const GameWordle = () => {
+  const { setTimeElapsed, rodadaGeral, timeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
+
   const correctWord = "RIGHTSS";
   const wordLength = correctWord.length;
-
-  // if (wordLength > 7) {
-  //   setNotification(true)
-  // }
   
   const numberOfRows = 6;
   
@@ -24,7 +25,6 @@ export const GameWordle = () => {
   const [board, setBoard] = useState(boardDefault2);
   const [currentAttempt, setCurrentAttempt] = useState({ attempt: 0, letter: 0 });
   const [disabledLetters, setDisabledLetters] = useState([]);
-  //const [notification, setNotification] = useState(true);
 
 
   const onSelectLetter = (key) => {
@@ -72,6 +72,19 @@ export const GameWordle = () => {
     setBoard(newBoard);
     setCurrentAttempt({ ...currentAttempt, letter: currentAttempt.letter - 1 });
   }
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeElapsed(state => {
+        return state + 1
+      })
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed])
 
   return (
     <GameWordleContainer>

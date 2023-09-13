@@ -6,30 +6,15 @@ export const SelectLessonContainer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-`
-export const SelectLessonHeader = styled.header`
-  width: 100%;
-  padding: 1rem 1.125rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  background-color: ${props => props.theme["gray-200"]};
-  border-end-end-radius: 24px;
-  border-end-start-radius: 24px;
-
-  p {
-    font-size: 1.75rem;
-    font-weight: 500;
-  }
 `;
 
 export const SelectLessonMain = styled.main`
   flex: 1;
   width: 18.75rem;
-  margin-top: 0.75rem;
-  margin-bottom: 0.5rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 `;
 
@@ -38,8 +23,11 @@ export const SelectLessonArea = styled.div`
   display: grid;
   grid-template-columns: repeat(2, 5rem);
   justify-content: space-between;
-  align-items: flex-start;
   gap: 1rem;
+
+  @media(max-width: 320px) {
+    justify-content: space-around;
+  }
 `;
 
 export const ButtonLesson = styled.button`
@@ -69,5 +57,18 @@ export const ButtonLesson = styled.button`
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
     border: 2px solid ${props => props.theme.black};
+  }
+
+  @media(max-width: 320px) {
+    width: 4rem;
+    height: 4.25rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    span {
+      font-size: 0.875rem;
+    }
   }
 `;
