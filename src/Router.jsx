@@ -2,6 +2,7 @@ import {Routes, Route} from "react-router-dom";
 
 import { Home } from "./pages/Home";
 import { Books } from "./pages/Books";
+import { Report } from "./pages/Report";
 import { Profile } from "./pages/Profile";
 import { Ranking } from "./pages/Ranking";
 import { WellDone } from "./pages/WellDone";
@@ -17,6 +18,7 @@ import { Game6 } from "./components/game6";
 import { Loading } from "./components/Loading";
 import { GameSL1 } from "./components/game_sl1";
 import { GameWordle } from "./components/GameWordle";
+import { Game7 } from "./components/game7";
 
 function Router() {
   return(
@@ -24,19 +26,21 @@ function Router() {
       <Route path = "/" element={<SelectLesson />}/>
       <Route path="/Home" element={<Home/>} />
       <Route path="/Books" element={<Books />} />
+      <Route path="/Profile" element={<Profile/>} />
+      <Route path="/Ranking" element={<Ranking />} />
+      <Route path="/WellDone" element={<WellDone />} />
+      <Route path="/LessonSelection" element={<LessonSelection />} />
+      <Route path="/Report" element={<Report />} />
+      <Route path = "/loading" element={<Loading />}/>
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
       <Route path = "/Game3" element={<Game3 />}/>
       <Route path = "/Game4" element={<Game4 />}/>
       <Route path = "/Game5" element={<Game5 />}/>
       <Route path = "/Game6" element={<Game6 />}/>
-      <Route path="/Profile" element={<Profile/>} />
-      <Route path="/Ranking" element={<Ranking />} />
-      <Route path = "/loading" element={<Loading />}/>
+      <Route path = "/Game7" element={<Game7 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
-      <Route path="/WellDone" element={<WellDone />} />
       <Route path = "/GameWordle" element={<GameWordle />}/>
-      <Route path="/LessonSelection" element={<LessonSelection />} />
     </Routes>
   )
 }
