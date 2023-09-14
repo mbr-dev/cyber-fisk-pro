@@ -8,98 +8,158 @@ import { LessonContext } from "../../context/lesson";
 
 import SomImg from "./images/Som.svg";
 
-import { Game7Container, Game7Main, AudioArea, AnswerRow, ButtonAnswer, ButtonAudio } from "./styles";
+import { Game7Container, Game7Main, AudioArea, ButtonRow, ButtonAnswer, ButtonAudio } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game7 = () => {
-  const { setNewPontos } = useContext(LessonContext);
+  const { rodadaGeral, timeElapsed, setTimeElapsed, setRodadaGeral, setNewRodada } = useContext(LessonContext);
+  //console.log("GAME TIME: ", timeElapsed);
 
-  const [idClick, setIdClick] = useState([0, 0, 0]);
+  const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2]);
-  const [rodada, setRodada] = useState(0);
-  const [sortNum, setSortNum] = useState([]);
-  const [respostas, setRespostas] = useState([]);
-  const [audios, setAudios] = useState([])
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [sound, setSound] = useState(null);
-  const [bloqueia, setBloqueia] = useState(true);
-  const [bloqueiaAudio, setBloqueiaAudio] = useState(false);
+  const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2]);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [answer, setAnswer] = useState([]);
+  const [audios, setAudios] = useState([]);
+  const [rightAudio, setRightAudio] = useState([]);
+  const [rightAnswer, setRightAnswer] = useState([]);
+  const [round, setRound] = useState(0);
+  const [countClick, setCountClick] = useState(0);
+  const [blockAnswer, setBlockAnswer] = useState(true);
+  const [blockAudio, setBlockAudio] = useState(true);
+  const [selectAudIndex, setSelectAudIndex] = useState(null);
 
   const loadLesson = () => {
-    const tam = L2_T1_Facil.length;
-    let temp = [];
+    const size = L2_T1_Facil.length;
+    let tmp = [];
 
-    for (let i = 0; i < tam; i++) {
-      temp.push(i);
+    for (let a = 0; a < size; a++) {
+      tmp.push(a);
     }
 
-    temp = temp.sort(() => Math.random() - 0.5);
-    setSortNum(temp);
-    setSound(`Images/pro/game5/ess1_l1/Task2M_${temp[rodada]}.mp3`);
+    tmp = tmp.sort(() => Math.random() - 0.5);
+    setRandomNumber(tmp);
 
-    let tempResp = [];
-    let tempSortNum = idClick;
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdClick(tempSortNum);
+    let tmpAudio = [];
+    let tmpRandomAudio = idClickAudio;
+    tmpRandomAudio = tmpRandomAudio.sort(() => Math.random() - 0.5);
+    setIdClickAudio(tmpRandomAudio);
+    for (let a = 0; a < idClickAudio.length; a++) {
+      tmpAudio.push(L2_T1_Facil[tmp[round]].pergunta[tmpRandomAudio[a]]);
+    }
+
+    let tmpAnswer = [];
+    let tmpRandomAnswer = idClickAnswer;
+    tmpRandomAnswer = tmpRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tmpRandomAnswer);
+    for (let a = 0; a < idClickAnswer.length; a++) {
+      tmpAnswer.push(L2_T1_Facil[tmp[round]].resposta[tmpRandomAnswer[a]]);
+    }
+
+    setAudios(tmpAudio);
+    setAnswer(tmpAnswer);
+    setBlockAnswer(false);
+    setBlockAudio(false);
+  }
+
+  const newRound = (number) => {
+    let tmpAudio = [];
+    let tmpRandomAudio = idClickAudio;
+    tmpRandomAudio = tmpRandomAudio.sort(() => Math.random() - 0.5);
+    setIdClickAudio(tmpRandomAudio);
+    for (let a = 0; a < idClickAudio.length; a++) {
+      tmpAudio.push(L2_T1_Facil[randomNumber[number]].resposta[tmpRandomAudio[a]]);
+    }
+
+    let tmpAnswer = [];
+    let tmpRandomNumber = idClickAnswer;
+    tmpRandomNumber = tmpRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tmpRandomNumber);
+    for (let a = 0; a < idClickAnswer.length; a++) {
+      tmpAnswer.push(L2_T1_Facil[randomNumber[number]].resposta[tmpRandomNumber[a]]);
+    }
+
+    setAudios(tmpAudio);
+    setAnswer(tmpAnswer);
+    setBlockAudio(false);
+    setBlockAnswer(false);
+  }
+
+  const handleGetAudio = (id) => {
+    if (blockAudio) {
+      setSelectAudIndex(null);
+      setBlockAudio(false);
+    } else {
+      let tmpId = id;
+      setSelectAudIndex(tmpId);
+      setBlockAudio(true);
+    }
+  }
+
+  const handleGetAnswer = (id) => {
+    if (blockAnswer) {
+      return;
+    }
     
-    for (let i = 0; i < 3; i++) {
-      tempResp.push(L2_T1_Facil[temp[rodada]].resposta[tempSortNum[i]]);
+    if (rightAudio.includes(audios[selectAudIndex])) {
+      return;
     }
 
-    let tempAudio = [];
-    let tempSortAudio = idClickAudio;
-    tempSortAudio = tempSortAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempSortAudio);
+    let arr = optionColor;
+    let clicks = countClick;
+    let tmpRound = round;
+    let tmpRoundGeral = rodadaGeral;
 
-    for (let i = 0; i < 3; i++) {
-      tempAudio.push(L2_T1_Facil[temp[rodada]].pergunta[tempSortAudio[i]]);
+    if (answer[id] === audios[selectAudIndex]) {
+      clicks++;
+      arr[id] = 1;
+      setOptionColor(arr);
+      setCountClick(clicks);
+      setRightAudio(state => [...state, audios[selectAudIndex]]);
+      setRightAnswer(state => [...state, answer[id]]);
+      setBlockAudio(false);
+    } else {
+      arr[id] = 2;
+      setOptionColor(arr);
+      setBlockAudio(false);
     }
 
-    setAudios(tempAudio);
-    setRespostas(tempResp);
-    setBloqueia(false);
-    setBloqueiaAudio(false);
-  }
+    setTimeout(() => {
+      arr[id] = 0;
+      setOptionColor(arr);
+    }, 500);
 
-  const handleAudio = (audioIndex) => {
-    if (!bloqueiaAudio) {
-      setBloqueiaAudio(true);
-      setIdClickAudio(audioIndex);
-    }
-  }
+    if (clicks > idClickAnswer.length - 1) {
+      tmpRound++;
+      setRound(tmpRound);
+      tmpRoundGeral++;
+      setNewRodada(tmpRoundGeral);
 
-  const handleClick = (respostaIndex) => {
-    if (!bloqueia) {
-      setBloqueia(true);
-      
-      if (respostaIndex === idClickAudio) {
-        let tempA = acertos + 2;        
-        setNewPontos(1, tempA);
-        setAcertos(tempA);
-        alert('acerto');
-      } else {
-        let tempE = erros + 1;
-        setErros(tempE);
-        alert('erro');
-      }
+      clicks = 0;
+      setCountClick(clicks);
 
       setTimeout(() => {
-        if (rodada < L2_T1_Facil.length - 1) {
-          setRodada(rodada + 1);
-          loadLesson();
-        } else {
-          alert("jogo termino")
-        }
-        setBloqueia(false);
-      }, 1500);
+        newRound(tmpRound);
+      }, 1000);
     }
   }
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => state + 1)
+      }
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
+  
   return (
     <Game7Container>
       <HeaderLesson numStart="Task 1" numEnd="Task2" />
@@ -108,34 +168,46 @@ export const Game7 = () => {
         <p>Make pairs.</p>
 
         <AudioArea>
-          <AnswerRow>
+          <ButtonRow>
             {audios.map((audio, index) => {
+              const disabledAud = rightAudio.includes(audio);
+
               return (
                 <ButtonAudio 
-                  key={index} 
-                  onClick={() => handleAudio(audio)}
-                  style={bloqueiaAudio ? {opacity: 0.5} : {}}
+                  key={index}
+                  onClick={() => handleGetAudio(index)}
+                  style={{
+                    opacity: (blockAudio && selectAudIndex === index) || disabledAud ? 0.3 : 1
+                  }}
+                  disabled={disabledAud}
                 >
-                  <Volume2 size={24} strokeWidth={2} />
-                  <img src={SomImg} alt="" /> 
+                  {/* <Volume2 size={24} strokeWidth={2} />
+                  <img src={SomImg} alt="" />  */}
+                  <span>{audio}</span>
                 </ButtonAudio>
               )
             })}
-          </AnswerRow>
+          </ButtonRow>
 
-          <AnswerRow>
-            {respostas.map((resposta, index) => {
+          <ButtonRow>
+            {answer.map((resposta, index) => {
+              const disabledRes = rightAnswer.includes(resposta);
+
               return (
                 <ButtonAnswer 
-                  key={index} 
-                  onClick={() => handleClick(resposta)}
-                  style={{ backgroundColor: idClick[index] === 0 ? defaultTheme.white : defaultTheme["green-200"] }}
+                  key={index}
+                  onClick={() => handleGetAnswer(index)}
+                  style={{ 
+                    opacity: disabledRes ? 0.3 : 1,
+                    backgroundColor: optionColor[index] === 0 ? "transparent" : optionColor[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
+                  }}
+                  disabled={disabledRes}
                 >
                   <p>{resposta}</p>
                 </ButtonAnswer>
               )
             })}
-          </AnswerRow>
+          </ButtonRow>
         </AudioArea>
       </Game7Main>
     </Game7Container>

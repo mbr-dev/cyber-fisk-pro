@@ -29,15 +29,13 @@ export const AudioArea = styled.div`
   gap: 2rem;
 `;
 
-export const AnswerRow = styled.div`
+export const ButtonRow = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
 
-  button {
-    .block {
-      background-color: red;
-    }
+  button:disabled {
+    cursor: not-allowed;
   }
 `;
 
@@ -59,10 +57,6 @@ const Button = styled.button`
 
 export const ButtonAudio = styled(Button)`
   width: 8rem;
-
-  .block {
-    background-color: red;
-  }
 
   img {
     width: 40%;
