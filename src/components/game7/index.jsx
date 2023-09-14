@@ -1,5 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Volume2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 
@@ -14,10 +15,11 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Game7 = () => {
   const { rodadaGeral, timeElapsed, setTimeElapsed, setRodadaGeral, setNewRodada } = useContext(LessonContext);
   //console.log("GAME TIME: ", timeElapsed);
+  const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
-  const [idClickAudio, setIdClickAudio] = useState([0, 1, 2]);
-  const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2]);
+  const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
+  const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
+  const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [answer, setAnswer] = useState([]);
   const [audios, setAudios] = useState([]);
@@ -28,6 +30,8 @@ export const Game7 = () => {
   const [blockAnswer, setBlockAnswer] = useState(true);
   const [blockAudio, setBlockAudio] = useState(true);
   const [selectAudIndex, setSelectAudIndex] = useState(null);
+
+  console.log("rodada: ", round);
 
   const loadLesson = () => {
     const size = L2_T1_Facil.length;
@@ -68,7 +72,7 @@ export const Game7 = () => {
     tmpRandomAudio = tmpRandomAudio.sort(() => Math.random() - 0.5);
     setIdClickAudio(tmpRandomAudio);
     for (let a = 0; a < idClickAudio.length; a++) {
-      tmpAudio.push(L2_T1_Facil[randomNumber[number]].resposta[tmpRandomAudio[a]]);
+      tmpAudio.push(L2_T1_Facil[randomNumber[number]].pergunta[tmpRandomAudio[a]]);
     }
 
     let tmpAnswer = [];
@@ -79,6 +83,8 @@ export const Game7 = () => {
       tmpAnswer.push(L2_T1_Facil[randomNumber[number]].resposta[tmpRandomNumber[a]]);
     }
 
+    setRightAudio([]);
+    setRightAnswer([]);
     setAudios(tmpAudio);
     setAnswer(tmpAnswer);
     setBlockAudio(false);
@@ -149,6 +155,15 @@ export const Game7 = () => {
   }, []);
 
   useEffect(() => {
+    setTimeout(() => {
+      if (round === 10) {
+        navigate("/WellDone");
+      }
+    }, 2000);
+    
+  }, [round]);
+
+  /* useEffect(() => {
     const timer = setInterval(() => {
       if (rodadaGeral < 10) {
         setTimeElapsed(state => state + 1)
@@ -158,7 +173,7 @@ export const Game7 = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [setTimeElapsed, rodadaGeral])
+  }, [setTimeElapsed, rodadaGeral]) */
   
   return (
     <Game7Container>

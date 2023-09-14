@@ -6,12 +6,11 @@ export const HeaderLessonContainer = styled.div`
 
 export const HeaderLessonContent = styled.div`
   width: 100%;
-  padding-block: 0.875rem;
+  padding: 0.875rem;
   display: flex;
   flex-direction: row;
-  justify-content: center;
   align-items: flex-start;
-  gap: 0.75rem;
+  gap: 0.5rem;
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
@@ -39,6 +38,7 @@ export const BarStep = styled.div`
 `;
 
 export const HeaderLessonIcon = styled.div`
+  flex: 1;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -46,7 +46,9 @@ export const HeaderLessonIcon = styled.div`
   gap: 0.25rem;
 
   p {
+    font-size: 0.75rem;
     font-weight: 500;
+    color: ${props => props.theme["gray-700"]};
   }
 
   img {

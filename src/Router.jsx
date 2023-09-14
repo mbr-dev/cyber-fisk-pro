@@ -15,10 +15,10 @@ import { Game3 } from "./components/game3";
 import { Game4 } from "./components/game4";
 import { Game5 } from "./components/game5";
 import { Game6 } from "./components/game6";
-import { Loading } from "./components/Loading";
-import { GameSL1 } from "./components/game_sl1";
-import { GameWordle } from "./components/GameWordle";
 import { Game7 } from "./components/game7";
+import { GameSL1 } from "./components/game_sl1";
+import { GameSL2 } from "./components/game_sl2";
+import { GameWordle } from "./components/GameWordle";
 
 function Router() {
   return(
@@ -31,7 +31,6 @@ function Router() {
       <Route path="/WellDone" element={<WellDone />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
       <Route path="/Report" element={<Report />} />
-      <Route path = "/loading" element={<Loading />}/>
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
       <Route path = "/Game3" element={<Game3 />}/>
@@ -40,6 +39,7 @@ function Router() {
       <Route path = "/Game6" element={<Game6 />}/>
       <Route path = "/Game7" element={<Game7 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
+      <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameWordle" element={<GameWordle />}/>
     </Routes>
   )
