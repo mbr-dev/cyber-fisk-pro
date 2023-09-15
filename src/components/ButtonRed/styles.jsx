@@ -8,6 +8,7 @@ export const ButtonContainer = styled.button`
   margin-top: 0.5rem;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border: 3px solid ${props => props.theme["red-300"]};

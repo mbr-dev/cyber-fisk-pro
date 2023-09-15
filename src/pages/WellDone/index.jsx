@@ -63,7 +63,7 @@ export const WellDone = () => {
         </AreaInfo>
       </WellDoneMain>
 
-      <AreaButtonBottom />
+      <AreaButtonBottom title="Home" />
     </WellDoneContainer>
   )
 }

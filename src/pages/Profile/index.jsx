@@ -8,9 +8,9 @@ import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 import { profileTranslate } from "../../utils/Translate/profileTranslate";
 import { CyberContext } from "../../context/cyber"
 
-import Brazil from "./images/Brazil.svg";
-import Eua from "./images/Eua.svg";
-import Spain from "./images/Spain.svg";
+import Brazil from "../../assets/Brazil.svg";
+import Eua from "../../assets/Eua.svg";
+import Spain from "../../assets/Spain.svg";
 
 import { ProfileContainer, ProfileMain, ProfileForm, ProfileInput, ProfileSelect, ProfileAreaInput } from "./styles";
 
@@ -99,9 +99,7 @@ export const Profile = () => {
         </ProfileForm>
       </ProfileMain>
 
-      <AreaButtonBottom>
-        <ButtonRed title="Home" />
-      </AreaButtonBottom>
+      <AreaButtonBottom title="Home" />
     </ProfileContainer>
   )
 }

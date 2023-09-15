@@ -68,7 +68,7 @@ export const Ranking = () => {
         </MainBottom>
       </RankingMain>
 
-      <AreaButtonBottom />
+      <AreaButtonBottom title="Home" />
     </RankingContainer>
   )
 }

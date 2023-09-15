@@ -7,6 +7,7 @@ import { Profile } from "./pages/Profile";
 import { Ranking } from "./pages/Ranking";
 import { WellDone } from "./pages/WellDone";
 import { SelectLesson } from "./pages/SelectLesson";
+import { Pronunciation } from "./pages/Pronunciation";
 import { LessonSelection } from "./pages/LessonSelection";
 
 import { Game1 } from "./components/game1";
@@ -24,13 +25,16 @@ function Router() {
   return(
     <Routes>
       <Route path = "/" element={<SelectLesson />}/>
+
       <Route path="/Home" element={<Home/>} />
       <Route path="/Books" element={<Books />} />
+      <Route path="/Report" element={<Report />} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
+      <Route path="/Pronunciation" element={<Pronunciation />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
-      <Route path="/Report" element={<Report />} />
+
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
       <Route path = "/Game3" element={<Game3 />}/>

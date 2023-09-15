@@ -100,7 +100,7 @@ export const Books = () => {
         </BooksArea>
       </BooksMain>
 
-      <AreaButtonBottom />
+      <AreaButtonBottom title="Home" />
     </BooksContainer>
   )
 }

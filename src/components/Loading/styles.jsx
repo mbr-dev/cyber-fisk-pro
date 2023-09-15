@@ -11,7 +11,7 @@ export const LoadingContainer = styled.div`
   z-index: 1000;
 
   img {
-    width: 180px;
+    width: 60%;
   }
 
   @media(min-width: 960px) {

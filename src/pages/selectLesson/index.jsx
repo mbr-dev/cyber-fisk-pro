@@ -2,28 +2,30 @@ import { useState, useEffect } from "react";
 
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { Loading } from "../../components/Loading";
 
-import { apiBookLessons } from "../../lib/apiBookLessons"
+import { api } from "../../lib/api"
+import { AppError } from "../../utils/AppError";
 
 import { ButtonLesson, SelectLessonContainer, SelectLessonMain, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
-  const [activity, setActivity] = useState([
-    { id: 1, numero: 1, label: "Lesson" },
-    { id: 2, numero: 2, label: "Lesson" },
-    { id: 3, numero: 3, label: "Lesson" },
-    { id: 4, numero: 4, label: "Lesson" },
-    { id: 5, numero: 4, label: "Lesson" },
-    { id: 6, numero: 4, label: "Lesson" },
-    { id: 7, numero: 4, label: "Lesson" },
-    { id: 8, numero: 4, label: "Lesson" },
-    { id: 9, numero: 4, label: "Lesson" },
-  ]);
+  const [activities, setActivities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  async function fetchLessons() {
-    const response = await apiBookLessons.get()
+  const fetchLessons = async() => {
+    try {
+      setIsLoading(true);
+      const response = await api.get('/dados')
+      setActivities(response.data);
+    } catch(error) {
+      const isAppError = error instanceof AppError;
+      const titleError = isAppError ? error.message : "Servidor fora do ar tente novamente mais tarde";
+      alert(titleError);
+    } finally {
+      setIsLoading(false);
+    }
 
-    console.log(response);
   }
 
   useEffect(() => {
@@ -32,22 +34,24 @@ export const SelectLesson = () => {
 
   return (
     <SelectLessonContainer>
+      {isLoading && <Loading />}
+
       <TopMenuHeader title="Essentials" />
 
       <SelectLessonMain>
         <SelectLessonArea>
-          {activity.map((item) => {
+          {activities.map((activity) => {
             return (
-              <ButtonLesson key={item.id}>
-                <p>{item.numero}</p>
-                <span>{item.label}</span>
+              <ButtonLesson key={activity.Id}>
+                <p>{activity.Numero}</p>
+                <span>{activity.Label}</span>
               </ButtonLesson>
             )
           })}
         </SelectLessonArea>
       </SelectLessonMain>
 
-      <AreaButtonBottom />
+      <AreaButtonBottom title="Home" />
     </SelectLessonContainer>
   )
 }
