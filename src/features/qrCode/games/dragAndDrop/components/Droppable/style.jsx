@@ -1,11 +1,11 @@
 import styled from "styled-components";
 import { colors } from "../../../../../../config/colors";
 
-export const Container = styled.main`
+export const Container = styled.div`
   background: ${(props) =>
-    props.$isOver ? "rgba(229, 227, 227, 0.6)" : colors.backgroundWhite};
+    props.$isOver ? colors["gray-100"] : colors.backgroundWhite};
   outline: ${(props) =>
-    props.$isOver ? `3px dashed rgb(198, 198, 198)` : "none"};
+    props.$isOver ? `3px dashed ${colors["gray-200"]}` : "none"};
   font-size: 24px;
   color: ${colors.black};
   margin-top: 12px;

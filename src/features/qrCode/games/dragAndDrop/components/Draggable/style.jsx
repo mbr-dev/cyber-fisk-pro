@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../../../config/colors";
-import { Button } from "@mui/material";
+import BaseButton from "./../../../components/BaseButton";
 import { fonts } from "../../../../../../config/fonts";
 
 const fadeIn = keyframes`
@@ -11,24 +11,13 @@ const fadeOut = keyframes`
   from {opacity: 1 }
   to {opacity: 0 }
 `;
-export const OptionButton = styled(Button)`
+export const OptionButton = styled(BaseButton)`
   width: 100%;
-  /* height: 65px; */
   height: 100%;
   min-height: 35px !important;
-  /* max-height: 75px !important; */
-  border-radius: 20px !important;
-  background: ${colors.backgroundMediumGrey} !important;
-  /* animation-name: ${fadeIn}; */
+  background: ${colors.white} !important;
   animation-name: ${(props) => (props.$show ? fadeIn : fadeOut)};
   animation-duration: 1s;
-  color: ${colors.backgroundWhite} !important;
-  -webkit-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
-  -moz-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
-  box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
+  color: ${colors.black} !important;
   animation-fill-mode: forwards;
-  &:hover {
-    transform: scale(1.01);
-    filter: brightness(0.9);
-  }
 `;

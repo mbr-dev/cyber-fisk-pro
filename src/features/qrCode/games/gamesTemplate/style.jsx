@@ -1,7 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
-import { Button, TextField } from "@mui/material";
-import { fonts } from "../../../../config/fonts";
+import { Button } from "@mui/material";
 import { isMobile } from "react-device-detect";
 
 const fade = keyframes`
@@ -13,13 +12,8 @@ const fadeBottom = keyframes`
   to {transform: translate(0)}
 `;
 const fill = keyframes`
-  0% {
-    background-position: right;
-  }
-  100% {
-    background-position: left;
-    
-    }
+  0% {background-position: right}
+  100% {background-position: left}
 `;
 export const Container = styled.main`
   position: ${isMobile ? "fixed" : "static"};
@@ -31,48 +25,30 @@ export const Container = styled.main`
   align-items: center;
   flex-direction: column;
   min-height: 650px;
-  background: ${colors.backgroundLightGrey};
+  background: ${colors["gray-100"]};
+  position: relative;
+  overflow-y: hidden;
 `;
 export const BackgroundHeader = styled.header`
   width: 100%;
-  background: ${colors.backgroundLightGrey};
+  background: ${colors["gray-100"]};
 `;
 export const Header = styled.header`
   width: 100%;
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
   align-items: center;
   gap: 16px;
-  background: ${colors.backgroundMediumGrey};
+  background: ${colors["gray-300"]};
   padding: 20px;
+  padding-inline: ${isMobile ? "16px" : "60px"};
   border-radius: 0 0 20px 20px;
   animation-name: ${fade};
   animation-duration: 1s;
 `;
-export const ContainerMain = styled.div`
-  width: 100%;
-  height: 100%;
-  display: grid;
-  grid-template-rows: auto 1fr auto;
-  place-items: center;
-`;
-export const BackgroundGame = styled.div`
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  background: ${colors.backgroundWhite};
-`;
-export const ContainerGame = styled.div`
-  width: min(700px, 90%);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  height: 100%;
-`;
 export const ContainerBar = styled.div`
   width: 80%;
+  max-width: 750px;
   height: 40px;
   background: white;
   padding: 10px;
@@ -95,26 +71,22 @@ export const ContentBar = styled.div`
 `;
 export const MarkerBar = styled.div`
   flex: 1;
-  border-right: 1px solid black;
-  background: ${(props) => {
-    console.log("st1", props.$status);
-    return props.$status
-      ? "green"
+  border-right: 1px solid ${colors.black};
+  background: ${(props) =>
+    props.$status
+      ? colors["green-100"]
       : props.$status === false
-      ? "red"
-      : "lightgrey";
-  }};
+      ? colors["red-100"]
+      : colors["gray-200"]};
   background: linear-gradient(
       to left,
-      lightgrey 50%,
-      ${(props) => {
-          console.log("st2", props.$status);
-          return props.$status
-            ? "green"
+      ${colors["gray-200"]} 50%,
+      ${(props) =>
+          props.$status
+            ? colors["green-100"]
             : props.$status === false
-            ? "red"
-            : "lightgrey";
-        }}
+            ? colors["red-100"]
+            : colors["gray-200"]}
         50%
     )
     right;
@@ -138,8 +110,28 @@ export const BackImage = styled.img`
 `;
 export const Title = styled.h2`
   margin-block: 8px;
-  /* font-size: 18px; */
-  font-family: ${fonts.ubuntuMedium};
+`;
+export const ContainerMain = styled.div`
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  place-items: center;
+`;
+export const BackgroundGame = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: ${colors.white};
+`;
+export const ContainerGame = styled.div`
+  width: min(700px, 90%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
 `;
 export const Footer = styled.footer`
   width: 100%;
@@ -151,10 +143,4 @@ export const Footer = styled.footer`
   background-color: ${colors.backgroundWhite};
   padding: 8px;
   animation: ${fadeBottom} 1s;
-`;
-export const Sticker = styled.div`
-  width: 20%;
-  height: 8px;
-  background: ${colors.backgroundRed};
-  border-radius: 4px;
 `;

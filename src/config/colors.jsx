@@ -1,12 +1,24 @@
 export const colors = {
+  white: "#fcfcfc",
+  black: "#0f0f0f",
+
+  "gray-100": "#EFEFEF",
+  "gray-200": "#E6E6E6",
+  "gray-300": "#c2c1c1",
+  "gray-400": "#888888",
+  "gray-500": "#6a6a6a",
+  "gray-800": "#3b3b3b",
+
+  "green-100": "#27A708",
+  "green-200": "#4A8500",
+
+  "red-100": "#E0131C",
+  "red-200": "#E0131C",
+  "red-300": "#B20008",
+
+  "yellow-100": "#FFB800",
+
   backgroundTopLesson: "#E6E6E6",
-  backgroundRed: "#E0131C",
-  backgroundWhite: "#f3f3f3",
-  black: "#111111",
-  backgroundLightGrey: "#dbdbdb",
-  backgroundMediumGrey: "#95989d",
-  backgroundDisabled: "#00000011",
-  fontDarkGrey: "#585a5e",
   backgroundSubTitleLesson: "#E6E6E6",
   lessonCorrect: "#4A8500",
   lessonError: "#B20008",

@@ -27,7 +27,7 @@ export const RedBox = styled.div`
   flex-direction: column;
   align-items: center;
   padding-inline: 30px;
-  background-color: ${colors.backgroundRed};
+  background-color: ${colors["red-100"]};
 `;
 export const ContentLimiter = styled.div`
   width: min(500px, 100%);
@@ -78,7 +78,7 @@ export const WhiteBox = styled.div`
   display: flex;
   flex: 7;
   justify-content: center;
-  background-color: ${colors.backgroundSubTitleLesson};
+  background-color: ${colors.white};
 `;
 export const ContainerInput = styled.div`
   width: min(350px, 90%);
@@ -86,7 +86,7 @@ export const ContainerInput = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  background-color: ${colors.backgroundMediumGrey};
+  background-color: ${colors["gray-300"]};
   border-radius: 10px;
   padding-inline: 10px;
   margin-top: 170px;

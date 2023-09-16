@@ -1,36 +1,34 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useEffect, useState } from "react";
 import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import { DndContext } from "@dnd-kit/core";
 import useSound from "use-sound";
+import EndModal from "../components/EndModal";
 
 import { Droppable, Draggable } from "./components";
-import { shuffleArray } from "./../../../../utils";
+import { shuffleArray } from "../../../../utils";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
+import { ContainerOptions } from "./style";
 
 function DragAndDropGame(props) {
+  const [isReady, setIsReady] = useState(false);
   const [isDropped, setIsDropped] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
   const [isVisible, setIsVisible] = useState(true);
   const [roundCount, setRoundCount] = useState(0);
-  const [questions, setQuestion] = useState([]);
+  const [questions, setQuestions] = useState([]);
   const [points, setPoints] = useState(0);
   const [error, setError] = useState(0);
-  const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [orders, setOrders] = useState([]);
+  const [openModal, setOpenModal] = useState(false);
+  const [grade, setGrade] = useState(60);
   const [playCorrect] = useSound(correct, {
-    onend: () => {
-      setPoints((oldState) => oldState + 1);
-      // handleAnswer(false);
-    },
+    onend: () => setPoints((oldState) => oldState + 1),
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => {
-      setError((oldState) => oldState + 1);
-      // handleAnswer(true);
-    },
+    onend: () => setError((oldState) => oldState + 1),
   });
 
   const ramdomizeOrder = () => {
@@ -40,7 +38,7 @@ function DragAndDropGame(props) {
   const handleAnswer = (isError, contError) => {
     // ramdomizeOrder();
     // setIsVisible(false);
-    setAnsweredQuestions((oldState) => {
+    setQuestions((oldState) => {
       const newArray = [...oldState];
       newArray[roundCount].correct = !isError;
       return newArray;
@@ -86,8 +84,8 @@ function DragAndDropGame(props) {
     setError(0);
     if (!questions.length) return;
     if (roundCount >= questions.length) {
-      alert(`Cabou: ${(100 / questions.length) * points}%`);
-      repeat();
+      setGrade((100 / questions.length) * points);
+      setOpenModal(true);
     } else {
       ramdomizeOrder();
       setIsBlocked(false);
@@ -97,35 +95,37 @@ function DragAndDropGame(props) {
   }, [roundCount]);
 
   const generateAnswerArray = () => {
-    setAnsweredQuestions(() =>
-      questions.map((question) => {
-        return { ...question, correct: null };
-      })
+    const newQuestions = questions.map((question, index) => {
+      return {
+        ...question,
+        correct: null,
+        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+      };
+    });
+    console.log(
+      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
+      newQuestions
     );
+    setQuestions(shuffleArray(newQuestions));
   };
 
   useEffect(() => {
     if (!questions.length) {
-      console.log("props", props);
-      setQuestion(shuffleArray(props?.questions));
+      setQuestions(props?.questions);
     }
   }, [props]);
 
   // console.log("ques", questions);
 
   useEffect(() => {
-    console.log("quest", questions);
-    if (!orders.length) ramdomizeOrder();
-  }, [questions]);
-
-  useEffect(() => {
-    if (!answeredQuestions.length) return;
-    props.setAswered(answeredQuestions);
-  }, [answeredQuestions]);
-
-  useEffect(() => {
-    if (!questions.length || isTryAgain) return;
-    generateAnswerArray();
+    if (!questions.length) return;
+    props.setAnswered(questions);
+    if (questions.some((question) => question?.correct === undefined))
+      generateAnswerArray();
+    if (questions.every((question) => question.correct === null)) {
+      ramdomizeOrder();
+      setIsReady(true);
+    }
   }, [questions]);
 
   const moveIncorrectToEnd = (answers) => {
@@ -140,9 +140,8 @@ function DragAndDropGame(props) {
   };
 
   const repeat = () => {
-    const orderedArray = moveIncorrectToEnd(answeredQuestions);
-    setAnsweredQuestions(orderedArray);
-    setQuestion(orderedArray);
+    const orderedArray = moveIncorrectToEnd(questions);
+    setQuestions(orderedArray);
     setIsTryAgain(true);
   };
 
@@ -166,7 +165,7 @@ function DragAndDropGame(props) {
       Points: {points}
       RoundErrors: {error.toString()}
       GeneralErrors: {generalErrors} */}
-      {questions.length && (
+      {isReady && (
         <DndContext
           onDragEnd={handleDragEnd}
           modifiers={[restrictToWindowEdges]}
@@ -176,14 +175,7 @@ function DragAndDropGame(props) {
               ? questions[roundCount]?.fullAnswer
               : questions[roundCount]?.question}
           </Droppable>
-          <div
-            style={{
-              flex: 1,
-              display: "grid",
-              marginBlock: 20,
-              gap: 8,
-            }}
-          >
+          <ContainerOptions>
             {questions[roundCount]?.options.map((question, index) => {
               return index === 0 ? (
                 !isDropped && (
@@ -210,9 +202,17 @@ function DragAndDropGame(props) {
                 </Draggable>
               );
             })}
-          </div>
+          </ContainerOptions>
         </DndContext>
       )}
+      <EndModal
+        open={roundCount > 2}
+        setOpen={setOpenModal}
+        grade={grade}
+        repeat={repeat}
+        points={points}
+        questions={questions}
+      />
     </>
   );
 }

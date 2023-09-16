@@ -1,7 +1,6 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { QrReader } from "react-qr-reader";
-import Fade from "react-reveal/Fade";
 import {
   Container,
   ContentLimiter,
@@ -16,8 +15,10 @@ import {
   Permission,
   Footer,
   Sticker,
+  Label,
   Form,
   InputCode,
+  InputButton,
 } from "./style";
 import BackIcon from "../../assets/icons/Icon_Seta.png";
 import LogoImg from "../../assets/images/Logo.png";
@@ -26,7 +27,24 @@ function QRReader() {
   const navigate = useNavigate();
   const location = useLocation();
   const [permission, setPermission] = useState("show");
+  const inputRef = useRef(null);
   const [code, setCode] = useState("");
+  const [isFocused, setIsFocused] = useState(false);
+  const language = 0;
+
+  const traduction = {
+    instruction: [
+      "Posicione o QR Code no frame e aguarde a leitura automática.",
+      "Position the QR Code on the frame and wait automatic read.",
+      "Posicione lo QR Code no framito e aguarde la leitura automatica.",
+    ],
+    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
+    permissionWarning: [
+      "Sem permissão para acessar a câmera.",
+      "No camera permission.",
+      "Sem permissione para acessar la camera.",
+    ],
+  };
 
   // navigator.permissions
   //   .query({ name: "camera" })
@@ -60,45 +78,53 @@ function QRReader() {
 
   return (
     <Container>
-      <Header>
-        <BackButton onClick={() => navigate(-1)}>
+      <Header onClick={() => setIsFocused(false)}>
+        <BackButton
+          onClick={() => (isFocused ? setIsFocused(false) : navigate(-1))}
+        >
           <BackImage src={BackIcon} />
         </BackButton>
         <Logo src={LogoImg} />
       </Header>
       <ContentLimiter>
-        <ContainerCenter>
-          <Info>
-            Posicione o QR Code no frame e aguarde a leitura automática.
-          </Info>
-          <ContainerQRBorder>
-            <ContainerQRReader>
-              {permission !== "denied" ? (
-                <QrReader
-                  constraints={{ facingMode: "environment" }}
-                  onResult={(result, error) => {
-                    if (!!result) {
-                      console.log("res", result);
-                    }
-
-                    if (!!error) {
-                      ("");
-                      console.info(error);
-                    }
-                  }}
-                  scanDelay={1000}
-                  containerStyle={{ height: 300 }}
-                  videoContainerStyle={{ height: 300 }}
-                  videoStyle={{ objectFit: "cover" }}
-                />
-              ) : (
-                <Permission>Sem permissão para acessar a câmera.</Permission>
-              )}
-            </ContainerQRReader>
-          </ContainerQRBorder>
-        </ContainerCenter>
-        <Footer>
-          <Sticker />
+        {!isFocused && (
+          <ContainerCenter>
+            <>
+              <Info>{traduction?.instruction[language]}</Info>
+              <ContainerQRBorder>
+                <ContainerQRReader>
+                  {permission !== "denied" ? (
+                    <QrReader
+                      constraints={{ facingMode: "environment" }}
+                      onResult={(result, error) => {
+                        if (!!result) {
+                          console.log("res", result);
+                        }
+                        if (!!error) {
+                          console.log(error);
+                        }
+                      }}
+                      scanDelay={1000}
+                      containerStyle={{ height: 300 }}
+                      videoContainerStyle={{ height: 300 }}
+                      videoStyle={{ objectFit: "cover" }}
+                    />
+                  ) : (
+                    <Permission>
+                      {traduction?.permissionWarning[language]}
+                    </Permission>
+                  )}
+                </ContainerQRReader>
+              </ContainerQRBorder>
+            </>
+          </ContainerCenter>
+        )}
+        <Footer
+          isFocused={isFocused}
+          onClick={() => inputRef?.current && inputRef.current.focus()}
+        >
+          <Sticker isFocused={isFocused} />
+          {isFocused && <Label>Digite o codigo</Label>}
           <Form
             onSubmit={(e) => {
               e.preventDefault();
@@ -109,13 +135,20 @@ function QRReader() {
           >
             <InputCode
               variant="outlined"
-              placeholder="Digite o código"
+              placeholder={traduction?.typeCode[language]}
               inputProps={{ maxLength: 12 }}
               value={code}
               onChange={(e) => setCode(e.target.value)}
+              inputRef={inputRef}
+              onFocus={() => setIsFocused(true)}
               //disabled
             />
           </Form>
+          {isFocused && (
+            <InputButton onClick={() => console.log("code", code)}>
+              Confirmar
+            </InputButton>
+          )}
         </Footer>
       </ContentLimiter>
     </Container>

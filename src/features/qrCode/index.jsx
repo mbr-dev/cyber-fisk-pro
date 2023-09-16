@@ -26,6 +26,12 @@ function QRCode() {
   const navigate = useNavigate();
   const location = useLocation();
   const [code, setCode] = useState("");
+
+  const language = 0;
+
+  const traduction = {
+    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
+  };
   return (
     <Container>
       <RedBox>
@@ -51,7 +57,7 @@ function QRCode() {
         <ContainerInput>
           <InputCode
             variant="outlined"
-            placeholder="Digite o código"
+            placeholder={traduction?.typeCode[language]}
             inputProps={{ maxLength: 12 }}
             value={code}
             onChange={(e) => setCode(e.target.value)}
