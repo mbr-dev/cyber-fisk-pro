@@ -1,26 +1,77 @@
-import { useState } from 'react';
-import '../../App.css';
-import Container from './styles';
-import { TopMenu } from '../../components/topMenu';
-import { BtnLessonSel } from '../../components/btnSelLesson';
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { ButtonRed } from "../../components/ButtonRed";
 
-function SelectLesson() {
-  const [count, setCount] = useState(0)
+import { ButtonLesson, SelectLessonContainer, SelectLessonHeader, SelectLessonMain, SelectLessonArea } from "./styles";
 
-  const qtdLessons = () => {
-    
-  }
+export const SelectLesson = () => {
 
   return (
-    <>
-      <Container>
-        <TopMenu menu='0'/> 
-        <div className='box'>
-          <BtnLessonSel num='1' lesson='Lesson'/>
-        </div>
-      </Container>    
-    </>
+    <SelectLessonContainer>
+      <SelectLessonHeader>
+        <ButtonMenuHeader />
+        <p>Essentials 1</p>
+        <ButtonCloseHeader />
+      </SelectLessonHeader>
+
+      <SelectLessonMain>
+        <SelectLessonArea>
+          <ButtonLesson>
+            <p>1</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>2</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>3</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>4</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>5</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>6</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>7</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>8</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>9</p>
+            <span>Activity</span>
+          </ButtonLesson>
+
+          <ButtonLesson>
+            <p>10</p>
+            <span>Activity</span>
+          </ButtonLesson>
+        </SelectLessonArea>
+      </SelectLessonMain>
+
+      <AreaButtonBottom>
+        <ButtonRed title="Home" />
+      </AreaButtonBottom>
+    </SelectLessonContainer>
   )
 }
-
-export default SelectLesson

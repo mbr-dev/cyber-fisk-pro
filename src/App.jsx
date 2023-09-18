@@ -1,21 +1,25 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import { BrowserRouter } from 'react-router-dom';
-import Router from './Router';
-import { CyberProvider } from './context/cyber';
+import { ThemeProvider } from "styled-components";
+import { BrowserRouter } from "react-router-dom";
 
-function App() {
+import Router from "./Router";
+import { CyberProvider } from "./context/cyber";
+import { LessonProvider } from "./context/lesson";
+
+import { defaultTheme } from "./themes/defaultTheme";
+import { GlobalStyled } from "./themes/globalTheme";
+
+export const App = () => {
   return (
-    <>
+    <ThemeProvider theme={defaultTheme}>
       <CyberProvider>
-        <BrowserRouter>
-          <Router />
-        </BrowserRouter>
+        <LessonProvider>
+          <BrowserRouter>
+            <Router />
+          </BrowserRouter>
+        </LessonProvider>
       </CyberProvider>
-    </>
+
+      <GlobalStyled />
+    </ThemeProvider>
   )
 }
-
-export default App
