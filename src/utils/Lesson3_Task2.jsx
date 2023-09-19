@@ -1,50 +1,82 @@
-export const L3_T1_Facil = []
+import T2Audio0 from "../components/game9/audios/Pergunta/Task2M_0.mp3";
+import T2Audio1 from "../components/game9/audios/Pergunta/Task2M_1.mp3";
+import T2Audio2 from "../components/game9/audios/Pergunta/Task2M_2.mp3";
+import T2Audio3 from "../components/game9/audios/Pergunta/Task2M_3.mp3";
+import T2Audio4 from "../components/game9/audios/Pergunta/Task2M_4.mp3";
+import T2Audio5 from "../components/game9/audios/Pergunta/Task2M_5.mp3";
+import T2Audio6 from "../components/game9/audios/Pergunta/Task2M_6.mp3";
 
 
-export const L3_T1_Medio = [
-  {
-    pergunta: 'On Saturdays, I ______ at 8 a.m. and take a shower',
-    resposta: ['get up', 'wash my face', 'sleep']
-  },
-  {
-    pergunta: 'I take a shower and ______. ',
-    resposta: ['have breakfast', 'do breakfast', 'eat breakfast']
-  },
-  {
-    pergunta: 'I go to my English course ______.',
-    resposta: ['at half past nine', 'morning', 'in morning']
-  },
-  {
-    pergunta: 'Around ______ I have lunch.',
-    resposta: ['noon', 'in the morning', 'at night']
-  },
-  {
-    pergunta: 'I ______ a computer course at 2 p.m. ',
-    resposta: ['take', 'do', 'get']
-  },
-  {
-    pergunta: 'I get home around ______.',
-    resposta: ['a quarter to five', 'afternoon', 'evening']
-  },
-  {
-    pergunta: 'I ______ football with friends.',
-    resposta: ['play', 'kick', 'to play']
-  },
-  {
-    pergunta: 'I ______ at 7 p.m',
-    resposta: ['have dinner', 'take dinner', 'get dinner']
-  },
-  {
-    pergunta: 'I ______ TV shows. ',
-    resposta: ['watch',  'see',  'what']
-  },
-  {
-    pergunta: 'I ______ bed at 11 p.m.',
-    resposta: ['go to', 'get to', 'to go']
-  },
-]
+export const L3_T2_Facil = []
 
-export const L3_T1_Dificil = [
+export const L3_T2_Medio = [
+  {
+    pergunta: T2Audio0,
+    resposta: [
+      { label: 'Yes, I listen to music in the evening.', status: 1 }, 
+      { label: 'No, we don’t listen to music in the evening.', status: 1 },
+      { label: 'Yes, he listens to music in the evening.', status: 0 }
+    ]
+  },
+  {
+    pergunta: T2Audio1,
+    resposta: [
+      { label: 'No, I do stay home on weekends.', status: 0 }, 
+      { label: 'Yes, I stay home on weekends.', status: 1 }, 
+      { label: 'No, I don’t stay home on weekends.', status: 1 }
+    ]
+  },
+  {  
+    pergunta: T2Audio2,
+    resposta: [
+      { label: 'Yes, they work in the evening.', status: 1 }, 
+      { label: 'Yes, we work in the evening.', status: 0 }, 
+      { label: 'No, they don’t work in the evening.', status: 1 }, 
+    ]
+  },
+  {
+    pergunta: T2Audio3,
+    resposta: [
+      { label: 'No, I play computer games on weekends.', status: 0 }, 
+      { label: 'No, I don’t play computer games on weekends.', status: 1 }, 
+      { label: 'Yes, we play computer games on weekends.', status: 1 }, 
+    ]
+  },
+  {
+    pergunta: T2Audio4,
+    resposta: [
+      { label: 'At 9 o’clock.', status: 1 }, 
+      { label: 'No, I don’t.', status: 0 }, 
+      { label: 'I take my English course at 7:30.', status: 1 }, 
+    ],
+  },
+  {
+    pergunta: T2Audio5,
+    resposta: [
+      { label: 'I take a shower at a quarter after eight.', status: 1 }, 
+      { label: 'Yes, I take a shower every day.', status: 0 }, 
+      { label: 'At 8:15.', status: 1 }, 
+    ]
+  },
+  {
+    pergunta: T2Audio6,
+    resposta: [
+      { label: 'Yes, I have dinner.', status: 0 }, 
+      { label: 'At around 8 p.m.', status: 1 }, 
+      { label: 'I have dinner at around half past seven.', status: 1 }, 
+    ]
+  },
+ /*  {
+    pergunta: 'Do you study here?',
+    resposta: [
+      { label: 'Yes. I like to play computer games.', status: 0 }, 
+      { label: 'Yes, we study here.', status: 1 }, 
+      { label: 'No, I do.', status: 1 }, 
+    ]
+  }, */
+];
+
+export const L3_T2_Dificil = [
   {
     pergunta: 'Does Kelly go to the bank in the morning?',
     resposta: [

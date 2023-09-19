@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubtitleLessonAudioImg } from "../subtitleLessonAudioImg";
+import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T2_Dificil } from "../../utils/lesson1_Task2";
@@ -180,7 +180,7 @@ export const Game6 = () => {
       <HeaderLesson numStart="Task 6" numEnd="Task 7" />
 
       <TitleLesson title="Choose the correct alternative" />
-      <SubtitleLessonAudioImg audio={`${URL_HMLG}${sound}`} />
+      <SubTitleLessonAudioImg audio={`${URL_HMLG}${sound}`} />
 
       <Game6Content>
         {respostas.map((resposta, index) => {

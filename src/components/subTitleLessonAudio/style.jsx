@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SubtitleLessonAudioContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   display: flex;
   justify-content: center;
@@ -9,7 +9,8 @@ export const SubtitleLessonAudioContainer = styled.div`
   padding-block: 0.625rem;
 `
 
-export const SubtitleLessonAudioButton = styled.div`
+export const Button = styled.button`
+  all: unset;
   width: 4rem;
   height: 4rem;
   display: flex;
@@ -17,11 +18,20 @@ export const SubtitleLessonAudioButton = styled.div`
   justify-content: center;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
-  border-radius: 20px;
+  border-radius: 10px;
   transition: all .2s ease-in-out;
 
   &:hover {
     transform: scale(0.9);
+  }
+
+  @media(max-width: 320px) {
+    width: 3rem;
+    height: 3rem;
+
+    svg {
+      width: 28px;
+    }
   }
 
   @media(min-width: 360px) {

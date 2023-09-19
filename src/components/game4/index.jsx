@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button";
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLessonAudio } from "../subtitleLessonAudio";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { LessonContext } from "../../context/lesson";
@@ -85,13 +85,8 @@ export const Game4 = () => {
   }
 
   const handleClick = (id) => {
-    if(bloqueia) {
-      return;
-    }
-    
-    if(playAudio){
-      return;
-    }
+    if(bloqueia) return;
+    if(playAudio) return;
 
     let clicks = contClick;
     let arr = idClick;
@@ -215,7 +210,7 @@ export const Game4 = () => {
 
           <TitleLesson title='Choose the correct alternative'/>
           <div className="buttonOfAudio">
-            <SubtitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
+            <SubTitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
           </div>
 
           <Game4Content>

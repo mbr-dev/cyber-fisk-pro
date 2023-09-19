@@ -1,11 +1,11 @@
 import { useContext } from "react";
-import { Volume2 } from "lucide-react";
+import { Volume2, PauseCircle } from "lucide-react";
 
 import { LessonContext } from "../../context/lesson";
 
-import { SubtitleLessonAudioContainer, SubtitleLessonAudioButton } from "./style";
+import { Container, Button } from "./style";
 
-export const SubtitleLessonAudio = (props) => {
+export const SubTitleLessonAudio = (props) => {
   const { newStatusPlay, playAudio } = useContext(LessonContext);
 
   const handleClick = () => {
@@ -24,10 +24,16 @@ export const SubtitleLessonAudio = (props) => {
   }
 
   return (
-    <SubtitleLessonAudioContainer>
-      <SubtitleLessonAudioButton onClick={() => handleClick()}>
-        <Volume2 size={32} strokeWidth={2.5} />
-      </SubtitleLessonAudioButton>
-    </SubtitleLessonAudioContainer>
+    <Container>
+      {playAudio ?
+        <Button onClick={() => handleClick()}>
+          <PauseCircle size={props.size ? props.size : '36'} strokeWidth={2.5} />
+        </Button>
+        :
+        <Button onClick={() => handleClick()}>
+          <Volume2 size={props.size ? props.size : '36'} strokeWidth={2.5} />
+        </Button>
+      }
+    </Container>
   )
 }

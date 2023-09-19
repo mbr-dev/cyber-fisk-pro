@@ -7,7 +7,7 @@ import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L3_T2_Medio } from "../../utils/Lesson3_Task1";
+import { L3_T1_Medio } from "../../utils/Lesson3_Task1";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Game8Container, Button, Game8Main } from "./styles";
@@ -28,7 +28,7 @@ export const Game8 = () => {
   const [textoTroca, setTextoTroca] = useState('______');
 
   const loadLesson = () => {
-    const tam = L3_T2_Medio.length;
+    const tam = L3_T1_Medio.length;
     let tempQuestions = [];
 
     for (let a = 0; a < tam; a++) {
@@ -38,7 +38,7 @@ export const Game8 = () => {
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
 
     setSortNum(tempQuestions);
-    setPergunta(L3_T2_Medio[tempQuestions[rodada]].pergunta);
+    setPergunta(L3_T1_Medio[tempQuestions[rodada]].pergunta);
 
     let tempRandomAnswers = [];
     let tempDrawNumber = idClick;
@@ -47,7 +47,7 @@ export const Game8 = () => {
     setIdClick(tempDrawNumber);
 
     for (let a = 0; a < 3; a ++) {
-      tempRandomAnswers.push(L3_T2_Medio[tempQuestions[rodada]].resposta[tempDrawNumber[a]]);
+      tempRandomAnswers.push(L3_T1_Medio[tempQuestions[rodada]].resposta[tempDrawNumber[a]]);
     }
 
     setRespostas(tempRandomAnswers);
@@ -55,14 +55,15 @@ export const Game8 = () => {
   }
 
   const newRound = (number) => {
-    setPergunta(L3_T2_Medio[sortNum[number]].pergunta);
+    setPergunta(L3_T1_Medio[sortNum[number]].pergunta);
+    
     let tempAnswers = [];
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
     for (let a = 0; a < 3; a++) {
-      tempAnswers.push(L3_T2_Medio[sortNum[number]].resposta[tempRandomNumber[a]])
+      tempAnswers.push(L3_T1_Medio[sortNum[number]].resposta[tempRandomNumber[a]])
     }
 
     setRespostas(tempAnswers);
@@ -70,9 +71,7 @@ export const Game8 = () => {
   }
 
   const verifyAnswer = (index) => {
-    if (bloqueia) {
-      return;
-    }
+    if (bloqueia) return;
 
     setBloqueia(true);
     let tempA = acertos;
@@ -100,7 +99,7 @@ export const Game8 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempA, tempRound);
+    let rule = TrocaAtividade(1, tempGeneralRound, tempA, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -123,7 +122,6 @@ export const Game8 = () => {
         arr[index] = 0;
         setOptionColor(arr);
         setTextoTroca('______');
-        alert("Indo para faze Dificil");
         setNewLesson(2);
       }, 1500);
     }
