@@ -1,7 +1,7 @@
 import { ThemeProvider } from "styled-components";
 import { BrowserRouter } from "react-router-dom";
 
-import Router from "./Router";
+import { Router } from "./router";
 import { CyberProvider } from "./context/cyber";
 import { LessonProvider } from "./context/lesson";
 

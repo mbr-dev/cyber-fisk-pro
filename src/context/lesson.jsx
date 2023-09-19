@@ -43,6 +43,7 @@ function LessonProvider({children}){
   const setNewSelLesson = (num) => {
     setNumSelLesson(num);
   }
+  
   const setNewTask = (num) => {
     setNumTask(num);
   }
@@ -84,6 +85,7 @@ function LessonProvider({children}){
       setNewContainer,
       setNewPontos,
       setNewNivel,
+      setNewLesson,
       setNewTask,
       setNewSelLesson,
       setNewRodada,

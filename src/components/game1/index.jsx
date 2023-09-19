@@ -1,9 +1,9 @@
 import { useState, useContext, useEffect } from "react";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../titleLesson";
+import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubtitleLesson } from "../subtitleLesson";
+import { SubTitleLesson } from "../SubTitleLesson";
 import { LessonContext } from "../../context/lesson";
 
 import { TrocaAtividade } from "../../utils/regras";
@@ -154,7 +154,7 @@ export const Game1 = () => {
       {images.length > 0 &&
         <Game1Main>
           <TitleLesson title="Choose the correct alternative" />
-          <SubtitleLesson title={pergunta} />
+          <SubTitleLesson title={pergunta} />
 
           <Game1Content>
             {images.map((image, index) => {

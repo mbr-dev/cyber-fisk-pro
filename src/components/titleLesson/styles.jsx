@@ -13,6 +13,7 @@ export const TitleLessonContainer = styled.div`
 
   span {
     font-size: 1.375rem;
+    font-weight: 500;
   }
 
   @media(max-width: 360px) {

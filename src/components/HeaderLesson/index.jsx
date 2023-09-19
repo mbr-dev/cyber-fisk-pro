@@ -14,14 +14,14 @@ import iconTrophy from "./images/iconTrophy.png";
 
 import { HeaderLessonContainer, HeaderLessonContent, HeaderLessonIcon, BarStep } from "./styles";
 
-export function HeaderLesson({ numStart, numEnd, superTask }) {
+export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart }) {
   const { rodadaGeral } = useContext(LessonContext);
 
   return(
     <HeaderLessonContainer>
       <HeaderLessonContent>
         <HeaderLessonIcon>
-          {superTask ?
+          {superTaskStart ?
             <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />
             :
             <img src={iconStart} alt="iconStart" />
@@ -63,8 +63,8 @@ export function HeaderLesson({ numStart, numEnd, superTask }) {
         </BarStep>
 
         <HeaderLessonIcon>
-          {superTask ?
-            <img src={iconTrophy} alt="iconStart" />
+          {superTaskEnd ?
+            <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />
             :
             <img src={iconFinish} alt="iconStart" />
           }

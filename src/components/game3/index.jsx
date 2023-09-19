@@ -2,8 +2,8 @@ import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button";
 
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLesson } from "../subtitleLesson";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
@@ -168,7 +168,7 @@ export const Game3 = () => {
       <HeaderLesson numStart="Task 3" numEnd="Task 4" />
 
       <TitleLesson title="Choose the correct alternative"/>
-      <SubtitleLesson title={pergunta}/>
+      <SubTitleLesson title={pergunta}/>
 
       <Game3Content>
         {respostas.map((respostas, index) => {

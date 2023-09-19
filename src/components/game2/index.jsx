@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button"
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLesson } from "../subtitleLesson";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLesson } from "../SubTitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 
@@ -99,13 +99,13 @@ export const Game2 = () => {
     if (regra === "Continua") {
       setTimeout(() =>{
           newRodada(tempR);
-      },500);
+      }, 500);
     } else if (regra === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         alert('GAME OVER!!');
         setNewContainer(1);
-      },500);
+      }, 500);
     } else {
       //troca de nivel
       setTimeout(() =>{
@@ -142,7 +142,7 @@ export const Game2 = () => {
       <HeaderLesson numStart="Task 2" numEnd="Task 3" />
 
       <TitleLesson title="Choose the correct alternative"/>
-      <SubtitleLesson title={pergunta}/>
+      <SubTitleLesson title={pergunta}/>
 
       <Game2Content>
         {respostas.map((resposta, index) => {

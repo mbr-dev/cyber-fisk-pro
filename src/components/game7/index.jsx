@@ -1,6 +1,5 @@
 import { useEffect, useState, useContext } from "react";
 import { Volume2 } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 
@@ -15,7 +14,6 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Game7 = () => {
   const { rodadaGeral, timeElapsed, setTimeElapsed, setRodadaGeral, setNewRodada } = useContext(LessonContext);
   //console.log("GAME TIME: ", timeElapsed);
-  const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
@@ -26,7 +24,6 @@ export const Game7 = () => {
   const [rightAudio, setRightAudio] = useState([]);
   const [rightAnswer, setRightAnswer] = useState([]);
   const [round, setRound] = useState(0);
-  const [countClick, setCountClick] = useState(0);
   const [blockAnswer, setBlockAnswer] = useState(true);
   const [blockAudio, setBlockAudio] = useState(true);
   const [selectAudIndex, setSelectAudIndex] = useState(null);
@@ -112,15 +109,12 @@ export const Game7 = () => {
     }
 
     let arr = optionColor;
-    let clicks = countClick;
     let tmpRound = round;
     let tmpRoundGeral = rodadaGeral;
 
     if (answer[id] === audios[selectAudIndex]) {
-      clicks++;
       arr[id] = 1;
       setOptionColor(arr);
-      setCountClick(clicks);
       setRightAudio(state => [...state, audios[selectAudIndex]]);
       setRightAnswer(state => [...state, answer[id]]);
       setBlockAudio(false);
@@ -135,33 +129,24 @@ export const Game7 = () => {
       setOptionColor(arr);
     }, 500);
 
-    if (clicks > idClickAnswer.length - 1) {
-      tmpRound++;
-      setRound(tmpRound);
-      tmpRoundGeral++;
-      setNewRodada(tmpRoundGeral);
+    // if (clicks > idClickAnswer.length - 1) {
+    //   tmpRound++;
+    //   setRound(tmpRound);
+    //   tmpRoundGeral++;
+    //   setNewRodada(tmpRoundGeral);
 
-      clicks = 0;
-      setCountClick(clicks);
+    //   clicks = 0;
+    //   setCountClick(clicks);
 
-      setTimeout(() => {
-        newRound(tmpRound);
-      }, 1000);
-    }
+    //   setTimeout(() => {
+    //     newRound(tmpRound);
+    //   }, 1000);
+    // }
   }
 
   useEffect(() => {
     loadLesson();
   }, []);
-
-  useEffect(() => {
-    setTimeout(() => {
-      if (round === 10) {
-        navigate("/WellDone");
-      }
-    }, 2000);
-    
-  }, [round]);
 
   /* useEffect(() => {
     const timer = setInterval(() => {
