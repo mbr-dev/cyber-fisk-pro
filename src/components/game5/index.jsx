@@ -66,13 +66,9 @@ export const Game5 = () => {
   }
 
   const handleClick = (id) => {
-    if (bloqueia) {
-      return;
-    }
+    if (bloqueia) return;
 
-    if (playAudio) {
-      return;
-    }
+    if (playAudio) return;
 
     setBloqueia(true);
     let tempA = acertos;

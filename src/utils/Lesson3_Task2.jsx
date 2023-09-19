@@ -78,93 +78,43 @@ export const L3_T2_Medio = [
 
 export const L3_T2_Dificil = [
   {
-    pergunta: 'Does Kelly go to the bank in the morning?',
-    resposta: [
-      'No, she goes to the bank in the morning.',
-      'Yes, she goes to the bank in the morning.',
-      'Yes, she’ll go to the bank in the morning.',
-    ],
-    respostaCorreta: 'Yes, she goes to the bank in the morning.'
+    pergunta: '',
+    resposta: 'Do you listen to music in the evening?',
   },
   {
-    pergunta: 'Yes, it has a parking lot and a soda machine.',
-    resposta: [
-      'Does she use the parking lot?',
-      'Does the school need a soda machine?',
-      'Does the school have a parking lot? ',
-    ],
-    respostaCorreta: 'Does the school have a parking lot? '
+    pergunta: '',
+    resposta: 'Do you go out on weekends?',
   },
   {
-    pergunta: 'What does your brother do in the afternoon? ',
-    resposta: [
-      'He goes to the gym in the afternoon.',
-      'He is a teacher.',
-      'No, he goes to the gym in the afternoon.',
-    ],
-    respostaCorreta: 'He goes to the gym in the afternoon.'
+    pergunta: '',
+    resposta: 'What’s your first name?',
   },
   {
-    pergunta: 'What time does Tom take a shower?',
-    resposta: [
-      'Yes, he takes a shower before breakfast.',
-      'He takes a shower at 6:00 am.',
-      'He doesn’t take a shower.',
-    ],
-    respostaCorreta: 'He takes a shower at 6:00 am.'
+    pergunta: '',
+    resposta: 'Does he have a job in the afternoon?',
   },
   {
-    pergunta: 'Yes, I go to the movies on Fridays.',
-    resposta: [
-      'Does he go to the movies on Fridays?',
-      'Do you go to the movies with friends?',
-      'Do you go to the movies on Fridays?',
-    ],
-    respostaCorreta: 'Do you go to the movies on Fridays?'
+    pergunta: '',
+    resposta: 'Does Greg have an eraser?',
   },
   {
-    pergunta: 'Does she work out every morning?',
-    resposta: [
-      'Yes, she works out every morning',
-      'No, she works out every morning.',
-      'Yes, she does works out.',
-    ],
-    respostaCorreta: 'Yes, she works out every morning'
+    pergunta: '',
+    resposta: 'Does Kelly answer the phone?',
   },
   {
-    pergunta: 'Does Kelly go to the bank in the morning?  ',
-    resposta: [
-      'No, she goes to the bank in the morning.',
-      'Yes, she goes to the bank in the morning.',
-      'Yes, she’ll go to the bank in the morning.',
-    ],
-    respostaCorreta: 'Yes, she goes to the bank in the morning.'
+    pergunta: '',
+    resposta: 'Yes, she answers the phone.',
   },
   {
-    pergunta: 'Does Kelly go to the bank in the morning?  ',
-    resposta: [
-      'No, she goes to the bank in the morning.',
-      'Yes, she goes to the bank in the morning.',
-      'Yes, she’ll go to the bank in the morning.',
-    ],
-    respostaCorreta: 'Yes, she goes to the bank in the morning.'
+    pergunta: '',
+    resposta: 'Thank you very much.',
   },
   {
-    pergunta: 'Does Kelly go to the bank in the morning?  ',
-    resposta: [
-      'No, she goes to the bank in the morning.',
-      'Yes, she goes to the bank in the morning.',
-      'Yes, she’ll go to the bank in the morning.',
-    ],
-    respostaCorreta: 'Yes, she goes to the bank in the morning.'
+    pergunta: '',
+    resposta: 'You’re welcome.',
   },
   {
-    pergunta: 'Does Kelly go to the bank in the morning?  ',
-    resposta: [
-      'No, she goes to the bank in the morning.',
-      'Yes, she goes to the bank in the morning.',
-      'Yes, she’ll go to the bank in the morning.',
-    ],
-    respostaCorreta: 'Yes, she goes to the bank in the morning.'
+    pergunta: '',
+    resposta: 'Have a nice weekend.',
   },
 ]

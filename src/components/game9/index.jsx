@@ -36,7 +36,6 @@ export const Game9 = () => {
     }
 
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-
     setRandomNumber(tempQuestions);
     setSound(L3_T2_Medio[tempQuestions[round]].pergunta);
 
@@ -120,7 +119,7 @@ export const Game9 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    let rule = TrocaAtividade(1, tempGeneralRound, tempHit, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempHit, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {

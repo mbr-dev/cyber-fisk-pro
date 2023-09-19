@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: ${props => props.theme["gray-200"]};
+  background-color: ${props => props.theme["gray-100"]};
   padding-block: 0.625rem;
 `
 
