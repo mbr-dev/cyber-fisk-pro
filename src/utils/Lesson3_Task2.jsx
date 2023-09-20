@@ -6,7 +6,6 @@ import T2Audio4 from "../components/game9/audios/Pergunta/Task2M_4.mp3";
 import T2Audio5 from "../components/game9/audios/Pergunta/Task2M_5.mp3";
 import T2Audio6 from "../components/game9/audios/Pergunta/Task2M_6.mp3";
 
-
 export const L3_T2_Facil = []
 
 export const L3_T2_Medio = [
@@ -116,5 +115,87 @@ export const L3_T2_Dificil = [
   {
     pergunta: '',
     resposta: 'Have a nice weekend',
+  },
+]
+
+/* Super task 3 */
+export const L3_SPT = [
+  {
+    pergunta: 'Do you go to the gym',
+    resposta: [
+      'Yes, I do.',
+      'Yes, I go to the gym.',
+      'No, I don’t.',
+      'No, I don’t go to the gym.'
+    ]
+  },
+  {
+    pergunta: 'Do your friends like to dance',
+    resposta: [
+      'Yes, they do.',
+      'Yes, they like to dance.',
+      'No, they don’t.',
+      'No, they don’t like to dance.'
+    ]
+  },
+  {
+    pergunta: 'Does your mom work out',
+    resposta: [
+      'Yes, she does.',
+      'Yes, she works out.',
+      'No, she doesn’t.',
+      'No, she doesn’t work out.'
+    ]
+  },
+  {
+    pergunta: 'Do you have lunch at home',
+    resposta: [
+      'Yes, I do.',
+      'Yes, I have lunch at home.',
+      'No, I don’t.',
+      'No, I don’t have lunch at home.'
+    ]
+  },
+  {
+    pergunta: 'Do your cousins get up early on weekends',
+    resposta: [
+      'Yes, they do.',
+      'Yes, they get up early on weekends.',
+      'No, they don’t.',
+      'No, they don’t get up early on weekends.'
+    ]
+  },
+  {
+    pergunta: 'Do you go out on weekdays',
+    resposta: [
+      'Yes, I do.',
+      'Yes, I go out on weekdays.',
+      'No, I don’t.',
+      'No, I don’t go out on weekdays.'
+    ]
+  },
+  {
+    pergunta: 'What time do you have dinner',
+    resposta: [
+      'I have dinner at (7pm).'
+    ]
+  },
+  {
+    pergunta: 'What do you need to buy',
+    resposta: [
+      'I need to buy (a smartphone).'
+    ]
+  },
+  {
+    pergunta: 'What do your friends do on Sunday nights',
+    resposta: [
+      'They (watch movies at home).'
+    ]
+  },
+  {
+    pergunta: 'What do you have for breakfast every day',
+    resposta: [
+      'I have (coffee and toast).'
+    ]
   },
 ]

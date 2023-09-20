@@ -116,7 +116,7 @@ export const GameSL2 = () => {
 
   return (
     <GameSL2Container>
-      <HeaderLesson superTask  numStart="Super task" numEnd="Finish" />
+      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
 
       <GameSL2Main>
         <h2>Memory Game</h2>
