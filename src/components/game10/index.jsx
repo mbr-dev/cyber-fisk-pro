@@ -10,7 +10,7 @@ import { L3_T2_Dificil } from "../../utils/Lesson3_Task2";
 import { TrocaAtividade } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Main, Container, Input } from "./styles";
+import { Main, Container, Input, Button } from "./styles";
 
 export const Game10 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed} = useContext(LessonContext);
@@ -19,6 +19,7 @@ export const Game10 = () => {
   const [round, setRound] = useState(0);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState('');
+  const [text, setText] = useState('');
   const [randomNumber, setRandomNumber] = useState([]);
   const [toHit, setToHit] = useState(0);
   const [erro, setErro] = useState(0);
@@ -37,13 +38,18 @@ export const Game10 = () => {
     setRandomNumber(tempQuestions);
     setSound(`${URL_L3T2D}${tempQuestions[round]}.mp3`);
 
-    setAnswers(L3_T2_Dificil[tempQuestions[round]].resposta);
+    let tempAnwer = L3_T2_Dificil[tempQuestions[round]].resposta.replace(/’/g, "'");
+
+    setAnswers(tempAnwer);
     setBlock(false);
   }
 
   const newRound = (number) => {
+    setText('');
     setSound(`${URL_L3T2D}${randomNumber[number]}.mp3`);
-    setAnswers(L3_T2_Dificil[randomNumber[number]]);
+
+    let tempAnwer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/’/g, "'");
+    setAnswers(tempAnwer);
     setBlock(false);
   }
 
@@ -52,55 +58,53 @@ export const Game10 = () => {
     if (block) return;
     if (playAudio) return;
 
-    if (event.key === "Enter") {
-      setBlock(true);
+    setBlock(true);
+    
+    let tempWord = text;
+    let tempHit = toHit;
+
+    tempWord = tempWord.replace(/’/g, "'");
+
+    if (tempWord === answers) {
+      setOptionColor(1);
+      tempHit += 3;
+      setToHit(tempHit);
+      setNewPontos(2, tempHit);
+    } else {
+      setOptionColor(2);
+      let tempEr = erro;
+      tempEr++;
+      setErro(tempEr);
+    }
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    const rule = TrocaAtividade(2, tempGeneralRound, tempHit, tempRound);
+
+    if (rule === "Continua") {
+      setTimeout(() => {
+        setOptionColor(0);
+        newRound(tempRound);
+      }, 1000);
+    } else if (rule === "Game over") {
+      setNewPontos(0, 0);
       
-      let tempWord = event.target.value;
-      let tempHit = toHit;
+      setTimeout(() => {
+        setOptionColor(0);
+        setNewContainer(1);
+      }, 1000);
+    } else {
 
-      if (tempWord === answers) {
-        setOptionColor(1);
-        tempHit += 3;
-        setToHit(tempHit);
-        setNewPontos(2, tempHit);
-      } else {
-        setOptionColor(2);
-        let tempEr = erro;
-        tempEr++;
-        setErro(tempEr);
-      }
-
-      let tempRound = round;
-      tempRound++;
-      setRound(tempRound);
-
-      let tempGeneralRound = rodadaGeral;
-      tempGeneralRound++;
-      setNewRodada(tempGeneralRound);
-
-      const rule = TrocaAtividade(2, tempGeneralRound, tempHit, tempRound);
-
-      if (rule === "Continua") {
-        
-        setTimeout(() => {
-          setOptionColor(0);
-          newRound(tempRound);
-        }, 1000);
-      } else if (rule === "Game over") {
-        setNewPontos(0, 0);
-        
-        setTimeout(() => {
-          setOptionColor(0);
-          setNewContainer(1);
-        }, 1000);
-      } else {
-
-        setTimeout(() => {
-          setOptionColor(0);
-          setNewLesson(2);
-        }, 1000);
-      }
-
+      setTimeout(() => {
+        setOptionColor(0);
+        setNewLesson(2);
+      }, 1000);
     }
   }
 
@@ -113,13 +117,15 @@ export const Game10 = () => {
       <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <SubTitleLesson title="Write what you hear." />
       <SubTitleLessonAudio audio={sound} />
-
+      
       <Main>
-        <form onSubmit={handleVerifyWord}>
+        <form id="myForm" onSubmit={handleVerifyWord}>
           <Input 
-            type="text"
-            placeholder="__________________________________"
-            onKeyUp={handleVerifyWord}
+            placeholder="Type here"
+            required
+            maxLength={70}
+            value={text}
+            onChange={(e) => setText(e.target.value)}
             style={{
               backgroundColor: optionColor === 0 ? "" : optionColor === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
               color: optionColor === 0 ? "" : defaultTheme.white,
@@ -127,6 +133,11 @@ export const Game10 = () => {
             }}
           />
         </form>
+        <Button
+          form="myForm"
+          type="submit"
+          title="Enter"
+        ><p>Check</p></Button>
       </Main>
     </Container>
   )

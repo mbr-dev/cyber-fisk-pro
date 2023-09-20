@@ -91,7 +91,7 @@ export const Pronunciation = () => {
           <ButtonRed 
             title="Play"
             hasIcon 
-            onPlay={handleGetText}
+            onPress={handleGetText}
           />
         </Form>
       </PronunciationMain>

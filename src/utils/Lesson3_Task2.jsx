@@ -103,18 +103,18 @@ export const L3_T2_Dificil = [
   },
   {
     pergunta: '',
-    resposta: 'Yes, she answers the phone.',
+    resposta: 'Yes, she answers the phone',
   },
   {
     pergunta: '',
-    resposta: 'Thank you very much.',
+    resposta: 'Thank you very much',
   },
   {
     pergunta: '',
-    resposta: 'You’re welcome.',
+    resposta: 'You’re welcome',
   },
   {
     pergunta: '',
-    resposta: 'Have a nice weekend.',
+    resposta: 'Have a nice weekend',
   },
 ]

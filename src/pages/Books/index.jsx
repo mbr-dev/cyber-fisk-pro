@@ -7,7 +7,6 @@ import "./styles.css"
 import { CyberContext } from "../../context/cyber";
 import { booksTranslate } from "../../utils/Translate/booksTranslate";
 
-import { ButtonRed } from "../../components/ButtonRed";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
 import { BooksContainer, Line, BooksArea, BooksMain, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";

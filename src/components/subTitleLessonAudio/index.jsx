@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { Volume2, PauseCircle } from "lucide-react";
+import { Volume2, Headphones } from "lucide-react";
 
 import { LessonContext } from "../../context/lesson";
 
@@ -27,7 +27,7 @@ export const SubTitleLessonAudio = (props) => {
     <Container>
       {playAudio ?
         <Button onClick={() => handleClick()}>
-          <PauseCircle size={props.size ? props.size : '36'} strokeWidth={2.5} />
+          <Headphones size={props.size ? props.size : '36'} strokeWidth={2.5} />
         </Button>
         :
         <Button onClick={() => handleClick()}>

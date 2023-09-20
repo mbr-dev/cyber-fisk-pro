@@ -2,9 +2,9 @@ import { Play } from "lucide-react";
 
 import { ButtonContainer } from "./styles";
 
-export const ButtonRed = ({ title, hasIcon, onPlay }) => {
+export const ButtonRed = ({ title, hasIcon, onPress }) => {
   return (
-    <ButtonContainer onClick={onPlay}>
+    <ButtonContainer onClick={onPress}>
       <p>{title}</p>
 
       {hasIcon &&
