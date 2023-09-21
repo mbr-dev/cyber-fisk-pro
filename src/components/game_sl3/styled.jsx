@@ -77,25 +77,29 @@ export const TypeLetters = styled.div`
   width: 100vw;
   display: flex;
   flex-wrap: wrap;
-  padding: 1rem 1.5rem;
-  background-color: ${props => props.theme["gray-100"]};
+  padding: 0.5rem 1rem;
+  background-color: ${props => props.theme["gray-300"]};
+
+  .checked {
+    border-color: ${props => props.theme["gray-700"]};;
+  }
 `;
 
 export const DivWord = styled.div`
   display: flex;
   gap: 0.1875rem;
   margin-right: 1rem;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.375rem;
 `;
 
 export const DivLetter = styled.div`
-  width: 1.75rem;
+  width: 1.875rem;
   height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 5px;
-  border: 2px solid ${props => props.theme["gray-700"]};
+  border: 2px solid ${props => props.theme["gray-200"]};
   background-color: ${props => props.theme.white};
 `;
 
@@ -138,6 +142,7 @@ export const ButtonClean = styled.div`
 
 export const TypeLetters2 = styled(TypeLetters)`
   background-color: transparent;
+  padding: 0.5rem 1.5rem;
 `;
 
 export const DivLetter2 = styled(DivLetter)`

@@ -1,26 +1,25 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 
 import { L3_SPT } from "../../utils/Lesson3_Task2";
+import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
 
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styled";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styled";
 
 export const GameSL3 = () => {
-  const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "k", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
-  const letterToNumberMap = {
-    "A": 1, "B": 2, "C": 3, "D": 4, "E": 5, "F": 6, "G": 7, "H": 8, "I": 9, "J": 10,
-    "K": 11, "L": 12, "M": 13, "N": 14, "O": 15, "P": 16, "Q": 17, "R": 18, "S": 19, "T": 20,
-    "U": 21, "V": 22, "W": 23, "X": 24, "Y": 25, "Z": 26,
-  };
+  const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  const [optionColor, setOptionColor] = useState(0);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+
+  const [optionColorQ, setOptionColorQ] = useState(0);
   const [round, setRound] = useState(0);
   const [question, setQuestion] = useState("");
   const [divLetter, setDivLetter] = useState([]);
-  const [divLetterN, setDivLetterN] = useState([]);
-  const [answersQ, setAnswersQ] = useState([]);
+  const [divLetterRight, setDivLetterRight] = useState([]);
+  const [answersOfQuestion, setAnswersOfQuestion] = useState([]);
   const [answersA, setAnswersA] = useState([]);
   const [userAnswers, setUserAnswers] = useState([]);
   const [toHit, setToHit] = useState(0);
@@ -28,25 +27,19 @@ export const GameSL3 = () => {
   const [block, setBlock] = useState(true);
   const [changed, setChanged] = useState(false);
   const [isloading, setIsLoading] = useState(false);
-  const [selectedLetter, setSelectedLetter] = useState(null);
-  const [currentWordIndex, setCurrentWordIndex] = useState(0);
-  const [currentLetterIndex, setCurrentLetterIndex] = useState(0);
-
-  console.log("selectedLetter: ", selectedLetter)
-  console.log("currentWordIndex: ", currentWordIndex)
-  console.log("currentLetterIndex: ", currentLetterIndex)
-  console.log("selectedLetter: ", selectedLetter)
+  const [divLetterClasses, setDivLetterClasses] = useState([]);
+  const [text, setText] = useState("");
+  const [countTimer, setCountTimer] = useState(0);
 
   const loadLesson = () => {
     let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
     let letterQuestion = tempQuestion.split(" ");
-    const letter = letterQuestion.map(word => word.split(""));
-    setDivLetter(letter)
-    const mappedLetters = letter.map(word => word.map(letter => letterToNumberMap[letter]));
-    
-    setDivLetterN(mappedLetters)
+    const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
+    const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
+    setDivLetter(lettersIndex);
+    setDivLetterRight(lettersWord);
 
     const answersLength = L3_SPT[round].resposta.length;
     let tempAnswers = [];
@@ -55,12 +48,24 @@ export const GameSL3 = () => {
       tempAnswers.push(L3_SPT[round].resposta[a]);
     }
 
-    setAnswersQ(tempAnswers);
+    setAnswersOfQuestion(tempAnswers);
     setBlock(false);
+    setChanged(false);
+    setCountTimer(0);
   }
 
   const newRound = (number) => {
-    setQuestion(L3_SPT[number].pergunta);
+    setText("");
+    setOptionColorQ(0);
+
+    let tempQuestion = L3_SPT[number].pergunta.toUpperCase();
+    setQuestion(tempQuestion);
+
+    let letterQuestion = tempQuestion.split(" ");
+    const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
+    const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
+    setDivLetter(lettersIndex);
+    setDivLetterRight(lettersWord);
 
     const answersLength = L3_SPT[number].resposta.length;
     let tempAnswers = [];
@@ -69,57 +74,127 @@ export const GameSL3 = () => {
       tempAnswers.push(L3_SPT[number].resposta[a]);
     }
 
-    setAnswersQ(tempAnswers);
-    setBlock(false);
+    setCountTimer(0);
+    setAnswersOfQuestion(tempAnswers);
+    setChanged(false);
   }
 
-  const handleClick = () => {
-    const isCorrect = userAnswers.join("") === answersQ.join("");
+  const handleLetterClick = (index) => {
+    if (divLetter.length > 0) {
+      const letterToReplace = keyboardLetters[index];
+      
+      const newDivLetter = divLetter.map((letters, i) =>
+        letters.map((letter, j) =>
+          letter === index ? letterToReplace : letter
+        )
+      );
+  
+      setDivLetter(newDivLetter);
+    }
+  }
+
+  const handleCleanLetterQuestion = () => {
+    let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
+    setQuestion(tempQuestion);
+
+    let letterQuestion = tempQuestion.split(" ");
+    const letter = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
+    setDivLetter(letter);
+  }
+
+  const handleVerifyAnswers = (event) => {
+    event.preventDefault();
     
-    if (isCorrect) {
-       const revealedLetters = answersQ.map((answer, index) => {
-        return answer.split("").map((letter, letterIndex) => {
-          return (
-            <DivLetter2 key={letterIndex}>
-              {letter}
-            </DivLetter2>
-          );
-        });
-      });
-
-      setDivLetter(revealedLetters);
+    const userText = text.replace(/'/g, "’");
+    const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
+    
+    let tempHit = toHit;
+    
+    if (countTimer <= 30) {
+      tempHit += 5;
+    } else if (countTimer > 31 && countTimer <= 45) {
+      tempHit += 4;
+    } else if (countTimer > 46 && countTimer <= 75) {
+      tempHit += 3;
+    } else if (countTimer > 76 && countTimer <= 105) {
+      tempHit += 2;
+    } else {
+      tempHit += 1;
     }
-  }
-
-  const handleLetterClick = (letter) => {
-    setSelectedLetter(letter);
-
-    if (currentWordIndex < divLetterN.length && currentLetterIndex < divLetterN[currentWordIndex].length) {
-      const currentLetter = divLetterN[currentWordIndex][currentLetterIndex];
-
-      if (currentLetter === letterToNumberMap[letter]) {
-        const newDivLetterN = [...divLetterN];
-        newDivLetterN[currentWordIndex][currentLetterIndex] = letter;
-        setDivLetterN(newDivLetterN);
-
-        setCurrentLetterIndex(currentLetterIndex + 1);
-
-        if (currentLetterIndex === divLetterN[currentWordIndex].length - 1) {
-          setCurrentWordIndex(currentWordIndex + 1);
-          setCurrentLetterIndex(0);
-        }
-      }
+    
+    if (isAnswerCorrect) {
+      setToHit(tempHit);
+      setOptionColorQ(1);
+    } else {
+      tempHit += 0;
+      setToHit(tempHit);
+      setOptionColorQ(2);
     }
+    
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+    
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+    
+    console.log('PONTUAÇÂO: ', tempHit);
+    console.log('RODADA: ', tempRound);
+    console.log('RODADAGWERAL: ', tempGeneralRound);
+
+    setTimeout(() => {
+      newRound(tempRound);
+    }, 2000);
+    
+    // const rule = TrocaAtividade(2, tempGeneralRound, tempHit, tempRound);
+    // if (rule === "Continua") {
+    //   setTimeout(() => {
+    //     newRound(tempRound);
+    //   }, 2000);
+    // } else if (rule === "Game over") {
+    //   setNewPontos(0, 0);
+      
+    //   setTimeout(() => {
+    //     setNewContainer(1);
+    //   }, 2000);
+    // }
   }
 
   useEffect(() => {
     loadLesson();
-  } , [])
+  } , []);
+
+  useEffect(() => {
+    const checkIfLettersMatch = () => {
+      const letter = divLetter.map((letters) => letters.join("")).join("");
+      const lettersRight = divLetterRight.map((letters) => letters.join("")).join("");
+      return letter === lettersRight;
+    };
+
+    if (divLetter.length > 0 && checkIfLettersMatch()) {
+      setTimeout(() => {
+        setChanged(true);
+      }, 1500);
+    } else {
+      setChanged(false);
+    }
+  }, [divLetter, divLetterRight]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCountTimer(state => state + 1)
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [countTimer]);
   
   return (
     <Container>
       <HeaderLesson numStart="Super Task" numEnd="Finish" superTaskStart trophyEnd />
-
+      <span>{countTimer}</span>
       <Main>
         {!changed ? 
           <Phrase>
@@ -130,44 +205,39 @@ export const GameSL3 = () => {
                 return (
                   <button 
                     key={index}
-                    onClick={() => handleLetterClick(letter)}
+                    onClick={() => handleLetterClick(index)}
                   >
                     <p>{letter.toUpperCase()}</p>
                     <LineSeparator />
-                    <span>{index + 1}</span>
+                    <span>{index}</span>
                   </button>
                 )
               })}
             </Letters>
 
             <TypeLetters>
-              {divLetterN.map((letters, letterIndex) => {
+              {divLetter.map((letters, letterIndex) => {
                 return (
                   <DivWord key={letterIndex}>
                     {letters.map((letter, index) => {
-                      const displayLetter = 
-                      selectedLetter && letterToNumberMap[selectedLetter] === letter ?
-                      selectedLetter : letter;
                       return (
                         <DivLetter 
                           key={index}
-                          style={{
-                            borderColor: 
-                              currentLetterIndex === letterIndex &&
-                                currentLetterIndex === index ? defaultTheme["blue-100"] : ''
-                          }}
                         >
-                          {displayLetter}
+                          {letter}
                         </DivLetter>
                       )
                     })}
                   </DivWord>
                 )
               })}
-              <DivLetter>?</DivLetter>
+              <DivLetter className="checked"
+              >
+                ?
+              </DivLetter>
             </TypeLetters>
 
-            <ButtonClean>
+            <ButtonClean onClick={handleCleanLetterQuestion}>
               <p>Clean</p>
             </ButtonClean>
           </Phrase>
@@ -176,7 +246,7 @@ export const GameSL3 = () => {
             <h2>Now answer the question.</h2>
 
             <TypeLetters2>
-              {divLetter.map((letters, letterIndex) => {
+              {divLetterRight.map((letters, letterIndex) => {
                 return (
                   <DivWord key={letterIndex}>
                     {letters.map((letter, index) => {
@@ -192,15 +262,15 @@ export const GameSL3 = () => {
               <DivLetter2>?</DivLetter2>
             </TypeLetters2>
 
-            <form id="myForm" >
+            <form id="myForm" onSubmit={handleVerifyAnswers} >
               <Input 
                 placeholder="Type here"
                 required
+                value={text}
                 onChange={(e) => setText(e.target.value)}
                 style={{
-                  backgroundColor: optionColor === 0 ? "" : optionColor === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: optionColor === 0 ? "" : defaultTheme.white,
-                  border: optionColor === 0 ? "" : "none",
+                  backgroundColor: optionColorQ === 0 ? "" : optionColorQ === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                  color: optionColorQ === 0 ? "" : defaultTheme.white
                 }}
               />
             </form>
