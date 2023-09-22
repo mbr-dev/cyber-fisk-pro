@@ -36,7 +36,7 @@ export const Letters = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  gap: 0.75rem;
+  gap: 0.5rem;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   padding-inline: 2.5rem;
@@ -50,7 +50,7 @@ export const Letters = styled.div`
     align-items: center;
     justify-content: center;
     gap: 2px;
-    border: 1px solid transparent;
+    border: 2px solid transparent;
     border-radius: 5px;
     background-color: white;
     box-shadow: 0px 4px 10px 0px #00000033;
@@ -61,9 +61,17 @@ export const Letters = styled.div`
     }
 
     &:hover {
-      border-color: ${props => props.theme["blue-100"]};
+      border-color: ${props => props.theme["gray-700"]};
       transform: scale(1.1);
     }
+  }
+
+  .selected {
+    border-color: ${props => props.theme["gray-700"]};
+  }
+
+  .erro {
+    border-color: ${props => props.theme["red-200"]};
   }
 `;
 
@@ -81,7 +89,7 @@ export const TypeLetters = styled.div`
   background-color: ${props => props.theme["gray-300"]};
 
   .checked {
-    border-color: ${props => props.theme["gray-700"]};;
+    border: 2px solid ${props => props.theme["gray-700"]};
   }
 `;
 

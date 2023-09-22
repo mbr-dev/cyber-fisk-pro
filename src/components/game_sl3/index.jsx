@@ -1,10 +1,9 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 
 import { L3_SPT } from "../../utils/Lesson3_Task2";
-import { TrocaAtividade } from "../../utils/regras";
-import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styled";
@@ -12,7 +11,7 @@ import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase
 export const GameSL3 = () => {
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const navigate = useNavigate();
 
   const [optionColorQ, setOptionColorQ] = useState(0);
   const [round, setRound] = useState(0);
@@ -20,18 +19,17 @@ export const GameSL3 = () => {
   const [divLetter, setDivLetter] = useState([]);
   const [divLetterRight, setDivLetterRight] = useState([]);
   const [answersOfQuestion, setAnswersOfQuestion] = useState([]);
-  const [answersA, setAnswersA] = useState([]);
-  const [userAnswers, setUserAnswers] = useState([]);
-  const [toHit, setToHit] = useState(0);
-  const [erro, setErro] = useState(0);
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [block, setBlock] = useState(true);
   const [changed, setChanged] = useState(false);
   const [isloading, setIsLoading] = useState(false);
-  const [divLetterClasses, setDivLetterClasses] = useState([]);
   const [text, setText] = useState("");
   const [countTimer, setCountTimer] = useState(0);
+  const [selectedIndexes, setSelectedIndexes] = useState([]);
+  const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
 
-  const loadLesson = () => {
+  const loadLesson = useCallback(() => {
     let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
@@ -50,13 +48,14 @@ export const GameSL3 = () => {
 
     setAnswersOfQuestion(tempAnswers);
     setBlock(false);
-    setChanged(false);
-    setCountTimer(0);
-  }
+  }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
+    console.log('round: ', round);
     setText("");
     setOptionColorQ(0);
+    setSelectedIndexes([]);
+    setSelectedWrongIndexes([]);
 
     let tempQuestion = L3_SPT[number].pergunta.toUpperCase();
     setQuestion(tempQuestion);
@@ -82,83 +81,103 @@ export const GameSL3 = () => {
   const handleLetterClick = (index) => {
     if (divLetter.length > 0) {
       const letterToReplace = keyboardLetters[index];
-      
-      const newDivLetter = divLetter.map((letters, i) =>
-        letters.map((letter, j) =>
-          letter === index ? letterToReplace : letter
-        )
+
+      const newDivLetter = divLetter.map((letters) =>
+        letters.map((letter) => letter === index ? letterToReplace : letter)
       );
-  
+
       setDivLetter(newDivLetter);
+
+      if (divLetter.some(letter => letter.includes(index))) {
+        setSelectedIndexes([...selectedIndexes, index]);
+      } else {
+        setSelectedWrongIndexes([...selectedWrongIndexes, index]);
+      }
     }
   }
 
-  const handleCleanLetterQuestion = () => {
-    let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
-    setQuestion(tempQuestion);
+  // const handleCleanLetterQuestion = () => {
+  //   let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
+  //   setQuestion(tempQuestion);
 
-    let letterQuestion = tempQuestion.split(" ");
-    const letter = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
-    setDivLetter(letter);
-  }
+  //   let letterQuestion = tempQuestion.split(" ");
+  //   const letter = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
+  //   setDivLetter(letter);
+  // }
 
   const handleVerifyAnswers = (event) => {
     event.preventDefault();
-    
-    const userText = text.replace(/'/g, "’");
-    const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
-    
-    let tempHit = toHit;
+
+    let tempP = correctPoints;
     
     if (countTimer <= 30) {
-      tempHit += 5;
-    } else if (countTimer > 31 && countTimer <= 45) {
-      tempHit += 4;
-    } else if (countTimer > 46 && countTimer <= 75) {
-      tempHit += 3;
-    } else if (countTimer > 76 && countTimer <= 105) {
-      tempHit += 2;
+      tempP += 5;
+      console.log('ganhou 5 pontos')
+    } else if (countTimer >= 31 && countTimer <= 45) {
+      tempP += 4;
+      console.log('ganhou 4 pontos')
+    } else if (countTimer >= 46 && countTimer <= 75) {
+      tempP += 3;
+      console.log('ganhou 3 pontos')
+    } else if (countTimer >= 76 && countTimer <= 105) {
+      tempP += 2;
+      console.log('ganhou 2 pontos')
+    } else if (countTimer >= 106 && countTimer <= 120) {
+      tempP += 1;
+      console.log('ganhou 1 pontos')
     } else {
-      tempHit += 1;
+      tempP = 0;
+      console.log('ganhou 0 pontos')
     }
-    
-    if (isAnswerCorrect) {
-      setToHit(tempHit);
-      setOptionColorQ(1);
+
+    const userText = text.replace(/'/g, "’");
+  
+    if (round >= 6 && round <= 9) {
+      const correctStarts = [
+        "I have dinner at",
+        "I need to buy",
+        "They",
+        "I have"
+      ];
+
+      const isStartCorrect = correctStarts.some((start) => userText.startsWith(start));
+
+      if (isStartCorrect) {
+        setOptionColorQ(1);
+        setCorrectPoints(tempP);
+      } else {
+        setOptionColorQ(2);
+        let tempE = wrongPoints;
+        tempE++;
+        setWrongPoints(tempE);
+      }
     } else {
-      tempHit += 0;
-      setToHit(tempHit);
-      setOptionColorQ(2);
+      const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
+
+      if (isAnswerCorrect) {
+        setOptionColorQ(1);
+        setCorrectPoints(tempP);
+      } else {
+        setOptionColorQ(2);
+        let tempE = wrongPoints;
+        tempE++;
+        setWrongPoints(tempE);
+      }
     }
     
     let tempRound = round;
     tempRound++;
     setRound(tempRound);
-    
-    let tempGeneralRound = rodadaGeral;
-    tempGeneralRound++;
-    setNewRodada(tempGeneralRound);
-    
-    console.log('PONTUAÇÂO: ', tempHit);
-    console.log('RODADA: ', tempRound);
-    console.log('RODADAGWERAL: ', tempGeneralRound);
 
-    setTimeout(() => {
-      newRound(tempRound);
-    }, 2000);
-    
-    // const rule = TrocaAtividade(2, tempGeneralRound, tempHit, tempRound);
-    // if (rule === "Continua") {
-    //   setTimeout(() => {
-    //     newRound(tempRound);
-    //   }, 2000);
-    // } else if (rule === "Game over") {
-    //   setNewPontos(0, 0);
-      
-    //   setTimeout(() => {
-    //     setNewContainer(1);
-    //   }, 2000);
-    // }
+    if (tempRound === 10) {
+      setTimeout(() => {
+        navigate("/WellDone")
+      }, 2000)
+    } else {
+      setTimeout(() => {
+        newRound(tempRound);
+      }, 2000);
+    }
   }
 
   useEffect(() => {
@@ -179,7 +198,7 @@ export const GameSL3 = () => {
     } else {
       setChanged(false);
     }
-  }, [divLetter, divLetterRight]);
+  }, [divLetter, divLetterRight, setChanged]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -194,7 +213,6 @@ export const GameSL3 = () => {
   return (
     <Container>
       <HeaderLesson numStart="Super Task" numEnd="Finish" superTaskStart trophyEnd />
-      <span>{countTimer}</span>
       <Main>
         {!changed ? 
           <Phrase>
@@ -202,10 +220,13 @@ export const GameSL3 = () => {
 
             <Letters>
               {keyboardLetters.map((letter, index) => {
+                const isRight = selectedIndexes.includes(index);
+                const isWrong  = selectedWrongIndexes.includes(index);
                 return (
                   <button 
                     key={index}
                     onClick={() => handleLetterClick(index)}
+                    className={isRight ? "selected" : isWrong ? "erro" : ""}
                   >
                     <p>{letter.toUpperCase()}</p>
                     <LineSeparator />
@@ -220,9 +241,12 @@ export const GameSL3 = () => {
                 return (
                   <DivWord key={letterIndex}>
                     {letters.map((letter, index) => {
+                      const isString = typeof letter === "string";
+
                       return (
                         <DivLetter 
                           key={index}
+                          className={isString ? "checked" : ""}
                         >
                           {letter}
                         </DivLetter>
@@ -231,15 +255,14 @@ export const GameSL3 = () => {
                   </DivWord>
                 )
               })}
-              <DivLetter className="checked"
-              >
+              <DivLetter className="checked">
                 ?
               </DivLetter>
             </TypeLetters>
 
-            <ButtonClean onClick={handleCleanLetterQuestion}>
+            {/* <ButtonClean onClick={handleCleanLetterQuestion}>
               <p>Clean</p>
-            </ButtonClean>
+            </ButtonClean> */}
           </Phrase>
         :
           <Answer>

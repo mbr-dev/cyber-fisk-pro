@@ -177,25 +177,25 @@ export const L3_SPT = [
   {
     pergunta: 'What time do you have dinner',
     resposta: [
-      'I have dinner at (7pm)'
+      'I have dinner at'
     ]
   },
   {
     pergunta: 'What do you need to buy',
     resposta: [
-      'I need to buy (a smartphone)'
+      'I need to buy'
     ]
   },
   {
     pergunta: 'What do your friends do on Sunday nights',
     resposta: [
-      'They (watch movies at home)'
+      'They'
     ]
   },
   {
     pergunta: 'What do you have for breakfast every day',
     resposta: [
-      'I have (coffee and toast)'
+      'I have'
     ]
   },
 ]

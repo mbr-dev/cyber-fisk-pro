@@ -21,8 +21,8 @@ export const Game10 = () => {
   const [answers, setAnswers] = useState('');
   const [text, setText] = useState('');
   const [randomNumber, setRandomNumber] = useState([]);
-  const [toHit, setToHit] = useState(0);
-  const [erro, setErro] = useState(0);
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [block, setBlock] = useState(true);
   const [isloading, setIsLoading] = useState(false);
 
@@ -61,20 +61,20 @@ export const Game10 = () => {
     setBlock(true);
     
     let tempWord = text;
-    let tempHit = toHit;
+    let tempHit = correctPoints;
 
     tempWord = tempWord.replace(/’/g, "'");
 
     if (tempWord === answers) {
       setOptionColor(1);
       tempHit += 3;
-      setToHit(tempHit);
+      setCorrectPoints(tempHit);
       setNewPontos(2, tempHit);
     } else {
       setOptionColor(2);
-      let tempEr = erro;
+      let tempEr = wrongPoints;
       tempEr++;
-      setErro(tempEr);
+      setWrongPoints(tempEr);
     }
 
     let tempRound = round;
