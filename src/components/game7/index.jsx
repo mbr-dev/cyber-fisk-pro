@@ -13,7 +13,6 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game7 = () => {
   const { rodadaGeral, timeElapsed, setTimeElapsed, setRodadaGeral, setNewRodada } = useContext(LessonContext);
-  //console.log("GAME TIME: ", timeElapsed);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
@@ -28,13 +27,11 @@ export const Game7 = () => {
   const [blockAudio, setBlockAudio] = useState(true);
   const [selectAudIndex, setSelectAudIndex] = useState(null);
 
-  console.log("rodada: ", round);
-
   const loadLesson = () => {
-    const size = L2_T1_Facil.length;
+    const totalOfQuestions = L2_T1_Facil.length;
     let tmp = [];
 
-    for (let a = 0; a < size; a++) {
+    for (let a = 0; a < totalOfQuestions; a++) {
       tmp.push(a);
     }
 
