@@ -22,7 +22,8 @@ export const Main = styled.main`
   }
 `;
 
-export const Button = styled.div`
+export const Button = styled.button`
+  all: unset;
   width: 18.75rem;
   height: 4rem;
   display: flex;
@@ -30,15 +31,23 @@ export const Button = styled.div`
   align-items: center;
   padding-inline: 0.5rem;
   border-radius: 10px;
-  border: 2px solid transparent;
   box-shadow:  2px 2px 6px #ccc;
   transition: all .2s ease-in-out;
   cursor: pointer;
+  transition: all ease 0.3s;
 
   p {
     text-align: center;
     font-weight: bold;
-    color: ${props => props.theme.black};
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
   }
 
   @media(max-width: 320px) {

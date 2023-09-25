@@ -81,6 +81,11 @@ export const Button = styled.button`
     opacity: 0.8;
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
   @media(max-width: 320px) {
     width: 11rem;
     height: 2rem;

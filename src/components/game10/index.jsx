@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
@@ -13,65 +13,61 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input, Button } from "./styles";
 
 export const Game10 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState(0);
-  const [round, setRound] = useState(0);
+  const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
-  const [answers, setAnswers] = useState('');
+  const [answer, setAnswer] = useState('');
   const [text, setText] = useState('');
   const [randomNumber, setRandomNumber] = useState([]);
+  const [round, setRound] = useState(0);
   const [correctPoints, setCorrectPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
-  const [block, setBlock] = useState(true);
+  const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
 
-  const loadLesson = () => {
+  const loadLesson = useCallback(() => {
     const totalOfQuestions = L3_T2_Dificil.length;
+    
     let tempQuestions = [];
-
     for (let a = 0; a < totalOfQuestions; a ++) {
       tempQuestions.push(a);
     }
-
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
     setSound(`${URL_L3T2D}${tempQuestions[round]}.mp3`);
 
-    let tempAnwer = L3_T2_Dificil[tempQuestions[round]].resposta.replace(/’/g, "'");
-
-    setAnswers(tempAnwer);
-    setBlock(false);
-  }
+    let tempAnswer = L3_T2_Dificil[tempQuestions[round]].resposta.replace(/'/g, "’");
+    setAnswer(tempAnswer);
+  }, [setRandomNumber, setSound, setAnswer])
 
   const newRound = (number) => {
-    setText('');
+    setText("");
     setSound(`${URL_L3T2D}${randomNumber[number]}.mp3`);
 
-    let tempAnwer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/’/g, "'");
-    setAnswers(tempAnwer);
-    setBlock(false);
+    let tempAnswer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
+    setAnswer(tempAnswer);
   }
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
-    if (block) return;
     if (playAudio) return;
-
-    setBlock(true);
     
     let tempWord = text;
-    let tempHit = correctPoints;
+    let tempPoint = correctPoints;
+    let tempColorA = colorAnswers;
 
-    tempWord = tempWord.replace(/’/g, "'");
+    tempWord = tempWord.replace(/'/g, "’");
 
-    if (tempWord === answers) {
-      setOptionColor(1);
-      tempHit += 3;
-      setCorrectPoints(tempHit);
-      setNewPontos(2, tempHit);
+    if (tempWord === answer) {
+      tempColorA = 1;
+      setColorAnswer(tempColorA);
+      tempPoint += 3;
+      setCorrectPoints(tempPoint);
+      setNewPontos(2, tempPoint);
     } else {
-      setOptionColor(2);
+      tempColorA = 2;
+      setColorAnswer(tempColorA);
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -85,24 +81,27 @@ export const Game10 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempHit, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
-        setOptionColor(0);
+        tempColorA = 0;
+        setColorAnswer(tempColorA);
         newRound(tempRound);
       }, 1000);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
       
       setTimeout(() => {
-        setOptionColor(0);
+        tempColorA = 0;
+        setColorAnswer(tempColorA);
         setNewContainer(1);
       }, 1000);
     } else {
 
       setTimeout(() => {
-        setOptionColor(0);
+        tempColorA = 0;
+        setColorAnswer(tempColorA);
         setNewLesson(2);
       }, 1000);
     }
@@ -110,7 +109,11 @@ export const Game10 = () => {
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
+  }, [text, setBlockButton]);
 
   return (
     <Container>
@@ -122,21 +125,20 @@ export const Game10 = () => {
         <form id="myForm" onSubmit={handleVerifyWord}>
           <Input 
             placeholder="Type here"
-            required
-            maxLength={70}
+            maxLength={100}
             value={text}
             onChange={(e) => setText(e.target.value)}
             style={{
-              backgroundColor: optionColor === 0 ? "" : optionColor === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-              color: optionColor === 0 ? "" : defaultTheme.white,
-              border: optionColor === 0 ? "" : "none",
+              backgroundColor: colorAnswers === 0 ? "" : colorAnswers === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+              color: colorAnswers === 0 ? "" : defaultTheme.white,
+              border: colorAnswers === 0 ? "" : "none",
             }}
           />
         </form>
         <Button
           form="myForm"
           type="submit"
-          title="Enter"
+          disabled={blockButton}
         ><p>Check</p></Button>
       </Main>
     </Container>

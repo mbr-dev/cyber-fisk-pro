@@ -14,8 +14,7 @@ export const Main = styled.main`
   margin-top: 1rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
-  padding-inline: 1rem;
+  justify-content: space-around;
 `;
 
 export const Questions = styled.div`
@@ -28,11 +27,11 @@ export const Questions = styled.div`
 `;
 
 export const Answers = styled.div`
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 1rem;
+  justify-content: space-between;
 `;
 
 export const Button = styled.button`
@@ -43,7 +42,6 @@ export const Button = styled.button`
   padding-inline: 0.5rem;
   align-items: center;
   justify-content: center;
-  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
   transition: all ease 0.3s;
@@ -61,6 +59,6 @@ export const Button = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.3;
+    opacity: 0.5;
   }
 `;

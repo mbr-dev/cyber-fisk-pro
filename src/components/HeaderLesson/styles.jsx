@@ -1,16 +1,15 @@
 import styled from "styled-components";
 
-export const HeaderLessonContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
 `;
 
-export const HeaderLessonContent = styled.div`
+export const Main = styled.div`
   width: 100%;
   padding: 0.875rem;
   display: flex;
-  flex-direction: row;
   align-items: flex-start;
-  gap: 0.5rem;
+  justify-content: space-around;
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
@@ -25,8 +24,10 @@ export const HeaderLessonContent = styled.div`
 `
 
 export const BarStep = styled.div`
+  height: 2.5rem;
   display: flex;
-  padding: 0.5rem 0.75rem;
+  padding-inline: 0.75rem;
+  align-items: center;
   justify-content: center;
   background-color: ${props => props.theme.white};
   border-radius: 8px;
@@ -37,7 +38,7 @@ export const BarStep = styled.div`
   }
 `;
 
-export const HeaderLessonIcon = styled.div`
+export const Icons = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;

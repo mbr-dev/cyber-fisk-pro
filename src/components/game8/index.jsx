@@ -1,4 +1,4 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 
 import { HeaderLesson } from "../HeaderLesson";
@@ -10,118 +10,115 @@ import { TrocaAtividade } from "../../utils/regras";
 import { L3_T1_Medio } from "../../utils/Lesson3_Task1";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Game8Container, Button, Game8Main } from "./styles";
+import { Container, Button, Main } from "./styles";
 
 export const Game8 = () => {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
+  const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [rodada, setRodada] = useState(0);
-  const [pergunta, setPergunta] = useState('');
-  const [sortNum, setSortNum] = useState([]);
-  const [respostas, setRespostas] = useState([]);
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [bloqueia, setBloqueia] = useState(true);
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState([]);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [round, setRound] = useState(0);
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(true);
+  const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-  const [textoTroca, setTextoTroca] = useState('______');
+  const [changeText, setChangeText] = useState('______');
 
-  const loadLesson = () => {
-    const tam = L3_T1_Medio.length;
+  const loadLesson = useCallback(() => {
+    const totalOfQuestions = L3_T1_Medio.length;
+
     let tempQuestions = [];
-
-    for (let a = 0; a < tam; a++) {
+    for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
     }
-
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempQuestions);
+    setQuestion(L3_T1_Medio[tempQuestions[round]].pergunta);
 
-    setSortNum(tempQuestions);
-    setPergunta(L3_T1_Medio[tempQuestions[rodada]].pergunta);
-
-    let tempRandomAnswers = [];
-    let tempDrawNumber = idClick;
-
-    tempDrawNumber = tempDrawNumber.sort(() => Math.random() - 0.5);
-    setIdClick(tempDrawNumber);
-
+    let tempAnswers = [];
+    let tempRandomNumber = idClick;
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClick(tempRandomNumber);
     for (let a = 0; a < 3; a ++) {
-      tempRandomAnswers.push(L3_T1_Medio[tempQuestions[rodada]].resposta[tempDrawNumber[a]]);
+      tempAnswers.push(L3_T1_Medio[tempQuestions[round]].resposta[tempRandomNumber[a]]);
     }
+    setAnswers(tempAnswers);
 
-    setRespostas(tempRandomAnswers);
-    setBloqueia(false);
-  }
+    setBlockButton(false);
+  }, [setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setPergunta(L3_T1_Medio[sortNum[number]].pergunta);
+    setQuestion(L3_T1_Medio[randomNumber[number]].pergunta);
     
     let tempAnswers = [];
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-
     for (let a = 0; a < 3; a++) {
-      tempAnswers.push(L3_T1_Medio[sortNum[number]].resposta[tempRandomNumber[a]])
+      tempAnswers.push(L3_T1_Medio[randomNumber[number]].resposta[tempRandomNumber[a]])
     }
+    setAnswers(tempAnswers);
 
-    setRespostas(tempAnswers);
-    setBloqueia(false);
+    setBlockButton(false);
   }
 
   const verifyAnswer = (index) => {
-    if (bloqueia) return;
+    if (blockButton) return;
 
-    setBloqueia(true);
-    let tempA = acertos;
-    let arr = optionColor
+    setBlockButton(true);
+    let tempColor = colorAnswers;
+    let tempPoint = correctPoints;
 
     if (idClick[index] === 0) {
-      tempA += 2;
-      setNewPontos(1, tempA);
-      setAcertos(tempA);
-      arr[index] = 1;
-      setOptionColor(arr);
+      tempPoint += 2;
+      setCorrectPoints(tempPoint);
+      setNewPontos(1, tempPoint);
+
+      tempColor[index] = 1;
+      setColorAnswers(tempColor);
     } else {
-      arr[index] = 2;
-      setOptionColor(arr);
-      let tempE = erros;
+      let tempE = wrongPoints;
       tempE++;
-      setErros(tempE);
+      setWrongPoints(tempE);
+
+      tempColor[index] = 2;
+      setColorAnswers(tempColor);
     }
 
-    let tempRound = rodada;
+    let tempRound = round;
     tempRound++;
-    setRodada(tempRound);
+    setRound(tempRound);
 
     let tempGeneralRound = rodadaGeral;
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    let rule = TrocaAtividade(1, tempGeneralRound, tempA, tempRound);
+    let rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
-        setTextoTroca('______');
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
+        setChangeText('______');
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
 
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
-        setTextoTroca('______');
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
+        setChangeText('______');
         setNewContainer(1);
       }, 1500);
     } else {
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
-        setTextoTroca('______');
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
+        setChangeText('______');
         setNewLesson(2);
       }, 1500);
     }
@@ -151,7 +148,7 @@ export const Game8 = () => {
     });
 
     const style = {
-      color: isOver ? defaultTheme['blue-100'] : undefined,
+      color: isOver ? defaultTheme["gray-400"] : undefined,
       border: isOver ? `1px solid ${defaultTheme['gray-200']}` : '1px solid transparent',
     };
     
@@ -167,8 +164,8 @@ export const Game8 = () => {
 
     if (over && over.id === 'droppable') {
       const droppedIndex = Number(active.id.split('-')[1]);
-      const changeText = over ? respostas[droppedIndex] : '______';
-      setTextoTroca(changeText);
+      const changeTxt = over ? answers[droppedIndex] : '______';
+      setChangeText(changeTxt);
       verifyAnswer(droppedIndex);
     }
   }
@@ -178,36 +175,34 @@ export const Game8 = () => {
   }, [])
   
   return (
-    <Game8Container>
+    <Container>
       <HeaderLesson superTaskEnd numStart="Task 2" numEnd="Super task" />
 
       <TitleLesson title="Choose the best alternative." />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>
-          <SubTitleLesson 
-            title={
-              pergunta.replace('______', textoTroca)
-            } 
-          />
+          <SubTitleLesson title={question.replace('______', changeText)} />
         </Droppable>
 
-        <Game8Main>
-          {respostas.map((resposta, index) => {
+        <Main>
+          {answers.map((resposta, index) => {
             return (
               <Draggable index={index} key={index}>
                 <Button
                   style={{
-                    borderColor: optionColor[index] === 0 ? "transparent" : optionColor[index] === 1 ? defaultTheme["green-100"] : defaultTheme["red-200"],
+                    backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                    color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? "white" : "" 
                   }}
+                  disabled={blockButton}
                 >
                   {resposta}
                 </Button>
               </Draggable>
             )
           })}
-        </Game8Main>
+        </Main>
       </DndContext>
-    </Game8Container>
+    </Container>
   )
 }

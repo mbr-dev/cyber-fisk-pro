@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
-export const HeaderStepLessonContainer = styled.div``;
+export const Container = styled.div``;
   
-export const HeaderStepLessonContent = styled.div`
+export const Content = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   background-color: ${props => props.theme["gray-200"]};

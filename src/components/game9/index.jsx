@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
@@ -12,55 +12,51 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Button, Container, Main } from "./styles";
 
 export const Game9 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
+  const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [round, setRound] = useState(0);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
-  const [toHit, setToHit] = useState(0);
-  const [erro, setErro] = useState(0);
-  const [block, setBlock] = useState(true);
+  const [round, setRound] = useState(0);
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
+  const [blockButton, setBlockButton] = useState(true);
+  const [rightAnswers, setRightAnswers] = useState([]);
   const [isloading, setIsLoading] = useState(false);
-  const [rightAnswer, setRightAnswer] = useState([]);
-  
 
-  const loadLesson = () => {
+  const loadLesson = useCallback(() => {
     const totalOfQuestions = L3_T2_Medio.length;
-    let tempQuestions = [];
 
+    let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
     }
-
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
     setSound(L3_T2_Medio[tempQuestions[round]].pergunta);
 
-    let tempRandomAnswers = [];
+    let tempAnswers = [];
     let tempRandomNumber = idClick;
-
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
+    setAnswers(tempAnswers);
 
-    let tempRightAnswer = [];
-    
+    let tempRightAnswers = [];
     for (let a = 0; a < 3; a ++) {
       const answer = L3_T2_Medio[tempQuestions[round]].resposta[tempRandomNumber[a]];
 
-      tempRandomAnswers.push(answer.label);
+      tempAnswers.push(answer.label);
 
       if (answer.status === 1) {
-        tempRightAnswer.push(answer.label)
+        tempRightAnswers.push(answer.label)
       }
     }
+    setRightAnswers(tempRightAnswers);
 
-    setRightAnswer(tempRightAnswer);
-    setAnswers(tempRandomAnswers);
-    setBlock(false);
-  }
+    setBlockButton(false);
+  }, [setRandomNumber, setSound, setIdClick, round, setRightAnswers, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setSound(L3_T2_Medio[randomNumber[number]].pergunta);
@@ -69,9 +65,9 @@ export const Game9 = () => {
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
+    setAnswers(tempAnswers);
     
     let tempRightAnswer = [];
-
     for (let a = 0; a < 3; a++) {
       const answer = L3_T2_Medio[randomNumber[number]].resposta[tempRandomNumber[a]];
 
@@ -81,34 +77,35 @@ export const Game9 = () => {
         tempRightAnswer.push(answer.label)
       }
     }
+    setRightAnswers(tempRightAnswer);
 
-    setRightAnswer(tempRightAnswer);
-    setAnswers(tempAnswers);
-    setBlock(false);
+    setBlockButton(false);
   }
 
   const handleClick = (index) => {
-    if (block) return;
+    if (blockButton) return;
     if (playAudio) return;
 
-    setBlock(true);
+    setBlockButton(true);
 
-    let tempHit = toHit;
-    let arr = optionColor
+    let tempPoint = correctPoints;
+    let tempColor = colorAnswers;
     let answerSelected = answers[index];
 
-    if (rightAnswer.includes(answerSelected)) {
-      tempHit += 2;
-      arr[index] = 1;
-      setOptionColor(arr);
-      setNewPontos(1, tempHit);
-      setToHit(tempHit);
+    if (rightAnswers.includes(answerSelected)) {
+      tempPoint += 2;
+      setCorrectPoints(tempPoint);
+      setNewPontos(1, tempPoint);
+
+      tempColor[index] = 1;
+      setColorAnswers(tempColor);
     } else {
-      arr[index] = 2;
-      setOptionColor(arr);
-      let tempE = erro;
+      let tempE = wrongPoints;
       tempE++;
-      setErro(tempE);
+      setWrongPoints(tempE);
+
+      tempColor[index] = 2;
+      setColorAnswers(tempColor);
     }
 
     let tempRound = round;
@@ -119,34 +116,38 @@ export const Game9 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempHit, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
 
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     } else {
       setTimeout(() => {
-        arr[index] = 0;
-        setOptionColor(arr);
+        tempColor[index] = 0;
+        setColorAnswers(tempColor);
         setNewLesson(2);
-      }, 1000);
+      }, 1500);
     }
   }
 
   useEffect(() => {
     loadLesson();
-  } , [])
+  } , []);
+
+  useEffect(() => {
+    playAudio ? setBlockButton(true) : setBlockButton(false);
+  }, [playAudio, setBlockButton])
 
   return (
     <Container>
@@ -161,8 +162,10 @@ export const Game9 = () => {
               key={index}
               onClick={() => handleClick(index)}
               style={{
-                borderColor: optionColor[index] === 0 ? "transparent" : optionColor[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
+                backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? "white" : "" 
               }}
+              disabled={blockButton}
             >
               <p>{answer}</p>
             </Button>

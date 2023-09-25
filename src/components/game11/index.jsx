@@ -1,4 +1,4 @@
-import { useState, useEffect, useContext } from "react";
+import { useState, useEffect, useContext, useCallback } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
@@ -10,35 +10,30 @@ import { Container, Main, Answers, Questions, Button } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game11 = () => {
-  const { rodadaGeral, setRodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada } = useContext(LessonContext);
 
-  const [optionColorQ, setOptionColorQ] = useState([0, 0, 0]);
-  const [optionColorA, setOptionColorA] = useState([0, 0, 0, 0, 0]);
+  const [colorQuestions, setColorQuestions] = useState([0, 0, 0]);
+  const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
   const [idClickQuestion, setIdClickQuestion] = useState([0, 1, 2]);
   const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3, 4]);
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [blockAnswer, setBlockAnswer] = useState(true);
-  const [blockQuestion, setBlockQuestion] = useState(true);
-  const [selectQuestionIndex, setSelectQuestionIndex] = useState(null);
-  const [selectAnswerIndex, setSelectAnswerIndex] = useState(null);
-  const [rightQ, setRightQ] = useState([]);
-  const [rightA, setRightA] = useState([]);
-
-  console.log("rightQ: ", rightQ);
-  console.log("rightA: ", rightA);
-
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [blockAnswers, setBlockAnswers] = useState(true);
+  const [blockQuestions, setBlockQuestions] = useState(true);
+  const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
+  const [rightQuestions, setRightQuestions] = useState([]);
+  const [rightAnswers, setRightAnswers] = useState([]);
  
-  const loadLesson = () => {
+  const loadLesson = useCallback(() => {
     const totalOfQuestions = L4_T2_Facil.length;
-    let tempQuestions = [];
 
+    let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
     }
-
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
 
@@ -49,6 +44,7 @@ export const Game11 = () => {
     for (let a = 0; a < idClickQuestion.length; a++) {
       tempQ.push(L4_T2_Facil[tempQuestions[round]].pergunta[tempRandomQ[a]].label);
     }
+    setQuestions(tempQ);
 
     let tempA = [];
     let temRandomA = idClickAnswer;
@@ -57,130 +53,149 @@ export const Game11 = () => {
     for (let a = 0; a < idClickAnswer.length; a++) {
       tempA.push(L4_T2_Facil[tempQuestions[round]].resposta[temRandomA[a]].label);
     }
-
-    let tempQuestionsAndAnswers = [];
-
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestionsAndAnswers.push({
-        question: L4_T2_Facil[a].pergunta.label,
-        answer: L4_T2_Facil[a].resposta.label
-      });
-    }
-    
-    setQuestions(tempQ);
     setAnswers(tempA);
-    setBlockQuestion(false);
-    setBlockAnswer(false);
-  }
+
+    setBlockQuestions(false);
+  }, [setRandomNumber, idClickQuestion, setIdClickQuestion, setQuestions, idClickAnswer, setIdClickAnswer, setAnswers, setBlockQuestions])
 
   const newRound = (number) => {
-    let tempAnswer = [];
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswer.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomAnswer[a]].label);
-    }
+    setRightQuestions([]);
+    setRightAnswers([]);
 
-    let tempQuestion = [];
-    let tempRandomQuestion = idClickQuestion;
-    tempRandomQuestion = tempRandomQuestion.sort(() => Math.random() - 0.5);
-    setIdClickQuestion(tempRandomQuestion);
+    let tempQ = [];
+    let tempRandomQ= idClickQuestion;
+    tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
+    setIdClickQuestion(tempRandomQ);
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQuestion.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomQuestion[a]].label);
+      tempQ.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomQ[a]].label);
     }
+    setQuestions(tempQ);
 
-    setQuestions(tempQuestion);
-    setAnswers(tempAnswer);
-    setBlockQuestion(false);
-    setBlockAnswer(false);
+    let tempA = [];
+    let tempRandomA = idClickAnswer;
+    tempRandomA = tempRandomA.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomA);
+    for (let a = 0; a < idClickAnswer.length; a++) {
+      tempA.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomA[a]].label);
+    }
+    setAnswers(tempA);
+    
+    setBlockQuestions(false);
+    setBlockAnswers(true);
   }
 
-  const handleGetQuestion = (id) => {
-    if (blockQuestion) {
-      setSelectQuestionIndex(null);
-      setBlockQuestion(false)
+  const handleGetQuestion = (index) => {
+    if (blockQuestions) {
+      setSelectedQuestionIndex(null);
+      setBlockQuestions(false);
     } else {
-      let tempId = id;
-      setSelectQuestionIndex(tempId);
-      setBlockQuestion(true);
+      let tempId = index;
+      setSelectedQuestionIndex(tempId);
+      setBlockQuestions(true);
+      setBlockAnswers(false);
     }
   }
 
-  const handleGetAnswer = (id) => {
-    if (blockAnswer) return;
+  const handleGetAnswer = (index) => {
+    if (blockAnswers) return;
 
-    let arr = optionColorQ;
-    let arr2 = optionColorA;
-    let tempRound = round;
-    let tempGeneralRound = rodadaGeral;
+    let tempColorQ = [...colorQuestions];
+    let tempColorA = [...colorAnswers];
+    let tempPoint = correctPoints;
     
-    const selectedQuestion = L4_T2_Facil[randomNumber[round]].pergunta[idClickQuestion[selectQuestionIndex]];
-    const selectedAnswer = L4_T2_Facil[randomNumber[round]].resposta[idClickAnswer[id]];
+    const selectedQuestion = L4_T2_Facil[randomNumber[round]].pergunta[idClickQuestion[selectedQuestionIndex]];
+    const selectedAnswer = L4_T2_Facil[randomNumber[round]].resposta[idClickAnswer[index]];
     
-    if (selectedQuestion.answer === selectedAnswer.answer) {
-      arr[selectQuestionIndex] = 1;
-      arr2[id] = 1;
-      setOptionColorQ(arr);
-      setOptionColorA(arr2);
-      setRightQ(state => [...state, selectQuestionIndex]);
-      setRightA(state => [...state, id]);
+    if (selectedAnswer.answer === selectedQuestion.answer) {
+      tempColorQ[selectedQuestionIndex] = 1;
+      setColorQuestions(tempColorQ);
+      tempColorA[index] = 1;
+      setColorAnswer(tempColorA);
+
+      tempPoint += 1;
+      setCorrectPoints(tempPoint);
+
+      setRightQuestions(state => [...state, selectedQuestionIndex]);
+      setRightAnswers(state => [...state, index]);
     } else {
-      arr[selectQuestionIndex] = 2;
-      arr2[id] = 2;
-      setOptionColorQ(arr);
-      setOptionColorA(arr2);
+      tempColorQ[selectedQuestionIndex] = 2;
+      setColorQuestions(tempColorQ);
+      tempColorA[index] = 2;
+      setColorAnswer(tempColorA);
     }
 
-    setBlockAnswer(false);
-    setBlockQuestion(false);
-
-    setTimeout(() => {
-      arr[selectQuestionIndex] = 0;
-      arr2[id] = 0;
-      setOptionColorQ(arr);
-      setOptionColorA(arr2);
-      console.log("Timeout executed.");
-    }, 500);
+    setBlockQuestions(false);
+    setBlockAnswers(true);
   }
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (rightQuestions.length >= 3 && rightAnswers.length >= 3) {
+      let tempRound = round;
+      tempRound++;
+      let tempGeneralRound = rodadaGeral;
+      tempGeneralRound++;
+
+      setTimeout(() => {
+        setRound(tempRound);
+        setNewRodada(tempGeneralRound);
+        newRound(tempRound);
+      }, 1000)
+    }
+  }, [rightQuestions, rightAnswers, round, rodadaGeral, setRound, setNewRodada, newRound]);
+
+  useEffect(() => {
+    const resetBorders = setTimeout(() => {
+      let tempColorQ = [...colorQuestions];
+      let tempColorA = [...colorAnswers];
+      tempColorQ[selectedQuestionIndex] = 0;
+      tempColorA.fill(0);
+      setColorQuestions(tempColorQ);
+      setColorAnswer(tempColorA);
+    }, 1000);
+
+    return () => clearTimeout(resetBorders);
+  }, [colorQuestions, colorAnswers, selectedQuestionIndex]);
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      <HeaderLesson numStart="Task 1" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Match the question to their answers." />
 
       <Main>
         <Questions>
-         {questions.map((question, index) => {
-           const disabledQ = rightQ.includes(index);
-            return (
-              <Button 
-                key={index}
-                onClick={() => handleGetQuestion(index)}
-                style={{
-                  borderColor: optionColorQ[index] === 0 ? "transparent" : optionColorQ[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                }}
-                disabled={disabledQ}
-              >
-                <p>{question}</p>
-              </Button>
-            )
+          {questions.map((question, index) => {
+            const disabledQ = rightQuestions.includes(index);
+              return (
+                <Button 
+                  key={index}
+                  onClick={() => handleGetQuestion(index)}
+                  style={{
+                    opacity: (blockQuestions && selectedQuestionIndex === index) || disabledQ ? 0.5 : 1,
+                    backgroundColor: colorQuestions[index] === 0 ? "" : colorQuestions[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                    color: colorQuestions[index] === 1 || colorQuestions[index] === 2 ? defaultTheme.white : "",
+                  }}
+                  disabled={disabledQ}
+                >
+                  <p>{question}</p>
+                </Button>
+              )
           })}
         </Questions>
 
         <Answers>
           {answers.map((answer, index) => {
-            const disabledA = rightA.includes(index);
+            const disabledA = rightAnswers.includes(index);
             return (
               <Button 
                 key={index}
                 onClick={() => handleGetAnswer(index)}
                 style={{
-                  borderColor: optionColorA[index] === 0 ? "transparent" : optionColorA[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                  backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
+                  color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? defaultTheme.white : "",
                 }}
                 disabled={disabledA}
               >

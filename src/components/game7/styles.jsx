@@ -1,32 +1,18 @@
 import styled from "styled-components";
 
-export const Game7Container = styled.div`
+export const Container = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const Game7Main = styled.main`
-  width: 18.75rem;
+export const Main = styled.main`
+  width: 100%;
   margin-top: 1rem;
   display: flex;
-  flex-direction: column;
   align-items: center;
-
-  p {
-    font-weight: 500;
-    font-size: 1.5rem;
-  }
-`;
-
-export const AudioArea = styled.div`
-  width: 100%;
-  margin-top: 5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 2rem;
+  justify-content: space-around;
 `;
 
 export const ButtonRow = styled.div`
@@ -36,6 +22,7 @@ export const ButtonRow = styled.div`
 
   button:disabled {
     cursor: not-allowed;
+    opacity: 0.5;
   }
 `;
 
