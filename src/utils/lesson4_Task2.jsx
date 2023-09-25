@@ -70,3 +70,39 @@ export const L4_T2_Facil = [
     ]
   },
 ];
+
+export const L4_T2_Medio = [
+  { pergunta: ["does", "your", "singer", "favorite", "is", "who", "?"],
+    resposta: "Who is your favorite singer?"
+  },
+  { pergunta: ["do", "podcast", "host", "who", "is", "favorite", "?", "your"],
+    resposta: "Who is your favorite podcast host?"
+  },
+  { pergunta: ["does", "your", "favorite", "actress", "who", "is", "?"],
+    resposta: "Who is your favorite actress?"
+  },
+  { pergunta: ["who", "do", "is", "teacher", "your", "favorite", "?"],
+    resposta: "Who is your favorite teacher?"
+  },
+  { pergunta: ["does", "is", "who", "your", "favorite", "cousin", "?"],
+    resposta: "Who is your favorite cousin?"
+  },
+  { pergunta: ["where", "does", "is", "your", "mother", "now", "?"],
+    resposta: "Where is your mother now?"
+  },
+  { pergunta: ["does", "your", "best", "friend", "is", "where", "from", "?"],
+    resposta: "Where is your best friend from?"
+  },
+  { pergunta: ["does", "your", "boyfriend", "is", "where", "now", "?"],
+    resposta: "Where is your boyfriend/girlfriend now?"
+  },
+  { pergunta: ["where", "do", "is", "your", "pet", "now", "?"],
+    resposta: "Where is your pet now?"
+  },
+  { pergunta: ["do", "you", "do", "live", "where", "?"],
+    resposta: "Where do you live?"
+  },
+];
+
+
+export const L4_T2_Dificil = [];

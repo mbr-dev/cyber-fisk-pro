@@ -8,9 +8,10 @@ import { LessonContext } from "../../context/lesson";
 
 import { Container, Main, Answers, Questions, Button } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { TrocaAtividade } from "../../utils/regras";
 
 export const Game11 = () => {
-  const { rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
 
   const [colorQuestions, setColorQuestions] = useState([0, 0, 0]);
   const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
@@ -21,6 +22,7 @@ export const Game11 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [correctPoints, setCorrectPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
   const [blockQuestions, setBlockQuestions] = useState(true);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
@@ -102,6 +104,8 @@ export const Game11 = () => {
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
     let tempPoint = correctPoints;
+    let tempRound = round;
+    let tempGeneralRound = rodadaGeral;
     
     const selectedQuestion = L4_T2_Facil[randomNumber[round]].pergunta[idClickQuestion[selectedQuestionIndex]];
     const selectedAnswer = L4_T2_Facil[randomNumber[round]].resposta[idClickAnswer[index]];
@@ -112,8 +116,10 @@ export const Game11 = () => {
       tempColorA[index] = 1;
       setColorAnswer(tempColorA);
 
-      tempPoint += 1;
+      tempPoint++;
       setCorrectPoints(tempPoint);
+      setNewPontos(1, tempPoint);
+      console.log("tempPoint: ", tempPoint);
 
       setRightQuestions(state => [...state, selectedQuestionIndex]);
       setRightAnswers(state => [...state, index]);
@@ -122,10 +128,39 @@ export const Game11 = () => {
       setColorQuestions(tempColorQ);
       tempColorA[index] = 2;
       setColorAnswer(tempColorA);
+
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
+
+      tempRound++;
+      tempGeneralRound++;
+
+      setTimeout(() => {
+        setRound(tempRound);
+        setNewRodada(tempGeneralRound);
+        newRound(tempRound);
+      }, 1000);
     }
+
+    const rule = TrocaAtividade(0, tempGeneralRound, tempPoint, tempRound);
 
     setBlockQuestions(false);
     setBlockAnswers(true);
+
+    if (rule === "Continua") {
+      return;
+    } else if (rule === "Game over") {
+      setNewPontos(0, 0);
+      
+      setTimeout(() => {
+        setNewContainer(1);
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        setNewLesson(1);
+      }, 1000);
+    }
   }
 
   useEffect(() => {
@@ -143,7 +178,7 @@ export const Game11 = () => {
         setRound(tempRound);
         setNewRodada(tempGeneralRound);
         newRound(tempRound);
-      }, 1000)
+      }, 1000);
     }
   }, [rightQuestions, rightAnswers, round, rodadaGeral, setRound, setNewRodada, newRound]);
 
@@ -162,7 +197,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Super Task" superTaskEnd />
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Match the question to their answers." />
 
       <Main>
