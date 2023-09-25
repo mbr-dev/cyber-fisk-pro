@@ -94,7 +94,7 @@ export const L4_T2_Medio = [
     resposta: "Where is your best friend from?"
   },
   { pergunta: ["does", "your", "boyfriend", "is", "where", "now", "?"],
-    resposta: "Where is your boyfriend/girlfriend now?"
+    resposta: "Where is your boyfriend now?"
   },
   { pergunta: ["where", "do", "is", "your", "pet", "now", "?"],
     resposta: "Where is your pet now?"
