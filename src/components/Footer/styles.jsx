@@ -1,15 +1,14 @@
 import styled from "styled-components"
 
-export const FooterContainer = styled.footer`
+export const Container = styled.footer`
   width: 100vw;
-  justify-content: space-between;
-  background-color: ${props => props.theme["red-200"]};
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-around;
   gap: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 0.875rem;
+  padding-block: 0.75rem;
+  background-color: ${props => props.theme["red-200"]};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
@@ -17,9 +16,19 @@ export const FooterContainer = styled.footer`
     font-weight: normal;
     color: ${props => props.theme.white};
   }
+
+  @media(max-width: 320px) {
+    padding-block: 0.5rem;
+    gap: 0.25rem;
+
+    p {
+      font-size: 0.865rem;
+    }
+  }
 `;
 
-export const FooterBottom = styled.div`
+export const Main = styled.div`
+  flex: 1;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -31,5 +40,14 @@ export const FooterBottom = styled.div`
 
   .iconFooter {
     width: 2.5rem;
+  }
+
+  @media(max-width: 320px) {
+    img {
+      width: 48px;
+    }
+    .iconFooter {
+      width: 1.75rem;
+    }
   }
 `;

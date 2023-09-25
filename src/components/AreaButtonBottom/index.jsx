@@ -1,17 +1,16 @@
 import { ButtonRed } from "../ButtonRed";
 
-import { AreaButtonBottomContainer, LineSeparator } from "./styles";
+import { Container, LineSeparator } from "./styles";
 
 export const AreaButtonBottom = ({ title, hasIcon }) => {
   return (
-    <AreaButtonBottomContainer>
+    <Container>
       <LineSeparator />
-      
       {hasIcon ?
         <ButtonRed title={title} hasIcon />
         :
         <ButtonRed title={title} />
       }
-    </AreaButtonBottomContainer>
+    </Container>
   )
 }

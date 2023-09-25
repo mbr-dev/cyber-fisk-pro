@@ -6,31 +6,29 @@ import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { CyberContext } from "../../context/cyber";
 import { homeCardsTranslate } from "../../utils/Translate/homeCardsTranslate";
 
-import { HomeContainer, HomeMain, MainCard, MainCards } from "./styles";
+import { Container, Main, Card, Cards } from "./styles";
 
 export const Home = () => {
   const { selectLanguageHome } = useContext(CyberContext);
 
   return(
-    <HomeContainer>
+    <Container>
       <TopMenuHeader hasAvatar hasLogo />
-
-      <HomeMain>
-        <MainCards>
+      <Main>
+        <Cards>
           {homeCardsTranslate.map(homeCard => {
             return (
-              <MainCard key={homeCard.id}>
+              <Card key={homeCard.id}>
                 <img src={homeCard.img} alt="" />
                 {selectLanguageHome === 0 && <p>{homeCard.name[0]}</p>}
                 {selectLanguageHome === 1 && <p>{homeCard.name[1]}</p>}
                 {selectLanguageHome === 2 && <p>{homeCard.name[2]}</p>}
-              </MainCard>
+              </Card>
             )
           })}
-        </MainCards>
-      </HomeMain>
-
+        </Cards>
+      </Main>
       <Footer />
-    </HomeContainer>
+    </Container>
   )
 }

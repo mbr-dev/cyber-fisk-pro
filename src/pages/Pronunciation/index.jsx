@@ -1,15 +1,17 @@
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import { useSpeechSynthesis } from "react-speech-kit";
 
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { ButtonRed } from "../../components/ButtonRed";
+
+import { defaultTheme } from "../../themes/defaultTheme"
 
 import BrazilImg from "../../assets/Brazil.svg";
 import EUAImg from "../../assets/Eua.svg";
 import SpainImg from "../../assets/Spain.svg";
 
-import { PronunciationContainer, PronunciationMain, Form, SelectLanguage } from "./styles"
-import { ButtonRed } from "../../components/ButtonRed";
+import { Container, Main, Form, SelectLanguage } from "./styles"
 
 /* 
   lang: 'en-US' 'Microsoft David - English (United States)'
@@ -55,25 +57,40 @@ export const Pronunciation = () => {
   };
 
   return (
-    <PronunciationContainer>
-      <TopMenuHeader hasLogo />
+    <Container>
+      <TopMenuHeader hasAvatar hasLogo />
 
-      <PronunciationMain>
+      <Main>
         {selectLanguage === "pt-BR" ?
           <h2>Pronúncia</h2> : 
           selectLanguage === "en-US" ?  <h2>Pronunciation</h2> :  <h2>Pronunciación</h2>
         }
 
-        <SelectLanguage>
-          <button onClick={() => handleLanguageChange("pt-BR")}>
+        <SelectLanguage >
+          <button 
+            onClick={() => handleLanguageChange("pt-BR")}
+            style={{
+              borderColor: selectLanguage === "pt-BR" ? defaultTheme["red-200"] : ""
+            }}
+          >
             <img src={BrazilImg} alt="" />
           </button>
 
-          <button onClick={() => handleLanguageChange("en-US")}>
+          <button 
+            onClick={() => handleLanguageChange("en-US")}
+            style={{
+              borderColor: selectLanguage === "en-US" ? defaultTheme["red-200"] : ""
+            }}
+          >
             <img src={EUAImg} alt="" />
           </button>
 
-          <button onClick={() => handleLanguageChange("es")}>
+          <button 
+            onClick={() => handleLanguageChange("es")}
+            style={{
+              borderColor: selectLanguage === "es" ? defaultTheme["red-200"] : ""
+            }}
+          >
             <img src={SpainImg} alt="" />
           </button>
         </SelectLanguage>
@@ -94,9 +111,9 @@ export const Pronunciation = () => {
             onPress={handleGetText}
           />
         </Form>
-      </PronunciationMain>
+      </Main>
 
       <AreaButtonBottom title="Home" />
-    </PronunciationContainer>
+    </Container>
   )
 }

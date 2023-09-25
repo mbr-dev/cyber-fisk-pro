@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.button`
+export const Container = styled.button`
   all: unset;
   width: 2rem;
   height: 2rem;
@@ -12,4 +12,9 @@ export const ButtonContainer = styled.button`
   box-shadow: 0px 4px 10px 0px #00000040;
   color: ${props => props.theme.white};
   cursor: pointer;
+
+  @media(max-width: 320px) {
+    width: 1.75rem;
+    height: 1.75rem;
+  }
 `;
