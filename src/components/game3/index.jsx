@@ -9,7 +9,7 @@ import { LessonContext } from "../../context/lesson";
 import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 
-import { Game3Container, Game3Content } from "./style";
+import { Game3Container, Game3Content } from "./styles";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 

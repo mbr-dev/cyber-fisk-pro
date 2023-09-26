@@ -104,17 +104,6 @@ export const Radio = styled(RadioGroup.Item)`
   }
 `;
 
-// export const Indicator = styled(RadioGroup.Indicator)`
-//   &::after {
-//     content: '';
-//     display: block;
-//     width: 3rem;
-//     height: 3rem;
-//     border-radius: 8px;
-//     background-color: red;
-//   }
-// `;
-
 export const Button = styled.button`
   all: unset;
   width: 15.875rem;

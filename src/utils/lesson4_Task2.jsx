@@ -187,3 +187,31 @@ export const L4_T2_Dificil = [
     ]
   },
 ];
+
+export const L4_SL4 = [
+  {
+    images: ["Ess1_L4_ST_1", "Ess1_L4_ST_2", "Ess1_L4_ST_3", "Ess1_L4_ST_4"],
+    letras: ["A", "C", "E", "O", "M", "G", "R", "F", "S", "V", "T", "H"],
+    resposta: "ACTRESS"
+  },
+  {
+    images: ["Ess1_L4_ST_5", "Ess1_L4_ST_6", "Ess1_L4_ST_7", "Ess1_L4_ST_8"],
+    letras: ["A", "E", "O", "M", "N", "G", "R", "F", "S", "V", "T", "H"],
+    resposta: "STRONG"
+  },
+  {
+    images: ["Ess1_L4_ST_9", "Ess1_L4_ST_10", "Ess1_L4_ST_11", "Ess1_L4_ST_12"],
+    letras: ["A", "I", "E", "O", "C", "F", "S", "R", "N", "L", "M", "Y"],
+    resposta: "EARLY"
+  },
+  {
+    images: ["Ess1_L4_ST_13", "Ess1_L4_ST_14", "Ess1_L4_ST_15", "Ess1_L4_ST_16"],
+    letras: ["A", "E", "U", "C", "D", "L", "N", "G", "S", "T", "R", "Y"],
+    resposta: "TALENTED"
+  },
+  {
+    images: ["Ess1_L4_ST_17", "Ess1_L4_ST_18", "Ess1_L4_ST_19", "Ess1_L4_ST_20"],
+    letras: ["T", "E", "I", "O", "C", "A", "M", "P", "S", "B", "V", "U"],
+    resposta: "COMPETETIVE"
+  },
+]
