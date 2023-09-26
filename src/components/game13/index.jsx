@@ -25,9 +25,6 @@ export const Game13 = () => {
   const [isloading, setIsLoading] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState([]);
 
-  console.log("rightPoints: ", correctPoints);
-  console.log("wrongPoints: ", wrongPoints);
-
   const loadLesson = useCallback(() => {
     const totalOfQuestions = L4_T2_Dificil.length;
 
@@ -41,14 +38,14 @@ export const Game13 = () => {
     setQuestion(tempQ);
 
     let tempAnswers = [];
-    let tempAnswersLength = L4_T2_Dificil[tempQuestions[round]].resposta;
-    for (let a = 0; a < tempAnswersLength.length; a++) {
+    let tempAnswersLength = L4_T2_Dificil[tempQuestions[round]].resposta.length;
+    for (let a = 0; a < tempAnswersLength; a++) {
       tempAnswers.push(L4_T2_Dificil[tempQuestions[round]].resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
-    for (let a = 0; a < tempAnswersLength.length; a++) {
+    for (let a = 0; a < tempAnswersLength; a++) {
       tempRightA.push(L4_T2_Dificil[tempQuestions[round]].resposta[a].status);
     }
     setRightAnswers(tempRightA);
@@ -92,14 +89,14 @@ export const Game13 = () => {
 
     let tempAnswers = selectedRadio;
     let tempColor = [...colorAnswers];
-    let tempPoint = correctPoints;
+    let tempRightPoints = correctPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
     if (isCorrect) {
-      tempPoint++;
-      setCorrectPoints(tempPoint);
-      setNewPontos(2, tempPoint);
+      tempRightPoints++;
+      setCorrectPoints(tempRightPoints);
+      setNewPontos(2, tempRightPoints);
     } else {
       for (let a = 0; a < tempAnswers.length; a++) {
         if (tempAnswers[a] !== rightAnswers[a]) {
@@ -121,7 +118,7 @@ export const Game13 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {

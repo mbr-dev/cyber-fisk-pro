@@ -3,7 +3,7 @@ import { useState, useCallback, useEffect, useContext } from "react";
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
-import { URL_L4_SL4 } from "../../config/infos";
+import { URL_FISKPRO } from "../../config/infos";
 import { L4_SL4 } from "../../utils/lesson4_Task2";
 import { LessonContext } from "../../context/lesson";
 
@@ -147,7 +147,7 @@ export const GameSL4 = () => {
           {images.map((image, index) => {
             return (
               <Photo key={index}>
-                <img src={`${URL_L4_SL4}${image}.png`} alt="" />
+                <img src={`${URL_FISKPRO}lesson${4}/${image}.png`} alt="" />
               </Photo>
             )
           })}

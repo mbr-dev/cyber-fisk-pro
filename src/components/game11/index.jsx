@@ -48,14 +48,14 @@ export const Game11 = () => {
     }
     setQuestions(tempQ);
 
-    let tempA = [];
-    let temRandomA = idClickAnswer;
-    temRandomA = temRandomA.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(temRandomA);
+    let tempAnswers = [];
+    let tempRandomAnswer = idClickAnswer;
+    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempAnswers);
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempA.push(L4_T2_Facil[tempQuestions[round]].resposta[temRandomA[a]].label);
+      tempAnswers.push(L4_T2_Facil[tempQuestions[round]].resposta[tempRandomAnswer[a]].label);
     }
-    setAnswers(tempA);
+    setAnswers(tempAnswers);
 
     setBlockQuestions(false);
   }, [setRandomNumber, idClickQuestion, setIdClickQuestion, setQuestions, idClickAnswer, setIdClickAnswer, setAnswers, setBlockQuestions])
@@ -73,14 +73,14 @@ export const Game11 = () => {
     }
     setQuestions(tempQ);
 
-    let tempA = [];
-    let tempRandomA = idClickAnswer;
-    tempRandomA = tempRandomA.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomA);
+    let tempAnswers = [];
+    let tempRandomAnswer = idClickAnswer;
+    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomAnswer);
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempA.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomA[a]].label);
+      tempAnswers.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomAnswer[a]].label);
     }
-    setAnswers(tempA);
+    setAnswers(tempAnswers);
     
     setBlockQuestions(false);
     setBlockAnswers(true);
