@@ -76,11 +76,17 @@ function QRReader() {
       setPermission("denied");
     });
 
+  const handleSubmit = () => {
+    navigate(`${location.pathname.replace("/reader", "")}/${code.trim()}`);
+  };
+
   return (
     <Container>
       <Header onClick={() => setIsFocused(false)}>
         <BackButton
-          onClick={() => (isFocused ? setIsFocused(false) : navigate(-1))}
+          onClick={() =>
+            isFocused ? setIsFocused(false) : navigate("/qr-code")
+          }
         >
           <BackImage src={BackIcon} />
         </BackButton>
@@ -120,17 +126,15 @@ function QRReader() {
           </ContainerCenter>
         )}
         <Footer
-          isFocused={isFocused}
+          $isFocused={isFocused}
           onClick={() => inputRef?.current && inputRef.current.focus()}
         >
-          <Sticker isFocused={isFocused} />
+          <Sticker $isFocused={isFocused} />
           {isFocused && <Label>Digite o codigo</Label>}
           <Form
             onSubmit={(e) => {
               e.preventDefault();
-              navigate(
-                `${location.pathname.replace("/reader", "")}/${code.trim()}`
-              );
+              // handleSubmit();
             }}
           >
             <InputCode
@@ -138,16 +142,17 @@ function QRReader() {
               placeholder={traduction?.typeCode[language]}
               inputProps={{ maxLength: 12 }}
               value={code}
-              onChange={(e) => setCode(e.target.value)}
+              onChange={(e) => {
+                const value = e.target.value.replace("/", "").toUpperCase();
+                setCode(value);
+              }}
               inputRef={inputRef}
               onFocus={() => setIsFocused(true)}
               //disabled
             />
           </Form>
           {isFocused && (
-            <InputButton onClick={() => console.log("code", code)}>
-              Confirmar
-            </InputButton>
+            <InputButton onClick={handleSubmit}>Confirmar</InputButton>
           )}
         </Footer>
       </ContentLimiter>

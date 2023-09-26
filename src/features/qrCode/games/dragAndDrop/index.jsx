@@ -6,7 +6,7 @@ import useSound from "use-sound";
 import EndModal from "../components/EndModal";
 
 import { Droppable, Draggable } from "./components";
-import { shuffleArray } from "../../../../utils";
+import { shuffleArray, formatQuestionServer } from "../../../../utils";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { ContainerOptions } from "./style";
 
@@ -36,51 +36,30 @@ function DragAndDropGame(props) {
   };
 
   const handleAnswer = (isError, contError) => {
-    // ramdomizeOrder();
-    // setIsVisible(false);
     setQuestions((oldState) => {
       const newArray = [...oldState];
       newArray[roundCount].correct = !isError;
       return newArray;
     });
+    props.setInfoToast({ show: true, error: isError });
+    setIsVisible(false);
     setTimeout(() => {
-      setIsVisible(false);
       setRoundCount((oldState) => oldState + 1);
     }, 2000);
   };
 
   useEffect(() => {
     if (!questions.length) return;
-    // ramdomizeOrder();
     handleAnswer(false);
-    // setAnsweredQuestions((oldState) => {
-    //   const newArray = [...oldState];
-    //   newArray[roundCount].correct = true;
-    //   return newArray;
-    // });
-    // setTimeout(() => {
-    //   setIsVisible("false");
-    //   setRoundCount((oldState) => oldState + 1);
-    // }, 2000);
   }, [points]);
 
   useEffect(() => {
     if (error === 2) {
       handleAnswer(true);
-      // setAnsweredQuestions((oldState) => {
-      //   const newArray = [...oldState];
-      //   newArray[roundCount].correct = false;
-      //   return newArray;
-      // });
-      // setTimeout(() => {
-      //   setIsVisible("false");
-      //   setRoundCount((oldState) => oldState + 1);
-      // }, 2000);
     } else setIsBlocked(false);
   }, [error]);
 
   useEffect(() => {
-    // console.log("mudou rod");
     setError(0);
     if (!questions.length) return;
     if (roundCount >= questions.length) {
@@ -92,6 +71,7 @@ function DragAndDropGame(props) {
       setIsVisible(true);
       setIsDropped(false);
     }
+    props.setInfoToast({ show: false, error: false });
   }, [roundCount]);
 
   const generateAnswerArray = () => {
@@ -102,10 +82,6 @@ function DragAndDropGame(props) {
         soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(shuffleArray(newQuestions));
   };
 
@@ -114,8 +90,6 @@ function DragAndDropGame(props) {
       setQuestions(props?.questions);
     }
   }, [props]);
-
-  // console.log("ques", questions);
 
   useEffect(() => {
     if (!questions.length) return;
@@ -157,14 +131,10 @@ function DragAndDropGame(props) {
     }
   }
 
-  //console.log("in", answeredQuestions);
+  console.log("per", questions[roundCount]?.pergunta);
 
   return (
     <>
-      {/* Round: {roundCount}
-      Points: {points}
-      RoundErrors: {error.toString()}
-      GeneralErrors: {generalErrors} */}
       {isReady && (
         <DndContext
           onDragEnd={handleDragEnd}
@@ -172,11 +142,16 @@ function DragAndDropGame(props) {
         >
           <Droppable>
             {isDropped
-              ? questions[roundCount]?.fullAnswer
-              : questions[roundCount]?.question}
+              ? formatQuestionServer(
+                  questions[roundCount]?.pergunta?.replace(
+                    /_+/g,
+                    questions[roundCount]?.alternativas[0]
+                  )
+                )
+              : formatQuestionServer(questions[roundCount]?.pergunta)}
           </Droppable>
           <ContainerOptions>
-            {questions[roundCount]?.options.map((question, index) => {
+            {questions[roundCount]?.alternativas.map((question, index) => {
               return index === 0 ? (
                 !isDropped && (
                   <Draggable
@@ -187,7 +162,7 @@ function DragAndDropGame(props) {
                     show={isVisible}
                     border="1px solid green"
                   >
-                    {questions[roundCount]?.options[index]}
+                    {questions[roundCount]?.alternativas[index]}
                   </Draggable>
                 )
               ) : (
@@ -198,7 +173,7 @@ function DragAndDropGame(props) {
                   disabled={isBlocked}
                   show={isVisible}
                 >
-                  {questions[roundCount]?.options[index]}
+                  {questions[roundCount]?.alternativas[index]}
                 </Draggable>
               );
             })}
@@ -206,7 +181,7 @@ function DragAndDropGame(props) {
         </DndContext>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

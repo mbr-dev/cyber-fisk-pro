@@ -15,9 +15,9 @@ export const OptionButton = styled(BaseButton)`
   width: 100%;
   height: 100%;
   min-height: 35px !important;
-  background: ${colors.white} !important;
+  background: ${colors["gray-300"]} !important;
   animation-name: ${(props) => (props.$show ? fadeIn : fadeOut)};
   animation-duration: 1s;
-  color: ${colors.black} !important;
+  color: ${colors.white} !important;
   animation-fill-mode: forwards;
 `;

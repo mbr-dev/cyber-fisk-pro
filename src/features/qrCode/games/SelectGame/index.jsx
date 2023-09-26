@@ -39,7 +39,7 @@ function SelectGame(props) {
 
   const ramdomizeOrder = () => {
     setOrders(
-      shuffleArray(questions[roundCount].options.map((_, index) => index))
+      shuffleArray(questions[roundCount].alternativas.map((_, index) => index))
     );
   };
 
@@ -72,7 +72,6 @@ function SelectGame(props) {
     if (!questions.length) return;
     if (roundCount >= questions.length) {
       setGrade((100 / questions.length) * points);
-      //alert(`Cabou: ${(100 / questions.length) * points}%`);
       setOpenModal(true);
     } else {
       ramdomizeOrder();
@@ -91,10 +90,6 @@ function SelectGame(props) {
         soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(shuffleArray(newQuestions));
   };
 
@@ -139,8 +134,7 @@ function SelectGame(props) {
 
   function handleCheck() {
     setIsBlocked(true);
-    console.log(questions[roundCount]?.options[0], selected);
-    if (questions[roundCount]?.options[0] === selected) {
+    if (questions[roundCount]?.alternativas[0] === selected) {
       playCorrect();
       setShowComplete(true);
     } else playWrong();
@@ -152,8 +146,11 @@ function SelectGame(props) {
         <>
           <ContainerQuestion>
             {showComplete
-              ? questions[roundCount]?.fullAnswer
-              : questions[roundCount]?.question}
+              ? questions[roundCount]?.pergunta.replace(
+                  /_+/g,
+                  questions[roundCount]?.alternativas[0]
+                )
+              : questions[roundCount]?.pergunta}
           </ContainerQuestion>
           <SelectButton
             $show={openSelect}
@@ -163,7 +160,7 @@ function SelectGame(props) {
             {selected || "Select"}
           </SelectButton>
           <ContainerOptions $show={openSelect}>
-            {questions[roundCount]?.options.map((option, index) => (
+            {questions[roundCount]?.alternativas.map((option, index) => (
               <OptionButton
                 key={index}
                 id={`p${index}`}
@@ -172,7 +169,8 @@ function SelectGame(props) {
                 correct={index === 0}
                 onClick={() => handleClick(option)}
                 $border={
-                  orders[index] !== questions[roundCount].options.length - 1
+                  orders[index] !==
+                  questions[roundCount].alternativas.length - 1
                 }
               >
                 {option}
@@ -190,7 +188,7 @@ function SelectGame(props) {
         </>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

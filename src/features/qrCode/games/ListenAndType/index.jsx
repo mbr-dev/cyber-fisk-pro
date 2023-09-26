@@ -21,7 +21,6 @@ function ListenAndType(props) {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [roundCount, setRoundCount] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [points, setPoints] = useState(0);
@@ -36,7 +35,7 @@ function ListenAndType(props) {
 
   const playAudio = () => {
     setIsBlocked(true);
-    const playAudio = new Audio(questions[roundCount].soundUrl);
+    const playAudio = new Audio(questions[roundCount]?.soundUrl);
     playAudio.onended = function () {
       setIsBlocked(false);
     };
@@ -53,10 +52,10 @@ function ListenAndType(props) {
       newArray[roundCount].correct = !isError;
       return newArray;
     });
-    setIsVisible(false);
+    props.setInfoToast({ show: true, error: isError });
     setTimeout(() => {
       setRoundCount((oldState) => oldState + 1);
-    }, 1000);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -75,12 +74,11 @@ function ListenAndType(props) {
     if (!questions.length) return;
     if (roundCount >= questions.length) {
       setGrade((100 / questions.length) * points);
-      //alert(`Cabou: ${(100 / questions.length) * points}%`);
       setOpenModal(true);
     } else {
       setText("");
       setIsBlocked(false);
-      setIsVisible(true);
+      props.setInfoToast({ show: false, error: false });
     }
   }, [roundCount]);
 
@@ -89,16 +87,12 @@ function ListenAndType(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props?.urlSounds}${index + 1}.mp3`,
         image: question?.image
           ? `https://cyberhomolog.fisk.com.br:172/cyberfisk30/CyberQR/NovoQR/Essentials%201/Imagens/53_Lesson5_${index}.jpg`
           : null,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(shuffleArray(newQuestions));
   };
 
@@ -113,7 +107,7 @@ function ListenAndType(props) {
     props.setAnswered(questions);
     if (questions.some((question) => question?.correct === undefined))
       generateAnswerArray();
-    if (questions.every((question) => question.correct === null)) {
+    if (questions.every((question) => question?.correct === null)) {
       setIsReady(true);
     }
   }, [questions]);
@@ -142,8 +136,7 @@ function ListenAndType(props) {
   function handleCheck(event) {
     setIsBlocked(true);
     const formatedText = formatToCompare(text);
-    const formatedAnswer = formatToCompare(questions[roundCount].answer);
-    console.log("f", formatedText, "ans", formatedAnswer);
+    const formatedAnswer = formatToCompare(questions[roundCount]?.answer);
     formatedText === formatedAnswer ? playCorrect() : playWrong();
   }
 
@@ -155,11 +148,15 @@ function ListenAndType(props) {
             <AudioButton onClick={playAudio} disabled={isBlocked}>
               <AudioImage src={audioImg} />
             </AudioButton>
-            {questions[roundCount].image && (
-              <Image src={questions[roundCount].image} />
+            {questions[roundCount]?.image && (
+              <Image src={questions[roundCount]?.image} />
             )}
           </ContainerAudioButton>
-          <Input value={text} onChange={(e) => setText(e.target.value)} />
+          <Input
+            value={text}
+            onChange={(e) => setText(e.target.value)}
+            disabled={isBlocked}
+          />
           <ContainerCheckButton>
             <CheckButton
               onClick={handleCheck}
@@ -171,7 +168,7 @@ function ListenAndType(props) {
         </Container>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

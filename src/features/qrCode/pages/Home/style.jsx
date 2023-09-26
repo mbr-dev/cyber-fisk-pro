@@ -1,5 +1,5 @@
 import styled, { keyframes } from "styled-components";
-import { colors } from "../../config/colors";
+import { colors } from "../../../../config/colors";
 import { Button, TextField } from "@mui/material";
 import { isMobile } from "react-device-detect";
 

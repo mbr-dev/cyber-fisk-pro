@@ -1,12 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../../config/colors";
 import trofeuBomImg from "./../../../assets/images/Trofeu_bom.png";
-import { Button } from "@mui/material";
-
-const fadeIn = keyframes`
-  from {opacity: 0 }
-  to {opacity: 1 }
-`;
+import BaseButton from "../BaseButton";
 
 export const Header = styled.header`
   background: ${(props) =>
@@ -96,6 +91,7 @@ export const QuestionsContainer = styled.div`
   flex-direction: column;
   overflow-y: auto;
   padding-bottom: 20px;
+  padding-inline: 8px;
   gap: 8px;
 `;
 export const Question = styled.div`
@@ -114,7 +110,7 @@ export const ButtonsContainer = styled.div`
   justify-content: center;
   gap: 16px;
 `;
-export const ButtonFooter = styled(Button)`
+export const ButtonFooter = styled(BaseButton)`
   width: min(90%, 150px);
   min-height: 54px;
   /* max-height: 54px; */
@@ -123,47 +119,4 @@ export const ButtonFooter = styled(Button)`
   opacity: ${(props) => (props?.disabled ? 0.4 : 1)};
   background: ${colors.black} !important;
   color: ${colors.white} !important;
-  border-radius: 16px !important;
-  -webkit-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  animation-fill-mode: forwards;
-  &:hover {
-    transform: scale(1.01);
-    filter: brightness(0.95);
-  }
-  && .MuiTouchRipple-child {
-    background-color: ${colors["gray-300"]};
-  }
-`;
-export const ContainerAudioButton = styled.div`
-  margin-top: 20px;
-`;
-export const AudioButton = styled(Button)`
-  width: 100px;
-  height: 100px;
-  border-radius: 20px !important;
-  padding: 0 !important;
-  overflow: hidden;
-  margin-top: 12px;
-  animation-name: fadeIn;
-  animation-duration: 1s;
-  color: ${colors.black} !important;
-  background-size: cover; */
-  -webkit-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  -moz-box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  box-shadow: 0px 2px 14px -6px rgba(0, 0, 0, 0.7);
-  animation-fill-mode: forwards;
-  &:hover {
-    transform: scale(1.01);
-    filter: brightness(0.95);
-  }
-  && .MuiTouchRipple-child {
-    background-color: ${colors["gray-300"]};
-  }
-`;
-export const AudioImage = styled.img`
-  width: 100%;
-  height: 100%;
-  transform: scale(1.17);
 `;

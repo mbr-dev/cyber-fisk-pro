@@ -22,6 +22,7 @@ import {
   ButtonsContainer,
   ButtonFooter,
 } from "./style";
+import { formatQuestionServer } from "../../../../../utils";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
@@ -41,11 +42,13 @@ function EndModal(props) {
   };
 
   return (
-    <Dialog fullScreen open={props.open} TransitionComponent={Transition}>
+    <Dialog fullScreen open={props?.open} TransitionComponent={Transition}>
       <>
-        <Header grade={props.grade}>
+        <Header grade={props?.grade}>
           {page === 1 ? (
-            <HeaderText>{props.grade > 79 ? "Good!" : "Try Again!"}</HeaderText>
+            <HeaderText>
+              {props?.grade > 79 ? "Good!" : "Try Again!"}
+            </HeaderText>
           ) : (
             <HeaderImg src={IconSad} />
           )}
@@ -57,17 +60,17 @@ function EndModal(props) {
                 <ThrofyContainer>
                   <ThrofyImage src={trophy()} />
                 </ThrofyContainer>
-                <Grade>{props.grade + "%"}</Grade>
+                <Grade>{props?.grade + "%"}</Grade>
                 <PointsContainer>
                   <Points $green>
-                    {props.points}
+                    {props?.points}
                     <br />
-                    {props.points !== 1 ? "Acertos" : "Acerto"}
+                    {props?.points !== 1 ? "Acertos" : "Acerto"}
                   </Points>
                   <Points>
-                    {props.questions.length - props.points}
+                    {props.questions?.length - props?.points}
                     <br />
-                    {props.questions.length - props.points !== 1
+                    {props.questions?.length - props?.points !== 1
                       ? "Erros"
                       : "Erro"}
                   </Points>
@@ -75,11 +78,12 @@ function EndModal(props) {
               </>
             ) : (
               <QuestionsContainer>
-                {props.questions.map((question, index) => {
-                  if (question.correct === false) {
+                {props?.questions.map((question, index) => {
+                  if (question?.correct === false) {
                     return (
                       <Question>
-                        {question?.question || `Question ${index}`}
+                        {formatQuestionServer(question?.pergunta) ||
+                          `Question ${index}`}
                       </Question>
                     );
                   }
@@ -90,19 +94,19 @@ function EndModal(props) {
               <ButtonFooter
                 onClick={() =>
                   page === 2
-                    ? props.setOpen(false)
-                    : props.grade === 100
-                    ? props.setOpen(false)
+                    ? props?.setOpen(false)
+                    : props?.grade === 100
+                    ? props?.setOpen(false)
                     : setPage(2)
                 }
               >
                 Ok
               </ButtonFooter>
-              {page === 2 && props.grade < 100 && (
+              {page === 2 && props?.grade < 100 && (
                 <ButtonFooter
                   onClick={() => {
-                    props.setOpen(false);
-                    props.repeat();
+                    props?.setOpen(false);
+                    props?.repeat();
                     setTimeout(() => {
                       setPage(1);
                     }, 500);

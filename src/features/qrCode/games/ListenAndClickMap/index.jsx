@@ -20,12 +20,10 @@ function ListenAndClickMap(props) {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
-  const [isVisible, setIsVisible] = useState(true);
   const [roundCount, setRoundCount] = useState(0);
   const [questions, setQuestions] = useState([]);
   const [points, setPoints] = useState(0);
   const [error, setError] = useState(0);
-  const [orders, setOrders] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [grade, setGrade] = useState(60);
 
@@ -35,7 +33,7 @@ function ListenAndClickMap(props) {
 
   const playAudio = () => {
     setIsBlocked(true);
-    const playAudio = new Audio(questions[roundCount].soundUrl);
+    const playAudio = new Audio(questions[roundCount]?.soundUrl);
     playAudio.onended = function () {
       setIsBlocked(false);
     };
@@ -53,7 +51,6 @@ function ListenAndClickMap(props) {
       return newArray;
     });
     props.setInfoToast({ show: true, error: isError });
-    setIsVisible(false);
     setTimeout(() => {
       setRoundCount((oldState) => oldState + 1);
     }, 2000);
@@ -75,11 +72,9 @@ function ListenAndClickMap(props) {
     if (!questions.length) return;
     if (roundCount >= questions.length) {
       setGrade((100 / questions.length) * points);
-      //alert(`Cabou: ${(100 / questions.length) * points}%`);
       setOpenModal(true);
     } else {
       setIsBlocked(false);
-      setIsVisible(true);
     }
     props.setInfoToast({ show: false, error: false });
   }, [roundCount]);
@@ -89,13 +84,9 @@ function ListenAndClickMap(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props?.urlSounds}${index + 1}.mp3`,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(newQuestions);
   };
 
@@ -110,7 +101,7 @@ function ListenAndClickMap(props) {
     props.setAnswered(questions);
     if (questions.some((question) => question?.correct === undefined))
       generateAnswerArray();
-    if (questions.every((question) => question.correct === null)) {
+    if (questions.every((question) => question?.correct === null)) {
       setIsReady(true);
     }
   }, [questions]);
@@ -152,32 +143,32 @@ function ListenAndClickMap(props) {
               <Map>
                 <GridMap>
                   <Place
-                    $show={questions[0].correct}
+                    $show={questions[0]?.correct}
                     onClick={() => handleClick(0)}
                   >
                     <TextPlace>GYM</TextPlace>
                   </Place>
                   <Place
-                    $show={questions[4].correct}
+                    $show={questions[4]?.correct}
                     onClick={() => handleClick(4)}
                   >
                     <TextPlace>BAKERY</TextPlace>
                   </Place>
                   <Place onClick={() => handleClick(99)} />
                   <Place
-                    $show={questions[3].correct}
+                    $show={questions[3]?.correct}
                     onClick={() => handleClick(3)}
                   >
                     <TextPlace>SUPERMARKET</TextPlace>
                   </Place>
                   <Place
-                    $show={questions[1].correct}
+                    $show={questions[1]?.correct}
                     onClick={() => handleClick(1)}
                   >
                     <TextPlace>HOTEL</TextPlace>
                   </Place>
                   <Place
-                    $show={questions[2].correct}
+                    $show={questions[2]?.correct}
                     onClick={() => handleClick(2)}
                   >
                     <TextPlace>MALL</TextPlace>
@@ -189,7 +180,7 @@ function ListenAndClickMap(props) {
         </>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

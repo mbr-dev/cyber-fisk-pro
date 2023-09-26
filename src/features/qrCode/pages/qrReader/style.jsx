@@ -112,12 +112,12 @@ export const Permission = styled.p`
 `;
 export const Footer = styled.footer`
   width: 100%;
-  height: ${(props) => (props.isFocused ? "100%" : "90px")};
+  height: ${(props) => (props.$isFocused ? "100%" : "90px")};
   display: flex;
   flex-direction: column;
   justify-content: ${(props) =>
-    props.isFocused ? "flex-start" : "space-between"};
-  gap: ${(props) => (props.isFocused ? "60px" : "12px")};
+    props.$isFocused ? "flex-start" : "space-between"};
+  gap: ${(props) => (props.$isFocused ? "60px" : "12px")};
   align-items: center;
   background-color: ${colors.white};
   border-radius: 20px 20px 0 0;
@@ -130,7 +130,7 @@ export const Sticker = styled.div`
   height: 8px;
   background: ${colors["red-100"]};
   border-radius: 4px;
-  margin-bottom: ${(props) => (props.isFocused ? "60px" : 0)};
+  margin-bottom: ${(props) => (props.$isFocused ? "60px" : 0)};
 `;
 export const Label = styled.h2`
   color: ${colors.black};

@@ -10,4 +10,5 @@ export const Container = styled.div`
   color: ${colors.black};
   margin-top: 12px;
   padding: 20px;
+  white-space: break-spaces;
 `;

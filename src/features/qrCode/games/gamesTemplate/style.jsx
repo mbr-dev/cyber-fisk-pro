@@ -11,6 +11,10 @@ const fadeBottom = keyframes`
   from {transform: translateY(200px)}
   to {transform: translate(0)}
 `;
+const fadeScale = keyframes`
+  from {scale: 0 }
+  to {scale: 1 }
+`;
 const fill = keyframes`
   0% {background-position: right}
   100% {background-position: left}
@@ -39,12 +43,14 @@ export const Header = styled.header`
   justify-content: space-between;
   align-items: center;
   gap: 16px;
-  background: ${colors["gray-300"]};
-  padding: 20px;
+  background: ${colors["red-100"]};
+  padding-top: 10px;
+  padding-bottom: 30px;
   padding-inline: ${isMobile ? "16px" : "60px"};
   border-radius: 0 0 20px 20px;
   animation-name: ${fade};
   animation-duration: 1s;
+  position: relative;
 `;
 export const ContainerBar = styled.div`
   width: 80%;
@@ -56,6 +62,10 @@ export const ContainerBar = styled.div`
   justify-content: center;
   align-items: center;
   border-radius: 6px;
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
   -webkit-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
   -moz-box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
   box-shadow: 0px 5px 8px -4px rgba(0, 0, 0, 0.45);
@@ -99,17 +109,32 @@ export const MarkerBar = styled.div`
   }
 `;
 export const BackButton = styled(Button)`
-  width: 40px;
-  padding: 0 !important;
+  width: 60px !important;
+  aspect-ratio: 9/7;
+  padding: 8px !important;
   transition: opacity 0.2s;
   opacity: ${(props) => (props?.disabled ? 0.4 : 1)};
+`;
+export const Space = styled.div`
+  width: 60px;
 `;
 export const BackImage = styled.img`
   width: 100%;
   height: 100%;
 `;
+export const LessonBookContainer = styled.div`
+  /* margin-bottom: 20px; */
+`;
+export const LessonTitle = styled.p`
+  font-size: 40px;
+  color: ${colors.white};
+`;
+export const BookTitle = styled.h2`
+  color: ${colors.white};
+`;
 export const Title = styled.h2`
-  margin-block: 8px;
+  margin-top: 28px;
+  margin-bottom: 8px;
 `;
 export const ContainerMain = styled.div`
   width: 100%;
@@ -137,10 +162,30 @@ export const Footer = styled.footer`
   width: 100%;
   height: 60px;
   display: flex;
-  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 8px;
+  background-color: ${colors["gray-800"]};
+  animation: ${fadeBottom} 1s;
+`;
+export const ContainerButtons = styled.div`
+  width: min(700px, 90%);
+  height: 60px;
+  display: flex;
   justify-content: space-between;
   align-items: center;
-  background-color: ${colors.backgroundWhite};
+  padding: 8px 20px;
+`;
+export const FooterButton = styled(Button)`
+  width: min(50px, 90%);
+  min-width: 40px !important;
+  height: 45px !important;
   padding: 8px;
-  animation: ${fadeBottom} 1s;
+  scale: 0;
+  animation: ${fadeScale} 1s 1s;
+  animation-fill-mode: forwards;
+`;
+export const FooterButtonImg = styled.img`
+  width: 100%;
+  height: 100%;
 `;

@@ -22,10 +22,12 @@ export const ContainerQuestion = styled.div`
 `;
 export const ContainerOptions = styled.div`
   flex: 1;
+  width: min(600px, 100%);
+  margin-inline: auto;
   height: 0;
   opacity: 0;
   display: grid;
-  background: ${colors["gray-400"]};
+  background: ${colors["gray-300"]};
   border-radius: 0 0 24px 24px;
   animation-name: ${(props) =>
     props.$show === null ? "none" : props.$show ? fadeIn : fadeOut};
@@ -37,7 +39,7 @@ export const ContainerCheckButton = styled.div`
   margin-block: 20px;
 `;
 export const CheckButton = styled(BaseButton)`
-  width: 100%;
+  width: min(600px, 100%);
   height: 60px;
   padding: 0 !important;
   margin-top: 12px;

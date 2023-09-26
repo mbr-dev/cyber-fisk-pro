@@ -17,10 +17,10 @@ import {
   ImageInputButton,
 } from "./style";
 
-import LogoImg from "./assets/images/Logo.png";
-import TurnOffIcon from "./assets/icons/Icon_logoff.png";
-import InfoImg from "./assets/images/CardLerQR.png";
-import SendImg from "./assets/icons/Icon_enviar.png";
+import LogoImg from "../../assets/images/Logo.png";
+import TurnOffIcon from "../../assets/icons/Icon_logoff.png";
+import InfoImg from "../../assets/images/CardLerQR.png";
+import SendImg from "../../assets/icons/Icon_enviar.png";
 
 function QRCode() {
   const navigate = useNavigate();
@@ -32,6 +32,11 @@ function QRCode() {
   const traduction = {
     typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
   };
+
+  const handleSubmit = () => {
+    navigate(`${location.pathname.replace("/reader", "")}/${code.trim()}`);
+  };
+
   return (
     <Container>
       <RedBox>
@@ -44,10 +49,7 @@ function QRCode() {
         <ContentLimiter>
           <QRContainer
             variant="contained"
-            onClick={() => {
-              console.log("aquii", location);
-              navigate(`${location?.pathname}/reader`);
-            }}
+            onClick={() => navigate(`${location?.pathname}/reader`)}
           >
             <ImageQRInfo src={InfoImg} />
           </QRContainer>
@@ -60,9 +62,12 @@ function QRCode() {
             placeholder={traduction?.typeCode[language]}
             inputProps={{ maxLength: 12 }}
             value={code}
-            onChange={(e) => setCode(e.target.value)}
+            onChange={(e) => {
+              const value = e.target.value.replace("/", "").toUpperCase();
+              setCode(value);
+            }}
           />
-          <InputButton onClick={() => console.log("code", code)}>
+          <InputButton onClick={handleSubmit}>
             <ImageInputButton src={SendImg} />
           </InputButton>
         </ContainerInput>

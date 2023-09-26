@@ -17,7 +17,7 @@ export const StyledButton = styled(Button)`
     filter: brightness(0.95);
   }
   && .MuiTouchRipple-child {
-    background-color: ${colors["gray-300"]};
+    background-color: ${colors["gray-200"]};
   }
   &:disabled {
     filter: opacity(0.5);

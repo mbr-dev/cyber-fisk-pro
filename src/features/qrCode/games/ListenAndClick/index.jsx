@@ -77,7 +77,6 @@ function ListenAndClick(props) {
     if (!questions.length) return;
     if (roundCount >= questions.length) {
       setGrade((100 / questions.length) * points);
-      //alert(`Cabou: ${(100 / questions.length) * points}%`);
       setOpenModal(true);
     } else {
       ramdomizeOrder();
@@ -95,10 +94,6 @@ function ListenAndClick(props) {
         soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(shuffleArray(newQuestions));
   };
 
@@ -151,7 +146,7 @@ function ListenAndClick(props) {
             </AudioButton>
           </ContainerAudioButton>
           <ContainerOptions>
-            {questions[roundCount]?.options.map((question, index) => (
+            {questions[roundCount]?.alternativas.map((question, index) => (
               <OptionButton
                 key={index}
                 id={`p${index}`}
@@ -168,7 +163,7 @@ function ListenAndClick(props) {
         </>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

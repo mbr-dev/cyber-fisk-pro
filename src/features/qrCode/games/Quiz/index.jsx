@@ -26,15 +26,6 @@ function Quiz(props) {
     onend: () => setPoints((oldState) => oldState + 1),
   });
 
-  const playAudio = () => {
-    setIsBlocked(true);
-    const playAudio = new Audio(questions[roundCount].soundUrl);
-    playAudio.onended = function () {
-      setIsBlocked(false);
-    };
-    playAudio.play();
-  };
-
   const [playWrong] = useSound(wrong, {
     onend: () => setError((oldState) => oldState + 1),
   });
@@ -50,9 +41,10 @@ function Quiz(props) {
       return newArray;
     });
     setIsVisible(false);
+    props.setInfoToast({ show: true, error: isError });
     setTimeout(() => {
       setRoundCount((oldState) => oldState + 1);
-    }, 1000);
+    }, 2000);
   };
 
   useEffect(() => {
@@ -71,7 +63,6 @@ function Quiz(props) {
     if (!questions.length) return;
     if (roundCount >= questions.length) {
       setGrade((100 / questions.length) * points);
-      //alert(`Cabou: ${(100 / questions.length) * points}%`);
       setOpenModal(true);
     } else {
       ramdomizeOrder();
@@ -79,6 +70,7 @@ function Quiz(props) {
       setIsVisible(true);
       setShowComplete(false);
     }
+    props.setInfoToast({ show: false, error: false });
   }, [roundCount]);
 
   const generateAnswerArray = () => {
@@ -89,10 +81,6 @@ function Quiz(props) {
         soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
-    console.log(
-      "🚀 ~ file: index.jsx:119 ~ generateAnswerArray ~ newQuestions:",
-      newQuestions
-    );
     setQuestions(shuffleArray(newQuestions));
   };
 
@@ -165,7 +153,7 @@ function Quiz(props) {
         </>
       )}
       <EndModal
-        open={roundCount > 2}
+        open={openModal}
         setOpen={setOpenModal}
         grade={grade}
         repeat={repeat}

@@ -26,6 +26,7 @@ export const StyledButton = styled(BaseButton)`
   background: ${colors.white} !important;
   animation-name: ${(props) => (props.$show ? fadeIn : fadeOut)};
   animation-duration: 0.5s;
-  color: ${colors.black} !important;
+  color: ${colors.white} !important;
+  background: ${colors["gray-300"]} !important;
   animation-fill-mode: forwards;
 `;
