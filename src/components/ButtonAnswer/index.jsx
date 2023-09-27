@@ -9,7 +9,7 @@ export const ButtonAnswer = ({ w, h, children, onPress, optionColor }) => {
       style={{
         width: w,
         height: h,
-        borderColor: optionColor === 0 ? "" : optionColor === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
+        borderColor: optionColor === 1 ? defaultTheme["green-200"] : optionColor === 2 ? defaultTheme["red-200"] : ""
       }}
     >
       {children}

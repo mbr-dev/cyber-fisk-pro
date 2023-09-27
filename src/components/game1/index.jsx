@@ -1,126 +1,130 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../SubTitleLesson";
-import { LessonContext } from "../../context/lesson";
 
+import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import Button from "@mui/material/Button";
-import { URL_HMLG } from "../../config/infos";
+import { URL_FISKPRO } from "../../config/infos";
 import { L1_T1_Facil } from "../../utils/lesson1_Task1";
 
-import { Game1Content, Game1Container, Game1Main } from "./styles";
+import { Container, Main } from "./styles";
 
 export const Game1 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed, timeElapsed } = useContext(LessonContext);
-  console.log("GAME TIME: ", timeElapsed);
+  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
+  const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [rodada, setRodada] = useState(0);
-  const [pergunta, setPergunta] = useState('');
-  const [sortNum, setSortNum] = useState([]);
-  const [images, setImages] = useState([]);
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [bloqueia, setBloqueia] = useState(true);
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState([]);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [round, setRound] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
+  const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = () => {
-    const tam = L1_T1_Facil.length;
-    let temp = [];
-
-    for (let a = 0; a < tam; a++) {
-      temp.push(a);
+  const loadLesson = useCallback(() => {
+    const totalOfQuestion = L1_T1_Facil.length;
+    
+    let tempQuestions = [];
+    for (let a = 0; a < totalOfQuestion; a++) {
+      tempQuestions.push(a);
     }
-
-    temp = temp.sort(() => Math.random() - 0.5); // embaralha o array
-
-    setSortNum(temp);
-    setPergunta(L1_T1_Facil[temp[rodada]].pergunta); // pega o valor da rodada
-
-    let tempImg = [];
-    let tempSortNum = idClick;
-
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5); // embaralha as resposta
-    setIdClick(tempSortNum);
-
-    for (let a = 0; a < 3; a++) {
-      tempImg.push(`Images/pro/game1/F_${temp[rodada]}_${tempSortNum[a]}.png`);
+    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempQuestions);
+    setQuestion(L1_T1_Facil[tempQuestions[round]].pergunta);
+    
+    let tempIdClick = idClick;
+    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+    setIdClick(tempIdClick);
+    
+    let tempImages = [];
+    for (let a = 0; a < idClick.length; a++) {
+      tempImages.push({
+        img: L1_T1_Facil[tempQuestions[round]].images[a].img,
+        status: L1_T1_Facil[tempQuestions[round]].images[a].status,
+      })
     }
+    tempImages = tempImages.sort(() => Math.random() - 0.5);
+    setAnswers(tempImages);
+    setBlockButton(false);
+  }, [round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
 
-    setImages(tempImg);
-    setBloqueia(false);
+  const newRound = (number) => {
+    setQuestion(L1_T1_Facil[randomNumber[number]].pergunta);
+
+    let tempIdClick = idClick;
+    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+    setIdClick(tempIdClick);
+    
+    let tempImages = [];
+    for (let a = 0; a < idClick.length; a++) {
+      tempImages.push({
+        img: L1_T1_Facil[randomNumber[number]].images[a].img,
+        status: L1_T1_Facil[randomNumber[number]].images[a].status,
+      });
+    }
+    tempImages = tempImages.sort(() => Math.random() - 0.5);
+    setAnswers(tempImages);
+    setBlockButton(false);
   }
 
-  const newRodada = (num) => {
-    setPergunta(L1_T1_Facil[sortNum[num]].pergunta);
+  const handleClick = (index) => {
+    if (blockButton) return;
 
-    let tempImg = [];
-    let tempSortNum = idClick;
+    setBlockButton(true);
+    let tempRightPoints = rightPoints;
+    let tempColor = [...optionColor];
+    const selectedAnswer = answers[index];
 
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdClick(tempSortNum);
-
-    for (let a = 0; a < 3; a++) {
-      tempImg.push(`Images/pro/game1/F_${sortNum[num]}_${tempSortNum[a]}.png`);
-    }
-
-    setImages(tempImg);
-    setBloqueia(false);
-  }
-
-  const handleClick = (id) => {
-    if (bloqueia) {
-      return
-    }
-
-    setBloqueia(true);
-    let tempA = acertos;
-
-    if (idClick[id] === 0) {
-      tempA++;
-      setNewPontos(0, (tempA));
-      setAcertos(tempA);
+    if (selectedAnswer.status === 1) {
+      tempColor[index] = 1;
+      setOptionColor(tempColor);
+      
+      tempRightPoints++;
+      setRightPoints(tempRightPoints);
+      setNewPontos(0, (tempRightPoints));
     } else {
-      let tempE = erros;
+      tempColor[index] = 2;
+      setOptionColor(tempColor);
+      
+      let tempE = wrongPoints;
       tempE++;
-      setErros(tempE);
+      setWrongPoints(tempE);
     }
 
-    let tempR = rodada;
-    tempR++;
-    setRodada(tempR);
-    let tempGeral = rodadaGeral;
-    tempGeral++;
-    setNewRodada(tempGeral);
-    // const playAudio = new Audio(idClick[id] === 0 ? somAcerto : somErro);
-    // playAudio.play();
-    //troca de nivel
-    if (tempA == 2) {
-      setTimeout(() => {
-        setNewLesson(1);
-      }, 1000);
-    }
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
 
-    const regra = TrocaAtividade(0, tempGeral, tempA, tempR);
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
 
-    if (regra === "Continua") {
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+
+    if (rule === "Continua") {
       setTimeout(() => {
-        newRodada(tempR);
-      }, 1000);
-    } else if (regra === "Game over") {
+        setOptionColor([0, 0, 0]);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over") {
       setNewPontos(0, 0);
       setTimeout(() => {
         alert('GAME OVER!!');
+        setOptionColor([0, 0, 0]);
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     } else {
-      //troca de nivel
       setTimeout(() => {
+        alert('MUDA DE RODADA!!');
+        setOptionColor([0, 0, 0]);
         setNewLesson(1);
-      }, 1000);
+      }, 1500);
     }
   }
 
@@ -128,48 +132,31 @@ export const Game1 = () => {
     loadLesson();
   }, [])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (rodadaGeral < 10) {
-        setTimeElapsed(state => {
-          return state + 1
-        })
-      }
-      
-    }, 1000);
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [setTimeElapsed, rodadaGeral])
-
   return (
-    <Game1Container>
-      {isLoading &&
+    <Container>
+      {isLoading && 
         <Loading />
       }
 
       <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} />
+      <TitleLesson title="Choose the correct alternative" />
+      <SubTitleLesson title={question} />
 
-      {images.length > 0 &&
-        <Game1Main>
-          <TitleLesson title="Choose the correct alternative" />
-          <SubTitleLesson title={pergunta} />
-
-          <Game1Content>
-            {images.map((image, index) => {
-              return (
-                <Button key={index}
-                  className="btn"
-                  onClick={() => {handleClick(index)}}
-                >
-                  <img src={`${URL_HMLG}${image}`} className="img" />
-                </Button>
-              )
-            })}
-          </Game1Content>
-        </Game1Main>
-      }
-    </Game1Container>
+      <Main>
+        {answers.map((answer, index) => {
+          return (
+            <ButtonAnswer 
+              key={index}
+              w="6rem"
+              h="7rem"
+              onPress={() => handleClick(index)}
+              optionColor={optionColor[index]}
+            >
+              <img src={`${URL_FISKPRO}/images/essentials1/lesson1/${answer.img}.png`} alt="" />
+            </ButtonAnswer>
+          )
+        })}
+      </Main>
+    </Container>
   )
 }

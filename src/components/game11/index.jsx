@@ -21,7 +21,7 @@ export const Game11 = () => {
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
   const [blockQuestions, setBlockQuestions] = useState(true);
@@ -103,7 +103,7 @@ export const Game11 = () => {
 
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
-    let tempPoint = correctPoints;
+    let tempRightPoints = rightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
     
@@ -116,10 +116,9 @@ export const Game11 = () => {
       tempColorA[index] = 1;
       setColorAnswer(tempColorA);
 
-      tempPoint++;
-      setCorrectPoints(tempPoint);
-      setNewPontos(1, tempPoint);
-      console.log("tempPoint: ", tempPoint);
+      tempRightPoints++;
+      setRightPoints(tempRightPoints);
+      setNewPontos(0, tempRightPoints);
 
       setRightQuestions(state => [...state, selectedQuestionIndex]);
       setRightAnswers(state => [...state, index]);
@@ -143,7 +142,7 @@ export const Game11 = () => {
       }, 1000);
     }
 
-    const rule = TrocaAtividade(0, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
 
     setBlockQuestions(false);
     setBlockAnswers(true);
@@ -158,6 +157,7 @@ export const Game11 = () => {
       }, 1000);
     } else {
       setTimeout(() => {
+        alert('Passou para próxima task');
         setNewLesson(1);
       }, 1000);
     }

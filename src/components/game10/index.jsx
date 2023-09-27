@@ -21,7 +21,7 @@ export const Game10 = () => {
   const [text, setText] = useState('');
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
@@ -54,7 +54,7 @@ export const Game10 = () => {
     if (playAudio) return;
     
     let tempWord = text;
-    let tempPoint = correctPoints;
+    let tempRightPoints = rightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -62,9 +62,9 @@ export const Game10 = () => {
     if (tempWord === answer) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempPoint += 3;
-      setCorrectPoints(tempPoint);
-      setNewPontos(2, tempPoint);
+      tempRightPoints += 3;
+      setCorrectPoints(tempRightPoints);
+      setNewPontos(2, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
@@ -81,7 +81,7 @@ export const Game10 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {

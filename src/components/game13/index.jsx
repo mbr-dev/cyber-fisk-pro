@@ -19,7 +19,7 @@ export const Game13 = () => {
   const [rightAnswers, setRightAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
@@ -89,13 +89,13 @@ export const Game13 = () => {
 
     let tempAnswers = selectedRadio;
     let tempColor = [...colorAnswers];
-    let tempRightPoints = correctPoints;
+    let tempRightPoints = rightPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
     if (isCorrect) {
-      tempRightPoints++;
-      setCorrectPoints(tempRightPoints);
+      tempRightPoints += 3;
+      setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
       for (let a = 0; a < tempAnswers.length; a++) {
@@ -135,6 +135,7 @@ export const Game13 = () => {
       }, 1000);
     } else {
       setTimeout(() => {
+        alert('Passou para próxima task');
         setColorAnswer([0, 0, 0, 0, 0]);
         setNewLesson(2);
       }, 1000);

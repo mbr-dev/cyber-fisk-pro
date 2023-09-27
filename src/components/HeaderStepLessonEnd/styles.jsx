@@ -1,12 +1,13 @@
 import styled from 'styled-components';
 
-export const HeaderStepLessonEndContainer = styled.div``;
+export const Container = styled.div``;
 
-export const HeaderStepLessonEndContent = styled.div`
+export const Main = styled.div`
   width: 1.25rem;
   height: 1.25rem;
   background-color: ${props => props.theme["gray-200"]};
   border: 1px solid ${props => props.theme.black};
+  border-left: 0;
   border-top-right-radius: 6px;
   border-bottom-right-radius: 6px;
 

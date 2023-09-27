@@ -65,15 +65,15 @@ export const Game12 = () => {
     event.preventDefault();
     
     let tempWord = text.toLowerCase();
-    let tempPoint = correctPoints;
+    let tempRightPoints = correctPoints;
     let tempColorA = colorAnswers;
 
     if (tempWord === answer) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempPoint += 1;
-      setCorrectPoints(tempPoint);
-      setNewPontos(2, tempPoint);
+      tempRightPoints += 2;
+      setCorrectPoints(tempRightPoints);
+      setNewPontos(1, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
@@ -90,7 +90,7 @@ export const Game12 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -103,6 +103,7 @@ export const Game12 = () => {
       setNewPontos(0, 0);
       
       setTimeout(() => {
+        alert('Passou para próxima task');
         tempColorA = 0;
         setColorAnswer(tempColorA);
         setNewContainer(1);

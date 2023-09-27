@@ -1,110 +1,121 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 
-import Button from "@mui/material/Button";
-
+import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
+import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 
-import { Game3Container, Game3Content } from "./styles";
-import { HeaderLesson } from "../HeaderLesson";
-import { Loading } from "../Loading";
+import { Container, Main } from "./styles";
 
 export const Game3 = () => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, timeElapsed, setTimeElapsed} = useContext(LessonContext);
-  console.log("GAME TIME: ", timeElapsed);
+  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
 
-  const [idClick, setIdClick] = useState([0,1,2]);
-  const [rodada, setRodada] = useState(0);
-  const [pergunta, setPergunta] = useState("");
-  const [sortNum, setSortNum] = useState([]);
-  const [respostas, setRespostas] = useState([]);
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [bloqueia, setBloqueia] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [optionColor, setOptionColor] = useState([0, 0, 0]);
+  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [question, setQuestion] = useState('');
+  const [answers, setAnswers] = useState([]);
+  const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
+  const [blockButton, setBlockButton] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
 
-  const loadLesson = () => {
-    const tam = L1_T1_Dificil.length;
-    let temp = [];
-
-    for(let a = 0; a < tam; a++){
-      temp.push(a);
+  const loadLesson = useCallback(() => {
+    const totalOfQuestion = L1_T1_Dificil.length;
+    
+    let tempQuestions = [];
+    for(let a = 0; a < totalOfQuestion; a++){
+      tempQuestions.push(a);
     }
+    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempQuestions);
+    setQuestion(L1_T1_Dificil[tempQuestions[round]].pergunta);
 
-    temp = temp.sort(() => Math.random() - 0.5);
-
-    setSortNum(temp);
-    setPergunta(L1_T1_Dificil[temp[rodada]].pergunta);
-
-    let tempResp = [];
-    let tempSortNum = idClick;
-
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdClick(tempSortNum);
-
-    for (let a = 0; a < 3; a ++) {
-      tempResp.push(L1_T1_Dificil[temp[rodada]].resposta[tempSortNum[a]]);
+    let tempIdClick = idClick;
+    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+    setIdClick(tempIdClick);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a ++) {
+      tempAnswers.push({
+        label: L1_T1_Dificil[tempQuestions[round]].resposta[a].label,
+        status: L1_T1_Dificil[tempQuestions[round]].resposta[a].status,
+      });
     }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    console.log("tempAnswers: ", tempAnswers);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
+  }, [setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setAnswers]);
 
-    setRespostas(tempResp);
-    setBloqueia(false);
+  const newRound = (number) => {
+    setQuestion(L1_T1_Dificil[randomNumber[number]].pergunta);
+
+    let tempIdClick = idClick;
+    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+    setIdClick(tempIdClick);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a ++) {
+      tempAnswers.push({
+        label: L1_T1_Dificil[randomNumber[number]].resposta[a].label,
+        status: L1_T1_Dificil[randomNumber[number]].resposta[a].status,
+      });
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    console.log("tempAnswers: ", tempAnswers);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
   }
 
-  const newRodada =  (num) => {
-    setPergunta(L1_T1_Dificil[sortNum[num]].pergunta);
+  const handleClick = (index) => {
+    if(blockButton) return;
 
-    let tempResp = [];
-    let tempSortNum = idClick;
+    setBlockButton(true);
 
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdClick(tempSortNum);
+    let tempRightPoints = rightPoints;
+    let tempColor = [...optionColor];
+    const selectedAnswer = answers[index];
 
-    for (let a = 0; a < 3; a ++) {
-      tempResp.push(L1_T1_Dificil[sortNum[num]].resposta[tempSortNum[a]]);
-    }
+    if (selectedAnswer.status === 1) {
+      tempColor[index] = 1;
+      setOptionColor(tempColor);
 
-    setRespostas(tempResp);
-    setBloqueia(false);
-  }
-
-  const handleClick = (id) => {
-    if(bloqueia){
-      return;
-    }
-
-    setBloqueia(true);
-    let tempA = acertos;
-
-    if (idClick[id] === 0) {
-      tempA = tempA + 3;
-      setNewPontos(2, (tempA));
-      setAcertos(tempA);
+      tempRightPoints += 3;
+      setRightPoints(tempRightPoints);
+      setNewPontos(1,tempRightPoints);
     } else {
-      let tempE = erros;
+      tempColor[index] = 2;
+      setOptionColor(tempColor);
+
+      let tempE = wrongPoints;
       tempE++;
-      setErros(tempE);
+      setWrongPoints(tempE);
     }
 
-    let tempR = rodada;
-    tempR++;
-    setRodada(tempR);
-    let tempGeral = rodadaGeral;
-    tempGeral++;
-    setNewRodada(tempGeral);
-    // const playAudio = new Audio(idClick[id] === 0 ? somAcerto : somErro);
-    // playAudio.play();
-    //nivel, rodada, pontos, rodadaNivel
-    const regra = TrocaAtividade(2,tempGeral,tempA,tempR);
-    if(regra === "Continua") {
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+
+    if(rule === "Continua") {
       setTimeout(() =>{
-        newRodada(tempR);
-      },500);
-    } else if (regra === "Score") {
+        setOptionColor([0, 0, 0]);
+        newRound(tempRound);
+      }, 1000);
+    } else if (rule === "Score") {
       setTimeout(() =>{
         const scoreFinal = Score(pontosF, pontosM, pontosD);
         let valorRank = 0;
@@ -136,7 +147,7 @@ export const Game3 = () => {
         alert(`SCORE: ${scoreFinal}%`);
         alert(`PONTOS PARA O RANKING: ${valorRank}`);
         setNewContainer(1);
-      }, 500);
+      }, 1000);
     }
   }
     
@@ -144,45 +155,31 @@ export const Game3 = () => {
     loadLesson();
   }, [])
 
-  useEffect(() => {
-    const timer = setInterval(() => {
-      if (rodadaGeral < 10) {
-        setTimeElapsed(state => {
-          return state + 1
-        })
-      }
-      
-    }, 1000);
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [setTimeElapsed, rodadaGeral])
-
   return(
-    <Game3Container>
-      {isloading &&
+    <Container>
+      {isLoading && 
         <Loading />
       }
 
-      <HeaderLesson numStart="Task 3" numEnd="Task 4" />
-
+      <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <TitleLesson title="Choose the correct alternative"/>
-      <SubTitleLesson title={pergunta}/>
+      <SubTitleLesson title={question}/>
 
-      <Game3Content>
-        {respostas.map((respostas, index) => {
+      <Main>
+        {answers.map((answer, index) => {
           return(
-            <Button 
-              key={index} 
-              className="btn" 
-              onClick={() => {handleClick(index)}}
+            <ButtonAnswer 
+              key={index}
+              w="9rem"
+              h="3rem"
+              onPress={() => {handleClick(index)}}
+              optionColor={optionColor[index]}
             >
-              <p>{respostas}</p>
-            </Button>
+              <p>{answer.label}</p>
+            </ButtonAnswer>
           )
         })}
-      </Game3Content>
-    </Game3Container>
+      </Main>
+    </Container>
   )
 }

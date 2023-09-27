@@ -59,7 +59,6 @@ export const Game14 = () => {
 
   const newRound = (number) => {
     let tempQuestion = L5_T1_Facil[randomNumber[number]].pergunta;
-    console.log("tempQuestion: ", tempQuestion);
     setQuestion(tempQuestion);
     let tempImage = L5_T1_Facil[randomNumber[number]].image;
     setImage(tempImage);
@@ -134,7 +133,7 @@ export const Game14 = () => {
       setTimeout(() => {
         alert('Passou de task');
         setOptionColor([0, 0, 0]);
-        setNewLesson(2);
+        setNewLesson(1);
       }, 1000);
     }
   }

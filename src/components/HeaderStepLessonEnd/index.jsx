@@ -1,9 +1,9 @@
-import { HeaderStepLessonEndContainer, HeaderStepLessonEndContent } from "./styles";
+import { Container, Main } from "./styles";
 
 export function HeaderStepLessonEnd(props) {
   return(
-    <HeaderStepLessonEndContainer>
-      <HeaderStepLessonEndContent style={{backgroundColor: props.color}}/>
-    </HeaderStepLessonEndContainer>
+    <Container>
+      <Main style={{backgroundColor: props.color}}/>
+    </Container>
   )
 }

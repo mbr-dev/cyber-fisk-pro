@@ -92,6 +92,70 @@ export const L5_T1_Facil = [
 ];
 
 export const L5_T1_Medio = [
+  { 
+    pergunta: "I’m __________ a pink dress.",
+    resposta: [
+      { label: "wear", status: 0 },
+      { label: "wears", status: 0 },
+      { label: "wearing", status: 1 }, 
+    ]
+  },
+  { 
+    pergunta: "She is _______ her tablet.",
+    resposta: [
+      { label: "takes", status: 0 },
+      { label: "using", status: 1 },
+      { label: "writing", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "Sam is ______ dinner now.",
+    resposta: [
+      { label: "cooking", status: 1 },
+      { label: "shopping", status: 0 },
+      { label: "exercising", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "Kelly and Don are _______ only salad.",
+    resposta: [
+      { label: "seeing", status: 0 },
+      { label: "eating", status: 1 },
+      { label: "cooking", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "Carol ____ ____________ TV.",
+    resposta: [
+      { label: "is watching", status: 1 },
+      { label: "is looking", status: 0 },
+      { label: "is seeing", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "On ____________ Americans wear red, white, and blue.",
+    resposta: [
+      { label: "Mother’s Day", status: 0 },
+      { label: "Independence Day", status: 1 },
+      { label: "Labor Day", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "On __________ people wear costumes.",
+    resposta: [
+      { label: "Halloween ", status: 1 },
+      { label: "Christmas ", status: 0 },
+      { label: "Thanksgiving", status: 0 }
+    ]
+  },
+  { 
+    pergunta: "Saint Patrick’s Day is ______ March.",
+    resposta: [
+      { label: "on", status: 0 },
+      { label: "in", status: 1 },
+      { label: "at", status: 0 }
+    ]
+  },
 ];
 
 
