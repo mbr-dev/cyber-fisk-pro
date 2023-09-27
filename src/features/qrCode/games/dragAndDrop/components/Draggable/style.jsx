@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../../../config/colors";
-import BaseButton from "./../../../components/BaseButton";
+import { BaseButton } from "./../../../components/BaseButton";
 import { fonts } from "../../../../../../config/fonts";
 
 const fadeIn = keyframes`

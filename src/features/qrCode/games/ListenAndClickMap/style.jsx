@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
-import BaseButton from "../components/BaseButton";
+import { BaseButton } from "../components/BaseButton";
 import mapImg from "./../../assets/images/Ess1_L7_map.jpg";
 import { isMobile } from "react-device-detect";
 

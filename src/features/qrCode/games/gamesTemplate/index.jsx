@@ -1,43 +1,32 @@
 import React, { useEffect, useState, useMemo } from "react";
-import { useNavigate, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import {
   Container,
   BackgroundHeader,
-  Header,
-  ContainerBar,
-  ContentBar,
-  MarkerBar,
-  BackButton,
-  BackImage,
   Title,
   ContainerMain,
   BackgroundGame,
-  ContainerGame,
-  LessonTitle,
-  BookTitle,
-  LessonBookContainer,
-  Space,
+  ContainerGame
 } from "./style";
-import BackIcon from "../../assets/icons/Icon_Seta_Branca.png";
-import GamesFooter from "./components/Footer";
-import { URL_HMLG } from "../../../../config/infos";
-import DragAndDropGame from "../DragAndDrop";
-import ListenAndClick from "../ListenAndClick";
-import ListenAndType from "../ListenAndType";
-import SelectGame from "../SelectGame";
+import { GamesFooter } from "./components/Footer";
+import { GamesHeader } from "./components/Header";
+import { URL_HMLG, URL_HMLG_PRO } from "../../../../config/infos";
+import { DragAndDropGame } from "../DragAndDrop";
+import { ListenAndClick } from "../ListenAndClick";
+import { ListenAndType } from "../ListenAndType";
+import { SelectGame } from "../SelectGame";
 // import { games } from "../../assets/questions.json";
-import Quiz from "../Quiz";
-import ListenAndClickMap from "../ListenAndClickMap";
-import Toast from "../components/Toast";
-import Load from "../../components/Load";
-import NotFound from "../../components/NotFound";
-import Score from "../../components/Score";
+import { Quiz } from "../Quiz";
+import { ListenAndClickMap } from "../ListenAndClickMap";
+import { Toast } from "../components/Toast";
+import { Load } from "../../components/Load";
+import { NotFound } from "../../components/NotFound";
+import { Score } from "../../components/Score";
 import { api } from "../../../../lib/axios";
-import { getBookTitle, getGameTitle } from "../../../../utils";
+import { getGameTitle } from "../../../../utils";
 
-function GamesTemplate() {
+export const GamesTemplate = () => {
   const { code } = useParams();
-  const navigate = useNavigate();
   const [questions, setQuestion] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // const [game, setGame] = useState(null);
@@ -122,7 +111,7 @@ function GamesTemplate() {
     const getGameData = async () => {
       try {
         const { data } = await api.get(
-          `https://cyberhomolog.fisk.com.br:172/cyberfiskpro/api/QrCode/Validacao?codigo=${code}`
+          `${URL_HMLG_PRO}api/QrCode/Validacao?codigo=${code}`
         );
         console.log("res", data);
         if (data.erro) {
@@ -146,29 +135,14 @@ function GamesTemplate() {
       {isLoading ? (
         <Load />
       ) : errorFetch || getGameType === "Não encontrado" ? (
-        <NotFound />
+        <NotFound hasError={errorFetch} />
       ) : (
         <Container>
           <BackgroundHeader>
-            <Header>
-              <BackButton onClick={() => navigate("/qr-code")}>
-                <BackImage src={BackIcon} />
-              </BackButton>
-              <LessonBookContainer>
-                <LessonTitle>{`Lesson${questions?.[0]?.num_licao}`}</LessonTitle>
-                <BookTitle>{getBookTitle(questions?.[0]?.id_livro)}</BookTitle>
-              </LessonBookContainer>
-              <ContainerBar>
-                <ContentBar>
-                  {answeredQuestions.map((question, index) => {
-                    return (
-                      <MarkerBar key={index} $status={question?.correct} />
-                    );
-                  })}
-                </ContentBar>
-              </ContainerBar>
-              <Space />
-            </Header>
+            <GamesHeader
+              questions={questions}
+              answeredQuestions={answeredQuestions}
+            />
           </BackgroundHeader>
           <ContainerMain>
             <Title>{getGameTitle(questions?.[0]?.id_tipo)}</Title>
@@ -183,6 +157,4 @@ function GamesTemplate() {
       )}
     </>
   );
-}
-
-export default GamesTemplate;
+};

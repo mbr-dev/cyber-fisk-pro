@@ -2,7 +2,7 @@ import React from "react";
 import { Container, Info, ContainerCenter, Logo } from "./style";
 import QRLogo from "../../assets/images/ImgQRCodeFisk.png";
 
-function Load() {
+export const Load = () => {
   return (
     <Container>
       <ContainerCenter>
@@ -11,6 +11,4 @@ function Load() {
       </ContainerCenter>
     </Container>
   );
-}
-
-export default Load;
+};

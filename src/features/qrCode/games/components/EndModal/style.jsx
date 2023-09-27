@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../../config/colors";
 import trofeuBomImg from "./../../../assets/images/Trofeu_bom.png";
-import BaseButton from "../BaseButton";
+import { BaseButton } from "../BaseButton";
 
 export const Header = styled.header`
   background: ${(props) =>

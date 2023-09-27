@@ -47,3 +47,18 @@ export const getBookTitle = (numBook) => {
       return "";
   }
 };
+
+export const getLessonTitle = (numLesson) => {
+  if (!numLesson) return;
+  console.log("le", numLesson);
+  switch (true) {
+    case numLesson < 11:
+      return `Lesson ${numLesson}`;
+    case numLesson === 11:
+      return "Checkpoint 1";
+    case numLesson === 12:
+      return "Checkpoint 2";
+    default:
+      return "";
+  }
+};

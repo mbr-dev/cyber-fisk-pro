@@ -18,12 +18,12 @@ import {
   Label,
   Form,
   InputCode,
-  InputButton,
+  InputButton
 } from "./style";
 import BackIcon from "../../assets/icons/Icon_Seta.png";
 import LogoImg from "../../assets/images/Logo.png";
 
-function QRReader() {
+export const QRReader = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [permission, setPermission] = useState("show");
@@ -36,14 +36,14 @@ function QRReader() {
     instruction: [
       "Posicione o QR Code no frame e aguarde a leitura automática.",
       "Position the QR Code on the frame and wait automatic read.",
-      "Posicione lo QR Code no framito e aguarde la leitura automatica.",
+      "Posicione lo QR Code no framito e aguarde la leitura automatica."
     ],
     typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
     permissionWarning: [
       "Sem permissão para acessar a câmera.",
       "No camera permission.",
-      "Sem permissione para acessar la camera.",
-    ],
+      "Sem permissione para acessar la camera."
+    ]
   };
 
   // navigator.permissions
@@ -103,10 +103,10 @@ function QRReader() {
                     <QrReader
                       constraints={{ facingMode: "environment" }}
                       onResult={(result, error) => {
-                        if (!!result) {
+                        if (result) {
                           console.log("res", result);
                         }
-                        if (!!error) {
+                        if (error) {
                           console.log(error);
                         }
                       }}
@@ -158,6 +158,4 @@ function QRReader() {
       </ContentLimiter>
     </Container>
   );
-}
-
-export default QRReader;
+};

@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
-import BaseButton from "../../games/components/BaseButton";
+import { BaseButton } from "../../games/components/BaseButton";
 
 const fade = keyframes`
   from {opacity: 0 }
@@ -51,11 +51,12 @@ export const Info = styled.p`
   margin-top: 55%;
 `;
 export const OkButton = styled(BaseButton)`
-  width: min(90%, 150px);
+  width: ${(props) =>
+    props.$hasError ? "min(90%, 250px)" : "min(90%, 150px)"};
   min-height: 54px;
   padding: 0 !important;
   transition: opacity 0.2s;
   background: ${colors["gray-800"]} !important;
   color: ${colors.white} !important;
-  font-size: 28px !important;
+  font-size: ${(props) => (props.$hasError ? "24px" : "28px")} !important;
 `;

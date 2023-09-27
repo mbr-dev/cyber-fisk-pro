@@ -2,13 +2,13 @@ import React, { useEffect, useState } from "react";
 import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import useSound from "use-sound";
-import EndModal from "../components/EndModal";
+import { EndModal } from "../components/EndModal";
 
 import { shuffleArray } from "../../../../utils";
 import { ContainerOptions, ContainerQuestion } from "./style";
-import OptionButton from "../components/OptionButton";
+import { OptionButton } from "../components/OptionButton";
 
-function Quiz(props) {
+export const Quiz = (props) => {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -23,11 +23,11 @@ function Quiz(props) {
   const [showComplete, setShowComplete] = useState(false);
 
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1),
+    onend: () => setPoints((oldState) => oldState + 1)
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1),
+    onend: () => setError((oldState) => oldState + 1)
   });
 
   const ramdomizeOrder = () => {
@@ -78,7 +78,7 @@ function Quiz(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props.urlSounds}${index + 1}.mp3`
       };
     });
     setQuestions(shuffleArray(newQuestions));
@@ -159,9 +159,8 @@ function Quiz(props) {
         repeat={repeat}
         points={points}
         questions={questions}
+        qrId={questions?.[0]?.id_qr}
       />
     </>
   );
-}
-
-export default Quiz;
+};

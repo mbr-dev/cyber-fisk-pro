@@ -4,13 +4,13 @@ import {
   Footer,
   ContainerButtons,
   FooterButton,
-  FooterButtonImg,
+  FooterButtonImg
 } from "./style";
 import QRIcon from "../../../../assets/icons/Icon_QR.png";
 import RefreshIcon from "../../../../assets/icons/Icon_Repeat.png";
 import RankingIcon from "../../../../assets/icons/Icon ranking.png";
 
-function GamesFooter(props) {
+export const GamesFooter = (props) => {
   const navigate = useNavigate();
 
   return (
@@ -28,6 +28,4 @@ function GamesFooter(props) {
       </ContainerButtons>
     </Footer>
   );
-}
-
-export default GamesFooter;
+};

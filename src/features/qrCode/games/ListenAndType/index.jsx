@@ -3,7 +3,7 @@ import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import audioImg from "./../../assets/icons/Btn_audio.png";
 import useSound from "use-sound";
-import EndModal from "../components/EndModal";
+import { EndModal } from "../components/EndModal";
 
 import { shuffleArray } from "../../../../utils";
 import {
@@ -14,10 +14,10 @@ import {
   Image,
   Input,
   ContainerCheckButton,
-  CheckButton,
+  CheckButton
 } from "./style";
 
-function ListenAndType(props) {
+export const ListenAndType = (props) => {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -30,7 +30,7 @@ function ListenAndType(props) {
   const [text, setText] = useState("");
 
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1),
+    onend: () => setPoints((oldState) => oldState + 1)
   });
 
   const playAudio = () => {
@@ -43,7 +43,7 @@ function ListenAndType(props) {
   };
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1),
+    onend: () => setError((oldState) => oldState + 1)
   });
 
   const handleAnswer = (isError, contError) => {
@@ -90,7 +90,7 @@ function ListenAndType(props) {
         soundUrl: `${props?.urlSounds}${index + 1}.mp3`,
         image: question?.image
           ? `https://cyberhomolog.fisk.com.br:172/cyberfisk30/CyberQR/NovoQR/Essentials%201/Imagens/53_Lesson5_${index}.jpg`
-          : null,
+          : null
       };
     });
     setQuestions(shuffleArray(newQuestions));
@@ -174,9 +174,8 @@ function ListenAndType(props) {
         repeat={repeat}
         points={points}
         questions={questions}
+        qrId={questions?.[0]?.id_qr}
       />
     </>
   );
-}
-
-export default ListenAndType;
+};

@@ -3,14 +3,14 @@ import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import { DndContext } from "@dnd-kit/core";
 import useSound from "use-sound";
-import EndModal from "../components/EndModal";
+import { EndModal } from "../components/EndModal";
 
 import { Droppable, Draggable } from "./components";
 import { shuffleArray, formatQuestionServer } from "../../../../utils";
 import { restrictToWindowEdges } from "@dnd-kit/modifiers";
 import { ContainerOptions } from "./style";
 
-function DragAndDropGame(props) {
+export const DragAndDropGame = (props) => {
   const [isReady, setIsReady] = useState(false);
   const [isDropped, setIsDropped] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
@@ -24,11 +24,11 @@ function DragAndDropGame(props) {
   const [openModal, setOpenModal] = useState(false);
   const [grade, setGrade] = useState(60);
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1),
+    onend: () => setPoints((oldState) => oldState + 1)
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1),
+    onend: () => setError((oldState) => oldState + 1)
   });
 
   const ramdomizeOrder = () => {
@@ -79,7 +79,7 @@ function DragAndDropGame(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props.urlSounds}${index + 1}.mp3`
       };
     });
     setQuestions(shuffleArray(newQuestions));
@@ -131,7 +131,7 @@ function DragAndDropGame(props) {
     }
   }
 
-  console.log("per", questions[roundCount]?.pergunta);
+  console.log("########", questions?.[0]?.id_qr);
 
   return (
     <>
@@ -187,9 +187,8 @@ function DragAndDropGame(props) {
         repeat={repeat}
         points={points}
         questions={questions}
+        qrId={questions?.[0]?.id_qr}
       />
     </>
   );
-}
-
-export default DragAndDropGame;
+};

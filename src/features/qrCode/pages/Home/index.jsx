@@ -14,7 +14,7 @@ import {
   ContainerInput,
   InputCode,
   InputButton,
-  ImageInputButton,
+  ImageInputButton
 } from "./style";
 
 import LogoImg from "../../assets/images/Logo.png";
@@ -22,7 +22,7 @@ import TurnOffIcon from "../../assets/icons/Icon_logoff.png";
 import InfoImg from "../../assets/images/CardLerQR.png";
 import SendImg from "../../assets/icons/Icon_enviar.png";
 
-function QRCode() {
+export const QRCode = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [code, setCode] = useState("");
@@ -30,7 +30,7 @@ function QRCode() {
   const language = 0;
 
   const traduction = {
-    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
+    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"]
   };
 
   const handleSubmit = () => {
@@ -74,6 +74,4 @@ function QRCode() {
       </WhiteBox>
     </Container>
   );
-}
-
-export default QRCode;
+};

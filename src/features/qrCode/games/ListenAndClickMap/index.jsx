@@ -3,7 +3,7 @@ import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import audioImg from "./../../assets/icons/Btn_audio.png";
 import useSound from "use-sound";
-import EndModal from "../components/EndModal";
+import { EndModal } from "../components/EndModal";
 import {
   Container,
   ContainerAudioButton,
@@ -13,10 +13,10 @@ import {
   Map,
   GridMap,
   Place,
-  TextPlace,
+  TextPlace
 } from "./style";
 
-function ListenAndClickMap(props) {
+export const ListenAndClickMap = (props) => {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -28,7 +28,7 @@ function ListenAndClickMap(props) {
   const [grade, setGrade] = useState(60);
 
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1),
+    onend: () => setPoints((oldState) => oldState + 1)
   });
 
   const playAudio = () => {
@@ -41,7 +41,7 @@ function ListenAndClickMap(props) {
   };
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1),
+    onend: () => setError((oldState) => oldState + 1)
   });
 
   const handleAnswer = (isError) => {
@@ -84,7 +84,7 @@ function ListenAndClickMap(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props?.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props?.urlSounds}${index + 1}.mp3`
       };
     });
     setQuestions(newQuestions);
@@ -186,9 +186,8 @@ function ListenAndClickMap(props) {
         repeat={repeat}
         points={points}
         questions={questions}
+        qrId={questions?.[0]?.id_qr}
       />
     </>
   );
-}
-
-export default ListenAndClickMap;
+};

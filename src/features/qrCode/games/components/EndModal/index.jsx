@@ -20,15 +20,17 @@ import {
   QuestionsContainer,
   Question,
   ButtonsContainer,
-  ButtonFooter,
+  ButtonFooter
 } from "./style";
 import { formatQuestionServer } from "../../../../../utils";
+import { URL_HMLG_PRO } from "../../../../../config/infos";
+import { api } from "../../../../../lib/axios";
 
 const Transition = React.forwardRef(function Transition(props, ref) {
   return <Slide direction="up" ref={ref} {...props} />;
 });
 
-function EndModal(props) {
+export const EndModal = (props) => {
   const [page, setPage] = useState(1);
 
   const trophy = () => {
@@ -41,6 +43,25 @@ function EndModal(props) {
     }
   };
 
+  const saveScore = async () => {
+    try {
+      const { data } = await api.get(
+        `${URL_HMLG_PRO}api/QrCode/Progresso?id_qr=${props?.qrId}&raf=A123&score=${props?.grade}`
+      );
+      console.log("res", data);
+      if (data.erro) {
+        console.log("err", data.erro);
+        setErrorFetch(true);
+        return;
+      }
+    } catch (error) {
+      console.error("Error fetching data:", error);
+      setErrorFetch(true);
+    }
+  };
+
+  console.log(props?.qrId);
+
   return (
     <Dialog fullScreen open={props?.open} TransitionComponent={Transition}>
       <>
@@ -50,7 +71,7 @@ function EndModal(props) {
               {props?.grade > 79 ? "Good!" : "Try Again!"}
             </HeaderText>
           ) : (
-            <HeaderImg src={IconSad} />
+            <HeaderImg src={props?.grade > 79 ? IconSad : IconHappy} />
           )}
         </Header>
         <MainContainer>
@@ -81,7 +102,7 @@ function EndModal(props) {
                 {props?.questions.map((question, index) => {
                   if (question?.correct === false) {
                     return (
-                      <Question>
+                      <Question key={index}>
                         {formatQuestionServer(question?.pergunta) ||
                           `Question ${index}`}
                       </Question>
@@ -94,9 +115,9 @@ function EndModal(props) {
               <ButtonFooter
                 onClick={() =>
                   page === 2
-                    ? props?.setOpen(false)
+                    ? saveScore()
                     : props?.grade === 100
-                    ? props?.setOpen(false)
+                    ? saveScore()
                     : setPage(2)
                 }
               >
@@ -121,6 +142,4 @@ function EndModal(props) {
       </>
     </Dialog>
   );
-}
-
-export default EndModal;
+};

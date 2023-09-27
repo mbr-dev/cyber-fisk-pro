@@ -2,19 +2,20 @@ import React, { useEffect, useState } from "react";
 import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import useSound from "use-sound";
-import EndModal from "../components/EndModal";
+import { EndModal } from "../components/EndModal";
 
 import { OptionButton } from "./components/OptionButton";
 import { SelectButton } from "./components/SelectButton";
 import { shuffleArray } from "../../../../utils";
 import {
   ContainerQuestion,
+  ContainerSelect,
   ContainerOptions,
   ContainerCheckButton,
-  CheckButton,
+  CheckButton
 } from "./style";
 
-function SelectGame(props) {
+export const SelectGame = (props) => {
   const [isReady, setIsReady] = useState(false);
   const [isTryAgain, setIsTryAgain] = useState(false);
   const [isBlocked, setIsBlocked] = useState(false);
@@ -30,11 +31,11 @@ function SelectGame(props) {
   const [grade, setGrade] = useState(60);
 
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1),
+    onend: () => setPoints((oldState) => oldState + 1)
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1),
+    onend: () => setError((oldState) => oldState + 1)
   });
 
   const ramdomizeOrder = () => {
@@ -87,7 +88,7 @@ function SelectGame(props) {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
+        soundUrl: `${props?.urlSounds}${index + 1}.mp3`
       };
     });
     setQuestions(shuffleArray(newQuestions));
@@ -104,7 +105,7 @@ function SelectGame(props) {
     props.setAnswered(questions);
     if (questions.some((question) => question?.correct === undefined))
       generateAnswerArray();
-    if (questions.every((question) => question.correct === null)) {
+    if (questions.every((question) => question?.correct === null)) {
       ramdomizeOrder();
       setIsReady(true);
     }
@@ -152,31 +153,33 @@ function SelectGame(props) {
                 )
               : questions[roundCount]?.pergunta}
           </ContainerQuestion>
-          <SelectButton
-            $show={openSelect}
-            onClick={() => setOpenSelect(!openSelect)}
-            disabled={isBlocked}
-          >
-            {selected || "Select"}
-          </SelectButton>
-          <ContainerOptions $show={openSelect}>
-            {questions[roundCount]?.alternativas.map((option, index) => (
-              <OptionButton
-                key={index}
-                id={`p${index}`}
-                order={orders[index]}
-                disabled={isBlocked || !openSelect}
-                correct={index === 0}
-                onClick={() => handleClick(option)}
-                $border={
-                  orders[index] !==
-                  questions[roundCount].alternativas.length - 1
-                }
-              >
-                {option}
-              </OptionButton>
-            ))}
-          </ContainerOptions>
+          <ContainerSelect>
+            <SelectButton
+              $show={openSelect}
+              onClick={() => setOpenSelect(!openSelect)}
+              disabled={isBlocked}
+            >
+              {selected || "Select"}
+            </SelectButton>
+            <ContainerOptions $show={openSelect}>
+              {questions[roundCount]?.alternativas.map((option, index) => (
+                <OptionButton
+                  key={index}
+                  id={`p${index}`}
+                  order={orders[index]}
+                  disabled={isBlocked || !openSelect}
+                  correct={index === 0}
+                  onClick={() => handleClick(option)}
+                  $border={
+                    orders[index] !==
+                    questions[roundCount].alternativas.length - 1
+                  }
+                >
+                  {option}
+                </OptionButton>
+              ))}
+            </ContainerOptions>
+          </ContainerSelect>
           <ContainerCheckButton>
             <CheckButton
               onClick={handleCheck}
@@ -194,9 +197,8 @@ function SelectGame(props) {
         repeat={repeat}
         points={points}
         questions={questions}
+        qrId={questions?.[0]?.id_qr}
       />
     </>
   );
-}
-
-export default SelectGame;
+};

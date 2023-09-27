@@ -5,24 +5,45 @@ import {
   ContainerLimiter,
   ContainerCenter,
   Logo,
-  OkButton,
+  OkButton
 } from "./style";
 import QRLogo from "../../assets/images/Logo.png";
 import { useNavigate } from "react-router-dom";
 
-function NotFound() {
+export const NotFound = (props) => {
   const navigate = useNavigate();
+  const idi = 0;
+
+  const traduction = {
+    infoError: [
+      "Erro ao acessar QR Code.",
+      "Error on access QR Code.",
+      "Erro ao acessar el QR Code."
+    ],
+    infoInvalid: ["QR Code inválido.", "Invalid QR Code.", "QR Code invalido."],
+    tryAgain: ["Tentar novamente", "Try again", "Tentar nuevamente"]
+  };
+
   return (
     <Container>
       <ContainerLimiter>
         <Logo src={QRLogo}></Logo>
         <ContainerCenter>
-          <Info>QR Code inválido.</Info>
-          <OkButton onClick={() => navigate("/qr-code")}>OK</OkButton>
+          <Info>
+            {props?.hasError
+              ? traduction.infoError[idi]
+              : traduction.infoInvalid[idi]}
+          </Info>
+          <OkButton
+            onClick={() => {
+              props?.hasError ? window.location.reload() : navigate("/qr-code");
+            }}
+            $hasError={props.hasError}
+          >
+            {props?.hasError ? traduction.tryAgain[idi] : "OK"}
+          </OkButton>
         </ContainerCenter>
       </ContainerLimiter>
     </Container>
   );
-}
-
-export default NotFound;
+};

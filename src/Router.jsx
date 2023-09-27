@@ -1,8 +1,8 @@
 import React from "react";
 import { Routes, Route } from "react-router-dom";
-import QRCode from "./features/qrCode/pages/Home";
-import QRReader from "./features/qrCode/pages/QrReader";
-import GamesTemplate from "./features/qrCode/games/gamesTemplate";
+import { QRCode } from "./features/qrCode/pages/Home";
+import { QRReader } from "./features/qrCode/pages/QrReader";
+import { GamesTemplate } from "./features/qrCode/games/gamesTemplate";
 
 import { Home } from "./pages/Home";
 import { Books } from "./pages/Books";

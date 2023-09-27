@@ -4,13 +4,11 @@ import IconHappy from "../../../assets/icons/Icon_happy.png";
 
 import { ToastContainer, ToastText, ToastIcon } from "./style";
 
-function Toast(props) {
+export const Toast = (props) => {
   return (
     <ToastContainer $show={props.infoToast.show} $error={props.infoToast.error}>
       <ToastText>{props.infoToast.error ? "Try Again!" : "Good!"}</ToastText>
       <ToastIcon src={props.infoToast.error ? IconSad : IconHappy} />
     </ToastContainer>
   );
-}
-
-export default Toast;
+};

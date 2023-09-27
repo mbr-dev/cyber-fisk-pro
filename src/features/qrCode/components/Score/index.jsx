@@ -18,14 +18,15 @@ import {
   ScoreBar,
   ContainerRowScoreLesson,
   ContainerScoreBar,
-  ScoreBarBackground,
+  ScoreBarBackground
 } from "./style";
 import BackIcon from "../../assets/icons/Icon_Seta_Branca.png";
 import { useNavigate } from "react-router-dom";
-import Load from "../Load";
+import { Load } from "../Load";
 import { api } from "../../../../lib/axios";
+import { URL_HMLG_PRO } from "../../../../config/infos";
 
-function Score(props) {
+export const Score = (props) => {
   const [dataScore, setDataScore] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   const [errorFetch, setErrorFetch] = useState(false);
@@ -34,7 +35,7 @@ function Score(props) {
     const getScoreData = async () => {
       try {
         const { data } = await api.get(
-          `https://cyberhomolog.fisk.com.br:172/cyberfiskpro/api/QrCode/RetornaProgresso?raf=A123`
+          `${URL_HMLG_PRO}api/QrCode/RetornaProgresso?raf=${"A123"}&id_livro=${53}`
         );
         console.log("res", data);
         if (data.erro) {
@@ -75,13 +76,15 @@ function Score(props) {
             <ContainerCenter>
               <BookTitle>Essentials 1</BookTitle>
               <ContainerScoreLesson>
-                {dataScore.map((row) => {
+                {dataScore.map((row, index) => {
                   return (
-                    <ContainerRowScoreLesson>
+                    <ContainerRowScoreLesson key={index}>
                       <LessonName>{row?.lesson}</LessonName>
                       <ContainerScoreBar>
                         <ScoreBarBackground>
-                          <ScoreBar>{`${row?.score}%`}</ScoreBar>
+                          <ScoreBar
+                            percentage={row?.score}
+                          >{`${row?.score}%`}</ScoreBar>
                         </ScoreBarBackground>
                       </ContainerScoreBar>
                     </ContainerRowScoreLesson>
@@ -94,6 +97,4 @@ function Score(props) {
       )}
     </Container>
   );
-}
-
-export default Score;
+};

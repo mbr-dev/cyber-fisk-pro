@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
-import BaseButton from "../../games/components/BaseButton";
+import { BaseButton } from "../../games/components/BaseButton";
 import { Button } from "@mui/material";
 import { isMobile } from "react-device-detect";
 
@@ -65,7 +65,7 @@ export const Title = styled.h2`
   margin-bottom: 8px;
 `;
 export const ContainerLimiter = styled.div`
-  width: min(400px, 95%);
+  width: min(500px, 95%);
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -75,8 +75,12 @@ export const ContainerLimiter = styled.div`
 `;
 export const ContainerCenter = styled.div`
   width: 100%;
+  /*height: 100%;*/
+  flex: 1;
   /* height: min(450px, 90%); */
-  aspect-ratio: 9/13;
+  /*aspect-ratio: 9/13;*/
+  max-height: calc(100vh - 250px);
+  overflow-y: auto;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -120,7 +124,7 @@ export const LessonName = styled.div`
   font-size: 20px;
   font-weight: bold;
   width: 100%;
-  max-width: 100px;
+  max-width: 130px;
   text-align: start;
 `;
 export const ContainerScoreBar = styled.div`
@@ -141,10 +145,11 @@ export const ScoreBarBackground = styled.div`
   overflow: hidden;
 `;
 export const ScoreBar = styled.div`
-  width: 50%;
+  width: ${(props) => `${props.percentage}%`};
   height: 100%;
   font-size: 10px;
-  background: ${colors["green-100"]};
+  background: ${(props) =>
+    props.percentage === 0 ? "transparent" : colors["green-100"]};
   color: ${colors.white};
   text-align: start;
   padding-left: 4px;

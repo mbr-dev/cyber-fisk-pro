@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
-import BaseButton from "../components/BaseButton";
+import { BaseButton } from "../components/BaseButton";
 
 const fadeIn = keyframes`
   from {opacity: 0; height: 0}
@@ -19,6 +19,12 @@ export const ContainerQuestion = styled.div`
   padding: 12px;
   margin-bottom: 20px;
   font-size: 24px;
+`;
+export const ContainerSelect = styled.div`
+  flex: 1;
+  max-height: 320px;
+  display: flex;
+  flex-direction: column;
 `;
 export const ContainerOptions = styled.div`
   flex: 1;
