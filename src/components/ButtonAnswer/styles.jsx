@@ -19,7 +19,15 @@ export const Container = styled.button`
     object-fit: contain;
   }
 
+  p {
+    line-height: 1;
+  }
+
   &:hover {
     scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
   }
 `;

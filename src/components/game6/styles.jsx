@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
 export const Container = styled.div`
   width: 100vw;
@@ -7,17 +7,18 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Main = styled.main`
+export const Main = styled.div`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
+  gap: 1rem;
   margin-top: 2rem;
-
-  @media(max-width: 360px) {
-    gap: 1rem;
-    margin-top: 1rem;
-  }  
-`;
+  
+  @media(max-width: 320px) {
+    margin-top: 0.75rem;
+    gap: 0.5rem;
+    padding-inline: 0.5rem;
+  }
+`

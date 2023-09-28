@@ -1,191 +1,245 @@
 export const L1_T2_Facil = [
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_0",
     resposta: [
-      'A', 'M', 'G', 'D', 'E', 'N'
+      {label: "A", status: 1}, 
+      {label: "D", status: 0}, 
+      {label: "E", status: 0}, 
+      {label: "N", status: 0}, 
+      {label: "M", status: 1}, 
+      {label: "G", status: 1}, 
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_1",
     resposta: [
-      'E', 'T', 'P', 'A', 'O', 'D'
+      {label: "A", status: 0},
+      {label: "T", status: 1},
+      {label: "E", status: 1},
+      {label: "P", status: 1},
+      {label: "O", status: 0},
+      {label: "D", status: 0},
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_2",
     resposta: [
-      'H', 'S', 'I', 'E', 'A', 'R'
+      {label: "E", status: 0},
+      {label: "S", status: 1},
+      {label: "A", status: 0},
+      {label: "I", status: 1},
+      {label: "H", status: 1},
+      {label: "R", status: 0},
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_3",
     resposta: [
-      'K', 'N', 'C', 'Q', 'S', 'M'
+      {label: "K", status: 1},
+      {label: "Q", status: 0},
+      {label: "S", status: 0},
+      {label: "N", status: 1},
+      {label: "M", status: 0},
+      {label: "C", status: 1},
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_4",
     resposta: [
-      'O', 'F', 'Z', 'U', 'V', 'X'
+      {label: "U", status: 0},
+      {label: "V", status: 0},
+      {label: "F", status: 1},
+      {label: "O", status: 1},
+      {label: "Z", status: 1},
+      {label: "X", status: 0},
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_5",
     resposta: [
-      '3', '6', '9', '2', '5', '8'
+      {label: "2", status: 0},
+      {label: "3", status: 1},
+      {label: "5", status: 0},
+      {label: "6", status: 1},
+      {label: "8", status: 0},
+      {label: "9", status: 1},
     ]
   },
   {
     tipo: 3,
-    pergunta: '',
+    pergunta: "L1_Task2_F_6",
     resposta: [
-      '4', '7', '8', '1', '3', '9'
+      {label: "1", status: 0},
+      {label: "3", status: 0},
+      {label: "4", status: 1},
+      {label: "7", status: 1},
+      {label: "8", status: 1},
+      {label: "9", status: 0},
     ]
   },
   {
     tipo: 4,
-    pergunta: '',
+    pergunta: "L1_Task2_F_7",
     resposta: [
-      'a pen', 'a book', 'a tablet', 'a pencil', 'a notebook'
+      {label: "a pen", status: 1},
+      {label: "a book", status: 1},
+      {label: "a tablet", status: 1},
+      {label: "a pencil", status: 0},
+      {label: "a notebook", status: 0},
     ]
   },
   {
     tipo: 4,
-    pergunta: '',
+    pergunta: "L1_Task2_F_8",
     resposta: [
-      'a pencil', 'an eraser', 'an English book', 'a pen', 'a notebook'
+      {label: "a pen", status: 0},
+      {label: "a pencil", status: 1},
+      {label: "an eraser", status: 1},
+      {label: "a notebook", status: 0},
+      {label: "an English book", status: 1},
     ]
   },
   {
     tipo: 4,
-    pergunta: '',
+    pergunta: "L1_Task2_F_9",
     resposta: [
-      'a notebook', 'a pencil case', 'a backpack', 'a book', 'a tablet'
+      {label: "a book", status: 0},
+      {label: "a notebook", status: 1},
+      {label: "a tablet", status: 0},
+      {label: "a pencil case", status: 1},
+      {label: "a backpack", status: 1},
     ]
   },
 ];
 
 export const L1_T2_Medio = [
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_0",
     resposta: [
-      'Yes, I do.',
-      'Yes, I am.',
-      'No, I’m not.'
+      {label: "Yes, I am.", status: 0},
+      {label: "Yes, I do.", status: 1},
+      {label: "No, I’m not.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_1",
     resposta: [
-      'No, I don’t.',
-      'No, I’m not.',
-      'Yes, I am.'
+      {label: "Yes, I am.", status: 0},
+      {label: "No, I’m not.", status: 0},
+      {label: "No, I don’t.", status: 1},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_1",
     resposta: [
-      'Yes, I do.',
-      'Yes, I am.',
-      'No, I’m not.'
+      {label: "Yes, I do.", status: 1},
+      {label: "Yes, I am.", status: 0},
+      {label: "No, I’m not.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_3",
     resposta: [
-      'No, I don’t.',
-      'Yes, I am.',
-      'No, I’m not.'
+      {label: "No, I don’t.", status: 1},
+      {label: "Yes, I am.", status: 0},
+      {label: "No, I’m not.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_4",
     resposta: [
-      'No, I don’t.',
-      'Yes, I am.',
-      'No, I am not.'
+      {label: "No, I am not.", status: 0},
+      {label: "Yes, I am.", status: 0},
+      {label: "No, I don’t.", status: 1},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_5",
     resposta: [
-      'No, I am not.',
-      'Yes, I do.',
-      'No, I don’t.'
+      {label: "No, I am not.", status: 1},
+      {label: "Yes, I am.", status: 0},
+      {label: "No, I don’t.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_6",
     resposta: [
-      'Yes, I am.',
-      'Yes, I do.',
-      'No, I don’t.'
+      {label: "No, I don’t.", status: 0},
+      {label: "Yes, I am.", status: 1},
+      {label: "Yes, I do.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_7",
     resposta: [
-      'No. I’m from Brazil.',
-      'Yes, I’m from Brazil.',
-      'No, I’m from France.'
+      {label: "No. I’m from Brazil.", status: 1},
+      {label: "Yes, I’m from Brazil.", status: 0},
+      {label: "No, I’m from France.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_8",
     resposta: [
-      'Yes, I’m from Canada.',
-      'Yes, I’m from Brazil.',
-      'Yes, I’m from Japan.'
+      {label: "Yes, I’m from Japan.", status: 0},
+      {label: "Yes, I’m from Canada.", status: 1},
+      {label: "Yes, I’m from Brazil.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_M_9",
     resposta: [
-      'No, I’m French.',
-      'Yes, I’m from Canada.',
-      'Yes, I’m from Spain.'
+      {label: "Yes, I’m from Spain.", status: 0},
+      {label: "Yes, I’m from Canada.", status: 0},
+      {label: "No, I’m French.", status: 1},
     ]
   }
 ]
 
 export const L1_T2_Dificil = [
   {
-    pergunta: '',
+    pergunta: "L1_Task2_D_0",
     resposta: [
-      'Good afternoon',
-      'Pretty good.',
-      'I work here.',
-      'Good morning.',
-      'I’m good.',
-      'I study here.'
+      {label: "Good morning.", status: 0},
+      {label: "Good afternoon", status: 1},
+      {label: "Pretty good.", status: 1},
+      {label: "I’m good.", status: 0},
+      {label: "I work here.", status: 1},
+      {label: "I study here.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_D_1",
     resposta: [
-      'I’m not from the USA.',
-      'I’m from Australia.',
-      'I live in the USA.',
-      'I live in Australia.',
-      'I’m from Spain.',
-      'I’m American.'
+      {label: "I’m not from the USA.", status: 1},
+      {label: "I’m from Australia.", status: 1},
+      {label: "I live in Australia.", status: 0},
+      {label: "I live in the USA.", status: 1},
+      {label: "I’m from Spain.", status: 0},
+      {label: "I’m American.", status: 0},
     ]
   },
   {
-    pergunta: '',
+    pergunta: "L1_Task2_D_1",
     resposta: [
-      'His name is Adam Brooker.',
-      'Good luck.',
-      'Thank you.',
-      'His name is Adam Brooks.',
-      'I’m good.',
-      'Thanks.'
+      {label: "His name is Adam Brooker.", status: 1},
+      {label: "His name is Adam Brooks.", status: 0},
+      {label: "I’m good.", status: 0},
+      {label: "Good luck.", status: 1},
+      {label: "Thank you.", status: 1},
+      {label: "Thanks.", status: 0},
     ]
   }
+]
+
+export const L1_SUPER_LESSON = [
+  { 
+    letras: ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+    resposta: ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"]
+  },
 ]

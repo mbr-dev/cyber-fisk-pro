@@ -4,7 +4,6 @@ const LessonContext = createContext();
 
 function LessonProvider({children}){
   const [numLesson, setNumLesson] = useState(0);
-  const [superTask, setSuperTask] = useState(["","","","","","","","","",""]);
   const [lessons, setLessons] = useState([0,0,0,0,0,0,0,0,0,0]);//0 = neutro 1 = acerto 2 = erro
   const [container, setContainer] = useState(0);
   const [numSelLesson, setNumSelLesson] = useState(0);
@@ -56,10 +55,6 @@ function LessonProvider({children}){
     setNumLesson(num);
   }
 
-  const setNewsuperTask = (data) => {
-    setSuperTask(data);
-  }
-
   const setStatusLessons = (data) => {
     setLessons(data);
   }
@@ -67,7 +62,6 @@ function LessonProvider({children}){
   return (
     <LessonContext.Provider value={{
       numLesson,
-      superTask,
       pontosD,
       lessons,
       pontosF,
@@ -80,7 +74,6 @@ function LessonProvider({children}){
       rodadaGeral,
       timeElapsed,
       setTimeElapsed,
-      setNewsuperTask,
       setStatusLessons,
       setNewContainer,
       setNewPontos,

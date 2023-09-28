@@ -1,108 +1,48 @@
 import styled from "styled-components";
 
-export const Game4Container = styled.div`
-
-  @media(max-width: 360px) {
-    .buttonOfAudio {
-      width: 100%;
-
-    button {
-        width: 4rem;
-        height: 4rem;
-      }
-    }
-  }
+export const Container = styled.div`
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
-export const Game4Content = styled.div`
+export const Main = styled.main`
   width: 100%;
-  padding-top: 3rem;
+  padding-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
 
-  .btn{
-    width: 5rem;
-    height: 5rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    box-shadow:  2px 2px 6px #ccc;
-    transition: all .2s ease-in-out;
+  @media(max-width: 320px) {
+    padding-top: 0.75rem;
+    gap: 0.75rem;
   }
+`;
 
-  .btn:hover { 
-    transform: scale(1.1); 
-  }
+export const Button = styled.button`
+  all: unset;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+  transition: all 0.2s;
+  text-align: center;
 
-  .btn2{
-    width: 9.375rem;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border-radius: 20px;
-    line-height: 1.375;
-    box-shadow:  2px 2px 6px #ccc;
-    transition: all .2s ease-in-out;
-  }
-
-  .btn2:hover { 
-    transform: scale(1.05); 
-  }
-
-  .desc{
-    font-size: 2rem;
-    color: ${props => props.theme.black};
-    font-weight: bold;
-  }
-  
-  .desc2{
-    text-transform: lowercase;
-    font-size: 1.25rem;
-    color: ${props => props.theme.black};
+  p {
     font-weight: bold;
   }
 
-  @media (max-width: 360px) {
-    padding-top: 1rem;
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-
-    .btn2{
-      width: 130px;
-    }
-
-    .desc{
-      font-size: 1.5rem;
-    }
-    
-    .desc2{
-      font-size: 1.25rem;
-    }
+  &:hover {
+    scale: 1.05;
   }
 
-  @media(min-width: 600px) {
-    .btn{
-      width: 9rem;
-      height: 9rem;
-    }
-
-    .btn2{
-      width: 18.75rem;
-      height: 6rem;
-    }
-
-    .desc{
-      font-size: 3rem;
-    }
-    
-    .desc2{
-      font-size: 2rem;
-    }
+  &:disabled {
+    cursor: not-allowed;
   }
-`
+`;

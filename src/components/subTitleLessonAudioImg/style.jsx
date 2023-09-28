@@ -5,7 +5,7 @@ export const Container = styled.div`
   display: flex;
   align-items: center;
   gap: 1rem;
-  background-color: ${props => props.theme["gray-200"]};
+  background-color: ${props => props.theme["gray-100"]};
   padding-top: 0.625rem;
   
   .img2 {

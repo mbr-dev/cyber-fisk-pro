@@ -1,17 +1,17 @@
 import { useContext } from "react";
 
-import { LessonContext } from "../../context/lesson";
-import { defaultTheme } from "../../themes/defaultTheme";
-
 import { HeaderStepLesson } from "../HeaderStepLesson";
 import { HeaderStepLessonEnd } from "../HeaderStepLessonEnd";
 import { HeaderStepLessonStart } from "../HeaderStepLessonStart";
+
+import { LessonContext } from "../../context/lesson";
 
 import iconStart from "./images/iconStart.png";
 import iconFinish from "./images/iconFinish.png";
 import iconSuper from "./images/iconSuper.png";
 import iconTrophy from "./images/iconTrophy.png";
 
+import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
 export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
@@ -69,7 +69,7 @@ export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, t
             <img src={iconTrophy} alt="iconStart" style={{ marginTop: "0.25rem"}} /> :
             <img src={iconFinish} alt="iconStart" />
           }
-           <p style={{ marginRight: "5px" }}>{numEnd}</p>
+           <p>{numEnd}</p>
         </Icons>
       </Main>
     </Container>

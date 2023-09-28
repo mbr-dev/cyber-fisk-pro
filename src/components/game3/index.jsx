@@ -26,7 +26,6 @@ export const Game3 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-
   const loadLesson = useCallback(() => {
     const totalOfQuestion = L1_T1_Dificil.length;
     
@@ -44,13 +43,9 @@ export const Game3 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push({
-        label: L1_T1_Dificil[tempQuestions[round]].resposta[a].label,
-        status: L1_T1_Dificil[tempQuestions[round]].resposta[a].status,
-      });
+      tempAnswers.push(L1_T1_Dificil[tempQuestions[round]].resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    console.log("tempAnswers: ", tempAnswers);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }, [setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setAnswers]);
@@ -64,27 +59,23 @@ export const Game3 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push({
-        label: L1_T1_Dificil[randomNumber[number]].resposta[a].label,
-        status: L1_T1_Dificil[randomNumber[number]].resposta[a].status,
-      });
+      tempAnswers.push(L1_T1_Dificil[randomNumber[number]].resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    console.log("tempAnswers: ", tempAnswers);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }
 
   const handleClick = (index) => {
-    if(blockButton) return;
+    if (blockButton) return;
 
     setBlockButton(true);
 
     let tempRightPoints = rightPoints;
     let tempColor = [...optionColor];
-    const selectedAnswer = answers[index];
+    const selectedAnswer = answers[index].status;
 
-    if (selectedAnswer.status === 1) {
+    if (selectedAnswer === 1) {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
@@ -174,6 +165,7 @@ export const Game3 = () => {
               h="3rem"
               onPress={() => {handleClick(index)}}
               optionColor={optionColor[index]}
+              disabledButton={blockButton}
             >
               <p>{answer.label}</p>
             </ButtonAnswer>

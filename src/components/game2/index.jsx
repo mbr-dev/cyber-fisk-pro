@@ -13,7 +13,7 @@ import { TrocaAtividade } from "../../utils/regras";
 import { Container, Main } from "./styles";
 
 export const Game2 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
@@ -150,6 +150,7 @@ export const Game2 = () => {
               h="3rem"
               onPress={() => handleClick(index)}
               optionColor={optionColor[index]}
+              disabledButton={blockButton}
             >
               <p>{answer.label}</p>
             </ButtonAnswer>

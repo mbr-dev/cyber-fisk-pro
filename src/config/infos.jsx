@@ -8,4 +8,6 @@ export const URL_FISKPRO = "https://cyberhomolog.fisk.com.br:172/cyberfiskpro/fi
 
 /* 
   https://cyberhomolog.fisk.com.br:172/cyberfiskpro/files/images/essentials1/lesson4/
+
+  https://cyberhomolog.fisk.com.br:172/cyberfiskpro/files/sounds/essentials1/lesson1/L1_Task2_F_
 */

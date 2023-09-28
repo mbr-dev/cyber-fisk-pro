@@ -12,8 +12,8 @@ export const Main = styled.div`
   border-bottom-right-radius: 6px;
 
   @media(max-width: 320px) {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 1rem;
+    height: 1rem;
   }
 
   @media(min-width: 600px) {

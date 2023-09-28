@@ -110,7 +110,6 @@ export const GameSL4 = () => {
       let tempRound = round;
       tempRound++;
       setRound(tempRound);
-      console.log("tempRound: ", tempRound);
 
       let tempGeneralRound = rodadaGeral;
       tempGeneralRound++;
