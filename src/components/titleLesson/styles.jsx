@@ -21,7 +21,6 @@ export const Container = styled.div`
   }
 
   @media(max-width: 320px) {
-    padding: 0rem;
     padding-inline: 0.375rem;
 
     span {

@@ -109,6 +109,10 @@ export const GameWordle = () => {
       }}>
         <GameWordleMain>
           <Board />
+          <div>
+            <button>rever</button>
+            <button>enter</button>
+          </div>
           <KeyBoard />
         </GameWordleMain>
       </GameWordleContext.Provider>

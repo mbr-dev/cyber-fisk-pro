@@ -1,4 +1,4 @@
-import { SL2_FACIL } from "../../../../utils/Lesson2_Task1";
+import { L2_SUPER_LESSON_FACIL } from "../../../../utils/lesson2_Task2";
 
 import LogoImg from "../../images/logoIcon.png";
 
@@ -15,7 +15,7 @@ export const GridItem = ({ gItem, onItemClick }) => {
       }
 
       {(gItem.permanentShown || gItem.shown) && gItem.item !== null &&
-        <p>{SL2_FACIL[gItem.item].name}</p>
+        <p>{L2_SUPER_LESSON_FACIL[gItem.item].name}</p>
       }
     </GridItemContainer>
   )

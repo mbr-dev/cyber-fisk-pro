@@ -4,7 +4,7 @@ import { HeaderLesson } from "../HeaderLesson";
 import { GridItem } from "./components/GridItem";
 
 import { LessonContext } from "../../context/lesson";
-import { SL2_FACIL } from "../../utils/Lesson2_Task1";
+import { L2_SUPER_LESSON_FACIL } from "../../utils/lesson2_Task2";
 
 import { GameSL2Container, GameSL2Main, GridArea, Grid } from "./styles";
 
@@ -19,7 +19,7 @@ export const GameSL2 = () => {
 
   const createGrid = () => {
     let tmpGrid = [];
-    let totalOfItems = SL2_FACIL.length;
+    let totalOfItems = L2_SUPER_LESSON_FACIL.length;
 
     for (let a = 0; a < (totalOfItems * 2); a++) {
       tmpGrid.push({ item: null, shown: false, permanentShown: false });

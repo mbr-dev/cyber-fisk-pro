@@ -4,11 +4,12 @@ import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
+import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T2_Dificil } from "../../utils/lesson1_Task2";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
-import { URL_HMLG, URL_FISKPRO } from "../../config/infos";
+import { URL_FISKPRO } from "../../config/infos";
 
 import { Container, Main } from "./styles";
 

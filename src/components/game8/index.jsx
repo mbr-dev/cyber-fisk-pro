@@ -166,6 +166,7 @@ export const Game8 = () => {
       const droppedIndex = Number(active.id.split('-')[1]);
       const changeTxt = over ? answers[droppedIndex] : '______';
       setChangeText(changeTxt);
+      
       verifyAnswer(droppedIndex);
     }
   }
