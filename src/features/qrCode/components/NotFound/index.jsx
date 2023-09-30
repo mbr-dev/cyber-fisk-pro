@@ -30,17 +30,19 @@ export const NotFound = (props) => {
         <Logo src={QRLogo}></Logo>
         <ContainerCenter>
           <Info>
-            {props?.hasError
+            {props?.hasError === "Erro"
               ? traduction.infoError[idi]
               : traduction.infoInvalid[idi]}
           </Info>
           <OkButton
             onClick={() => {
-              props?.hasError ? window.location.reload() : navigate("/qr-code");
+              props?.hasError === "Erro"
+                ? window.location.reload()
+                : navigate("/qr-code");
             }}
-            $hasError={props.hasError}
+            $hasError={props.hasError === "Erro"}
           >
-            {props?.hasError ? traduction.tryAgain[idi] : "OK"}
+            {props?.hasError === "Erro" ? traduction.tryAgain[idi] : "OK"}
           </OkButton>
         </ContainerCenter>
       </ContainerLimiter>

@@ -24,7 +24,7 @@ export const MainContainer = styled.div`
   flex: 10;
   display: flex;
   justify-content: center;
-  min-height: 450px;
+  min-height: 480px;
 `;
 export const GradeContainer = styled.div`
   width: min(90%, 400px);
@@ -52,6 +52,8 @@ export const ThrofyContainer = styled.div`
 `;
 export const ThrofyImage = styled.img`
   width: 80%;
+  height: 80%;
+  min-height: 170px;
 `;
 export const Grade = styled.div`
   width: 100%;

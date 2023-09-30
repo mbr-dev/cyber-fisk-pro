@@ -60,9 +60,10 @@ export const QRCode = () => {
           <InputCode
             variant="outlined"
             placeholder={traduction?.typeCode[language]}
-            inputProps={{ maxLength: 12 }}
+            inputProps={{ maxLength: 13 }}
             value={code}
             onChange={(e) => {
+              if (e.target.value.length > 13) return;
               const value = e.target.value.replace("/", "").toUpperCase();
               setCode(value);
             }}

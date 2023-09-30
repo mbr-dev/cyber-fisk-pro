@@ -2,9 +2,9 @@ import React from "react";
 import { useDroppable } from "@dnd-kit/core";
 import { Container } from "./style";
 
-export function Droppable(props) {
+export const Droppable = (props) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable",
+    id: "droppable"
   });
 
   return (
@@ -12,4 +12,4 @@ export function Droppable(props) {
       {props.children}
     </Container>
   );
-}
+};

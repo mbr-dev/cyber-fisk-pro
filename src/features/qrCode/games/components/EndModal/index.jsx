@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Dialog, Slide } from "@mui/material";
+import { useNavigate } from "react-router-dom";
 import trofeuExcellentImg from "./../../../assets/images/Trofeu_excelente.png";
 import trofeuGoodImg from "./../../../assets/images/Trofeu_bom.png";
 import trofeuBadImg from "./../../../assets/images/Trofeu_ruim.png";
@@ -31,6 +32,7 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export const EndModal = (props) => {
+  const navigate = useNavigate();
   const [page, setPage] = useState(1);
 
   const trophy = () => {
@@ -54,6 +56,7 @@ export const EndModal = (props) => {
         setErrorFetch(true);
         return;
       }
+      navigate("/qr-code");
     } catch (error) {
       console.error("Error fetching data:", error);
       setErrorFetch(true);

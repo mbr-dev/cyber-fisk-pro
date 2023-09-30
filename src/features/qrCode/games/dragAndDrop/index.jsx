@@ -23,6 +23,7 @@ export const DragAndDropGame = (props) => {
   const [orders, setOrders] = useState([]);
   const [openModal, setOpenModal] = useState(false);
   const [grade, setGrade] = useState(60);
+  const [answer, setAnswer] = useState("");
   const [playCorrect] = useSound(correct, {
     onend: () => setPoints((oldState) => oldState + 1)
   });
@@ -99,6 +100,13 @@ export const DragAndDropGame = (props) => {
     if (questions.every((question) => question.correct === null)) {
       ramdomizeOrder();
       setIsReady(true);
+      setAnswer(
+        formatQuestionServer(
+          isDropped
+            ? questions[roundCount]?.resposta_completa
+            : questions[roundCount]?.pergunta
+        )
+      );
     }
   }, [questions]);
 
@@ -119,7 +127,7 @@ export const DragAndDropGame = (props) => {
     setIsTryAgain(true);
   };
 
-  function handleDragEnd(event) {
+  const handleDragEnd = (event) => {
     if (event?.over && event?.over?.id === "droppable") {
       setIsBlocked(true);
       if (event?.active?.id === "p0") {
@@ -129,9 +137,17 @@ export const DragAndDropGame = (props) => {
         playWrong();
       }
     }
-  }
+  };
 
-  console.log("########", questions?.[0]?.id_qr);
+  useEffect(() => {
+    setAnswer(
+      formatQuestionServer(
+        isDropped
+          ? questions[roundCount]?.resposta_completa
+          : questions[roundCount]?.pergunta
+      )
+    );
+  }, [isDropped, roundCount]);
 
   return (
     <>
@@ -140,16 +156,7 @@ export const DragAndDropGame = (props) => {
           onDragEnd={handleDragEnd}
           modifiers={[restrictToWindowEdges]}
         >
-          <Droppable>
-            {isDropped
-              ? formatQuestionServer(
-                  questions[roundCount]?.pergunta?.replace(
-                    /_+/g,
-                    questions[roundCount]?.alternativas[0]
-                  )
-                )
-              : formatQuestionServer(questions[roundCount]?.pergunta)}
-          </Droppable>
+          <Droppable>{answer}</Droppable>
           <ContainerOptions>
             {questions[roundCount]?.alternativas.map((question, index) => {
               return index === 0 ? (

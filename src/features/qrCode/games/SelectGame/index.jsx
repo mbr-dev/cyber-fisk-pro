@@ -128,18 +128,18 @@ export const SelectGame = (props) => {
     setIsTryAgain(true);
   };
 
-  function handleClick(text) {
+  const handleClick = (text) => {
     setSelected(text);
     setOpenSelect(false);
-  }
+  };
 
-  function handleCheck() {
+  const handleCheck = () => {
     setIsBlocked(true);
     if (questions[roundCount]?.alternativas[0] === selected) {
       playCorrect();
       setShowComplete(true);
     } else playWrong();
-  }
+  };
 
   return (
     <>

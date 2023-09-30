@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import correct from "./../../assets/sounds/certo.mp3";
 import wrong from "./../../assets/sounds/errado.mp3";
 import audioImg from "./../../assets/icons/Btn_audio.png";
@@ -28,15 +28,16 @@ export const ListenAndType = (props) => {
   const [openModal, setOpenModal] = useState(false);
   const [grade, setGrade] = useState(60);
   const [text, setText] = useState("");
+  const inputRef = useRef();
 
   const [playCorrect] = useSound(correct, {
     onend: () => setPoints((oldState) => oldState + 1)
   });
-
   const playAudio = () => {
     setIsBlocked(true);
     const playAudio = new Audio(questions[roundCount]?.soundUrl);
-    playAudio.onended = function () {
+    playAudio.onended = () => {
+      inputRef.current.focus();
       setIsBlocked(false);
     };
     playAudio.play();
@@ -46,7 +47,7 @@ export const ListenAndType = (props) => {
     onend: () => setError((oldState) => oldState + 1)
   });
 
-  const handleAnswer = (isError, contError) => {
+  const handleAnswer = (isError) => {
     setQuestions((oldState) => {
       const newArray = [...oldState];
       newArray[roundCount].correct = !isError;
@@ -88,12 +89,19 @@ export const ListenAndType = (props) => {
         ...question,
         correct: null,
         soundUrl: `${props?.urlSounds}${index + 1}.mp3`,
-        image: question?.image
-          ? `https://cyberhomolog.fisk.com.br:172/cyberfisk30/CyberQR/NovoQR/Essentials%201/Imagens/53_Lesson5_${index}.jpg`
-          : null
+        image:
+          index === 1 || index === 3
+            ? `https://cyberhomolog.fisk.com.br:172/cyberfisk30/CyberQR/NovoQR/Essentials%201/Imagens/53_Lesson5_${index}.jpg`
+            : null
+        //image: question?.imagem
+        //  ? `https://cyberhomolog.fisk.com.br:172/cyberfisk30/CyberQR/NovoQR/Essentials%201/Imagens/53_Lesson5_${
+        //      index + 1
+        //    }.jpg`
+        //  : null
       };
     });
-    setQuestions(shuffleArray(newQuestions));
+    setQuestions(newQuestions);
+    //setQuestions(shuffleArray(newQuestions));
   };
 
   useEffect(() => {
@@ -130,15 +138,16 @@ export const ListenAndType = (props) => {
   };
 
   const formatToCompare = (text) => {
-    return text.trim().replace(/[?.!]/g, "");
+    console.log("tex", text);
+    return text?.trim()?.replace(/[?.!]/g, "").replace("’", "'");
   };
 
-  function handleCheck(event) {
+  const handleCheck = () => {
     setIsBlocked(true);
     const formatedText = formatToCompare(text);
-    const formatedAnswer = formatToCompare(questions[roundCount]?.answer);
+    const formatedAnswer = formatToCompare(questions[roundCount]?.pergunta);
     formatedText === formatedAnswer ? playCorrect() : playWrong();
-  }
+  };
 
   return (
     <>
@@ -154,8 +163,13 @@ export const ListenAndType = (props) => {
           </ContainerAudioButton>
           <Input
             value={text}
-            onChange={(e) => setText(e.target.value)}
-            disabled={isBlocked}
+            onChange={(e) => {
+              if (isBlocked) return;
+              setText(e.target.value);
+            }}
+            //disabled={isBlocked}
+            //ref={inputRef}
+            inputRef={inputRef}
           />
           <ContainerCheckButton>
             <CheckButton

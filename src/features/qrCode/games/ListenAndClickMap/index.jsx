@@ -34,7 +34,7 @@ export const ListenAndClickMap = (props) => {
   const playAudio = () => {
     setIsBlocked(true);
     const playAudio = new Audio(questions[roundCount]?.soundUrl);
-    playAudio.onended = function () {
+    playAudio.onended = () => {
       setIsBlocked(false);
     };
     playAudio.play();
@@ -123,11 +123,11 @@ export const ListenAndClickMap = (props) => {
     setIsTryAgain(true);
   };
 
-  function handleClick(id) {
+  const handleClick = (id) => {
     if (isBlocked) return;
     setIsBlocked(true);
     id === roundCount ? playCorrect() : playWrong();
-  }
+  };
 
   return (
     <>

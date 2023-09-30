@@ -30,7 +30,7 @@ export const GamesTemplate = () => {
   const [questions, setQuestion] = useState([]);
   const [isLoading, setIsLoading] = useState(true);
   // const [game, setGame] = useState(null);
-  const [errorFetch, setErrorFetch] = useState(false);
+  const [errorFetch, setErrorFetch] = useState(null);
   const [showScore, setShowScore] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [infoToast, setInfoToast] = useState({ show: false, error: false });
@@ -116,13 +116,15 @@ export const GamesTemplate = () => {
         console.log("res", data);
         if (data.erro) {
           console.log("err", data.erro);
-          setErrorFetch(true);
+          setErrorFetch(
+            data.erro.txt === "Código inválido!" ? "Não encontrado" : "Erro"
+          );
           return;
         }
         setQuestion(data?.dados);
       } catch (error) {
         console.error("Error fetching data:", error);
-        setErrorFetch(true);
+        setErrorFetch("Erro");
       }
     };
     getGameData();

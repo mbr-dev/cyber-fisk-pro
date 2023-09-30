@@ -10,7 +10,7 @@ export const ContainerOptions = styled.div`
   margin-block: 20px;
   gap: 8px;
 `;
-export const ContainerQuestion = styled.div`
+export const ContainerQuestion = styled.p`
   width: 100%;
   height: 100px;
   display: flex;
@@ -19,4 +19,5 @@ export const ContainerQuestion = styled.div`
   padding: 12px;
   margin-bottom: 20px;
   font-size: 24px;
+  white-space: break-spaces;
 `;

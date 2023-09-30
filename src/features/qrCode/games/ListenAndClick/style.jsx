@@ -10,7 +10,7 @@ const fadeIn = keyframes`
 export const ContainerOptions = styled.div`
   flex: 1;
   display: grid;
-  margin-block: 20px;
+  margin-block: 40px;
   gap: 8px;
 `;
 export const ContainerAudioButton = styled.div`

@@ -16,7 +16,7 @@ export const ContainerButton = styled.div`
   flex: 1;
   display: flex;
   align-items: center;
-  max-height: 65px;
+  max-height: 80px;
 `;
 export const StyledButton = styled(BaseButton)`
   width: 100%;

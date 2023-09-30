@@ -4,7 +4,7 @@ import wrong from "./../../assets/sounds/errado.mp3";
 import useSound from "use-sound";
 import { EndModal } from "../components/EndModal";
 
-import { shuffleArray } from "../../../../utils";
+import { shuffleArray, formatQuestionServer } from "../../../../utils";
 import { ContainerOptions, ContainerQuestion } from "./style";
 import { OptionButton } from "../components/OptionButton";
 
@@ -21,6 +21,7 @@ export const Quiz = (props) => {
   const [openModal, setOpenModal] = useState(false);
   const [grade, setGrade] = useState(60);
   const [showComplete, setShowComplete] = useState(false);
+  const [answer, setAnswer] = useState("");
 
   const [playCorrect] = useSound(correct, {
     onend: () => setPoints((oldState) => oldState + 1)
@@ -34,7 +35,7 @@ export const Quiz = (props) => {
     setOrders(shuffleArray(questions.map((_, index) => index)));
   };
 
-  const handleAnswer = (isError, contError) => {
+  const handleAnswer = (isError) => {
     setQuestions((oldState) => {
       const newArray = [...oldState];
       newArray[roundCount].correct = !isError;
@@ -73,6 +74,16 @@ export const Quiz = (props) => {
     props.setInfoToast({ show: false, error: false });
   }, [roundCount]);
 
+  useEffect(() => {
+    setAnswer(
+      formatQuestionServer(
+        showComplete
+          ? questions[roundCount]?.resposta_completa
+          : questions[roundCount]?.pergunta
+      )
+    );
+  }, [showComplete, roundCount]);
+
   const generateAnswerArray = () => {
     const newQuestions = questions.map((question, index) => {
       return {
@@ -98,6 +109,13 @@ export const Quiz = (props) => {
     if (questions.every((question) => question.correct === null)) {
       ramdomizeOrder();
       setIsReady(true);
+      setAnswer(
+        formatQuestionServer(
+          showComplete
+            ? questions[roundCount]?.resposta_completa
+            : questions[roundCount]?.pergunta
+        )
+      );
     }
   }, [questions]);
 
@@ -118,25 +136,21 @@ export const Quiz = (props) => {
     setIsTryAgain(true);
   };
 
-  function handleClick(event) {
+  const handleClick = (event) => {
     setIsBlocked(true);
     if (event?.target?.id === "p0") {
       playCorrect();
       setShowComplete(true);
     } else playWrong();
-  }
+  };
 
   return (
     <>
       {isReady && (
         <>
-          <ContainerQuestion>
-            {showComplete
-              ? questions[roundCount]?.fullAnswer
-              : questions[roundCount]?.question}
-          </ContainerQuestion>
+          <ContainerQuestion>{answer}</ContainerQuestion>
           <ContainerOptions>
-            {questions[roundCount]?.options.map((question, index) => (
+            {questions[roundCount]?.alternativas.map((question, index) => (
               <OptionButton
                 key={index}
                 id={`p${index}`}

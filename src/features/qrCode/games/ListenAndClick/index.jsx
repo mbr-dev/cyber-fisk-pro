@@ -34,7 +34,7 @@ export const ListenAndClick = (props) => {
   const playAudio = () => {
     setIsBlocked(true);
     const playAudio = new Audio(questions[roundCount].soundUrl);
-    playAudio.onended = function () {
+    playAudio.onended = () => {
       setIsBlocked(false);
     };
     playAudio.play();
@@ -131,10 +131,10 @@ export const ListenAndClick = (props) => {
     setIsTryAgain(true);
   };
 
-  function handleClick(event) {
+  const handleClick = (event) => {
     setIsBlocked(true);
     event?.target?.id === "p0" ? playCorrect() : playWrong();
-  }
+  };
 
   return (
     <>

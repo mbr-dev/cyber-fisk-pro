@@ -2,7 +2,7 @@ import React from "react";
 
 import { ContainerButton, StyledButton } from "./style";
 
-export function OptionButton(props) {
+export const OptionButton = (props) => {
   return (
     <ContainerButton order={props?.order} $border={props?.$border}>
       {props.correct && "🟢"}
@@ -15,4 +15,4 @@ export function OptionButton(props) {
       </StyledButton>
     </ContainerButton>
   );
-}
+};

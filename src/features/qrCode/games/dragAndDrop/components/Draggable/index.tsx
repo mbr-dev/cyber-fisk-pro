@@ -3,15 +3,15 @@ import { useDraggable } from "@dnd-kit/core";
 
 import { OptionButton } from "./style";
 
-export function Draggable(props) {
+export const Draggable = (props) => {
   const { attributes, listeners, setNodeRef, transform, isDragging } =
     useDraggable({
       id: props.id,
-      disabled: props.disabled,
+      disabled: props.disabled
     });
   const style = transform
     ? {
-        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
+        transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`
       }
     : undefined;
 
@@ -27,7 +27,7 @@ export function Draggable(props) {
         flex: 1,
         display: "flex",
         alignItems: "center",
-        maxHeight: 65,
+        maxHeight: 65
       }}
       {...listeners}
       {...attributes}
@@ -35,4 +35,4 @@ export function Draggable(props) {
       <OptionButton $show={props.show}>{props.children}</OptionButton>
     </div>
   );
-}
+};
