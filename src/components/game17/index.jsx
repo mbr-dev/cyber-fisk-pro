@@ -4,22 +4,22 @@ import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLesson } from "../SubTitleLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L1_T1_Medio } from "../../utils/lesson1_Task1";
+import { URL_FISKPRO } from "../../config/infos";
+import { L3_T1_Facil } from "../../utils/Lesson3_Task1";
 
-import { Container, Main } from "./styles";
+import { Container, Main, Image} from "./styles";
 
-export const Game2 = () => {
+export const Game17 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
-  const [question, setQuestion] = useState('');
+  const [image, setImage] = useState("");
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -29,42 +29,16 @@ export const Game2 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true);
+    const dataLength = L3_T1_Facil.length;
 
-      const response  = await api.get("/L1_T1_Medio");
-      setData(response.data);
-
-      const dataLength = data.length;
-
-      let tempRandom = [];
-      for (let a = 0; a < dataLength; a++) {
-        tempRandom.push(a);
-      }
-      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-      setRandomNumber(tempRandom);
-
-      setQuestion(data[tempRandom[round]].pergunta);
-
-      let tempIdClick = idClick;
-      tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
-      setIdClick(tempIdClick);
-
-      let tempAnswers = [];
-      for (let a = 0; a < idClick.length; a ++) {
-        tempAnswers.push(data[tempRandom[round]].resposta[a]);
-      }
-      tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
-      setAnswers(tempAnswers);
-      setBlockButton(false);
-      setIsLoading(false);
-    } catch(error) {
-      console.log("error tente novamente mais tarde.");
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
     }
-  }, [setIsLoading, data, setData, setRandomNumber, setQuestion, round, setIdClick, idClick, setAnswers, setBlockButton]);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
 
-  const newRound = (number) => {
-    setQuestion(data[randomNumber[number]].pergunta);
+    setImage(L3_T1_Facil[tempRandom[round]].img);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -72,7 +46,24 @@ export const Game2 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[a]);
+      tempAnswers.push(L3_T1_Facil[tempRandom[round]].resposta[a]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
+    setIsLoading(false);
+  }, [setIsLoading, data, setData, setRandomNumber, setImage, round, setIdClick, idClick, setAnswers, setBlockButton]);
+
+  const newRound = (number) => {
+    setImage(L3_T1_Facil[randomNumber[number]].img);
+
+    let tempIdClick = idClick;
+    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+    setIdClick(tempIdClick);
+
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a ++) {
+      tempAnswers.push(L3_T1_Facil[randomNumber[number]].resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
@@ -92,7 +83,7 @@ export const Game2 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints += 2;
+      tempRightPoints++;
       setRightPoints(tempRightPoints);
       setNewPontos(1,tempRightPoints);
     } else {
@@ -112,7 +103,7 @@ export const Game2 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
     if (rule === "Continua") {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
@@ -148,9 +139,11 @@ export const Game2 = () => {
     <Container>
       <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <TitleLesson title="Choose the correct alternative"/>
-      <SubTitleLesson title={question}/>
 
       <Main>
+        <Image>
+          <img src={`${URL_FISKPRO}images/essentials1/lesson3/${image}.png`} alt="" />
+        </Image>
         {answers.map((answer, index) => {
           return (
             <ButtonAnswer 

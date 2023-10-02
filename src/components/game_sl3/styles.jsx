@@ -2,18 +2,12 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
-
-  h2 {
-    text-align: center;
-    font-size: 1.125rem;
-  }
+  align-items: center;
 `;
 
 export const Main = styled.main`
-  flex: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -21,10 +15,13 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
   padding-top: 1rem;
+
+  @media(max-width: 320px) {
+    padding-top: 0rem;
+  }
 `;
 
 export const Phrase = styled.div`
-  flex: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -72,6 +69,24 @@ export const Letters = styled.div`
 
   .erro {
     border-color: ${props => props.theme["red-200"]};
+  }
+
+  @media(max-width: 360px) {
+    padding-inline: 1.5rem;
+
+    button {
+      width: 2rem;
+      height: 3rem;
+    }
+  }
+
+  @media(max-width: 320px) {
+    padding-inline: 0.5rem;
+
+    button {
+      width: 2rem;
+      height: 2.75rem;
+    }
   }
 `;
 
@@ -160,7 +175,6 @@ export const DivLetter2 = styled(DivLetter)`
 `;
 
 export const Answer = styled.div`
-  flex: 1;
   width: 100%;
   height: 100%;
   display: flex;
@@ -177,7 +191,7 @@ export const Answer = styled.div`
   }
 
   @media(max-width: 320px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
     gap: 2rem;
   }
 `;

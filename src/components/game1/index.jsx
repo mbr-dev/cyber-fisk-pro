@@ -10,6 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
 import { L1_T1_Facil } from "../../utils/lesson1_Task1";
+import { api } from "../../lib/api";
 
 import { Container, Main } from "./styles";
 
@@ -18,6 +19,7 @@ export const Game1 = () => {
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [data, setData] = useState([]);
   const [question, setQuestion] = useState('');
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -27,35 +29,43 @@ export const Game1 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestion = L1_T1_Facil.length;
-    
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestion; a++) {
-      tempQuestions.push(a);
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      
+      const response  = await api.get("/L1_T1_Facil");
+      setData(response.data);
+      
+      const dataLength = data.length;
+      
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+      
+      setQuestion(data[tempRandom[round]].pergunta);
+      
+      let tempIdClick = idClick;
+      tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+      setIdClick(tempIdClick);
+      
+      let tempImages = [];
+      for (let a = 0; a < idClick.length; a++) {
+        tempImages.push(data[tempRandom[round]].images[a])
+      }
+      tempImages = tempImages.sort(() => Math.random() - 0.5);
+      setAnswers(tempImages);
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log("error tente novamente mais tarde.");
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    setQuestion(L1_T1_Facil[tempQuestions[round]].pergunta);
-    
-    let tempIdClick = idClick;
-    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
-    setIdClick(tempIdClick);
-    
-    let tempImages = [];
-    for (let a = 0; a < idClick.length; a++) {
-      tempImages.push({
-        img: L1_T1_Facil[tempQuestions[round]].images[a].img,
-        status: L1_T1_Facil[tempQuestions[round]].images[a].status,
-      })
-    }
-    tempImages = tempImages.sort(() => Math.random() - 0.5);
-    setAnswers(tempImages);
-    setBlockButton(false);
-  }, [round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
+  }, [setIsLoading, data, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
 
   const newRound = (number) => {
-    setQuestion(L1_T1_Facil[randomNumber[number]].pergunta);
+    setQuestion(data[randomNumber[number]].pergunta);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -63,10 +73,7 @@ export const Game1 = () => {
     
     let tempImages = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempImages.push({
-        img: L1_T1_Facil[randomNumber[number]].images[a].img,
-        status: L1_T1_Facil[randomNumber[number]].images[a].status,
-      });
+      tempImages.push(data[randomNumber[number]].images[a]);
     }
     tempImages = tempImages.sort(() => Math.random() - 0.5);
     setAnswers(tempImages);
@@ -130,14 +137,16 @@ export const Game1 = () => {
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>
-      {isLoading && 
-        <Loading />
-      }
-
       <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} />
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLesson title={question} />
@@ -151,6 +160,7 @@ export const Game1 = () => {
               h="7rem"
               onPress={() => handleClick(index)}
               optionColor={optionColor[index]}
+              disabledButton={blockButton}
             >
               <img src={`${URL_FISKPRO}/images/essentials1/lesson1/${answer.img}.png`} alt="" />
             </ButtonAnswer>

@@ -6,6 +6,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 
+import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
@@ -17,7 +18,8 @@ export const Game3 = () => {
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [question, setQuestion] = useState('');
+  const [data, setData] = useState([]);
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -26,32 +28,43 @@ export const Game3 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestion = L1_T1_Dificil.length;
-    
-    let tempQuestions = [];
-    for(let a = 0; a < totalOfQuestion; a++){
-      tempQuestions.push(a);
-    }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    setQuestion(L1_T1_Dificil[tempQuestions[round]].pergunta);
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      
+      const response  = await api.get("/L1_T1_Dificil");
+      setData(response.data);
+      
+      const dataLength = data.length;
 
-    let tempIdClick = idClick;
-    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
-    setIdClick(tempIdClick);
-    
-    let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(L1_T1_Dificil[tempQuestions[round]].resposta[a]);
+      let tempRandom = [];
+      for(let a = 0; a < dataLength; a++){
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+
+      setQuestion(data[tempRandom[round]].pergunta);
+
+      let tempIdClick = idClick;
+      tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+      setIdClick(tempIdClick);
+      
+      let tempAnswers = [];
+      for (let a = 0; a < idClick.length; a ++) {
+        tempAnswers.push(data[tempRandom[round]].resposta[a]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-    setBlockButton(false);
-  }, [setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setAnswers]);
+  }, [setIsLoading, data, setData, setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setAnswers]);
 
   const newRound = (number) => {
-    setQuestion(L1_T1_Dificil[randomNumber[number]].pergunta);
+    setQuestion(data[randomNumber[number]].pergunta);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -59,7 +72,7 @@ export const Game3 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(L1_T1_Dificil[randomNumber[number]].resposta[a]);
+      tempAnswers.push(data[randomNumber[number]].resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
@@ -144,14 +157,16 @@ export const Game3 = () => {
     
   useEffect(() => { 
     loadLesson();
-  }, [])
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return(
     <Container>
-      {isLoading && 
-        <Loading />
-      }
-
       <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <TitleLesson title="Choose the correct alternative"/>
       <SubTitleLesson title={question}/>

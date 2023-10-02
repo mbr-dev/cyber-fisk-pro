@@ -13,6 +13,8 @@ export const defaultTheme = {
   "green-100": "#27A708",
   "green-200": "#4A8500",
   "green-300": "#81A603",
+  "green-400": "#6C8C00",
+  "green-500": "#95BC10",
 
   "red-100": "#FFB8BB",
   "red-200": "#E0131C",
@@ -20,17 +22,11 @@ export const defaultTheme = {
 
   "yellow-100": "#FFB800",
   "yellow-200": "#CC8800",
+  "yellow-300": "#FFAB02",
+  "yellow-400": "#D18C00",
 
   "blue-100": "#0072BC",
   "blue-200": "#006B9B",
-
-  /* backgroundTopLesson: "#E6E6E6",
-  backgroundSubTitleLesson: "#E6E6E6",
-  lessonCorrect: "#4A8500",
-  lessonError: "#B20008",
-  stepLessonAttention: "#FFB800",
-  stepLessonCorrect: "#27A708",
-  stepLessonError: "#E0131C",
-  btnCloseMenu: "#E0131C",
-  stepLesson: "#EFEFEF", */
+  "blue-300": "#0791CF",
+  "blue-400": "#006B9B80",
 }

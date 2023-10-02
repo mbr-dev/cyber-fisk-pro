@@ -20,7 +20,7 @@ export const Container = styled.button`
   }
 
   p {
-    line-height: 1;
+    line-height: 1.1;
   }
 
   &:hover {
@@ -29,5 +29,6 @@ export const Container = styled.button`
 
   &:disabled {
     cursor: not-allowed;
+    opacity: 0.5;
   }
 `;

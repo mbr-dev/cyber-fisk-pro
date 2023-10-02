@@ -4,10 +4,10 @@ import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { URL_L3T2D } from "../../config/infos";
+import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 import { L3_T2_Dificil } from "../../utils/Lesson3_Task2";
-import { TrocaAtividade } from "../../utils/regras";
+import { URL_FISKPRO, URL_L3T2D } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input, Button } from "./styles";
@@ -17,8 +17,8 @@ export const Game10 = () => {
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
-  const [answer, setAnswer] = useState('');
-  const [text, setText] = useState('');
+  const [answer, setAnswer] = useState("");
+  const [text, setText] = useState("");
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
@@ -27,24 +27,24 @@ export const Game10 = () => {
   const [isloading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
-    const totalOfQuestions = L3_T2_Dificil.length;
+    const totalOfSounds = L3_T2_Dificil.length;
     
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a ++) {
-      tempQuestions.push(a);
+    let tempSounds = [];
+    for (let a = 0; a < totalOfSounds; a ++) {
+      tempSounds.push(a);
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    setSound(`${URL_L3T2D}${tempQuestions[round]}.mp3`);
+    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempSounds);
 
-    let tempAnswer = L3_T2_Dificil[tempQuestions[round]].resposta.replace(/'/g, "’");
+    setSound(L3_T2_Dificil[tempSounds[round]].pergunta);
+
+    let tempAnswer = L3_T2_Dificil[tempSounds[round]].resposta.replace(/'/g, "’");
     setAnswer(tempAnswer);
   }, [setRandomNumber, setSound, setAnswer])
 
   const newRound = (number) => {
     setText("");
-    setSound(`${URL_L3T2D}${randomNumber[number]}.mp3`);
-
+    setSound(L3_T2_Dificil[randomNumber[number]].pergunta);
     let tempAnswer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
     setAnswer(tempAnswer);
   }
@@ -83,26 +83,43 @@ export const Game10 = () => {
 
     const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
-    if (rule === "Continua") {
-      setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
+    if(rule === "Continua") {
+      setTimeout(() =>{
+        setColorAnswer(0);
         newRound(tempRound);
       }, 1000);
-    } else if (rule === "Game over") {
-      setNewPontos(0, 0);
-      
-      setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
-        setNewContainer(1);
-      }, 1000);
-    } else {
+    } else if (rule === "Score") {
+      setTimeout(() =>{
+        const scoreFinal = Score(pontosF, pontosM, pontosD);
+        let valorRank = 0;
 
-      setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
-        setNewLesson(2);
+        if (scoreFinal >= 70) {
+            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
+              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
+              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
+              frequencia++;
+
+              if (frequencia === 4) {
+                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+              }
+
+              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
+              const rank = PontosRank(frequencia,oldRank);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            } else {
+              localStorage.setItem("cyber_pro_task2","1");
+              localStorage.setItem("cyber_pro_msg_task2","1");
+              localStorage.setItem("cyber_pro_frequencia_task1",1);
+              const rank = PontosRank(1,0);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            }
+          }
+
+        alert(`SCORE: ${scoreFinal}%`);
+        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+        setNewContainer(1);
       }, 1000);
     }
   }
@@ -119,7 +136,7 @@ export const Game10 = () => {
     <Container>
       <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <SubTitleLesson title="Write what you hear." />
-      <SubTitleLessonAudio audio={sound} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>

@@ -5,7 +5,7 @@ import { Container } from "./styles";
 export function ButtonMenuHeader() {
   return (
     <Container>
-      <AlignJustify size={20} strokeWidth={2.5} />
+      <AlignJustify size={18} strokeWidth={2.5} />
     </Container>
   )
 }
