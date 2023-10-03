@@ -1,75 +1,75 @@
 export const L4_T2_Facil = [
   {
     pergunta: [
-      { label: 'Is your mother from New York?', status: 0 },
-      { label: 'Are those girls good friends?', status: 1 },
-      { label: 'Are you happy today?', status: 2 }
+      {label: "Is your mother from New York?", status: 0},
+      {label: "Are those girls good friends?", status: 1},
+      {label: "Are you happy today?", status:  2}
     ],
     resposta: [
-      { label: 'No, they aren’t good friends.', status: 1 },
-      { label: 'Yes, she likes New York.', status: -1 },
-      { label: 'Yes, I’m happy today.', status: 2 },
-      { label: 'Yes, they have good friends.', status: -1 },
-      { label: 'Yes, she’s from New York.', status: 0 },
+      {label: "No, they aren’t good friends.", status: 1},
+      {label: "Yes, she likes New York.", status: -1},
+      {label: "Yes, I’m happy today.", status: 2},
+      {label: "Yes, they have good friends.", status: -1},
+      {label: "Yes, she’s from New York.", status: 0}
     ]
   },
   {
     pergunta: [
-      { label: 'Is Brazil a big country?', status: 0 },
-      { label: 'Is your father Canadian?', status: 1 },
-      { label: 'Are you an only child?', status: 2 } 
+      {label: "Is Brazil a big country?", status: 0},
+      {label: "Is your father Canadian?", status: 1},
+      {label: "Are you an only child?", status: 2} 
     ],
     resposta: [
-      { label: 'Argentina is a very big country.', status: -1 },
-      { label: 'No, I’m not an only child.', status: 2 },
-      { label: 'My father lives in Canada.', status: -1 },
-      { label: 'Yes, it’s very big.', status: 0 },
-      { label: 'No, he isn’t Canadian.', status: 1 },
+      {label: "Argentina is a very big country.", status: -1},
+      {label: "No, I’m not an only child.", status: 2},
+      {label: "My father lives in Canada.", status: -1},
+      {label: "Yes, it’s very big.", status: 0},
+      {label: "No, he isn’t Canadian.", status: 1}
     ]
   },
   {
     pergunta: [
-      { label: 'Do you have a lot of cousins?', status: 0 },
-      { label: 'Do you have a stepmother?', status: 1 },
-      { label: 'Do your friends have siblings?', status: 2 },
+      {label: "Do you have a lot of cousins?", status: 0},
+      {label: "Do you have a stepmother?", status: 1},
+      {label: "Do your friends have siblings?", status: 2}
     ],
     resposta: [
-      { label: 'My aunt has two kids.', status: -1 },
-      { label: 'No, they don’t have siblings.', status: 2 },
-      { label: 'Yes, I have a lot of cousins.', status: 0 },
-      { label: 'No, I don’t.', status: 1 },
-      { label: 'She has a sister.', status: -1 },
+      {label: "My aunt has two kids.", status: -1},
+      {label: "No, they don’t have siblings.", status: 2},
+      {label: "Yes, I have a lot of cousins.", status: 0},
+      {label: "No, I don’t.", status: 1},
+      {label: "She has a sister.", status: -1}
     ]
   },
   {
     pergunta: [
-      { label: 'Do your parents have grandchildren?', status: 0 },
-      { label: 'Does he look like his father?', status: 1 },
-      { label: 'What are they looking at?', status: 2 },
+      {label: "Do your parents have grandchildren?", status: 0},
+      {label: "Does he look like his father?", status: 1},
+      {label: "What are they looking at?", status: 2}
     ],
     resposta: [
-      { label: 'She is a grandmother.', status: -1 },
-      { label: 'They are looking at a photo album.', status: 2 },
-      { label: 'I guess so.', status: 1 },
-      { label: 'I look like my mother.', status: -1 },
-      { label: 'No, they don’t.', status: 0 },
+      {label: "She is a grandmother.", status: -1},
+      {label: "They are looking at a photo album.", status: 2},
+      {label: "I guess so.", status: 1},
+      {label: "I look like my mother.", status: -1},
+      {label: "No, they don’t.", status: 0}
     ]
   },
   {
     pergunta: [
-      { label: 'Is he a famous soccer player?', status: 0 },
-      { label: 'Is your family big?', status: 1 },
-      { label: 'Who is your mother?', status: 2 },
+      {label: "Is he a famous soccer player?", status: 0},
+      {label: "Is your family big?", status: 1},
+      {label: "Who is your mother?", status: 2}
     ],
     resposta: [
-      { label: 'No, it isn’t.', status: 1 },
-      { label: 'She is blonde.', status: -1 },
-      { label: 'She is the teacher.', status: 2 },
-      { label: 'My family is from Italy.', status: -1 },
-      { label: 'Yes, he is', status: 0 },
+      {label: "No, it isn’t.", status: 1},
+      {label: "She is blonde.", status: -1},
+      {label: "She is the teacher.", status: 2},
+      {label: "My family is from Italy.", status: -1},
+      {label: "Yes, he is", status: 0}
     ]
   },
-];
+]
 
 export const L4_T2_Medio = [
   { pergunta: ["does", "your", "singer", "favorite", "is", "who", "?"],
@@ -102,8 +102,7 @@ export const L4_T2_Medio = [
   { pergunta: ["do", "you", "do", "live", "where", "?"],
     resposta: "Where do you live?"
   },
-];
-
+]
 
 export const L4_T2_Dificil = [
   {
@@ -186,7 +185,7 @@ export const L4_T2_Dificil = [
       { label: "He lives in Italy.", status: 1 },
     ]
   },
-];
+]
 
 export const L4_SL4 = [
   {

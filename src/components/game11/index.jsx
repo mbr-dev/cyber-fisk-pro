@@ -2,13 +2,14 @@ import { useState, useEffect, useContext, useCallback } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 
 import { L4_T2_Facil } from "../../utils/lesson4_Task2";
 import { LessonContext } from "../../context/lesson";
-
-import { Container, Main, Answers, Questions, Button } from "./styles";
-import { defaultTheme } from "../../themes/defaultTheme";
 import { TrocaAtividade } from "../../utils/regras";
+
+import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main, Answers, Questions, Button } from "./styles";
 
 export const Game11 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
@@ -24,6 +25,7 @@ export const Game11 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
+  const [countClick, setCountClick] = useState(0);
   const [blockQuestions, setBlockQuestions] = useState(true);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const [rightQuestions, setRightQuestions] = useState([]);
@@ -36,24 +38,26 @@ export const Game11 = () => {
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
+    //tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
 
-    let tempQ = [];
     let tempRandomQ = idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
     setIdClickQuestion(tempRandomQ);
+
+    let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[tempQuestions[round]].pergunta[tempRandomQ[a]].label);
+      tempQ.push(L4_T2_Facil[tempQuestions[round]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
-    let tempAnswers = [];
     let tempRandomAnswer = idClickAnswer;
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempAnswers);
+    setIdClickAnswer(tempRandomAnswer);
+
+    let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L4_T2_Facil[tempQuestions[round]].resposta[tempRandomAnswer[a]].label);
+      tempAnswers.push(L4_T2_Facil[tempQuestions[round]].resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
 
@@ -64,24 +68,25 @@ export const Game11 = () => {
     setRightQuestions([]);
     setRightAnswers([]);
 
-    let tempQ = [];
     let tempRandomQ= idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
     setIdClickQuestion(tempRandomQ);
+
+    let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomQ[a]].label);
+      tempQ.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
-    let tempAnswers = [];
     let tempRandomAnswer = idClickAnswer;
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClickAnswer(tempRandomAnswer);
+
+    let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomAnswer[a]].label);
+      tempAnswers.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
-    
     setBlockQuestions(false);
     setBlockAnswers(true);
   }
@@ -91,6 +96,10 @@ export const Game11 = () => {
       setSelectedQuestionIndex(null);
       setBlockQuestions(false);
     } else {
+      let clicks = countClick;
+      clicks++;
+      setCountClick(clicks);
+
       let tempId = index;
       setSelectedQuestionIndex(tempId);
       setBlockQuestions(true);
@@ -104,24 +113,26 @@ export const Game11 = () => {
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
     let tempRightPoints = rightPoints;
-    let tempRound = round;
-    let tempGeneralRound = rodadaGeral;
     
-    const selectedQuestion = L4_T2_Facil[randomNumber[round]].pergunta[idClickQuestion[selectedQuestionIndex]];
-    const selectedAnswer = L4_T2_Facil[randomNumber[round]].resposta[idClickAnswer[index]];
+    const selectedQuestion = questions[randomNumber[selectedQuestionIndex]].status;
+    const selectedAnswer = answers[randomNumber[index]].status;
     
-    if (selectedAnswer.answer === selectedQuestion.answer) {
-      tempColorQ[selectedQuestionIndex] = 1;
-      setColorQuestions(tempColorQ);
-      tempColorA[index] = 1;
-      setColorAnswer(tempColorA);
+    if (selectedAnswer === selectedQuestion) {
+      if (countClick < 3) {
+        tempColorQ[selectedQuestionIndex] = 1;
+        setColorQuestions(tempColorQ);
+        tempColorA[index] = 1;
+        setColorAnswer(tempColorA);
+        setRightAnswers(state => [...state, index]);
+        setRightQuestions(state => [...state, selectedQuestionIndex]);
+        setBlockQuestions(false);
+        setBlockAnswers(true);
+        return;
+      }
 
       tempRightPoints++;
       setRightPoints(tempRightPoints);
       setNewPontos(0, tempRightPoints);
-
-      setRightQuestions(state => [...state, selectedQuestionIndex]);
-      setRightAnswers(state => [...state, index]);
     } else {
       tempColorQ[selectedQuestionIndex] = 2;
       setColorQuestions(tempColorQ);
@@ -131,35 +142,42 @@ export const Game11 = () => {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
-
-      tempRound++;
-      tempGeneralRound++;
-
-      setTimeout(() => {
-        setRound(tempRound);
-        setNewRodada(tempGeneralRound);
-        newRound(tempRound);
-      }, 1000);
     }
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound)
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
 
     const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
 
-    setBlockQuestions(false);
-    setBlockAnswers(true);
-
-    if (rule === "Continua") {
-      return;
-    } else if (rule === "Game over") {
-      setNewPontos(0, 0);
-      
-      setTimeout(() => {
+    if(rule === "Continua"){
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over"){
+      setNewPontos(0,0);
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        alert('GAME OVER!!');
         setNewContainer(1);
-      }, 1000);
+      },1500);
     } else {
-      setTimeout(() => {
-        alert('Passou para próxima task');
-        setNewLesson(1);
-      }, 1000);
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        alert('troca nivel');
+        setNewLesson(5);
+      },1500);
     }
   }
 
@@ -215,7 +233,7 @@ export const Game11 = () => {
                   }}
                   disabled={disabledQ}
                 >
-                  <p>{question}</p>
+                  <p>{question.label}</p>
                 </Button>
               )
           })}
@@ -234,7 +252,7 @@ export const Game11 = () => {
                 }}
                 disabled={disabledA}
               >
-                <p>{answer}</p>
+                <p>{answer.label}</p>
               </Button>
             )
           })}

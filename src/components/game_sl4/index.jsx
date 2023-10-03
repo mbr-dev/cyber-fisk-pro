@@ -21,8 +21,7 @@ export const GameSL4 = () => {
   const [divAnswer, setDivAnswer] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
-  const [correctPoints, setCorrectPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
+  const [points, setPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
   const [isloading, setIsLoading] = useState(false);
@@ -87,14 +86,12 @@ export const GameSL4 = () => {
     const clickedLetter = lettersQ[index];
 
     if (!answer.includes(clickedLetter)) {
-      let tempE = wrongPoints;
+      let tempE = points;
       tempE++;
-      setWrongPoints(tempE);
+      setPoints(tempE);
+      console.log("tempE:", tempE);
       setOptionColor(state => [...state, index]);
     } else if (!rightLetter.includes(clickedLetter)) {
-      let tempR = correctPoints;
-      tempR++;
-      setCorrectPoints(tempR);
       setRightLetter(state => [...state, clickedLetter]);
     }
 
@@ -123,10 +120,10 @@ export const GameSL4 = () => {
   }, []);
 
   useEffect(() => {
-    if (wrongPoints >= 5) {
+    if (points >= 5) {
       alert("game over");
     }
-  }, [wrongPoints])
+  }, [points])
 
   useEffect(() => {
     if (isCompleted) {
@@ -146,7 +143,7 @@ export const GameSL4 = () => {
           {images.map((image, index) => {
             return (
               <Photo key={index}>
-                <img src={`${URL_FISKPRO}lesson${4}/${image}.png`} alt="" />
+                <img src={`${URL_FISKPRO}images/essentials1/lesson4//${image}.png`} alt="" />
               </Photo>
             )
           })}

@@ -11,7 +11,7 @@ import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio /* Indica
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game13 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
   const [question, setQuestion] = useState("");
@@ -94,14 +94,17 @@ export const Game13 = () => {
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
     if (isCorrect) {
+      for (let a = 0; a < tempAnswers.length; a++) {
+        tempColor[a] = 1;
+      }
+      setColorAnswer(tempColor);
+
       tempRightPoints += 3;
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
       for (let a = 0; a < tempAnswers.length; a++) {
-        if (tempAnswers[a] !== rightAnswers[a]) {
-          tempColor[a] = 1;
-        }
+        tempColor[a] = tempAnswers[a] === rightAnswers[a] ? 1 : 2;
       }
       setColorAnswer(tempColor);
 
@@ -120,25 +123,44 @@ export const Game13 = () => {
 
     const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
-    if (rule === "Continua") {
-      setTimeout(() => {
+    if(rule === "Continua") {
+      setTimeout(() =>{
         setColorAnswer([0, 0, 0, 0, 0]);
         newRound(tempRound);
-      }, 1000);
-    } else if (rule === "Game over") {
-      alert('GAME OVER!!');
-      setNewPontos(0, 0);
-      setColorAnswer([0, 0, 0, 0, 0]);
-      
-      setTimeout(() => {
+      }, 1500);
+    } else if (rule === "Score") {
+      setTimeout(() =>{
+        const scoreFinal = Score(pontosF, pontosM, pontosD);
+        let valorRank = 0;
+
+        if (scoreFinal >= 70) {
+            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
+              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
+              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
+              frequencia++;
+
+              if (frequencia === 4) {
+                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+              }
+
+              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
+              const rank = PontosRank(frequencia,oldRank);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            } else {
+              localStorage.setItem("cyber_pro_task2","1");
+              localStorage.setItem("cyber_pro_msg_task2","1");
+              localStorage.setItem("cyber_pro_frequencia_task1",1);
+              const rank = PontosRank(1,0);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            }
+          }
+
+        alert(`SCORE: ${scoreFinal}%`);
+        alert(`PONTOS PARA O RANKING: ${valorRank}`);
         setNewContainer(1);
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        alert('Passou para próxima task');
-        setColorAnswer([0, 0, 0, 0, 0]);
-        setNewLesson(2);
-      }, 1000);
+      }, 1500);
     }
   }
 
@@ -166,7 +188,7 @@ export const Game13 = () => {
             {answers.map((answer, index) => {
               return (
                 <AnswersRow key={index}>
-                  <p style={{borderColor: colorAnswers[index] === 0 ? "" : defaultTheme["red-200"]}}>
+                  <p style={{borderColor: colorAnswers[index] === 1 ? defaultTheme["green-200"] : colorAnswers[index] === 2 ? defaultTheme["red-200"] : ""}}>
                     {answer}
                   </p>
                   <RadioG>
