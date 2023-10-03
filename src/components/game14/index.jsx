@@ -6,11 +6,11 @@ import { SubTitleLesson } from "../SubTitleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
+import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
+import { L5_T1_Facil } from "../../utils/lesson5_Task";
 
 import { Container, Main, Image, ButtonArea } from "./styles";
-import { L5_T1_Facil } from "../../utils/lesson5_Task1";
-import { TrocaAtividade } from "../../utils/regras";
 
 export const Game14 = () => {
   const { rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson } = useContext(LessonContext);
@@ -158,7 +158,7 @@ export const Game14 = () => {
           {answers.map((answer, index) => {
             return (
               <ButtonAnswer
-                w="15rem"
+                w="10rem"
                 h="3rem"
                 key={index}
                 onPress={() => handleClick(index)}

@@ -31,7 +31,7 @@ export const Cards = styled.div`
   grid-template-rows: repeat(3, auto);
   align-items: center;
   justify-content: space-around;
-  padding-inline: 2rem;
+  padding-inline: 3rem;
   gap: 1.5rem;
 
   @media(min-width: 768px) {

@@ -8,7 +8,7 @@ import { SubTitleLesson } from "../SubTitleLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
-import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
+import { L1_T1_Dificil } from "../../utils/lesson1_Task";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 
 import { Container, Main } from "./styles";

@@ -2,12 +2,12 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../TitleLesson";
 
-import { L3_SUPER_LESSON } from "../../utils/Lesson3_Task2";
+import { L3_SUPER_LESSON } from "../../utils/lesson3_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
-import { TitleLesson } from "../TitleLesson";
 
 export const GameSL3 = () => {
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];

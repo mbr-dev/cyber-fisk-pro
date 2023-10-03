@@ -7,7 +7,7 @@ import { TitleLesson } from "../TitleLesson";
 import { api } from "../../lib/api";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L2_T2_Dificil } from "../../utils/lesson2_Task2";
+import { L2_T2_Dificil } from "../../utils/lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Form, Button } from "./styles";

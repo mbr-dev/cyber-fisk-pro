@@ -2,11 +2,10 @@ import { useState, useEffect, useContext, useCallback } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 
-import { L4_T2_Facil } from "../../utils/lesson4_Task2";
-import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
+import { L4_T2_Facil } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answers, Questions, Button } from "./styles";

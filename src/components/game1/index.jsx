@@ -9,7 +9,7 @@ import { SubTitleLesson } from "../SubTitleLesson";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { L1_T1_Facil } from "../../utils/lesson1_Task1";
+import { L1_T1_Facil } from "../../utils/lesson1_Task";
 import { api } from "../../lib/api";
 
 import { Container, Main } from "./styles";

@@ -3,12 +3,12 @@ import { useEffect, useState, useCallback, useContext } from "react";
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
-import { L4_T2_Medio } from "../../utils/lesson4_Task2";
-import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
+import { L4_T2_Medio } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Input, Form, Words, Button } from "./styles"
+import { Container, Main, Input, Form, Words, Button } from "./styles";
 
 export const Game12 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);

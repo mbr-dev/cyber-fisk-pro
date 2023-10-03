@@ -13,6 +13,10 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const Image = styled.div`
@@ -25,6 +29,10 @@ export const Image = styled.div`
   img {
     height: 100%;
   }
+
+  @media(max-width: 320px) {
+    height: 6.5rem;
+  }
 `;
 
 export const ButtonArea = styled.div`
@@ -33,4 +41,8 @@ export const ButtonArea = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
 `;

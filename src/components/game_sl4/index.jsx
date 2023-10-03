@@ -4,7 +4,7 @@ import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { L4_SL4 } from "../../utils/lesson4_Task2";
+import { L4_SUPER_LESSON } from "../../utils/lesson4_Task";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme"; 
@@ -27,7 +27,7 @@ export const GameSL4 = () => {
   const [isloading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
-    let totalOfQuestions = L4_SL4.length;
+    let totalOfQuestions = L4_SUPER_LESSON.length;
 
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
@@ -36,18 +36,18 @@ export const GameSL4 = () => {
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
 
-    let letterQuestion = L4_SL4[tempQuestions[round]].letras;
+    let letterQuestion = L4_SUPER_LESSON[tempQuestions[round]].letras;
     letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
     setLettersQ(letterQuestion);
 
     let tempImages = [];
-    let imagesL = L4_SL4[round].images.length;
+    let imagesL = L4_SUPER_LESSON[round].images.length;
     for (let a = 0; a < imagesL; a++) {
-      tempImages.push(L4_SL4[tempQuestions[round]].images[a]);
+      tempImages.push(L4_SUPER_LESSON[tempQuestions[round]].images[a]);
     }
     setImages(tempImages);
 
-    let tempAnswer = L4_SL4[tempQuestions[round]].resposta;
+    let tempAnswer = L4_SUPER_LESSON[tempQuestions[round]].resposta;
     let answerArray = tempAnswer.split("");
     setAnswer(answerArray);
     let emptyArray = Array(answerArray.length).fill("");
@@ -58,18 +58,18 @@ export const GameSL4 = () => {
 
   const newRound = (number) => {
     setIsCompleted(false);
-    let letterQuestion = L4_SL4[randomNumber[number]].letras;
+    let letterQuestion = L4_SUPER_LESSON[randomNumber[number]].letras;
     letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
     setLettersQ(letterQuestion);
 
     let tempImages = [];
-    let imagesL = L4_SL4[randomNumber[number]].images.length;
+    let imagesL = L4_SUPER_LESSON[randomNumber[number]].images.length;
     for (let a = 0; a < imagesL; a++) {
-      tempImages.push(L4_SL4[randomNumber[number]].images[a]);
+      tempImages.push(L4_SUPER_LESSON[randomNumber[number]].images[a]);
     }
     setImages(tempImages);
 
-    let tempAnswer = L4_SL4[randomNumber[number]].resposta;
+    let tempAnswer = L4_SUPER_LESSON[randomNumber[number]].resposta;
     let answerArray = tempAnswer.split("");
     setAnswer(answerArray);
     let emptyArray = Array(answerArray.length).fill("");

@@ -7,7 +7,7 @@ import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L2_SUPER_LESSON } from "../../utils/lesson2_Task2";
+import { L2_SUPER_LESSON } from "../../utils/Lesson2_Task";
 
 import LogoImg from "./images/logoIcon.png";
 

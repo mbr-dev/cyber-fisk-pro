@@ -9,7 +9,7 @@ import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { L3_T1_Facil } from "../../utils/Lesson3_Task1";
+import { L3_T1_Facil } from "../../utils/Lesson3_Task";
 
 import { Container, Main, Image} from "./styles";
 

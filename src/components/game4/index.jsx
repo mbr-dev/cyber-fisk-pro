@@ -9,7 +9,7 @@ import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L1_T2_Facil } from "../../utils/lesson1_Task2";
+import { L1_T2_Facil } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Button } from "./styles";

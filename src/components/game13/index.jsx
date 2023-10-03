@@ -3,11 +3,11 @@ import { useContext, useCallback, useEffect, useState } from "react";
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
-import { L4_T2_Dificil } from "../../utils/lesson4_Task2";
-import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
+import { L4_T2_Dificil } from "../../utils/lesson4_Task";
 
-import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio /* Indicator */, Options, Form, Button } from "./styles"
+import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio, Options, Form, Button } from "./styles"
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game13 = () => {

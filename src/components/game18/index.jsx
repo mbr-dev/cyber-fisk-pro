@@ -6,10 +6,10 @@ import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
+import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L4_T1_Facil } from "../../utils/lesson4_Task1";
-import { URL_FISKPRO } from "../../config/infos";
+import { L4_T1_Facil } from "../../utils/lesson4_Task";
 
 import { Container, Main } from "./styles";
 

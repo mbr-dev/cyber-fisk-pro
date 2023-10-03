@@ -8,7 +8,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L3_T1_Medio } from "../../utils/Lesson3_Task1";
+import { L3_T1_Medio } from "../../utils/Lesson3_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main } from "./styles";

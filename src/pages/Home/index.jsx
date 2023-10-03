@@ -1,4 +1,5 @@
 import { useContext } from "react";
+import * as Dialog from "@radix-ui/react-dialog";
 
 import { Footer } from "../../components/Footer";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
@@ -7,6 +8,8 @@ import { CyberContext } from "../../context/cyber";
 import { homeCardsTranslate } from "../../utils/Translate/homeCardsTranslate";
 
 import { Container, Main, Card, Cards } from "./styles";
+import { ButtonPronunciation } from "../../components/ButtonPronunciation";
+import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 export const Home = () => {
   const { selectLanguageHome } = useContext(CyberContext);
@@ -28,6 +31,13 @@ export const Home = () => {
           })}
         </Cards>
       </Main>
+      <Dialog.Root>
+        <Dialog.Trigger>
+          <ButtonPronunciation />
+        </Dialog.Trigger>
+
+        <ModalPronunciation />
+      </Dialog.Root>
       <Footer />
     </Container>
   )

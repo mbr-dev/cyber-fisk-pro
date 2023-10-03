@@ -8,7 +8,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L3_T2_Medio } from "../../utils/Lesson3_Task2";
+import { L3_T2_Medio } from "../../utils/Lesson3_Task";
 
 import { Container, Main } from "./styles";
 

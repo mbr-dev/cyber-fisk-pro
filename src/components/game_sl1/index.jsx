@@ -1,9 +1,9 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 
-import { TitleLesson } from "../titleLesson";
+import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 
-import { L1_SUPER_LESSON } from "../../utils/lesson1_Task2";
+import { L1_SUPER_LESSON } from "../../utils/lesson1_Task";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";

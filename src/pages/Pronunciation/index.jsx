@@ -5,11 +5,11 @@ import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 import { ButtonRed } from "../../components/ButtonRed";
 
-import { defaultTheme } from "../../themes/defaultTheme"
+import { defaultTheme } from "../../themes/defaultTheme";
 
-import BrazilImg from "../../assets/Brazil.svg";
-import EUAImg from "../../assets/Eua.svg";
-import SpainImg from "../../assets/Spain.svg";
+// import BrazilImg from "../../assets/Brasil.svg";
+// import EUAImg from "../../assets/Brasil.svg";
+// import SpainImg from "../../assets/Brasil.svg";
 
 import { Container, Main, Form, SelectLanguage } from "./styles"
 

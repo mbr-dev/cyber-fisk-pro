@@ -9,7 +9,7 @@ import { SubTitleLesson } from "../SubTitleLesson";
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L1_T1_Medio } from "../../utils/lesson1_Task1";
+import { L1_T1_Medio } from "../../utils/lesson1_Task";
 
 import { Container, Main } from "./styles";
 
