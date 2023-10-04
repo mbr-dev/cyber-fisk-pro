@@ -5,32 +5,41 @@ import { Footer } from "../../components/Footer";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 
 import { CyberContext } from "../../context/cyber";
-import { homeCardsTranslate } from "../../utils/Translate/homeCardsTranslate";
+import { translateHome } from "../../utils/Translate";
+
+import Livros from "../../assets/bookImage.png";
+import Cursor from "../../assets/iconeImage.png";
+import Medalha from "../../assets/medalhaImage.png";
+import Micro from "../../assets/microImage.png";
+import Note from "../../assets/noteImage.png";
+import Reporte from "../../assets/reporteImage.png";
 
 import { Container, Main, Card, Cards } from "./styles";
 import { ButtonPronunciation } from "../../components/ButtonPronunciation";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 export const Home = () => {
-  const { selectLanguageHome } = useContext(CyberContext);
+  const { selectLanguage } = useContext(CyberContext);
+  const images = [Livros, Cursor, Medalha, Reporte, Note, Micro];
 
   return(
     <Container>
       <TopMenuHeader hasAvatar hasLogo />
       <Main>
         <Cards>
-          {homeCardsTranslate.map(homeCard => {
+          {translateHome.map((text, index) => {
             return (
-              <Card key={homeCard.id}>
-                <img src={homeCard.img} alt="" />
-                {selectLanguageHome === 0 && <p>{homeCard.name[0]}</p>}
-                {selectLanguageHome === 1 && <p>{homeCard.name[1]}</p>}
-                {selectLanguageHome === 2 && <p>{homeCard.name[2]}</p>}
+              <Card key={index}>
+                <img src={images[index]} alt="" />
+                {selectLanguage === 0 && <p>{text.name[0]}</p>}
+                {selectLanguage === 1 && <p>{text.name[1]}</p>}
+                {selectLanguage === 2 && <p>{text.name[2]}</p>}
               </Card>
             )
           })}
         </Cards>
       </Main>
+
       <Dialog.Root>
         <Dialog.Trigger>
           <ButtonPronunciation />

@@ -3,12 +3,13 @@ import {Routes, Route} from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Books } from "../pages/Books";
 import { Report } from "../pages/Report";
+import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { SelectLesson } from "../pages/SelectLesson";
-import { Pronunciation } from "../pages/Pronunciation";
 import { LessonSelection } from "../pages/LessonSelection";
+import { GravaAudioTest } from "../pages/GravaAudioTest";
 
 import { Game1 } from "../components/game1";
 import { Game2 } from "../components/game2";
@@ -29,6 +30,7 @@ import { Game16 } from "../components/game16";
 import { Game17 } from "../components/game17";
 import { Game18 } from "../components/game18";
 import { Game19 } from "../components/game19";
+import { Game20 } from "../components/game20";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -44,11 +46,12 @@ export const Router =() => {
       <Route path="/Home" element={<Home/>} />
       <Route path="/Books" element={<Books />} />
       <Route path="/Report" element={<Report />} />
+      <Route path="/Studio" element={<Studio />} />
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
-      <Route path="/Pronunciation" element={<Pronunciation />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
+      <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
 
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
@@ -69,6 +72,7 @@ export const Router =() => {
       <Route path = "/Game17" element={<Game17 />}/>
       <Route path = "/Game18" element={<Game18 />}/>
       <Route path = "/Game19" element={<Game19 />}/>
+      <Route path = "/Game20" element={<Game20 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>

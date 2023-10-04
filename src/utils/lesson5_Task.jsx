@@ -280,3 +280,123 @@ export const L5_T1_Dificil = [
     },
   }
 ]
+
+export const L5_T2_Facil = [
+  {
+    audio: "Ess1_L5_TF_1",
+    pergunta: [
+      "Carol is wearing a",
+      ", a white blouse and",
+      ".",
+    ],
+    option0: {
+      label: ["", "pink ", "be", "likes"],
+      status: "pink "
+    },
+    option1: {
+      label: ["", "skirt", "lives", "likes"],
+      status: "skirt"
+    },
+    option2: {
+      label: ["", "sandals", "studies", "likes"],
+      status: "sandals"
+    },
+  },
+]
+
+export const L5_T2_Medio = [
+  {
+    pergunta: "Task_2_M_0",
+    resposta: "I’m a medium."
+  },
+  {
+    pergunta: "Task_2_M_1",
+    resposta: "I’m a large."
+  },
+  {
+    pergunta: "Task_2_M_2",
+    resposta: "They’re perfect."
+  },
+  {
+    pergunta: "Task_2_M_3",
+    resposta: "I’ll take it."
+  },
+  {
+    pergunta: "Task_2_M_4",
+    resposta: "What do you wear at home?"
+  },
+  {
+    pergunta: "Task_2_M_5",
+    resposta: "I wear jeans and T-shirts."
+  },
+  {
+    pergunta: "Task_2_M_6",
+    resposta: "My mom is shopping for housewares."
+  },
+  {
+    pergunta: "Task_2_M_7",
+    resposta: "I cook on Mondays and Wednesdays."
+  },
+  {
+    pergunta: "Task_2_M_8",
+    resposta: "I have English classes on Tuesdays and Thursdays."
+  },
+  {
+    pergunta: "Task_2_M_9",
+    resposta: "I go out with my friends on Fridays and Saturdays."
+  }
+]
+
+export const L5_T2_Dificil = [
+  {
+    audio: "Task_2_D_0",
+    pergunta: [
+      "What are the parents doing?",
+      "What are they baking?",
+      "Are they baking a cake too?",
+      "Does the son like baked potatoes?",
+      "Where is the son going?"
+    ],
+    resposta: [
+      "They are cooking.",
+      "They are baking potatoes.",
+      ["No, they aren’t.", "No, they aren’t baking a cake too.", "No. They are baking an apple pie."],
+      ["Yes, he does.", "Yes, he likes baked potatoes."],
+      "He’s going to his parent’s house."
+    ]
+  },
+  {
+    audio: "Task_2_D_0",
+    pergunta: [
+      "Where are they?",
+      "What does the man want?",
+      "What size is he?",
+      "Does the lady give him the polo shirt?",
+      "Where does the man try on the shirt?",
+    ],
+    resposta: [
+      ["They are in a store.", "In a store."],
+      "He wants a polo shirt in red.",
+      "He is a small.",
+      ["Yes, she does.", "Yes, she gives him the polo shirt."],
+      "In the fitting room."
+    ]
+  },
+  {
+    audio: "Task_2_D_10",
+    pergunta: [
+      "Is Sarah fine?",
+      "Where is the man?",
+      "Is the man wearing a costume?",
+      "Is the man eating?",
+      "What is the girl doing?",
+    ],
+    resposta: [
+      ["Yes, she is.", "Yes, she is fine."],
+      ["At a costume party.", "He is at a costume party."],
+      ["Yes, he is.", "Yes, he is wearing a costume."],
+      ["No, he isn’t.", "No, he isn’t eating."],
+      "She is watching TV."
+    ]
+  }
+]

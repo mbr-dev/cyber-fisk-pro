@@ -9,8 +9,8 @@ import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 
-import ImgBtn from "./image/btnAudio.svg";
-import ImgBtn2 from "./image/btnAudio2.svg";
+import ImgBtn from "../../assets/ruido.svg";
+import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game7 = () => {

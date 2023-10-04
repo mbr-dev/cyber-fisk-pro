@@ -78,8 +78,12 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
   margin-top: 0.5rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const SelectLanguage = styled.div`
@@ -123,7 +127,7 @@ export const Form = styled.div`
 
   textarea {
     all: unset;
-    width: 17rem;
+    width: 16.5rem;
     height: 9rem;
     padding: 1rem;
     color: ${props => props.theme["gray-700"]};

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BooksContainer = styled.div` 
+export const Container = styled.div` 
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,7 +8,7 @@ export const BooksContainer = styled.div`
   align-items: center;
 `;
 
-export const BooksMain = styled.main`
+export const Main = styled.main`
   flex: 1;
   width: 100vw;
   display: flex;
@@ -60,9 +60,12 @@ export const BooksImagesCarrousel = styled.div`
 `;
 
 export const ImagesCarrousel = styled.div`
-  img {
+  /* img {
     width: 100%;
     height: auto;
+  } */
+  img {
+    width: 30%;
   }
 `;
 

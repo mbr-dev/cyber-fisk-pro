@@ -6,47 +6,48 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
+import { L5_T2_Dificil } from "../../utils/lesson5_Task";
 import { URL_FISKPRO, URL_L3T2D } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input, Button } from "./styles";
 
-export const Game10 = () => {
+export const Game20 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
-  const [answer, setAnswer] = useState("");
+  const [question, setQuestion] = useState([]);
+  const [answer, setAnswer] = useState([]);
   const [text, setText] = useState("");
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
+  const [countQ, setCountQ] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
-    const totalOfSounds = L3_T2_Dificil.length;
+    const totalOfSounds = L5_T2_Dificil.length;
     
-    let tempSounds = [];
+    let tempRandom = [];
     for (let a = 0; a < totalOfSounds; a ++) {
-      tempSounds.push(a);
+      tempRandom.push(a);
     }
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
+    setRandomNumber(tempRandom);
 
-    setSound(L3_T2_Dificil[tempSounds[round]].pergunta);
-
-    let tempAnswer = L3_T2_Dificil[tempSounds[round]].resposta.replace(/'/g, "’");
-    setAnswer(tempAnswer);
-  }, [setRandomNumber, setSound, setAnswer])
+    setSound(L5_T2_Dificil[tempRandom[round]].audio);
+    setQuestion(L5_T2_Dificil[tempRandom[round]].pergunta);
+    setAnswer(L5_T2_Dificil[tempRandom[round]].resposta);
+    
+  }, [setRandomNumber, setSound])
 
   const newRound = (number) => {
     setText("");
-    setSound(L3_T2_Dificil[randomNumber[number]].pergunta);
-    let tempAnswer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
-    setAnswer(tempAnswer);
+    setSound(L5_T2_Dificil[randomNumber[number]].audio);
+    setQuestion(L5_T2_Dificil[randomNumber[number]].pergunta);
+    setAnswer(L5_T2_Dificil[randomNumber[number]].resposta);
   }
 
   const handleVerifyWord = (event) => {
@@ -58,10 +59,23 @@ export const Game10 = () => {
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
+    let answerIndex = answer[countQ];
 
-    if (tempWord === answer) {
-      tempColorA = 1;
-      setColorAnswer(tempColorA);
+    if (answerIndex.includes(tempWord)) {
+      if (countQ < 4) {
+        let tempCount = countQ;
+        tempCount++;
+        tempColorA = 1;
+        setColorAnswer(tempColorA);
+        setCountQ(tempCount);
+
+        setTimeout(() => {
+          setColorAnswer(0);
+          setText("");
+        }, 1000);
+        return
+      }
+
       tempRightPoints += 3;
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
@@ -85,6 +99,7 @@ export const Game10 = () => {
 
     if(rule === "Continua") {
       setTimeout(() =>{
+        setCountQ(0);
         setColorAnswer(0);
         newRound(tempRound);
       }, 1000);
@@ -129,17 +144,19 @@ export const Game10 = () => {
   }, []);
 
   useEffect(() => {
-    text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
+    text.trim() === "" || playAudio ? setBlockButton(true) : setBlockButton(false);
   }, [text, setBlockButton]);
 
   return (
     <Container>
       <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
-      <SubTitleLesson title="Write what you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
+      <SubTitleLesson title="Listen and answer the questions." />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson5/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
+          <p>{question[countQ]}</p>
+
           <Input 
             placeholder="Type here"
             maxLength={100}

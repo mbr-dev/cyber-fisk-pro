@@ -79,21 +79,21 @@ export const ModalPronunciation = () => {
             </ButtonFlag>
 
             <ButtonFlag 
-              onClick={() => handleLanguageChange("en-US")}
-              style={{
-                borderColor: selectLanguage === "en-US" ? defaultTheme["red-200"] : ""
-              }}
-            >
-              <img src={EUAImg} alt="" />
-            </ButtonFlag>
-
-            <ButtonFlag 
               onClick={() => handleLanguageChange("es")}
               style={{
                 borderColor: selectLanguage === "es" ? defaultTheme["red-200"] : ""
               }}
             >
               <img src={SpainImg} alt="" />
+            </ButtonFlag>
+
+            <ButtonFlag 
+              onClick={() => handleLanguageChange("en-US")}
+              style={{
+                borderColor: selectLanguage === "en-US" ? defaultTheme["red-200"] : ""
+              }}
+            >
+              <img src={EUAImg} alt="" />
             </ButtonFlag>
           </SelectLanguage>
 
