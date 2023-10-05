@@ -9,7 +9,6 @@ import { SubTitleLesson } from "../SubTitleLesson";
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L1_T1_Medio } from "../../utils/lesson1_Task";
 
 import { Container, Main } from "./styles";
 
@@ -32,10 +31,10 @@ export const Game2 = () => {
     try {
       setIsLoading(true);
 
-      const response  = await api.get("/L1_T1_Medio");
-      setData(response.data);
-
-      const dataLength = data.length;
+      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const res = response.data;
+      setData(res.dados[1].dados_conteudo);
+      const dataLength = res.dados[1].dados_conteudo.length;
 
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
@@ -44,7 +43,8 @@ export const Game2 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      setQuestion(data[tempRandom[round]].pergunta);
+      let items = JSON.parse(res.dados[1].dados_conteudo[tempRandom[round]].conteudo);
+      setQuestion(items.pergunta);
 
       let tempIdClick = idClick;
       tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -52,7 +52,7 @@ export const Game2 = () => {
 
       let tempAnswers = [];
       for (let a = 0; a < idClick.length; a ++) {
-        tempAnswers.push(data[tempRandom[round]].resposta[a]);
+        tempAnswers.push(items.resposta[tempIdClick[a]]);
       }
       tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
       setAnswers(tempAnswers);
@@ -61,10 +61,11 @@ export const Game2 = () => {
     } catch(error) {
       console.log("error tente novamente mais tarde.");
     }
-  }, [setIsLoading, data, setData, setRandomNumber, setQuestion, round, setIdClick, idClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, setQuestion, round, setIdClick, idClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setQuestion(data[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setQuestion(items.pergunta);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -72,7 +73,7 @@ export const Game2 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
@@ -122,13 +123,13 @@ export const Game2 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
-        alert('GAME OVER!!');
+        alert("GAME OVER!!");
         setNewContainer(1);
       }, 1500);
     } else {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
-        alert('Proximo lesson!!');
+        alert("Proximo lesson!!");
         setNewLesson(2);
       }, 1500);
     }

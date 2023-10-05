@@ -104,6 +104,7 @@ export const Game17 = () => {
     setNewRodada(tempGeneralRound);
 
     const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+    
     if (rule === "Continua") {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);

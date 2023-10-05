@@ -2,30 +2,29 @@ import { useCallback, useContext, useState, useEffect } from "react";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L5_T1_Dificil } from "../../utils/lesson5_Task";
+import { L5_T2_Facil } from "../../utils/lesson5_Task";
+import { URL_FISKPRO } from "../../config/infos";
 
 import { Container, Form, Main, Select, Button } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
-export const Game19 = () => {
+export const Game21 = () => {
   const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState([]);
+  const [sound, setSound] = useState(null);
   const [answer0, setAnswer0] = useState("");
   const [answer1, setAnswer1] = useState("");
   const [answer2, setAnswer2] = useState("");
-  const [answer3, setAnswer3] = useState("");
-  const [answer4, setAnswer4] = useState("");
   const [option0, setOption0] = useState([]);
   const [option1, setOption1] = useState([]);
   const [option2, setOption2] = useState([]);
-  const [option3, setOption3] = useState([]);
-  const [option4, setOption4] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
@@ -33,14 +32,12 @@ export const Game19 = () => {
   const [selected0, setSelected0] = useState("");
   const [selected1, setSelected1] = useState("");
   const [selected2, setSelected2] = useState("");
-  const [selected3, setSelected3] = useState("");
-  const [selected4, setSelected4] = useState("");
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    const questionLength = L5_T1_Dificil.length;
+    const questionLength = L5_T2_Facil.length;
 
     let tempRandom = [];
     for (let a = 0; a < questionLength; a++) {
@@ -48,40 +45,32 @@ export const Game19 = () => {
     }
     setRandomNumber(tempRandom);
 
-    setQuestion(L5_T1_Dificil[tempRandom[round]].pergunta);
-    setOption0(L5_T1_Dificil[tempRandom[round]].option0.label);
-    setOption1(L5_T1_Dificil[tempRandom[round]].option1.label);
-    setOption2(L5_T1_Dificil[tempRandom[round]].option2.label);
-    setOption3(L5_T1_Dificil[tempRandom[round]].option3.label);
-    setOption4(L5_T1_Dificil[tempRandom[round]].option4.label);
+    setSound(L5_T2_Facil[tempRandom[round]].audio);
+    setQuestion(L5_T2_Facil[tempRandom[round]].pergunta);
+    setOption0(L5_T2_Facil[tempRandom[round]].option0.label);
+    setOption1(L5_T2_Facil[tempRandom[round]].option1.label);
+    setOption2(L5_T2_Facil[tempRandom[round]].option2.label);
 
-    setAnswer0(L5_T1_Dificil[tempRandom[round]].option0.status);
-    setAnswer1(L5_T1_Dificil[tempRandom[round]].option1.status);
-    setAnswer2(L5_T1_Dificil[tempRandom[round]].option2.status);
-    setAnswer3(L5_T1_Dificil[tempRandom[round]].option3.status);
-    setAnswer4(L5_T1_Dificil[tempRandom[round]].option4.status);
-  }, [setRandomNumber]);
+    setAnswer0(L5_T2_Facil[tempRandom[round]].option0.status);
+    setAnswer1(L5_T2_Facil[tempRandom[round]].option1.status);
+    setAnswer2(L5_T2_Facil[tempRandom[round]].option2.status);
+  }, [setRandomNumber, setSound, setQuestion, setOption0, setOption1, setOption2, setAnswer0, setAnswer1, setAnswer2]);
 
   const newRound = (number) => {
     setCountClick(0);
     setOption0("");
     setOption1("");
     setOption2("");
-    setOption3("");
-    setOption4("");
     
-    setQuestion(L5_T1_Dificil[randomNumber[number]].pergunta);
-    setOption0(L5_T1_Dificil[randomNumber[number]].option0.label);
-    setOption1(L5_T1_Dificil[randomNumber[number]].option1.label);
-    setOption2(L5_T1_Dificil[randomNumber[number]].option2.label);
-    setOption3(L5_T1_Dificil[randomNumber[number]].option3.label);
-    setOption4(L5_T1_Dificil[randomNumber[number]].option4.label);
+    setSound(L5_T2_Facil[randomNumber[number]].audio);
+    setQuestion(L5_T2_Facil[randomNumber[number]].pergunta);
+    setOption0(L5_T2_Facil[randomNumber[number]].option0.label);
+    setOption1(L5_T2_Facil[randomNumber[number]].option1.label);
+    setOption2(L5_T2_Facil[randomNumber[number]].option2.label);
 
-    setAnswer0(L5_T1_Dificil[randomNumber[number]].option0.status);
-    setAnswer1(L5_T1_Dificil[randomNumber[number]].option1.status);
-    setAnswer2(L5_T1_Dificil[randomNumber[number]].option2.status);
-    setAnswer3(L5_T1_Dificil[randomNumber[number]].option3.status);
-    setAnswer4(L5_T1_Dificil[randomNumber[number]].option4.status);
+    setAnswer0(L5_T2_Facil[randomNumber[number]].option0.status);
+    setAnswer1(L5_T2_Facil[randomNumber[number]].option1.status);
+    setAnswer2(L5_T2_Facil[randomNumber[number]].option2.status);
   }
 
   const handleSelect0 = (event) => {
@@ -108,22 +97,6 @@ export const Game19 = () => {
     click++;
     setCountClick(click);
   }
-  const handleSelect3 = (event) => {
-    const value = event.target.value;
-    setSelected3(value);
-
-    let click = countClick;
-    click++;
-    setCountClick(click);
-  }
-  const handleSelect4 = (event) => {
-    const value = event.target.value;
-    setSelected4(value);
-
-    let click = countClick;
-    click++;
-    setCountClick(click);
-  }
 
   const handleVerify = (event) => {
     event.preventDefault();
@@ -137,16 +110,14 @@ export const Game19 = () => {
     if (
       selected0 === answer0 && 
       selected1 === answer1 && 
-      selected2 === answer2 && 
-      selected3 === answer3 && 
-      selected4 === answer4
+      selected2 === answer2
       ) {
       tempColor = 1;
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints++;
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(0, tempRightPoints);
     } else {
       tempColor = 2;
       setColorAnswer(tempColor);
@@ -164,45 +135,25 @@ export const Game19 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
         setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Score") {
+    } else if (rule === "Game over") {
+      setNewPontos(0,0);
       setTimeout(() =>{
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-
-        if (scoreFinal >= 70) {
-            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
-              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
-              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-              frequencia++;
-
-              if (frequencia === 4) {
-                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-              }
-
-              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
-              const rank = PontosRank(frequencia,oldRank);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            } else {
-              localStorage.setItem("cyber_pro_task2","1");
-              localStorage.setItem("cyber_pro_msg_task2","1");
-              localStorage.setItem("cyber_pro_frequencia_task1",1);
-              const rank = PontosRank(1,0);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            }
-          }
-
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+        setColorAnswer(0);
+        alert('GAME OVER!!');
         setNewContainer(1);
+      }, 1500);
+    } else {
+      setTimeout(() =>{
+        setColorAnswer(0);
+        alert('Proximo lesson!!');
+        setNewLesson(2);
       }, 1500);
     }
   }
@@ -212,14 +163,15 @@ export const Game19 = () => {
   }, []);
 
   useEffect(() => {
-    countClick >= 5 ? setBlockButton(false) : setBlockButton(true)
+    countClick >= 3 ? setBlockButton(false) : setBlockButton(true)
   }, [countClick, setBlockButton]);
   
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task 2" />
+      <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd />
       <TitleLesson title="Complete" />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson5/${sound}.mp3`} />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>
@@ -256,26 +208,6 @@ export const Game19 = () => {
           <label style={{
             color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
           }}>{question[3]}</label>
-          <Select value={selected3} onChange={handleSelect3}>
-            {option3.map((option, index) => {
-              return (
-                <option key={index} value={option}>{option}</option>
-              )
-            })}
-          </Select> 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[4]}</label>
-          <Select value={selected4} onChange={handleSelect4}>
-            {option4.map((option, index) => {
-              return (
-                <option key={index} value={option}>{option}</option>
-              )
-            })}
-          </Select>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[5]}</label>
         </Form>
         <Button form="myForm" type="submit" onClick={handleVerify} disabled={blockButton} >
           <p>Check</p>

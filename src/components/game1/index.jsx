@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
@@ -9,7 +10,6 @@ import { SubTitleLesson } from "../SubTitleLesson";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { L1_T1_Facil } from "../../utils/lesson1_Task";
 import { api } from "../../lib/api";
 
 import { Container, Main } from "./styles";
@@ -29,14 +29,16 @@ export const Game1 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const navigate = useNavigate();
+
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      
-      const response  = await api.get("/L1_T1_Facil");
-      setData(response.data);
-      
-      const dataLength = data.length;
+
+      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const res = response.data;
+      setData(res.dados[0].dados_conteudo);
+      const dataLength = res.dados[0].dados_conteudo.length;
       
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
@@ -45,7 +47,8 @@ export const Game1 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
       
-      setQuestion(data[tempRandom[round]].pergunta);
+      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      setQuestion(items.pergunta);
       
       let tempIdClick = idClick;
       tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -53,7 +56,7 @@ export const Game1 = () => {
       
       let tempImages = [];
       for (let a = 0; a < idClick.length; a++) {
-        tempImages.push(data[tempRandom[round]].images[a])
+        tempImages.push(items.images[tempIdClick[a]]);
       }
       tempImages = tempImages.sort(() => Math.random() - 0.5);
       setAnswers(tempImages);
@@ -62,10 +65,11 @@ export const Game1 = () => {
     } catch(error) {
       console.log("error tente novamente mais tarde.");
     }
-  }, [setIsLoading, data, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
+  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
 
   const newRound = (number) => {
-    setQuestion(data[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setQuestion(items.pergunta);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -73,7 +77,7 @@ export const Game1 = () => {
     
     let tempImages = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempImages.push(data[randomNumber[number]].images[a]);
+      tempImages.push(items.images[tempIdClick[a]]);
     }
     tempImages = tempImages.sort(() => Math.random() - 0.5);
     setAnswers(tempImages);
@@ -82,8 +86,8 @@ export const Game1 = () => {
 
   const handleClick = (index) => {
     if (blockButton) return;
-
     setBlockButton(true);
+
     let tempRightPoints = rightPoints;
     let tempColor = [...optionColor];
     const selectedAnswer = answers[index];

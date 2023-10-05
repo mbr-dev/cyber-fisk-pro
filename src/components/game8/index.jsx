@@ -181,7 +181,6 @@ export const Game8 = () => {
   return (
     <Container>
       <HeaderLesson superTaskEnd numStart="Task 2" numEnd="Super task" />
-
       <TitleLesson title="Choose the best alternative." />
 
       <DndContext onDragEnd={handleDragEnd}>

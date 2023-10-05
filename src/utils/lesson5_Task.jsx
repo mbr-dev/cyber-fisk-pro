@@ -283,23 +283,150 @@ export const L5_T1_Dificil = [
 
 export const L5_T2_Facil = [
   {
-    audio: "Ess1_L5_TF_1",
+    audio: "Ess1_L5_TF_0",
     pergunta: [
       "Carol is wearing a",
+      "",
       ", a white blouse and",
-      ".",
+      "."
     ],
     option0: {
-      label: ["", "pink ", "be", "likes"],
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
       status: "pink "
     },
     option1: {
-      label: ["", "skirt", "lives", "likes"],
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
       status: "skirt"
     },
     option2: {
-      label: ["", "sandals", "studies", "likes"],
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
       status: "sandals"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_1",
+    pergunta: [
+      "Josh is wearing a dark",
+      "",
+      ",",
+      "and brown sneakers."
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "gray"
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "T-shirt"
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "blue jeans"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_2",
+    pergunta: [
+      "Julian is wearing a gray",
+      ", a",
+      "and",
+      "shoes."
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "suit"
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "tie"
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "black"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_3",
+    pergunta: [
+      "Harry is wearing a white shirt,",
+      "",
+      "and red",
+      ".",
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "red"
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "pants"
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "sneakers"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_4",
+    pergunta: [
+      "Sarah is wearing a",
+      "dress and",
+      "",
+      "."
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "red"
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "black"
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "high heels"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_5",
+    pergunta: [
+      "Justin is wearing a gray",
+      ", a blue",
+      ", black",
+      "and black sneakers."
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "gray"
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "T-shirt"
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "pants"
+    },
+  },
+  {
+    audio: "Ess1_L5_TF_6",
+    pergunta: [
+      "Lisa is wearing a",
+      "",
+      "and black",
+      "."
+    ],
+    option0: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "black "
+    },
+    option1: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "coat "
+    },
+    option2: {
+      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      status: "boots"
     },
   },
 ]
@@ -366,7 +493,7 @@ export const L5_T2_Dificil = [
     ]
   },
   {
-    audio: "Task_2_D_0",
+    audio: "Task_2_D_1",
     pergunta: [
       "Where are they?",
       "What does the man want?",
@@ -383,7 +510,7 @@ export const L5_T2_Dificil = [
     ]
   },
   {
-    audio: "Task_2_D_10",
+    audio: "Task_2_D_2",
     pergunta: [
       "Is Sarah fine?",
       "Where is the man?",
@@ -399,4 +526,8 @@ export const L5_T2_Dificil = [
       "She is watching TV."
     ]
   }
+]
+
+export const L4_SUPER_LESSON = [
+
 ]
