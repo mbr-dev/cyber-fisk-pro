@@ -167,7 +167,7 @@ export const DragAndDropGame = (props) => {
                     order={orders[index]}
                     disabled={isBlocked}
                     show={isVisible}
-                    border="1px solid green"
+                    //border="1px solid green"
                   >
                     {questions[roundCount]?.alternativas[index]}
                   </Draggable>

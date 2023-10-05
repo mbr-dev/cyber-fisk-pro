@@ -5,7 +5,7 @@ import { ContainerButton, StyledButton } from "./style";
 export const OptionButton = (props) => {
   return (
     <ContainerButton order={props?.order}>
-      {props.correct && "🟢"}
+      {/*{props.correct && "🟢"}*/}
       <StyledButton
         id={props.id}
         $show={props.show}
