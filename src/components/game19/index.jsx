@@ -46,6 +46,7 @@ export const Game19 = () => {
     for (let a = 0; a < questionLength; a++) {
       tempRandom.push(a);
     }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
     setQuestion(L5_T1_Dificil[tempRandom[round]].pergunta);
@@ -69,6 +70,11 @@ export const Game19 = () => {
     setOption2("");
     setOption3("");
     setOption4("");
+    setSelected0("");
+    setSelected1("");
+    setSelected2("");
+    setSelected3("");
+    setSelected4("");
     
     setQuestion(L5_T1_Dificil[randomNumber[number]].pergunta);
     setOption0(L5_T1_Dificil[randomNumber[number]].option0.label);

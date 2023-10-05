@@ -2261,6 +2261,155 @@
       }
     }
   ],
+  "L5_T2_Facil": [
+    {
+      "audio": "Ess1_L5_TF_0",
+      "pergunta": [
+        "Carol is wearing a",
+        "",
+        ", a white blouse and",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pink"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "skirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sandals"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_1",
+      "pergunta": [
+        "Josh is wearing a dark",
+        "",
+        ", blue",
+        "and brown sneakers."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "gray"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "T-shirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "jeans"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_2",
+      "pergunta": [
+        "Julian is wearing a gray",
+        ", a",
+        "and",
+        "shoes."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "suit"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "tie"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_3",
+      "pergunta": [
+        "Harry is wearing a white shirt,",
+        "",
+        "and red",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "red"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pants"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sneakers"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_4",
+      "pergunta": [
+        "Sarah is wearing a",
+        "dress and",
+        "",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "red"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "high heels"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_5",
+      "pergunta": [
+        "Justin is wearing a gray",
+        ", a blue",
+        ", black",
+        "and black sneakers."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sweatshirt"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "T-shirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pants"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_6",
+      "pergunta": [
+        "Lisa is wearing a",
+        "",
+        "and black",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "coat"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "boots"
+      }
+    }
+  ],
   "L5_T2_Medio": [
     {
       "pergunta": "Task_2_M_0",

@@ -43,6 +43,7 @@ export const Game21 = () => {
     for (let a = 0; a < questionLength; a++) {
       tempRandom.push(a);
     }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
     setSound(L5_T2_Facil[tempRandom[round]].audio);
@@ -61,6 +62,9 @@ export const Game21 = () => {
     setOption0("");
     setOption1("");
     setOption2("");
+    setSelected0("");
+    setSelected1("");
+    setSelected2("");
     
     setSound(L5_T2_Facil[randomNumber[number]].audio);
     setQuestion(L5_T2_Facil[randomNumber[number]].pergunta);

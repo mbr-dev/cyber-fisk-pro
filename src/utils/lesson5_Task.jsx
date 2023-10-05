@@ -291,15 +291,15 @@ export const L5_T2_Facil = [
       "."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
-      status: "pink "
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+      status: "pink"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "skirt"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "sandals"
     },
   },
@@ -308,20 +308,20 @@ export const L5_T2_Facil = [
     pergunta: [
       "Josh is wearing a dark",
       "",
-      ",",
+      ", blue",
       "and brown sneakers."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "gray"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "T-shirt"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
-      status: "blue jeans"
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+      status: "jeans"
     },
   },
   {
@@ -333,15 +333,15 @@ export const L5_T2_Facil = [
       "shoes."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "suit"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "tie"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "black"
     },
   },
@@ -354,15 +354,15 @@ export const L5_T2_Facil = [
       ".",
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "red"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "pants"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "sneakers"
     },
   },
@@ -375,15 +375,15 @@ export const L5_T2_Facil = [
       "."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "red"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "black"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "high heels"
     },
   },
@@ -396,15 +396,15 @@ export const L5_T2_Facil = [
       "and black sneakers."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
-      status: "gray"
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+      status: "sweatshirt"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "T-shirt"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "pants"
     },
   },
@@ -417,15 +417,15 @@ export const L5_T2_Facil = [
       "."
     ],
     option0: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
-      status: "black "
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+      status: "black"
     },
     option1: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
-      status: "coat "
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+      status: "coat"
     },
     option2: {
-      label: ["", "black ", "coat", "suit", "skirt", "red", "tie", "gray", "pants", "blue jeans", "T-shirt", "boots", "sneaker", "sandals", "sweatshirt", "high heels"],
+      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
       status: "boots"
     },
   },
@@ -528,6 +528,6 @@ export const L5_T2_Dificil = [
   }
 ]
 
-export const L4_SUPER_LESSON = [
+export const L5_SUPER_LESSON = [
 
 ]
