@@ -42,6 +42,7 @@ export const Button = styled.button`
   padding-inline: 0.5rem;
   align-items: center;
   justify-content: center;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
   transition: all ease 0.3s;

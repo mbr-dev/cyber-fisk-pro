@@ -120,7 +120,7 @@ export const Game14 = () => {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Game over") {
       alert('GAME OVER!!');
       setNewPontos(0, 0);
@@ -128,13 +128,13 @@ export const Game14 = () => {
       
       setTimeout(() => {
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     } else {
       setTimeout(() => {
         alert('Passou de task');
         setOptionColor([0, 0, 0]);
         setNewLesson(1);
-      }, 1000);
+      }, 1500);
     }
   }
 

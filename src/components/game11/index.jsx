@@ -37,7 +37,7 @@ export const Game11 = () => {
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
     }
-    //tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
+    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
 
     let tempRandomQ = idClickQuestion;
@@ -113,10 +113,10 @@ export const Game11 = () => {
     let tempColorA = [...colorAnswers];
     let tempRightPoints = rightPoints;
     
-    const selectedQuestion = questions[randomNumber[selectedQuestionIndex]].status;
-    const selectedAnswer = answers[randomNumber[index]].status;
+    const selectedQuestion = questions[selectedQuestionIndex];
+    const selectedAnswer = answers[index];
     
-    if (selectedAnswer === selectedQuestion) {
+    if (selectedAnswer.status === selectedQuestion.status) {
       if (countClick < 3) {
         tempColorQ[selectedQuestionIndex] = 1;
         setColorQuestions(tempColorQ);
@@ -195,7 +195,7 @@ export const Game11 = () => {
         setRound(tempRound);
         setNewRodada(tempGeneralRound);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     }
   }, [rightQuestions, rightAnswers, round, rodadaGeral, setRound, setNewRodada, newRound]);
 
@@ -227,8 +227,7 @@ export const Game11 = () => {
                   onClick={() => handleGetQuestion(index)}
                   style={{
                     opacity: (blockQuestions && selectedQuestionIndex === index) || disabledQ ? 0.5 : 1,
-                    backgroundColor: colorQuestions[index] === 0 ? "" : colorQuestions[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                    color: colorQuestions[index] === 1 || colorQuestions[index] === 2 ? defaultTheme.white : "",
+                    borderColor: colorQuestions[index] === 0 ? "" : colorQuestions[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
                   }}
                   disabled={disabledQ}
                 >
@@ -246,8 +245,7 @@ export const Game11 = () => {
                 key={index}
                 onClick={() => handleGetAnswer(index)}
                 style={{
-                  backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? defaultTheme.white : "",
+                  borderColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
                 }}
                 disabled={disabledA}
               >

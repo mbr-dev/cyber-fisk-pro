@@ -1,6 +1,6 @@
 export const L4_T1_Facil = [
   {
-    pergunta: "L4_Task1_F_11",
+    pergunta: "L4_Task1_F_0",
     resposta: [
       {label: "an", status: 0},
       {label: "and", status: 0},
@@ -9,7 +9,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_11", // Não tem
+    pergunta: "L4_Task1_F_1",
     resposta: [
       {label: "mother", status: 0},
       {label: "brother", status: 1},
@@ -18,7 +18,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_8",
+    pergunta: "L4_Task1_F_2",
     resposta: [
       {label: "son", status: 1},
       {label: "so", status: 0},
@@ -27,7 +27,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_4",
+    pergunta: "L4_Task1_F_3",
     resposta: [
       {label: "siblings", status: 0},
       {label: "children", status: 0},
@@ -36,7 +36,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_1",
+    pergunta: "L4_Task1_F_4",
     resposta: [
       {label: "grandma", status: 0},
       {label: "grandpa", status: 1},
@@ -45,7 +45,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_1", // Não tem
+    pergunta: "L4_Task1_F_5",
     resposta: [
       {label: "uncle", status: 0},
       {label: "ex-husband", status: 0},
@@ -54,7 +54,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_3",
+    pergunta: "L4_Task1_F_6",
     resposta: [
       {label: "mother", status: 1},
       {label: "grandma", status: 0},
@@ -63,7 +63,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_9",
+    pergunta: "L4_Task1_F_7",
     resposta: [
       {label: "lady", status: 0},
       {label: "stepdaughter", status: 0},
@@ -72,7 +72,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_1", // Não tem
+    pergunta: "L4_Task1_F_8",
     resposta: [
       {label: "three", status: 0},
       {label: "teen", status: 0},
@@ -81,7 +81,7 @@ export const L4_T1_Facil = [
     ]
   },
   {
-    pergunta: "L4_Task1_F_15",
+    pergunta: "L4_Task1_F_9",
     resposta: [
       {label: "ex-wife", status: 1},
       {label: "husband", status: 0},
@@ -93,7 +93,7 @@ export const L4_T1_Facil = [
 
 export const L4_T1_Medio = [
   {
-    pergunta: "L4_Task1_M_2",
+    pergunta: "L4_Task1_M_0",
     resposta: [
       {label: "He is my brother.", status: 0},
       {label: "He is my teacher.", status: 1},
@@ -102,7 +102,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_2", // Não tem
+    pergunta: "L4_Task1_M_1",
     resposta: [
       {label: "She is my friend.", status: 0},
       {label: "They’re my friends.", status: 0},
@@ -111,7 +111,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_9",
+    pergunta: "L4_Task1_M_2",
     resposta: [
       {label: "This is my pet.", status: 1},
       {label: "They are my pets.", status: 0},
@@ -120,7 +120,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_10",
+    pergunta: "L4_Task1_M_3",
     resposta: [
       {label: "Our house is pretty.", status: 0},
       {label: "Your mom is pretty.", status: 0},
@@ -129,7 +129,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_8",
+    pergunta: "L4_Task1_M_4",
     resposta: [
       {label: "They are my brothers.", status: 0},
       {label: "These are my siblings.", status: 1},
@@ -138,7 +138,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_3",
+    pergunta: "L4_Task1_M_5",
     resposta: [
       {label: "She is my half sister.", status: 0},
       {label: "ex-He is my brother.", status: 0},
@@ -147,7 +147,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_4",
+    pergunta: "L4_Task1_M_6",
     resposta: [
       {label: "She is my mom.", status: 0},
       {label: "She’s my aunt.", status: 0},
@@ -156,7 +156,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_6",
+    pergunta: "L4_Task1_M_7",
     resposta: [
       {label: "She is Italian.", status: 0},
       {label: "She’s in Italy.", status: 1},
@@ -165,7 +165,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_7",
+    pergunta: "L4_Task1_M_8",
     resposta: [
     {label: "They’re in the locker room.", status: 1},
       {label: "They are at home.", status: 0},
@@ -174,7 +174,7 @@ export const L4_T1_Medio = [
     ]
   },
   {
-    pergunta: "L4_Task1_M_5",
+    pergunta: "L4_Task1_M_9",
     resposta: [
     {label: "They are in the room.", status: 0},
     {label: "They are in the classroom.", status: 1},
@@ -186,7 +186,7 @@ export const L4_T1_Medio = [
 
 export const L4_T1_Dificil = [
   {
-    pergunta: "L4_Task1_D_5",
+    pergunta: "L4_Task1_D_0",
     resposta: [
       {label: "He’s at home.", status: 1},
       {label: "Yes, he’s my best friend.", status: 0},
@@ -195,7 +195,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_7",
+    pergunta: "L4_Task1_D_1",
     resposta: [
       {label: "Yes, they are in the classroom.", status: 0},
       {label: "They are in the classroom.", status: 1},
@@ -213,7 +213,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_0",
+    pergunta: "L4_Task1_D_3",
     resposta: [
       {label: "They’re our friends.", status: 1},
       {label: "She’s my teacher.", status: 0},
@@ -222,7 +222,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_0", // Não tem
+    pergunta: "L4_Task1_D_4",
     resposta: [
       {label: "They’re in Paris.", status: 0},
       {label: "She’s in New York.", status: 0},
@@ -231,7 +231,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_0", // Não tem
+    pergunta: "L4_Task1_D_5",
     resposta: [
       {label: "They’re in Hollywood.", status: 1},
       {label: "He is in Las Vegas.", status: 0},
@@ -240,7 +240,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_3",
+    pergunta: "L4_Task1_D_6",
     resposta: [
       {label: "They are my cousins.", status: 1},
       {label: "They are my sisters.", status: 0},
@@ -249,7 +249,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_6",
+    pergunta: "L4_Task1_D_7",
     resposta: [
       {label: "He is at home.", status: 0},
       {label: "She’s at school.", status: 0},
@@ -258,7 +258,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_0", // Não tem
+    pergunta: "L4_Task1_D_8",
     resposta: [
       {label: "They are in the restaurant.", status: 0},
       {label: "He is in the locker room.", status: 1},
@@ -267,7 +267,7 @@ export const L4_T1_Dificil = [
     ]
   },
   {
-    pergunta: "L4_Task1_D_0", // Não tem
+    pergunta: "L4_Task1_D_9",
     resposta: [
       {label: "He’s from Canada.", status: 0},
       {label: "She’s a teacher.", status: 0},

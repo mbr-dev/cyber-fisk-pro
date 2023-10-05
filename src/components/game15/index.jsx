@@ -7,7 +7,7 @@ import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L2_T2_Facil } from "../../utils/lesson2_Task";
+import { L2_T2_Facil } from "../../utils/Lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
@@ -86,7 +86,7 @@ export const Game15 = () => {
           setHit(0);
           setPhrase([]);
           newRound(tempRound);
-        }, 1000);
+        }, 1500);
       } else if (rule === "Game over"){
         setNewPontos(0,0);
         setTimeout(() =>{
@@ -94,14 +94,14 @@ export const Game15 = () => {
           setPhrase([]);
           alert('GAME OVER!!');
           setNewContainer(1);
-        },1000);
+        },1500);
       } else {
         setTimeout(() =>{
           setHit(0);
           setPhrase([]);
           alert('troca nivel');
           setNewLesson(5);
-        },1000);
+        },1500);
       }
     }
   }

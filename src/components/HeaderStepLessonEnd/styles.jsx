@@ -17,7 +17,7 @@ export const Main = styled.div`
   }
 
   @media(min-width: 600px) {
-    width: 2rem;
-    height: 2rem;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 `

@@ -7,7 +7,7 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
-import { URL_FISKPRO, URL_L3T2D } from "../../config/infos";
+import { URL_FISKPRO } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input, Button } from "./styles";
@@ -87,7 +87,7 @@ export const Game10 = () => {
       setTimeout(() =>{
         setColorAnswer(0);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Score") {
       setTimeout(() =>{
         const scoreFinal = Score(pontosF, pontosM, pontosD);
@@ -120,7 +120,7 @@ export const Game10 = () => {
         alert(`SCORE: ${scoreFinal}%`);
         alert(`PONTOS PARA O RANKING: ${valorRank}`);
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     }
   }
 

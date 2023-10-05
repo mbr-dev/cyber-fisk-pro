@@ -63,7 +63,6 @@ export const ButtonAudio = styled.button`
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-    border-color: ${props => props.theme["green-200"]};
   }
 
   @media(max-width: 320px) {

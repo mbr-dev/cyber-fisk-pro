@@ -45,7 +45,7 @@ export const L2_T1_Medio = [
       { audio: "L2_Task1_M_0", status: 0},
       { audio: "L2_Task1_M_1", status: 1},
       { audio: "L2_Task1_M_2", status: 2},
-      { audio: "L2_Task1_M_3", status: 3}, // não
+      { audio: "L2_Task1_M_3", status: 3},
     ],
     resposta: [
       { label: "Yes, they do.", status: 0},
@@ -88,75 +88,75 @@ export const L2_T1_Dificil = [
   {
     pergunta: "L2_Task1_D_0",
     resposta: [
-      { label: "Cereal and milk", status: 0},
-      { label: "Milk, cereal and eggs", status: 0},
-      { label: "Bread, milk and coffee", status: 0},
-      { label: "bread, cereal and milk", status: 1},
+      { label: "Hamburger and soda", status: 0},
+      { label: "pizza and Coke", status: 1},
+      { label: "pizza and water", status: 0},
+      { label: "hamburger and Coke", status: 0}
     ]
   },
   {
     pergunta: "L2_Task1_D_1",
     resposta: [
-      { label: "Fruit, eggs and bread", status: 0},
-      { label: "eggs, fruit and orange juice", status: 1},
-      { label: "orange juice, bread and eggs", status: 0},
-      { label: "coffee, orange juice and eggs", status: 0},
+      { label: "Eggs, cereal bars and milk", status: 0},
+      { label: "Omelet, toast and milk", status: 0},
+      { label: "Eggs, cereal and milk", status: 1},
+      { label: "Cereal, coffee and milk", status: 0}
     ]
   },
   {
-    pergunta: "L2_Task1_D_2", 
+    pergunta: "L2_Task1_D_2",
     resposta: [
-      { label: "a sandwich and water", status: 1},
-      { label: "a sandwich and nuggets", status: 0},
-      { label: "water and chicken", status: 0},
-      { label: "water and a sandwich", status: 0},
+      { label: "Bread, eggs and coffee", status: 0},
+      { label: "Bread, cereal and milk", status: 0},
+      { label: "Bread, butter and chocolate", status: 0},
+      { label: "bread, butter and coffee", status: 1}
     ]
   },
   {
     pergunta: "L2_Task1_D_3",
     resposta: [
-      { label: "Hamburger and pizza", status: 0},
-      { label: "hamburger and soda", status: 1},
-      { label: "Soda and cheeseburger", status: 0},
-      { label: "Soda and a sandwich", status: 0},
+      { label: "salad and ice cream", status: 1},
+      { label: "salad and cream", status: 0},
+      { label: "ice cream and soda", status: 0},
+      { label: "ice cream and steak", status: 0}
     ]
   },
   {
     pergunta: "L2_Task1_D_4",
     resposta: [
-      { label: "salad and ice cream", status: 1},
-      { label: "salad and cream", status: 0},
-      { label: "ice cream and soda", status: 0},
-      { label: "ice cream and steak", status: 0},
+      { label: "Hamburger and pizza", status: 0},
+      { label: "hamburger and soda", status: 1},
+      { label: "Soda and cheeseburger", status: 0},
+      { label: "Soda and a sandwich", status: 0}
     ]
   },
   {
-    pergunta: "", // não
+    pergunta: "L2_Task1_D_5",
     resposta: [
-      { label: "Bread, eggs and coffee", status: 0},
-      { label: "Bread, cereal and milk", status: 0},
-      { label: "Bread, butter and chocolate", status: 0},
-      { label: "bread, butter and coffee", status: 1},
+      { label: "a sandwich and water", status: 1},
+      { label: "a sandwich and nuggets", status: 0},
+      { label: "water and chicken", status: 0},
+      { label: "water and a sandwich", status: 0}
     ]
   },
   {
-    pergunta: "", // não
+    pergunta: "L2_Task1_D_6",
     resposta: [
-      { label: "Eggs, cereal bars and milk", status: 0},
-      { label: "Omelet, toast and milk", status: 0},
-      { label: "Eggs, cereal and milk", status: 1},
-      { label: "Cereal, coffee and milk", status: 0},
+      { label: "Cereal and milk", status: 0},
+      { label: "Milk, cereal and eggs", status: 0},
+      { label: "Bread, milk and coffee", status: 0},
+      { label: "bread, cereal and milk", status: 1}
     ]
   },
   {
-    pergunta: "", // não
+    pergunta: "L2_Task1_D_7",
     resposta: [
-      { label: "Hamburger and soda", status: 0},
-      { label: "pizza and Coke	", status: 1},
-      { label: "pizza and water", status: 0},
-      { label: "hamburger and Coke", status: 0},
+      { label: "Fruit, eggs and bread", status: 0},
+      { label: "eggs, fruit and orange juice", status: 1},
+      { label: "orange juice, bread and eggs", status: 0},
+      { label: "coffee, orange juice and eggs", status: 0}
     ]
-  },
+  }
 ]
 
 export const L2_T2_Facil = [

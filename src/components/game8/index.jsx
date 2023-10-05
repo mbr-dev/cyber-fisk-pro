@@ -99,7 +99,7 @@ export const Game8 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    let rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -193,8 +193,8 @@ export const Game8 = () => {
             return (
               <Draggable index={index} key={index}>
                 <ButtonAnswer
-                  w="14.5rem"
-                  h="4rem"
+                  w="10rem"
+                  h="3.5rem"
                   optionColor={colorAnswers[index]}
                   disabledButton={blockButton}
                 >

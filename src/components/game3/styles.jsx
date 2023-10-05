@@ -18,6 +18,7 @@ export const Main = styled.div`
   margin-top: 3rem;
 
   @media(max-width: 320px) {
-    margin-top: 2rem;
+    margin-top: 1rem;
+    gap: 1rem;
   }
 `;

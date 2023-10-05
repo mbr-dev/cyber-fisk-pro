@@ -15,4 +15,9 @@ export const Main = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-top: 2rem;
+
+  @media(max-width: 320px) {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
 `;

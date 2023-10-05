@@ -33,13 +33,13 @@ export const Game4 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true);
+    //try {
+      //setIsLoading(true);
       
-      const response  = await api.get("/L1_T2_Facil");
-      setData(response.data);
+      //const response  = await api.get("/L1_T2_Facil");
+     // setData(response.data);
       
-      const dataLength = data.length;
+      const dataLength = L1_T2_Facil.length;
 
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
@@ -48,12 +48,12 @@ export const Game4 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      setSounds(data[tempRandom[round]].pergunta);
-      setType(data[tempRandom[round]].tipo);
+      setSounds(L1_T2_Facil[tempRandom[round]].pergunta);
+      setType(L1_T2_Facil[tempRandom[round]].tipo);
 
-      let tempSortNum = data[tempRandom[round]].tipo === 3 ? idTipo3 : idTipo4;
+      let tempSortNum = L1_T2_Facil[tempRandom[round]].tipo === 3 ? idTipo3 : idTipo4;
       tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-      if(data[tempRandom[round]].tipo === 3){
+      if(L1_T2_Facil[tempRandom[round]].tipo === 3){
         setIdTipo3(tempSortNum);
       } else {
         setIdTipo4(tempSortNum);
@@ -61,14 +61,14 @@ export const Game4 = () => {
       
       let tempAnswers = [];
       for (let a = 0; a < tempSortNum.length; a ++) {
-        tempAnswers.push(data[tempRandom[round]].resposta[tempSortNum[a]]);
+        tempAnswers.push(L1_T2_Facil[tempRandom[round]].resposta[tempSortNum[a]]);
       }
       setAnswers(tempAnswers);
       setBlockButton(false);
       setIsLoading(false)
-    } catch(error) {
-      console.log(error);
-    }
+   // } catch(error) {
+      //console.log(error);
+    //}
   }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
@@ -148,20 +148,20 @@ export const Game4 = () => {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
         alert('GAME OVER!!');
         setNewContainer(1);
-      },1000);
+      },1500);
     } else {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
         alert('troca nivel');
         setNewLesson(5);
-      },1000);
+      },1500);
     }
   }
 

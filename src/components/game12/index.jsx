@@ -97,7 +97,7 @@ export const Game12 = () => {
         tempColorA = 0;
         setColorAnswer(tempColorA);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Game over") {
       alert('GAME OVER!!');
       setNewPontos(0, 0);
@@ -107,14 +107,14 @@ export const Game12 = () => {
         tempColorA = 0;
         setColorAnswer(tempColorA);
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     } else {
 
       setTimeout(() => {
         tempColorA = 0;
         setColorAnswer(tempColorA);
         setNewLesson(2);
-      }, 1000);
+      }, 1500);
     }
   }
 

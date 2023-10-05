@@ -7,7 +7,7 @@ import { TitleLesson } from "../TitleLesson";
 import { api } from "../../lib/api";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L2_T2_Dificil } from "../../utils/lesson2_Task";
+import { L2_T2_Dificil } from "../../utils/Lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Form, Button } from "./styles";
@@ -28,13 +28,13 @@ export const Game16 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true);
+    //try {
+     // setIsLoading(true);
       
-      const response  = await api.get("/L2_T2_Dificil");
-      setData(response.data);
+     // const response  = await api.get("/L2_T2_Dificil");
+     // setData(response.data);
       
-      const dataLength = data.length;
+      const dataLength = L2_T2_Dificil.length;
       
       let tempRandom = [];
       for (let a = 0; a < dataLength; a ++) {
@@ -43,19 +43,19 @@ export const Game16 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
       
-      setQuestion(data[tempRandom[round]].pergunta);
-      let tempAnswer = data[tempRandom[round]].resposta.replace(/'/g, "’");
+      setQuestion(L2_T2_Dificil[tempRandom[round]].pergunta);
+      let tempAnswer = L2_T2_Dificil[tempRandom[round]].resposta.replace(/'/g, "’");
       setAnswer(tempAnswer);
       setIsLoading(false);
-    } catch(error) {
-      console.log("tente novamente mais tarde");
-    }
+    //} catch(error) {
+      //console.log("tente novamente mais tarde");
+    //}
   }, [setIsLoading, round, setData, data, setRandomNumber, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
-    setQuestion(data[randomNumber[number]].pergunta);
-    let tempAnswer = data[randomNumber[number]].resposta.replace(/'/g, "’");
+    setQuestion(L2_T2_Dificil[randomNumber[number]].pergunta);
+    let tempAnswer = L2_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
     setAnswer(tempAnswer);
   }
 

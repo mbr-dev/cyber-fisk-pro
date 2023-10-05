@@ -14,7 +14,7 @@ import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game7 = () => {
-  const { rodadaGeral, timeElapsed, setNewPontos, setTimeElapsed, setRodadaGeral, setNewRodada, newStatusPlay, playAudio } = useContext(LessonContext);
+  const { rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio } = useContext(LessonContext);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
@@ -31,8 +31,6 @@ export const Game7 = () => {
   const [blockAudio, setBlockAudio] = useState(true);
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
-
-  console.log("selectAudio: ", selectAudio);
 
   const loadLesson = useCallback(() => {
     const totalOfQuestions = L2_T1_Facil.length;
@@ -129,9 +127,9 @@ export const Game7 = () => {
     let tempColor = optionColor;
     let tempRightPoints = rightPoints;
 
-    const answer =  answers[index].status;
+    const answer =  answers[index];
 
-    if (answer === selectAudio) {
+    if (answer.status === selectAudio) {
       if (clicks < 4) {
         tempColor[index] = 1;
         setOptionColor(tempColor);

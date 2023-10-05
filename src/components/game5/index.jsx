@@ -100,26 +100,26 @@ export const Game5 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const regra = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
 
-    if (regra === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         newRound(tempRound);
-      }, 1000);
-    } else if (regra === "Game over") {
+      }, 1500);
+    } else if (rule === "Game over") {
       setNewPontos(0, 0);
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         alert("GAME OVER!!");
         setNewContainer(1);
-      }, 1000);
+      }, 1500);
     } else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         alert("Troca de nível!!");
         setNewLesson(6);
-      }, 1000);
+      }, 1500);
     }
   }
 
@@ -146,8 +146,8 @@ export const Game5 = () => {
           return (
             <ButtonAnswer
               key={index}
-              w="9rem"
-              h="3rem"
+              w="13rem"
+              h="3.5rem"
               onPress={() => handleClick(index)}
               optionColor={optionColor[index]}
               disabledButton={blockButton}

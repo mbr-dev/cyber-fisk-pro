@@ -33,7 +33,7 @@ export const Game9 = () => {
     for (let a = 0; a < totalOfSounds; a++) {
       tempSounds.push(a);
     }
-    //tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
     setRandomNumber(tempSounds);
     setSound(L3_T2_Medio[tempSounds[round]].pergunta);
     

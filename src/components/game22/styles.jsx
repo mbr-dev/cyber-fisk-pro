@@ -11,19 +11,13 @@ export const Main = styled.main`
   width: 100%;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 2rem;
+  margin-top: 2rem;
 
-  @media(max-width: 320px) {
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-  }
-
-  @media(min-width: 600px) {
-    flex-direction: row;
-    justify-content: center;
-    gap: 2rem;
-  }
+  @media(max-width: 360px) {
+    gap: 1rem;
+    margin-top: 1rem;
+  }  
 `;

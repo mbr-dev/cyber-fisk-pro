@@ -27,10 +27,4 @@ export const Container = styled.div`
       font-size: 1.125rem;
     }
   }
-
-  @media(min-width: 600px) {
-    span {
-      font-size: 2rem;
-    }
-  }
 `
