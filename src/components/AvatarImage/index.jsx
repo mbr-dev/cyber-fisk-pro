@@ -1,16 +1,16 @@
-import { AvatarImageContainer, AvatarName, AvatarPhoto } from "./styles";
-
 import Woman from "./Images/OBJECTS.png";
 
-export function AvatarImage({ userName }) {
+import { Container, Name, Photo } from "./styles";
+
+export const AvatarImage = ({ userName }) => {
   return(
-    <AvatarImageContainer>
-      <AvatarPhoto>
-        <img src={Woman} alt="Avatar usuário" className="avatarImg" />
-      </AvatarPhoto>
-      <AvatarName>
+    <Container>
+      <Photo>
+        <img src={Woman} alt="Avatar usuário" />
+      </Photo>
+      <Name>
         <p>{userName}</p>
-      </AvatarName>
-    </AvatarImageContainer>
+      </Name>
+    </Container>
   )
 }

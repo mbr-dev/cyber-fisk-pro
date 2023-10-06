@@ -1,66 +1,69 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Content = styled.div`
-    flex-direction: column;
-    justify-content: space-around;
-    align-items: center;
+export const Game3Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+`;
+
+export const Game3Content = styled.div`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+
+  .btn{
+    width: 14.5rem;
+    height: 4rem;
     display: flex;
-    width: 100%;
-    margin-top: 30px;
-    padding-bottom: 10px;
-    padding-left: 10px;
-    padding-right: 10px;
+    justify-content: center;
+    align-items: center;
+    line-height: 1.3;
+    border-radius: 10px;
+    box-shadow:  2px 2px 6px #ccc;
+    transition: all .2s ease-in-out;
+  }
+
+  .btn:hover { 
+    transform: scale(1.05); 
+  }
+
+  p {
+    font-size: 1.375rem;
+    color: ${props => props.theme.black};
+    font-weight: bold;
+    text-transform: capitalize;
+  }
+
+  @media(max-width: 320px) {
+    gap: 1rem;
 
     .btn{
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        display: flex;
-        width: 758px;
-        height: 95px;
-        border-radius: 50px;
-        box-shadow:  2px 2px 6px #ccc;
-        padding-top: 10px;
-        padding-bottom: 10px;
-        transition: all .2s ease-in-out;
-        margin-bottom: 20px;
-    }
-    .btn:hover { 
-        transform: scale(1.1); 
-    }
-    .desc{
-        font-size: 48px;
-        color: black;
-    }
-    @media only screen and (max-width: 600px){
-        flex-direction: column;
-        .btn{
-            width: 300px;
-            height: 65px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-        }
-        .desc{
-            font-size: 22px;
-            text-transform: none;
-            color: black; 
-        }
+      width: 14rem;
+      height: 3rem;
     }
 
-    @media only screen and (max-width: 1024px){
-        flex-direction: column;
-        .btn{
-            width: 300px;
-            height: 65px;
-            margin-bottom: 20px;
-            border-radius: 15px;
-        }
-        .desc{
-            font-size: 22px;
-            text-transform: none;
-            color: black; 
-        }
+    p {
+      font-size: 1rem;
     }
+  }
+
+  @media(min-width: 600px) {
+    gap: 3rem;
+    justify-content: flex-start;
+    margin-top: 2rem;
+
+    .btn{
+      width: 19rem;
+      height: 6rem;
+    }
+
+    p {
+      font-size: 1.75rem;
+    }
+  }
 `
-
-export default Content;

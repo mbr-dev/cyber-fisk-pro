@@ -10,6 +10,8 @@ function CyberProvider({children}){
   const [selectLanguage, setSelectLanguage] = useState(0);
   const [selectLanguageHome, setSelectLanguageHome] = useState(0);
   const [selectLanguageBooks, setSelectLanguageBooks] = useState(0);
+  // 0 success, 1 information, 2 attention, 3 error
+  const [notifications, setNotifications] = useState(3);
 
   function chooseLanguage(e) {
     const selectedOption = e.target.value
@@ -38,6 +40,7 @@ function CyberProvider({children}){
       value={{
         book,
         newBook,
+        notifications,
         selectLanguage,
         selectLanguageHome,
         selectLanguageBooks,

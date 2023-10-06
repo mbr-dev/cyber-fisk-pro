@@ -1,10 +1,16 @@
-import { AreaButtonBottomContainer, LineSeparator } from "./styles";
+import { ButtonRed } from "../ButtonRed";
 
-export function AreaButtonBottom({ children }) {
+import { Container, LineSeparator } from "./styles";
+
+export const AreaButtonBottom = ({ title, hasIcon }) => {
   return (
-    <AreaButtonBottomContainer>
+    <Container>
       <LineSeparator />
-      {children}
-    </AreaButtonBottomContainer>
+      {hasIcon ?
+        <ButtonRed title={title} hasIcon />
+        :
+        <ButtonRed title={title} />
+      }
+    </Container>
   )
 }

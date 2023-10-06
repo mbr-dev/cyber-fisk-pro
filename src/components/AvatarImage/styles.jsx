@@ -1,38 +1,46 @@
 import { styled } from "styled-components";
 
-export const AvatarImageContainer = styled.div`
-  width: 5rem;
-  height: 4.75rem;
+export const Container = styled.div`
+  width: 5.25rem;
   padding-top: 0.25rem;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid ${props => props.theme['red-200']};
+  border: 1px solid ${props => props.theme["red-200"]};
+  border-bottom: none;
   border-radius: 8px;
   background-color: ${props => props.theme.white};
+
+  @media (max-width: 320px) {
+    width: 4.75rem;
+    height: 4rem;
+    margin-bottom: 1.5rem;
+  }
 `;
 
-export const AvatarPhoto = styled.div`
-  width: 14rem;
-  position: relative;
+export const Photo = styled.div`
+  img {
+    width: 52px;
+    object-fit: cover;
+  }
 
-  .avatarImg {
-    width: 3.25rem;
-    margin-top: 0.5rem;
+  @media (max-width: 320px) {
+    img {
+      width: 44px;
+    }
   }
 `
 
-export const AvatarName = styled.div`
-  width: 6rem;
-  height: 1.75rem;
-  padding-inline: 0.25rem;
+export const Name = styled.div`
+  width: 6.5rem;
+  padding: 0.5rem;
   margin-top: -0.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme['red-200']};
-  border-radius: 8px;
+  border-radius: 6px;
   
   p {
     color: ${props => props.theme.white};
@@ -41,5 +49,9 @@ export const AvatarName = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+  }
+
+  @media(max-width: 320px) {
+    padding: 0.325rem;
   }
 `;

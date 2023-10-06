@@ -1,35 +1,74 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
-const Container = styled.div`
-  /* display: flex;
-  flex-direction: row;
+export const SelectLessonContainer = styled.div`
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
   align-items: center;
-  width: 100%; */
+`;
 
-  .boxBtn{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+export const SelectLessonMain = styled.main`
+  flex: 1;
+  width: 18.75rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+`;
+
+export const SelectLessonArea = styled.div`
+  width: 13.75rem;
+  display: grid;
+  grid-template-columns: repeat(2, 5rem);
+  justify-content: space-between;
+  gap: 1rem;
+
+  @media(max-width: 320px) {
+    justify-content: space-around;
   }
-  .box{
-    display: grid;
-    gap: 20px;
-    grid-template-columns: auto auto;
-    justify-content: center;
-    align-items: center;
+`;
+
+export const ButtonLesson = styled.button`
+  all: unset;
+  width: 5rem;
+  height: 5.25rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid transparent;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+  transition: 0.3s;
+
+  p {
+    font-weight: bold;
+    font-size: 2rem;
   }
 
-  @media only screen and (max-width: 1024px) and (min-width: 600px) {
-    .box{
-      gap:10px;
+  span {
+    font-weight: 500;
+  }
+
+  &:hover {
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["red-200"]};
+    border: 2px solid ${props => props.theme.black};
+  }
+
+  @media(max-width: 320px) {
+    width: 4rem;
+    height: 4.25rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    span {
+      font-size: 0.875rem;
     }
   }
-
-  @media only screen and (max-width: 600px){
-    .box{
-      gap:10px;
-    }
-  }
-`
-
-export default Container;
+`;

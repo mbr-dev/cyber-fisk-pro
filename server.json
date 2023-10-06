@@ -1,0 +1,36 @@
+{
+  "resposta": {
+    "id": 1,
+    "txt": "Sucesso"
+  },
+  "dados": [
+    {
+      "Id": 1,
+      "IdLivro": 53,
+      "Numero": "1",
+      "Label": "Lesson",
+      "Status": 1
+    },
+    {
+      "Id": 2,
+      "IdLivro": 53,
+      "Numero": "2",
+      "Label": "Lesson",
+      "Status": 1
+    },
+    {
+      "Id": 3,
+      "IdLivro": 53,
+      "Numero": "3",
+      "Label": "Lesson",
+      "Status": 0
+    },
+    {
+      "Id": 4,
+      "IdLivro": 53,
+      "Numero": "4",
+      "Label": "Lesson",
+      "Status": 0
+    }
+  ]
+}

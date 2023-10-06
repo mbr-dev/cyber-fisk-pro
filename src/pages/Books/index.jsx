@@ -7,16 +7,12 @@ import "./styles.css"
 import { CyberContext } from "../../context/cyber";
 import { booksTranslate } from "../../utils/Translate/booksTranslate";
 
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { ButtonRed } from "../../components/ButtonRed";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
-import LogoFisk from "../../assets/logoFisk.png";
+import { BooksContainer, Line, BooksArea, BooksMain, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
 
-import { BooksContainer, BooksHeader, Line, BooksArea, BooksMain, BottomHeader, TopHeader, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
-
-export function Books() {
+export const Books = () => {
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -32,21 +28,13 @@ export function Books() {
 
   return (
     <BooksContainer>
-      <BooksHeader>
-        <TopHeader>
-          <ButtonMenuHeader />
 
-          {selectLanguageBooks === 0 && <p>{booksTranslate.title[0]}</p>}
-          {selectLanguageBooks === 1 && <p>{booksTranslate.title[1]}</p>}
-          {selectLanguageBooks === 2 && <p>{booksTranslate.title[2]}</p>}
-            
-          <ButtonCloseHeader />
-        </TopHeader>
-
-        <BottomHeader>       
-          <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
-        </BottomHeader>
-      </BooksHeader>
+      {selectLanguageBooks === 0 && 
+        <TopMenuHeader hasLogo title={booksTranslate.title[0]} />}
+      {selectLanguageBooks === 1 && 
+        <TopMenuHeader hasLogo title={booksTranslate.title[1]} />}
+      {selectLanguageBooks === 2 && 
+        <TopMenuHeader hasLogo title={booksTranslate.title[2]} />}
 
       <BooksMain>
         <BooksArea>
@@ -111,9 +99,7 @@ export function Books() {
         </BooksArea>
       </BooksMain>
 
-      <AreaButtonBottom>
-        <ButtonRed title="Home" />
-      </AreaButtonBottom>
+      <AreaButtonBottom title="Home" />
     </BooksContainer>
   )
 }

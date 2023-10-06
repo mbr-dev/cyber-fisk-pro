@@ -9,7 +9,8 @@ export const homeCardsTranslate = [
   { 
     id: 0, 
     name: ["Livros", "Books", "Libros"],
-    img: Livros },
+    img: Livros 
+  },
   { 
     id: 1, 
     name: ["Último Acesso", "Last Access", "Ultimo acceso"],
@@ -29,5 +30,6 @@ export const homeCardsTranslate = [
   { 
     id: 5, 
     name: ["Pronúnciação", "Pronunciantion", "Pronunciación"],
-    img: Micro},
+    img: Micro
+  },
 ]

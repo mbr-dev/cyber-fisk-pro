@@ -1,64 +1,43 @@
-import styled from 'styled-components';
-import {colors} from '../../config/colors';
+import styled from "styled-components";
 
-const Content = styled.div`
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    display: flex;
-    width: 100%;
-    background-color: ${colors.backgroundSubTitleLesson};
-    padding-top: 10px;
-    padding-bottom: 10px;
-    
-    .box{
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        
-    }
-    .boxLetter{
-        display: flex;
-        width: 55px;
-        height: 75px;
-        border-style: solid;
-        border-width: 1px;
-        border-radius: 10px;
-        background-color: ${colors.white};
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-       
-        margin-right: 10px;
-    }
-    .desc{
-        font-size: 60px;
-        color: ${colors.black};
-    }
-    @media only screen and (max-width: 600px){
-        .desc{
-            font-size: 20px; 
-        }
-        .boxLetter{
-            width: 25px;
-            height: 40px;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-    }
+export const SubtitleSuperLessonContainer = styled.div`
+  width: 100vw;
+`;
 
-    @media only screen and (max-width: 1024px) and (min-width: 600px){
-        .desc{
-            font-size: 20px; 
-        }
-        .boxLetter{
-            width: 25px;
-            height: 40px;
-            border-radius: 5px;
-            margin-right: 10px;
-        }
-    }
+export const SubtitleSuperLessonContent = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: ${props=> props.theme["gray-200"]};
+  padding-block: 0.625rem;
+
+  @media(min-width: 600px) {
+    gap: 1rem;
+  }
 `
 
-export default Content;
+export const BoxLetters = styled.div`
+  width: 1.625rem;
+  height: 2.5rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme.black};
+  border-radius: 5px;
+
+  p {
+    font-size: 1rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 3rem;
+    height: 4rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+`;

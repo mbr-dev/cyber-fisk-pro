@@ -1,26 +1,57 @@
-import { useState } from 'react';
-import '../../App.css';
-import Container from './styles';
-import { TopMenu } from '../../components/topMenu';
-import { BtnLessonSel } from '../../components/btnSelLesson';
+import { useState, useEffect } from "react";
 
-function SelectLesson() {
-  const [count, setCount] = useState(0)
+import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { Loading } from "../../components/Loading";
 
-  const qtdLessons = () => {
-    
+import { api } from "../../lib/api"
+import { AppError } from "../../utils/AppError";
+
+import { ButtonLesson, SelectLessonContainer, SelectLessonMain, SelectLessonArea } from "./styles";
+
+export const SelectLesson = () => {
+  const [activities, setActivities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchLessons = async() => {
+    try {
+      setIsLoading(true);
+      const response = await api.get('/dados')
+      setActivities(response.data);
+    } catch(error) {
+      const isAppError = error instanceof AppError;
+      const titleError = isAppError ? error.message : "Servidor fora do ar tente novamente mais tarde";
+      alert(titleError);
+    } finally {
+      setIsLoading(false);
+    }
+
   }
 
+  useEffect(() => {
+    fetchLessons();
+  }, [])
+
   return (
-    <>
-      <Container>
-        <TopMenu menu='0'/> 
-        <div className='box'>
-          <BtnLessonSel num='1' lesson='Lesson'/>
-        </div>
-      </Container>    
-    </>
+    <SelectLessonContainer>
+      {isLoading && <Loading />}
+
+      <TopMenuHeader title="Essentials" />
+
+      <SelectLessonMain>
+        <SelectLessonArea>
+          {activities.map((activity) => {
+            return (
+              <ButtonLesson key={activity.Id}>
+                <p>{activity.Numero}</p>
+                <span>{activity.Label}</span>
+              </ButtonLesson>
+            )
+          })}
+        </SelectLessonArea>
+      </SelectLessonMain>
+
+      <AreaButtonBottom title="Home" />
+    </SelectLessonContainer>
   )
 }
-
-export default SelectLesson
