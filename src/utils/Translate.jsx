@@ -91,3 +91,30 @@ export const translateStudio = [
     modalTitle: "Clave de respuestas"
   }
 ]
+
+export const translateLogin = [
+  {
+    name: "Usuário RAF",
+    plName: "Nome do usuário",
+    password: "Senha",
+    plPassword: "Senha do usuário",
+    language: "Escolha o idioma",
+    labelButton: "Entrar"
+  },
+  {
+    name: "User RAF",
+    plName: "Username",
+    password: "Password",
+    plPassword: "User password",
+    language: "Choose language",
+    labelButton: "Login"
+  },
+  {
+    name: "Usuario RAF",
+    plName: "Nombre de usuario",
+    password: "Contraseña",
+    plPassword: "Contraseña de usuario",
+    language: "Elige lengua",
+    labelButton: "Entrar"
+  },
+]

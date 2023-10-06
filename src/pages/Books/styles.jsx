@@ -40,13 +40,6 @@ export const CurrentBooksArea = styled.div`
   }
 `;
 
-export const Line = styled.div`
-  width: 100%;
-  height: 1.5px;
-  background-color: ${props => props.theme["gray-200"]};
-  margin-bottom: 1.5rem;
-`;
-
 export const BooksImagesArea = styled.div`
   width: 100%;
   display: flex;

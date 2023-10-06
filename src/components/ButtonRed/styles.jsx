@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ButtonContainer = styled.button`
+export const Container = styled.button`
   all: unset;
   width: 15.875rem;
   height: 2.5rem;
@@ -9,10 +9,10 @@ export const ButtonContainer = styled.button`
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
-  background-color: ${props => props.theme["red-200"]};
+  background-color: ${props => props.$greenBtn ? props.theme["green-600"] : props.theme["red-200"]};
   color: ${props => props.theme.white};
-  border: 3px solid ${props => props.theme["red-300"]};
-  border-bottom: 4px solid ${props => props.theme["red-300"]};
+  border: 2px solid ${props => props.$greenBtn ? props.theme["green-700"] : props.theme["red-300"]};
+  border-bottom: 4px solid ${props => props.$greenBtn ? props.theme["green-700"] : props.theme["red-300"]};
   border-radius: 10px;
   transition: all 0.2s;
   cursor: pointer;
@@ -23,7 +23,7 @@ export const ButtonContainer = styled.button`
   }
 
   &:hover {
-    opacity: 0.8;
+    opacity: 0.9;
   }
 
   @media(max-width: 320px) {

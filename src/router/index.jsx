@@ -2,6 +2,7 @@ import {Routes, Route} from "react-router-dom";
 
 import { Home } from "../pages/Home";
 import { Books } from "../pages/Books";
+import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
 import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
@@ -47,6 +48,7 @@ export const Router =() => {
 
       <Route path="/Home" element={<Home/>} />
       <Route path="/Books" element={<Books />} />
+      <Route path="/Login" element={<Login />} />
       <Route path="/Report" element={<Report />} />
       <Route path="/Studio" element={<Studio />} />
       <Route path="/Profile" element={<Profile/>} />

@@ -3,6 +3,7 @@ import { useKeenSlider } from "keen-slider/react";
 
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { LineSeparator } from "../../components/LineSeparator";
 
 import { CyberContext } from "../../context/cyber";
 import { translateBooks } from "../../utils/Translate";
@@ -13,7 +14,7 @@ import boo3 from "./images/bookImg03.svg";
 
 import "./styles.css";
 import "keen-slider/keen-slider.min.css";
-import { Container, Line, BooksArea, Main, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
+import { Container, BooksArea, Main, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
 
 export const Books = () => {
   const [sliderRef] = useKeenSlider({
@@ -67,7 +68,7 @@ export const Books = () => {
             </ImagesCarrousel>
           </CurrentBooksArea>
 
-          <Line />
+          <LineSeparator w="100%" />
 
           <PreviousBooksArea>
           <p>{selectLanguage === 0 ? translateBooks[0].previous : selectLanguage === 1 ? translateBooks[1].previous : translateBooks[2].previous}</p>
