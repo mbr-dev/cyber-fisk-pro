@@ -15,7 +15,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Button } from "./styles";
 
 export const Game4 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, numTask} = useContext(LessonContext);
 
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
   const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
@@ -33,14 +33,15 @@ export const Game4 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    //try {
+    try {
       //setIsLoading(true);
       
-      //const response  = await api.get("/L1_T2_Facil");
-     // setData(response.data);
+      const response  = await api.get(`/Retorno?id_livro=53&num_lesson=1&num_task=2`);
+      const res = response.data;
+      console.log("res: ", res);
+      setData(res.dados[0].dados_conteudo);
+      const dataLength = res.dados[0].dados_conteudo.length;
       
-      const dataLength = L1_T2_Facil.length;
-
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
         tempRandom.push(a);
@@ -48,27 +49,30 @@ export const Game4 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      setSounds(L1_T2_Facil[tempRandom[round]].pergunta);
-      setType(L1_T2_Facil[tempRandom[round]].tipo);
+      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      console.log("items: ", items.tipo);
+      console.log("tempanswer: ", items.respostas);
+      setSounds(items.pergunta);
+      setType(items.tipo);
 
-      let tempSortNum = L1_T2_Facil[tempRandom[round]].tipo === 3 ? idTipo3 : idTipo4;
+      let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
       tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-      if(L1_T2_Facil[tempRandom[round]].tipo === 3){
+      if(items.tipo === 3){
         setIdTipo3(tempSortNum);
       } else {
         setIdTipo4(tempSortNum);
       }
       
       let tempAnswers = [];
-      for (let a = 0; a < tempSortNum.length; a ++) {
-        tempAnswers.push(L1_T2_Facil[tempRandom[round]].resposta[tempSortNum[a]]);
-      }
+      // for (let a = 0; a < tempSortNum.length; a ++) {
+      //   tempAnswers.push(items.respostas[tempSortNum[a]]);
+      // }
       setAnswers(tempAnswers);
       setBlockButton(false);
-      setIsLoading(false)
-   // } catch(error) {
-      //console.log(error);
-    //}
+     // setIsLoading(false)
+    } catch(error) {
+      console.log(error);
+    }
   }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
 
   const newRound = (number) => {

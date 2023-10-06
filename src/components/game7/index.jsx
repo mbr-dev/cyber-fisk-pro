@@ -4,6 +4,7 @@ import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
+import { api } from "../../lib/api";
 import { L2_T1_Facil } from "../../utils/Lesson2_Task";
 import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
@@ -19,6 +20,7 @@ export const Game7 = () => {
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
   const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3]);
+  const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -32,39 +34,48 @@ export const Game7 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestions = L2_T1_Facil.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      const response  = await api.get("/Retorno?id_livro=53&num_lesson=2&num_task=0");
+      const res = response.data;
+      console.log("res: ", res);
+      setData(res.dados[0].dados_conteudo);
+      const dataLength = res.dados[0].dados_conteudo.length;
+      const totalOfQuestions = L2_T1_Facil.length;
     
-    let tempRandomNumber = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempRandomNumber.push(a);
+      let tempRandomNumber = [];
+      for (let a = 0; a < totalOfQuestions; a++) {
+        tempRandomNumber.push(a);
+      }
+      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandomNumber);
+
+      let tempRandomAudio = idClickAudio;
+      tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
+      setIdClickAudio(tempRandomAudio);
+
+      let tempAudios = [];
+      for (let a = 0; a < idClickAudio.length; a++) {
+        tempAudios.push(L2_T1_Facil[tempRandomNumber[round]].pergunta[a]);
+      }
+      tempAudios = tempAudios.sort(() => Math.random() - 0.5);
+      setAudios(tempAudios);
+
+      let tempRandomAnswer = idClickAnswer;
+      tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+      setIdClickAnswer(tempRandomAnswer);
+
+      let tempAnswers = [];
+      for (let a = 0; a < idClickAnswer.length; a++) {
+        tempAnswers.push(L2_T1_Facil[tempRandomNumber[round]].resposta[a]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+
+      setBlockAudio(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandomNumber);
-
-    let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempAudios = [];
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudios.push(L2_T1_Facil[tempRandomNumber[round]].pergunta[a]);
-    }
-    tempAudios = tempAudios.sort(() => Math.random() - 0.5);
-    setAudios(tempAudios);
-
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
-
-    let tempAnswers = [];
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L2_T1_Facil[tempRandomNumber[round]].resposta[a]);
-    }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-
-    setBlockAudio(false);
   }, [setRandomNumber, idClickAudio, setIdClickAudio, round, setAudios, idClickAnswer, setIdClickAnswer, setAnswers, setBlockAudio]);
 
   const newRound = (number) => {

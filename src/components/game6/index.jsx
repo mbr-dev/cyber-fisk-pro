@@ -6,10 +6,11 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
 import { Loading } from "../Loading";
 
+import { api } from "../../lib/api";
+import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { L1_T2_Dificil } from "../../utils/lesson1_Task";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
-import { URL_FISKPRO } from "../../config/infos";
 
 import { Container, Main } from "./styles";
 
@@ -18,6 +19,7 @@ export const Game6 = () => {
   
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2, 3, 4, 5]);
+  const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
@@ -28,32 +30,44 @@ export const Game6 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    const totalOfSounds = L1_T2_Dificil.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=2");
+      const res = response.data;
+      setData(res.dados[2].dados_conteudo);
+      const dataLength = res.dados[0].dados_conteudo.length;
 
-    let tempSounds = [];
-    for (let a = 0; a < totalOfSounds; a++) {
-      tempSounds.push(a);
+      let tempSounds = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempSounds.push(a);
+      }
+      tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempSounds);
+
+      let items = JSON.parse(res.dados[2].dados_conteudo[tempSounds[round]].conteudo);
+      setSound(items.pergunta);
+      
+      let tempRandomNumber = idClick;
+      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+      setIdClick(tempRandomNumber);
+      
+      let tempAnswers = [];
+      for (let a = 0; a < idClick.length; a++) {
+        tempAnswers.push(items.resposta[tempRandomNumber[a]]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
-    setSound(L1_T2_Dificil[tempSounds[round]].pergunta);
-    
-    let tempRandomNumber = idClick;
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClick(tempRandomNumber);
-    
-    let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(L1_T2_Dificil[tempSounds[round]].resposta[a]);
-    }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-    setBlockButton(false);
   }, []);
 
   const newRound = (number) => {
-    setSound(L1_T2_Dificil[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -61,7 +75,7 @@ export const Game6 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(L1_T2_Dificil[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
@@ -166,12 +180,14 @@ export const Game6 = () => {
     playAudio ? setBlockButton(true) : setBlockButton(false);
   }, [playAudio, setBlockButton]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      {isLoading &&
-        <Loading />
-      }
-      
       <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
