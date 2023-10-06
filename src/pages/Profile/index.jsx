@@ -17,7 +17,7 @@ import { Container, Main, Form, Input, AreaInput, Select } from "./styles";
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
-  function handleSelectLanguage(event) {
+  const handleSelectLanguage = (event) => {
     event.preventDefault();
     chooseLanguage(event)
   }
