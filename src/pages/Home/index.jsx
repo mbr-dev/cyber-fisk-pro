@@ -3,6 +3,8 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { Footer } from "../../components/Footer";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { ModalPronunciation } from "../../components/ModalPronunciation";
+import { ButtonPronunciation } from "../../components/ButtonPronunciation";
 
 import { CyberContext } from "../../context/cyber";
 import { translateHome } from "../../utils/Translate";
@@ -15,8 +17,6 @@ import Note from "../../assets/noteImage.png";
 import Reporte from "../../assets/reporteImage.png";
 
 import { Container, Main, Card, Cards } from "./styles";
-import { ButtonPronunciation } from "../../components/ButtonPronunciation";
-import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);

@@ -1,6 +1,6 @@
 import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
-import { LineSeparator } from "../../components/AreaButtonBottom/styles";
+import { LineSeparator } from "../../components/LineSeparator";
+import { ButtonBg } from "../../components/ButtonBg";
 
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
@@ -69,7 +69,7 @@ export const Ranking = () => {
         </MainBottom>
       </Main>
 
-      <AreaButtonBottom title="Home" />
+      <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
     </Container>
   )
 }

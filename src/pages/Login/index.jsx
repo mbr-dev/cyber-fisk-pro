@@ -2,7 +2,8 @@ import { useContext } from "react";
 import { User, Lock } from "lucide-react";
 
 import { Footer } from "../../components/Footer";
-import { ButtonRed } from "../../components/ButtonRed";
+import { ButtonBg } from "../../components/ButtonBg";
+import { LineSeparator } from "../../components/LineSeparator";
 
 import { CyberContext } from "../../context/cyber";
 import { translateLogin } from "../../utils/Translate";
@@ -13,7 +14,6 @@ import Spain from "../../assets/Spain.svg";
 import Brazil from "../../assets/Brazil.svg";
 
 import { Container, Main, Header, Select, Form, AreaInput, Input } from "./styles";
-import { LineSeparator } from "../../components/LineSeparator";
 
 export const Login = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
@@ -60,11 +60,13 @@ export const Login = () => {
           </AreaInput>
         </Form>
         <LineSeparator w="18rem" />
-          <ButtonRed
+          <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"
             greenBtn
             type="submit"
+            w="15.875rem"
+            h="2.5rem"
           />
       </Main>
       <Footer />

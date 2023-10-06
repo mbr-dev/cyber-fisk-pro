@@ -1,5 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 
+import { ButtonBg } from "../ButtonBg";
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
@@ -10,7 +11,7 @@ import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
 import { URL_FISKPRO } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Main, Container, Input, Button } from "./styles";
+import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
@@ -152,11 +153,15 @@ export const Game10 = () => {
             }}
           />
         </form>
-        <Button
+        <ButtonBg
           form="myForm"
           type="submit"
-          disabled={blockButton}
-        ><p>Check</p></Button>
+          disabledButton={blockButton}
+          title="Check"
+          w="15.875rem"
+          h="2.5rem"
+          greenBtn
+        />
       </Main>
     </Container>
   )
