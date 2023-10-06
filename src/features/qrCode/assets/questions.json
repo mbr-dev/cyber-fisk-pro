@@ -1,0 +1,154 @@
+{
+  "games": [
+    {
+      "response": {
+        "type": "dragAndDrop",
+        "title": "Choose the correct alternative.",
+        "questions": [
+          {
+            "question": "I ___ a book yesterday.",
+            "options": ["read1", "ate", "watched", "played", "cooks"],
+            "fullAnswer": "I read a book yesterday."
+          },
+          {
+            "question": "She ___ to the store every day.",
+            "options": ["goes2", "runs", "drives", "sleeps", "ate"],
+            "fullAnswer": "She goes to the store every day."
+          },
+          {
+            "question": "They ___ playing soccer in the park.",
+            "options": ["enjoy3", "hate", "finish", "stop", "drinks"],
+            "fullAnswer": "They enjoy playing soccer in the park."
+          },
+          {
+            "question": "He ___ his breakfast at 7 AM.",
+            "options": ["eats4", "drinks", "cooks", "reads", "drives"],
+            "fullAnswer": "He eats his breakfast at 7 AM."
+          },
+          {
+            "question": "My dog ___ very fast.",
+            "options": ["runs5", "jumps", "barks", "flies", "finish"],
+            "fullAnswer": "My dog runs very fast."
+          }
+        ]
+      }
+    },
+    {
+      "response": {
+        "type": "listenAndType",
+        "title": "Type the text you listen.",
+        "questions": [
+          {
+            "answer": "I read a book yesterday.",
+            "image": false
+          },
+          {
+            "answer": "She goes to the store every day.",
+            "image": true
+          },
+          {
+            "answer": "They enjoy playing soccer in the park.",
+            "image": false
+          },
+          {
+            "answer": "He eats his breakfast at 7 AM.",
+            "image": true
+          },
+          {
+            "answer": "My dog runs very fast.",
+            "image": false
+          }
+        ]
+      }
+    },
+    {
+      "response": {
+        "type": "listenAndClick",
+        "title": "Listen and choose the correct alternative.",
+        "questions": [
+          {
+            "options": ["read1", "ate", "watched", "played", "cooks"]
+          },
+          {
+            "options": ["goes2", "runs", "drives", "sleeps", "ate"]
+          },
+          {
+            "options": ["enjoy3", "hate", "finish", "stop", "drinks"]
+          },
+          {
+            "options": ["eats4", "drinks", "cooks", "reads", "drives"]
+          },
+          {
+            "options": ["runs5", "jumps", "barks", "flies", "finish"]
+          }
+        ]
+      }
+    },
+    {
+      "response": {
+        "type": "select",
+        "title": "Select correct alternative.",
+        "questions": [
+          {
+            "question": "I ___ a book yesterday.",
+            "options": ["read1", "ate", "watched"],
+            "fullAnswer": "I read a book yesterday."
+          },
+          {
+            "question": "She ___ to the store every day.",
+            "options": ["goes2", "runs", "drives"],
+            "fullAnswer": "She goes to the store every day."
+          },
+          {
+            "question": "They ___ playing soccer in the park.",
+            "options": ["enjoy3", "hate", "finish"],
+            "fullAnswer": "They enjoy playing soccer in the park."
+          },
+          {
+            "question": "He ___ his breakfast at 7 AM.",
+            "options": ["eats4", "drinks", "cooks"],
+            "fullAnswer": "He eats his breakfast at 7 AM."
+          },
+          {
+            "question": "My dog ___ very fast.",
+            "options": ["runs5", "jumps", "barks"],
+            "fullAnswer": "My dog runs very fast."
+          }
+        ]
+      }
+    },
+    {
+      "response": {
+        "type": "quiz",
+        "title": "Quiz",
+        "questions": [
+          {
+            "question": "I ___ a book yesterday.",
+            "options": ["read1", "ate", "watched", "played", "cooks"],
+            "fullAnswer": "I read a book yesterday."
+          },
+          {
+            "question": "She ___ to the store every day.",
+            "options": ["goes2", "runs", "drives", "sleeps", "ate"],
+            "fullAnswer": "She goes to the store every day."
+          },
+          {
+            "question": "They ___ playing soccer in the park.",
+            "options": ["enjoy3", "hate", "finish", "stop", "drinks"],
+            "fullAnswer": "They enjoy playing soccer in the park."
+          },
+          {
+            "question": "He ___ his breakfast at 7 AM.",
+            "options": ["eats4", "drinks", "cooks", "reads", "drives"],
+            "fullAnswer": "He eats his breakfast at 7 AM."
+          },
+          {
+            "question": "My dog ___ very fast.",
+            "options": ["runs5", "jumps", "barks", "flies", "finish"],
+            "fullAnswer": "My dog runs very fast."
+          }
+        ]
+      }
+    }
+  ]
+}

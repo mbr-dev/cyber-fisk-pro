@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-
+import { useNavigate, useLocation } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 
@@ -21,7 +21,15 @@ import { ModalPronunciation } from "../../components/ModalPronunciation";
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
   const images = [Livros, Cursor, Medalha, Reporte, Note, Micro];
+  const navigate = useNavigate();
+  const location = useLocation();
 
+  function teste(index){
+    console.log('==> ', index)
+    if(index === 0){
+      navigate("/LessonSelection");
+    }
+  }
   return(
     <Container>
       <TopMenuHeader hasAvatar hasLogo />
@@ -29,7 +37,7 @@ export const Home = () => {
         <Cards>
           {translateHome.map((text, index) => {
             return (
-              <Card key={index}>
+              <Card key={index} onClick={() => {teste(index)}}>
                 <img src={images[index]} alt="" />
                 {selectLanguage === 0 && <p>{text.name[0]}</p>}
                 {selectLanguage === 1 && <p>{text.name[1]}</p>}
