@@ -1,13 +1,13 @@
 import styled from "styled-components";
 
-export const RankingContainer  = styled.div`
+export const Container  = styled.div`
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
 `;
 
-export const RankingMain  = styled.main`
+export const Main  = styled.main`
   flex: 1;
   width: 18.75rem;
   display: flex;
@@ -25,6 +25,7 @@ export const MainTop  = styled.section`
   justify-content: center;
   gap: 1rem;
   text-align: center;
+  margin-bottom: 1rem;
 `;
 
 export const ButtonRakingArea  = styled.div`
@@ -80,14 +81,6 @@ export const TextArea  = styled.div`
     font-weight: 500;
   }
 `;
-
-export const LineSeparator = styled.div`
-  width: 100%;
-  height: 1.5px;
-  background-color: ${props => props.theme["gray-200"]};
-  margin-block: 1rem;
-`;
-
 
 export const MainBottom  = styled.section`
   width: 100%;

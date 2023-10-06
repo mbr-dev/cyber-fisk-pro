@@ -1,12 +1,12 @@
 import { styled } from "styled-components";
 
-export const LoadingContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #ffffff7b;
+  background-color: #ffffff7f;
   position: absolute;
   z-index: 1000;
 

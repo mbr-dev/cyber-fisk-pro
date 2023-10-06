@@ -4,13 +4,14 @@ import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L3_T1_Medio } from "../../utils/Lesson3_Task1";
+import { L3_T1_Medio } from "../../utils/Lesson3_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Button, Main } from "./styles";
+import { Container, Main } from "./styles";
 
 export const Game8 = () => {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
@@ -25,7 +26,7 @@ export const Game8 = () => {
   const [wrongPoints, setWrongPoints] = useState(true);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-  const [changeText, setChangeText] = useState('______');
+  const [changeText, setChangeText] = useState("______");
 
   const loadLesson = useCallback(() => {
     const totalOfQuestions = L3_T1_Medio.length;
@@ -71,8 +72,10 @@ export const Game8 = () => {
     setBlockButton(true);
     let tempColor = colorAnswers;
     let tempPoint = correctPoints;
+    const rightAnswer = answers[index].status;
+    console.log("rightAnswer: ", rightAnswer)
 
-    if (idClick[index] === 0) {
+    if (rightAnswer === 1) {
       tempPoint += 2;
       setCorrectPoints(tempPoint);
       setNewPontos(1, tempPoint);
@@ -96,13 +99,13 @@ export const Game8 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    let rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
         tempColor[index] = 0;
         setColorAnswers(tempColor);
-        setChangeText('______');
+        setChangeText("______");
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
@@ -111,14 +114,14 @@ export const Game8 = () => {
       setTimeout(() => {
         tempColor[index] = 0;
         setColorAnswers(tempColor);
-        setChangeText('______');
+        setChangeText("______");
         setNewContainer(1);
       }, 1500);
     } else {
       setTimeout(() => {
         tempColor[index] = 0;
         setColorAnswers(tempColor);
-        setChangeText('______');
+        setChangeText("______");
         setNewLesson(2);
       }, 1500);
     }
@@ -162,10 +165,11 @@ export const Game8 = () => {
   const handleDragEnd = (event) => {
     const { over, active } = event;
 
-    if (over && over.id === 'droppable') {
-      const droppedIndex = Number(active.id.split('-')[1]);
-      const changeTxt = over ? answers[droppedIndex] : '______';
+    if (over && over.id === "droppable") {
+      const droppedIndex = Number(active.id.split("-")[1]);
+      const changeTxt = over ? answers[droppedIndex].label : "______";
       setChangeText(changeTxt);
+      
       verifyAnswer(droppedIndex);
     }
   }
@@ -177,27 +181,25 @@ export const Game8 = () => {
   return (
     <Container>
       <HeaderLesson superTaskEnd numStart="Task 2" numEnd="Super task" />
-
       <TitleLesson title="Choose the best alternative." />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>
-          <SubTitleLesson title={question.replace('______', changeText)} />
+          <SubTitleLesson title={question.replace("______", changeText)} />
         </Droppable>
 
         <Main>
-          {answers.map((resposta, index) => {
+          {answers.map((answers, index) => {
             return (
               <Draggable index={index} key={index}>
-                <Button
-                  style={{
-                    backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                    color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? "white" : "" 
-                  }}
-                  disabled={blockButton}
+                <ButtonAnswer
+                  w="10rem"
+                  h="3.5rem"
+                  optionColor={colorAnswers[index]}
+                  disabledButton={blockButton}
                 >
-                  {resposta}
-                </Button>
+                  {answers.label}
+                </ButtonAnswer>
               </Draggable>
             )
           })}

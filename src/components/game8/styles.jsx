@@ -15,27 +15,9 @@ export const Main = styled.div`
   align-items: center;
   gap: 1.5rem;
   margin-top: 2rem;
-`;
 
-export const Button = styled.button`
-  all: unset;
-  width: 14.5rem;
-  height: 4rem;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 10px;
-  box-shadow:  2px 2px 6px #ccc;
-  transition: all .2s ease-in-out;
-  transition: all ease 0.3s;
-  cursor: pointer;
-
-  &:hover {
-    scale: 1.05;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.3;
+  @media(max-width: 320px) {
+    margin-top: 1rem;
+    gap: 1rem;
   }
 `;

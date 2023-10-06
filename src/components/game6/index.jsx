@@ -1,124 +1,126 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 
-import Button from "@mui/material/Button";
-import { TitleLesson } from "../titleLesson";
+import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
+import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
-import { L1_T2_Dificil } from "../../utils/lesson1_Task2";
+import { L1_T2_Dificil } from "../../utils/lesson1_Task";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
-import { URL_HMLG } from "../../config/infos";
+import { URL_FISKPRO } from "../../config/infos";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Game6Container, Game6Content } from "./style";
+import { Container, Main } from "./styles";
 
 export const Game6 = () => {
-  const [idTipo, setIdTipo] = useState([0, 1, 2, 3, 4, 5]);
-  const [idClick, setIdClick] = useState([0, 0, 0, 0, 0, 0]);
-  const { playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, timeElapsed, setTimeElapsed } = useContext(LessonContext);
-  console.log("GAME TIME: ", timeElapsed);
-
-  const [rodada, setRodada] = useState(0);
-  const [sortNum, setSortNum] = useState([]);
-  const [respostas, setRespostas] = useState([]);
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [bloqueia, setBloqueia] = useState(true);
-  const [sound, setSound] = useState(null);
-  const [contClick, setContClick] = useState(0);
-
-  const loadLesson = () => {
-    const tam = L1_T2_Dificil.length;
-    let temp = [];
-
-    for (let a = 0; a < tam; a++) {
-      temp.push(a);
-    }
-
-    temp = temp.sort(() => Math.random() - 0.5);
+  const {playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
   
-    setSortNum(temp);
-    setSound(`Images/pro/game4/ess1_l1/Task2D_${temp[rodada]}.mp3`);
-    
-    let tempResp = [];
-    let tempSortNum = idTipo;
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdTipo(tempSortNum);
+  const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0]);
+  const [idClick, setIdClick] = useState([0, 1, 2, 3, 4, 5]);
+  const [sound, setSound] = useState(null);
+  const [answers, setAnswers] = useState([]);
+  const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
+  const [countClick, setCountClick] = useState(0);
+  const [blockButton, setBlockButton] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-    for (let a = 0; a < L1_T2_Dificil[temp[rodada]].resposta.length; a++) {
-      tempResp.push(L1_T2_Dificil[temp[rodada]].resposta[tempSortNum[a]]);
+  const loadLesson = useCallback(() => {
+    const totalOfSounds = L1_T2_Dificil.length;
+
+    let tempSounds = [];
+    for (let a = 0; a < totalOfSounds; a++) {
+      tempSounds.push(a);
     }
+    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempSounds);
+    setSound(L1_T2_Dificil[tempSounds[round]].pergunta);
+    
+    let tempRandomNumber = idClick;
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClick(tempRandomNumber);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a++) {
+      tempAnswers.push(L1_T2_Dificil[tempSounds[round]].resposta[a]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
+  }, []);
 
-    setRespostas(tempResp);
-    setBloqueia(false);
+  const newRound = (number) => {
+    setSound(L1_T2_Dificil[randomNumber[number]].pergunta);
+
+    let tempRandomNumber = idClick;
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClick(tempRandomNumber);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a++) {
+      tempAnswers.push(L1_T2_Dificil[randomNumber[number]].resposta[a]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
   }
 
-  const newRodada = (num) => {
-    setSound(`Images/pro/game4/ess1_l1/Task2D_${sortNum[num]}.mp3`);
-    let tempResp = [];
-    let tempSortNum = idTipo;
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    setIdTipo(tempSortNum);
+  const handleClick = (index) => {
+    if (blockButton || playAudio) return;
 
-    for (let a = 0; a < L1_T2_Dificil[sortNum[num]].resposta.length; a++) {
-      tempResp.push(L1_T2_Dificil[sortNum[num]].resposta[tempSortNum[a]]);
-    }
-
-    setRespostas(tempResp);
-    setBloqueia(false);
-  }
-
-  const handleClick = (id) => {
-    if (bloqueia) {
-      return;
-    }
-    if (playAudio) {
-      return;
-    }
+    setBlockButton(false);
     
-    let clicks = contClick;
-    let arr = idClick;
+    let clicks = countClick;
     clicks++;
-    setContClick(clicks);
+    setCountClick(clicks);
 
-    let tempA = acertos;
-    let tempR = rodada;
-    let tempGeral = rodadaGeral;
+    let tempColor = optionColor;
 
-    if (idTipo[id] === 0 || idTipo[id] === 1 || idTipo[id] === 2) {
+    let tempRightPoints = rightPoints;
+    let tempRound = round;
+    let tempGeneralRound = rodadaGeral;
+
+    const answer = answers[index].status;
+
+    if (answer === 1) {
       if (clicks < 3) {
-        arr[id] = 1;
-        setIdClick(arr);
+        tempColor[index] = 1;
+        setOptionColor(tempColor);
         return;
       }
 
-      tempA = tempA + 3;
-      setNewPontos(2, tempA);
-      setAcertos(tempA);
+      tempRightPoints +=3;
+      setRightPoints(tempRightPoints);
+      setNewPontos(2, tempRightPoints);
     } else {
-      let tempE = erros;
+      tempColor[index] = 2;
+      setOptionColor(tempColor);
+
+      let tempE = wrongPoints;
       tempE++;
-      setErros(tempE);
+      setWrongPoints(tempE);
     }
 
-    tempR++;
-    setRodada(tempR);
-    tempGeral++;
-    setNewRodada(tempGeral);
-    setBloqueia(true);
-    clicks = 0;
-    setContClick(clicks);
-    arr = [0, 0, 0, 0, 0, 0];
-    setIdClick(arr);
+    tempRound++;
+    setRound(tempRound);
 
-    //nivel, rodada, pontos, rodadaNivel
-    const regra = TrocaAtividade(2, tempGeral, tempA, tempR);
-    if (regra === "Continua") {
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    setBlockButton(true);
+    clicks = 0;
+    setCountClick(clicks);
+    
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    if (rule === "Continua") {
       setTimeout(() => {
-        newRodada(tempR);
-      }, 500);
-    } else if (regra === "Score") {
+        setOptionColor([0, 0, 0, 0, 0, 0]);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Score") {
       setTimeout(() => {
         const scoreFinal = Score(pontosF, pontosM, pontosD);
         let valorRank = 0;
@@ -152,48 +154,44 @@ export const Game6 = () => {
         alert(`SCORE: ${scoreFinal}%`);
         alert(`PONTOS PARA O RANKING: ${valorRank}`);
         setNewContainer(1);
-      }, 500);
+      }, 1500);
     }
   }
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (rodadaGeral < 10) {
-        setTimeElapsed(state => {
-          return state + 1
-        })
-      }
-      
-    }, 1000);
-
-    return () => {
-      clearInterval(timer)
-    }
-  }, [setTimeElapsed, rodadaGeral])
+    playAudio ? setBlockButton(true) : setBlockButton(false);
+  }, [playAudio, setBlockButton]);
 
   return (
-    <Game6Container>
-      <HeaderLesson numStart="Task 6" numEnd="Task 7" />
-
+    <Container>
+      {isLoading &&
+        <Loading />
+      }
+      
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Choose the correct alternative" />
-      <SubTitleLessonAudioImg audio={`${URL_HMLG}${sound}`} />
+      <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
 
-      <Game6Content>
-        {respostas.map((resposta, index) => {
+      <Main>
+        {answers.map((answer, index) => {
           return (
-            <Button key={index} 
-              className="btn" 
-              onClick={() => handleClick(index)} style={{ backgroundColor: idClick[index] === 0 ? defaultTheme.white : defaultTheme["green-200"] }}
+            <ButtonAnswer
+              key={index}
+              w="7rem"
+              h="3.25rem"
+              onPress={() => handleClick(index)} 
+              optionColor={optionColor[index]}
+              disabledButton={blockButton}
             >
-              <p>{resposta}</p>
-            </Button>
+              <p>{answer.label}</p>
+            </ButtonAnswer>
           )
         })}
-      </Game6Content>
-    </Game6Container>
+      </Main>
+    </Container>
   )
 }

@@ -9,7 +9,7 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
       return "Continua";
     }
   }
-  //medio
+  //médio
   if (nivel === 1) {
     if (rodada === 8) {
       if (pontos < 6) {
@@ -29,7 +29,7 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
       return "Continua";
     }
   } else if (nivel === 2) {
-    //dificil
+    //difícil
     if (rodada === 10) {
       return "Score";
     } else {

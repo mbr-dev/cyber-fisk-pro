@@ -1,237 +1,212 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
 
-import Button from "@mui/material/Button";
+import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 import { HeaderLesson } from "../HeaderLesson";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { LessonContext } from "../../context/lesson";
-import { L1_T2_Facil } from "../../utils/lesson1_Task2";
+import { api } from "../../lib/api";
+import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
-import { URL_HMLG } from "../../config/infos";
+import { LessonContext } from "../../context/lesson";
+import { L1_T2_Facil } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Game4Container, Game4Content } from "./styles";
-import { Loading } from "../Loading";
+import { Container, Main, Button } from "./styles";
 
 export const Game4 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed} = useContext(LessonContext);
-  console.log("GAME TIME: ", timeElapsed);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
 
-  const [idTipo3, setIdTipo3] = useState([0,1,2,3,4,5]);
-  const [idTipo4, setIdTipo4] = useState([0,1,2,3,4]);
-  const [idClick, setIdClick] = useState([0,0,0,0,0,0]);
-  const [rodada, setRodada] = useState(0);
-  const [sortNum, setSortNum] = useState([]);
-  const [respostas, setRespostas] = useState([]);
-  const [acertos, setAcertos] = useState(0);
-  const [erros, setErros] = useState(0);
-  const [bloqueia, setBloqueia] = useState(true);
-  const [tipo, setTipo] = useState(null);
-  const [sound, setSound] = useState(null);
-  const [contClick, setContClick] = useState(0);
-  const [isloading, setIsLoading] = useState(false);
+  const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
+  const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
+  const [idClick, setIdClick] = useState([0, 0, 0, 0, 0, 0]);
+  const [data, setData] = useState([]);
+  const [sounds, setSounds] = useState(null);
+  const [answers, setAnswers] = useState([]);
+  const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
+  const [type, setType] = useState(null);
+  const [countClick, setCountClick] = useState(0);
+  const [blockButton, setBlockButton] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = () => {
-    const tam = L1_T2_Facil.length;
-    let temp = [];
+  const loadLesson = useCallback(async() => {
+    //try {
+      //setIsLoading(true);
+      
+      //const response  = await api.get("/L1_T2_Facil");
+     // setData(response.data);
+      
+      const dataLength = L1_T2_Facil.length;
 
-    for (let a = 0; a < tam; a++) {
-      temp.push(a);
-    }
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
 
-    temp = temp.sort(() => Math.random() - 0.5);
-    setSortNum(temp);
-    setSound(`Images/pro/game4/ess1_l1/Task2F_${temp[rodada]}.mp3`);
-    setTipo(L1_T2_Facil[temp[rodada]].tipo);
-    let tempResp = [];
-    //console.log('TIPO ==> ', L1_T2_Facil[temp[rodada]].tipo);
-    let tempSortNum = L1_T2_Facil[temp[rodada]].tipo === 3 ? idTipo3 : idTipo4;
+      setSounds(L1_T2_Facil[tempRandom[round]].pergunta);
+      setType(L1_T2_Facil[tempRandom[round]].tipo);
+
+      let tempSortNum = L1_T2_Facil[tempRandom[round]].tipo === 3 ? idTipo3 : idTipo4;
+      tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
+      if(L1_T2_Facil[tempRandom[round]].tipo === 3){
+        setIdTipo3(tempSortNum);
+      } else {
+        setIdTipo4(tempSortNum);
+      }
+      
+      let tempAnswers = [];
+      for (let a = 0; a < tempSortNum.length; a ++) {
+        tempAnswers.push(L1_T2_Facil[tempRandom[round]].resposta[tempSortNum[a]]);
+      }
+      setAnswers(tempAnswers);
+      setBlockButton(false);
+      setIsLoading(false)
+   // } catch(error) {
+      //console.log(error);
+    //}
+  }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
+
+  const newRound = (number) => {
+    setSounds(data[randomNumber[number]].pergunta);
+    setType(data[randomNumber[number]].tipo);
+    
+    let tempSortNum = data[randomNumber[number]].tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-
-    if(L1_T2_Facil[temp[rodada]].tipo === 3){
+    if (data[randomNumber[number]].tipo === 3) {
       setIdTipo3(tempSortNum);
     } else {
       setIdTipo4(tempSortNum);
     }
-
-    for (let a = 0; a < L1_T2_Facil[temp[rodada]].resposta.length; a ++) {
-      tempResp.push(L1_T2_Facil[temp[rodada]].resposta[tempSortNum[a]]);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < tempSortNum.length; a ++) {
+      tempAnswers.push(data[randomNumber[number]].resposta[tempSortNum[a]]);
     }
-
-    setRespostas(tempResp);
-    setBloqueia(false);
+    setAnswers(tempAnswers);
+    setBlockButton(false);
   }
 
-  const newRodada = (num) => {
-    setSound(`Images/pro/game4/ess1_l1/Task2F_${sortNum[num]}.mp3`);
-    setTipo(L1_T2_Facil[sortNum[num]].tipo);
-    let tempResp = [];
-    let tempSortNum = L1_T2_Facil[sortNum[num]].tipo === 3 ? idTipo3 : idTipo4;
-    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-
-    if (L1_T2_Facil[sortNum[num]].tipo === 3) {
-      setIdTipo3(tempSortNum);
-    } else {
-      setIdTipo4(tempSortNum);
-    }
-
-    for(let a = 0; a < L1_T2_Facil[sortNum[num]].resposta.length; a ++){
-      tempResp.push(L1_T2_Facil[sortNum[num]].resposta[tempSortNum[a]]);
-    }
-
-    setRespostas(tempResp);
-    setBloqueia(false);
-  }
-
-  const handleClick = (id) => {
-    if(bloqueia) return;
+  const handleClick = (index) => {
+    if(blockButton) return;
     if(playAudio) return;
 
-    let clicks = contClick;
-    let arr = idClick;
+    setBlockButton(false);
+
+    let clicks = countClick;
     clicks++;
-    setContClick(clicks);
+    setCountClick(clicks);
+
+    let arr = idClick;
     
-    let tempA = acertos;
-    let tempR = rodada;
-    let tempGeral = rodadaGeral;
-    if (tipo === 3) {
-      if(idTipo3[id] === 0 || idTipo3[id] === 1 || idTipo3[id] === 2) {
-        if(clicks < 3){                
-          arr[id] = 1;
-          setIdClick(arr);
-          return;
-        }
-        tempA++;
-        setNewPontos(0,(tempA));
-        setAcertos(tempA);
-      } else {
-        let tempE = erros;
-        tempE++;
-        setErros(tempE);
-      }
+    let tempRightPoints = rightPoints;
+    let tempRound = round;
+    let tempGeneralRound = rodadaGeral;
 
-      tempR++;
-      setRodada(tempR);
-      tempGeral++;
-      setNewRodada(tempGeral);
+    const answer = answers[index].status;
+
+    if(answer === 1) {
+      if (clicks < 3) {
+        arr[index] = 1;
+        setIdClick(arr);
+        return;
+      }
+      
+      tempRightPoints++;
+      setRightPoints(tempRightPoints);
+      setNewPontos(0, tempRightPoints);
+
+      tempRound++;
+      setRound(tempRound);
+      tempGeneralRound++;
+      setNewRodada(tempGeneralRound);
     } else {
-      if (idTipo4[id] === 0 || idTipo4[id] === 1 || idTipo4[id] === 2) {
-        if (clicks < 3) {
-          arr[id] = 1;
-          setIdClick(arr);
-          return;
-        }
-        tempA++;
-        setNewPontos(0,(tempA));
-        setAcertos(tempA);
-      } else {
-        let tempE = erros;
-        tempE++;
-        setErros(tempE);
-      }
+      arr[index] = 2;
+      setIdClick(arr);
 
-      tempR++;
-      setRodada(tempR);
-      tempGeral++;
-      setNewRodada(tempGeral);
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
+
+      tempRound++;
+      setRound(tempRound);
+      tempGeneralRound++;
+      setNewRodada(tempGeneralRound);
     }
 
-    setBloqueia(true);
+    setBlockButton(true);
     clicks = 0;
-    setContClick(clicks);
-    arr=[0,0,0,0,0,0];
-    setIdClick(arr);
+    setCountClick(clicks);
 
-    //troca de nivel
-    if (tempA == 2) {
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+
+    if(rule === "Continua"){
       setTimeout(() =>{
-        setNewLesson(5);
-      },1000);
-    }
-
-    const regra = TrocaAtividade(0,tempGeral,tempA,tempR);
-
-    if(regra === "Continua"){
-      setTimeout(() =>{
-        newRodada(tempR);
-      }, 1000);
-    } else if (regra === "Game over"){
+        setIdClick([0, 0, 0, 0, 0, 0]);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
+        setIdClick([0, 0, 0, 0, 0, 0]);
         alert('GAME OVER!!');
         setNewContainer(1);
-      },1000);
+      },1500);
     } else {
-      //troca de nivel
       setTimeout(() =>{
+        setIdClick([0, 0, 0, 0, 0, 0]);
+        alert('troca nivel');
         setNewLesson(5);
-      },1000);
+      },1500);
     }
   }
-
-  // function btn(type, el, index) {
-  //   return(
-  //     <Button className={type === 3 ? 'btn' : 'btn2'} onClick={() => {handleClick(index)}} style={{backgroundColor: idClick[index] === 0 ? colors.white : colors.lessonCorrect}}>
-  //         <text className={type === 3 ? 'desc' : 'desc2'}>{el}</text>
-  //     </Button>
-  //   )
-  // }
 
   useEffect(() => { 
     loadLesson();
-  }, [])
+  }, []);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      if (rodadaGeral < 10) {
-        setTimeElapsed(state => {
-          return state + 1
-        })
-      }
-      
-    }, 1000);
+    playAudio ? setBlockButton(true) : setBlockButton(false);
+  }, [playAudio, setBlockButton]);
 
-    return () => {
-      clearInterval(timer)
-    }
-  }, [setTimeElapsed, rodadaGeral])
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return(
-    <Game4Container>
-      {tipo !== null &&
-        <>
-          {isloading &&
-            <Loading />
-          }
+    <Container>
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      <TitleLesson title="Choose the correct alternative"/>
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sounds}.mp3`}/>
 
-          <HeaderLesson numStart="Task 4" numEnd="Task 5" />
-
-          <TitleLesson title='Choose the correct alternative'/>
-          <div className="buttonOfAudio">
-            <SubTitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
-          </div>
-
-          <Game4Content>
-            {respostas.map((respostas, index) => {
-              // return(
-              //   btn(tipo, respostas, index)
-              // )
-
-              return (
-                <Button key={index}
-                  className={tipo === 3 ? 'btn' : 'btn2'} 
-                  onClick={() => {handleClick(index)}} 
-                  style={{backgroundColor: idClick[index] === 0 ? defaultTheme.white : defaultTheme["green-200"]}}
-                >
-                  <p className={tipo === 3 ? 'desc' : 'desc2'}>{respostas}</p>
-                </Button>
-              )
-            })}
-          </Game4Content>
-        </>
-      }
-    </Game4Container>
+      <Main>
+        {answers.map((answer, index) => {
+          return (
+            <Button key={index}
+              onClick={() => {handleClick(index)}} 
+              style={{
+                width: type === 3 ? "4.5rem" : "8.5rem",
+                height: type === 3 ? "4.5rem" : "3rem",
+                opacity: blockButton ? "0.5" : "1",
+                borderColor: idClick[index] === 1 ? defaultTheme["green-200"] : idClick[index] === 2 ? defaultTheme["red-200"] : "",
+              }}
+              disabled={blockButton}
+            >
+              <p
+                style={{
+                  fontSize: type === 3 ? "2rem" : ""
+                }}
+              >{answer.label}</p>
+            </Button>
+          )
+        })}
+      </Main>
+    </Container>
   )
 }

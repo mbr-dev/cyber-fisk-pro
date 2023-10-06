@@ -32,7 +32,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Input = styled.textarea`
+export const Input = styled.input`
   all: unset;
   width: 18.75rem;
   padding:0.5rem 1rem;

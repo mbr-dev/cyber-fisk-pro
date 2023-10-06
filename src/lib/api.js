@@ -1,5 +1,5 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "http://localhost:3333"
-})
+  baseURL: "https://cyberhomolog.fisk.com.br:172/cyberfiskpro/api/CyberProAtividades/"
+});

@@ -2,11 +2,12 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../TitleLesson";
 
-import { L3_SPT } from "../../utils/Lesson3_Task2";
+import { L3_SUPER_LESSON } from "../../utils/lesson3_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styled";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -30,7 +31,7 @@ export const GameSL3 = () => {
   const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
 
   const loadLesson = useCallback(() => {
-    let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
+    let tempQuestion = L3_SUPER_LESSON[round].pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
     let letterQuestion = tempQuestion.split(" ");
@@ -39,11 +40,11 @@ export const GameSL3 = () => {
     setDivLetter(lettersIndex);
     setDivLetterRight(lettersWord);
 
-    const answersLength = L3_SPT[round].resposta.length;
+    const answersLength = L3_SUPER_LESSON[round].resposta.length;
     let tempAnswers = [];
 
     for (let a = 0; a < answersLength; a ++) {
-      tempAnswers.push(L3_SPT[round].resposta[a]);
+      tempAnswers.push(L3_SUPER_LESSON[round].resposta[a]);
     }
 
     setAnswersOfQuestion(tempAnswers);
@@ -66,11 +67,11 @@ export const GameSL3 = () => {
     setDivLetter(lettersIndex);
     setDivLetterRight(lettersWord);
 
-    const answersLength = L3_SPT[number].resposta.length;
+    const answersLength = L3_SUPER_LESSON[number].resposta.length;
     let tempAnswers = [];
 
     for (let a = 0; a < answersLength; a ++) {
-      tempAnswers.push(L3_SPT[number].resposta[a]);
+      tempAnswers.push(L3_SUPER_LESSON[number].resposta[a]);
     }
 
     setCountTimer(0);
@@ -213,11 +214,14 @@ export const GameSL3 = () => {
   return (
     <Container>
       <HeaderLesson numStart="Super Task" numEnd="Finish" superTaskStart trophyEnd />
+      {changed ? 
+        <TitleLesson title="Now answer the question." />
+        :
+        <TitleLesson title="Solve the code to answer the question." />
+      }
       <Main>
         {!changed ? 
           <Phrase>
-            <h2>Solve the code to answer the question.</h2>
-
             <Letters>
               {keyboardLetters.map((letter, index) => {
                 const isRight = selectedIndexes.includes(index);
@@ -266,8 +270,6 @@ export const GameSL3 = () => {
           </Phrase>
         :
           <Answer>
-            <h2>Now answer the question.</h2>
-
             <TypeLetters2>
               {divLetterRight.map((letters, letterIndex) => {
                 return (

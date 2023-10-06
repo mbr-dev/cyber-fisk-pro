@@ -1,11 +1,9 @@
-import React from "react";
-
-import { HeaderStepLessonStartContainer, HeaderStepLessonStartContent } from "./styles";
+import { Container, Main } from "./styles";
 
 export function HeaderStepLessonStart({ color }) {
   return(
-    <HeaderStepLessonStartContainer>
-      <HeaderStepLessonStartContent style={{backgroundColor: color}}/>
-    </HeaderStepLessonStartContainer>
+    <Container>
+      <Main style={{backgroundColor: color}}/>
+    </Container>
   )
 }

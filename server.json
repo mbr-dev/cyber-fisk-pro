@@ -32,5 +32,2477 @@
       "Label": "Lesson",
       "Status": 0
     }
+  ],
+
+  "translate":[
+    {
+      "translateBooks": [
+        { 
+          "title": "Livros",
+          "current": "Atual",
+          "previous": "Anterior"
+        },
+        { 
+          "title": "Books",
+          "current": "Current",
+          "previous": "Previous"
+        },
+        { 
+          "title": "Libros",
+          "current": "Actual",
+          "previous": "Anterior"
+        }
+      ]
+    },
+    {
+      "translateHome": [
+        {"name": ["Livros", "Books", "Libros"]},
+        {"name": ["Último Acesso", "Last Access", "Ultimo acceso"]},
+        {"name": ["Classificação", "Ranking","Clasificación"]},
+        {"name": ["Relatório", "Report", "Informe"]},
+        {"name": ["Painel", "Billboard", "Cartelera"]},
+        {"name": ["Pronúnciação", "Pronunciantion", "Pronunciación"]}
+      ]
+    },
+    {
+    "translateFooter": [
+        "Para dicas e informações", "For advice and information", "Para consejos e información"
+      ]
+    },
+    {
+      "translateProfile": [
+        {
+          "title": "Perfil",
+          "language": "Português",
+          "selectLanguage": "Escolha o idioma",
+          "name": "Nome:",
+          "date": "Data de nascimento:",
+          "local": "Unidade:",
+          "email": "E-mail:"
+        },
+        {
+          "title": "Profile",
+          "language": "Inglês",
+          "selectLanguage": "Choose Language",
+          "name": "Name:",
+          "date": "Date of birth:",
+          "local": "Local:",
+          "email": "E-mail:"
+        },
+        {
+          "title": "Perfil",
+          "language": "Espanhol",
+          "selectLanguage": "Elige lengua",
+          "name": "Nombre:",
+          "date": "Fecha de nacimiento:",
+          "local": "Local:",
+          "email": "E-mail:"
+        }
+      ]
+    },
+    {
+      "translateStudio": [
+        {
+          "title": "Estudio",
+          "subTitle": "Olha esse perfil da internet.",
+          "from": "De",
+          "live": "Mora na",
+          "you": "Você é",
+          "text": "Fale com Anne e responda suas perguntas.",
+          "text1": "Use as informações acima. Preparar?",
+          "modalTitle": "Palavra chave"
+        },
+        {
+          "title": "Studio",
+          "subTitle": "Look at this internet profile.",
+          "from": "From",
+          "live": "Lives in",
+          "you": "You are",
+          "text": "Talk to Anne and answer her questions.",
+          "text1": "Use the information above. Ready?",
+          "modalTitle": "Answer Key"
+        },
+        {
+          "title": "Estudio",
+          "subTitle": "Mira este perfil de internet.",
+          "from": "De",
+          "live": "Vive en",
+          "you": "Eres",
+          "text": "Habla con Anne y responde sus preguntas.",
+          "text1": "Utilice la información anterior. ¿Listo?",
+          "modalTitle": "Clave de respuestas"
+        }
+      ]
+    }
+  ],
+
+  "L1_T1_Facil": [
+    {
+      "pergunta": "notebook",
+      "images": [ 
+        {"img": "F_0_2", "status": 0},
+        {"img": "F_0_1", "status": 0}, 
+        {"img": "F_0_0", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "book",
+      "images": [
+        {"img": "F_1_0", "status": 1},
+        {"img": "F_1_2", "status": 0},
+        {"img": "F_1_1", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "eraser",
+      "images": [
+        {"img": "F_2_1", "status": 0},
+        {"img": "F_2_0", "status": 1},
+        {"img": "F_2_2", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "pencil case" ,
+      "images": [
+        {"img": "F_3_0", "status": 1},
+        {"img": "F_3_1", "status": 0},
+        {"img": "F_3_2", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "pen",
+      "images": [
+        {"img": "F_4_1", "status": 0},
+        {"img": "F_4_2", "status": 0},
+        {"img": "F_4_0", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "pencil",
+      "images": [
+        {"img": "F_5_0", "status": 1},
+        {"img": "F_5_1", "status": 0},
+        {"img": "F_5_2", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "backpack", 
+      "images": [
+        {"img": "F_6_0", "status": 1},
+        {"img": "F_6_1", "status": 0},
+        {"img": "F_6_2", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "eight",
+      "images": [
+        {"img": "F_7_1", "status": 0},
+        {"img": "F_7_0", "status": 1},
+        {"img": "F_7_2", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "five",
+      "images": [
+        {"img": "F_8_1", "status": 0},
+        {"img": "F_8_2", "status": 0},
+        {"img": "F_8_0", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "nine",
+      "images": [
+        {"img": "F_9_2", "status": 0},
+        {"img": "F_9_0", "status": 1},
+        {"img": "F_9_1", "status": 0}
+      ]
+    }
+  ],
+  "L1_T1_Medio": [
+    {
+      "pergunta": "My _____ is Brian Jackson.",
+      "resposta": [
+        {"label": "country", "status": 0},
+        {"label": "speak", "status": 0},
+        {"label": "name", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Do you have ____ eraser?",
+      "resposta": [
+        {"label": "a", "status": 0},
+        {"label": "an", "status": 1},
+        {"label": "on", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I’m fine, _____.",
+      "resposta": [
+        {"label": "great", "status": 0},
+        {"label": "nice", "status": 0},
+        {"label": "thanks", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Have __________.",
+      "resposta": [
+        {"label": "a nice day.", "status": 1},
+        {"label": "to go", "status": 0},
+        {"label": "fine, thanks", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I’m ____ Australia.",
+      "resposta": [
+        {"label": "from", "status": 1},
+        {"label": "in", "status": 0},
+        {"label": "on", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I live __ Texas, USA.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "in", "status": 1},
+        {"label": "from", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I’m _____.",
+      "resposta": [
+        {"label": "Brazil", "status": 0},
+        {"label": "Brazilian", "status": 1},
+        {"label": "Spain", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I _______ early every day.",
+      "resposta": [
+        {"label": "have", "status": 0},
+        {"label": "watch", "status": 0},
+        {"label": "get up", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "I _______ sports every day.",
+      "resposta": [
+        {"label": "play", "status": 1},
+        {"label": "surf", "status": 0},
+        {"label": "have", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I _______ TV every day.",
+      "resposta": [
+        {"label": "get up", "status": 0},
+        {"label": "have", "status": 0},
+        {"label": "watch", "status": 1}
+      ]
+    }
+  ],
+  "L1_T1_Dificil": [
+    {
+      "pergunta": "Do you work here?",
+      "resposta": [
+        {"label": "No, I study here.", "status": 1},
+        {"label": "No, I’m not.", "status": 0},
+        {"label": "Yes, I am.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you go to college?",
+      "resposta": [
+        {"label": "Yes, I do.", "status": 1},
+        {"label": "Yes, I work here.", "status": 0},
+        {"label": "Yes, I study every day.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you live in Rio de Janeiro?",
+      "resposta": [
+        {"label": "No, I live in Brazil.", "status": 0},
+        {"label": "No, I don’t.", "status": 1},
+        {"label": "No, I’m not.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you meet new people online?",
+      "resposta": [
+        {"label": "Yes, I do.", "status": 1},
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "See ya.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "How’s it going?",
+      "resposta": [
+        {"label": "See ya.", "status": 0},
+        {"label": "Pretty good.", "status": 1},
+        {"label": "Thanks.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you speak Spanish?",
+      "resposta": [
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I’m not.", "status": 0},
+        {"label": "No, I don’t.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Do you have breakfast every day?",
+      "resposta": [
+        {"label": "No, I’m not.", "status": 0},
+        {"label": "Yes, I do.", "status": 1},
+        {"label": "Yes, I am.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are you from Canada?",
+      "resposta": [
+        {"label": "No, I don’t.", "status": 0},
+        {"label": "No, I’m not.", "status": 1},
+        {"label": "Yes, I do.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are you Spanish?",
+      "resposta": [
+        {"label": "Yes, I’m Spanish.", "status": 1},
+        {"label": "Yes, I speak Spanish.", "status": 0},
+        {"label": "No, I don’t.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are you from Brazil?",
+      "resposta": [
+        {"label": "Yes, I’m Spanish.", "status": 0},
+        {"label": "No, I don’t like Brazil.", "status": 0},
+        {"label": "Yes, I’m Brazilian.", "status": 1}
+      ]
+    }
+  ],
+  "L1_T2_Facil": [
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_0",
+      "resposta": [
+        {"label": "A", "status": 1},
+        {"label": "D", "status": 0},
+        {"label": "E", "status": 0},
+        {"label": "N", "status": 0},
+        {"label": "M", "status": 1},
+        {"label": "G", "status": 1}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_1",
+      "resposta": [
+        {"label": "A", "status": 0},
+        {"label": "T", "status": 1},
+        {"label": "E", "status": 1},
+        {"label": "P", "status": 1},
+        {"label": "O", "status": 0},
+        {"label": "D", "status": 0}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_2",
+      "resposta": [
+        {"label": "E", "status": 0},
+        {"label": "S", "status": 1},
+        {"label": "A", "status": 0},
+        {"label": "I", "status": 1},
+        {"label": "H", "status": 1},
+        {"label": "R", "status": 0}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_3",
+      "resposta": [
+        {"label": "K", "status": 1},
+        {"label": "Q", "status": 0},
+        {"label": "S", "status": 0},
+        {"label": "N", "status": 1},
+        {"label": "M", "status": 0},
+        {"label": "C", "status": 1}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_4",
+      "resposta": [
+        {"label": "U", "status": 0},
+        {"label": "V", "status": 0},
+        {"label": "F", "status": 1},
+        {"label": "O", "status": 1},
+        {"label": "Z", "status": 1},
+        {"label": "X", "status": 0}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_5",
+      "resposta": [
+        {"label": "2", "status": 0},
+        {"label": "3", "status": 1},
+        {"label": "5", "status": 0},
+        {"label": "6", "status": 1},
+        {"label": "8", "status": 0},
+        {"label": "9", "status": 1}
+      ]
+    },
+    {
+      "tipo": 3,
+      "pergunta": "L1_Task2_F_6",
+      "resposta": [
+        {"label": "1", "status": 0},
+        {"label": "3", "status": 0},
+        {"label": "4", "status": 1},
+        {"label": "7", "status": 1},
+        {"label": "8", "status": 1},
+        {"label": "9", "status": 0}
+      ]
+    },
+    {
+      "tipo": 4,
+      "pergunta": "L1_Task2_F_7",
+      "resposta": [
+        {"label": "a pen", "status": 1},
+        {"label": "a book", "status": 1},
+        {"label": "a tablet", "status": 1},
+        {"label": "a pencil", "status": 0},
+        {"label": "a notebook", "status": 0}
+      ]
+    },
+    {
+      "tipo": 4,
+      "pergunta": "L1_Task2_F_8",
+      "resposta": [
+        {"label": "a pen", "status": 0},
+        {"label": "a pencil", "status": 1},
+        {"label": "an eraser", "status": 1},
+        {"label": "a notebook", "status": 0},
+        {"label": "an English book", "status": 1}
+      ]
+    },
+    {
+      "tipo": 4,
+      "pergunta": "L1_Task2_F_9",
+      "resposta": [
+        {"label": "a book", "status": 0},
+        {"label": "a notebook", "status": 1},
+        {"label": "a tablet", "status": 0},
+        {"label": "a pencil case", "status": 1},
+        {"label": "a backpack", "status": 1}
+      ]
+    }
+  ],
+  "L1_T2_Medio": [
+    {
+      "pergunta": "L1_Task2_M_0",
+      "resposta": [
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "Yes, I do.", "status": 1},
+        {"label": "No, I’m not.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_1",
+      "resposta": [
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I’m not.", "status": 0},
+        {"label": "No, I don’t.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_1",
+      "resposta": [
+        {"label": "Yes, I do.", "status": 1},
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I’m not.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_3",
+      "resposta": [
+        {"label": "No, I don’t.", "status": 1},
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I’m not.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_4",
+      "resposta": [
+        {"label": "No, I am not.", "status": 0},
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I don’t.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_5",
+      "resposta": [
+        {"label": "No, I am not.", "status": 1},
+        {"label": "Yes, I am.", "status": 0},
+        {"label": "No, I don’t.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_6",
+      "resposta": [
+        {"label": "No, I don’t.", "status": 0},
+        {"label": "Yes, I am.", "status": 1},
+        {"label": "Yes, I do.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_7",
+      "resposta": [
+        {"label": "No. I’m from Brazil.", "status": 1},
+        {"label": "Yes, I’m from Brazil.", "status": 0},
+        {"label": "No, I’m from France.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_8",
+      "resposta": [
+        {"label": "Yes, I’m from Japan.", "status": 0},
+        {"label": "Yes, I’m from Canada.", "status": 1},
+        {"label": "Yes, I’m from Brazil.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_M_9",
+      "resposta": [
+        {"label": "Yes, I’m from Spain.", "status": 0},
+        {"label": "Yes, I’m from Canada.", "status": 0},
+        {"label": "No, I’m French.", "status": 1}
+      ]
+    }
+  ],
+  "L1_T2_Dificil": [
+    {
+      "pergunta": "L1_Task2_D_0",
+      "resposta": [
+        {"label": "Good morning.", "status": 0},
+        {"label": "Good afternoon", "status": 1},
+        {"label": "Pretty good.", "status": 1},
+        {"label": "I’m good.", "status": 0},
+        {"label": "I work here.", "status": 1},
+        {"label": "I study here.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_D_1",
+      "resposta": [
+        {"label": "I’m not from the USA.", "status": 1},
+        {"label": "I’m from Australia.", "status": 1},
+        {"label": "I live in Australia.", "status": 0},
+        {"label": "I live in the USA.", "status": 1},
+        {"label": "I’m from Spain.", "status": 0},
+        {"label": "I’m American.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L1_Task2_D_2",
+      "resposta": [
+        {"label": "His name is Adam Brooker.", "status": 1},
+        {"label": "His name is Adam Brooks.", "status": 0},
+        {"label": "I’m good.", "status": 0},
+        {"label": "Good luck.", "status": 1},
+        {"label": "Thank you.", "status": 1},
+        {"label": "Thanks.", "status": 0}
+      ]
+    }
+  ],
+  "L1_SUPER_LESSON": [
+    { 
+      "letras": ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+      "resposta": ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"]
+    }
+  ],
+
+  "L2_T1_Facil": [
+    {
+      "pergunta": [
+        { "audio": "L2_Task1_F_0", "status": 0},
+        { "audio": "L2_Task1_F_1", "status": 1},
+        { "audio": "L2_Task1_F_2", "status": 2},
+        { "audio": "L2_Task1_F_3", "status": 3}
+      ],
+      "resposta": [
+        { "label": "chicken", "status": 0},
+        { "label": "an iced tea", "status": 1},
+        { "label": "an orange juice", "status": 2},
+        { "label": "steak", "status": 3}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L2_Task1_F_4", "status": 0},
+        { "audio": "L2_Task1_F_5", "status": 1},
+        { "audio": "L2_Task1_F_6", "status": 2},
+        { "audio": "L2_Task1_F_7", "status": 3}
+      ],
+      "resposta": [
+        { "label": "crackers", "status": 0},
+        { "label": "potato chips", "status": 1},
+        { "label": "protein bar", "status": 2},
+        { "label": "chocolate cake", "status": 3}
+      ]
+    }
+  ],
+  "L2_T1_Medio": [
+    {
+      "pergunta": [
+        { "audio": "L2_Task1_M_0", "status": 0},
+        { "audio": "L2_Task1_M_1", "status": 1},
+        { "audio": "L2_Task1_M_2", "status": 2},
+        { "audio": "L2_Task1_M_3", "status": 3}
+      ],
+      "resposta": [
+        { "label": "Yes, they do.", "status": 0},
+        { "label": "No, he doesn’t.", "status": 1},
+        { "label": "Yes, I do.", "status": 2},
+        { "label": "Yes, she does.", "status": 3}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L2_Task1_M_4", "status": 0},
+        { "audio": "L2_Task1M_5", "status": 1},
+        { "audio": "L2_Task1_M_6", "status": 2},
+        { "audio": "L2_Task1_M_7", "status": 3}
+      ],
+      "resposta": [
+        { "label": "Yes, he does.", "status": 0},
+        { "label": "No, it doesn’t.", "status": 1},
+        { "label": "No, we don’t.", "status": 2},
+        { "label": "Yes, they do.", "status": 3}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L2_Task1_M_8", "status": 0},
+        { "audio": "L2_Task1_M_9", "status": 1},
+        { "audio": "L2_Task1_M_10", "status": 2},
+        { "audio": "L2_Task1_M_11", "status": 3}
+      ],
+      "resposta": [
+        { "label": "Yes, we do.", "status": 0},
+        { "label": "No, they don’t.", "status": 1},
+        { "label": "No, he doesn’t.", "status": 2},
+        { "label": "Yes, she does.", "status": 3}
+      ]
+    }
+  ],
+  "L2_T1_Dificil": [
+    {
+      "pergunta": "L2_Task1_D_0",
+      "resposta": [
+        { "label": "Hamburger and soda", "status": 0},
+        { "label": "pizza and Coke", "status": 1},
+        { "label": "pizza and water", "status": 0},
+        { "label": "hamburger and Coke", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_1",
+      "resposta": [
+        { "label": "Eggs, cereal bars and milk", "status": 0},
+        { "label": "Omelet, toast and milk", "status": 0},
+        { "label": "Eggs, cereal and milk", "status": 1},
+        { "label": "Cereal, coffee and milk", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_2",
+      "resposta": [
+        { "label": "Bread, eggs and coffee", "status": 0},
+        { "label": "Bread, cereal and milk", "status": 0},
+        { "label": "Bread, butter and chocolate", "status": 0},
+        { "label": "bread, butter and coffee", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_3",
+      "resposta": [
+        { "label": "salad and ice cream", "status": 1},
+        { "label": "salad and cream", "status": 0},
+        { "label": "ice cream and soda", "status": 0},
+        { "label": "ice cream and steak", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_4",
+      "resposta": [
+        { "label": "Hamburger and pizza", "status": 0},
+        { "label": "hamburger and soda", "status": 1},
+        { "label": "Soda and cheeseburger", "status": 0},
+        { "label": "Soda and a sandwich", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_5",
+      "resposta": [
+        { "label": "a sandwich and water", "status": 1},
+        { "label": "a sandwich and nuggets", "status": 0},
+        { "label": "water and chicken", "status": 0},
+        { "label": "water and a sandwich", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_6",
+      "resposta": [
+        { "label": "Cereal and milk", "status": 0},
+        { "label": "Milk, cereal and eggs", "status": 0},
+        { "label": "Bread, milk and coffee", "status": 0},
+        { "label": "bread, cereal and milk", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L2_Task1_D_7",
+      "resposta": [
+        { "label": "Fruit, eggs and bread", "status": 0},
+        { "label": "eggs, fruit and orange juice", "status": 1},
+        { "label": "orange juice, bread and eggs", "status": 0},
+        { "label": "coffee, orange juice and eggs", "status": 0}
+      ]
+    }
+  ],
+  "L2_T2_Facil": [
+    {
+      "pergunta": ["order", "can ", "take ", "I ", "your ", "?"],
+      "resposta": "Can I take your order?"
+    },
+    {
+      "pergunta": ["all", "will ", "be ", "that ", "?"],
+      "resposta": "Will that be all?"
+    },
+    {
+      "pergunta": ["some ", "would ", "like ", "water", "you ", "?"],
+      "resposta": "Would you like some water?"
+    },
+    {
+      "pergunta": ["name", "’s ", "what", "your ", "?"],
+      "resposta": "What’s your name?"
+    },
+    {
+      "pergunta": ["spell ", "please", "name ", "your ", "last ", "."],
+      "resposta": "Spell your last name please."
+    },
+    {
+      "pergunta": ["dessert", "like ", "would ", "you ", "a ", "?"],
+      "resposta": "Would you like a dessert?"
+    },
+    {
+      "pergunta": ["1 to 10", "please ", "count ", "from ", "."],
+      "resposta": "Please count from 1 to 10."
+    },
+    {
+      "pergunta": ["I’d ", "thanks ", "no ", "like ", "tea", "some ", "."],
+      "resposta": "No thanks I’d like some tea."
+    },
+    {
+      "pergunta": ["cookies", "would ", "like ", "you ", "some ", "?"],
+      "resposta": "Would you like some cookies?"
+    },
+    {
+      "pergunta": ["salad", "do ", "you ", "eat ", "?"],
+      "resposta": "Do you eat salad?"
+    }
+  ],
+  "L2_T2_Medio":  [
+    {
+      "pergunta": "Does ______ have breakfast every day?",
+      "resposta": [
+        {"label": "your best friend", "status": 1},
+        {"label": "you", "status": 0},
+        {"label": "they", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you ______ fast-food for lunch?",
+      "resposta": [
+        {"label": "has", "status": 0},
+        {"label": "have", "status": 1},
+        {"label": "everyday", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do your friends _____ sushi?",
+      "resposta": [
+        {"label": "take", "status": 0},
+        {"label": "has", "status": 0},
+        {"label": "like", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Does a ______ have a lot of calories?",
+      "resposta": [
+        {"label": "chocolate cake", "status": 1},
+        {"label": "it", "status": 0},
+        {"label": "they", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you eat _____ every day?",
+      "resposta": [
+        {"label": "juice", "status": 0},
+        {"label": "cookies", "status": 1},
+        {"label": "soup", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Does _____ eat fish?",
+      "resposta": [
+        {"label": "your teacher", "status": 1},
+        {"label": "you", "status": 0},
+        {"label": "like", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do we _____ English?",
+      "resposta": [
+        {"label": "talk", "status": 0},
+        {"label": "sing", "status": 0},
+        {"label": "speak", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Does salad ____ a lot of calories?",
+      "resposta": [
+        {"label": "have", "status": 1},
+        {"label": "take", "status": 0},
+        {"label": "has", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Do you drink water_____?",
+      "resposta": [
+        {"label": "hot", "status": 0},
+        {"label": "everyday", "status": 1},
+        {"label": "like", "status": 0}
+      ]
+    }
+  ],
+  "L2_T2_Dificil": [
+    {
+      "pergunta": "Yes, I like fast food.",
+      "resposta": "Do you like fast food?"
+    },
+    {
+      "pergunta": "No, I don’t eat chicken nuggets.",
+      "resposta": "Do you eat chicken nuggets?"
+    },
+    {
+      "pergunta": "Yes, I like coffee.",
+      "resposta": "Do you like coffee?"
+    },
+    {
+      "pergunta": "Yes, I need more water.",
+      "resposta": "Do you need more water?"
+    },
+    {
+      "pergunta": "No, I don’t eat rice.",
+      "resposta": "Do you eat rice?"
+    },
+    {
+      "pergunta": "No, I don’t like steaks.",
+      "resposta": "Do you like steaks?"
+    },
+    {
+      "pergunta": "Yes, I need a protein bar.",
+      "resposta": "Do you need a protein bar?"
+    },
+    {
+      "pergunta": "No, I don’t eat salad.",
+      "resposta": "Do you eat salad?"
+    },
+    {
+      "pergunta": "Yes, I like frozen yogurt.",
+      "resposta": "Do you like frozen yogurt?"
+    },
+    {
+      "pergunta": "Yes, please. I’d like some sushi.",
+      "resposta": "Would you like some sushi?"
+    }
+  ],
+  "L2_SUPER_LESSON": [
+    {"name": "baked potato", "status": 0},
+    {"img": "Ess1_L2_ST_1", "status": 0},
+    {"name": "chicken", "status": 1},
+    {"img": "Ess1_L2_ST_2", "status": 1},
+    {"name": "fish", "status": 2},
+    {"img": "Ess1_L2_ST_3", "status": 2},
+    {"name": "lasagna ", "status": 3},
+    {"img": "Ess1_L2_ST_4", "status": 3},
+    {"name": "omelet", "status": 4},
+    {"img": "Ess1_L2_ST_5", "status": 4},
+    {"name": "rice and beans", "status": 5},
+    {"img": "Ess1_L2_ST_6", "status": 5},
+    {"name": "salad", "status": 6},
+    {"img": "Ess1_L2_ST_7", "status": 6},
+    {"name": "spaghetti", "status": 7},
+    {"img": "Ess1_L2_ST_8", "status": 7},
+    {"name": "steak", "status": 8},
+    {"img": "Ess1_L2_ST_9", "status": 8},
+    {"name": "sushi", "status": 9},
+    {"img": "Ess1_L2_ST_10", "status": 9},
+    {"name": "cheeseburger", "status": 10},
+    {"img": "Ess1_L2_ST_11", "status": 10},
+    {"name": "chocolate", "status": 11},
+    {"img": "Ess1_L2_ST_12", "status": 11},
+    {"name": "ham and cheese sandwich", "status": 12},
+    {"img": "Ess1_L2_ST_13", "status": 12},
+    {"name": "chocolate cake", "status": 13},
+    {"img": "Ess1_L2_ST_14", "status": 13},
+    {"name": "frozen yogurt", "status": 14},
+    {"img": "Ess1_L2_ST_15", "status": 14},
+    {"name": "ice cream", "status": 15},
+    {"img": "Ess1_L2_ST_16", "status": 15},
+    {"name": "crackers", "status":16},
+    {"img": "Ess1_L2_ST_17", "status": 16},
+    {"name": "cookies", "status": 17},
+    {"img": "Ess1_L2_ST_18", "status": 17},
+    {"name": "cereal bar", "status": 18},
+    {"img": "Ess1_L2_ST_19", "status": 18},
+    {"name": "coffee", "status": 19},
+    {"img": "Ess1_L2_ST_20", "status": 19},
+    {"name": "pizza", "status": 20},
+    {"img": "Ess1_L2_ST_21", "status": 20},
+    {"name": "soda", "status": 22},
+    {"img": "Ess1_L2_ST_22", "status": 22},
+    {"name": "orange juice", "status": 23},
+    {"img": "Ess1_L2_ST_23", "status": 23},
+    {"name": "water", "status": 24},
+    {"img": "Ess1_L2_ST_24", "status": 24}
+  ],
+
+  "L3_T1_Facil": [
+    {
+      "img": "Ess1_L3_TF_1",
+      "resposta": [
+        {"label": "go to the movies", "status": 0},
+        {"label": "go to the gym", "status": 1},
+        {"label": "go shopping", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_2",
+      "resposta": [
+        {"label": "go dancing", "status": 1},
+        {"label": "go to the movies", "status": 0},
+        {"label": "study", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_3",
+      "resposta": [
+        {"label": "take a shower", "status": 0},
+        {"label": "get up early", "status": 0},
+        {"label": "have breakfast", "status": 1}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_4",
+      "resposta": [
+        {"label": "study in the afternoon", "status": 1},
+        {"label": "watch movies", "status": 0},
+        {"label": "take a shower", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_5",
+      "resposta": [
+        {"label": "have a friend", "status": 0},
+        {"label": "go shopping", "status": 1},
+        {"label": "go to the gym", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_6",
+      "resposta": [
+        {"label": "study", "status": 0},
+        {"label": "listen to music", "status": 0},
+        {"label": "hang out with friends", "status": 1}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_7",
+      "resposta": [
+        {"label": "watch a movie", "status": 1},
+        {"label": "make breakfast", "status": 0},
+        {"label": "work out", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_8",
+      "resposta": [
+        {"label": "take a shower", "status": 1},
+        {"label": "get up early", "status": 0},
+        {"label": "have breakfast", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_9",
+      "resposta": [
+        {"label": "have a friend", "status": 0},
+        {"label": "get up early", "status": 1},
+        {"label": "work out", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L3_TF_10",
+      "resposta": [
+        {"label": "study", "status": 0},
+        {"label": "go shopping", "status": 0},
+        {"label": "use a smartphone", "status": 1}
+      ]
+    }
+  ],
+  "L3_T1_Medio": [
+    {
+      "pergunta": "On Saturdays, I ______ at 8 a.m. and take a shower",
+      "resposta": [
+        {"label": "wash my face", "status": 0},
+        {"label": "get up", "status": 1},
+        {"label": "sleep", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I take a shower and ______. ",
+      "resposta": [
+        {"label": "have breakfast", "status": 1},
+        {"label": "do breakfast", "status": 0},
+        {"label": "eat breakfast", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I go to my English course ______.",
+      "resposta": [
+        {"label": "morning", "status": 0},
+        {"label": "in morning", "status":0},
+        {"label": "at half past nine", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Around ______ I have lunch.",
+      "resposta": [
+        {"label": "noon", "status": 1},
+        {"label": "in the morning", "status": 0},
+        {"label": "at night", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I ______ a computer course at 2 p.m. ",
+      "resposta": [
+        {"label": "do", "status": 0},
+        {"label": "get", "status": 0},
+        {"label": "take", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "I get home around ______.",
+      "resposta": [
+        {"label": "a quarter to five",  "status": 1},
+        {"label": "afternoon",  "status": 0},
+        {"label": "evening", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I ______ football with friends.",
+      "resposta": [
+        {"label": "kick",  "status": 0},
+        {"label": "play",  "status": 1},
+        {"label": "to play", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I ______ at 7 p.m",
+      "resposta": [
+        {"label": "take dinner",  "status": 0},
+        {"label": "have dinner",  "status": 1},
+        {"label": "get dinner", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I ______ TV shows. ",
+      "resposta": [
+        {"label": "watch",   "status": 1},
+        {"label": "see", "status": 0},
+        {"label": "what", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I ______ bed at 11 p.m.",
+      "resposta": [
+        {"label": "get to",  "status": 0},
+        {"label": "to go", "status": 0},
+        {"label": "go to",  "status": 1}
+      ]
+    }
+  ],
+  "L3_T1_Dificil": [
+    {
+      "pergunta": "Does Kelly go to the bank in the morning?",
+      "resposta": [
+        {"label": "No, she goes to the bank in the morning.", "status": 0},
+        {"label": "Yes, she goes to the bank in the morning.", "status": 1},
+        {"label": "Yes, she’ll go to the bank in the morning.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Yes, it has a parking lot and a soda machine.",
+      "resposta": [
+        {"label": "Does she use the parking lot?", "status": 0},
+        {"label": "Does the school need a soda machine?", "status": 0},
+        {"label": "Does the school have a parking lot? ", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "What does your brother do in the afternoon? ",
+      "resposta": [
+        {"label": "He goes to the gym in the afternoon.", "status": 1},
+        {"label": "He is a teacher.", "status": 0},
+        {"label": "No, he goes to the gym in the afternoon.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "What time does Tom take a shower?",
+      "resposta": [
+        {"label": "Yes, he takes a shower before breakfast.", "status": 0},
+        {"label": "He takes a shower at 6:00 am.", "status": 1},
+        {"label": "He doesn’t take a shower.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Yes, I go to the movies on Fridays.",
+      "resposta": [
+        {"label": "Does he go to the movies on Fridays?", "status": 0},
+        {"label": "Do you go to the movies with friends?", "status": 0},
+        {"label": "Do you go to the movies on Fridays?", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Does she work out every morning?",
+      "resposta": [
+        {"label": "Yes, she works out every morning", "status": 1},
+        {"label": "No, she works out every morning.", "status": 0},
+        {"label": "Yes, she does works out.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Yes, my brother has lunch every day.",
+      "resposta": [
+        {"label": "Do you have lunch every day?", "status": 0},
+        {"label": "Does he have lunch on Mondays?", "status": 0},
+        {"label": "Does he have lunch every day?", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "He watches a TV show every day at 7 p.m.",
+      "resposta": [
+        {"label": "Does he watch a TV show?", "status": 0},
+        {"label": "What time does he watch a TV show?", "status": 1},
+        {"label": "Does he watch at night?", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "We get up at 5:30 on Mondays.",
+      "resposta": [
+        {"label": "Do you get up at 5:30?", "status": 1},
+        {"label": "Do they get up at 5:30?", "status": 0},
+        {"label": "Does he get up at 5:30?", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "No, Melissa doesn’t eat pizza.",
+      "resposta": [
+        {"label": "Does he eat pizza?", "status": 0},
+        {"label": "Does she eat pizza?", "status": 0},
+        {"label": "Does Melissa eat pizza?", "status": 1}
+      ]
+    }
+  ],
+  "L3_T2_Facil": [
+    {
+      "pergunta": "PTask2_F_0",
+      "resposta": [
+        {"label": "And you?", "status": 0},
+        {"label": "I’m fine, thanks.", "status": 1},
+        {"label": "Good morning.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_1",
+      "resposta": [
+        {"label": "Yes, I go out on weekends.", "status": 1},
+        {"label": "Yes, they go out on weekends.", "status": 0},
+        {"label": "No, you don’t go out on weekends.", "status": 0}
+      ]
+    },
+    {  
+      "pergunta": "PTask2_F_2",
+      "resposta": [
+        {"label": "No, they don’t watch TV.", "status": 0},
+        {"label": "No, they don’t study.", "status": 0},
+        {"label": "No, they don’t play sports.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_3",
+      "resposta": [
+        {"label": "Yes, we read books every day.", "status": 0},
+        {"label": "Yes, we get up late every day.", "status": 0},
+        {"label": "Yes, we get up early every day.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_4",
+      "resposta": [
+        {"label": "Hi", "status": 0},
+        {"label": "Good afternoon.", "status": 1},
+        {"label": "I’m Ok.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_5",
+      "resposta": [
+        {"label": "No, you don’t use the computer.", "status": 0},
+        {"label": "No, I don’t use the computer in the evening.", "status": 1},
+        {"label": "No. We use the computer in the evening.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_6",
+      "resposta": [
+        {"label": "Yes, we play sports in the evening.", "status": 1},
+        {"label": "No. We play sports in the evening.", "status": 0},
+        {"label": "Yes, they play sports in the evening.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_7",
+      "resposta": [
+        {"label": "Yes, I read e-mails on weekends.", "status": 0},
+        {"label": "Yes, we send e-mails on weekends.", "status": 1},
+        {"label": "No, I send e-mails on weekends.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "PTask2_F_8",
+      "resposta": [
+        {"label": "No, I don’t watch TV every day.", "status": 1},
+        {"label": "Yes, we watch movies every day.", "status": 0},
+        {"label": "No. We watch TV every day.", "status": 0}
+      ]
+    }
+  ],
+  "L3_T2_Medio": [
+    {
+      "pergunta": "L3_Task2_M_0",
+      "resposta": [
+        {"label": "Yes, I listen to music in the evening.", "status": 1},
+        {"label": "No, we don’t listen to music in the evening.", "status": 1},
+        {"label": "Yes, he listens to music in the evening. ", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_1",
+      "resposta": [
+        {"label": "No, I do stay home on weekends. ", "status": 0},
+        {"label": "Yes, I stay home on weekends.", "status": 1},
+        {"label": "No, I don’t stay home on weekends", "status": 1}
+      ]
+    },
+    {  
+      "pergunta": "L3_Task2_M_2",
+      "resposta": [
+        {"label": "Yes, they work in the evening.", "status": 1},
+        {"label": "Yes, we work in the evening.", "status": 0},
+        {"label": "No, they don’t work in the evening.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_3",
+      "resposta": [
+        {"label": "No, I play computer games on weekends.", "status": 0},
+        {"label": "No, I don’t play computer games on weekends.", "status": 1},
+        {"label": "Yes, we play computer games on weekends.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_4",
+      "resposta": [
+        {"label": "At 9 o’clock.", "status": 1},
+        {"label": "No, I don’t.", "status": 0},
+        {"label": "I take my English course at 7:30.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_5",
+      "resposta": [
+        {"label": "I take a shower at a quarter after eight.", "status": 1},
+        {"label": "Yes, I take a shower every day.", "status": 0},
+        {"label": "At 8:15.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_6",
+      "resposta": [
+        {"label": "Yes, I have dinner.", "status": 0},
+        {"label": "At around 8 p.m.", "status": 1},
+        {"label": "I have dinner at around half past seven.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L3_Task2_M_7",
+      "resposta": [
+        {"label": "Yes. I like to play computer games.", "status": 0},
+        {"label": "Yes, we study here.", "status": 1},
+        {"label": "No, I do.", "status": 1}
+      ]
+    }
+  ],
+  "L3_T2_Dificil": [
+    {
+      "pergunta": "L3_Task2_D_0",
+      "resposta": "Do you listen to music in the evening?"
+    },
+    {
+      "pergunta": "L3_Task2_D_1",
+      "resposta": "Do you go out on weekends?"
+    },
+    {
+      "pergunta": "L3_Task2_D_2",
+      "resposta": "What’s your first name?"
+    },
+    {
+      "pergunta": "L3_Task2_D_3",
+      "resposta": "Does he have a job in the afternoon?"
+    },
+    {
+      "pergunta": "L3_Task2_D_4",
+      "resposta": "Does Greg have an eraser?"
+    },
+    {
+      "pergunta": "L3_Task2_D_5",
+      "resposta": "Does Kelly answer the phone?"
+    },
+    {
+      "pergunta": "L3_Task2_D_6",
+      "resposta": "Yes she answers the phone"
+    },
+    {
+      "pergunta": "L3_Task2_D_7",
+      "resposta": "Thank you very much"
+    },
+    {
+      "pergunta": "L3_Task2_D_8",
+      "resposta": "You’re welcome"
+    },
+    {
+      "pergunta": "L3_Task2_D_9",
+      "resposta": "Have a nice weekend"
+    }
+  ],
+  "L3_SUPER_LESSON": [
+    {
+      "pergunta": "Do you go to the gym",
+      "resposta": [
+        "Yes, I do",
+        "Yes, I go to the gym",
+        "No, I don’t",
+        "No, I don’t go to the gym"
+      ]
+    },
+    {
+      "pergunta": "Do your friends like to dance",
+      "resposta": [
+        "Yes, they do",
+        "Yes, they like to dance",
+        "No, they don’t",
+        "No, they don’t like to dance"
+      ]
+    },
+    {
+      "pergunta": "Does your mom work out",
+      "resposta": [
+        "Yes, she does",
+        "Yes, she works out",
+        "No, she doesn’t",
+        "No, she doesn’t work out"
+      ]
+    },
+    {
+      "pergunta": "Do you have lunch at home",
+      "resposta": [
+        "Yes, I do",
+        "Yes, I have lunch at home",
+        "No, I don’t",
+        "No, I don’t have lunch at home"
+      ]
+    },
+    {
+      "pergunta": "Do your cousins get up early on weekends",
+      "resposta": [
+        "Yes, they do",
+        "Yes, they get up early on weekends",
+        "No, they don’t",
+        "No, they don’t get up early on weekends"
+      ]
+    },
+    {
+      "pergunta": "Do you go out on weekdays",
+      "resposta": [
+        "Yes, I do",
+        "Yes, I go out on weekdays",
+        "No, I don’t",
+        "No, I don’t go out on weekdays"
+      ]
+    },
+    {
+      "pergunta": "What time do you have dinner",
+      "resposta": [
+        "I have dinner at"
+      ]
+    },
+    {
+      "pergunta": "What do you need to buy",
+      "resposta": [
+        "I need to buy"
+      ]
+    },
+    {
+      "pergunta": "What do your friends do on Sunday nights",
+      "resposta": [
+        "They"
+      ]
+    },
+    {
+      "pergunta": "What do you have for breakfast every day",
+      "resposta": [
+        "I have"
+      ]
+    }
+  ],
+
+  "L4_T1_Facil": [
+    {
+      "pergunta": "L4_Task1_F_0",
+      "resposta": [
+        {"label": "an", "status": 0},
+        {"label": "and", "status": 0},
+        {"label": "aunt", "status": 1},
+        {"label": "are", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_1",
+      "resposta": [
+        {"label": "mother", "status": 0},
+        {"label": "brother", "status": 1},
+        {"label": "father", "status": 0},
+        {"label": "mother", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_2",
+      "resposta": [
+        {"label": "son", "status": 1},
+        {"label": "so", "status": 0},
+        {"label": "she", "status": 0},
+        {"label": "cousin", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_3",
+      "resposta": [
+        {"label": "siblings", "status": 0},
+        {"label": "children", "status": 0},
+        {"label": "singer", "status": 0},
+        {"label": "sister", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_4",
+      "resposta": [
+        {"label": "grandma", "status": 0},
+        {"label": "grandpa", "status": 1},
+        {"label": "grandmother", "status": 0},
+        {"label": "grandfather", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_5",
+      "resposta": [
+        {"label": "uncle", "status": 0},
+        {"label": "ex-husband", "status": 0},
+        {"label": "husband", "status": 1},
+        {"label": "father", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_6",
+      "resposta": [
+        {"label": "mother", "status": 1},
+        {"label": "grandma", "status": 0},
+        {"label": "brother", "status": 0},
+        {"label": "grandmother", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_7",
+      "resposta": [
+        {"label": "lady", "status": 0},
+        {"label": "stepdaughter", "status": 0},
+        {"label": "daughter", "status": 1},
+        {"label": "sister", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_8",
+      "resposta": [
+        {"label": "three", "status": 0},
+        {"label": "teen", "status": 0},
+        {"label": "twin", "status": 1},
+        {"label": "wife", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_F_9",
+      "resposta": [
+        {"label": "ex-wife", "status": 1},
+        {"label": "husband", "status": 0},
+        {"label": "ex-husband", "status": 0},
+        {"label": "exercise", "status": 0}
+      ]
+    }
+  ],
+  "L4_T1_Medio": [
+    {
+      "pergunta": "L4_Task1_M_0",
+      "resposta": [
+        {"label": "He is my brother.", "status": 0},
+        {"label": "He is my teacher.", "status": 1},
+        {"label": "He’s my teacher.", "status": 0},
+        {"label": "He´s my bother.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_1",
+      "resposta": [
+        {"label": "She is my friend.", "status": 0},
+        {"label": "They’re my friends.", "status": 0},
+        {"label": "They are my friends.", "status": 1},
+        {"label": "They are friends.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_2",
+      "resposta": [
+        {"label": "This is my pet.", "status": 1},
+        {"label": "They are my pets.", "status": 0},
+        {"label": "This is my aunt.", "status": 0},
+        {"label": "These are pets.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_3",
+      "resposta": [
+        {"label": "Our house is pretty.", "status": 0},
+        {"label": "Your mom is pretty.", "status": 0},
+        {"label": "Your house is pretty.", "status": 0},
+        {"label": "Our mom is pretty.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_4",
+      "resposta": [
+        {"label": "They are my brothers.", "status": 0},
+        {"label": "These are my siblings.", "status": 1},
+        {"label": "These are siblings.", "status": 0},
+        {"label": "They are sisters.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_5",
+      "resposta": [
+        {"label": "She is my half sister.", "status": 0},
+        {"label": "ex-He is my brother.", "status": 0},
+        {"label": "They are brothers.", "status": 0},
+        {"label": "He is my half brother.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_6",
+      "resposta": [
+        {"label": "She is my mom.", "status": 0},
+        {"label": "She’s my aunt.", "status": 0},
+        {"label": "She is my aunt.", "status": 1},
+        {"label": "She’s my mom.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_7",
+      "resposta": [
+        {"label": "She is Italian.", "status": 0},
+        {"label": "She’s in Italy.", "status": 1},
+        {"label": "She’s from Italy.", "status": 0},
+        {"label": "She likes Italy.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_8",
+      "resposta": [
+      {"label": "They’re in the locker room.", "status": 1},
+        {"label": "They are at home.", "status": 0},
+        {"label": "They are in the room.", "status": 0},
+        {"label": "They are friends.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_M_9",
+      "resposta": [
+      {"label": "They are in the room.", "status": 0},
+      {"label": "They are in the classroom.", "status": 1},
+        {"label": "They’re in the classroom.", "status": 0},
+        {"label": "They’re in the room.", "status": 0}
+      ]
+    }
+  ],
+  "L4_T1_Dificil": [
+    {
+      "pergunta": "L4_Task1_D_0",
+      "resposta": [
+        {"label": "He’s at home.", "status": 1},
+        {"label": "Yes, he’s my best friend.", "status": 0},
+        {"label": "He’s my friend.", "status": 0},
+        {"label": "He’s from New York.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_1",
+      "resposta": [
+        {"label": "Yes, they are in the classroom.", "status": 0},
+        {"label": "They are in the classroom.", "status": 1},
+        {"label": "She’s at school.", "status": 0},
+        {"label": "She is at school.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_2",
+      "resposta": [
+        {"label": "He’s talented.", "status": 0},
+        {"label": "He’s my teacher.", "status": 1},
+        {"label": "He’s a good-looking guy.", "status": 0},
+        {"label": "He’s in Miami.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_3",
+      "resposta": [
+        {"label": "They’re our friends.", "status": 1},
+        {"label": "She’s my teacher.", "status": 0},
+        {"label": "They are famous.", "status": 0},
+        {"label": "She is an actress.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_4",
+      "resposta": [
+        {"label": "They’re in Paris.", "status": 0},
+        {"label": "She’s in New York.", "status": 0},
+        {"label": "He’s in Argentina.", "status": 1},
+        {"label": "We are in Miami.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_5",
+      "resposta": [
+        {"label": "They’re in Hollywood.", "status": 1},
+        {"label": "He is in Las Vegas.", "status": 0},
+        {"label": "She’s at home.", "status": 0},
+        {"label": "I like celebrities.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_6",
+      "resposta": [
+        {"label": "They are my cousins.", "status": 1},
+        {"label": "They are my sisters.", "status": 0},
+        {"label": "They’re my friends.", "status": 0},
+        {"label": "He’s my dad.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_7",
+      "resposta": [
+        {"label": "He is at home.", "status": 0},
+        {"label": "She’s at school.", "status": 0},
+        {"label": "My siblings are happy.", "status": 0},
+        {"label": "They’re at home.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_8",
+      "resposta": [
+        {"label": "They are in the restaurant.", "status": 0},
+        {"label": "He is in the locker room.", "status": 1},
+        {"label": "They’re at school.", "status": 0},
+        {"label": "She’s a pretty soccer player.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L4_Task1_D_9",
+      "resposta": [
+        {"label": "He’s from Canada.", "status": 0},
+        {"label": "She’s a teacher.", "status": 0},
+        {"label": "She’s in Los Angeles.", "status": 1},
+        {"label": "They are in the restaurant.", "status": 0}
+      ]
+    }
+  ],
+  "L4_T2_Facil": [
+    {
+      "pergunta": [
+        {"label": "Is your mother from New York?", "status": 0},
+        {"label": "Are those girls good friends?", "status": 1},
+        {"label": "Are you happy today?", "status":  2}
+      ],
+      "resposta": [
+        {"label": "No, they aren’t good friends.", "status": 1},
+        {"label": "Yes, she likes New York.", "status": -1},
+        {"label": "Yes, I’m happy today.", "status": 2},
+        {"label": "Yes, they have good friends.", "status": -1},
+        {"label": "Yes, she’s from New York.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Is Brazil a big country?", "status": 0},
+        {"label": "Is your father Canadian?", "status": 1},
+        {"label": "Are you an only child?", "status": 2} 
+      ],
+      "resposta": [
+        {"label": "Argentina is a very big country.", "status": -1},
+        {"label": "No, I’m not an only child.", "status": 2},
+        {"label": "My father lives in Canada.", "status": -1},
+        {"label": "Yes, it’s very big.", "status": 0},
+        {"label": "No, he isn’t Canadian.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Do you have a lot of cousins?", "status": 0},
+        {"label": "Do you have a stepmother?", "status": 1},
+        {"label": "Do your friends have siblings?", "status": 2}
+      ],
+      "resposta": [
+        {"label": "My aunt has two kids.", "status": -1},
+        {"label": "No, they don’t have siblings.", "status": 2},
+        {"label": "Yes, I have a lot of cousins.", "status": 0},
+        {"label": "No, I don’t.", "status": 1},
+        {"label": "She has a sister.", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Do your parents have grandchildren?", "status": 0},
+        {"label": "Does he look like his father?", "status": 1},
+        {"label": "What are they looking at?", "status": 2}
+      ],
+      "resposta": [
+        {"label": "She is a grandmother.", "status": -1},
+        {"label": "They are looking at a photo album.", "status": 2},
+        {"label": "I guess so.", "status": 1},
+        {"label": "I look like my mother.", "status": -1},
+        {"label": "No, they don’t.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Is he a famous soccer player?", "status": 0},
+        {"label": "Is your family big?", "status": 1},
+        {"label": "Who is your mother?", "status": 2}
+      ],
+      "resposta": [
+        {"label": "No, it isn’t.", "status": 1},
+        {"label": "She is blonde.", "status": -1},
+        {"label": "She is the teacher.", "status": 2},
+        {"label": "My family is from Italy.", "status": -1},
+        {"label": "Yes, he is", "status": 0}
+      ]
+    }
+  ],
+  "L4_T2_Medio": [
+    { "pergunta": ["does", "your", "singer", "favorite", "is", "who", "?"],
+      "resposta": "Who is your favorite singer?"
+    },
+    { "pergunta": ["do", "podcast", "host", "who", "is", "favorite", "?", "your"],
+      "resposta": "Who is your favorite podcast host?"
+    },
+    { "pergunta": ["does", "your", "favorite", "actress", "who", "is", "?"],
+      "resposta": "Who is your favorite actress?"
+    },
+    { "pergunta": ["who", "do", "is", "teacher", "your", "favorite", "?"],
+      "resposta": "Who is your favorite teacher?"
+    },
+    { "pergunta": ["does", "is", "who", "your", "favorite", "cousin", "?"],
+      "resposta": "Who is your favorite cousin?"
+    },
+    { "pergunta": ["where", "does", "is", "your", "mother", "now", "?"],
+      "resposta": "Where is your mother now?"
+    },
+    { "pergunta": ["does", "your", "best", "friend", "is", "where", "from", "?"],
+      "resposta": "Where is your best friend from?"
+    },
+    { "pergunta": ["does", "your", "boyfriend", "is", "where", "now", "?"],
+      "resposta": "Where is your boyfriend now?"
+    },
+    { "pergunta": ["where", "do", "is", "your", "pet", "now", "?"],
+      "resposta": "Where is your pet now?"
+    },
+    { "pergunta": ["do", "you", "do", "live", "where", "?"],
+      "resposta": "Where do you live?"
+    }
+  ],
+  "L4_T2_Dificil": [
+    {
+      "pergunta": "Mrs. Peterson is my English teacher. She is from New York. Her classes are great.",
+      "resposta": [
+        {"label": "Mr. Peterson is a math teacher.", "status": 0},
+        {"label": "She’s my English teacher.", "status": 1},
+        {"label": "She lives in New York", "status": 0},
+        {"label": "She’s from New York.", "status": 1},
+        {"label": "Her classes are great.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Beyoncé is a very talented singer. She’s from Texas, USA. Her songs are popular.",
+      "resposta": [
+        {"label": "She is an actress.", "status": 0},
+        {"label": "She’s from Texas.", "status": 1},
+        {"label": "Her songs are popular.", "status": 1},
+        {"label": "She lives in Texas.", "status": 0},
+        {"label": "She is a very talented singer.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Joel Maison is a guy from my gym. He’s very strong and athletic. He is from Madrid, Spain and speaks English, Portuguese, Italian and Spanish.",
+      "resposta": [
+        {"label": "He isn’t a famous athlete.", "status": 0},
+        {"label": "He doesn’t like gym.", "status": 0},
+        {"label": "He is Spanish.", "status": 1},
+        {"label": "He likes strong and intelligent people.", "status": 0},
+        {"label": "He’s strong and intelligent.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Podpah is a very popular YouTube channel. It’s a Brazilian podcast with two hosts, Igor Cavalari and Thiago Marques. They are funny and outgoing.",
+      "resposta": [
+        {"label": "Podpah is a popular YouTube channel.", "status": 1},
+        {"label": "The host doesn’t live in Brazil.", "status": 0},
+        {"label": "The hosts are funny.", "status": 1},
+        {"label": "They record TV programs.", "status": 0},
+        {"label": "It’s not a popular program.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Scarlett Johansson is a talented actress. She is American and her movies are very popular. She has a lot of fans from all over the world.",
+      "resposta": [
+        {"label": "She is a talented actress.", "status": 1},
+        {"label": "Scarlet isn’t a talented actress.", "status": 0},
+        {"label": "She is American.", "status": 1},
+        {"label": "Scarlet lives in North America.", "status": 0},
+        {"label": "She isn’t famous.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Marta Silva is a famous soccer player. She’s smart, athletic, and pretty. She’s Brazilian but plays on an important team in Orlando, Florida.",
+      "resposta": [
+        {"label": "Marta is a volley player.", "status": 0},
+        {"label": "She is American.", "status": 0},
+        {"label": "Marta is famous and plays soccer.", "status": 1},
+        {"label": "She doesn’t play in Florida.", "status": 0},
+        {"label": "She’s smart, athletic, and pretty.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Mr. Peres is a great Spanish teacher. He’s from Madrid, Spain but he lives in São Paulo. He’s very popular at the school he works at because he is very funny.",
+      "resposta": [
+        {"label": "Mr. Peres teaches Spanish.", "status": 1},
+        {"label": "He is from São Paulo.", "status": 0},
+        {"label": "He is very popular at the school.", "status": 1},
+        {"label": "Mr. Peres works in São Paulo.", "status": 1},
+        {"label": "He is very funny.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Khabane Lame is a famous Tiktoker. He is very funny without saying a word. He is from Senegal, but he lives in Italy.  ",
+      "resposta": [
+        {"label": "Khabane is a famous YouTuber.", "status": 0},
+        {"label": "He is very funny.", "status": 1},
+        {"label": "He talks about different things.", "status": 0},
+        {"label": "He is Italian.", "status": 0},
+        {"label": "He lives in Italy.", "status": 1}
+      ]
+    }
+  ],
+  "L4_SUPER_LESSON": [
+    {
+      "images": ["Ess1_L4_ST_1", "Ess1_L4_ST_2", "Ess1_L4_ST_3", "Ess1_L4_ST_4"],
+      "letras": ["A", "C", "E", "O", "M", "G", "R", "F", "S", "V", "T", "H"],
+      "resposta": "ACTRESS"
+    },
+    {
+      "images": ["Ess1_L4_ST_5", "Ess1_L4_ST_6", "Ess1_L4_ST_7", "Ess1_L4_ST_8"],
+      "letras": ["A", "E", "O", "M", "N", "G", "R", "F", "S", "V", "T", "H"],
+      "resposta": "STRONG"
+    },
+    {
+      "images": ["Ess1_L4_ST_9", "Ess1_L4_ST_10", "Ess1_L4_ST_11", "Ess1_L4_ST_12"],
+      "letras": ["A", "I", "E", "O", "C", "F", "S", "R", "N", "L", "M", "Y"],
+      "resposta": "EARLY"
+    },
+    {
+      "images": ["Ess1_L4_ST_13", "Ess1_L4_ST_14", "Ess1_L4_ST_15", "Ess1_L4_ST_16"],
+      "letras": ["A", "E", "U", "C", "D", "L", "N", "G", "S", "T", "R", "Y"],
+      "resposta": "TALENTED"
+    },
+    {
+      "images": ["Ess1_L4_ST_17", "Ess1_L4_ST_18", "Ess1_L4_ST_19", "Ess1_L4_ST_20"],
+      "letras": ["T", "E", "I", "O", "C", "A", "M", "P", "S", "B", "V", "U"],
+      "resposta": "COMPETETIVE"
+    }
+  ],
+
+  "L5_T1_Facil": [
+    {
+      "image": "Ess1_L5_TF_1",
+      "pergunta": "What color is her blouse?",
+      "resposta": [
+        {"label": "Pink", "status": 0},
+        {"label": "Blue", "status": 1},
+        {"label": "Black", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_2",
+      "pergunta": "What is Paul wearing?",
+      "resposta": [
+        {"label": "A red coat", "status": 0},
+        {"label": "A black shirt", "status": 0},
+        {"label": "A gray sweatshirt", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_3",
+      "pergunta": "What is Jenny wearing?",
+      "resposta": [
+        {"label": "A green dress", "status": 1},
+        {"label": "A green skirt", "status": 0},
+        {"label": "A green jacket", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_4",
+      "pergunta": "What is he wearing?",
+      "resposta": [
+        {"label": "Pants and shirt", "status": 0},
+        {"label": "A black suit", "status": 1},
+        {"label": "Pants and T-shirt", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_5",
+      "pergunta": "These are?",
+      "resposta": [
+        {"label": "Light blue boots", "status": 0},
+        {"label": "Light orange sneakers", "status": 0},
+        {"label": "Light brown high heels", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_6",
+      "pergunta": "These are?",
+      "resposta": [
+        {"label": "Green sneakers", "status": 1},
+        {"label": "Yellow flip flops", "status": 0},
+        {"label": "Blue boots", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_7",
+      "pergunta": "What holiday is this?",
+      "resposta": [
+        {"label": "Independence Day", "status": 1},
+        {"label": "Thanksgiving", "status": 0},
+        {"label": "Christmas", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_8",
+      "pergunta": "What celebration is this?",
+      "resposta": [
+        {"label": "April Fool’s Day", "status": 0},
+        {"label": "Labor Day", "status": 0},
+        {"label": "Saint Patrick’s Day", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_9",
+      "pergunta": "What holiday is this?",
+      "resposta": [
+        {"label": "April Fool’s Day", "status": 0},
+        {"label": "Halloween", "status": 1},
+        {"label": "Valentine's Day", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L5_TF_10",
+      "pergunta": "What celebration is this?",
+      "resposta": [
+        {"label": "Labor Day", "status": 0},
+        {"label": "Christmas", "status": 0},
+        {"label": "Thanksgiving", "status": 1}
+      ]
+    }
+  ],
+  "L5_T1_Medio": [
+    { 
+      "pergunta": "I’m __________ a pink dress.",
+      "resposta": [
+        {"label": "wear", "status": 0},
+        {"label": "wears", "status": 0},
+        {"label": "wearing", "status": 1}
+      ]
+    },
+    { 
+      "pergunta": "She is _______ her tablet.",
+      "resposta": [
+        {"label": "takes", "status": 0},
+        {"label": "using", "status": 1},
+        {"label": "writing", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "Sam is ______ dinner now.",
+      "resposta": [
+        {"label": "cooking", "status": 1},
+        {"label": "shopping", "status": 0},
+        {"label": "exercising", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "Kelly and Don are _______ only salad.",
+      "resposta": [
+        {"label": "seeing", "status": 0},
+        {"label": "eating", "status": 1},
+        {"label": "cooking", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "Carol ____ ____________ TV.",
+      "resposta": [
+        {"label": "is watching", "status": 1},
+        {"label": "is looking", "status": 0},
+        {"label": "is seeing", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "On ____________ Americans wear red, white, and blue.",
+      "resposta": [
+        {"label": "Mother’s Day", "status": 0},
+        {"label": "Independence Day", "status": 1},
+        {"label": "Labor Day", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "On __________ people wear costumes.",
+      "resposta": [
+        {"label": "Halloween ", "status": 1},
+        {"label": "Christmas ", "status": 0},
+        {"label": "Thanksgiving", "status": 0}
+      ]
+    },
+    { 
+      "pergunta": "Saint Patrick’s Day is ______ March.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "in", "status": 1},
+        {"label": "at", "status": 0}
+      ]
+    }
+  ],
+  "L5_T1_Dificil": [
+    {
+      "pergunta": [
+        "James Hawkins is",
+        "from Dallas, but he",
+        "in New York. He",
+        "fashion. His favorite",
+        "is blue. He is wearing a blue",
+        ", black jeans, and sneakers."
+      ],
+      "option0": {
+        "label": ["", "is", "be", "likes"],
+        "status": "is"
+      },
+      "option1": {
+        "label": ["", "colors", "lives", "likes"],
+        "status": "lives"
+      },
+      "option2": {
+        "label": ["", "lives", "studies", "likes"],
+        "status": "likes"
+      },
+      "option3": {
+        "label": ["", "color", "shopping", "travels"],
+        "status": "color"
+      },
+      "option4": {
+        "label": ["", "cloth", "shirt", "shoes"],
+        "status": "shirt"
+      }
+    },
+    {
+      "pergunta": [
+        "Vini doesn’t like to wear",
+        "and tie, but he",
+        "one when he is at",
+        ". Today, after work, he is going",
+        "for new clothes. He is",
+        "to Cancun on vacation."
+      ],
+      "option0": {
+        "label": ["", "shirt", "suit", "scarf"],
+        "status": "suit"
+      },
+      "option1": {
+        "label": ["", "uses", "wears", "wearing"],
+        "status": "wears"
+      },
+      "option2": {
+        "label": ["", "work", "works", "working"],
+        "status": "work"
+      },
+      "option3": {
+        "label": ["", "buy", "shop", "shopping"],
+        "status": "shopping"
+      },
+      "option4": {
+        "label": ["", "go", "goes", "traveling"],
+        "status": "traveling"
+      }
+    },
+    {
+      "pergunta": [
+        "",
+        "Mark. I am a college student from Chicago. I",
+        "my breakfast and get to college early. In the afternoon, I have",
+        "at college, study, then I go to the gym. In the evening, I",
+        "a sandwich, and",
+        "to bed early."
+      ],
+      "option0": {
+        "label": ["", "It’s", "I’m", "He’s"],
+        "status": "I’m"
+      },
+      "option1": {
+        "label": ["", "make", "take", "get"],
+        "status": "make"
+      },
+      "option2": {
+        "label": ["", "lunch", "dinner", "food"],
+        "status": "lunch"
+      },
+      "option3": {
+        "label": ["", "get", "have", "make"],
+        "status": "have"
+      },
+      "option4": {
+        "label": ["", "go", "get", "sleep"],
+        "status": "go"
+      }
+    },
+    {
+      "pergunta": [
+        "Francis is",
+        "for clothes at the mall. She",
+        "a new",
+        ". She is with her friend Marta. They are in the",
+        "room with the same black dress, in different",
+        "Francis is a medium, and Marta is a small."
+      ],
+      "option0": {
+        "label": ["", "buying", "shopping", "taking"],
+        "status": "shopping"
+      },
+      "option1": {
+        "label": ["", "sees", "needs", "need"],
+        "status": "needs"
+      },
+      "option2": {
+        "label": ["", "jacket", "clothes", "skirts"],
+        "status": "jacket"
+      },
+      "option3": {
+        "label": ["", "fit", "fitting", "closed"],
+        "status": "fitting"
+      },
+      "option4": {
+        "label": ["", "models", "colors", "sizes"],
+        "status": "sizes"
+      }
+    }
+  ],
+  "L5_T2_Facil": [
+    {
+      "audio": "Ess1_L5_TF_0",
+      "pergunta": [
+        "Carol is wearing a",
+        "",
+        ", a white blouse and",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pink"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "skirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sandals"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_1",
+      "pergunta": [
+        "Josh is wearing a dark",
+        "",
+        ", blue",
+        "and brown sneakers."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "gray"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "T-shirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "jeans"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_2",
+      "pergunta": [
+        "Julian is wearing a gray",
+        ", a",
+        "and",
+        "shoes."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "suit"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "tie"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_3",
+      "pergunta": [
+        "Harry is wearing a white shirt,",
+        "",
+        "and red",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "red"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pants"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sneakers"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_4",
+      "pergunta": [
+        "Sarah is wearing a",
+        "dress and",
+        "",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "red"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "high heels"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_5",
+      "pergunta": [
+        "Justin is wearing a gray",
+        ", a blue",
+        ", black",
+        "and black sneakers."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "sweatshirt"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "T-shirt"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "pants"
+      }
+    },
+    {
+      "audio": "Ess1_L5_TF_6",
+      "pergunta": [
+        "Lisa is wearing a",
+        "",
+        "and black",
+        "."
+      ],
+      "option0": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "black"
+      },
+      "option1": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "coat"
+      },
+      "option2": {
+        "label": ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
+        "status": "boots"
+      }
+    }
+  ],
+  "L5_T2_Medio": [
+    {
+      "pergunta": "Task_2_M_0",
+      "resposta": "I’m a medium."
+    },
+    {
+      "pergunta": "Task_2_M_1",
+      "resposta": "I’m a large."
+    },
+    {
+      "pergunta": "Task_2_M_2",
+      "resposta": "They’re perfect."
+    },
+    {
+      "pergunta": "Task_2_M_3",
+      "resposta": "I’ll take it."
+    },
+    {
+      "pergunta": "Task_2_M_4",
+      "resposta": "What do you wear at home?"
+    },
+    {
+      "pergunta": "Task_2_M_5",
+      "resposta": "I wear jeans and T-shirts."
+    },
+    {
+      "pergunta": "Task_2_M_6",
+      "resposta": "My mom is shopping for housewares."
+    },
+    {
+      "pergunta": "Task_2_M_7",
+      "resposta": "I cook on Mondays and Wednesdays."
+    },
+    {
+      "pergunta": "Task_2_M_8",
+      "resposta": "I have English classes on Tuesdays and Thursdays."
+    },
+    {
+      "pergunta": "Task_2_M_9",
+      "resposta": "I go out with my friends on Fridays and Saturdays."
+    }
+  ],
+  "L5_T2_Dificil": [
+    {
+      "audio": "Task_2_D_0",
+      "pergunta": [
+        "What are the parents doing?",
+        "What are they baking?",
+        "Are they baking a cake too?",
+        "Does the son like baked potatoes?",
+        "Where is the son going?"
+      ],
+      "resposta": [
+        "They are cooking.",
+        "They are baking potatoes.",
+        ["No, they aren’t.", "No, they aren’t baking a cake too.", "No. They are baking an apple pie."],
+        ["Yes, he does.", "Yes, he likes baked potatoes."],
+        "He’s going to his parent’s house."
+      ]
+    },
+    {
+      "audio": "Task_2_D_1",
+      "pergunta": [
+        "Where are they?",
+        "What does the man want?",
+        "What size is he?",
+        "Does the lady give him the polo shirt?",
+        "Where does the man try on the shirt?"
+      ],
+      "resposta": [
+        ["They are in a store.", "In a store."],
+        "He wants a polo shirt in red.",
+        "He is a small.",
+        ["Yes, she does.", "Yes, she gives him the polo shirt."],
+        "In the fitting room."
+      ]
+    },
+    {
+      "audio": "Task_2_D_2",
+      "pergunta": [
+        "Is Sarah fine?",
+        "Where is the man?",
+        "Is the man wearing a costume?",
+        "Is the man eating?",
+        "What is the girl doing?"
+      ],
+      "resposta": [
+        ["Yes, she is.", "Yes, she is fine."],
+        ["At a costume party.", "He is at a costume party."],
+        ["Yes, he is.", "Yes, he is wearing a costume."],
+        ["No, he isn’t.", "No, he isn’t eating."],
+        "She is watching TV."
+      ]
+    }
   ]
 }

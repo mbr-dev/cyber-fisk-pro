@@ -21,10 +21,4 @@ export const SubtitleLessonContainer = styled.div`
       font-size: 1.25rem;
     }
   }
-
-  @media(min-width: 600px) {
-    span {
-      font-size: 2rem;
-    }
-  }
 `

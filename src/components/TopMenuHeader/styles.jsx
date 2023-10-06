@@ -13,8 +13,10 @@ export const Container = styled.header`
   border-end-start-radius: 24px;
   
   @media(max-width: 320px) {
-    padding: 0.5rem;
+    padding: 0.5rem 1rem;
     padding-bottom: 0;
+    border-end-end-radius: 18px;
+    border-end-start-radius: 18px;
   }
 `;
 
@@ -27,6 +29,12 @@ export const TopHeader = styled.div`
   p {
     font-size: 1.5rem;
     font-weight: 500;
+  }
+
+  @media(max-width: 320px) {
+    p {
+    font-size: 1rem;
+  }
   }
 `;
 

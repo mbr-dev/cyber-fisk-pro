@@ -1,89 +1,115 @@
-import { useEffect, useState, useContext } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 
+import { Loading } from "../Loading";
+import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { GridItem } from "./components/GridItem";
 
+import { api } from "../../lib/api";
+import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { SL2_FACIL } from "../../utils/Lesson2_Task1";
+import { L2_SUPER_LESSON } from "../../utils/Lesson2_Task";
 
-import { GameSL2Container, GameSL2Main, GridArea, Grid } from "./styles";
+import LogoImg from "./images/logoIcon.png";
+
+import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL2 = () => {
-  const { rodadaGeral, setTimeElapsed, timeElapsed } = useContext(LessonContext);
-  //console.log("GAME TIME: ", timeElapsed);
+  const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
 
   const [playing, setPlaying] = useState(false);
+  const [level, setLevel] = useState(0);
+  const [data, setData] = useState([]);
   const [moveCount, setMoveCount] = useState(0);
   const [shownCount, setShownCount] = useState(0);
-  const [gridItems, setGridItems] = useState([]);
+  const [points, setPoints] = useState(0);
+  const [cards, setCards] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const createGrid = () => {
-    let tmpGrid = [];
-    let totalOfItems = SL2_FACIL.length;
+  const loadLesson = useCallback(async() => {
+    const dataLength = level === 0 ? 6 : 8;
 
-    for (let a = 0; a < (totalOfItems * 2); a++) {
-      tmpGrid.push({ item: null, shown: false, permanentShown: false });
+    const nameFilter = L2_SUPER_LESSON.filter(item => item.name);
+    
+    let tempRandom = [];
+    for (let a = 0; a < nameFilter.length; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+
+    let nameRandom = []
+    for (let a = 0; a < dataLength; a++) {
+      nameRandom.push(nameFilter[tempRandom[a]]);
     }
 
-    for (let a = 0; a < 2; a++) {
-      for (let b = 0; b < totalOfItems; b++) {
-        let position = -1;
+    let imgFilter = [];
+    nameRandom.forEach(nameItem => {
+      const status = nameItem.status;
+      const images = L2_SUPER_LESSON.filter(item => item.status === status && item.img);
+      imgFilter = imgFilter.concat(images);
+    });
 
-        while (position < 0 || tmpGrid[position].item !== null) {
-          position = Math.floor(Math.random() * (totalOfItems * 2));
-        }
-
-        tmpGrid[position].item = b;
-      }
+    let tempGridFake = nameRandom.concat(imgFilter);
+    tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
+    
+    let tempGrid = [];
+    for (let a = 0; a < (dataLength * 2 ); a++) {
+      tempGrid.push({
+        item: null,
+        shown: false,
+        permanentShown: false
+      });
     }
 
-    setGridItems(tmpGrid);
+    let tempRandomGrid = [];
+    for (let a = 0; a < (dataLength * 2); a++) {
+      tempRandomGrid.push(a);
+    }
+    tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
+    
+    for (let a = 0; a < (dataLength * 2); a++) {
+      tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
+    }
+    
+    setCards(tempGrid);
     setPlaying(true);
-  }
+  }, [setPlaying, setCards]);
 
-  const resetGrid = () => {
-    setMoveCount(0);
-    setShownCount(0);
-    setGridItems([]);
-    createGrid();
-  }
-
-  const handleItemClick = (index) => {
+  const handleShowCard = (index) => {
     if (playing && index !== null && shownCount < 2) {
-      let tmpGrid = [...gridItems];
+      let tmpGrid = [...cards];
 
       if (!tmpGrid[index].permanentShown && !tmpGrid[index].shown) {
         tmpGrid[index].shown = true;
         setShownCount(state => state + 1);
       }
 
-      setGridItems(tmpGrid);
+      setCards(tmpGrid);
     }
   }
 
   useEffect(() => {
-    resetGrid();
+    loadLesson();
   }, [])
 
   useEffect(() => {
     if (shownCount === 2) {
-      let opened = gridItems.filter(item => item.shown === true);
+      let opened = cards.filter(item => item.shown === true);
 
       if (opened.length === 2) {
-        if (opened[0].item === opened[1].item) {
-          const updateGridItems = gridItems.map(item => (
+        if (opened[0].item.status === opened[1].item.status) {
+          const updateGridItems = cards.map(item => (
             { ...item, permanentShown: item.shown ? true : item.permanentShown, shown: false }
           ));
 
-          setGridItems(updateGridItems);
+          setCards(updateGridItems);
           setShownCount(0);
         } else {
           setTimeout(() => {
-            let updateGridItems = gridItems.map(item  => (
+            let updateGridItems = cards.map(item  => (
               { ...item, shown: false }
             ))
 
-            setGridItems(updateGridItems);
+            setCards(updateGridItems);
             setShownCount(0);
           }, 1000);
 
@@ -91,16 +117,36 @@ export const GameSL2 = () => {
         }
       }
     }
-  }, [gridItems, shownCount])
+  }, [cards, shownCount]);
 
   useEffect(() => {
-    const allItemShown = gridItems.every(item => item.permanentShown === true);
+    const allItemShown = cards.every(item => item.permanentShown === true);
 
     if (moveCount > 0 && allItemShown) {
+      let tempPoints = points;
+
+      if (timeElapsed < 60) {
+        tempPoints += 5;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 61 || timeElapsed <= 75) {
+        tempPoints += 4;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 76 || timeElapsed <= 90) {
+        tempPoints += 3;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 91 || timeElapsed <= 120) {
+        tempPoints += 2;
+        setPoints(tempPoints);
+      } else {
+        tempPoints += 1;
+        setPoints(tempPoints);
+      }
+
+      alert(tempPoints);
       setPlaying(false);
       alert("Game finalizado");
     }
-  }, [moveCount, gridItems])
+  }, [moveCount, cards, timeElapsed])
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -112,32 +158,45 @@ export const GameSL2 = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [setTimeElapsed, rodadaGeral])
+  }, [setTimeElapsed])
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
-    <GameSL2Container>
+    <Container>
       <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
+      <TitleLesson title="Memory Game." />
 
-      <GameSL2Main>
-        <h2>Memory Game</h2>
+      <Main>
+        <Grid style={{
+          gridTemplateColumns: cards.length <= 12 ? "repeat(3, auto)" : "repeat(4, auto)",
+          gap: cards.length <= 12 ? "1.125rem" : "0.75rem",
+        }}>
+          {cards.map((card, index) => {
+            return (
+              <Card key={index} onClick={() => handleShowCard(index)}>
+                {card.permanentShown === false && card.shown === false &&
+                  <Icon src={LogoImg} alt="" opacity={0.3} />
+                }
 
-        <GridArea>
-          <Grid style={{
-            gridTemplateColumns: gridItems.length <= 12 ? "repeat(3, 1fr)" : "repeat(4, 1fr)",
-            gap: gridItems.length <= 12 ? "1.5rem" : "0.625rem"
-          }}>
-            {gridItems.map((gridItem, index) => {
-              return (
-                <GridItem
-                  key={index}
-                  gItem={gridItem}
-                  onItemClick={() => handleItemClick(index)}
-                />
-              )
-            })}
-          </Grid>
-        </GridArea>
-      </GameSL2Main>
-    </GameSL2Container>
+                {(card.permanentShown || card.shown) && card.item !== null &&
+                  <>
+                    {card.item.name ?
+                      <p>{card.item.name}</p>
+                      :
+                      <img src={`${URL_FISKPRO}images/essentials1/lesson2/${card.item.img}.png`} alt="" />
+                    }
+                  </>
+                }
+              </Card>
+            )
+          })}
+        </Grid>
+      </Main>
+    </Container>
   )
 }

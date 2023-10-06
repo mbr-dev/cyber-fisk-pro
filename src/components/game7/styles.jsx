@@ -13,6 +13,11 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-around;
+  margin-top: 3rem;
+
+  @media(max-width: 320px) {
+    margin-top: 2rem;
+  }
 `;
 
 export const ButtonRow = styled.div`
@@ -20,19 +25,25 @@ export const ButtonRow = styled.div`
   flex-direction: column;
   gap: 2rem;
 
+  @media(max-width: 320px) {
+    gap: 1.5rem;
+  }
+
   button:disabled {
     cursor: not-allowed;
     opacity: 0.5;
   }
 `;
 
-const Button = styled.button`
+export const ButtonAudio = styled.button`
   all: unset;
+  width: 8rem;
   height: 2.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 0.5rem;
+  border: 2px solid transparent;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
@@ -40,23 +51,21 @@ const Button = styled.button`
   &:hover {
     scale: 1.05;
   }
-`;
-
-export const ButtonAudio = styled(Button)`
-  width: 8rem;
 
   img {
     width: 40%;
   }
-`;
 
-export const ButtonAnswer = styled(Button)`
-  width: 9.5rem;
-  text-align: center;
+  .btn2 {
+    width: 18%;
+  }
 
-  p {
-    word-wrap: break-word;
-    font-weight: bold;
-    font-size: 1rem;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
+  @media(max-width: 320px) {
+    width: 7rem;
   }
 `;
