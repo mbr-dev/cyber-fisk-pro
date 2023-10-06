@@ -1,21 +1,29 @@
 import styled from "styled-components";
 
-export const AreaButtonBottomContainer = styled.div`
-  width: 18.75rem;
+export const Container = styled.footer`
+  width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0.5rem;
-  padding-bottom: 1rem;
+  padding-bottom: 0.5rem;
 
-  @media(min-width: 600px) {
-    width: 38rem;
+  @media(max-width: 320px) {
+    margin-top: 0.5rem;
   }
 `;
 
 export const LineSeparator = styled.div`
-  width: 100%;
+  width: 20rem;
   height: 1.5px;
-  background-color: ${props => props.theme["gray-200"]};
   margin-bottom: 1rem;
+  background-color: ${props => props.theme["gray-200"]};
+
+  @media(max-width: 376px) {
+    width: 18.75rem;
+  }
+
+  @media(max-width: 320px) {
+    width: 17.5rem;
+    margin-bottom: 0.5rem;
+  }
 `;

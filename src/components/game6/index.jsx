@@ -3,7 +3,7 @@ import { useState, useContext, useEffect } from "react";
 import Button from "@mui/material/Button";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubtitleLessonAudioImg } from "../subtitleLessonAudioImg";
+import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T2_Dificil } from "../../utils/lesson1_Task2";
@@ -13,10 +13,12 @@ import { URL_HMLG } from "../../config/infos";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Game6Container, Game6Content } from "./style";
 
-export const Game6 = (props) => {
+export const Game6 = () => {
   const [idTipo, setIdTipo] = useState([0, 1, 2, 3, 4, 5]);
   const [idClick, setIdClick] = useState([0, 0, 0, 0, 0, 0]);
-  const { playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM } = useContext(LessonContext);
+  const { playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, timeElapsed, setTimeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
+
   const [rodada, setRodada] = useState(0);
   const [sortNum, setSortNum] = useState([]);
   const [respostas, setRespostas] = useState([]);
@@ -158,12 +160,27 @@ export const Game6 = (props) => {
     loadLesson();
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
+
   return (
     <Game6Container>
       <HeaderLesson numStart="Task 6" numEnd="Task 7" />
 
       <TitleLesson title="Choose the correct alternative" />
-      <SubtitleLessonAudioImg audio={`${URL_HMLG}${sound}`} />
+      <SubTitleLessonAudioImg audio={`${URL_HMLG}${sound}`} />
 
       <Game6Content>
         {respostas.map((resposta, index) => {

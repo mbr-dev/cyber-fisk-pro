@@ -2,19 +2,21 @@ import { useState, useContext, useEffect } from "react";
 
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubtitleSuperLesson } from "../subtitleSuperLesson";
+import { SubTitleSuperLesson } from "../SubTitleSuperLesson";
 
 import { LessonContext } from "../../context/lesson";
 
 import { GameSL1Content, GameSL1Container, BoxBtn, BoxBtnClear, ButtonLetter, ButtonClear } from "./style";
 
-export const GameSL1 = (props) => {
+export const GameSL1 = () => {
   const respostas = ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"];
   const letras = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "M", "N", "P", "R", "S", "T", "Z"];
   const tempo = 30;
 
+  const { superTask, setNewsuperTask, setNewContainer, setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
+
   const [numClick, setNumClick] = useState(0);
-  const { superTask, setNewsuperTask, setNewContainer } = useContext(LessonContext);
   let [tempoRestante, setTempoRestante] = useState(tempo);
   const [pauseTime, setPauseTime] = useState(false);
   const [addTime, setAddTime] = useState(false);
@@ -110,12 +112,24 @@ export const GameSL1 = (props) => {
   }, []);
   //startTimer();
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed])
+
   return (
     <GameSL1Container>
-      <HeaderLesson icon="super" numStart="Super task" numEnd="Task 3" />
+      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
 
       <TitleLesson title="How many nationalities can you write with these letters?" />
-      <SubtitleSuperLesson palavra={palavraRodada} />
+      <SubTitleSuperLesson palavra={palavraRodada} />
 
       <GameSL1Content>
         {/* <div className='boxTimer'>

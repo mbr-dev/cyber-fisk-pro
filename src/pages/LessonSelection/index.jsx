@@ -60,7 +60,7 @@ export const LessonSelection = () => {
         </ButtonAreaBottom>
       </LessonSelectionContent>
 
-      <AreaButtonBottom />
+      <AreaButtonBottom title="Home" />
     </LessonSelectionContainer>
   )
 }

@@ -15,6 +15,7 @@ function LessonProvider({children}){
   const [nivel, setNivel] = useState(0);
   const [rodadaGeral, setRodadaGeral] = useState(0);
   const [playAudio, setPlayAudio] = useState(false);
+  const [timeElapsed, setTimeElapsed] = useState(0);
 
   const newStatusPlay = (status) => {
     setPlayAudio(status);
@@ -42,6 +43,7 @@ function LessonProvider({children}){
   const setNewSelLesson = (num) => {
     setNumSelLesson(num);
   }
+  
   const setNewTask = (num) => {
     setNumTask(num);
   }
@@ -65,26 +67,28 @@ function LessonProvider({children}){
   return (
     <LessonContext.Provider value={{
       numLesson,
-      setNewLesson,
-      setNewsuperTask,
       superTask,
+      pontosD,
       lessons,
+      pontosF,
+      container,
+      nivel,
+      numSelLesson,
+      playAudio,
+      numTask,
+      pontosM,
+      rodadaGeral,
+      timeElapsed,
+      setTimeElapsed,
+      setNewsuperTask,
       setStatusLessons,
       setNewContainer,
-      container,
-      setNewSelLesson,
-      numSelLesson,
-      setNewTask,
-      numTask,
-      pontosD,
-      pontosF,
-      pontosM,
       setNewPontos,
-      nivel,
       setNewNivel,
-      rodadaGeral,
+      setNewLesson,
+      setNewTask,
+      setNewSelLesson,
       setNewRodada,
-      playAudio,
       newStatusPlay
     }}>
       {children}

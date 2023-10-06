@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SubtitleLessonAudioImgContent = styled.div`
+export const Container = styled.div`
   width: 100vw;
   display: flex;
   align-items: center;
@@ -18,23 +18,4 @@ export const SubtitleLessonAudioImgContent = styled.div`
       width: 40%;
     }
   }
-
-  /* @media only screen and (max-width: 600px){
-    .img {
-      width: 50%;
-    }
-    .img2 {
-      width: 50%;
-    }
-  }
-
-  @media only screen and (max-width: 1024px){
-    .img {
-      width: 50%;
-    }
-
-    .img2 {
-      width: 50%;
-    }
-  } */
 `

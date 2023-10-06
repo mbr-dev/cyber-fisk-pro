@@ -1,21 +1,20 @@
 import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button"
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLesson } from "../subtitleLesson";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLesson } from "../SubTitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Medio } from "../../utils/lesson1_Task1";
 import { TrocaAtividade } from "../../utils/regras";
 
 import { Game2Container, Game2Content } from "./styles";
-import { Loading } from "../Loading";
 
-export const Game2 = (props) => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
-
-  console.log(rodadaGeral)
+export const Game2 = () => {
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idClick, setIdClick] = useState([0,1,2]);
   const [rodada, setRodada] = useState(0);
@@ -100,13 +99,13 @@ export const Game2 = (props) => {
     if (regra === "Continua") {
       setTimeout(() =>{
           newRodada(tempR);
-      },500);
+      }, 500);
     } else if (regra === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         alert('GAME OVER!!');
         setNewContainer(1);
-      },500);
+      }, 500);
     } else {
       //troca de nivel
       setTimeout(() =>{
@@ -118,6 +117,21 @@ export const Game2 = (props) => {
   useEffect(() => { 
     loadLesson();
   }, [])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
     
   return (
     <Game2Container>
@@ -128,7 +142,7 @@ export const Game2 = (props) => {
       <HeaderLesson numStart="Task 2" numEnd="Task 3" />
 
       <TitleLesson title="Choose the correct alternative"/>
-      <SubtitleLesson title={pergunta}/>
+      <SubTitleLesson title={pergunta}/>
 
       <Game2Content>
         {respostas.map((resposta, index) => {

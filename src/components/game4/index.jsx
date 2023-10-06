@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button";
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLessonAudio } from "../subtitleLessonAudio";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { LessonContext } from "../../context/lesson";
@@ -14,8 +14,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Game4Container, Game4Content } from "./styles";
 import { Loading } from "../Loading";
 
-export const Game4 = (props) => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
+export const Game4 = () => {
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idTipo3, setIdTipo3] = useState([0,1,2,3,4,5]);
   const [idTipo4, setIdTipo4] = useState([0,1,2,3,4]);
@@ -84,13 +85,8 @@ export const Game4 = (props) => {
   }
 
   const handleClick = (id) => {
-    if(bloqueia) {
-      return;
-    }
-    
-    if(playAudio){
-      return;
-    }
+    if(bloqueia) return;
+    if(playAudio) return;
 
     let clicks = contClick;
     let arr = idClick;
@@ -187,6 +183,21 @@ export const Game4 = (props) => {
     loadLesson();
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
+
   return(
     <Game4Container>
       {tipo !== null &&
@@ -199,7 +210,7 @@ export const Game4 = (props) => {
 
           <TitleLesson title='Choose the correct alternative'/>
           <div className="buttonOfAudio">
-            <SubtitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
+            <SubTitleLessonAudio audio={`${URL_HMLG}${sound}`}/>
           </div>
 
           <Game4Content>

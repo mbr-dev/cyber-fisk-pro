@@ -1,77 +1,57 @@
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
-import { ButtonRed } from "../../components/ButtonRed";
+import { useState, useEffect } from "react";
 
-import { ButtonLesson, SelectLessonContainer, SelectLessonHeader, SelectLessonMain, SelectLessonArea } from "./styles";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { Loading } from "../../components/Loading";
+
+import { api } from "../../lib/api"
+import { AppError } from "../../utils/AppError";
+
+import { ButtonLesson, SelectLessonContainer, SelectLessonMain, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
+  const [activities, setActivities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
+
+  const fetchLessons = async() => {
+    try {
+      setIsLoading(true);
+      const response = await api.get('/dados')
+      setActivities(response.data);
+    } catch(error) {
+      const isAppError = error instanceof AppError;
+      const titleError = isAppError ? error.message : "Servidor fora do ar tente novamente mais tarde";
+      alert(titleError);
+    } finally {
+      setIsLoading(false);
+    }
+
+  }
+
+  useEffect(() => {
+    fetchLessons();
+  }, [])
 
   return (
     <SelectLessonContainer>
-      <SelectLessonHeader>
-        <ButtonMenuHeader />
-        <p>Essentials 1</p>
-        <ButtonCloseHeader />
-      </SelectLessonHeader>
+      {isLoading && <Loading />}
+
+      <TopMenuHeader title="Essentials" />
 
       <SelectLessonMain>
         <SelectLessonArea>
-          <ButtonLesson>
-            <p>1</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>2</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>3</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>4</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>5</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>6</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>7</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>8</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>9</p>
-            <span>Activity</span>
-          </ButtonLesson>
-
-          <ButtonLesson>
-            <p>10</p>
-            <span>Activity</span>
-          </ButtonLesson>
+          {activities.map((activity) => {
+            return (
+              <ButtonLesson key={activity.Id}>
+                <p>{activity.Numero}</p>
+                <span>{activity.Label}</span>
+              </ButtonLesson>
+            )
+          })}
         </SelectLessonArea>
       </SelectLessonMain>
 
-      <AreaButtonBottom>
-        <ButtonRed title="Home" />
-      </AreaButtonBottom>
+      <AreaButtonBottom title="Home" />
     </SelectLessonContainer>
   )
 }

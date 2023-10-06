@@ -9,19 +9,25 @@ import { HeaderStepLessonStart } from "../HeaderStepLessonStart";
 
 import iconStart from "./images/iconStart.png";
 import iconFinish from "./images/iconFinish.png";
+import iconSuper from "./images/iconSuper.png";
+import iconTrophy from "./images/iconTrophy.png";
 
-import { HeaderLessonContainer, HeaderLessonContent, HeaderLessonIcon, BarStep } from "./styles";
+import { Container, Main, Icons, BarStep } from "./styles";
 
-export function HeaderLesson({ numStart, numEnd }) {
+export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
   const { rodadaGeral } = useContext(LessonContext);
 
   return(
-    <HeaderLessonContainer>
-      <HeaderLessonContent>
-        <HeaderLessonIcon>
-          <img src={iconStart} alt="iconStart" />
+    <Container>
+      <Main>
+        <Icons>
+          {superTaskStart ?
+            <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />
+            :
+            <img src={iconStart} alt="iconStart" />
+          }
           <p>{numStart}</p>
-        </HeaderLessonIcon>
+        </Icons>
 
         <BarStep>
           <HeaderStepLessonStart color={rodadaGeral > 0 ? defaultTheme["blue-100"] : defaultTheme["yellow-100"]} />
@@ -56,11 +62,16 @@ export function HeaderLesson({ numStart, numEnd }) {
           />
         </BarStep>
 
-        <HeaderLessonIcon>
-          <img src={iconFinish} alt="iconStart" />
-          <p>{numEnd}</p>
-        </HeaderLessonIcon>
-      </HeaderLessonContent>
-    </HeaderLessonContainer>
+        <Icons>
+          {superTaskEnd ?
+            <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} /> :
+            trophyEnd ? 
+            <img src={iconTrophy} alt="iconStart" style={{ marginTop: "0.25rem"}} /> :
+            <img src={iconFinish} alt="iconStart" />
+          }
+           <p style={{ marginRight: "5px" }}>{numEnd}</p>
+        </Icons>
+      </Main>
+    </Container>
   )
 }

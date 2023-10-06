@@ -2,7 +2,7 @@ import React from "react";
 
 import { SubtitleLessonContainer } from "./styles";
 
-export const SubtitleLesson = ({ title }) => {
+export const SubTitleLesson = ({ title }) => {
   return(
     <>
       <SubtitleLessonContainer>

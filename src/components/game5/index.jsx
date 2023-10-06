@@ -1,20 +1,20 @@
 import { useState, useContext, useEffect } from "react";
 
-import Button from "@mui/material/Button";
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLessonAudio } from "../subtitleLessonAudio";
+import { TitleLesson } from "../TitleLesson";
+import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { L1_T2_Medio } from "../../utils/lesson1_Task2";
 import { URL_HMLG } from "../../config/infos";
 
-import { Game5Content, Game5Container } from "./styles";
-import { HeaderLesson } from "../HeaderLesson";
-import { Loading } from "../Loading";
+import { Container, Main, Button } from "./styles";
 
-export const Game5 = (props) => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+export const Game5 = () => {
+  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, timeElapsed, setTimeElapsed } = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [rodada, setRodada] = useState(0);
@@ -66,13 +66,9 @@ export const Game5 = (props) => {
   }
 
   const handleClick = (id) => {
-    if (bloqueia) {
-      return;
-    }
+    if (bloqueia) return;
 
-    if (playAudio) {
-      return;
-    }
+    if (playAudio) return;
 
     setBloqueia(true);
     let tempA = acertos;
@@ -118,28 +114,42 @@ export const Game5 = (props) => {
     loadLesson();
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
+
   return (
-    <Game5Container>
+    <Container>
       {isloading &&
         <Loading />
       }
       <HeaderLesson numStart="Task5" numEnd="Task 6" />
 
       <TitleLesson title='Choose the correct alternative' />
-      <SubtitleLessonAudio audio={`${URL_HMLG}${sound}`} />
+      <SubTitleLessonAudio audio={`${URL_HMLG}${sound}`} />
       
-      <Game5Content>
+      <Main>
         {respostas.map((resposta, index) => {
           return (
-            <Button key={index} 
-              className="btn"
+            <Button key={index}
               onClick={() => handleClick(index)}
             >
               <p>{resposta}</p>
             </Button>
           )
         })}
-      </Game5Content>
-    </Game5Container>
+      </Main>
+    </Container>
   )
 }

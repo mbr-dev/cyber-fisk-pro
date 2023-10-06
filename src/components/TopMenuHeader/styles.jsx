@@ -1,31 +1,32 @@
 import styled from "styled-components";
 
-export const TopMenuHeaderContainer = styled.header`
+export const Container = styled.header`
   width: 100vw;
-  height: 10rem;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  gap: 0.25rem;
+  padding: 1rem;
+  padding-bottom: 0.5rem;
   background-color: ${props => props.theme["gray-200"]};
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
+  
+  @media(max-width: 320px) {
+    padding: 0.5rem;
+    padding-bottom: 0;
+  }
 `;
 
 export const TopHeader = styled.div`
-  padding: 1rem 1.125rem 0 1.125rem;
-  height: 2rem;
+  width: 100%;
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: space-between;
 
   p {
     font-size: 1.5rem;
     font-weight: 500;
-  }
-
-  @media(min-width: 600px) {
-    p {
-      font-size: 2rem;
-    }
   }
 `;
 
@@ -33,24 +34,18 @@ export const BottomHeader = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding-top: 1.5rem;
+  align-items: flex-start;
+  gap: 1.5rem;
   
   .logoFisk {
-    width: 160px;
+    width: 170px;
   }
-
+  
   @media(max-width: 320px) {
-    align-items: flex-start;
-    
-    .logoFisk {
-      width: 132px;
-    }
-  }
+    gap: 1rem;
 
-  @media(min-width: 600px) {
     .logoFisk {
-      width: 180px;
+      width: 130px;
     }
   }
 `;

@@ -3,11 +3,12 @@ import styled from "styled-components";
 export const ButtonContainer = styled.button`
   all: unset;
   width: 15.875rem;
-  height: 3rem;
+  height: 2.5rem;
   display: flex;
   margin-top: 0.5rem;
   align-items: center;
   justify-content: center;
+  gap: 0.5rem;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border: 3px solid ${props => props.theme["red-300"]};
@@ -23,5 +24,15 @@ export const ButtonContainer = styled.button`
 
   &:hover {
     opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 11rem;
+    height: 2rem;
+    margin-top: 0;
+
+    p {
+      font-size: 1rem;
+    }
   }
 `;

@@ -2,8 +2,8 @@ import { useState, useContext, useEffect } from "react";
 
 import Button from "@mui/material/Button";
 
-import { TitleLesson } from "../titleLesson";
-import { SubtitleLesson } from "../subtitleLesson";
+import { TitleLesson } from "../TitleLesson";
+import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { L1_T1_Dificil } from "../../utils/lesson1_Task1";
@@ -13,8 +13,9 @@ import { Game3Container, Game3Content } from "./style";
 import { HeaderLesson } from "../HeaderLesson";
 import { Loading } from "../Loading";
 
-export const Game3 = (props) => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
+export const Game3 = () => {
+  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, timeElapsed, setTimeElapsed} = useContext(LessonContext);
+  console.log("GAME TIME: ", timeElapsed);
 
   const [idClick, setIdClick] = useState([0,1,2]);
   const [rodada, setRodada] = useState(0);
@@ -143,6 +144,21 @@ export const Game3 = (props) => {
     loadLesson();
   }, [])
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      if (rodadaGeral < 10) {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }
+      
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed, rodadaGeral])
+
   return(
     <Game3Container>
       {isloading &&
@@ -152,12 +168,16 @@ export const Game3 = (props) => {
       <HeaderLesson numStart="Task 3" numEnd="Task 4" />
 
       <TitleLesson title="Choose the correct alternative"/>
-      <SubtitleLesson title={pergunta}/>
+      <SubTitleLesson title={pergunta}/>
 
       <Game3Content>
         {respostas.map((respostas, index) => {
           return(
-            <Button className="btn" onClick={() => {handleClick(index)}}>
+            <Button 
+              key={index} 
+              className="btn" 
+              onClick={() => {handleClick(index)}}
+            >
               <p>{respostas}</p>
             </Button>
           )

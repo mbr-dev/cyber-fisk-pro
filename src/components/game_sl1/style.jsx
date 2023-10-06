@@ -79,6 +79,10 @@ export const BoxBtn = styled.div`
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+
+  @media(min-width: 600px) {
+    gap: 2rem;
+  }
 `;
 
 export const ButtonLetter = styled.button`
@@ -106,6 +110,11 @@ export const ButtonLetter = styled.button`
     width: 3rem;
     height: 2.5rem;
   }
+
+  @media(min-width: 600px) {
+    width: 5rem;
+    height: 6rem;
+  }
 `;
 
 export const ButtonClear = styled.button`
@@ -122,7 +131,6 @@ export const ButtonClear = styled.button`
   background-color: ${props => props.theme["red-300"]};
 
   &:hover { 
-    transform: scale(1.05);
     background-color: ${props => props.theme["red-200"]} ;
   }
 
@@ -134,6 +142,15 @@ export const ButtonClear = styled.button`
   @media(max-width: 320px) {
     width: 12rem;
     height: 3rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 16rem;
+    height: 4rem;
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 
