@@ -20,7 +20,7 @@ export const Game1 = () => {
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
@@ -35,7 +35,7 @@ export const Game1 = () => {
     try {
       setIsLoading(true);
 
-      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const response  = await api.get("/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
       const dataLength = res.dados[0].dados_conteudo.length;

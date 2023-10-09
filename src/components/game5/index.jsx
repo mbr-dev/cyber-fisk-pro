@@ -32,7 +32,7 @@ export const Game5 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true)
-      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=2");
+      const response  = await api.get("/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=2");
       const res = response.data;
       setData(res.dados[1].dados_conteudo);
       const dataLength = res.dados[0].dados_conteudo.length;

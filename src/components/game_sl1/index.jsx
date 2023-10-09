@@ -1,9 +1,10 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 
+import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 
-import { L1_SUPER_LESSON } from "../../utils/lesson1_Task";
+import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -20,12 +21,24 @@ export const GameSL1 = () => {
   const [answered, setAnswered] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
   const [wordLength, setWordLength] = useState(6);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    let tempLetters = L1_SUPER_LESSON[0].letras;
-    setLetters(tempLetters);
-    let tempAnswers = L1_SUPER_LESSON[0].resposta;
-    setAnswers(tempAnswers);
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const res = response.data
+
+      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+      
+      let tempLetters = items.letras;
+      setLetters(tempLetters);
+      let tempAnswers = items.resposta;
+      setAnswers(tempAnswers);
+    } catch(error) {
+      console.log(error);
+    }
+    setIsLoading(false);
   }, [setLetters, setAnswers]);
 
   const handleClearField = () => {
@@ -130,6 +143,12 @@ export const GameSL1 = () => {
       clearInterval(timer)
     }
   }, [setTimeElapsed]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>

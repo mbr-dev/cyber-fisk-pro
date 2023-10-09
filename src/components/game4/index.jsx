@@ -34,11 +34,10 @@ export const Game4 = () => {
 
   const loadLesson = useCallback(async() => {
     try {
-      //setIsLoading(true);
+      setIsLoading(true);
       
-      const response  = await api.get(`/Retorno?id_livro=53&num_lesson=1&num_task=2`);
+      const response  = await api.get(`/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=2`);
       const res = response.data;
-      console.log("res: ", res);
       setData(res.dados[0].dados_conteudo);
       const dataLength = res.dados[0].dados_conteudo.length;
       
@@ -50,11 +49,9 @@ export const Game4 = () => {
       setRandomNumber(tempRandom);
 
       let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
-      console.log("items: ", items.tipo);
-      console.log("tempanswer: ", items.respostas);
       setSounds(items.pergunta);
       setType(items.tipo);
-
+      
       let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
       tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
       if(items.tipo === 3){
@@ -64,24 +61,25 @@ export const Game4 = () => {
       }
       
       let tempAnswers = [];
-      // for (let a = 0; a < tempSortNum.length; a ++) {
-      //   tempAnswers.push(items.respostas[tempSortNum[a]]);
-      // }
+      for (let a = 0; a < tempSortNum.length; a ++) {
+        tempAnswers.push(items.resposta[tempSortNum[a]]);
+      }
       setAnswers(tempAnswers);
       setBlockButton(false);
-     // setIsLoading(false)
+      setIsLoading(false)
     } catch(error) {
       console.log(error);
     }
   }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setSounds(data[randomNumber[number]].pergunta);
-    setType(data[randomNumber[number]].tipo);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSounds(items.pergunta);
+    setType(items.tipo);
     
-    let tempSortNum = data[randomNumber[number]].tipo === 3 ? idTipo3 : idTipo4;
+    let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    if (data[randomNumber[number]].tipo === 3) {
+    if (items.tipo === 3) {
       setIdTipo3(tempSortNum);
     } else {
       setIdTipo4(tempSortNum);
@@ -89,7 +87,7 @@ export const Game4 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < tempSortNum.length; a ++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[tempSortNum[a]]);
+      tempAnswers.push(items.resposta[tempSortNum[a]]);
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
@@ -111,9 +109,9 @@ export const Game4 = () => {
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
 
-    const answer = answers[index].status;
+    const answer = answers[index];
 
-    if(answer === 1) {
+    if(answer.status === 1) {
       if (clicks < 3) {
         arr[index] = 1;
         setIdClick(arr);

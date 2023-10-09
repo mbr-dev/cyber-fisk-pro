@@ -12,7 +12,15 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
+  gap: 1rem;
+
+  @media(max-width: 360px) {
+    width: 20rem;
+  }
+
+  @media(max-width: 320px) {
+    width: 19rem;
+  }
 `;
 
 export const Answers = styled.div`
@@ -20,15 +28,38 @@ export const Answers = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 0.75rem;
-`;
+  
+  @media(max-width: 376px) {
+    gap: 0.5rem;
+  }
+  
+  @media(max-width: 360px) {
+    gap: 0.25rem;
+  }
+  `;
 
 export const Div = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
   gap: 1rem;
+
+  @media(max-width: 360px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const DivQ = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media(max-width: 320px) {
+    gap: 0.25rem;
+  }
+`;
+
+export const DivQuestion = styled.div`
   width: 11rem;
   height: 3rem;
   display: flex;
@@ -36,19 +67,54 @@ export const DivQ = styled.div`
   justify-content: center;
   border: 2px solid ${props => props.theme["gray-700"]};
   border-radius: 6px;
+  align-items: center;
+  padding-inline: 0.5rem;
+  text-align: center;
+
+  @media(max-width: 360px) {
+    width: 10rem;
+    height: 2.75rem;
+
+    span {
+      font-size: 0.875rem;
+    }
+  }
+`;
+
+export const DivRight = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media(max-width: 320px) {
+    gap: 0.25rem;
+  }
 `;
 
 export const DivA = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+
+  @media(max-width: 360px) {
+    gap: 0.25rem;
+  }
 `;
 
 export const Answer = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 3rem;
   height: 3rem;
   border-radius: 6px;
   background-color: ${props => props.theme["gray-700"]};
+  color: ${props => props.theme.white};
+
+  @media(max-width: 360px) {
+    width: 2.75rem;
+    height: 2.75rem;
+  }
 `;
 
 export const WordSelected = styled.div`
@@ -56,12 +122,25 @@ export const WordSelected = styled.div`
   height: 2.5rem;
   display: flex;
   justify-content: space-between;
-  border-radius: 6px;
+  overflow: hidden;
   border: 2px solid ${props => props.theme["gray-700"]};
 `;
 
-export const WordS = styled.div`
-  flex: 1;
+export const Words = styled.div`
+  width: 19rem;
+  display: flex;
+  align-items: center;
+  padding-left: 0.5rem;
+  gap: 0.5rem;
+  background-color: lightblue;
+
+  @media(max-width: 360px) {
+    width: 17rem;
+  }
+
+  @media(max-width: 320px) {
+    width: 16rem;
+  }
 `;
 
 export const Delete = styled.div`
@@ -83,11 +162,26 @@ export const Delete = styled.div`
   }
 `;
 
-export const Words = styled.div`
-  width: 18rem;
+export const WordsArea = styled.div`
+  width: 24rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 0.5rem;
   flex-wrap: wrap;
+
+  @media(max-width: 360px) {
+    width: 21rem;
+  }
+
+  @media(max-width: 320px) {
+    width: 19rem;
+  }
+`;
+
+export const ButtonArea = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 `;
