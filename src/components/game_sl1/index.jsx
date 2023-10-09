@@ -27,7 +27,7 @@ export const GameSL1 = () => {
     try {
       setIsLoading(true);
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
-      const res = response.data
+      const res = response.data;
 
       let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
       

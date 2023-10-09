@@ -1,10 +1,11 @@
 import { useState, useCallback, useEffect, useContext } from "react";
 
-import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 
+import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
-import { L4_SUPER_LESSON } from "../../utils/lesson4_Task";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme"; 
@@ -16,60 +17,73 @@ export const GameSL4 = () => {
   const [optionColor, setOptionColor] = useState([]);
   const [images, setImages] = useState([]);
   const [lettersQ, setLettersQ] = useState([]);
+  const [data, setData] = useState([]);
   const [rightLetter, setRightLetter] = useState([]);
   const [answer, setAnswer] = useState([]);
   const [divAnswer, setDivAnswer] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
-  const [points, setPoints] = useState(0);
+  const [points, setPoints] = useState(5);
   const [blockButton, setBlockButton] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    let totalOfQuestions = L4_SUPER_LESSON.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=4&num_task=1");
+      const res = response.data;
+      setData(res.dados[0].dados_conteudo);
+      let totalOfQuestions = res.dados[0].dados_conteudo.length;
 
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestions.push(a);
+      let tempRandom = [];
+      for (let a = 0; a < totalOfQuestions; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+
+      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+
+      let letterQuestion = items.letras;
+      letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
+      setLettersQ(letterQuestion);
+
+      let tempImages = [];
+      let imagesL = items.images.length;
+      for (let a = 0; a < imagesL; a++) {
+        tempImages.push(items.images[a]);
+      }
+      setImages(tempImages);
+
+      let tempAnswer = items.resposta;
+      let answerArray = tempAnswer.split("");
+      setAnswer(answerArray);
+      let emptyArray = Array(answerArray.length).fill("");
+      setDivAnswer(emptyArray);
+
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-
-    let letterQuestion = L4_SUPER_LESSON[tempQuestions[round]].letras;
-    letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
-    setLettersQ(letterQuestion);
-
-    let tempImages = [];
-    let imagesL = L4_SUPER_LESSON[round].images.length;
-    for (let a = 0; a < imagesL; a++) {
-      tempImages.push(L4_SUPER_LESSON[tempQuestions[round]].images[a]);
-    }
-    setImages(tempImages);
-
-    let tempAnswer = L4_SUPER_LESSON[tempQuestions[round]].resposta;
-    let answerArray = tempAnswer.split("");
-    setAnswer(answerArray);
-    let emptyArray = Array(answerArray.length).fill("");
-    setDivAnswer(emptyArray);
-
-    setBlockButton(false);
   }, [setRandomNumber, round, setLettersQ, setImages, setDivAnswer, setBlockButton]);
 
   const newRound = (number) => {
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
     setIsCompleted(false);
-    let letterQuestion = L4_SUPER_LESSON[randomNumber[number]].letras;
+    let letterQuestion = items.letras;
     letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
     setLettersQ(letterQuestion);
 
     let tempImages = [];
-    let imagesL = L4_SUPER_LESSON[randomNumber[number]].images.length;
+    let imagesL = items.images.length;
     for (let a = 0; a < imagesL; a++) {
-      tempImages.push(L4_SUPER_LESSON[randomNumber[number]].images[a]);
+      tempImages.push(items.images[a]);
     }
     setImages(tempImages);
 
-    let tempAnswer = L4_SUPER_LESSON[randomNumber[number]].resposta;
+    let tempAnswer = items.resposta;
     let answerArray = tempAnswer.split("");
     setAnswer(answerArray);
     let emptyArray = Array(answerArray.length).fill("");
@@ -87,9 +101,8 @@ export const GameSL4 = () => {
 
     if (!answer.includes(clickedLetter)) {
       let tempE = points;
-      tempE++;
+      tempE--;
       setPoints(tempE);
-      console.log("tempE:", tempE);
       setOptionColor(state => [...state, index]);
     } else if (!rightLetter.includes(clickedLetter)) {
       setRightLetter(state => [...state, clickedLetter]);
@@ -120,7 +133,7 @@ export const GameSL4 = () => {
   }, []);
 
   useEffect(() => {
-    if (points >= 5) {
+    if (points === 0) {
       alert("game over");
     }
   }, [points])
@@ -132,6 +145,12 @@ export const GameSL4 = () => {
       }, 2000);
     }
   }, [round, newRound, isCompleted]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>

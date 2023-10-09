@@ -26,52 +26,64 @@ export const GameSL2 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    const dataLength = level === 0 ? 6 : 8;
+    try {
+      //setIsLoading(true);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
+      const res = response.data;
+      console.log("res: ", res);
+      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+      console.log("items: ", items);
 
-    const nameFilter = L2_SUPER_LESSON.filter(item => item.name);
+      const dataLength = level === 0 ? 6 : 8;
+
+      const nameFilter = L2_SUPER_LESSON.filter(item => item.name);
     
-    let tempRandom = [];
-    for (let a = 0; a < nameFilter.length; a++) {
-      tempRandom.push(a);
-    }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      let tempRandom = [];
+      for (let a = 0; a < nameFilter.length; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
 
-    let nameRandom = []
-    for (let a = 0; a < dataLength; a++) {
-      nameRandom.push(nameFilter[tempRandom[a]]);
-    }
+      let nameRandom = []
+      for (let a = 0; a < dataLength; a++) {
+        nameRandom.push(nameFilter[tempRandom[a]]);
+      }
 
-    let imgFilter = [];
-    nameRandom.forEach(nameItem => {
-      const status = nameItem.status;
-      const images = L2_SUPER_LESSON.filter(item => item.status === status && item.img);
-      imgFilter = imgFilter.concat(images);
-    });
-
-    let tempGridFake = nameRandom.concat(imgFilter);
-    tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-    
-    let tempGrid = [];
-    for (let a = 0; a < (dataLength * 2 ); a++) {
-      tempGrid.push({
-        item: null,
-        shown: false,
-        permanentShown: false
+      let imgFilter = [];
+      nameRandom.forEach(nameItem => {
+        const status = nameItem.status;
+        const images = L2_SUPER_LESSON.filter(item => item.status === status && item.img);
+        imgFilter = imgFilter.concat(images);
       });
-    }
 
-    let tempRandomGrid = [];
-    for (let a = 0; a < (dataLength * 2); a++) {
-      tempRandomGrid.push(a);
+      let tempGridFake = nameRandom.concat(imgFilter);
+      tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
+      
+      let tempGrid = [];
+      for (let a = 0; a < (dataLength * 2 ); a++) {
+        tempGrid.push({
+          item: null,
+          shown: false,
+          permanentShown: false
+        });
+      }
+
+      let tempRandomGrid = [];
+      for (let a = 0; a < (dataLength * 2); a++) {
+        tempRandomGrid.push(a);
+      }
+      tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
+      
+      for (let a = 0; a < (dataLength * 2); a++) {
+        tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
+      }
+      
+      setCards(tempGrid);
+      setPlaying(true);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-    
-    for (let a = 0; a < (dataLength * 2); a++) {
-      tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
-    }
-    
-    setCards(tempGrid);
-    setPlaying(true);
   }, [setPlaying, setCards]);
 
   const handleShowCard = (index) => {
@@ -150,9 +162,7 @@ export const GameSL2 = () => {
 
   useEffect(() => {
     const timer = setInterval(() => {
-      if (rodadaGeral < 10) {
-        setTimeElapsed(state => state + 1)
-      }
+      setTimeElapsed(state => state + 1)
     }, 1000);
 
     return () => {

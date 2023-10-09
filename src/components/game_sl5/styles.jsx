@@ -132,7 +132,6 @@ export const Words = styled.div`
   align-items: center;
   padding-left: 0.5rem;
   gap: 0.5rem;
-  background-color: lightblue;
 
   @media(max-width: 360px) {
     width: 17rem;
