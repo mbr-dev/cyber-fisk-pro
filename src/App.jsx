@@ -11,13 +11,13 @@ import { GlobalStyled } from "./themes/globalTheme";
 export const App = () => {
   return (
     <ThemeProvider theme={defaultTheme}>
-      <CyberProvider>
-        <LessonProvider>
-          <BrowserRouter>
+      <BrowserRouter>
+        <CyberProvider>
+          <LessonProvider>
             <Router />
-          </BrowserRouter>
-        </LessonProvider>
-      </CyberProvider>
+          </LessonProvider>
+        </CyberProvider>
+      </BrowserRouter>
 
       <GlobalStyled />
     </ThemeProvider>

@@ -2,10 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
-  width: 15.875rem;
-  height: 2.5rem;
   display: flex;
-  margin-top: 0.5rem;
   align-items: center;
   justify-content: center;
   gap: 0.5rem;
@@ -24,6 +21,11 @@ export const Container = styled.button`
 
   &:hover {
     opacity: 0.9;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   @media(max-width: 320px) {

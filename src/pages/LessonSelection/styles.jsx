@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LessonSelectionContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,29 +8,22 @@ export const LessonSelectionContainer = styled.div`
   align-items: center;
 `;
 
-export const LessonSelectionContent = styled.main`
+export const Main = styled.main`
   flex: 1;
   width: 18rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-block: 1rem;
-
-  @media(max-width: 320px) {
-    margin-block: 0.5rem;
-    gap: 0.75rem;
-  }
+  gap: 2rem;
+  margin-top: 2rem;
 
   @media(max-width: 376px) {
-    margin-block: 0.625rem;
     gap: 1rem;
   }
 
-  @media(min-width: 600px) {
-    width: 38rem;
-    margin-block: 2rem;
+  @media(max-width: 320px) {
+    margin-top: 0.5rem;
+    gap: 0.75rem;
   }
 `;
 

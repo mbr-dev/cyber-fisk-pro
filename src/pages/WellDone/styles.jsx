@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const WellDoneContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -9,29 +9,28 @@ export const WellDoneContainer = styled.div`
   justify-content: space-between;
 `;
 
-export const WellDoneHeader = styled.header`
+export const Header = styled.header`
   width: 100%;
   display: flex;
   justify-content: flex-end;
   padding: 1rem 1rem 0 1rem;
 `;
 
-export const WellDoneMain = styled.main`
+export const Main = styled.main`
   flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  `;
+  gap: 1rem;
+`;
 
 export const AreaAvatar = styled.section`
   width: 100%;
-  height: 13rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 0.5rem;
   position: relative;
 
   h2 {
@@ -123,7 +122,6 @@ export const AreaInfo = styled.section`
   flex-direction: column;
   align-items: center;
   gap: 0.5rem;
-  padding-top: 0.5rem;
   text-align: center;
 
   p {
@@ -145,6 +143,6 @@ export const AreaInfo = styled.section`
 
 export const AreaInfoBottom = styled.div`
   border: 1px solid ${props => props.theme.black};
-  padding: 1rem 2.5rem;
+  padding: 0.5rem 2rem;
   border-radius: 8px;
 `;

@@ -1,8 +1,9 @@
 import { useContext } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
+import { ButtonBg } from "../../components/ButtonBg";
+import { LineSeparator } from "../../components/LineSeparator";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
@@ -16,7 +17,7 @@ import { Container, Main, Form, Input, AreaInput, Select } from "./styles";
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
-  function handleSelectLanguage(event) {
+  const handleSelectLanguage = (event) => {
     event.preventDefault();
     chooseLanguage(event)
   }
@@ -82,10 +83,10 @@ export const Profile = () => {
             <Mail size={16} strokeWidth={2.5} />
             <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
           </AreaInput>
+          <LineSeparator w="100%" />
         </Form>
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
       </Main>
-
-      <AreaButtonBottom title="Home" />
     </Container>
   )
 }

@@ -1,8 +1,10 @@
+import { useState } from "react";
 import { useContext } from "react";
 import { User, Lock } from "lucide-react";
 
 import { Footer } from "../../components/Footer";
-import { ButtonRed } from "../../components/ButtonRed";
+import { ButtonBg } from "../../components/ButtonBg";
+import { LineSeparator } from "../../components/LineSeparator";
 
 import { CyberContext } from "../../context/cyber";
 import { translateLogin } from "../../utils/Translate";
@@ -13,14 +15,23 @@ import Spain from "../../assets/Spain.svg";
 import Brazil from "../../assets/Brazil.svg";
 
 import { Container, Main, Header, Select, Form, AreaInput, Input } from "./styles";
-import { LineSeparator } from "../../components/LineSeparator";
 
 export const Login = () => {
-  const { selectLanguage, chooseLanguage } = useContext(CyberContext);
+  const { selectLanguage, chooseLanguage, signIn } = useContext(CyberContext);
 
-  function handleSelectLanguage(event) {
-    event.preventDefault();
+  const [raf, setRaf] = useState("");
+  const [userPassword, setUserPassword] = useState("");
+
+  const handleSelectLanguage = (event) => {
     chooseLanguage(event)
+  }
+
+  const handleSignIn = async() => {
+    try {
+      signIn(raf, userPassword);
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   return (
@@ -29,13 +40,15 @@ export const Login = () => {
         <img src={logoImg} alt="Logo do Fisk Pro" />
       </Header>
       <Main>
-        <Form id="myForm">
+        <Form id="myForm" onSubmit={handleSignIn}>
           <AreaInput>
           {selectLanguage === 0 ? <label>{translateLogin[0].name}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].name}:</label> : <label>{translateLogin[2].name}:</label>}
             <User size={16} strokeWidth={2.5} />
             <Input
               type="text"
               placeholder={selectLanguage === 0 ? translateLogin[0].plName : selectLanguage === 1 ? translateLogin[1].plName : translateLogin[2].plName}
+              value={raf}
+              onChange={(event) => setRaf(event.target.value)}
               required
             />
           </AreaInput>
@@ -45,6 +58,8 @@ export const Login = () => {
             <Input 
               type="password"
               placeholder={selectLanguage === 0 ? translateLogin[0].plPassword : selectLanguage === 1 ? translateLogin[1].plPassword : translateLogin[2].plPassword}
+              value={userPassword}
+              onChange={(event) => setUserPassword(event.target.value)}
               required
             />
           </AreaInput>
@@ -60,11 +75,13 @@ export const Login = () => {
           </AreaInput>
         </Form>
         <LineSeparator w="18rem" />
-          <ButtonRed
+          <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"
             greenBtn
             type="submit"
+            w="15.875rem"
+            h="2.5rem"
           />
       </Main>
       <Footer />

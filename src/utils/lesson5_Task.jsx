@@ -529,5 +529,21 @@ export const L5_T2_Dificil = [
 ]
 
 export const L5_SUPER_LESSON = [
-
+  {
+    pergunta: [
+      {label: "color of a fruit", status: 0},
+      {label: "children wear this on Halloween", status: 1},
+      {label: "people wear this at weddings", status: 2},
+      {label: "a celebration", status: 3},
+      {label: "a family member", status: 4}
+    ],
+    letras: ["BRO", "CHR", "COS", "IST", "IT", "MAS", "MES", "ORA", "SU", "THER", "TU"],
+    resposta: [
+      {label: "ORANGE", status: 0},
+      {label: "COSTUMES", status: 1},
+      {label: "SUIT", status: 2},
+      {label: "CHRISTMAS", status: 3},
+      {label: "BROTHER", status: 4},
+    ]
+  }
 ]

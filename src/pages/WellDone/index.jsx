@@ -1,25 +1,24 @@
 import Confetti from "react-confetti";
 
+import { ButtonBg } from "../../components/ButtonBg";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
 import DollarImg from "../../assets/Dollar.svg";
 import CoinsImg from "../../assets/Coins.svg";
 import ConfetesImg from "../../assets/Confetes.png";
 import MulherSvg from "./images/Mulher.svg";
 
-import { WellDoneContainer, WellDoneHeader, WellDoneMain, AreaAvatar, AreaInfo, AreaXp, LineSeparator, Avatar, AreaXpInfo, AvatarImg, AreaInfoBottom } from "./styles"
+import { Container, Header, Main, AreaAvatar, AreaInfo, AreaXp, LineSeparator, Avatar, AreaXpInfo, AvatarImg, AreaInfoBottom } from "./styles";
 
 export const WellDone = () => {
 
   return (
-    <WellDoneContainer>
-      <WellDoneHeader>
+    <Container>
+      <Header>
         <ButtonCloseHeader />
-      </WellDoneHeader>
+      </Header>
 
-      <WellDoneMain>
-
+      <Main>
         <Confetti 
           numberOfPieces={130}
           gravity={0.03}
@@ -61,9 +60,8 @@ export const WellDone = () => {
             <p>people in your level.</p>
           </AreaInfoBottom>
         </AreaInfo>
-      </WellDoneMain>
-
-      <AreaButtonBottom title="Home" />
-    </WellDoneContainer>
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
+      </Main>
+    </Container>
   )
 }

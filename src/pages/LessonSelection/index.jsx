@@ -1,5 +1,5 @@
 import { TopMenuHeader } from "../../components/TopMenuHeader"
-import { AreaButtonBottom } from "../../components/AreaButtonBottom"
+import { ButtonBg } from "../../components/ButtonBg"
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
@@ -8,14 +8,14 @@ import MicroImg from "./images/Micro.svg";
 import QrCodeImg from "./images/QrCode.svg";
 import ListaImg from "./images/Lista.svg";
 
-import { LessonSelectionContainer, LessonSelectionContent, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
+import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
 export const LessonSelection = () => {
   return (
-    <LessonSelectionContainer>
+    <Container>
       <TopMenuHeader title="Lesson 1" />
 
-      <LessonSelectionContent>
+      <Main>
         <ButtonAreaTop>
           <DivRight>
             <ButtonTask>
@@ -58,9 +58,8 @@ export const LessonSelection = () => {
             </ButtonBottom>
           </BottomRight>
         </ButtonAreaBottom>
-      </LessonSelectionContent>
-
-      <AreaButtonBottom title="Home" />
-    </LessonSelectionContainer>
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" mt="1.5rem" />
+      </Main>
+    </Container>
   )
 }

@@ -1,7 +1,8 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
+import { ButtonBg } from "../ButtonBg";
+import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { TrocaAtividade } from "../../utils/regras";
@@ -9,7 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { L5_T2_Facil } from "../../utils/lesson5_Task";
 import { URL_FISKPRO } from "../../config/infos";
 
-import { Container, Form, Main, Select, Button } from "./styles";
+import { Container, Form, Main, Select } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game21 = () => {
@@ -213,9 +214,15 @@ export const Game21 = () => {
             color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
           }}>{question[3]}</label>
         </Form>
-        <Button form="myForm" type="submit" onClick={handleVerify} disabled={blockButton} >
-          <p>Check</p>
-        </Button>
+        <ButtonBg
+          form="myForm"
+          type="submit"
+          disabledButton={blockButton}
+          title="Check"
+          w="15.875rem"
+          h="2.5rem"
+          greenBtn
+        />
       </Main>
     </Container>
   )

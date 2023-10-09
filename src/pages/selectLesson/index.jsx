@@ -1,13 +1,13 @@
 import { useState, useEffect } from "react";
 
 import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { ButtonBg } from "../../components/ButtonBg";
 import { Loading } from "../../components/Loading";
 
 import { api } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
 
-import { ButtonLesson, SelectLessonContainer, SelectLessonMain, SelectLessonArea } from "./styles";
+import { ButtonLesson, Container, Main, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
   const [activities, setActivities] = useState([]);
@@ -30,15 +30,14 @@ export const SelectLesson = () => {
 
   useEffect(() => {
     fetchLessons();
-  }, [])
+  }, []);
 
   return (
-    <SelectLessonContainer>
+    <Container>
       {isLoading && <Loading />}
 
       <TopMenuHeader title="Essentials" />
-
-      <SelectLessonMain>
+      <Main>
         <SelectLessonArea>
           {activities.map((activity) => {
             return (
@@ -49,9 +48,8 @@ export const SelectLesson = () => {
             )
           })}
         </SelectLessonArea>
-      </SelectLessonMain>
-
-      <AreaButtonBottom title="Home" />
-    </SelectLessonContainer>
+      <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
+      </Main>
+    </Container>
   )
 }

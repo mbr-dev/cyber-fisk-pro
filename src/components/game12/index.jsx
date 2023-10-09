@@ -1,14 +1,15 @@
 import { useEffect, useState, useCallback, useContext } from "react";
 
-import { HeaderLesson } from "../HeaderLesson";
+import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 import { L4_T2_Medio } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Input, Form, Words, Button } from "./styles";
+import { Container, Main, Input, Form, Words } from "./styles";
 
 export const Game12 = () => {
   const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
@@ -153,11 +154,15 @@ export const Game12 = () => {
             }}
           />
         </Form>
-        <Button
+        <ButtonBg
           form="myForm"
           type="submit"
-          disabled={blockButton}
-        ><p>Check</p></Button>
+          disabledButton={blockButton}
+          title="Check"
+          w="15.875rem"
+          h="2.5rem"
+          greenBtn
+        />
       </Main>
     </Container>
   )

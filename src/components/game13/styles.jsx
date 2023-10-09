@@ -72,7 +72,11 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+
+  @media(max-width: 376px) {
+    gap: 0.5rem;
+  }
 `;
 
 export const RadioG = styled(RadioGroup.Root)`
@@ -100,44 +104,6 @@ export const Radio = styled(RadioGroup.Item)`
       height: 3rem;
       border-radius: 8px;
       background-color: transparent;
-    }
-  }
-`;
-
-export const Button = styled.button`
-  all: unset;
-  width: 15.875rem;
-  height: 2.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom: 4px solid ${props => props.theme["red-300"]};
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 1.25rem;
-    font-weight: bold;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  &:disabled {
-    cursor: not-allowed;
-  }
-
-  @media(max-width: 320px) {
-    width: 11rem;
-    height: 2rem;
-
-    p {
-      font-size: 1rem;
     }
   }
 `;
