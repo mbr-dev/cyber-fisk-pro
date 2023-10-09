@@ -1,8 +1,8 @@
 import { Play } from "lucide-react";
-
+import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
 
-export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, type="button", mt, form, w, h }) => {
+export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, type="button", mt, form, w, h }) => {  
   return (
     <Container 
       onClick={onPress}

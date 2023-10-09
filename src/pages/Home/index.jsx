@@ -1,10 +1,11 @@
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 import { ButtonPronunciation } from "../../components/ButtonPronunciation";
+import Cookies from 'universal-cookie';
 
 import { CyberContext } from "../../context/cyber";
 import { translateHome } from "../../utils/Translate";
@@ -22,39 +23,69 @@ export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
   const images = [Livros, Cursor, Medalha, Reporte, Note, Micro];
   const navigate = useNavigate();
-  const location = useLocation();
 
-  function teste(index){
-    console.log('==> ', index)
+  function alterPage(index){
+    console.log('==> ', index);
     if(index === 0){
-      navigate("/LessonSelection");
+      localStorage.setItem("lastAccess","Books");
+      navigate("/Books");
+    }else if(index === 1){
+      const page = localStorage.getItem("lastAccess");
+      navigate(`/${page}`);
+    }
+    else if(index === 2){
+      localStorage.setItem("lastAccess","Ranking");
+      navigate("/Ranking");
     }
   }
+
+  useEffect(()=>{
+    const cookies = new Cookies();
+    const token = cookies.get("token");
+    if(!token){
+      navigate("/Login");
+    }
+  },[])
+
   return(
     <Container>
       <TopMenuHeader hasAvatar hasLogo />
       <Main>
         <Cards>
-          {translateHome.map((text, index) => {
+          {translateHome.map((text, index) => {            
             return (
-              <Card key={index} onClick={() => {teste(index)}}>
+              index !== 5 ?
+              <Card key={index} onClick={() => {alterPage(index)}}>
                 <img src={images[index]} alt="" />
                 {selectLanguage === 0 && <p>{text.name[0]}</p>}
                 {selectLanguage === 1 && <p>{text.name[1]}</p>}
                 {selectLanguage === 2 && <p>{text.name[2]}</p>}
               </Card>
+              :
+              <Dialog.Root>
+                <Dialog.Trigger style={{border: 'none'}}>
+                  <Card key={index}>
+                    <img src={images[index]} alt="" />
+                    {selectLanguage === 0 && <p>{text.name[0]}</p>}
+                    {selectLanguage === 1 && <p>{text.name[1]}</p>}
+                    {selectLanguage === 2 && <p>{text.name[2]}</p>}
+                  </Card>
+                </Dialog.Trigger>
+
+                <ModalPronunciation />
+              </Dialog.Root>
             )
           })}
         </Cards>
       </Main>
 
-      <Dialog.Root>
+      {/* <Dialog.Root>
         <Dialog.Trigger>
           <ButtonPronunciation />
         </Dialog.Trigger>
 
         <ModalPronunciation />
-      </Dialog.Root>
+      </Dialog.Root> */}
       <Footer />
     </Container>
   )

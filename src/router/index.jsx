@@ -48,7 +48,7 @@ import { GameWordle } from "../components/GameWordle";
 export const Router =() => {
   return(
     <Routes>
-      <Route path = "/" element={<Home />}/>
+      <Route path = "/" element={<Login />}/>
 
       <Route path="/Home" element={<Home/>} />
       <Route path="/Books" element={<Books />} />
@@ -59,6 +59,7 @@ export const Router =() => {
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
+      <Route path="/SelectLesson" element={<SelectLesson />} />
       <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
       <Route path="/qr-code" element={<QRCode />} />
       <Route path="/qr-code/reader" element={<QRReader />} />

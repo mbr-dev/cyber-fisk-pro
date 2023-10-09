@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { useKeenSlider } from "keen-slider/react";
-
+import { useNavigate } from "react-router-dom";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { ButtonBg } from "../../components/ButtonBg";
 import { LineSeparator } from "../../components/LineSeparator";
@@ -11,12 +11,14 @@ import { translateBooks } from "../../utils/Translate";
 import boo1 from "./images/bookImg01.svg";
 import boo2 from "./images/bookImg02.svg";
 import boo3 from "./images/bookImg03.svg";
+import bookEss1 from './images/capa53.jpg';
 
 import "./styles.css";
 import "keen-slider/keen-slider.min.css";
 import { Container, Main, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
 
 export const Books = () => {
+  const navigate = useNavigate();
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -29,6 +31,10 @@ export const Books = () => {
   // const activeCarrousel = translateBooks.type.filter(bookAmount => bookAmount.amountOfBooks > 3);
 
   // const shouldShowCarrousel = activeCarrousel.length > 0;
+  function clickLesson(){
+    localStorage.setItem("lastAccess","SelectLesson");
+    navigate("/SelectLesson");
+  }
 
   return (
     <Container>
@@ -61,9 +67,7 @@ export const Books = () => {
           } */}
 
           <ImagesCarrousel>
-            <img src={boo1} alt="" />
-            <img src={boo2} alt="" />
-            <img src={boo3} alt="" />
+            <img src={bookEss1} alt="" onClick={() => {clickLesson()}} />
           </ImagesCarrousel>
         </CurrentBooksArea>
         <LineSeparator w="100%" />
@@ -92,9 +96,6 @@ export const Books = () => {
             </BooksImagesArea>)
           } */}
           <ImagesCarrousel>
-            <img src={boo1} alt="" />
-            <img src={boo2} alt="" />
-            <img src={boo3} alt="" />
           </ImagesCarrousel>
         </PreviousBooksArea>
         <LineSeparator w="100%" mt="1rem" />

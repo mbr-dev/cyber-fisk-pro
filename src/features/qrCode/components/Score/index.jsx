@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from "react";
+import Cookies from 'universal-cookie';
 import {
   Container,
   Info,
@@ -34,8 +35,10 @@ export const Score = (props) => {
   useEffect(() => {
     const getScoreData = async () => {
       try {
+        const cookies = new Cookies();
+        const raf = cookies.get("raf");
         const { data } = await api.get(
-          `${URL_HMLG_PRO}api/QrCode/RetornaProgresso?raf=${"A123"}&id_livro=${53}`
+          `${URL_HMLG_PRO}api/QrCode/RetornaProgresso?raf=${raf}&id_livro=${53}`
         );
         console.log("res", data);
         if (data.erro) {

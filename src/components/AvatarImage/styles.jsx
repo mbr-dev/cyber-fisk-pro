@@ -7,10 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  border: 1px solid ${props => props.theme["red-200"]};
-  border-bottom: none;
-  border-radius: 8px;
-  background-color: ${props => props.theme.white};
+  //border: 1px solid ${props => props.theme["red-200"]};
+  //border-bottom: none;
+  //border-radius: 8px;
+  //background-color: ${props => props.theme.white};
 
   @media (max-width: 320px) {
     width: 4.75rem;

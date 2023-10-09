@@ -43,6 +43,9 @@ export const ContainerOptions = styled.div`
 `;
 export const ContainerCheckButton = styled.div`
   margin-block: 20px;
+  display: flex;
+    flex-direction: column;
+    align-items: center;
 `;
 export const CheckButton = styled(BaseButton)`
   width: min(600px, 100%);

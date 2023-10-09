@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 import { TopMenuHeader } from "../../components/TopMenuHeader"
 import { ButtonBg } from "../../components/ButtonBg"
+import { api } from "../../lib/api";
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
@@ -11,6 +14,21 @@ import ListaImg from "./images/Lista.svg";
 import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
 export const LessonSelection = () => {
+  const navigate = useNavigate();
+
+  const click = (page) => {
+    if(page === 'qr-code'){
+      localStorage.setItem("lastAccess","qr-code");
+    }else if(page === 'Task1'){
+      
+    }
+    navigate(`/${page}`);
+  }
+
+  const loadLesson = async() => {
+    const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
+  }
+
   return (
     <Container>
       <TopMenuHeader title="Lesson 1" />
@@ -41,7 +59,7 @@ export const LessonSelection = () => {
               <img src={FoneImg} alt="" />
               <p>Audio</p>
             </ButtonBottom>
-            <ButtonBottom>
+            <ButtonBottom onClick={() => {click('qr-code')}}>
               <img src={QrCodeImg} alt="" />
               <p>QR</p>
             </ButtonBottom>

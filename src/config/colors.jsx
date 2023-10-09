@@ -4,7 +4,10 @@ export const colors= {
 
   'gray-100': '#EFEFEF',
   'gray-200': '#E6E6E6',
+  'gray-300': '#a0a7b2',
   'gray-400': '#888888',
+  'gray-500': '#6a6a6a',
+  'gray-800': '#3b3b3b',
 
   'green-100': '#27A708',
   'green-200': '#4A8500',

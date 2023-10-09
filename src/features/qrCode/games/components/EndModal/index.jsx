@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Dialog, Slide } from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Cookies from 'universal-cookie';
+
 import trofeuExcellentImg from "./../../../assets/images/Trofeu_excelente.png";
 import trofeuGoodImg from "./../../../assets/images/Trofeu_bom.png";
 import trofeuBadImg from "./../../../assets/images/Trofeu_ruim.png";
@@ -47,8 +49,10 @@ export const EndModal = (props) => {
 
   const saveScore = async () => {
     try {
+      const cookies = new Cookies();
+      const raf = cookies.get("raf");
       const { data } = await api.get(
-        `${URL_HMLG_PRO}api/QrCode/Progresso?id_qr=${props?.qrId}&raf=A123&score=${props?.grade}`
+        `${URL_HMLG_PRO}api/QrCode/Progresso?id_qr=${props?.qrId}&raf=${raf}&score=${props?.grade}`
       );
       console.log("res", data);
       if (data.erro) {
