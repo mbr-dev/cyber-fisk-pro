@@ -64,7 +64,6 @@ export const GameSL3 = () => {
     } catch(error) {
       console.log(error);
     }
-    
   }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
@@ -266,7 +265,6 @@ export const GameSL3 = () => {
                 )
               })}
             </Letters>
-
             <TypeLetters>
               {divLetter.map((letters, letterIndex) => {
                 return (

@@ -7,7 +7,6 @@ import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L2_SUPER_LESSON } from "../../utils/Lesson2_Task";
 
 import LogoImg from "./images/logoIcon.png";
 
@@ -18,25 +17,28 @@ export const GameSL2 = () => {
 
   const [playing, setPlaying] = useState(false);
   const [level, setLevel] = useState(0);
-  const [data, setData] = useState([]);
   const [moveCount, setMoveCount] = useState(0);
   const [shownCount, setShownCount] = useState(0);
   const [points, setPoints] = useState(0);
   const [cards, setCards] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
+  const [restartGame, setRestartGame] = useState(false);
 
   const loadLesson = useCallback(async() => {
     try {
-      //setIsLoading(true);
+      setIsLoading(true);
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
       const res = response.data;
-      console.log("res: ", res);
-      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
-      console.log("items: ", items);
+      let data = res.dados[0].dados_conteudo;
+
+      const items = data.map(item => {
+        const conteudo = JSON.parse(item.conteudo);
+        return conteudo
+      });
 
       const dataLength = level === 0 ? 6 : 8;
 
-      const nameFilter = L2_SUPER_LESSON.filter(item => item.name);
+      const nameFilter = items.filter(item => item.name);
     
       let tempRandom = [];
       for (let a = 0; a < nameFilter.length; a++) {
@@ -52,7 +54,7 @@ export const GameSL2 = () => {
       let imgFilter = [];
       nameRandom.forEach(nameItem => {
         const status = nameItem.status;
-        const images = L2_SUPER_LESSON.filter(item => item.status === status && item.img);
+        const images = items.filter(item => item.status === status && item.img);
         imgFilter = imgFilter.concat(images);
       });
 
@@ -101,7 +103,16 @@ export const GameSL2 = () => {
 
   useEffect(() => {
     loadLesson();
-  }, [])
+  }, []);
+
+  useEffect(() => {
+    if (restartGame) {
+      setTimeout(() => {
+        loadLesson();
+        setRestartGame(false);
+      }, 1500);
+    }
+  }, [restartGame])
 
   useEffect(() => {
     if (shownCount === 2) {
@@ -153,12 +164,11 @@ export const GameSL2 = () => {
         tempPoints += 1;
         setPoints(tempPoints);
       }
-
-      alert(tempPoints);
       setPlaying(false);
-      alert("Game finalizado");
+
+      setRestartGame(true);
     }
-  }, [moveCount, cards, timeElapsed])
+  }, [moveCount, cards, timeElapsed, level]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -168,7 +178,7 @@ export const GameSL2 = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [setTimeElapsed])
+  }, [setTimeElapsed]);
 
   if (isLoading) {
     return (

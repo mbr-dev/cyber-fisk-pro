@@ -323,7 +323,7 @@ export const L2_SUPER_LESSON = [
   {img: "Ess1_L2_ST_2", status: 1},
   {name: "fish", status: 2},
   {img: "Ess1_L2_ST_3", status: 2},
-  {name: "lasagna ", status: 3},
+  {name: "lasagna", status: 3},
   {img: "Ess1_L2_ST_4", status: 3},
   {name: "omelet", status: 4},
   {img: "Ess1_L2_ST_5", status: 4},

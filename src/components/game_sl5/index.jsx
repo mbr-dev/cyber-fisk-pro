@@ -185,14 +185,14 @@ export const GameSL5 = () => {
             h="1.5rem"
             title={`${hints} ${hints > 1 ? "hints" : "hint"}`}
             onPress={handleShowHint}
-            />
+          />
           <ButtonBg
             w="9rem"
             h="1.5rem"
             title="Check"
             disabledButton={letterSelected.length === 0}
             onPress={handleVerify}
-            />
+          />
         </ButtonArea>
       </Main>
     </Container>

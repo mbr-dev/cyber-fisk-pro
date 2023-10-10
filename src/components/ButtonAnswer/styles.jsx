@@ -23,6 +23,10 @@ export const Container = styled.button`
     line-height: 1.1;
   }
 
+  .pBold {
+    font-size: 1.5rem;
+  }
+
   &:hover {
     scale: 1.05;
   }

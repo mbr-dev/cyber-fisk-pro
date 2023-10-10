@@ -1,14 +1,16 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 
 import { Loading } from "../Loading";
+import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, ButtonLetter, ButtonClear, Letter, LettersArea } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea } from "./styles";
 
 export const GameSL1 = () => {
   const {setTimeElapsed, timeElapsed} = useContext(LessonContext);
@@ -179,19 +181,24 @@ export const GameSL1 = () => {
         <ButtonArea>
           {letters.map((letter, index) => {
             return (
-              <ButtonLetter
+              <ButtonAnswer 
                 key={index}
-                onClick={() => handleClick(letter)}
+                w="1rem"
+                h="2.75rem"
+                onPress={() => handleClick(letter)}
               >
-                <p>{letter}</p>
-              </ButtonLetter>
+                <p className="pBold">{letter}</p>
+              </ButtonAnswer>
             )
           })}
         </ButtonArea>
 
-        <ButtonClear onClick={handleClearField} >
-          <p>Clear</p>
-        </ButtonClear>
+        <ButtonBg
+          h="2.5rem"
+          w="9rem"
+          onPress={handleClearField}
+          title="Clear"
+        />
       </Main>
     </Container>
   )
