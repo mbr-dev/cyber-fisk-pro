@@ -2,7 +2,7 @@ import { Play } from "lucide-react";
 
 import { Container } from "./styles";
 
-export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, type="button", mt, form, w, h }) => {
+export const ButtonBg = ({ title, disabledButton, onPress, greenBtn, type="button", mt, form, w, h }) => {
   return (
     <Container 
       onClick={onPress}
@@ -17,10 +17,6 @@ export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, ty
       disabled={disabledButton}
       >
       <p>{title}</p>
-
-      {hasIcon &&
-        <Play size={24} strokeWidth={2.5} />
-      }
     </Container>
   )
 }

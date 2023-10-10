@@ -36,7 +36,7 @@ export const Game6 = () => {
       const response  = await api.get("/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=2");
       const res = response.data;
       setData(res.dados[2].dados_conteudo);
-      const dataLength = res.dados[0].dados_conteudo.length;
+      const dataLength = res.dados[2].dados_conteudo.length;
 
       let tempSounds = [];
       for (let a = 0; a < dataLength; a++) {

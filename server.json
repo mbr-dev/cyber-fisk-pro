@@ -2517,5 +2517,88 @@
       "letras": ["BRO", "CHR", "COS", "IST", "IT", "MAS", "MES", "NGE","ORA", "SU", "THER", "TU"],
       "resposta": ["ORANGE", "COSTUMES", "SUIT", "CHRISTMAS", "BROTHER"]
     }
+  ],
+
+  "L6_T1_Facil": [
+    {
+      "pergunta": "L6_Task1_F_0",
+      "resposta": [
+        {"label": "softball", "status": 0},
+        {"label": "soccer", "status": 0},
+        {"label": "baseball", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_1",
+      "resposta": [
+        {"label": "surfing", "status": 0},
+        {"label": "basketball", "status": 1},
+        {"label": "football", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_2",
+      "resposta": [
+        {"label": "football", "status": 1},
+        {"label": "volleyball ", "status": 0},
+        {"label": "baseball", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_3",
+      "resposta": [
+        {"label": "beach volleyball", "status": 0},
+        {"label": "volleyball", "status": 0},
+        {"label": "soccer", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_4",
+      "resposta": [
+        {"label": "tennis", "status": 1},
+        {"label": "soccer", "status": 0},
+        {"label": "surfing", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_5",
+      "resposta": [
+        {"label": "beach volleyball", "status": 0},
+        {"label": "football", "status": 0},
+        {"label": "volleyball", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_6",
+      "resposta": [
+        {"label": "beach volleyball", "status": 1},
+        {"label": "football", "status": 0},
+        {"label": "volleyball", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_7",
+      "resposta": [
+        {"label": "tennis", "status": 0},
+        {"label": "cycling", "status": 1},
+        {"label": "football", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_8",
+      "resposta": [
+        {"label": "swimming", "status": 0},
+        {"label": "baseball", "status": 0},
+        {"label": "surfing", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_9",
+      "resposta": [
+        {"label": "swimming ", "status": 1},
+        {"label": "surfing", "status": 0},
+        {"label": "cycling", "status": 0}
+      ]
+    }
   ]
 }
