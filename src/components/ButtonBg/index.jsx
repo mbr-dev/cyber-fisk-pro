@@ -17,10 +17,6 @@ export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, ty
       disabled={disabledButton}
       >
       <p>{title}</p>
-
-      {hasIcon &&
-        <Play size={24} strokeWidth={2.5} />
-      }
     </Container>
   )
 }

@@ -41,18 +41,14 @@ export const AreaAvatar = styled.section`
   }
 
   img {
-    width: 80%;
+    width: 85%;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
   }
 
   @media(max-width: 320px) {
     h2 {
       font-size: 1.5rem;
-    }
-
-    img {
-      width: 75%;
     }
   }
 `;
@@ -61,7 +57,6 @@ export const Avatar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  z-index: 2;
   
   p {
     padding: 0.25rem 1rem;
@@ -219,6 +214,7 @@ export const AreaInfoBottom = styled.div`
   padding: 0.5rem 2rem;
   border-radius: 8px;
   margin-top: 1rem;
+  opacity: 0.3;
 
   @media(max-width: 360px) {
     margin-top: 0.5rem;

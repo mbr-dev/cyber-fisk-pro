@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 
 import { Home } from "../pages/Home";
+import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
@@ -8,6 +9,7 @@ import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
+import { GameOver } from "../pages/GameOver";
 import { SelectLesson } from "../pages/SelectLesson";
 import { LessonSelection } from "../pages/LessonSelection";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
@@ -52,6 +54,7 @@ export const Router =() => {
       <Route path = "/" element={<Login />}/>
 
       <Route path="/Home" element={<Home/>} />
+      <Route path="/Menu" element={<Menu/>} />
       <Route path="/Books" element={<Books />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Report" element={<Report />} />
@@ -59,6 +62,7 @@ export const Router =() => {
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
+      <Route path="/GameOver" element={<GameOver />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
       <Route path="/SelectLesson" element={<SelectLesson />} />
       <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
