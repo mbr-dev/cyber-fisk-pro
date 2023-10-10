@@ -8,14 +8,17 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade } from "../../utils/regras";
+import { TrocaAtividade, ScoreFinal, Score } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
 import { api } from "../../lib/api";
 
 import { Container, Main } from "./styles";
 
 export const Game1 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
@@ -35,19 +38,34 @@ export const Game1 = () => {
     try {
       setIsLoading(true);
 
-      const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
-      const res = response.data;
-      setData(res.dados[0].dados_conteudo);
-      const dataLength = res.dados[0].dados_conteudo.length;
-      
+      // const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      // const res = response.data;
+      // setData(res.dados[0].dados_conteudo);
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        console.log('conteudoFacil:: ', conteudoFacil);
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
+     
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
         tempRandom.push(a);
       }
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
-      
-      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      //let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
       setQuestion(items.pergunta);
       
       let tempIdClick = idClick;
@@ -63,7 +81,7 @@ export const Game1 = () => {
       setBlockButton(false);
       setIsLoading(false);
     } catch(error) {
-      console.log("error tente novamente mais tarde.");
+      console.log('error==> ', error);
     }
   }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
 
@@ -124,17 +142,29 @@ export const Game1 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0, 0);
+      setNewPontos(nivel, 0);
       setTimeout(() => {
-        alert('GAME OVER!!');
+        navigate('/GameOver');
         setOptionColor([0, 0, 0]);
         setNewContainer(1);
       }, 1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() => {
-        alert('MUDA DE RODADA!!');
+        console.log('MUDA DE RODADA!!');
         setOptionColor([0, 0, 0]);
-        setNewLesson(1);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
       }, 1500);
     }
   }
@@ -151,7 +181,7 @@ export const Game1 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} />
+      {/* <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} /> */}
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLesson title={question} />
 

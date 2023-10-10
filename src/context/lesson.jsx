@@ -3,11 +3,12 @@ import { createContext, useState } from "react";
 const LessonContext = createContext();
 
 function LessonProvider({children}){
-  const [numLesson, setNumLesson] = useState(0);
+  const [numAtividade, setNumAtividade] = useState(1);
+  const [numSelLesson, setNumSelLesson] = useState(1);
+  const [numTask, setNumTask] = useState(1);
   const [lessons, setLessons] = useState([0,0,0,0,0,0,0,0,0,0]);//0 = neutro 1 = acerto 2 = erro
   const [container, setContainer] = useState(0);
-  const [numSelLesson, setNumSelLesson] = useState(0);
-  const [numTask, setNumTask] = useState(0);
+  const [superTask, setSuperTask] = useState(false);
   const [pontosF, setPontosF] = useState(0);
   const [pontosM, setPontosM] = useState(0);
   const [pontosD, setPontosD] = useState(0);
@@ -15,6 +16,22 @@ function LessonProvider({children}){
   const [rodadaGeral, setRodadaGeral] = useState(0);
   const [playAudio, setPlayAudio] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
+  //conteudos
+  const [conteudoFacil, setConteudoFacil] = useState(null);
+  const [conteudoMedio, setConteudoMedio] = useState(null);
+  const [conteudoDificil, setConteudoDificil] = useState(null);
+
+  const setNewConteudoFacil = (data) => {
+    setConteudoFacil(data);
+  }
+
+  const setNewConteudoMedio = (data) => {
+    setConteudoMedio(data);
+  }
+
+  const setNewConteudoDificil = (data) => {
+    setConteudoDificil(data);
+  }
 
   const newStatusPlay = (status) => {
     setPlayAudio(status);
@@ -26,6 +43,10 @@ function LessonProvider({children}){
 
   const setNewNivel = (nivel) => {
     setNivel(nivel);
+  }
+
+  const setNewSuperTask = (status) => {
+    setSuperTask(status);
   }
 
   const setNewPontos = (nivel, pontos) => {
@@ -51,8 +72,8 @@ function LessonProvider({children}){
     setContainer(num);
   }
 
-  const setNewLesson = (num) => {
-    setNumLesson(num);
+  const setNewAtividade = (num) => {
+    setNumAtividade(num);
   }
 
   const setStatusLessons = (data) => {
@@ -61,7 +82,7 @@ function LessonProvider({children}){
 
   return (
     <LessonContext.Provider value={{
-      numLesson,
+      numAtividade,
       pontosD,
       lessons,
       pontosF,
@@ -73,16 +94,24 @@ function LessonProvider({children}){
       pontosM,
       rodadaGeral,
       timeElapsed,
+      superTask,
+      conteudoFacil,
+      conteudoMedio,
+      conteudoDificil,
       setTimeElapsed,
       setStatusLessons,
       setNewContainer,
       setNewPontos,
       setNewNivel,
-      setNewLesson,
+      setNewAtividade,
       setNewTask,
       setNewSelLesson,
       setNewRodada,
-      newStatusPlay
+      newStatusPlay,
+      setNewSuperTask,
+      setNewConteudoFacil,
+      setNewConteudoMedio,
+      setNewConteudoDificil
     }}>
       {children}
     </LessonContext.Provider>
