@@ -38,17 +38,26 @@ export const Main = styled.main`
   align-items: center;
 `;
 
-export const Form = styled.form`
+export const Form = styled.div`
   width: 20rem;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-block: 2rem;
+  padding-top: 1rem;
   gap: 1rem;
   margin-bottom: 2rem;
 
+  @media(max-width: 600px) {
+    padding-block: 2rem;
+    width: 18.75rem;
+    padding-block: 1rem;
+    margin-bottom: 1.5rem;
+    gap: 0.875rem;
+  }
+
   @media(max-width: 376px) {
+    padding-block: 2rem;
     width: 18.75rem;
     padding-block: 1rem;
     margin-bottom: 1.5rem;
@@ -56,10 +65,12 @@ export const Form = styled.form`
   }
 
   @media(max-width: 360px) {
+    padding-block: 2rem;
     gap: 0.5rem;
   }
 
   @media(max-width: 320px) {
+    padding-block: 2rem;
     padding-block: 0.5rem;
     width: 16rem;
     gap: 0.375rem;
@@ -84,11 +95,20 @@ export const AreaInput = styled.div`
 
   svg {
     position: absolute;
-    top: 41px;
+    top: 44px;
     left: 10px;
     color: ${props => props.theme["gray-400"]};
   }
   
+  .eye{
+    position: absolute;
+    top: 44px;
+    left: 300px !important;
+    color: ${props => props.theme["gray-400"]};
+    @media(max-width: 1024px) {
+      left: 270px !important;
+    }
+  }
   img {
     width: 1.25rem;
     position: absolute;

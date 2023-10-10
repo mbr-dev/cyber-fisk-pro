@@ -6,6 +6,7 @@ export const URL_FISKPRO2 = "https://cyberhomolog.fisk.com.br:172/cyberfiskpro/f
 
 export const URL_FISKPRO = "https://cyberhomolog.fisk.com.br:172/cyberfiskpro/files/"
 
+export const URL_HMLG_PRO = "https://cyberhomolog.fisk.com.br:172/cyberfiskpro/";
 /* 
   https://cyberhomolog.fisk.com.br:172/cyberfiskpro/files/images/essentials1/lesson4/
 

@@ -21,8 +21,8 @@ export const translateHome = [
   {name: ["Último Acesso", "Last Access", "Ultimo acceso"]},
   {name: ["Classificação", "Ranking","Clasificación"]},
   {name: ["Relatório", "Report", "Informe"]},
-  {name: ["Painel", "Billboard", "Cartelera"]},
-  {name: ["Pronúnciação", "Pronunciantion", "Pronunciación"]}
+  {name: ["Mensagens", "Billboard", "Cartelera"]},
+  {name: ["Pronunciação", "Pronunciantion", "Pronunciación"]}
 ]
 
 export const translateFooter = [
@@ -95,25 +95,25 @@ export const translateStudio = [
 export const translateLogin = [
   {
     name: "Usuário RAF",
-    plName: "Nome do usuário",
+    plName: "RAF",
     password: "Senha",
-    plPassword: "Senha do usuário",
+    plPassword: "Senha",
     language: "Escolha o idioma",
     labelButton: "Entrar"
   },
   {
     name: "User RAF",
-    plName: "Username",
+    plName: "RAF",
     password: "Password",
-    plPassword: "User password",
+    plPassword: "Password",
     language: "Choose language",
     labelButton: "Login"
   },
   {
     name: "Usuario RAF",
-    plName: "Nombre de usuario",
+    plName: "RAF",
     password: "Contraseña",
-    plPassword: "Contraseña de usuario",
+    plPassword: "Contraseña",
     language: "Elige lengua",
     labelButton: "Entrar"
   },

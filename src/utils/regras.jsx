@@ -50,6 +50,37 @@ export const Score = (pontosF, pontosM, pontosD) => {
   return res;
 }
 
+export const ScoreFinal = (pontos, lesson, task) => {
+  let msg = '';
+  if(pontos >= 70){
+    //gravar e retornar a frequencia com q jogou o exercicio
+    let valorRank = 0;
+    if(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`)) {
+      let frequencia = parseInt(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`));
+      let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
+      frequencia++;
+
+      // if (frequencia === 4) {
+      //   alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+      // }
+
+      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,frequencia);
+      const rank = PontosRank(frequencia,oldRank);
+      valorRank = rank;
+      localStorage.setItem("cyber_pro_rank",rank);
+    } else {
+      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,1);
+      const rank = PontosRank(1,0);
+      valorRank = rank;
+      localStorage.setItem("cyber_pro_rank",rank);
+    }
+    msg = 'WellDone';
+  }else{
+    msg = 'GameOver';
+  }
+  return msg;
+}
+
 export const PontosRank = (jogadas, pontos) => {
   let res = pontos;
   if (jogadas > 3) {

@@ -1,19 +1,15 @@
 import { createContext, useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-
 import { apiSignIn } from "../lib/api";
 
 const CyberContext = createContext();
 
 function CyberProvider({children}){
   const [book, setbook] = useState({
-    id:'',
+    id:'53',
     name:'Essentials 1'
   });
   const [selectLanguage, setSelectLanguage] = useState(0);
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
-
-  const navigate = useNavigate();
 
   function chooseLanguage(e) {
     const selectedOption = e.target.value
@@ -25,6 +21,10 @@ function CyberProvider({children}){
     } else if (selectedOption === "2") {
       setSelectLanguage(2);
     }
+  }
+
+  function chooseNotification(value){
+    setNotifications(value);
   }
 
   const signIn = async(user, password) => {
@@ -39,12 +39,22 @@ function CyberProvider({children}){
           headers: { "Content-Type": "application/json" }
         }
       );
-
+      console.log('DATA LOGIN ::: ', data);
+      let respData = '';
       if (data) {
-        navigate("/home");
+        if(!data.succeeded){
+          respData = data;
+          return respData;
+        }else{       
+          respData = data;
+          return data;
+        }
+      }else{
+        respData = {message:'Erro ao comunicar com o servidor de login!'};
+        return respData;
       }
     } catch (error) {
-      console.log(error)
+      return error;
     }
   }
 
@@ -77,6 +87,7 @@ function CyberProvider({children}){
       value={{
         book,
         notifications,
+        chooseNotification,
         selectLanguage,
         signIn,
         newBook,

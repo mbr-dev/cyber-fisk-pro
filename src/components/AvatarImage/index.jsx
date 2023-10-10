@@ -1,4 +1,4 @@
-import Woman from "./Images/OBJECTS.png";
+import Woman from "./Images/AvatarRobo.png";
 
 import { Container, Name, Photo } from "./styles";
 

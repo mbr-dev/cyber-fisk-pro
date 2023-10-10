@@ -50,6 +50,7 @@ export const ImagesCarrousel = styled.div`
     width: 100%;
     height: auto;
   } */
+  cursor: pointer;
   img {
     width: 30%;
   }
