@@ -2600,5 +2600,83 @@
         {"label": "cycling", "status": 0}
       ]
     }
+  ],
+  "L6_T1_Medio": [
+    {
+      "pergunta": "L6_Task1_M_0",
+      "resposta": [
+        "Yes, I can",
+        "Yes, we can",
+        "No I can’t",
+        "No we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_1",
+      "resposta": [
+        "Yes, he can",
+        "No, he can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_2",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_3",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_4",
+      "resposta": [
+        "Yes, she can",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_5",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_6",
+      "resposta": [
+        "Yes, we can",
+        "No, we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_7",
+      "resposta": [
+        "Yes, Sarah can",
+        "Yes, she can",
+        "No, Sarah can’t",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_8",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_9",
+      "resposta": [
+        "Yes, the kids can",
+        "Yes, they can",
+        "No, the kids can’t",
+        "No, they can’t"
+      ]
+    }
   ]
 }
