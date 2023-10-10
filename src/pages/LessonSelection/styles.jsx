@@ -10,7 +10,8 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 18rem;
+  //width: 18rem;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,7 +33,7 @@ export const ButtonAreaTop = styled.div`
   height: 13rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
 
   p {
     font-size: 1.125rem;
@@ -91,7 +92,7 @@ export const ButtonTask = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   img {
     width: 36px;
   }
@@ -134,7 +135,7 @@ export const ButtonSuperTask = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   p {
     font-size: 1.25rem;
   }
@@ -172,7 +173,7 @@ export const ButtonAreaBottom = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: space-around;
 
   img {
     width: 28px;
@@ -233,7 +234,7 @@ export const ButtonBottom = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   p {
     font-size: 1rem;
     font-weight: 500;

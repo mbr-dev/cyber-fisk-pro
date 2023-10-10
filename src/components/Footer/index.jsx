@@ -20,9 +20,9 @@ export function Footer() {
 
       <Main>
         <img src={logoFisk} alt="Logo Fisk" />
-        <img src={Youtube} alt="icon youtube" className="iconFooter" />
-        <img src={Instagram} alt="icon instagram" className="iconFooter" />
-        <img src={Facebook} alt="icon facebook" className="iconFooter" />
+        <a href="https://www.youtube.com/@fiskoficial" target="_blank"><img src={Youtube} alt="icon youtube" className="iconFooter" /></a>
+        <a href="https://www.instagram.com/fiskoficial/" target="_blank"><img src={Instagram} alt="icon instagram" className="iconFooter" /></a>
+        <a href="https://www.facebook.com/fiskcentrodeensino/" target="_blank"><img src={Facebook} alt="icon facebook" className="iconFooter" /></a>
       </Main>
     </Container>
   )
