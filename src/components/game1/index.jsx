@@ -19,7 +19,9 @@ export const Game1 = () => {
     nivel, conteudoFacil, conteudoMedio, conteudoDificil,
     pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
     numSelLesson, numTask } = useContext(LessonContext);
-
+  
+  const navigate = useNavigate();
+  
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
@@ -32,22 +34,15 @@ export const Game1 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const navigate = useNavigate();
-
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
 
-
-      // const response  = await api.get("/Retorno?id_livro=53&num_lesson=1&num_task=1");
-      // const res = response.data;
-      // setData(res.dados[0].dados_conteudo);
       let dataLength = 0;
       let tempData;
       if(nivel === 0){
         setData(conteudoFacil);
         tempData = conteudoFacil;
-        console.log('conteudoFacil:: ', conteudoFacil);
         dataLength = conteudoFacil.length;
       }else if(nivel === 1){
         setData(conteudoMedio);
@@ -155,7 +150,6 @@ export const Game1 = () => {
       navigate(`/${page}`);
     }else {
       setTimeout(() => {
-        console.log('MUDA DE RODADA!!');
         setOptionColor([0, 0, 0]);
         if(nivel === 0){
           setNewNivel(1);

@@ -1,4 +1,5 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
@@ -11,7 +12,12 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answers, Questions, Button } from "./styles";
 
 export const Game11 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorQuestions, setColorQuestions] = useState([0, 0, 0]);
   const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
@@ -29,10 +35,24 @@ export const Game11 = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const [rightQuestions, setRightQuestions] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
- 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestions = L4_T2_Facil.length;
+  const [data, setData] = useState([]);
 
+  const loadLesson = useCallback(() => {
+    let totalOfQuestions = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfQuestions = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfQuestions = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfQuestions = conteudoDificil.length;
+    }
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
@@ -46,7 +66,7 @@ export const Game11 = () => {
 
     let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[tempQuestions[round]].pergunta[tempRandomQ[a]]);
+      tempQ.push(tempData[tempQuestions[round]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
@@ -56,7 +76,7 @@ export const Game11 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L4_T2_Facil[tempQuestions[round]].resposta[tempRandomAnswer[a]]);
+      tempAnswers.push(tempData[tempQuestions[round]].resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
 
@@ -73,7 +93,7 @@ export const Game11 = () => {
 
     let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomQ[a]]);
+      tempQ.push(data[randomNumber[number]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
@@ -83,7 +103,7 @@ export const Game11 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomAnswer[a]]);
+      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
     setBlockQuestions(false);
@@ -166,16 +186,28 @@ export const Game11 = () => {
         setColorQuestions([0, 0, 0]);
         setColorAnswer([0, 0, 0, 0, 0]);
         setCountClick(0);
-        alert('GAME OVER!!');
+        navigate('/GameOver');
         setNewContainer(1);
       },1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() =>{
         setColorQuestions([0, 0, 0]);
         setColorAnswer([0, 0, 0, 0, 0]);
         setCountClick(0);
-        alert('troca nivel');
-        setNewLesson(5);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(5);
       },1500);
     }
   }
@@ -214,7 +246,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Match the question to their answers." />
 
       <Main>

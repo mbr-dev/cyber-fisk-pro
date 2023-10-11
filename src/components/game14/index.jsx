@@ -1,4 +1,5 @@
 import { useContext, useState, useCallback, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
@@ -13,7 +14,12 @@ import { L5_T1_Facil } from "../../utils/lesson5_Task";
 import { Container, Main, Image, ButtonArea } from "./styles";
 
 export const Game14 = () => {
-  const { rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
   
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2, 3]);
@@ -26,29 +32,44 @@ export const Game14 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-
+  const [data, setData] = useState([]);
+  
   const loadLesson = useCallback(() => {
-    const totalOfQuestion = L5_T1_Facil.length;
-
+    let totalOfQuestion = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfQuestion = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfQuestion = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfQuestion = conteudoDificil.length;
+    }
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestion; a++) {
       tempQuestions.push(a);
     }
+    let items = JSON.parse(tempData[tempQuestions[round]].conteudo);
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
-    setQuestion(L5_T1_Facil[tempQuestions[round]].pergunta);
-    setImage(L5_T1_Facil[tempQuestions[round]].image);
+    setQuestion(items[tempQuestions[round]].pergunta);
+    setImage(items[tempQuestions[round]].image);
 
     let tempRandomAnswer = idClick;
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomAnswer);
 
     let tempAnswers = [];
-    let tempAnswersLength = L5_T1_Facil[tempQuestions[round]].resposta.length;
+    let tempAnswersLength = items[tempQuestions[round]].resposta.length;
     for (let a = 0; a < tempAnswersLength; a++) {
       tempAnswers.push({
-        label: L5_T1_Facil[tempQuestions[round]].resposta[a].label,
-        status: L5_T1_Facil[tempQuestions[round]].resposta[a].status,
+        label: items[tempQuestions[round]].resposta[a].label,
+        status: items[tempQuestions[round]].resposta[a].status,
       })
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
