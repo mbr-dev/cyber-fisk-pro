@@ -37,6 +37,7 @@ export const Game7 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  console.log("dtata: ", data);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -66,7 +67,28 @@ export const Game7 = () => {
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
+    // criar aqui a logica
+
     let tempRandomAudio = idClickAudio;
+    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
+    setIdClickAudio(tempRandomAudio);
+
+    let tempRandomAnswer = idClickAnswer;
+    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomAnswer);
+
+    let tempAudios = [];
+    let tempAnswers = [];
+
+    for (let a = 0; a < idClickAudio.length; a++) {
+      tempAudios.push(items.pergunta[tempRandomAudio[a]]);
+      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
+    }
+
+    setAudios(tempAudios);
+    setAnswers(tempAnswers);
+
+    /* let tempRandomAudio = idClickAudio;
     tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
     setIdClickAudio(tempRandomAudio);
 
@@ -86,7 +108,7 @@ export const Game7 = () => {
       tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
+    setAnswers(tempAnswers); */
 
     setBlockAudio(false);
     setIsLoading(false);
@@ -94,7 +116,26 @@ export const Game7 = () => {
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     let tempRandomAudio = idClickAudio;
+    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
+    setIdClickAudio(tempRandomAudio);
+
+    let tempRandomNumber = idClickAnswer;
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomNumber);
+
+    let tempAudios = [];
+    let tempAnswers = [];
+
+    for (let a = 0; a < idClickAudio.length; a++) {
+      tempAudios.push(items.pergunta[tempRandomAudio[a]]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
+    }
+  
+    setAudios(tempAudios);
+    setAnswers(tempAnswers);
+    /* let tempRandomAudio = idClickAudio;
     tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
     setIdClickAudio(tempRandomAudio);
 
@@ -114,7 +155,7 @@ export const Game7 = () => {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
+    setAnswers(tempAnswers); */
     
     setRightAnswers([]);
     setSelectAudio(null);
