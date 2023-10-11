@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
@@ -14,12 +13,12 @@ import { LessonContext } from "../../context/lesson";
 import { Container, Main } from "./styles";
 
 export const Game5 = () => {
-  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
+
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
@@ -32,50 +31,49 @@ export const Game5 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true)
-      let dataLength = 0;
-      let tempData;
-      if(nivel === 0){
-        setData(conteudoFacil);
-        tempData = conteudoFacil;        
-        dataLength = conteudoFacil.length;
-      }else if(nivel === 1){
-        setData(conteudoMedio);
-        tempData = conteudoMedio;
-        dataLength = conteudoMedio.length;
-      }else{
-        setData(conteudoDificil);
-        tempData = conteudoDificil;
-        dataLength = conteudoDificil.length;
-      }
+  const loadLesson = useCallback(() => {
+    setIsLoading(true);
 
-      let tempSounds = [];
-      for (let a = 0; a < dataLength; a++) {
-        tempSounds.push(a);
-      }
-      tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-      setRandomNumber(tempSounds);
-
-      let items = JSON.parse(tempData[tempSounds[round]].conteudo);
-      setSound(items.pergunta);
-
-      let tempRandomNumber = idClick;
-      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-      setIdClick(tempRandomNumber);
-      
-      let tempAnswers = [];
-      for (let a = 0; a < idClick.length; a++) {
-        tempAnswers.push(items.resposta[tempRandomNumber[a]]);
-      }
-      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-      setAnswers(tempAnswers);
-      setBlockButton(false);
-      setIsLoading(false);
-    } catch(error) {
-      console.log(error);
+    let dataLength = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;        
+      dataLength = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
     }
+
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    
+    setSound(items.pergunta);
+
+    let tempRandomNumber = idClick;
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+    setIdClick(tempRandomNumber);
+    
+    let tempAnswers = [];
+    for (let a = 0; a < idClick.length; a++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    setAnswers(tempAnswers);
+    
+    setBlockButton(false);
+    setIsLoading(false);
   }, [setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
@@ -128,7 +126,7 @@ export const Game5 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -179,9 +177,8 @@ export const Game5 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd /> */}
       <TitleLesson title='Choose the correct alternative' />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
         {answers.map((answer, index) => {

@@ -1,20 +1,23 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
-import { api } from "../../lib/api";
-import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { L3_T1_Facil } from "../../utils/Lesson3_Task";
+import { LessonContext } from "../../context/lesson";
+import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
 
 import { Container, Main, Image} from "./styles";
 
 export const Game17 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
+  const {
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
+
+  const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
@@ -29,7 +32,23 @@ export const Game17 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    const dataLength = L3_T1_Facil.length;
+    setIsLoading(true);
+
+    let dataLength = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -38,7 +57,9 @@ export const Game17 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setImage(L3_T1_Facil[tempRandom[round]].img);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setImage(items.img);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -46,16 +67,18 @@ export const Game17 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(L3_T1_Facil[tempRandom[round]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, data, setData, setRandomNumber, setImage, round, setIdClick, idClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, setImage, round, setIdClick, idClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setImage(L3_T1_Facil[randomNumber[number]].img);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setImage(items.img);
 
     let tempIdClick = idClick;
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -63,7 +86,7 @@ export const Game17 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(L3_T1_Facil[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
@@ -103,26 +126,37 @@ export const Game17 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
     
-    if (rule === "Continua") {
+    if(rule === "Continua") {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over") {
+    } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
-        alert('GAME OVER!!');
+        navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+      },1500);
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
     } else {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
-        alert('Proximo lesson!!');
-        setNewLesson(2);
-      }, 1500);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      },1500);
     }
   }
     
@@ -143,7 +177,7 @@ export const Game17 = () => {
 
       <Main>
         <Image>
-          <img src={`${URL_FISKPRO}images/essentials1/lesson3/${image}.png`} alt="" />
+          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
         </Image>
         {answers.map((answer, index) => {
           return (

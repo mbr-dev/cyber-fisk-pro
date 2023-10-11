@@ -1,23 +1,21 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L3_T2_Medio } from "../../utils/Lesson3_Task";
+import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
 export const Game9 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -30,35 +28,38 @@ export const Game9 = () => {
   const [correctPoints, setCorrectPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    
-    let totalOfSounds = 0;
+    setIsLoading(true);
+
+    let dataLength = 0;
     let tempData;
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
-      totalOfSounds = conteudoFacil.length;
+      dataLength = conteudoFacil.length;
     }else if(nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
-      totalOfSounds = conteudoMedio.length;
+      dataLength = conteudoMedio.length;
     }else{
       setData(conteudoDificil);
       tempData = conteudoDificil;
-      totalOfSounds = conteudoDificil.length;
+      dataLength = conteudoDificil.length;
     }
+      
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     
-    let tempSounds = [];
-    for (let a = 0; a < totalOfSounds; a++) {
-      tempSounds.push(a);
-    }
-    let items = JSON.parse(tempData[tempSounds[round]].conteudo);
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
-    setSound(items[tempSounds[round]].pergunta);
+    setSound(items.pergunta);
     
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -66,15 +67,18 @@ export const Game9 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(items[tempSounds[round]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
-  }, [setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton]);
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton, idClick]);
 
   const newRound = (number) => {
-    setSound(data[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -82,7 +86,7 @@ export const Game9 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
@@ -121,7 +125,7 @@ export const Game9 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -162,11 +166,16 @@ export const Game9 = () => {
 
   useEffect(() => {
     playAudio ? setBlockButton(true) : setBlockButton(false);
-  }, [playAudio, setBlockButton])
+  }, [playAudio, setBlockButton]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Mark all the correct answer for each question you hear." />
       <SubTitleLessonAudio size={40} audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
 

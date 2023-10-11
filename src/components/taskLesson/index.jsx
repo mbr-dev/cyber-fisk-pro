@@ -29,13 +29,15 @@ import { Game21 } from "../game21";
 import { Game22 } from "../game22";
 
 export const TaskLesson = () => {
-  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel } = useContext(LessonContext);
+  const {
+    setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel
+  } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
   const [strStart, setStrStart] = useState('');
   const [strEnd, setStrEnd] = useState('');
 
   const loadContent = async () => {
-    await api.get(`/Retorno?id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
+    await api.get(`/CyberProAtividades/Retorno?id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
     .then((resp) =>{
       console.log('resp.data ==> ', resp.data);
       //pega o primeiro jogo do nivel facil e o primeiro tipo do jogo
@@ -55,6 +57,8 @@ export const TaskLesson = () => {
 
   const content = () => {
     switch(numAtividade) {
+      case 0 :
+        return(null);
       case 1 :
         return(<Game1 />);
       case 2 :
@@ -103,15 +107,15 @@ export const TaskLesson = () => {
   }
 
   useEffect(()=>{
-    if(numTask === '1'){
+    if(numTask === 1){
       setStrStart('Task 1');
       setStrEnd('Task 2');
-    }else if(numTask === '2'){
+    }else if(numTask === 2){
       setStrStart('Task 2');
       setStrEnd('Super Task');
     }
     loadContent();
-  },[])
+  },[numTask, setStrStart, ])
 
   return(
     <Container>

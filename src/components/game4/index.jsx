@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
@@ -14,10 +13,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Button } from "./styles";
 
 export const Game4 = () => {
-  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -36,54 +34,52 @@ export const Game4 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true);
-      
-      let dataLength = 0;
-      let tempData;
-      if(nivel === 0){
-        setData(conteudoFacil);
-        tempData = conteudoFacil;
-        dataLength = conteudoFacil.length;
-      }else if(nivel === 1){
-        setData(conteudoMedio);
-        tempData = conteudoMedio;
-        dataLength = conteudoMedio.length;
-      }else{
-        setData(conteudoDificil);
-        tempData = conteudoDificil;
-        dataLength = conteudoDificil.length;
-      }
-      let tempRandom = [];
-      for (let a = 0; a < dataLength; a++) {
-        tempRandom.push(a);
-      }
-      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-      setRandomNumber(tempRandom);
-
-      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
-      setSounds(items.pergunta);
-      setType(items.tipo);
-      
-      let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
-      tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-      if(items.tipo === 3){
-        setIdTipo3(tempSortNum);
-      } else {
-        setIdTipo4(tempSortNum);
-      }
-      
-      let tempAnswers = [];
-      for (let a = 0; a < tempSortNum.length; a ++) {
-        tempAnswers.push(items.resposta[tempSortNum[a]]);
-      }
-      setAnswers(tempAnswers);
-      setBlockButton(false);
-      setIsLoading(false)
-    } catch(error) {
-      console.log(error);
+  const loadLesson = useCallback(() => {
+    setIsLoading(true);
+    
+    let dataLength = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
     }
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    
+    setSounds(items.pergunta);
+    setType(items.tipo);
+    
+    let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
+    tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
+    if(items.tipo === 3){
+      setIdTipo3(tempSortNum);
+    } else {
+      setIdTipo4(tempSortNum);
+    }
+    
+    let tempAnswers = [];
+    for (let a = 0; a < tempSortNum.length; a ++) {
+      tempAnswers.push(items.resposta[tempSortNum[a]]);
+    }
+    setAnswers(tempAnswers);
+    
+    setBlockButton(false);
+    setIsLoading(false);
   }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
@@ -158,7 +154,7 @@ export const Game4 = () => {
     clicks = 0;
     setCountClick(clicks);
 
-    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua"){
       setTimeout(() =>{
@@ -209,9 +205,8 @@ export const Game4 = () => {
 
   return(
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Choose the correct alternative"/>
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sounds}.mp3`}/>
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`}/>
 
       <Main>
         {answers.map((answer, index) => {

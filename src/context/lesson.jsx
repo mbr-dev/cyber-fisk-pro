@@ -73,7 +73,10 @@ function LessonProvider({children}){
   }
 
   const setNewAtividade = (num) => {
-    setNumAtividade(num);
+    setNumAtividade(0);
+    setTimeout(() => {
+      setNumAtividade(num);
+    }, 500);
   }
 
   const setStatusLessons = (data) => {
