@@ -10,7 +10,7 @@ import InformationImg from "./images/Information.svg";
 import { NotificationsContainer, NotificationsHeader, NotificationsContent, NotificationsMain } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
-export const Notifications = ({ description }) => {
+export const Notifications = (props) => {
   const { notifications } = useContext(CyberContext);
 
   let colorStyles = {};
@@ -50,10 +50,10 @@ export const Notifications = ({ description }) => {
           {notifications === 2 && <img src={AttentionImg} alt="" />}
           {notifications === 3 && <img src={FrameImg} alt="" />}
 
-          <p>{description}</p>
+          <p>{props.description}</p>
         </NotificationsMain>
       </NotificationsContent>
-      <button style={colorStyles}>
+      <button style={colorStyles} onClick={() => {props.event()}}>
         OK
       </button>
     </NotificationsContainer>

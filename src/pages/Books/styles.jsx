@@ -9,20 +9,13 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  flex: 1;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const BooksArea = styled.div`
   width: 18.75rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1.5rem;
+  gap: 0.5rem;
 
   p {
     text-align: left;
@@ -33,7 +26,7 @@ export const BooksArea = styled.div`
 
 export const CurrentBooksArea = styled.div`
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 
   p {
     margin-bottom: 1.5rem;
@@ -57,6 +50,7 @@ export const ImagesCarrousel = styled.div`
     width: 100%;
     height: auto;
   } */
+  cursor: pointer;
   img {
     width: 30%;
   }

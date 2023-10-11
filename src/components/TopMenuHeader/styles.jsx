@@ -8,7 +8,7 @@ export const Container = styled.header`
   gap: 0.25rem;
   padding: 1rem;
   padding-bottom: 0.5rem;
-  background-color: ${props => props.theme["gray-200"]};
+  background-color: ${props => props.theme["blue-500"]};//props.theme["gray-200"]
   border-end-end-radius: 24px;
   border-end-start-radius: 24px;
   
@@ -29,6 +29,7 @@ export const TopHeader = styled.div`
   p {
     font-size: 1.5rem;
     font-weight: 500;
+    color: ${props => props.theme["white"]};
   }
 
   @media(max-width: 320px) {

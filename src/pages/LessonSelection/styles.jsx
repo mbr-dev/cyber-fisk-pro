@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const LessonSelectionContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,29 +8,23 @@ export const LessonSelectionContainer = styled.div`
   align-items: center;
 `;
 
-export const LessonSelectionContent = styled.main`
+export const Main = styled.main`
   flex: 1;
-  width: 18rem;
+  //width: 18rem;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  gap: 1.5rem;
-  margin-block: 1rem;
-
-  @media(max-width: 320px) {
-    margin-block: 0.5rem;
-    gap: 0.75rem;
-  }
+  gap: 2rem;
+  margin-top: 2rem;
 
   @media(max-width: 376px) {
-    margin-block: 0.625rem;
     gap: 1rem;
   }
 
-  @media(min-width: 600px) {
-    width: 38rem;
-    margin-block: 2rem;
+  @media(max-width: 320px) {
+    margin-top: 0.5rem;
+    gap: 0.75rem;
   }
 `;
 
@@ -39,7 +33,7 @@ export const ButtonAreaTop = styled.div`
   height: 13rem;
   display: flex;
   align-items: flex-start;
-  justify-content: space-between;
+  justify-content: space-around;
 
   p {
     font-size: 1.125rem;
@@ -98,7 +92,7 @@ export const ButtonTask = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   img {
     width: 36px;
   }
@@ -141,7 +135,7 @@ export const ButtonSuperTask = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   p {
     font-size: 1.25rem;
   }
@@ -179,7 +173,7 @@ export const ButtonAreaBottom = styled.div`
   width: 100%;
   display: flex;
   align-items: flex-end;
-  justify-content: space-between;
+  justify-content: space-around;
 
   img {
     width: 28px;
@@ -240,7 +234,7 @@ export const ButtonBottom = styled.button`
   border: 1px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-
+  cursor: pointer;
   p {
     font-size: 1rem;
     font-weight: 500;

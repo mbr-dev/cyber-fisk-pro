@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 
 import { Home } from "../pages/Home";
+import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
@@ -8,12 +9,14 @@ import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
+import { GameOver } from "../pages/GameOver";
 import { SelectLesson } from "../pages/SelectLesson";
 import { LessonSelection } from "../pages/LessonSelection";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { QRCode } from "../features/qrCode/pages/Home";
 import { QRReader } from "../features/qrCode/pages/QrReader";
 import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
+import { TaskLesson } from "../components/taskLesson";
 
 import { Game1 } from "../components/game1";
 import { Game2 } from "../components/game2";
@@ -42,14 +45,16 @@ import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
 import { GameSL3 } from "../components/game_sl3";
 import { GameSL4 } from "../components/game_sl4";
+import { GameSL5 } from "../components/game_sl5";
 import { GameWordle } from "../components/GameWordle";
 
 export const Router =() => {
   return(
     <Routes>
-      <Route path = "/" element={<Home />}/>
+      <Route path = "/" element={<Login />}/>
 
       <Route path="/Home" element={<Home/>} />
+      <Route path="/Menu" element={<Menu/>} />
       <Route path="/Books" element={<Books />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Report" element={<Report />} />
@@ -57,11 +62,14 @@ export const Router =() => {
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
+      <Route path="/GameOver" element={<GameOver />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
+      <Route path="/SelectLesson" element={<SelectLesson />} />
       <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
       <Route path="/qr-code" element={<QRCode />} />
       <Route path="/qr-code/reader" element={<QRReader />} />
       <Route path="/qr-code/:code" element={<GamesTemplate />} />
+      <Route path="/Lesson" element={<TaskLesson />} />
 
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
@@ -89,6 +97,7 @@ export const Router =() => {
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>
       <Route path = "/GameSL4" element={<GameSL4 />}/>
+      <Route path = "/GameSL5" element={<GameSL5 />}/>
       <Route path = "/GameWordle" element={<GameWordle />}/>
     </Routes>
   )

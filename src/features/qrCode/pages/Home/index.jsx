@@ -37,12 +37,17 @@ export const QRCode = () => {
     navigate(`${location.pathname.replace("/reader", "")}/${code.trim()}`);
   };
 
+  const back = () => {
+    localStorage.setItem("lastAccess","LessonSelection");
+    navigate("/LessonSelection");
+  }
+
   return (
     <Container>
       <RedBox>
         <Header>
           <Logo src={LogoImg} />
-          <Back>
+          <Back onClick={() => {back()}}>
             <BackIcon src={TurnOffIcon} />
           </Back>
         </Header>

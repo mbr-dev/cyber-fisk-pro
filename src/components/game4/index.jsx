@@ -1,21 +1,25 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L1_T2_Facil } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Button } from "./styles";
 
 export const Game4 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
   const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
@@ -33,14 +37,24 @@ export const Game4 = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(async() => {
-    //try {
-      //setIsLoading(true);
+    try {
+      setIsLoading(true);
       
-      //const response  = await api.get("/L1_T2_Facil");
-     // setData(response.data);
-      
-      const dataLength = L1_T2_Facil.length;
-
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
         tempRandom.push(a);
@@ -48,12 +62,13 @@ export const Game4 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      setSounds(L1_T2_Facil[tempRandom[round]].pergunta);
-      setType(L1_T2_Facil[tempRandom[round]].tipo);
-
-      let tempSortNum = L1_T2_Facil[tempRandom[round]].tipo === 3 ? idTipo3 : idTipo4;
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
+      setSounds(items.pergunta);
+      setType(items.tipo);
+      
+      let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
       tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-      if(L1_T2_Facil[tempRandom[round]].tipo === 3){
+      if(items.tipo === 3){
         setIdTipo3(tempSortNum);
       } else {
         setIdTipo4(tempSortNum);
@@ -61,23 +76,24 @@ export const Game4 = () => {
       
       let tempAnswers = [];
       for (let a = 0; a < tempSortNum.length; a ++) {
-        tempAnswers.push(L1_T2_Facil[tempRandom[round]].resposta[tempSortNum[a]]);
+        tempAnswers.push(items.resposta[tempSortNum[a]]);
       }
       setAnswers(tempAnswers);
       setBlockButton(false);
       setIsLoading(false)
-   // } catch(error) {
-      //console.log(error);
-    //}
+    } catch(error) {
+      console.log(error);
+    }
   }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setSounds(data[randomNumber[number]].pergunta);
-    setType(data[randomNumber[number]].tipo);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSounds(items.pergunta);
+    setType(items.tipo);
     
-    let tempSortNum = data[randomNumber[number]].tipo === 3 ? idTipo3 : idTipo4;
+    let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    if (data[randomNumber[number]].tipo === 3) {
+    if (items.tipo === 3) {
       setIdTipo3(tempSortNum);
     } else {
       setIdTipo4(tempSortNum);
@@ -85,7 +101,7 @@ export const Game4 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < tempSortNum.length; a ++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[tempSortNum[a]]);
+      tempAnswers.push(items.resposta[tempSortNum[a]]);
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
@@ -107,9 +123,9 @@ export const Game4 = () => {
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
 
-    const answer = answers[index].status;
+    const answer = answers[index];
 
-    if(answer === 1) {
+    if(answer.status === 1) {
       if (clicks < 3) {
         arr[index] = 1;
         setIdClick(arr);
@@ -153,14 +169,26 @@ export const Game4 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
-        alert('GAME OVER!!');
+        navigate('/GameOver');
         setNewContainer(1);
       },1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
-        alert('troca nivel');
-        setNewLesson(5);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(5);
       },1500);
     }
   }
@@ -181,7 +209,7 @@ export const Game4 = () => {
 
   return(
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Choose the correct alternative"/>
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sounds}.mp3`}/>
 

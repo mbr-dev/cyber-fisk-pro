@@ -1,10 +1,13 @@
 import { Container } from "./styles"
 
-export const LineSeparator = ({ w }) => {
+export const LineSeparator = ({ w, mt, bg, mb }) => {
   return (
     <Container
       style={{
-        width: w
+        width: w,
+        marginTop: mt,
+        marginBottom: mb,
+        backgroundColor: bg
       }}
     >
     </Container>

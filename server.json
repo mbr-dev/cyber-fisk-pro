@@ -519,7 +519,7 @@
       ]
     },
     {
-      "pergunta": "L1_Task2_M_1",
+      "pergunta": "L1_Task2_M_2",
       "resposta": [
         {"label": "Yes, I do.", "status": 1},
         {"label": "Yes, I am.", "status": 0},
@@ -938,7 +938,7 @@
     {"img": "Ess1_L2_ST_2", "status": 1},
     {"name": "fish", "status": 2},
     {"img": "Ess1_L2_ST_3", "status": 2},
-    {"name": "lasagna ", "status": 3},
+    {"name": "lasagna", "status": 3},
     {"img": "Ess1_L2_ST_4", "status": 3},
     {"name": "omelet", "status": 4},
     {"img": "Ess1_L2_ST_5", "status": 4},
@@ -974,12 +974,12 @@
     {"img": "Ess1_L2_ST_20", "status": 19},
     {"name": "pizza", "status": 20},
     {"img": "Ess1_L2_ST_21", "status": 20},
-    {"name": "soda", "status": 22},
-    {"img": "Ess1_L2_ST_22", "status": 22},
-    {"name": "orange juice", "status": 23},
-    {"img": "Ess1_L2_ST_23", "status": 23},
-    {"name": "water", "status": 24},
-    {"img": "Ess1_L2_ST_24", "status": 24}
+    {"name": "soda", "status": 21},
+    {"img": "Ess1_L2_ST_22", "status": 21},
+    {"name": "orange juice", "status": 22},
+    {"img": "Ess1_L2_ST_23", "status": 22},
+    {"name": "water", "status": 23},
+    {"img": "Ess1_L2_ST_24", "status": 23}
   ],
 
   "L3_T1_Facil": [
@@ -2502,6 +2502,102 @@
         ["Yes, he is.", "Yes, he is wearing a costume."],
         ["No, he isn’t.", "No, he isn’t eating."],
         "She is watching TV."
+      ]
+    }
+  ],
+  "L5_SUPER_LESSON": [
+    {
+      "pergunta": [
+        {"label": "color of a fruit", "answer": ["ORA", "NGE"]},
+        {"label": "children wear this on Halloween", "answer": ["COS", "TU", "MES"]},
+        {"label": "people wear this at weddings", "answer": ["SU", "IT"]},
+        {"label": "a celebration", "answer": ["CHR", "IST", "MAS"]},
+        {"label": "a family member", "answer": ["BRO", "THER"]}
+      ],
+      "letras": ["BRO", "CHR", "COS", "IST", "IT", "MAS", "MES", "NGE","ORA", "SU", "THER", "TU"],
+      "resposta": ["ORANGE", "COSTUMES", "SUIT", "CHRISTMAS", "BROTHER"]
+    }
+  ],
+
+  "L6_T1_Facil": [
+    {
+      "pergunta": "L6_Task1_F_0",
+      "resposta": [
+        {"label": "softball", "status": 0},
+        {"label": "soccer", "status": 0},
+        {"label": "baseball", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_1",
+      "resposta": [
+        {"label": "surfing", "status": 0},
+        {"label": "basketball", "status": 1},
+        {"label": "football", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_2",
+      "resposta": [
+        {"label": "football", "status": 1},
+        {"label": "volleyball ", "status": 0},
+        {"label": "baseball", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_3",
+      "resposta": [
+        {"label": "beach volleyball", "status": 0},
+        {"label": "volleyball", "status": 0},
+        {"label": "soccer", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_4",
+      "resposta": [
+        {"label": "tennis", "status": 1},
+        {"label": "soccer", "status": 0},
+        {"label": "surfing", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_5",
+      "resposta": [
+        {"label": "beach volleyball", "status": 0},
+        {"label": "football", "status": 0},
+        {"label": "volleyball", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_6",
+      "resposta": [
+        {"label": "beach volleyball", "status": 1},
+        {"label": "football", "status": 0},
+        {"label": "volleyball", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_7",
+      "resposta": [
+        {"label": "tennis", "status": 0},
+        {"label": "cycling", "status": 1},
+        {"label": "football", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_8",
+      "resposta": [
+        {"label": "swimming", "status": 0},
+        {"label": "baseball", "status": 0},
+        {"label": "surfing", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_F_9",
+      "resposta": [
+        {"label": "swimming ", "status": 1},
+        {"label": "surfing", "status": 0},
+        {"label": "cycling", "status": 0}
       ]
     }
   ]

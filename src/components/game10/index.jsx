@@ -1,5 +1,7 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { ButtonBg } from "../ButtonBg";
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
@@ -10,10 +12,15 @@ import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
 import { URL_FISKPRO } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Main, Container, Input, Button } from "./styles";
+import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
@@ -25,9 +32,24 @@ export const Game10 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    const totalOfSounds = L3_T2_Dificil.length;
+    let totalOfSounds = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfSounds = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfSounds = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfSounds = conteudoDificil.length;
+    }
     
     let tempSounds = [];
     for (let a = 0; a < totalOfSounds; a ++) {
@@ -36,16 +58,16 @@ export const Game10 = () => {
     tempSounds = tempSounds.sort(() => Math.random() - 0.5);
     setRandomNumber(tempSounds);
 
-    setSound(L3_T2_Dificil[tempSounds[round]].pergunta);
-
-    let tempAnswer = L3_T2_Dificil[tempSounds[round]].resposta.replace(/'/g, "’");
-    setAnswer(tempAnswer);
+    setSound(tempData[tempSounds[round]].pergunta);
+    let items = JSON.parse(tempData[tempSounds[round]].conteudo.resposta.replace(/'/g, "’"));
+    //let tempAnswer = tempData[tempSounds[round]].resposta.replace(/'/g, "’");
+    setAnswer(items);
   }, [setRandomNumber, setSound, setAnswer])
 
   const newRound = (number) => {
     setText("");
-    setSound(L3_T2_Dificil[randomNumber[number]].pergunta);
-    let tempAnswer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
+    setSound(tempData[randomNumber[number]].pergunta);
+    let tempAnswer = tempData[randomNumber[number]].resposta.replace(/'/g, "’");
     setAnswer(tempAnswer);
   }
 
@@ -88,41 +110,32 @@ export const Game10 = () => {
         setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Score") {
-      setTimeout(() =>{
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-
-        if (scoreFinal >= 70) {
-            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
-              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
-              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-              frequencia++;
-
-              if (frequencia === 4) {
-                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-              }
-
-              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
-              const rank = PontosRank(frequencia,oldRank);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            } else {
-              localStorage.setItem("cyber_pro_task2","1");
-              localStorage.setItem("cyber_pro_msg_task2","1");
-              localStorage.setItem("cyber_pro_frequencia_task1",1);
-              const rank = PontosRank(1,0);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            }
-          }
-
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+    } else if (rule === "Game over") {
+      setNewPontos(0, 0);
+      navigate('/GameOver');
+      setTimeout(() => {
+        setOptionColor([0, 0, 0]);
         setNewContainer(1);
       }, 1500);
+    }else if (rule === "Score"){
+        const pontos = Score(pontosF, pontosM, pontosD);
+        const page = ScoreFinal(pontos, numSelLesson, numTask);
+        navigate(`/${page}`);
+      }else {
+        setTimeout(() => {
+          setOptionColor([0, 0, 0]);
+          if(nivel === 0){
+            setNewNivel(1);
+            const atividade = conteudoMedio[0].id_tipo;
+            setNewAtividade(atividade);
+          }else{
+            setNewNivel(2);
+            const atividade = conteudoDificil[0].id_tipo;
+            setNewAtividade(atividade);
+          }
+        }, 1500);
+      }
     }
-  }
 
   useEffect(() => {
     loadLesson();
@@ -134,7 +147,7 @@ export const Game10 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <SubTitleLesson title="Write what you hear." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
       
@@ -152,11 +165,15 @@ export const Game10 = () => {
             }}
           />
         </form>
-        <Button
+        <ButtonBg
           form="myForm"
           type="submit"
-          disabled={blockButton}
-        ><p>Check</p></Button>
+          disabledButton={blockButton}
+          title="Check"
+          w="15.875rem"
+          h="2.5rem"
+          greenBtn
+        />
       </Main>
     </Container>
   )

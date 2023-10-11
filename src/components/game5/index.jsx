@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
@@ -6,18 +7,22 @@ import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade } from "../../utils/regras";
-import { L1_T2_Medio } from "../../utils/lesson1_Task";
 import { URL_FISKPRO } from "../../config/infos";
+import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
 
 import { Container, Main } from "./styles";
 
 export const Game5 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
-
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
@@ -27,32 +32,55 @@ export const Game5 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    const totalOfSounds = L1_T2_Medio.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true)
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;        
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
 
-    let tempSounds = [];
-    for (let a = 0; a < totalOfSounds; a++) {
-      tempSounds.push(a);
-    }
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
-    setSound(L1_T2_Medio[tempSounds[round]].pergunta);
+      let tempSounds = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempSounds.push(a);
+      }
+      tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempSounds);
 
-    let tempRandomNumber = idClick;
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClick(tempRandomNumber);
-    
-    let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(L1_T2_Medio[tempSounds[round]].resposta[a]);
+      let items = JSON.parse(tempData[tempSounds[round]].conteudo);
+      setSound(items.pergunta);
+
+      let tempRandomNumber = idClick;
+      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+      setIdClick(tempRandomNumber);
+      
+      let tempAnswers = [];
+      for (let a = 0; a < idClick.length; a++) {
+        tempAnswers.push(items.resposta[tempRandomNumber[a]]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-    setBlockButton(false);
   }, [setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setSound(L1_T2_Medio[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -60,7 +88,7 @@ export const Game5 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(L1_T2_Medio[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
@@ -111,14 +139,26 @@ export const Game5 = () => {
       setNewPontos(0, 0);
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
-        alert("GAME OVER!!");
+        navigate('/GameOver');
         setNewContainer(1);
       }, 1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
-        alert("Troca de nível!!");
-        setNewLesson(6);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(6);
       }, 1500);
     }
   }
@@ -131,13 +171,15 @@ export const Game5 = () => {
     playAudio ? setBlockButton(true) : setBlockButton(false);
   }, [playAudio, setBlockButton]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      {isLoading &&
-        <Loading />
-      }
-
-      <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd /> */}
       <TitleLesson title='Choose the correct alternative' />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
       

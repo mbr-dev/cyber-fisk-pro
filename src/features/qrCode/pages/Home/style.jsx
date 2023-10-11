@@ -86,7 +86,7 @@ export const ContainerInput = styled.div`
   display: flex;
   gap: 8px;
   align-items: center;
-  background-color: ${colors["gray-300"]};
+  background-color: ${colors["gray-400"]};
   border-radius: 10px;
   padding-inline: 10px;
   margin-top: 170px;

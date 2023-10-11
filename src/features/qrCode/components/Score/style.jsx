@@ -19,6 +19,7 @@ export const Container = styled.div`
   align-items: center;
   flex-direction: column;
   background: ${colors["gray-800"]};
+  z-index: 999;
 `;
 export const Header = styled.header`
   width: 100%;

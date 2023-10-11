@@ -1,9 +1,11 @@
 import { useEffect, useState, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
+import { api } from "../../lib/api";
 import { L2_T1_Facil } from "../../utils/Lesson2_Task";
 import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
@@ -14,11 +16,16 @@ import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game7 = () => {
-  const { rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio } = useContext(LessonContext);
+  const { rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
 
+  const navigate = useNavigate();
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
   const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3]);
+  const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -32,39 +39,57 @@ export const Game7 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestions = L2_T1_Facil.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
     
-    let tempRandomNumber = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempRandomNumber.push(a);
+      let tempRandomNumber = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandomNumber.push(a);
+      }
+      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandomNumber);
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
+      let tempRandomAudio = idClickAudio;
+      tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
+      setIdClickAudio(tempRandomAudio);
+
+      let tempAudios = [];
+      for (let a = 0; a < idClickAudio.length; a++) {
+        tempAudios.push(items[tempRandomNumber[round]].pergunta[a]);
+      }
+      tempAudios = tempAudios.sort(() => Math.random() - 0.5);
+      setAudios(tempAudios);
+
+      let tempRandomAnswer = idClickAnswer;
+      tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+      setIdClickAnswer(tempRandomAnswer);
+
+      let tempAnswers = [];
+      for (let a = 0; a < idClickAnswer.length; a++) {
+        tempAnswers.push(items[tempRandomNumber[round]].resposta[a]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+
+      setBlockAudio(false);
+    } catch(error) {
+      console.log(error);
     }
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandomNumber);
-
-    let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempAudios = [];
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudios.push(L2_T1_Facil[tempRandomNumber[round]].pergunta[a]);
-    }
-    tempAudios = tempAudios.sort(() => Math.random() - 0.5);
-    setAudios(tempAudios);
-
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
-
-    let tempAnswers = [];
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L2_T1_Facil[tempRandomNumber[round]].resposta[a]);
-    }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-
-    setBlockAudio(false);
   }, [setRandomNumber, idClickAudio, setIdClickAudio, round, setAudios, idClickAnswer, setIdClickAnswer, setAnswers, setBlockAudio]);
 
   const newRound = (number) => {
@@ -74,7 +99,7 @@ export const Game7 = () => {
 
     let tempAudio = [];
     for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudio.push(L2_T1_Facil[randomNumber[number]].pergunta[tempRandomAudio[a]]);
+      tempAudio.push(data[randomNumber[number]].pergunta[tempRandomAudio[a]]);
     }
     tempAudio = tempAudio.sort(() => Math.random() - 0.5);
     setAudios(tempAudio);
@@ -85,7 +110,7 @@ export const Game7 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(L2_T1_Facil[randomNumber[number]].resposta[tempRandomNumber[a]]);
+      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomNumber[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
@@ -171,14 +196,26 @@ export const Game7 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
-        alert('GAME OVER!!');
+        navigate('/GameOver');
         setNewContainer(1);
       }, 1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
-        alert('Proximo lesson!!');
-        setNewLesson(2);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -189,7 +226,7 @@ export const Game7 = () => {
   
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task2" />
+      {/* <HeaderLesson numStart="Task 1" numEnd="Task2" /> */}
       <TitleLesson title="Make pairs." />
 
       <Main>
