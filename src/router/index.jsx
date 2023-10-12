@@ -10,7 +10,7 @@ import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
-import { SelectLesson } from "../pages/SelectLesson";
+import { SelectLesson } from "../pages/selectLesson";
 import { LessonSelection } from "../pages/LessonSelection";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { QRCode } from "../features/qrCode/pages/Home";
