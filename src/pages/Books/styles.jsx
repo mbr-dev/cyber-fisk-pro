@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const BooksContainer = styled.div` 
+export const Container = styled.div` 
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,21 +8,14 @@ export const BooksContainer = styled.div`
   align-items: center;
 `;
 
-export const BooksMain = styled.main`
-  flex: 1;
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-`;
-
-export const BooksArea = styled.div`
+export const Main = styled.main`
   width: 18.75rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   margin-top: 1.5rem;
+  gap: 0.5rem;
 
   p {
     text-align: left;
@@ -33,18 +26,11 @@ export const BooksArea = styled.div`
 
 export const CurrentBooksArea = styled.div`
   width: 100%;
-  margin-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
 
   p {
     margin-bottom: 1.5rem;
   }
-`;
-
-export const Line = styled.div`
-  width: 100%;
-  height: 1.5px;
-  background-color: ${props => props.theme["gray-200"]};
-  margin-bottom: 1.5rem;
 `;
 
 export const BooksImagesArea = styled.div`
@@ -60,9 +46,13 @@ export const BooksImagesCarrousel = styled.div`
 `;
 
 export const ImagesCarrousel = styled.div`
-  img {
+  /* img {
     width: 100%;
     height: auto;
+  } */
+  cursor: pointer;
+  img {
+    width: 30%;
   }
 `;
 

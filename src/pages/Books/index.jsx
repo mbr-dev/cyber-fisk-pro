@@ -1,18 +1,24 @@
 import { useContext } from "react";
-
 import { useKeenSlider } from "keen-slider/react";
-import "keen-slider/keen-slider.min.css"
-import "./styles.css"
+import { useNavigate } from "react-router-dom";
+import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { ButtonBg } from "../../components/ButtonBg";
+import { LineSeparator } from "../../components/LineSeparator";
 
 import { CyberContext } from "../../context/cyber";
-import { booksTranslate } from "../../utils/Translate/booksTranslate";
+import { translateBooks } from "../../utils/Translate";
 
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import boo1 from "./images/bookImg01.svg";
+import boo2 from "./images/bookImg02.svg";
+import boo3 from "./images/bookImg03.svg";
+import bookEss1 from './images/capa53.jpg';
 
-import { BooksContainer, Line, BooksArea, BooksMain, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
-import { TopMenuHeader } from "../../components/TopMenuHeader";
+import "./styles.css";
+import "keen-slider/keen-slider.min.css";
+import { Container, Main, CurrentBooksArea, PreviousBooksArea, BooksImagesArea, BooksImagesCarrousel, ImagesCarrousel } from "./styles";
 
 export const Books = () => {
+  const navigate = useNavigate();
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 3,
@@ -20,86 +26,85 @@ export const Books = () => {
     },
   })
 
-  const { selectLanguageBooks } = useContext(CyberContext)
+  const { selectLanguage } = useContext(CyberContext)
 
-  const activeCarrousel = booksTranslate.type.filter(bookAmount => bookAmount.amountOfBooks > 3);
+  // const activeCarrousel = translateBooks.type.filter(bookAmount => bookAmount.amountOfBooks > 3);
 
-  const shouldShowCarrousel = activeCarrousel.length > 0;
+  // const shouldShowCarrousel = activeCarrousel.length > 0;
+  function clickLesson(){
+    localStorage.setItem("lastAccess","SelectLesson");
+    navigate("/SelectLesson");
+  }
+
+  const home = () => {
+    navigate(`/Home`);
+  }
 
   return (
-    <BooksContainer>
+    <Container>
+      <TopMenuHeader hasLogo title={selectLanguage === 0 ? translateBooks[0].title : selectLanguage === 1 ? translateBooks[1].title : translateBooks[2].title} />
 
-      {selectLanguageBooks === 0 && 
-        <TopMenuHeader hasLogo title={booksTranslate.title[0]} />}
-      {selectLanguageBooks === 1 && 
-        <TopMenuHeader hasLogo title={booksTranslate.title[1]} />}
-      {selectLanguageBooks === 2 && 
-        <TopMenuHeader hasLogo title={booksTranslate.title[2]} />}
+      <Main>
+        <CurrentBooksArea>
+          <p>{selectLanguage === 0 ? translateBooks[0].current : selectLanguage === 1 ? translateBooks[1].current : translateBooks[2].current}</p>
 
-      <BooksMain>
-        <BooksArea>
-          <CurrentBooksArea>
-            {selectLanguageBooks === 0 && <p>{booksTranslate.languageCurrent[0]}</p>}
-            {selectLanguageBooks === 1 && <p>{booksTranslate.languageCurrent[1]}</p>}
-            {selectLanguageBooks === 2 && <p>{booksTranslate.languageCurrent[2]}</p>}
+          {/* {shouldShowCarrousel ? 
+            (<BooksImagesCarrousel ref={sliderRef} className="keen-slider">
+              {translateBooks.img.map((images, index) => {
+                return (
+                  <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
+                    <img src={images} alt="" />
+                  </ImagesCarrousel>
+                )
+              })}
+            </BooksImagesCarrousel>)
+            :
+            (<BooksImagesArea>
+              {translateBooks.img.map((images, index) => {
+                return (
+                  <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
+                    <img src={images} alt="" />
+                  </ImagesCarrousel>
+                )
+              })}
+            </BooksImagesArea>)
+          } */}
 
-            {shouldShowCarrousel ? 
-              (<BooksImagesCarrousel ref={sliderRef} className="keen-slider">
-                {booksTranslate.img.map((images, index) => {
-                  return (
-                    <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
-                      <img src={images} alt="" />
-                    </ImagesCarrousel>
-                  )
-                })}
-              </BooksImagesCarrousel>)
-              :
-              (<BooksImagesArea>
-                {booksTranslate.img.map((images, index) => {
-                  return (
-                    <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
-                      <img src={images} alt="" />
-                    </ImagesCarrousel>
-                  )
-                })}
-              </BooksImagesArea>)
-            }
-          </CurrentBooksArea>
+          <ImagesCarrousel>
+            <img src={bookEss1} alt="" onClick={() => {clickLesson()}} />
+          </ImagesCarrousel>
+        </CurrentBooksArea>
+        <LineSeparator w="100%" bg="#E6E6E6" />
+        <PreviousBooksArea>
+          <p>{selectLanguage === 0 ? translateBooks[0].previous : selectLanguage === 1 ? translateBooks[1].previous : translateBooks[2].previous}</p>
 
-          <Line />
-
-          <PreviousBooksArea>
-            {selectLanguageBooks === 0 && <p>{booksTranslate.languagePrevious[0]}</p>}
-            {selectLanguageBooks === 1 && <p>{booksTranslate.languagePrevious[1]}</p>}
-            {selectLanguageBooks === 2 && <p>{booksTranslate.languagePrevious[2]}</p>}
-
-            {shouldShowCarrousel ? 
-              (<BooksImagesCarrousel ref={sliderRef} className="keen-slider">
-                {booksTranslate.img.map((images, index) => {
-                  return (
-                    <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
-                      <img src={images} alt="" />
-                    </ImagesCarrousel>
-                  )
-                })}
-              </BooksImagesCarrousel>)
-              :
-              (<BooksImagesArea>
-                {booksTranslate.img.map((images, index) => {
-                  return (
-                    <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
-                      <img src={images} alt="" />
-                    </ImagesCarrousel>
-                  )
-                })}
-              </BooksImagesArea>)
-            }
-            
-          </PreviousBooksArea>
-        </BooksArea>
-      </BooksMain>
-
-      <AreaButtonBottom title="Home" />
-    </BooksContainer>
+          {/* {shouldShowCarrousel ? 
+            (<BooksImagesCarrousel ref={sliderRef} className="keen-slider">
+              {translateBooks.img.map((images, index) => {
+                return (
+                  <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
+                    <img src={images} alt="" />
+                  </ImagesCarrousel>
+                )
+              })}
+            </BooksImagesCarrousel>)
+            :
+            (<BooksImagesArea>
+              {translateBooks.img.map((images, index) => {
+                return (
+                  <ImagesCarrousel key={index} className="keen-slider__slide number-slide">
+                    <img src={images} alt="" />
+                  </ImagesCarrousel>
+                )
+              })}
+            </BooksImagesArea>)
+          } */}
+          <ImagesCarrousel>
+          </ImagesCarrousel>
+        </PreviousBooksArea>
+        <LineSeparator w="100%" mt="1rem" />
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
+      </Main>
+    </Container>
   )
 }

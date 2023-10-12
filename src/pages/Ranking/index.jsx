@@ -1,5 +1,8 @@
+import { useNavigate } from "react-router-dom";
+
 import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
+import { LineSeparator } from "../../components/LineSeparator";
+import { ButtonBg } from "../../components/ButtonBg";
 
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
@@ -7,14 +10,20 @@ import Avatar1Img from "./images/Avatar1.png";
 import Avatar2Img from "./images/Avatar2.png";
 import Avatar3Img from "./images/Avatar3.png";
 
-import { RankingContainer, RankingMain, MainBottom, MainTop, ButtonRakingArea, LineSeparator, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea } from "./styles"
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea } from "./styles"
 
 export const Ranking = () => {
+  const navigate = useNavigate();
+
+  const home = () => {
+    navigate(`/Home`);
+  }
+
   return (
-    <RankingContainer>
+    <Container>
       <TopMenuHeader title="Ranking" />
 
-      <RankingMain>
+      <Main>
         <MainTop>
           <ButtonRakingArea>
             <ButtonNational $selected >National</ButtonNational>
@@ -36,7 +45,7 @@ export const Ranking = () => {
           </TextArea>
         </MainTop>
 
-        <LineSeparator />
+        <LineSeparator w="100%" />
 
         <MainBottom>
           <LevelPosition $selected>
@@ -66,9 +75,9 @@ export const Ranking = () => {
             <p>250 xp</p>
           </LevelPosition>
         </MainBottom>
-      </RankingMain>
+      </Main>
 
-      <AreaButtonBottom title="Home" />
-    </RankingContainer>
+      <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
+    </Container>
   )
 }

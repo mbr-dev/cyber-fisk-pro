@@ -1,11 +1,11 @@
 import React from "react";
 
-import { TitleLessonContainer } from "./styles";
+import { Container } from "./styles";
 
 export const TitleLesson = ({ title }) => {
   return(
-    <TitleLessonContainer>
+    <Container>
       <span>{title}</span>
-    </TitleLessonContainer>  
+    </Container>  
   )
 }

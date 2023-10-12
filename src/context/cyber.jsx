@@ -1,35 +1,82 @@
-import React, {createContext, useState} from 'react';
+import { createContext, useState, useEffect } from "react";
+import { apiSignIn } from "../lib/api";
 
 const CyberContext = createContext();
 
 function CyberProvider({children}){
   const [book, setbook] = useState({
-    id:'',
+    id:'53',
     name:'Essentials 1'
   });
   const [selectLanguage, setSelectLanguage] = useState(0);
-  const [selectLanguageHome, setSelectLanguageHome] = useState(0);
-  const [selectLanguageBooks, setSelectLanguageBooks] = useState(0);
-  // 0 success, 1 information, 2 attention, 3 error
-  const [notifications, setNotifications] = useState(3);
+  const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
 
   function chooseLanguage(e) {
     const selectedOption = e.target.value
 
     if (selectedOption === "0") {
-      setSelectLanguage(0)
-      setSelectLanguageHome(0)
-      setSelectLanguageBooks(0)
+      setSelectLanguage(0);
     } else if (selectedOption === "1") {
-      setSelectLanguage(1)
-      setSelectLanguageHome(1)
-      setSelectLanguageBooks(1)
+      setSelectLanguage(1);
     } else if (selectedOption === "2") {
-      setSelectLanguage(2)
-      setSelectLanguageHome(2)
-      setSelectLanguageBooks(2)
+      setSelectLanguage(2);
     }
   }
+
+  function chooseNotification(value){
+    setNotifications(value);
+  }
+
+  const signIn = async(user, password) => {
+    try {
+      const { data } = await apiSignIn.post("",
+        {
+          key: "9Z#kvy88$LYZKb&",
+          usuario: user,
+          password: password
+        },
+        {
+          headers: { "Content-Type": "application/json" }
+        }
+      );
+      console.log('DATA LOGIN ::: ', data);
+      let respData = '';
+      if (data) {
+        if(!data.succeeded){
+          respData = data;
+          return respData;
+        }else{       
+          respData = data;
+          return data;
+        }
+      }else{
+        respData = {message:'Erro ao comunicar com o servidor de login!'};
+        return respData;
+      }
+    } catch (error) {
+      return error;
+    }
+  }
+
+ /*  const signIn = async(user, password) => {
+    try {
+      const response = await fetch("https://homologsgf.fisk.com.br/SGFAPI/api/Auth/loginAppsProfessor", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify({
+          key: "9Z#kvy88$LYZKb&",
+          usuario: user,
+          password: password
+        })
+      });
+      const data = await response.json()
+      console.log("data: ", data);
+    } catch (error) {
+      console.log(error)
+    }
+  } */
 
   const newBook = (data) => {
     setbook(data);
@@ -39,11 +86,11 @@ function CyberProvider({children}){
     <CyberContext.Provider
       value={{
         book,
-        newBook,
         notifications,
+        chooseNotification,
         selectLanguage,
-        selectLanguageHome,
-        selectLanguageBooks,
+        signIn,
+        newBook,
         chooseLanguage,
       }}
     >

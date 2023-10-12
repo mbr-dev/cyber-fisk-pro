@@ -1,195 +1,265 @@
 import { useEffect, useState, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 
-import { L2_T1_Facil } from "../../utils/Lesson2_Task1";
+import { api } from "../../lib/api";
+import { L2_T1_Facil } from "../../utils/Lesson2_Task";
 import { LessonContext } from "../../context/lesson";
+import { URL_FISKPRO } from "../../config/infos";
+import { TrocaAtividade } from "../../utils/regras";
 
-import { Container, Main, ButtonRow, ButtonAnswer, ButtonAudio } from "./styles";
-import { defaultTheme } from "../../themes/defaultTheme";
+import ImgBtn from "../../assets/ruido.svg";
+import ImgBtn2 from "../../assets/btnAudio2.svg";
+import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game7 = () => {
-  const { rodadaGeral, timeElapsed, setTimeElapsed, setRodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
 
-  const [colorAnswers, setColorAnswers] = useState([0, 0, 0, 0]);
+  const navigate = useNavigate();
+  const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
   const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
   const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3]);
+  const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightAudios, setRightAudios] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswer, setBlockAnswer] = useState(true);
   const [blockAudio, setBlockAudio] = useState(true);
-  const [selectAudioIndex, setSelectAudioIndex] = useState(null);
+  const [selectAudio, setSelectAudio] = useState(null);
+  const [countClick, setCountClick] = useState(0);
 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestions = L2_T1_Facil.length;
+  const loadLesson = useCallback(async() => {
+    try {
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
     
-    let tempRandomNumber = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempRandomNumber.push(a);
-    }
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandomNumber);
+      let tempRandomNumber = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandomNumber.push(a);
+      }
+      tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandomNumber);
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
+      let tempRandomAudio = idClickAudio;
+      tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
+      setIdClickAudio(tempRandomAudio);
 
-    let tempAudio = [];
-    let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudio.push(L2_T1_Facil[tempRandomNumber[round]].pergunta[tempRandomAudio[a]]);
-    }
-    setAudios(tempAudio);
+      let tempAudios = [];
+      for (let a = 0; a < idClickAudio.length; a++) {
+        tempAudios.push(items[tempRandomNumber[round]].pergunta[a]);
+      }
+      tempAudios = tempAudios.sort(() => Math.random() - 0.5);
+      setAudios(tempAudios);
 
-    let tempAnswer = [];
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswer.push(L2_T1_Facil[tempRandomNumber[round]].resposta[tempRandomAnswer[a]]);
-    }
-    setAnswers(tempAnswer);
+      let tempRandomAnswer = idClickAnswer;
+      tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+      setIdClickAnswer(tempRandomAnswer);
 
-    setBlockAudio(false);
+      let tempAnswers = [];
+      for (let a = 0; a < idClickAnswer.length; a++) {
+        tempAnswers.push(items[tempRandomNumber[round]].resposta[a]);
+      }
+      tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+      setAnswers(tempAnswers);
+
+      setBlockAudio(false);
+    } catch(error) {
+      console.log(error);
+    }
   }, [setRandomNumber, idClickAudio, setIdClickAudio, round, setAudios, idClickAnswer, setIdClickAnswer, setAnswers, setBlockAudio]);
 
   const newRound = (number) => {
-    setRightAudios([]);
-    setRightAnswers([]);
-
-    let tempAudio = [];
     let tempRandomAudio = idClickAudio;
     tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
     setIdClickAudio(tempRandomAudio);
+
+    let tempAudio = [];
     for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudio.push(L2_T1_Facil[randomNumber[number]].pergunta[tempRandomAudio[a]]);
+      tempAudio.push(data[randomNumber[number]].pergunta[tempRandomAudio[a]]);
     }
+    tempAudio = tempAudio.sort(() => Math.random() - 0.5);
     setAudios(tempAudio);
 
-    let tempAnswer = [];
     let tempRandomNumber = idClickAnswer;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClickAnswer(tempRandomNumber);
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswer.push(L2_T1_Facil[randomNumber[number]].resposta[tempRandomNumber[a]]);
-    }
-    setAnswers(tempAnswer);
     
+    let tempAnswers = [];
+    for (let a = 0; a < idClickAnswer.length; a++) {
+      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomNumber[a]]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
+    setAnswers(tempAnswers);
+    
+    setRightAnswers([]);
+    setSelectAudio(null);
+    setRightAudios([]);
     setBlockAudio(false);
     setBlockAnswer(true);
   }
 
-  const handleGetAudio = (index) => {
-    if (blockAudio) {
-      setSelectAudioIndex(null);
-      setBlockAudio(false);
-    } else {
-      let tempId = index;
-      setSelectAudioIndex(tempId);
-      setBlockAudio(true);
-      setBlockAnswer(false);
-    }
+  const handlePlayAudio = (sound) => {
+    if (playAudio) return;
+
+    let tempSound = sound.status;
+    setSelectAudio(tempSound);
+    setBlockAudio(true);
+    setBlockAnswer(false);    
+
+    const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson2/${sound.audio}.mp3`);
+
+    audio.play();
+    newStatusPlay(true);
+
+    audio.addEventListener('ended', () => {
+      newStatusPlay(false);
+    });
   }
 
   const handleGetAnswer = (index) => {
-    if (blockAnswer) return;
-    
-    if (rightAudios.includes(audios[selectAudioIndex])) {
-      return;
-    }
+    if (blockAnswer || playAudio) return;
 
-    let tempColor = colorAnswers;
+    setBlockAnswer(true);
 
-    if (answers[index] === audios[selectAudioIndex]) {
-      tempColor[index] = 1;
-      setColorAnswers(tempColor);
+    let clicks = countClick;
+    clicks++;
+    setCountClick(clicks);
 
-      setRightAudios(state => [...state, audios[selectAudioIndex]]);
-      setRightAnswers(state => [...state, answers[index]]);
+    let tempColor = optionColor;
+    let tempRightPoints = rightPoints;
+
+    const answer =  answers[index];
+
+    if (answer.status === selectAudio) {
+      if (clicks < 4) {
+        tempColor[index] = 1;
+        setOptionColor(tempColor);
+
+        setRightAudios(state => [...state, selectAudio]);
+        setRightAnswers(state => [...state, answers[index]]);
+        return;
+      }
+
+      tempRightPoints += 1;
+      setRightPoints(tempRightPoints);
+      setNewPontos(tempRightPoints);
     } else {
       tempColor[index] = 2;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
+
+      let tempE = wrongPoints;
+      tempE += 1;
+      setWrongPoints(tempE);
     }
 
-    setBlockAudio(false);
-    setBlockAnswer(true);
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+
+    if (rule === "Continua") {
+      setTimeout(() =>{
+        setOptionColor([0, 0, 0, 0]);
+        setCountClick(0);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over") {
+      setNewPontos(0,0);
+      setTimeout(() =>{
+        setOptionColor([0, 0, 0, 0]);
+        navigate('/GameOver');
+        setNewContainer(1);
+      }, 1500);
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
+      setTimeout(() =>{
+        setOptionColor([0, 0, 0, 0]);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(2);
+      }, 1500);
+    }
   }
 
   useEffect(() => {
     loadLesson();
   }, []);
-
-  useEffect(() => {
-    if (rightAudios.length >= 4 && rightAnswers.length >= 4) {
-      let tempRound = round;
-      tempRound++;
-      let tempGeneralRound = rodadaGeral;
-      tempGeneralRound++;
-    
-      setTimeout(() => {
-        setRound(tempRound);
-        setNewRodada(tempGeneralRound);
-        newRound(tempRound);
-      }, 1000)
-    }
-
-  }, [rightAudios, rightAnswers, round, rodadaGeral, setRound, setNewRodada, newRound]);
-
-  useEffect(() => {
-    const resetColor = setTimeout(() => {
-      let tempColor = [...colorAnswers];
-      tempColor[selectAudioIndex] = 0;
-      tempColor.fill(0);
-      setColorAnswers(tempColor);
-    }, 1000);
-
-    return () => clearTimeout(resetColor);
-  }, [colorAnswers, colorAnswers, selectAudioIndex]);
   
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task2" />
+      {/* <HeaderLesson numStart="Task 1" numEnd="Task2" /> */}
       <TitleLesson title="Make pairs." />
 
       <Main>
         <ButtonRow>
           {audios.map((audio, index) => {
-            const disabledAud = rightAudios.includes(audio);
+            const disabledAud = rightAudios.includes(audio.status);
             return (
               <ButtonAudio 
                 key={index}
-                onClick={() => handleGetAudio(index)}
-                style={{
-                  opacity: (blockAudio && selectAudioIndex === index) || disabledAud ? 0.5 : 1
-                }}
+                onClick={() => handlePlayAudio(audio)}
                 disabled={disabledAud}
               >
-                {/* <Volume2 size={24} strokeWidth={2} />
-                <img src={SomImg} alt="" />  */}
-                <span>{audio}</span>
+                <img src={ImgBtn2} alt="" className="btn2" />
+                <img src={ImgBtn} alt="" />
               </ButtonAudio>
             )
           })}
         </ButtonRow>
 
         <ButtonRow>
-          {answers.map((resposta, index) => {
-            const disabledRes = rightAnswers.includes(resposta);
+          {answers.map((answer, index) => {
+            const disabledRes = rightAnswers.includes(answer);
 
             return (
               <ButtonAnswer 
                 key={index}
-                onClick={() => handleGetAnswer(index)}
-                style={{ 
-                  backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? defaultTheme.white : ""
-                }}
-                disabled={disabledRes}
+                w="8rem"
+                h="2.625rem"
+                onPress={() => handleGetAnswer(index)}
+                optionColor={optionColor[index]}
+                disabledButton={disabledRes}
               >
-                <p>{resposta}</p>
+                <p>{answer.label}</p>
               </ButtonAnswer>
             )
           })}

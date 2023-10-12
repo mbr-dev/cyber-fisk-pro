@@ -1,116 +1,148 @@
-import { useState, useContext, useEffect } from "react";
+import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
-import { TitleLesson } from "../titleLesson";
+import { Loading } from "../Loading";
+import { ButtonBg } from "../ButtonBg";
+import { TitleLesson } from "../TitleLesson";
+import { ButtonAnswer } from "../ButtonAnswer";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubTitleSuperLesson } from "../SubTitleSuperLesson";
+import { Notifications } from "../../components/Notifications";
 
+import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
+import { CyberContext } from "../../context/cyber";
 
-import { GameSL1Content, GameSL1Container, BoxBtn, BoxBtnClear, ButtonLetter, ButtonClear } from "./style";
+import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main, ButtonArea, Letter, LettersArea } from "./styles";
 
 export const GameSL1 = () => {
-  const respostas = ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"];
-  const letras = ["A", "B", "C", "D", "E", "F", "H", "I", "J", "M", "N", "P", "R", "S", "T", "Z"];
-  const tempo = 30;
+  const {setTimeElapsed, timeElapsed, conteudoSuperTask, newInfoST} = useContext(LessonContext);
+  const {chooseNotification} = useContext(CyberContext);
 
-  const { superTask, setNewsuperTask, setNewContainer, setTimeElapsed, timeElapsed } = useContext(LessonContext);
-  console.log("GAME TIME: ", timeElapsed);
+  const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+  const [lettersAnswer, setLettersAnswer] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [numberClick, setNumberClick] = useState(0);
+  const [letters, setLetters] = useState([]);
+  const [answers, setAnswers] = useState([]);
+  const [answered, setAnswered] = useState([]);
+  const [rightPoints, setRightPoints] = useState(0);
+  const [wordLength, setWordLength] = useState(6);
+  const [isLoading, setIsLoading] = useState(false);
+  const [attention, setAttention] = useState(false);
+  const [msg, setMsg] = useState('');
 
-  const [numClick, setNumClick] = useState(0);
-  let [tempoRestante, setTempoRestante] = useState(tempo);
-  const [pauseTime, setPauseTime] = useState(false);
-  const [addTime, setAddTime] = useState(false);
-  const [respondido, setRespondido] = useState([]);
-  const [rodada, setRodada] = useState(0);
-  const [palavraRodada, setPalavraRodada] = useState('');
+  const navigate = useNavigate();
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
 
-  const handleClick = (str) => {
-    let temp = superTask;
-    let tempNum = numClick;
-    temp[tempNum] = str;
-    tempNum++;
-    setNewsuperTask(temp);
-    setNumClick(tempNum);
-    let res = '';
-
-    superTask.map((x) => {
-      res += x;
-    });
-    //setPauseTime(true);
-    respostas.map((el) => {
-      if (res.toUpperCase() === el.toUpperCase()) {
-        //setAddTime(true);
-        if (respondido.includes(el)) {
-          alert(`Voce já acertou esta palavra: ${el}`);
-        } else {
-          let temp = respondido;
-          temp.push(el);
-          setRespondido(temp);
-          alert(`Acertou a palavra: ${el}, restam ${(respostas.length - temp.length)} palavra(s)`);
-        }
-
-        clearFields();
-        //setTempoRestante(tempoRestante += 30);
-      }
-    })
-
-    if (tempNum > 8) {
-      clearFields();
+      let items = JSON.parse(conteudoSuperTask[0].conteudo);
+      let tempLetters = items.letras;
+      setLetters(tempLetters);
+      let tempAnswers = items.resposta;
+      setAnswers(tempAnswers);
+    } catch(error) {
+      console.log(error);
     }
-
-    //setPauseTime(false);
-  }
+    setIsLoading(false);
+  }, [setLetters, setAnswers]);
 
   const handleClearField = () => {
-    let temp = superTask;
-    let tempNum = numClick;
-    tempNum--;
-    temp[tempNum] = '';
-    if (tempNum < 1) {
-      tempNum = 0;
+    let tempLetters = lettersAnswer;
+    let tempNumber = numberClick;
+    tempNumber--;
+    tempLetters[tempNumber] = "";
+
+    if (tempNumber < 1) {
+      tempNumber = 0;
     }
-    setNewsuperTask(temp);
-    setNumClick(tempNum);
+    
+    setLettersAnswer(tempLetters);
+    setNumberClick(tempNumber);
   }
 
   const clearFields = () => {
-    let temp = ['', '', '', '', '', '', '', '', ''];
-    setNumClick(0);
-    setNewsuperTask(temp);
+    let temp = ["", "", "", "", "", "", "", "", ""];
+    setNumberClick(0);
+    setLettersAnswer(temp);
+    setOptionColor([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   }
 
-  const startTimer = () => {
-    setTimeout(() => {
-      if (!pauseTime) {
-        if (tempoRestante > 0) {
-          setTempoRestante(tempoRestante -= 1);
+  const handleClick = (letter) => {
+    let temp = lettersAnswer;
+    let tempNumber = numberClick;
+
+    temp[tempNumber] = letter;
+    tempNumber++;
+
+    setLettersAnswer(temp);
+    setNumberClick(tempNumber);
+    let rightWord = "";
+
+    lettersAnswer.map((index) => {
+      rightWord += index;
+    });
+
+    answers.map((world) => {
+      if (rightWord.toUpperCase() === world.toUpperCase()) {
+        if (answered.includes(world)) {
+          setMsg(`Voce já acertou esta palavra: ${world}`);
+          chooseNotification(2);
+          setAttention(true);
         } else {
-          alert('GAME OVER!!');
-          setPauseTime(true);
-          setNewContainer(1);
-        }
-      }
-    }, 1000)
-  }
+          let tempAnswer = answered;
+          tempAnswer.push(world);
+          setAnswered(tempAnswer);
 
-  const formataTempo = (time) => {
-    const minutes = Math.floor(time / 60);
-    let seconds = time % 60;
-    if (seconds < 10) {
-      seconds = `0${seconds}`;
+          setOptionColor([1, 1, 1, 1, 1, 1, 1, 1, 1]);
+          setWordLength(state => state - 1);
+        }
+
+        setTimeout(() => {
+          clearFields();
+        }, 1500);
+      }
+    })
+
+    if (tempNumber > 9) {
+      clearFields();
     }
 
-    return `${minutes}:${seconds}`;
+    let finished = answers.every(word => answered.includes(word));
+
+    if (answers.length > 0) {
+      if (finished) {
+        let tempRightPoints = rightPoints;
+        
+        if (timeElapsed <= 60) {
+          tempRightPoints += 5;
+        } else if (timeElapsed >= 61 && timeElapsed <= 75) {
+          tempRightPoints += 4;
+        } else if (timeElapsed >= 76 && timeElapsed <= 90) {
+          tempRightPoints += 3;
+        } else if (timeElapsed >= 91 && timeElapsed <= 120) {
+          tempRightPoints += 2;
+        } else {
+          tempRightPoints += 1;
+        }
+        newInfoST(tempRightPoints, timeElapsed);
+        setRightPoints(tempRightPoints);
+        navigate('/WellDone');
+      } else {
+        return;
+      }
+    } else {
+      return;
+    }
   }
 
-  const calculaFracao = () => {
-    return tempoRestante / tempo;
+  const clickAlert = () =>{
+    setAttention(false);
   }
 
   useEffect(() => {
-    clearFields();
+    loadLesson();
   }, []);
-  //startTimer();
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -122,39 +154,65 @@ export const GameSL1 = () => {
     return () => {
       clearInterval(timer)
     }
-  }, [setTimeElapsed])
+  }, [setTimeElapsed]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
-    <GameSL1Container>
-      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
+    <Container>
+      {/* <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" /> */}
+      <TitleLesson title={
+        `How many nationalities can you write with these letters? There are ${wordLength} ${wordLength > 1 ? "words" : "word"}.`
+      } />
 
-      <TitleLesson title="How many nationalities can you write with these letters?" />
-      <SubTitleSuperLesson palavra={palavraRodada} />
-
-      <GameSL1Content>
-        {/* <div className='boxTimer'>
-            <span>{formataTempo(tempoRestante)} {addTime ? <span>+ 30</span>: <></>}</span>
-        </div> */}
-        <BoxBtn>
-          {letras.map((letra, index) => {
+      <Main>
+        {attention ? 
+            <Notifications description={msg} event={clickAlert}/> : null
+        }
+        <LettersArea>
+          {lettersAnswer.map((letter, index) => {
             return (
-              <ButtonLetter key={index}
-                onClick={() => handleClick(letra)}
+              <Letter 
+                key={index}
+                style={{
+                  borderColor: numberClick === index ? defaultTheme["red-200"] : optionColor[index] === 1 ? "transparent" : "",
+                  backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : "",
+                  color: optionColor[index] === 1 ? defaultTheme.white : "",
+                  
+                }}
               >
-                <p>{letra}</p>
-              </ButtonLetter>
+                {letter}
+              </Letter>
             )
           })}
-        </BoxBtn>
+        </LettersArea>
 
-        <BoxBtnClear>
-          <ButtonClear 
-            onClick={() => handleClearField()}
-          >
-            <p>Clear</p>
-          </ButtonClear>
-        </BoxBtnClear>
-      </GameSL1Content>
-    </GameSL1Container>
+        <ButtonArea>
+          {letters.map((letter, index) => {
+            return (
+              <ButtonAnswer 
+                key={index}
+                w="1rem"
+                h="2.75rem"
+                onPress={() => handleClick(letter)}
+              >
+                <p className="pBold">{letter}</p>
+              </ButtonAnswer>
+            )
+          })}
+        </ButtonArea>
+
+        <ButtonBg
+          h="2.5rem"
+          w="9rem"
+          onPress={handleClearField}
+          title="Clear"
+        />
+      </Main>
+    </Container>
   )
 }

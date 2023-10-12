@@ -1,3 +1,4 @@
+import Cookies from 'universal-cookie';
 export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
   //rodada inicia em 0
   if (nivel === 0) {
@@ -9,7 +10,7 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
       return "Continua";
     }
   }
-  //medio
+  //médio
   if (nivel === 1) {
     if (rodada === 8) {
       if (pontos < 6) {
@@ -29,7 +30,7 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
       return "Continua";
     }
   } else if (nivel === 2) {
-    //dificil
+    //difícil
     if (rodada === 10) {
       return "Score";
     } else {
@@ -48,6 +49,42 @@ export const Score = (pontosF, pontosM, pontosD) => {
   console.log('resD: ', resD);
   console.log('res: ', res);
   return res;
+}
+
+export const ScoreFinal = (pontos, lesson, task) => {
+  let msg = '';
+  const cookies = new Cookies();
+  if(pontos >= 70){
+    //gravar e retornar a frequencia com q jogou o exercicio
+    let valorRank = 0;
+    if(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`)) {
+      let frequencia = parseInt(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`));
+      let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
+      frequencia++;
+
+      if (frequencia === 4) {
+        //localStorage.setItem(`cyber_pro_dolar`,10);
+        cookies.set('dollar', 10);
+      }else{
+        //localStorage.setItem(`cyber_pro_dolar`,0);
+        cookies.set('dollar', 0);
+      }
+
+      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,frequencia);
+      const rank = PontosRank(frequencia,oldRank);
+      valorRank = rank;
+      localStorage.setItem("cyber_pro_rank",rank);
+    } else {
+      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,1);
+      const rank = PontosRank(1,0);
+      valorRank = rank;
+      localStorage.setItem("cyber_pro_rank",rank);
+    }
+    msg = 'WellDone';
+  }else{
+    msg = 'GameOver';
+  }
+  return msg;
 }
 
 export const PontosRank = (jogadas, pontos) => {

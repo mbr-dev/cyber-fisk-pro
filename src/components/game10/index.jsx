@@ -1,51 +1,73 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { ButtonBg } from "../ButtonBg";
 import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { URL_L3T2D } from "../../config/infos";
-import { LessonContext } from "../../context/lesson";
-import { L3_T2_Dificil } from "../../utils/Lesson3_Task2";
 import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
+import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
+import { URL_FISKPRO } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Main, Container, Input, Button } from "./styles";
+import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
-  const [answer, setAnswer] = useState('');
-  const [text, setText] = useState('');
+  const [answer, setAnswer] = useState("");
+  const [text, setText] = useState("");
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
+  const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    const totalOfQuestions = L3_T2_Dificil.length;
-    
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a ++) {
-      tempQuestions.push(a);
+    let totalOfSounds = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfSounds = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfSounds = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfSounds = conteudoDificil.length;
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    setSound(`${URL_L3T2D}${tempQuestions[round]}.mp3`);
+    
+    let tempSounds = [];
+    for (let a = 0; a < totalOfSounds; a ++) {
+      tempSounds.push(a);
+    }
+    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempSounds);
 
-    let tempAnswer = L3_T2_Dificil[tempQuestions[round]].resposta.replace(/'/g, "’");
-    setAnswer(tempAnswer);
+    setSound(tempData[tempSounds[round]].pergunta);
+    let items = JSON.parse(tempData[tempSounds[round]].conteudo.resposta.replace(/'/g, "’"));
+    //let tempAnswer = tempData[tempSounds[round]].resposta.replace(/'/g, "’");
+    setAnswer(items);
   }, [setRandomNumber, setSound, setAnswer])
 
   const newRound = (number) => {
     setText("");
-    setSound(`${URL_L3T2D}${randomNumber[number]}.mp3`);
-
-    let tempAnswer = L3_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
+    setSound(tempData[randomNumber[number]].pergunta);
+    let tempAnswer = tempData[randomNumber[number]].resposta.replace(/'/g, "’");
     setAnswer(tempAnswer);
   }
 
@@ -54,7 +76,7 @@ export const Game10 = () => {
     if (playAudio) return;
     
     let tempWord = text;
-    let tempPoint = correctPoints;
+    let tempRightPoints = rightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -62,9 +84,9 @@ export const Game10 = () => {
     if (tempWord === answer) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempPoint += 3;
-      setCorrectPoints(tempPoint);
-      setNewPontos(2, tempPoint);
+      tempRightPoints += 3;
+      setRightPoints(tempRightPoints);
+      setNewPontos(2, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
@@ -81,31 +103,39 @@ export const Game10 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
-    if (rule === "Continua") {
-      setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
+    if(rule === "Continua") {
+      setTimeout(() =>{
+        setColorAnswer(0);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
-      
+      navigate('/GameOver');
       setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
+        setOptionColor([0, 0, 0]);
         setNewContainer(1);
-      }, 1000);
-    } else {
-
-      setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
-        setNewLesson(2);
-      }, 1000);
+      }, 1500);
+    }else if (rule === "Score"){
+        const pontos = Score(pontosF, pontosM, pontosD);
+        const page = ScoreFinal(pontos, numSelLesson, numTask);
+        navigate(`/${page}`);
+      }else {
+        setTimeout(() => {
+          setOptionColor([0, 0, 0]);
+          if(nivel === 0){
+            setNewNivel(1);
+            const atividade = conteudoMedio[0].id_tipo;
+            setNewAtividade(atividade);
+          }else{
+            setNewNivel(2);
+            const atividade = conteudoDificil[0].id_tipo;
+            setNewAtividade(atividade);
+          }
+        }, 1500);
+      }
     }
-  }
 
   useEffect(() => {
     loadLesson();
@@ -117,9 +147,9 @@ export const Game10 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <SubTitleLesson title="Write what you hear." />
-      <SubTitleLessonAudio audio={sound} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
@@ -135,11 +165,15 @@ export const Game10 = () => {
             }}
           />
         </form>
-        <Button
+        <ButtonBg
           form="myForm"
           type="submit"
-          disabled={blockButton}
-        ><p>Check</p></Button>
+          disabledButton={blockButton}
+          title="Check"
+          w="15.875rem"
+          h="2.5rem"
+          greenBtn
+        />
       </Main>
     </Container>
   )

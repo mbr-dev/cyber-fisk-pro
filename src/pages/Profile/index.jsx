@@ -1,11 +1,12 @@
 import { useContext } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
+import { ButtonBg } from "../../components/ButtonBg";
+import { LineSeparator } from "../../components/LineSeparator";
 import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { AreaButtonBottom } from "../../components/AreaButtonBottom";
 
-import { profileTranslate } from "../../utils/Translate/profileTranslate";
-import { CyberContext } from "../../context/cyber"
+import { translateProfile } from "../../utils/Translate";
+import { CyberContext } from "../../context/cyber";
 
 import Brazil from "../../assets/Brazil.svg";
 import Eua from "../../assets/Eua.svg";
@@ -16,26 +17,23 @@ import { Container, Main, Form, Input, AreaInput, Select } from "./styles";
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
-  function handleSelectLanguage(e) {
-    e.preventDefault()
-    chooseLanguage(e)
+  const handleSelectLanguage = (event) => {
+    event.preventDefault();
+    chooseLanguage(event)
   }
   
   return(
     <Container>
-      {selectLanguage === 0 &&
-        <TopMenuHeader hasAvatar hasLogo title="Perfil" />}
-      {selectLanguage === 1 &&
-        <TopMenuHeader hasAvatar hasLogo title="Profile" />}
-      {selectLanguage === 2 &&
-        <TopMenuHeader hasAvatar hasLogo title="Perfil" />}
+      <TopMenuHeader hasAvatar hasLogo title={
+        selectLanguage === 0 ? translateProfile[0].title : selectLanguage === 1 ? translateProfile[1].title : translateProfile[2].title
+      } />
 
       <Main>
         <Form>
           <AreaInput>
-            {selectLanguage === 0 && <label>{profileTranslate[0].selectLanguage}</label>}
-            {selectLanguage === 1 && <label>{profileTranslate[1].selectLanguage}</label>}
-            {selectLanguage === 2 && <label>{profileTranslate[2].selectLanguage}</label>}
+            {selectLanguage === 0 && <label>{translateProfile[0].selectLanguage}</label>}
+            {selectLanguage === 1 && <label>{translateProfile[1].selectLanguage}</label>}
+            {selectLanguage === 2 && <label>{translateProfile[2].selectLanguage}</label>}
             
             {selectLanguage === 0 && <img src={Brazil} alt="Flag Brazil" />}
             {selectLanguage === 1 && <img src={Eua} alt="Flag Eua" />}
@@ -49,27 +47,27 @@ export const Profile = () => {
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 && <label>{profileTranslate[0].name}</label>}
-            {selectLanguage === 1 && <label>{profileTranslate[1].name}</label>}
-            {selectLanguage === 2 && <label>{profileTranslate[2].name}</label>}
+            {selectLanguage === 0 && <label>{translateProfile[0].name}</label>}
+            {selectLanguage === 1 && <label>{translateProfile[1].name}</label>}
+            {selectLanguage === 2 && <label>{translateProfile[2].name}</label>}
 
             <User size={16} strokeWidth={2.5} />
             <Input type="text" placeholder="Camila Eduarda Campos" readOnly />
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 && <label>{profileTranslate[0].date}</label>}
-            {selectLanguage === 1 && <label>{profileTranslate[1].date}</label>}
-            {selectLanguage === 2 && <label>{profileTranslate[2].date}</label>}
+            {selectLanguage === 0 && <label>{translateProfile[0].date}</label>}
+            {selectLanguage === 1 && <label>{translateProfile[1].date}</label>}
+            {selectLanguage === 2 && <label>{translateProfile[2].date}</label>}
             
             <CalendarDays size={16} strokeWidth={2.5} />
             <Input type="text" placeholder="07/08/1995" readOnly />
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 && <label>{profileTranslate[0].local}</label>}
-            {selectLanguage === 1 && <label>{profileTranslate[1].local}</label>}
-            {selectLanguage === 2 && <label>{profileTranslate[2].local}</label>}
+            {selectLanguage === 0 && <label>{translateProfile[0].local}</label>}
+            {selectLanguage === 1 && <label>{translateProfile[1].local}</label>}
+            {selectLanguage === 2 && <label>{translateProfile[2].local}</label>}
 
             <School size={16} strokeWidth={2.5} />
             <Select readOnly className="selectState">
@@ -79,16 +77,16 @@ export const Profile = () => {
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 && <label>{profileTranslate[0].email}</label>}
-            {selectLanguage === 1 && <label>{profileTranslate[1].email}</label>}
-            {selectLanguage === 2 && <label>{profileTranslate[2].email}</label>}
+            {selectLanguage === 0 && <label>{translateProfile[0].email}</label>}
+            {selectLanguage === 1 && <label>{translateProfile[1].email}</label>}
+            {selectLanguage === 2 && <label>{translateProfile[2].email}</label>}
             <Mail size={16} strokeWidth={2.5} />
             <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
           </AreaInput>
+          <LineSeparator w="100%" />
         </Form>
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
       </Main>
-
-      <AreaButtonBottom title="Home" />
     </Container>
   )
 }

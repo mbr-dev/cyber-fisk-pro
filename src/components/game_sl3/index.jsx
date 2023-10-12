@@ -1,14 +1,17 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
+import { Loading } from "../Loading";
+import { TitleLesson } from "../TitleLesson";
 
-import { L3_SPT } from "../../utils/Lesson3_Task2";
+import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styled";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
+  const { conteudoSuperTask, newInfoST, rodadaGeral, setNewRodada } = useContext(LessonContext);
+
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const navigate = useNavigate();
@@ -16,6 +19,7 @@ export const GameSL3 = () => {
   const [optionColorQ, setOptionColorQ] = useState(0);
   const [round, setRound] = useState(0);
   const [question, setQuestion] = useState("");
+  const [data, setData] = useState([]);
   const [divLetter, setDivLetter] = useState([]);
   const [divLetterRight, setDivLetterRight] = useState([]);
   const [answersOfQuestion, setAnswersOfQuestion] = useState([]);
@@ -23,41 +27,50 @@ export const GameSL3 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [block, setBlock] = useState(true);
   const [changed, setChanged] = useState(false);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [text, setText] = useState("");
   const [countTimer, setCountTimer] = useState(0);
   const [selectedIndexes, setSelectedIndexes] = useState([]);
   const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
 
-  const loadLesson = useCallback(() => {
-    let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
-    setQuestion(tempQuestion);
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
+      
+      setData(conteudoSuperTask);
+      let items = JSON.parse(conteudoSuperTask[0].conteudo);
+      let tempQuestion = items.pergunta.toUpperCase();
+      setQuestion(tempQuestion);
+      
+      let letterQuestion = tempQuestion.split(" ");
+      const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
+      const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
+      setDivLetter(lettersIndex);
+      setDivLetterRight(lettersWord);
+      
+      const answersLength = items.resposta.length;
+      let tempAnswers = [];
 
-    let letterQuestion = tempQuestion.split(" ");
-    const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
-    const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
-    setDivLetter(lettersIndex);
-    setDivLetterRight(lettersWord);
-
-    const answersLength = L3_SPT[round].resposta.length;
-    let tempAnswers = [];
-
-    for (let a = 0; a < answersLength; a ++) {
-      tempAnswers.push(L3_SPT[round].resposta[a]);
+      for (let a = 0; a < answersLength; a ++) {
+        tempAnswers.push(items.resposta[a]);
+      }
+      setAnswersOfQuestion(tempAnswers);
+      setBlock(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
     }
-
-    setAnswersOfQuestion(tempAnswers);
-    setBlock(false);
   }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
-    console.log('round: ', round);
     setText("");
     setOptionColorQ(0);
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
 
-    let tempQuestion = L3_SPT[number].pergunta.toUpperCase();
+    const items = JSON.parse(data[number].conteudo);
+
+    let tempQuestion = items.pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
     let letterQuestion = tempQuestion.split(" ");
@@ -66,11 +79,11 @@ export const GameSL3 = () => {
     setDivLetter(lettersIndex);
     setDivLetterRight(lettersWord);
 
-    const answersLength = L3_SPT[number].resposta.length;
+    const answersLength = items.resposta.length;
     let tempAnswers = [];
 
     for (let a = 0; a < answersLength; a ++) {
-      tempAnswers.push(L3_SPT[number].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
 
     setCountTimer(0);
@@ -169,6 +182,10 @@ export const GameSL3 = () => {
     tempRound++;
     setRound(tempRound);
 
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
     if (tempRound === 10) {
       setTimeout(() => {
         navigate("/WellDone")
@@ -209,15 +226,23 @@ export const GameSL3 = () => {
       clearInterval(timer)
     }
   }, [countTimer]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
   
   return (
     <Container>
-      <HeaderLesson numStart="Super Task" numEnd="Finish" superTaskStart trophyEnd />
+      {changed ? 
+        <TitleLesson title="Now answer the question." />
+        :
+        <TitleLesson title="Solve the code to answer the question." />
+      }
       <Main>
         {!changed ? 
           <Phrase>
-            <h2>Solve the code to answer the question.</h2>
-
             <Letters>
               {keyboardLetters.map((letter, index) => {
                 const isRight = selectedIndexes.includes(index);
@@ -235,7 +260,6 @@ export const GameSL3 = () => {
                 )
               })}
             </Letters>
-
             <TypeLetters>
               {divLetter.map((letters, letterIndex) => {
                 return (
@@ -266,8 +290,6 @@ export const GameSL3 = () => {
           </Phrase>
         :
           <Answer>
-            <h2>Now answer the question.</h2>
-
             <TypeLetters2>
               {divLetterRight.map((letters, letterIndex) => {
                 return (

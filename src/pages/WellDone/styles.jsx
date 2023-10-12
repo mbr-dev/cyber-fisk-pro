@@ -1,49 +1,59 @@
 import styled from "styled-components";
 
-export const WellDoneContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
 `;
 
-export const WellDoneHeader = styled.header`
-  width: 100%;
-  display: flex;
-  justify-content: flex-end;
-  padding: 1rem 1rem 0 1rem;
-`;
-
-export const WellDoneMain = styled.main`
-  flex: 1;
+export const Header = styled.header`
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  `;
+  justify-content: space-between;
+  background-color: ${props => props.theme["blue-200"]};
+`;
+
+export const Top = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 1rem 1rem 0 1rem;
+
+  @media(max-width: 320px) {
+    padding: 0.5rem 0.5rem 0 0.5rem;
+  }
+`;
 
 export const AreaAvatar = styled.section`
   width: 100%;
-  height: 13rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-end;
-  padding-bottom: 0.5rem;
   position: relative;
 
   h2 {
-    margin-top: 1.25rem;
     font-size: 1.75rem;
     font-weight: bold;
+    color: ${props => props.theme.white};
   }
 
   img {
-    width: 85%;
+    width: 80%;
     position: absolute;
-    z-index: -1;
+    z-index: 1;
+  }
+
+  @media(max-width: 320px) {
+    h2 {
+      font-size: 1.5rem;
+    }
+
+    img {
+      width: 75%;
+    }
   }
 `;
 
@@ -51,6 +61,7 @@ export const Avatar = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  z-index: 2;
   
   p {
     padding: 0.25rem 1rem;
@@ -59,7 +70,13 @@ export const Avatar = styled.div`
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
   }
-  `;
+
+  @media(max-width: 320px) {
+    p {
+      font-size: 0.875rem;
+    }
+  }
+`;
 
 export const AvatarImg = styled.div`
   width: 120px;
@@ -77,6 +94,16 @@ export const AvatarImg = styled.div`
     z-index: 1;
     margin-top: 0.125rem;
   }
+
+  @media(max-width: 320px) {
+    width: 100px;
+    height: 90px;
+
+    img {
+      width: 80px;
+      margin-top: 0.25rem;
+    }
+  }
 `;
 
 export const AreaXp = styled.section`
@@ -85,8 +112,11 @@ export const AreaXp = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
   padding-block: 1rem;
+
+  @media(max-width: 320px) {
+    padding-block: 0.5rem;
+  }
 `;
 
 export const AreaXpInfo = styled.div`
@@ -110,20 +140,42 @@ export const AreaXpInfo = styled.div`
     font-size: 1.125rem;
     font-weight: 500;
   }
+
+  @media(max-width: 320px) {
+    img {
+      width: 42px;
+      margin-right: 1rem;
+    }
+
+    span {
+      padding: 0.375rem;
+    }
+
+    p {
+      font-size: 1rem;
+    }
+  }
 `;
 
-export const LineSeparator = styled.div`
-  width: 18.75rem;
-  height: 1.5px;
-  background-color: ${props => props.theme["gray-400"]};
+export const Main = styled.main`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  padding-block: 1rem;
+
+  @media(max-width: 320px) {
+    padding-block: 0.25rem;
+  }
 `;
 
 export const AreaInfo = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  padding-top: 0.5rem;
+  gap: 1rem;
   text-align: center;
 
   p {
@@ -141,10 +193,56 @@ export const AreaInfo = styled.section`
     border-bottom: 4px solid ${props => props.theme["red-300"]};
     margin-bottom: 0.125rem;
   }
+
+  @media(max-width: 360px) {
+    gap: 0.5rem;
+  }
+
+  @media(max-width: 320px) {
+    margin-top: 0.25rem;
+    gap: 0.25rem;
+
+    p {
+      font-size: 1rem;
+    }
+
+    span {
+      font-size: 1rem;
+      padding: 0.25rem 1.5rem;
+      margin-bottom: 0;
+    }
+  }
 `;
 
 export const AreaInfoBottom = styled.div`
   border: 1px solid ${props => props.theme.black};
-  padding: 1rem 2.5rem;
+  padding: 0.5rem 2rem;
   border-radius: 8px;
+  margin-top: 1rem;
+
+  @media(max-width: 360px) {
+    margin-top: 0.5rem;
+  }
+
+  @media(max-width: 320px) {
+    margin-top: 0;
+    padding: 0.25rem 1.5rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+`;
+
+export const AreaButton = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
 `;

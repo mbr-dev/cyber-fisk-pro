@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const SelectLessonContainer = styled.div`
+export const Container = styled.div`
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -8,13 +8,15 @@ export const SelectLessonContainer = styled.div`
   align-items: center;
 `;
 
-export const SelectLessonMain = styled.main`
+export const Main = styled.main`
   flex: 1;
-  width: 18.75rem;
+  /* width: 18.75rem; */
+  width: 100%;
   margin-top: 1rem;
   margin-bottom: 1rem;
   display: flex;
-  align-items: flex-start;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
 `;
 
@@ -57,6 +59,10 @@ export const ButtonLesson = styled.button`
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
     border: 2px solid ${props => props.theme.black};
+  }
+
+  &:disabled{
+    background-color: ${props => props.theme["gray-500"]};
   }
 
   @media(max-width: 320px) {

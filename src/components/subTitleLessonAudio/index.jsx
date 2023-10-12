@@ -9,9 +9,7 @@ export const SubTitleLessonAudio = (props) => {
   const { newStatusPlay, playAudio } = useContext(LessonContext);
 
   const handleClick = () => {
-    if (playAudio) {
-      return;
-    }
+    if (playAudio) return;
 
     const audio = new Audio(props.audio);
 
@@ -26,11 +24,11 @@ export const SubTitleLessonAudio = (props) => {
   return (
     <Container>
       {playAudio ?
-        <Button onClick={() => handleClick()}>
+        <Button onClick={handleClick}>
           <Headphones size={props.size ? props.size : '36'} strokeWidth={2.5} />
         </Button>
         :
-        <Button onClick={() => handleClick()}>
+        <Button onClick={handleClick}>
           <Volume2 size={props.size ? props.size : '36'} strokeWidth={2.5} />
         </Button>
       }

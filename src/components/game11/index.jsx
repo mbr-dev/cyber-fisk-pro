@@ -1,17 +1,23 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
-import { L4_T2_Facil } from "../../utils/lesson4_Task2";
-import { LessonContext } from "../../context/lesson";
-
-import { Container, Main, Answers, Questions, Button } from "./styles";
-import { defaultTheme } from "../../themes/defaultTheme";
 import { TrocaAtividade } from "../../utils/regras";
+import { LessonContext } from "../../context/lesson";
+import { L4_T2_Facil } from "../../utils/lesson4_Task";
+
+import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main, Answers, Questions, Button } from "./styles";
 
 export const Game11 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada} = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorQuestions, setColorQuestions] = useState([0, 0, 0]);
   const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
@@ -21,17 +27,32 @@ export const Game11 = () => {
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
+  const [countClick, setCountClick] = useState(0);
   const [blockQuestions, setBlockQuestions] = useState(true);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const [rightQuestions, setRightQuestions] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
- 
-  const loadLesson = useCallback(() => {
-    const totalOfQuestions = L4_T2_Facil.length;
+  const [data, setData] = useState([]);
 
+  const loadLesson = useCallback(() => {
+    let totalOfQuestions = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfQuestions = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfQuestions = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfQuestions = conteudoDificil.length;
+    }
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
@@ -39,23 +60,25 @@ export const Game11 = () => {
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
 
-    let tempQ = [];
     let tempRandomQ = idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
     setIdClickQuestion(tempRandomQ);
+
+    let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[tempQuestions[round]].pergunta[tempRandomQ[a]].label);
+      tempQ.push(tempData[tempQuestions[round]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
-    let tempA = [];
-    let temRandomA = idClickAnswer;
-    temRandomA = temRandomA.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(temRandomA);
+    let tempRandomAnswer = idClickAnswer;
+    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomAnswer);
+
+    let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempA.push(L4_T2_Facil[tempQuestions[round]].resposta[temRandomA[a]].label);
+      tempAnswers.push(tempData[tempQuestions[round]].resposta[tempRandomAnswer[a]]);
     }
-    setAnswers(tempA);
+    setAnswers(tempAnswers);
 
     setBlockQuestions(false);
   }, [setRandomNumber, idClickQuestion, setIdClickQuestion, setQuestions, idClickAnswer, setIdClickAnswer, setAnswers, setBlockQuestions])
@@ -64,24 +87,25 @@ export const Game11 = () => {
     setRightQuestions([]);
     setRightAnswers([]);
 
-    let tempQ = [];
     let tempRandomQ= idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
     setIdClickQuestion(tempRandomQ);
+
+    let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(L4_T2_Facil[randomNumber[number]].pergunta[tempRandomQ[a]].label);
+      tempQ.push(data[randomNumber[number]].pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
-    let tempA = [];
-    let tempRandomA = idClickAnswer;
-    tempRandomA = tempRandomA.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomA);
+    let tempRandomAnswer = idClickAnswer;
+    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
+    setIdClickAnswer(tempRandomAnswer);
+
+    let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempA.push(L4_T2_Facil[randomNumber[number]].resposta[tempRandomA[a]].label);
+      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomAnswer[a]]);
     }
-    setAnswers(tempA);
-    
+    setAnswers(tempAnswers);
     setBlockQuestions(false);
     setBlockAnswers(true);
   }
@@ -91,6 +115,10 @@ export const Game11 = () => {
       setSelectedQuestionIndex(null);
       setBlockQuestions(false);
     } else {
+      let clicks = countClick;
+      clicks++;
+      setCountClick(clicks);
+
       let tempId = index;
       setSelectedQuestionIndex(tempId);
       setBlockQuestions(true);
@@ -103,26 +131,27 @@ export const Game11 = () => {
 
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
-    let tempPoint = correctPoints;
-    let tempRound = round;
-    let tempGeneralRound = rodadaGeral;
+    let tempRightPoints = rightPoints;
     
-    const selectedQuestion = L4_T2_Facil[randomNumber[round]].pergunta[idClickQuestion[selectedQuestionIndex]];
-    const selectedAnswer = L4_T2_Facil[randomNumber[round]].resposta[idClickAnswer[index]];
+    const selectedQuestion = questions[selectedQuestionIndex];
+    const selectedAnswer = answers[index];
     
-    if (selectedAnswer.answer === selectedQuestion.answer) {
-      tempColorQ[selectedQuestionIndex] = 1;
-      setColorQuestions(tempColorQ);
-      tempColorA[index] = 1;
-      setColorAnswer(tempColorA);
+    if (selectedAnswer.status === selectedQuestion.status) {
+      if (countClick < 3) {
+        tempColorQ[selectedQuestionIndex] = 1;
+        setColorQuestions(tempColorQ);
+        tempColorA[index] = 1;
+        setColorAnswer(tempColorA);
+        setRightAnswers(state => [...state, index]);
+        setRightQuestions(state => [...state, selectedQuestionIndex]);
+        setBlockQuestions(false);
+        setBlockAnswers(true);
+        return;
+      }
 
-      tempPoint++;
-      setCorrectPoints(tempPoint);
-      setNewPontos(1, tempPoint);
-      console.log("tempPoint: ", tempPoint);
-
-      setRightQuestions(state => [...state, selectedQuestionIndex]);
-      setRightAnswers(state => [...state, index]);
+      tempRightPoints++;
+      setRightPoints(tempRightPoints);
+      setNewPontos(0, tempRightPoints);
     } else {
       tempColorQ[selectedQuestionIndex] = 2;
       setColorQuestions(tempColorQ);
@@ -132,34 +161,54 @@ export const Game11 = () => {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
-
-      tempRound++;
-      tempGeneralRound++;
-
-      setTimeout(() => {
-        setRound(tempRound);
-        setNewRodada(tempGeneralRound);
-        newRound(tempRound);
-      }, 1000);
     }
 
-    const rule = TrocaAtividade(0, tempGeneralRound, tempPoint, tempRound);
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound)
 
-    setBlockQuestions(false);
-    setBlockAnswers(true);
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
 
-    if (rule === "Continua") {
-      return;
-    } else if (rule === "Game over") {
-      setNewPontos(0, 0);
-      
-      setTimeout(() => {
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+
+    if(rule === "Continua"){
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over"){
+      setNewPontos(0,0);
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        navigate('/GameOver');
         setNewContainer(1);
-      }, 1000);
-    } else {
-      setTimeout(() => {
-        setNewLesson(1);
-      }, 1000);
+      },1500);
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(5);
+      },1500);
     }
   }
 
@@ -178,7 +227,7 @@ export const Game11 = () => {
         setRound(tempRound);
         setNewRodada(tempGeneralRound);
         newRound(tempRound);
-      }, 1000);
+      }, 1500);
     }
   }, [rightQuestions, rightAnswers, round, rodadaGeral, setRound, setNewRodada, newRound]);
 
@@ -197,7 +246,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Match the question to their answers." />
 
       <Main>
@@ -210,12 +259,11 @@ export const Game11 = () => {
                   onClick={() => handleGetQuestion(index)}
                   style={{
                     opacity: (blockQuestions && selectedQuestionIndex === index) || disabledQ ? 0.5 : 1,
-                    backgroundColor: colorQuestions[index] === 0 ? "" : colorQuestions[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                    color: colorQuestions[index] === 1 || colorQuestions[index] === 2 ? defaultTheme.white : "",
+                    borderColor: colorQuestions[index] === 0 ? "" : colorQuestions[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
                   }}
                   disabled={disabledQ}
                 >
-                  <p>{question}</p>
+                  <p>{question.label}</p>
                 </Button>
               )
           })}
@@ -229,12 +277,11 @@ export const Game11 = () => {
                 key={index}
                 onClick={() => handleGetAnswer(index)}
                 style={{
-                  backgroundColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: colorAnswers[index] === 1 || colorAnswers[index] === 2 ? defaultTheme.white : "",
+                  borderColor: colorAnswers[index] === 0 ? "" : colorAnswers[index] === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"]
                 }}
                 disabled={disabledA}
               >
-                <p>{answer}</p>
+                <p>{answer.label}</p>
               </Button>
             )
           })}
