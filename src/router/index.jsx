@@ -53,7 +53,7 @@ export const Router =() => {
 
   return(
     <Routes>
-      <Route path = "/" element={<Login />}/>
+      <Route path = "/cyber-fisk-pro/" element={<Login />}/>
 
       <Route path="/cyber-fisk-pro/Home" element={<Home/>} />
       <Route path="/Menu" element={<Menu/>} />
