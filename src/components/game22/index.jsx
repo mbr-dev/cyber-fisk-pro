@@ -8,7 +8,7 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
@@ -34,7 +34,7 @@ export const Game22 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-
+    
     let dataLength = 0;
     let tempData;
     if(nivel === 0){
@@ -73,6 +73,7 @@ export const Game22 = () => {
     setAnswers(tempAnswers);
 
     setBlockButton(false);
+    setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
@@ -97,7 +98,7 @@ export const Game22 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = optionColor;
     const selectedAnswer = answers[index].status;
 
@@ -105,7 +106,7 @@ export const Game22 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints += 2;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setNewPontos(1, tempRightPoints);
       setRightPoints(tempRightPoints);
     } else {
@@ -125,7 +126,7 @@ export const Game22 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua") {
       setTimeout(() =>{
