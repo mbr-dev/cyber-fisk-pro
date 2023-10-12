@@ -8,7 +8,7 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
@@ -78,7 +78,7 @@ export const Game10 = () => {
     if (playAudio) return;
     
     let tempWord = text;
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -86,7 +86,8 @@ export const Game10 = () => {
     if (tempWord === answer) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempRightPoints += 3;
+
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {

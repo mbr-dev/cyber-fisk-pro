@@ -23,12 +23,14 @@ export const Game22 = () => {
   const [idClick, setIdClick] = useState([0, 1, 2, 3]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
+  const [data, setData] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [playAudio, setPlayAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -48,14 +50,14 @@ export const Game22 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-
+    
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
-
+    
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     setSound(items.pergunta);
 

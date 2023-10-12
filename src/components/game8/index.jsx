@@ -8,7 +8,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main } from "./styles";
@@ -98,12 +98,11 @@ export const Game8 = () => {
 
     setBlockButton(true);
     let tempColor = colorAnswers;
-    let tempPoint = correctPoints;
-    const rightAnswer = answers[index].status;
-    console.log("rightAnswer: ", rightAnswer)
+    let tempPoint;
+    const rightAnswer = answers[index].status
 
     if (rightAnswer === 1) {
-      tempPoint += 2;
+      tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
       setNewPontos(1, tempPoint);
 

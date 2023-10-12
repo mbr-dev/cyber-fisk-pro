@@ -7,7 +7,7 @@ import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio, Options, Form } from "./styles";
@@ -112,7 +112,7 @@ export const Game13 = () => {
 
     let tempAnswers = selectedRadio;
     let tempColor = [...colorAnswers];
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
@@ -122,7 +122,7 @@ export const Game13 = () => {
       }
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {

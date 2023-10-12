@@ -196,7 +196,7 @@ export const GameSL2 = () => {
     
     console.log("game finalizado");
   }
-  console.log("total de pontos", points);
+  
   useEffect(() => {
     loadLesson();
   }, []);

@@ -38,6 +38,19 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
   }
 }
 
+export const PointRule = (nivel, points) => {
+  let tempPoints = points;
+  if (nivel === 0) {
+    tempPoints++;
+  } else if (nivel === 1) {
+    tempPoints += 2;
+  } else {
+    tempPoints += 3;
+  }
+
+  return tempPoints;
+}
+
 export const Score = (pontosF, pontosM, pontosD) => {
   const resF = pontosF * 10;
   const resM = pontosM * 5;

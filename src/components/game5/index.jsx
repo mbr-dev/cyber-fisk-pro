@@ -7,7 +7,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { TrocaAtividade } from "../../utils/regras";
+import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 
 import { Container, Main } from "./styles";
@@ -98,7 +98,7 @@ export const Game5 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = optionColor;
     const selectedAnswer = answers[index].status;
 
@@ -106,7 +106,7 @@ export const Game5 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints += 2;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setNewPontos(1, tempRightPoints);
       setRightPoints(tempRightPoints);
     } else {
@@ -137,7 +137,7 @@ export const Game5 = () => {
       setNewPontos(0, 0);
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score"){

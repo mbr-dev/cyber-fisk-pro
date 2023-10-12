@@ -6,7 +6,7 @@ import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
@@ -80,12 +80,13 @@ export const Game15 = () => {
   const verifyWord = () => {
     const word = phrase.join("").toLowerCase();
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
 
     if (phrase.length === words.length) {
       if (word === answer.toLowerCase()) {
         setHit(1);
-        tempRightPoints++;
+
+        tempRightPoints = PointRule(nivel, rightPoints);
         setRightPoints(tempRightPoints);
         setNewPontos(0, tempRightPoints);
       } else {

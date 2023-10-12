@@ -8,7 +8,7 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
@@ -95,7 +95,7 @@ export const Game18 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
@@ -103,7 +103,7 @@ export const Game18 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints ++;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setNewPontos(0, tempRightPoints);
       setRightPoints(tempRightPoints);
     } else {

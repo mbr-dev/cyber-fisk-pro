@@ -8,7 +8,7 @@ import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
@@ -105,7 +105,7 @@ export const Game6 = () => {
 
     let tempColor = optionColor;
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
 
@@ -118,7 +118,7 @@ export const Game6 = () => {
         return;
       }
 
-      tempRightPoints +=3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {

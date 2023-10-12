@@ -3,12 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main, Image} from "./styles";
 
@@ -98,7 +97,7 @@ export const Game17 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = [...optionColor];
     const selectedAnswer = answers[index];
 
@@ -106,7 +105,7 @@ export const Game17 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints++;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(1,tempRightPoints);
     } else {
@@ -172,7 +171,6 @@ export const Game17 = () => {
     
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <TitleLesson title="Choose the correct alternative"/>
 
       <Main>

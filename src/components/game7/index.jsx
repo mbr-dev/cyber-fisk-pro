@@ -7,7 +7,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
@@ -21,8 +21,6 @@ export const Game7 = () => {
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
-  const [idClickAudio, setIdClickAudio] = useState([0, 1, 2, 3]);
-  const [idClickAnswer, setIdClickAnswer] = useState([0, 1, 2, 3]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -33,26 +31,27 @@ export const Game7 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswer, setBlockAnswer] = useState(true);
-  const [blockAudio, setBlockAudio] = useState(true);
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("dtata: ", data);
+
+  console.log('sound: ', audios);
+  console.log('answers: ', answers);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+     }else if (nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -65,102 +64,60 @@ export const Game7 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    tempRandom = shuffleArray(tempRandom);
+    setRandomNumber(tempRandom);
 
-    console.log("items: ", items);
-
-    let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
+    const items = tempData.map(item => item.conteudo);
+    const dataItem = items.map(item => JSON.parse(item));
 
     let tempAudios = [];
     let tempAnswers = [];
-
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudios.push(items.pergunta[tempRandomAudio[a]]);
-      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
-    }
-
-    setAudios(tempAudios);
-    setAnswers(tempAnswers);
-
-    /* let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempAudios = [];
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudios.push(items.pergunta[a]);
+    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    for (let a = 0; a < randomIndices.length; a++) {
+      tempAudios.push(dataItem[randomIndices[a]].pergunta);
+      tempAnswers.push(dataItem[randomIndices[a]].resposta);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
-    setAudios(tempAudios);
-
-    let tempRandomAnswer = idClickAnswer;
-    tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomAnswer);
-
-    let tempAnswers = [];
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(items.resposta[a]);
-    }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers); */
+    setAudios(tempAudios);
+    setAnswers(tempAnswers);
 
-    setBlockAudio(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, idClickAudio, setIdClickAudio, round, setAudios, idClickAnswer, setIdClickAnswer, setAnswers, setBlockAudio, setData]);
+  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
+
+  function shuffleArray(array) {
+    for (let i = array.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [array[i], array[j]] = [array[j], array[i]];
+    }
+    return array;
+  }
 
   const newRound = (number) => {
-    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    let tempRandom = [];
+    for (let a = 0; a < data.length; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = shuffleArray(randomNumber);
 
-    let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempRandomNumber = idClickAnswer;
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomNumber);
+    const items = data.map(item => item.conteudo);
+    const dataItem = items.map(item => JSON.parse(item));
 
     let tempAudios = [];
     let tempAnswers = [];
-
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudios.push(items.pergunta[tempRandomAudio[a]]);
-      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
+    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    for (let a = 0; a < randomIndices.length; a++) {
+      tempAudios.push(dataItem[randomIndices[a]].pergunta);
+      tempAnswers.push(dataItem[randomIndices[a]].resposta);
     }
-  
+    tempAudios = tempAudios.sort(() => Math.random() - 0.5);
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
     setAnswers(tempAnswers);
-    /* let tempRandomAudio = idClickAudio;
-    tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
-    setIdClickAudio(tempRandomAudio);
-
-    let tempAudio = [];
-    for (let a = 0; a < idClickAudio.length; a++) {
-      tempAudio.push(items.pergunta[tempRandomAudio[a]]);
-    }
-    tempAudio = tempAudio.sort(() => Math.random() - 0.5);
-    setAudios(tempAudio);
-
-    let tempRandomNumber = idClickAnswer;
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClickAnswer(tempRandomNumber);
-    
-    let tempAnswers = [];
-    for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
-    }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers); */
     
     setRightAnswers([]);
     setSelectAudio(null);
     setRightAudios([]);
-    setBlockAudio(false);
     setBlockAnswer(true);
   }
 
@@ -169,7 +126,6 @@ export const Game7 = () => {
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
-    setBlockAudio(true);
     setBlockAnswer(false);    
 
     const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
@@ -192,21 +148,21 @@ export const Game7 = () => {
     setCountClick(clicks);
 
     let tempColor = optionColor;
-    let tempRightPoints = rightPoints;
-
+    let tempRightPoints;
+    
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
       if (clicks < 4) {
         tempColor[index] = 1;
         setOptionColor(tempColor);
-
+        
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
-
-      tempRightPoints += 1;
+      
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(tempRightPoints);
     } else {
@@ -238,6 +194,7 @@ export const Game7 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
+        setCountClick(0);
         navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
@@ -248,6 +205,7 @@ export const Game7 = () => {
     }else {
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
+        setCountClick(0);
         if(nivel === 0){
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

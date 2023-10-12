@@ -6,7 +6,7 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Form, Main, Select } from "./styles";
@@ -163,7 +163,7 @@ export const Game19 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = colorAnswers;
 
     if (
@@ -176,7 +176,7 @@ export const Game19 = () => {
       tempColor = 1;
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {

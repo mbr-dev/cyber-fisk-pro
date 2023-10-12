@@ -5,7 +5,7 @@ import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answers, Questions, Button } from "./styles";
@@ -137,7 +137,7 @@ export const Game11 = () => {
 
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     
     const selectedQuestion = questions[selectedQuestionIndex];
     const selectedAnswer = answers[index];
@@ -155,7 +155,7 @@ export const Game11 = () => {
         return;
       }
 
-      tempRightPoints++;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(0, tempRightPoints);
     } else {

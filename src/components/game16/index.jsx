@@ -6,7 +6,7 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal } from "../../utils/regras";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Form } from "./styles";
@@ -74,7 +74,7 @@ export const Game16 = () => {
     event.preventDefault();
     
     let tempWord = text;
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -83,7 +83,7 @@ export const Game16 = () => {
       tempColorA = 1;
       setColorAnswer(tempColorA);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {

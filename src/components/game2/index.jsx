@@ -7,7 +7,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../SubTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, ScoreFinal, Score } from "../../utils/regras";
+import { TrocaAtividade, ScoreFinal, Score, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
@@ -98,7 +98,7 @@ export const Game2 = () => {
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = [...optionColor];
     const selectedAnswer = answers[index];
 
@@ -106,7 +106,7 @@ export const Game2 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
-      tempRightPoints += 2;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(1,tempRightPoints);
     } else {
