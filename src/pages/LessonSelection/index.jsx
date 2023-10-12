@@ -31,12 +31,14 @@ export const LessonSelection = () => {
   const clickTask = (id) => {
     if(id === 0){
       setNewSuperTask(true);
+      navigate(`/SuperTask`);
     }else{
       setNewTask(id);
+      //ir para tela de controle de jogos
+      setNewAtividade(0);
+      navigate(`/Lesson`);
     }
-    //ir para tela de controle de jogos
-    setNewAtividade(0);
-    navigate(`/Lesson`);
+    
   }
 
   const home = () => {

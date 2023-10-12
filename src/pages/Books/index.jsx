@@ -36,6 +36,10 @@ export const Books = () => {
     navigate("/SelectLesson");
   }
 
+  const home = () => {
+    navigate(`/Home`);
+  }
+
   return (
     <Container>
       <TopMenuHeader hasLogo title={selectLanguage === 0 ? translateBooks[0].title : selectLanguage === 1 ? translateBooks[1].title : translateBooks[2].title} />
@@ -70,7 +74,7 @@ export const Books = () => {
             <img src={bookEss1} alt="" onClick={() => {clickLesson()}} />
           </ImagesCarrousel>
         </CurrentBooksArea>
-        <LineSeparator w="100%" />
+        <LineSeparator w="100%" bg="#E6E6E6" />
         <PreviousBooksArea>
           <p>{selectLanguage === 0 ? translateBooks[0].previous : selectLanguage === 1 ? translateBooks[1].previous : translateBooks[2].previous}</p>
 
@@ -99,7 +103,7 @@ export const Books = () => {
           </ImagesCarrousel>
         </PreviousBooksArea>
         <LineSeparator w="100%" mt="1rem" />
-        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
+        <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
       </Main>
     </Container>
   )

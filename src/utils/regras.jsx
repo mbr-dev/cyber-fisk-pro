@@ -1,3 +1,4 @@
+import Cookies from 'universal-cookie';
 export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
   //rodada inicia em 0
   if (nivel === 0) {
@@ -52,6 +53,7 @@ export const Score = (pontosF, pontosM, pontosD) => {
 
 export const ScoreFinal = (pontos, lesson, task) => {
   let msg = '';
+  const cookies = new Cookies();
   if(pontos >= 70){
     //gravar e retornar a frequencia com q jogou o exercicio
     let valorRank = 0;
@@ -60,9 +62,13 @@ export const ScoreFinal = (pontos, lesson, task) => {
       let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
       frequencia++;
 
-      // if (frequencia === 4) {
-      //   alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-      // }
+      if (frequencia === 4) {
+        //localStorage.setItem(`cyber_pro_dolar`,10);
+        cookies.set('dollar', 10);
+      }else{
+        //localStorage.setItem(`cyber_pro_dolar`,0);
+        cookies.set('dollar', 0);
+      }
 
       localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,frequencia);
       const rank = PontosRank(frequencia,oldRank);
