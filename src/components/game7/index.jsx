@@ -67,7 +67,7 @@ export const Game7 = () => {
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    // criar aqui a logica
+    console.log("items: ", items);
 
     let tempRandomAudio = idClickAudio;
     tempRandomAudio = tempRandomAudio.sort(() => Math.random() - 0.5);
@@ -238,7 +238,7 @@ export const Game7 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score"){
