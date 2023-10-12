@@ -5,9 +5,9 @@ export const LineSeparator = ({ w, mt, bg, mb }) => {
     <Container
       style={{
         width: w,
-        marginTop: mt,
-        marginBottom: mb,
-        backgroundColor: bg
+        marginTop: mt ? mt : 10,
+        marginBottom: mb ? mb : 10,
+        backgroundColor: bg ? bg : "#E6E6E6"
       }}
     >
     </Container>

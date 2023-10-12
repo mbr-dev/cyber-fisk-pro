@@ -1,3 +1,5 @@
+import { useNavigate } from "react-router-dom";
+
 import { TopMenuHeader } from "../../components/TopMenuHeader";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonBg } from "../../components/ButtonBg";
@@ -11,6 +13,12 @@ import Avatar3Img from "./images/Avatar3.png";
 import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea } from "./styles"
 
 export const Ranking = () => {
+  const navigate = useNavigate();
+
+  const home = () => {
+    navigate(`/Home`);
+  }
+
   return (
     <Container>
       <TopMenuHeader title="Ranking" />
@@ -69,7 +77,7 @@ export const Ranking = () => {
         </MainBottom>
       </Main>
 
-      <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
+      <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
     </Container>
   )
 }

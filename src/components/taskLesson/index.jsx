@@ -29,13 +29,13 @@ import { Game21 } from "../game21";
 import { Game22 } from "../game22";
 
 export const TaskLesson = () => {
-  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel } = useContext(LessonContext);
+  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
   const [strStart, setStrStart] = useState('');
   const [strEnd, setStrEnd] = useState('');
 
   const loadContent = async () => {
-    await api.get(`/Retorno?id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
+    await api.get(`/CyberProAtividades/Retorno?id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
     .then((resp) =>{
       console.log('resp.data ==> ', resp.data);
       //pega o primeiro jogo do nivel facil e o primeiro tipo do jogo
@@ -45,7 +45,7 @@ export const TaskLesson = () => {
       setNewConteudoMedio(resp.data.dados[1].dados_conteudo);
       setNewConteudoDificil(resp.data.dados[2].dados_conteudo);
       setTimeout(()=>{
-        console.log('TIME');
+        setTimeElapsed(0);
         setNewNivel(0);
         setNewRodada(0);
         setNewAtividade(atividade);
@@ -55,6 +55,8 @@ export const TaskLesson = () => {
 
   const content = () => {
     switch(numAtividade) {
+      case 0 :
+        return(null);
       case 1 :
         return(<Game1 />);
       case 2 :
@@ -112,6 +114,18 @@ export const TaskLesson = () => {
     }
     loadContent();
   },[])
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+        setTimeElapsed(state => {
+          return state + 1
+        })
+      }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed]);
 
   return(
     <Container>

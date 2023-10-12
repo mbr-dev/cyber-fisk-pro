@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://mbr-dev.github.io/cyber-fisk-pro",
+  "homepage2": "https://mbr-dev.github.io/cyber-fisk-pro",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
