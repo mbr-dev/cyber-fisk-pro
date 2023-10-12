@@ -50,14 +50,15 @@ import { GameSL5 } from "../components/game_sl5";
 import { GameWordle } from "../components/GameWordle";
 
 export const Router =() => {
+
   return(
     <Routes>
       <Route path = "/" element={<Login />}/>
 
-      <Route path="/Home" element={<Home/>} />
+      <Route path="/cyber-fisk-pro/Home" element={<Home/>} />
       <Route path="/Menu" element={<Menu/>} />
       <Route path="/Books" element={<Books />} />
-      <Route path="/Login" element={<Login />} />
+      <Route path="/cyber-fisk-pro/Login" element={<Login />} />
       <Route path="/Report" element={<Report />} />
       <Route path="/Studio" element={<Studio />} />
       <Route path="/Profile" element={<Profile/>} />
