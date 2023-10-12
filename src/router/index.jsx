@@ -10,11 +10,11 @@ import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
-//import { SelectLesson } from "../pages/selectLesson";
+import { SelectLesson } from "../pages/selectLesson";
 import { LessonSelection } from "../pages/LessonSelection";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { QRCode } from "../features/qrCode/pages/Home";
-import { QRReader } from "../features/qrCode/pages/QrReader";
+import { QRReader } from "../features/qrCode/pages/qrReader";
 import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
 import { TaskLesson } from "../components/taskLesson";
 import { SuperTaskLesson } from "../components/supertaskLesson";
@@ -65,7 +65,7 @@ export const Router =() => {
       <Route path="/WellDone" element={<WellDone />} />
       <Route path="/GameOver" element={<GameOver />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
-      {/* <Route path="/SelectLesson" element={<SelectLesson />} /> */}
+      <Route path="/SelectLesson" element={<SelectLesson />} />
       <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
       <Route path="/qr-code" element={<QRCode />} />
       <Route path="/qr-code/reader" element={<QRReader />} />
