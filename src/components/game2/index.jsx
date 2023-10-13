@@ -35,14 +35,12 @@ export const Game2 = () => {
 
     let dataLength = 0;
     let tempData;
-    console.log('NIVEL :::: ', nivel);
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
     }else if(nivel === 1){
       setData(conteudoMedio);
-      console.log('conteudoMedio:: ', conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
     }else{
@@ -108,7 +106,7 @@ export const Game2 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(1,tempRightPoints);
+      setNewPontos(1, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -143,7 +141,7 @@ export const Game2 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         console.log('MUDA DE RODADA!!');
         setOptionColor([0, 0, 0]);
@@ -172,7 +170,7 @@ export const Game2 = () => {
     
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative"/>
+      <TitleLesson title="Choose the correct alternative" />
       <SubTitleLesson title={question}/>
 
       <Main>

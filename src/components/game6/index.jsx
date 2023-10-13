@@ -37,15 +37,15 @@ export const Game6 = () => {
     
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -109,9 +109,9 @@ export const Game6 = () => {
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
 
-    const answer = answers[index].status;
+    const answer = answers[index];
 
-    if (answer === 1) {
+    if (answer.status === 1) {
       if (clicks < 3) {
         tempColor[index] = 1;
         setOptionColor(tempColor);
@@ -154,18 +154,18 @@ export const Game6 = () => {
         setOptionColor([0, 0, 0, 0, 0, 0]);
         setNewContainer(1);
       }, 1500);
-    }else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         setOptionColor([0, 0, 0, 0, 0, 0]);
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);

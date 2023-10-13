@@ -39,15 +39,15 @@ export const Game4 = () => {
     
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -66,7 +66,7 @@ export const Game4 = () => {
     
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
-    if(items.tipo === 3){
+    if (items.tipo === 3) {
       setIdTipo3(tempSortNum);
     } else {
       setIdTipo4(tempSortNum);
@@ -104,8 +104,7 @@ export const Game4 = () => {
   }
 
   const handleClick = (index) => {
-    if(blockButton) return;
-    if(playAudio) return;
+    if(blockButton || playAudio) return;
 
     setBlockButton(false);
 
@@ -156,7 +155,7 @@ export const Game4 = () => {
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua"){
+    if (rule === "Continua") {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
         newRound(tempRound);
@@ -172,7 +171,7 @@ export const Game4 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
         if(nivel === 0){
@@ -184,7 +183,6 @@ export const Game4 = () => {
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(5);
       },1500);
     }
   }
@@ -205,8 +203,8 @@ export const Game4 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct alternative"/>
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`}/>
+      <TitleLesson title="Choose the correct alternative" />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {

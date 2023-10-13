@@ -37,15 +37,15 @@ export const Game22 = () => {
     
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -100,9 +100,9 @@ export const Game22 = () => {
 
     let tempRightPoints;
     let tempColor = optionColor;
-    const selectedAnswer = answers[index].status;
+    const selectedAnswer = answers[index];
 
-    if (selectedAnswer === 1) {
+    if (selectedAnswer.status === 1) {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 
@@ -128,7 +128,7 @@ export const Game22 = () => {
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
         newRound(tempRound);

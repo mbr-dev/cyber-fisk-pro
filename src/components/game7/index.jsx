@@ -35,9 +35,6 @@ export const Game7 = () => {
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  console.log('sound: ', audios);
-  console.log('answers: ', answers);
-
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -47,7 +44,7 @@ export const Game7 = () => {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-     }else if (nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
@@ -93,7 +90,7 @@ export const Game7 = () => {
     return array;
   }
 
-  const newRound = (number) => {
+  const newRound = () => {
     let tempRandom = [];
     for (let a = 0; a < data.length; a++) {
       tempRandom.push(a);
@@ -115,9 +112,9 @@ export const Game7 = () => {
     setAudios(tempAudios);
     setAnswers(tempAnswers);
     
+    setRightAudios([]);
     setRightAnswers([]);
     setSelectAudio(null);
-    setRightAudios([]);
     setBlockAnswer(true);
   }
 
@@ -188,7 +185,7 @@ export const Game7 = () => {
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
         setCountClick(0);
-        newRound(tempRound);
+        newRound();
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
@@ -202,7 +199,7 @@ export const Game7 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() =>{
         setOptionColor([0, 0, 0, 0]);
         setCountClick(0);

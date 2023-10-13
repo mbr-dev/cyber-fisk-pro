@@ -36,15 +36,15 @@ export const Game5 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;        
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -144,7 +144,7 @@ export const Game5 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         if(nivel === 0){
@@ -156,7 +156,6 @@ export const Game5 = () => {
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(6);
       }, 1500);
     }
   }
@@ -177,7 +176,7 @@ export const Game5 = () => {
 
   return (
     <Container>
-      <TitleLesson title='Choose the correct alternative' />
+      <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>

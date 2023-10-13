@@ -22,7 +22,7 @@ export const Game8 = () => {
 
   const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [question, setQuestion] = useState('');
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
@@ -38,15 +38,15 @@ export const Game8 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if(nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -99,9 +99,9 @@ export const Game8 = () => {
     setBlockButton(true);
     let tempColor = colorAnswers;
     let tempPoint;
-    const rightAnswer = answers[index].status
+    const rightAnswer = answers[index];
 
-    if (rightAnswer === 1) {
+    if (rightAnswer.status === 1) {
       tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
       setNewPontos(1, tempPoint);
@@ -142,27 +142,26 @@ export const Game8 = () => {
         setColorAnswers(tempColor);
         setChangeText("______");
         setNewContainer(1);
-        navigate('/GameOver');
+        navigate("/GameOver");
       }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         tempColor[index] = 0;
         setColorAnswers(tempColor);
         setChangeText("______");
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -192,7 +191,7 @@ export const Game8 = () => {
 
     const style = {
       color: isOver ? defaultTheme["gray-400"] : undefined,
-      border: isOver ? `1px solid ${defaultTheme['gray-200']}` : '1px solid transparent',
+      border: isOver ? `1px solid ${defaultTheme["gray-200"]}` : "1px solid transparent",
     };
     
     return (

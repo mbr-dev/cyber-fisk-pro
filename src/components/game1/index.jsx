@@ -24,8 +24,8 @@ export const Game1 = () => {
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
-  const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
@@ -106,7 +106,7 @@ export const Game1 = () => {
       
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(0, (tempRightPoints));
+      setNewPontos(0, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -142,7 +142,7 @@ export const Game1 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         if(nivel === 0){

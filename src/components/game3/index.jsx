@@ -35,22 +35,22 @@ export const Game3 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
 
     let tempRandom = [];
-    for(let a = 0; a < dataLength; a++){
+    for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
@@ -125,7 +125,7 @@ export const Game3 = () => {
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
         newRound(tempRound);
@@ -137,11 +137,11 @@ export const Game3 = () => {
         setOptionColor([0, 0, 0]);
         setNewContainer(1);
       }, 1500);
-    }else if (rule === "Score"){
+    } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
         console.log('MUDA DE RODADA!!');
         setOptionColor([0, 0, 0]);
@@ -169,7 +169,7 @@ export const Game3 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct alternative"/>
+      <TitleLesson title="Choose the correct alternative" />
       <SubTitleLesson title={question}/>
 
       <Main>
