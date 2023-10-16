@@ -6,7 +6,7 @@ import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { api } from "../../lib/api";
-import { L2_T1_Facil } from "../../utils/Lesson2_Task";
+import { L2_T1_Facil } from "../../utils/lesson2_Task";
 import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";

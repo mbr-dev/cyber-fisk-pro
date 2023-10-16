@@ -7,7 +7,7 @@ import { Loading } from "../Loading";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L2_T2_Facil } from "../../utils/Lesson2_Task";
+import { L2_T2_Facil } from "../../utils/lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
