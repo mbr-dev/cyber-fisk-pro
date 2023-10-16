@@ -3,11 +3,9 @@ import { useNavigate } from "react-router-dom";
 
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L4_T2_Dificil } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio, Options, Form } from "./styles";
@@ -187,7 +185,6 @@ export const Game13 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Read and choose TRUE or FALSE." />
 
       <Main>

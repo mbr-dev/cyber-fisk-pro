@@ -1,12 +1,9 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
-import { api } from "../../lib/api";
-import { L2_T1_Facil } from "../../utils/lesson2_Task";
 import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
@@ -226,7 +223,6 @@ export const Game7 = () => {
   
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 1" numEnd="Task2" /> */}
       <TitleLesson title="Make pairs." />
 
       <Main>

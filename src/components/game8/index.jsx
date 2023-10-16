@@ -2,14 +2,12 @@ import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../titleLesson";
 import { SubTitleLesson } from "../subTitleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L3_T1_Medio } from "../../utils/Lesson3_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main } from "./styles";
@@ -214,7 +212,6 @@ export const Game8 = () => {
   
   return (
     <Container>
-      {/* <HeaderLesson superTaskEnd numStart="Task 2" numEnd="Super task" /> */}
       <TitleLesson title="Choose the best alternative." />
 
       <DndContext onDragEnd={handleDragEnd}>

@@ -3,14 +3,12 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../subTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, ScoreFinal, Score } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { api } from "../../lib/api";
 
 import { Container, Main } from "./styles";
 
@@ -176,7 +174,6 @@ export const Game1 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart={`Task 1`} numEnd={`Task 2`} /> */}
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLesson title={question} />
 

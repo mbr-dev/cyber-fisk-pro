@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../titleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 import { ButtonAnswer } from "../ButtonAnswer";
@@ -9,7 +8,6 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L3_T2_Medio } from "../../utils/lesson3_Task";
 
 import { Container, Main } from "./styles";
 
@@ -166,7 +164,6 @@ export const Game9 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Mark all the correct answer for each question you hear." />
       <SubTitleLessonAudio size={40} audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
 

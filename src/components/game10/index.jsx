@@ -2,13 +2,11 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ButtonBg } from "../ButtonBg";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L3_T2_Dificil } from "../../utils/lesson3_Task";
 import { URL_FISKPRO } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -147,7 +145,6 @@ export const Game10 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <SubTitleLesson title="Write what you hear." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
       

@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -179,7 +178,6 @@ export const Game5 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd /> */}
       <TitleLesson title='Choose the correct alternative' />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
       

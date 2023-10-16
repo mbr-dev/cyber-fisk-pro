@@ -1,12 +1,10 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../titleLesson";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L4_T2_Facil } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answers, Questions, Button } from "./styles";
@@ -246,7 +244,6 @@ export const Game11 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Match the question to their answers." />
 
       <Main>
