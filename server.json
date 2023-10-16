@@ -627,76 +627,94 @@
 
   "L2_T1_Facil": [
     {
-      "pergunta": [
-        { "audio": "L2_Task1_F_0", "status": 0},
-        { "audio": "L2_Task1_F_1", "status": 1},
-        { "audio": "L2_Task1_F_2", "status": 2},
-        { "audio": "L2_Task1_F_3", "status": 3}
-      ],
-      "resposta": [
-        { "label": "chicken", "status": 0},
-        { "label": "an iced tea", "status": 1},
-        { "label": "an orange juice", "status": 2},
-        { "label": "steak", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_F_0", "status": 0},
+      "resposta": {"label": "chicken", "status": 0}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_F_4", "status": 0},
-        { "audio": "L2_Task1_F_5", "status": 1},
-        { "audio": "L2_Task1_F_6", "status": 2},
-        { "audio": "L2_Task1_F_7", "status": 3}
-      ],
-      "resposta": [
-        { "label": "crackers", "status": 0},
-        { "label": "potato chips", "status": 1},
-        { "label": "protein bar", "status": 2},
-        { "label": "chocolate cake", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_F_1", "status": 1},
+      "resposta": {"label": "an iced tea", "status": 1}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_2", "status": 2},
+      "resposta": {"label": "an orange juice", "status": 2}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_3", "status": 3},
+      "resposta": {"label": "steak", "status": 3}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_4", "status": 4},
+      "resposta": {"label": "crackers", "status": 4}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_5", "status": 5},
+      "resposta": {"label": "potato chips", "status": 5}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_6", "status": 6},
+      "resposta": {"label": "protein bar", "status": 6}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_7", "status": 7},
+      "resposta": { "label": "chocolate cake", "status": 7}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_8", "status": 8},
+      "resposta": { "label": "frozen yogurt", "status": 8}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_9", "status": 9},
+      "resposta": { "label": "rice", "status": 9}
     }
   ],
   "L2_T1_Medio": [
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_0", "status": 0},
-        { "audio": "L2_Task1_M_1", "status": 1},
-        { "audio": "L2_Task1_M_2", "status": 2},
-        { "audio": "L2_Task1_M_3", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, they do.", "status": 0},
-        { "label": "No, he doesn’t.", "status": 1},
-        { "label": "Yes, I do.", "status": 2},
-        { "label": "Yes, she does.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_0", "status": 0},
+      "resposta": {"label": "Yes, they do.", "status": 0}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_4", "status": 0},
-        { "audio": "L2_Task1M_5", "status": 1},
-        { "audio": "L2_Task1_M_6", "status": 2},
-        { "audio": "L2_Task1_M_7", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, he does.", "status": 0},
-        { "label": "No, it doesn’t.", "status": 1},
-        { "label": "No, we don’t.", "status": 2},
-        { "label": "Yes, they do.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_1", "status": 1},
+      "resposta": {"label": "No, he doesn’t.", "status": 1}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_8", "status": 0},
-        { "audio": "L2_Task1_M_9", "status": 1},
-        { "audio": "L2_Task1_M_10", "status": 2},
-        { "audio": "L2_Task1_M_11", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, we do.", "status": 0},
-        { "label": "No, they don’t.", "status": 1},
-        { "label": "No, he doesn’t.", "status": 2},
-        { "label": "Yes, she does.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_2", "status": 2},
+      "resposta":  {"label": "Yes, I do.", "status": 2}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_3", "status": 3},
+      "resposta": {"label": "Yes, she does.", "status": 3}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_4", "status": 4},
+      "resposta": {"label": "Yes, he does.", "status": 4}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1M_5", "status": 5},
+      "resposta": {"label": "No, it doesn’t.", "status": 5}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_6", "status": 6},
+      "resposta": {"label": "No, we don’t.", "status": 6}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_7", "status": 7},
+      "resposta": {"label": "Yes, they do.", "status": 7}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_8", "status": 8},
+      "resposta": {"label": "Yes, we do.", "status": 8}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_9", "status": 9},
+      "resposta": {"label": "No, they don’t.", "status": 9}
+    },
+    {
+      "pergunta": { "audio": "L2_Task1_M_10", "status": 10},
+      "resposta": { "label": "No, he doesn’t.", "status": 10}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_11", "status": 11},
+      "resposta": {"label": "Yes, she does.", "status": 11}
     }
   ],
   "L2_T1_Dificil": [
@@ -2598,6 +2616,84 @@
         {"label": "swimming ", "status": 1},
         {"label": "surfing", "status": 0},
         {"label": "cycling", "status": 0}
+      ]
+    }
+  ],
+  "L6_T1_Medio": [
+    {
+      "pergunta": "L6_Task1_M_0",
+      "resposta": [
+        "Yes, I can",
+        "Yes, we can",
+        "No I can’t",
+        "No we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_1",
+      "resposta": [
+        "Yes, he can",
+        "No, he can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_2",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_3",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_4",
+      "resposta": [
+        "Yes, she can",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_5",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_6",
+      "resposta": [
+        "Yes, we can",
+        "No, we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_7",
+      "resposta": [
+        "Yes, Sarah can",
+        "Yes, she can",
+        "No, Sarah can’t",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_8",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_9",
+      "resposta": [
+        "Yes, the kids can",
+        "Yes, they can",
+        "No, the kids can’t",
+        "No, they can’t"
       ]
     }
   ]
