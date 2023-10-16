@@ -1,19 +1,22 @@
 import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
+import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
-import { TitleLesson } from "../TitleLesson";
 import { Loading } from "../Loading";
+import { TitleLesson } from "../TitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade } from "../../utils/regras";
-import { L2_T2_Facil } from "../../utils/Lesson2_Task";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
 
 export const Game15 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const {
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [words, setWords] = useState([]);
   const [answer, setAnswer] = useState("");
@@ -24,44 +27,66 @@ export const Game15 = () => {
   const [hit, setHit] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
+  const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    const totalOfQuestions = L2_T2_Facil.length;
-    
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestions.push(a);
+    setIsLoading(true);
+
+    let dataLength = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    
-    let tempWords = L2_T2_Facil[tempQuestions[round]].pergunta;
+
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+      
+    let tempWords = items.pergunta;
     tempWords = tempWords.sort(() => Math.random() - 0.5);
     setWords(tempWords);
     
-    let tempAnswer = L2_T2_Facil[tempQuestions[round]].resposta;
+    let tempAnswer = items.resposta;
     setAnswer(tempAnswer);
-
-  }, [setRandomNumber, round, setWords, setAnswer]);
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
-    let tempWords = L2_T2_Facil[randomNumber[number]].pergunta;
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    let tempWords = items.pergunta;
     tempWords = tempWords.sort(() => Math.random() - 0.5);
     setWords(tempWords);
 
-    let tempAnswer = L2_T2_Facil[randomNumber[number]].resposta;
+    let tempAnswer = items.resposta;
     setAnswer(tempAnswer);
   }
 
   const verifyWord = () => {
     const word = phrase.join("").toLowerCase();
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
 
     if (phrase.length === words.length) {
       if (word === answer.toLowerCase()) {
         setHit(1);
-        tempRightPoints++;
+
+        tempRightPoints = PointRule(nivel, rightPoints);
         setRightPoints(tempRightPoints);
         setNewPontos(0, tempRightPoints);
       } else {
@@ -79,9 +104,9 @@ export const Game15 = () => {
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
   
-      let rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+      const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-      if(rule === "Continua"){
+      if(rule === "Continua") {
         setTimeout(() =>{
           setHit(0);
           setPhrase([]);
@@ -92,15 +117,26 @@ export const Game15 = () => {
         setTimeout(() =>{
           setHit(0);
           setPhrase([]);
-          alert('GAME OVER!!');
+          navigate("/GameOver");
           setNewContainer(1);
         },1500);
+      } else if (rule === "Score"){
+        const pontos = Score(pontosF, pontosM, pontosD);
+        const page = ScoreFinal(pontos, numSelLesson, numTask);
+        navigate(`/${page}`);
       } else {
         setTimeout(() =>{
           setHit(0);
           setPhrase([]);
-          alert('troca nivel');
-          setNewLesson(5);
+          if(nivel === 0){
+            setNewNivel(1);
+            const atividade = conteudoMedio[0].id_tipo;
+            setNewAtividade(atividade);
+          }else{
+            setNewNivel(2);
+            const atividade = conteudoDificil[0].id_tipo;
+            setNewAtividade(atividade);
+          }
         },1500);
       }
     }
@@ -165,12 +201,14 @@ export const Game15 = () => {
     }
   }, [phrase, answer]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      {isLoading &&
-        <Loading />
-      }
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Unscramble the words to form sentences." />
 
       <DndContext onDragEnd={handleDragEnd}>

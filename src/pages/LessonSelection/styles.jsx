@@ -89,7 +89,7 @@ export const ButtonTask = styled.button`
   justify-content: center;
   gap: 1rem;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
@@ -132,7 +132,7 @@ export const ButtonSuperTask = styled.button`
   justify-content: center;
   gap: 1rem;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
@@ -231,7 +231,7 @@ export const ButtonBottom = styled.button`
   align-items: center;
   justify-content: space-around;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;

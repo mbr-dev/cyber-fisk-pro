@@ -1,24 +1,22 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../SubTitleLesson";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { TrocaAtividade } from "../../utils/regras";
-import { LessonContext } from "../../context/lesson";
-import { L3_T2_Dificil } from "../../utils/Lesson3_Task";
 import { URL_FISKPRO } from "../../config/infos";
+import { LessonContext } from "../../context/lesson";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -31,10 +29,12 @@ export const Game10 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
+    setIsLoading(true);
+
     let totalOfSounds = 0;
     let tempData;
     if(nivel === 0){
@@ -51,24 +51,26 @@ export const Game10 = () => {
       totalOfSounds = conteudoDificil.length;
     }
     
-    let tempSounds = [];
+    let tempRandom = [];
     for (let a = 0; a < totalOfSounds; a ++) {
-      tempSounds.push(a);
+      tempRandom.push(a);
     }
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
 
-    setSound(tempData[tempSounds[round]].pergunta);
-    let items = JSON.parse(tempData[tempSounds[round]].conteudo.resposta.replace(/'/g, "’"));
-    //let tempAnswer = tempData[tempSounds[round]].resposta.replace(/'/g, "’");
-    setAnswer(items);
-  }, [setRandomNumber, setSound, setAnswer])
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    setSound(items.pergunta);
+    setAnswer(items.resposta.replace(/'/g, "’"));
+    
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, setSound, setAnswer])
 
   const newRound = (number) => {
     setText("");
-    setSound(tempData[randomNumber[number]].pergunta);
-    let tempAnswer = tempData[randomNumber[number]].resposta.replace(/'/g, "’");
-    setAnswer(tempAnswer);
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.pergunta);
+    setAnswer(items.resposta.replace(/'/g, "’"));
   }
 
   const handleVerifyWord = (event) => {
@@ -76,7 +78,7 @@ export const Game10 = () => {
     if (playAudio) return;
     
     let tempWord = text;
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -84,7 +86,8 @@ export const Game10 = () => {
     if (tempWord === answer) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempRightPoints += 3;
+
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -103,7 +106,7 @@ export const Game10 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua") {
       setTimeout(() =>{
@@ -145,9 +148,14 @@ export const Game10 = () => {
     text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
   }, [text, setBlockButton]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <SubTitleLesson title="Write what you hear." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
       
