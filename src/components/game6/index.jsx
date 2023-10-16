@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";

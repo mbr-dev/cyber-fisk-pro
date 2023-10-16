@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 

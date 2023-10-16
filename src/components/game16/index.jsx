@@ -2,7 +2,7 @@ import { useState, useEffect, useCallback, useContext } from "react";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { api } from "../../lib/api";

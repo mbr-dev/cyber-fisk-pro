@@ -1,7 +1,7 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 
 import { TrocaAtividade } from "../../utils/regras";

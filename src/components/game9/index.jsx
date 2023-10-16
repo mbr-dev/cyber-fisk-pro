@@ -2,8 +2,8 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
-import { TitleLesson } from "../TitleLesson";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+import { TitleLesson } from "../titleLesson";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";

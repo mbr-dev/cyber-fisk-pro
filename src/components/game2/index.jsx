@@ -2,10 +2,10 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLesson } from "../SubTitleLesson";
+import { SubTitleLesson } from "../subTitleLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";

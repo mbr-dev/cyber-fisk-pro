@@ -3,8 +3,8 @@ import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
-import { TitleLesson } from "../TitleLesson";
-import { SubTitleLesson } from "../SubTitleLesson";
+import { TitleLesson } from "../titleLesson";
+import { SubTitleLesson } from "../subTitleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
 import { LessonContext } from "../../context/lesson";

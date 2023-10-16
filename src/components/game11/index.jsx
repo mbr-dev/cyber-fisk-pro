@@ -2,7 +2,7 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderLesson } from "../HeaderLesson";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
