@@ -99,7 +99,7 @@ export const QRReader = () => {
               <Info>{traduction?.instruction[language]}</Info>
               <ContainerQRBorder>
                 <ContainerQRReader>
-                  {permission !== "denied" ? (
+                  {permission === "denied" ? (
                     <QrReader
                       constraints={{ facingMode: "environment" }}
                       onResult={(result, error) => {
@@ -111,8 +111,8 @@ export const QRReader = () => {
                         }
                       }}
                       scanDelay={1000}
-                      containerStyle={{ height: 300 }}
-                      videoContainerStyle={{ height: 300 }}
+                      containerStyle={{ height: 300, width: '100%' }}
+                      videoContainerStyle={{ height: 300, width: '100%' }}
                       videoStyle={{ objectFit: "cover" }}
                     />
                   ) : (
