@@ -29,7 +29,6 @@ import { Game21 } from "../game21";
 import { Game22 } from "../game22";
 
 export const TaskLesson = () => {
-
   const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
   const [strStart, setStrStart] = useState('');
@@ -106,15 +105,15 @@ export const TaskLesson = () => {
   }
 
   useEffect(()=>{
-    if(numTask === 1){
+    if(numTask === '1'){
       setStrStart('Task 1');
       setStrEnd('Task 2');
-    }else if(numTask === 2){
+    }else if(numTask === '2'){
       setStrStart('Task 2');
       setStrEnd('Super Task');
     }
     loadContent();
-  },[numTask, setStrStart, ])
+  },[])
 
   useEffect(() => {
     const timer = setInterval(() => {

@@ -44,7 +44,7 @@ export const ButtonLesson = styled.button`
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
-  transition: all ease 0.3s;
+  transition: 0.3s;
 
   p {
     font-weight: bold;

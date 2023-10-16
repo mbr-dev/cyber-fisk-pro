@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { ButtonBg } from "../ButtonBg";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -23,10 +22,7 @@ export const GameSL2 = () => {
   const [shownCount, setShownCount] = useState(0);
   const [points, setPoints] = useState(0);
   const [cards, setCards] = useState([]);
-  const [reset, setReset] = useState(false);
-  const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
   const [restartGame, setRestartGame] = useState(false);
   const navigate = useNavigate();
   const loadLesson = useCallback(async() => {
@@ -50,7 +46,7 @@ export const GameSL2 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
 
       let nameRandom = []
-      for (let a = 0; a < 6; a++) {
+      for (let a = 0; a < dataLength; a++) {
         nameRandom.push(nameFilter[tempRandom[a]]);
       }
 
@@ -65,7 +61,7 @@ export const GameSL2 = () => {
       tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
       
       let tempGrid = [];
-      for (let a = 0; a < (6 * 2 ); a++) {
+      for (let a = 0; a < (dataLength * 2 ); a++) {
         tempGrid.push({
           item: null,
           shown: false,
@@ -74,74 +70,20 @@ export const GameSL2 = () => {
       }
 
       let tempRandomGrid = [];
-      for (let a = 0; a < (6 * 2); a++) {
+      for (let a = 0; a < (dataLength * 2); a++) {
         tempRandomGrid.push(a);
       }
       tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
       
-      for (let a = 0; a < (6 * 2); a++) {
+      for (let a = 0; a < (dataLength * 2); a++) {
         tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
       }
       
       setCards(tempGrid);
       setPlaying(true);
       setIsLoading(false);
-    } catch(error) {
-      console.log(error);
-    }
-  }, [setIsLoading, setData, setPlaying, setCards]);
 
-  const newRound = () => {
-    const items = data.map(item => {
-      const conteudo = JSON.parse(item.conteudo);
-      return conteudo
-    });
-
-    const nameFilter = items.filter(item => item.name);
-    
-    let tempRandom = [];
-    for (let a = 0; a < nameFilter.length; a++) {
-      tempRandom.push(a);
-    }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-
-    let nameRandom = []
-    for (let a = 0; a < 8; a++) {
-      nameRandom.push(nameFilter[tempRandom[a]]);
-    }
-
-    let imgFilter = [];
-    nameRandom.forEach(nameItem => {
-      const status = nameItem.status;
-      const images = items.filter(item => item.status === status && item.img);
-      imgFilter = imgFilter.concat(images);
-    });
-
-    let tempGridFake = nameRandom.concat(imgFilter);
-    tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
-    let tempGrid = [];
-    for (let a = 0; a < (8 * 2 ); a++) {
-      tempGrid.push({
-        item: null,
-        shown: false,
-        permanentShown: false
-      });
-    }
-
-    let tempRandomGrid = [];
-    for (let a = 0; a < (8 * 2); a++) {
-      tempRandomGrid.push(a);
-    }
-    tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-    
-    for (let a = 0; a < (8 * 2); a++) {
-      tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
-    }
-    
-    setCards(tempGrid);
-    setPlaying(true);
-  }
+  }, [setPlaying, setCards]);
 
   const handleShowCard = (index) => {
     if (playing && index !== null && shownCount < 2) {
@@ -156,51 +98,18 @@ export const GameSL2 = () => {
     }
   }
 
-  const generateScore = () => {
-    let tempPoints = points;
-
-    if (timeElapsed < 60) {
-      tempPoints += 5;
-    } else if (timeElapsed >= 61 || timeElapsed <= 75) {
-      tempPoints += 4;
-    } else if (timeElapsed >= 76 || timeElapsed <= 90) {
-      tempPoints += 3;
-    } else if (timeElapsed >= 91 || timeElapsed <= 120) {
-      tempPoints += 2;
-    } else {
-      tempPoints += 1;
-    }
-
-    return tempPoints;
-  }
-
-  const handleChangeLevel = () => {
-    let tempLevel = level;
-    tempLevel++;
-    setLevel(tempLevel);
-    
-    let tempPoints = generateScore();
-    setPoints(tempPoints);
-    setPlaying(false);
-    
-    setTimeout(() => {
-      setReset(false);
-      newRound();
-    }, 1500);
-  }
-
-  const handleFinish = () => {
-    let tempPoints = generateScore();
-    setPoints(tempPoints);
-    setPlaying(false);
-    setFinished(false);
-    
-    console.log("game finalizado");
-  }
-  
   useEffect(() => {
     loadLesson();
   }, []);
+
+  useEffect(() => {
+    if (restartGame) {
+      setTimeout(() => {
+        loadLesson();
+        setRestartGame(false);
+      }, 1500);
+    }
+  }, [restartGame])
 
   useEffect(() => {
     if (shownCount === 2) {
@@ -232,15 +141,31 @@ export const GameSL2 = () => {
 
   useEffect(() => {
     const allItemShown = cards.every(item => item.permanentShown === true);
-  
+
     if (moveCount > 0 && allItemShown) {
-      if (level === 1) {
-        setFinished(true);
+      let tempPoints = points;
+
+      if (timeElapsed < 60) {
+        tempPoints += 5;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 61 || timeElapsed <= 75) {
+        tempPoints += 4;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 76 || timeElapsed <= 90) {
+        tempPoints += 3;
+        setPoints(tempPoints);
+      } else if (timeElapsed >= 91 || timeElapsed <= 120) {
+        tempPoints += 2;
+        setPoints(tempPoints);
       } else {
-        setReset(true);
+        tempPoints += 1;
+        setPoints(tempPoints);
       }
+      setPlaying(false);
+
+      setRestartGame(true);
     }
-  }, [cards, setReset, setFinished]);
+  }, [moveCount, cards, timeElapsed, level]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -288,24 +213,6 @@ export const GameSL2 = () => {
           })}
         </Grid>
       </Main>
-      {reset && 
-        <ButtonBg 
-          w="10rem"
-          h="3"
-          title="Next Level"
-          mt="2rem"
-          onPress={handleChangeLevel}
-        />
-      }
-      {finished && 
-        <ButtonBg 
-          w="10rem"
-          h="3"
-          title="Finished"
-          mt="2rem"
-          onPress={handleFinish}
-        />
-      }
     </Container>
   )
 }

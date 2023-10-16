@@ -1,22 +1,20 @@
 import { useState, useEffect, useCallback, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 
+import { api } from "../../lib/api";
+import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
+import { L2_T2_Dificil } from "../../utils/Lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Form } from "./styles";
 
 export const Game16 = () => {
-  const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
-  } = useContext(LessonContext);
-  
-  const navigate = useNavigate();
+  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada} = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
@@ -30,51 +28,43 @@ export const Game16 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    setIsLoading(true);
-
-    let dataLength = 0;
-    let tempData;
-    if(nivel === 0){
-      setData(conteudoFacil);
-      tempData = conteudoFacil;
-      dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
-      setData(conteudoMedio);
-      tempData = conteudoMedio;
-      dataLength = conteudoMedio.length;
-    }else{
-      setData(conteudoDificil);
-      tempData = conteudoDificil;
-      dataLength = conteudoDificil.length;
-    }
-
-    let tempRandom = [];
-    for (let a = 0; a < dataLength; a ++) {
-      tempRandom.push(a);
-    }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandom);
-
-    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    
-    setQuestion(items.pergunta);
-    setAnswer(items.resposta.replace(/'/g, "’"));
-    setIsLoading(false);
+  const loadLesson = useCallback(async() => {
+    //try {
+     // setIsLoading(true);
+      
+     // const response  = await api.get("/L2_T2_Dificil");
+     // setData(response.data);
+      
+      const dataLength = L2_T2_Dificil.length;
+      
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a ++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+      
+      setQuestion(L2_T2_Dificil[tempRandom[round]].pergunta);
+      let tempAnswer = L2_T2_Dificil[tempRandom[round]].resposta.replace(/'/g, "’");
+      setAnswer(tempAnswer);
+      setIsLoading(false);
+    //} catch(error) {
+      //console.log("tente novamente mais tarde");
+    //}
   }, [setIsLoading, round, setData, data, setRandomNumber, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
-    const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setQuestion(items.pergunta);
-    setAnswer(items.resposta.replace(/'/g, "’"));
+    setQuestion(L2_T2_Dificil[randomNumber[number]].pergunta);
+    let tempAnswer = L2_T2_Dificil[randomNumber[number]].resposta.replace(/'/g, "’");
+    setAnswer(tempAnswer);
   }
 
   const handleVerify = (event) => {
     event.preventDefault();
     
     let tempWord = text;
-    let tempRightPoints;
+    let tempRightPoints = rightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -83,7 +73,7 @@ export const Game16 = () => {
       tempColorA = 1;
       setColorAnswer(tempColorA);
 
-      tempRightPoints = PointRule(nivel, rightPoints);
+      tempRightPoints += 3;
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -103,37 +93,48 @@ export const Game16 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
-      setTimeout(() =>{
+    if (rule === "Continua") {
+      setTimeout(() => {
         setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
-      setNewPontos(0,0);
-      setTimeout(() =>{
-        setColorAnswer(0);
-        navigate("/GameOver");
-        setNewContainer(1);
-      },1500);
-    } else if (rule === "Score"){
-      const pontos = Score(pontosF, pontosM, pontosD);
-      const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
-    } else {
-      setTimeout(() =>{
-        setColorAnswer(0);
-        if(nivel === 0){
-          setNewNivel(1);
-          const atividade = conteudoMedio[0].id_tipo;
-          setNewAtividade(atividade);
-        }else{
-          setNewNivel(2);
-          const atividade = conteudoDificil[0].id_tipo;
-          setNewAtividade(atividade);
+    } else if (rule === "Score") {
+      setTimeout(() => {
+        const scoreFinal = Score(pontosF, pontosM, pontosD);
+        let valorRank = 0;
+        if (scoreFinal >= 70) {
+          if (localStorage.getItem('cyber_pro_frequencia_task2')) {
+            let frequencia = parseInt(localStorage.getItem('cyber_pro_frequencia_task2'));
+            let oldRank = parseInt(localStorage.getItem('cyber_pro_rank'));
+            frequencia++;
+            if (frequencia === 4) {
+              alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+            }
+            localStorage.setItem('cyber_pro_frequencia_task2', frequencia);
+            const rank = PontosRank(frequencia, oldRank);
+            valorRank = rank;
+            localStorage.setItem('cyber_pro_rank', rank);
+          } else {
+            localStorage.setItem('cyber_pro_supertask', '1');
+            localStorage.setItem('cyber_pro_msg_supertask', '1');
+            localStorage.setItem('cyber_pro_frequencia_task2', 1);
+            if (localStorage.getItem('cyber_pro_rank')) {
+              let oldRank = parseInt(localStorage.getItem('cyber_pro_rank'));
+              const rank = PontosRank(1, oldRank);
+              valorRank = rank;
+            } else {
+              const rank = PontosRank(1, 0);
+              valorRank = rank;
+            }
+            localStorage.setItem('cyber_pro_rank', valorRank);
+          }
         }
-      },1500);
+        alert(`SCORE: ${scoreFinal}%`);
+        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+        setNewContainer(1);
+      }, 1500);
     }
   }
 
@@ -153,6 +154,7 @@ export const Game16 = () => {
 
   return (
     <Container>
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Make questions for the answers." />
 
       <Main>

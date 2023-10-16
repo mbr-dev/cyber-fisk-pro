@@ -162,44 +162,44 @@ export const L2_T1_Dificil = [
 export const L2_T2_Facil = [
   {
     pergunta: ["order", "can ", "take ", "I ", "your ", "?"],
-    resposta: "Can I take your order?"
+    resposta: "Can I take your order?",
   },
   {
     pergunta: ["all", "will ", "be ", "that ", "?"],
-    resposta: "Will that be all?"
+    resposta: "Will that be all?",
   },
   {
     pergunta: ["some ", "would ", "like ", "water", "you ", "?"],
-    resposta: "Would you like some water?"
+    resposta: "Would you like some water?",
   },
   {
     pergunta: ["name", "’s ", "what", "your ", "?"],
-    resposta: "What’s your name?"
+    resposta: "What’s your name?",
   },
   {
     pergunta: ["spell ", "please", "name ", "your ", "last ", "."],
-    resposta: "Spell your last name please."
+    resposta: "Spell your last name please.",
   },
   {
     pergunta: ["dessert", "like ", "would ", "you ", "a ", "?"],
-    resposta: "Would you like a dessert?"
+    resposta: "Would you like a dessert?",
   },
   {
     pergunta: ["1 to 10", "please ", "count ", "from ", "."],
-    resposta: "Please count from 1 to 10."
+    resposta: "Please count from 1 to 10.",
   },
   {
     pergunta: ["I’d ", "thanks ", "no ", "like ", "tea", "some ", "."],
-    resposta: "No thanks I’d like some tea."
+    resposta: "No thanks I’d like some tea.",
   },
   {
     pergunta: ["cookies", "would ", "like ", "you ", "some ", "?"],
-    resposta: "Would you like some cookies?"
+    resposta: "Would you like some cookies?",
   },
   {
     pergunta: ["salad", "do ", "you ", "eat ", "?"],
-    resposta: "Do you eat salad?"
-  }
+    resposta: "Do you eat salad?",
+  },
 ]
 
 export const L2_T2_Medio = [
@@ -279,45 +279,41 @@ export const L2_T2_Medio = [
 
 export const L2_T2_Dificil = [
   {
-    pergunta: "Yes, I like fast food.",
-    resposta: "Do you like fast food?"
+    pergunta: "Yes, I like fast food?",
+    resposta: "Do you like fast food",
   },
   {
     pergunta: "No, I don’t eat chicken nuggets.",
-    resposta: "Do you eat chicken nuggets?"
+    resposta: "Do you eat chicken nuggets?",
   },
   {
     pergunta: "Yes, I like coffee.",
-    resposta: "Do you like coffee?"
+    resposta: "Do you like coffee?",
   },
   {
     pergunta: "Yes, I need more water.",
-    resposta: "Do you need more water?"
+    resposta: "Do you need more water?",
   },
   {
     pergunta: "No, I don’t eat rice.",
-    resposta: "Do you like steaks?"
-  },
-  {
-    pergunta: "No, I don’t like steaks.",
-    resposta: "Do you like steaks?"
+    resposta: "Do you like steaks?",
   },
   {
     pergunta: "Yes, I need a protein bar.",
-    resposta: "Do you need a protein bar?"
+    resposta: "Do you need a protein bar?",
   },
   {
     pergunta: "No, I don’t eat salad.",
-    resposta: "Do you eat salad?"
+    resposta: "Do you eat salad?",
   },
   {
     pergunta: "Yes, I like frozen yogurt.",
-    resposta: "Do you like frozen yogurt?"
+    resposta: "Do you like frozen yogurt?",
   },
   {
     pergunta: "Yes, please. I’d like some sushi.",
-    resposta: "Would you like some sushi?"
-  }
+    resposta: "Would you like some sushi?",
+  },
 ]
 
 export const L2_SUPER_LESSON = [

@@ -6,16 +6,17 @@ import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../subTitleLesson";
 
-import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, ScoreFinal, Score, PointRule } from "../../utils/regras";
+import { TrocaAtividade, ScoreFinal, Score } from "../../utils/regras";
+import { URL_FISKPRO } from "../../config/infos";
 
 import { Container, Main } from "./styles";
 
 export const Game1 = () => {
-  const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
-  } = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
   
   const navigate = useNavigate();
   
@@ -24,55 +25,58 @@ export const Game1 = () => {
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
-  const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
+  const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  const loadLesson = useCallback(() => {
-    setIsLoading(true);
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
 
-    let dataLength = 0;
-    let tempData;
-    if (nivel === 0) {
-      setData(conteudoFacil);
-      tempData = conteudoFacil;
-      dataLength = conteudoFacil.length;
-    } else if (nivel === 1){
-      setData(conteudoMedio);
-      tempData = conteudoMedio;
-      dataLength = conteudoMedio.length;
-    } else {
-      setData(conteudoDificil);
-      tempData = conteudoDificil;
-      dataLength = conteudoDificil.length;
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
+     
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+      //let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
+      setQuestion(items.pergunta);
+      
+      let tempIdClick = idClick;
+      tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
+      setIdClick(tempIdClick);
+      
+      let tempImages = [];
+      for (let a = 0; a < idClick.length; a++) {
+        tempImages.push(items.images[tempIdClick[a]]);
+      }
+      tempImages = tempImages.sort(() => Math.random() - 0.5);
+      setAnswers(tempImages);
+      setBlockButton(false);
+      setIsLoading(false);
+    } catch(error) {
+      console.log('error==> ', error);
     }
-    
-    let tempRandom = [];
-    for (let a = 0; a < dataLength; a++) {
-      tempRandom.push(a);
-    }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandom);
-
-    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setQuestion(items.pergunta);
-    
-    let tempIdClick = idClick;
-    tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
-    setIdClick(tempIdClick);
-    
-    let tempImages = [];
-    for (let a = 0; a < idClick.length; a++) {
-      tempImages.push(items.images[tempIdClick[a]]);
-    }
-    tempImages = tempImages.sort(() => Math.random() - 0.5);
-    setAnswers(tempImages);
-    
-    setBlockButton(false);
-    setIsLoading(false);
   }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber]);
 
   const newRound = (number) => {
@@ -96,7 +100,7 @@ export const Game1 = () => {
     if (blockButton) return;
     setBlockButton(true);
 
-    let tempRightPoints;
+    let tempRightPoints = rightPoints;
     let tempColor = [...optionColor];
     const selectedAnswer = answers[index];
 
@@ -104,9 +108,9 @@ export const Game1 = () => {
       tempColor[index] = 1;
       setOptionColor(tempColor);
       
-      tempRightPoints = PointRule(nivel, rightPoints);
+      tempRightPoints++;
       setRightPoints(tempRightPoints);
-      setNewPontos(0, tempRightPoints);
+      setNewPontos(0, (tempRightPoints));
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -124,7 +128,7 @@ export const Game1 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -142,7 +146,7 @@ export const Game1 = () => {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    } else {
+    }else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
         if(nivel === 0){

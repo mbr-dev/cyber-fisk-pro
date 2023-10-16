@@ -1,24 +1,20 @@
 import { useState, useEffect, useContext, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 
-import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
+import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
-import { URL_FISKPRO } from "../../config/infos";
+import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
+import { L5_T2_Dificil } from "../../utils/lesson5_Task";
+import { URL_FISKPRO, URL_L3T2D } from "../../config/infos";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
 
 export const Game20 = () => {
-  const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
-  } = useContext(LessonContext);
-
-  const navigate = useNavigate();
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
@@ -31,47 +27,28 @@ export const Game20 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isloading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
-    setIsLoading(true);
-
-    let dataLength = 0;
-    let tempData;
-    if(nivel === 0){
-      setData(conteudoFacil);
-      tempData = conteudoFacil;
-      dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
-      setData(conteudoMedio);
-      tempData = conteudoMedio;
-      dataLength = conteudoMedio.length;
-    }else{
-      setData(conteudoDificil);
-      tempData = conteudoDificil;
-      dataLength = conteudoDificil.length;
-    }
+    const totalOfSounds = L5_T2_Dificil.length;
     
     let tempRandom = [];
-    for (let a = 0; a < dataLength; a ++) {
+    for (let a = 0; a < totalOfSounds; a ++) {
       tempRandom.push(a);
     }
     setRandomNumber(tempRandom);
 
-    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-
-    setSound(items.audio);
-    setQuestion(items.pergunta);
-    setAnswer(items.resposta);
-    setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound])
+    setSound(L5_T2_Dificil[tempRandom[round]].audio);
+    setQuestion(L5_T2_Dificil[tempRandom[round]].pergunta);
+    setAnswer(L5_T2_Dificil[tempRandom[round]].resposta);
+    
+  }, [setRandomNumber, setSound])
 
   const newRound = (number) => {
     setText("");
-    const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setSound(items.audio);
-    setQuestion(items.pergunta);
-    setAnswer(items.resposta);
+    setSound(L5_T2_Dificil[randomNumber[number]].audio);
+    setQuestion(L5_T2_Dificil[randomNumber[number]].pergunta);
+    setAnswer(L5_T2_Dificil[randomNumber[number]].resposta);
   }
 
   const handleVerifyWord = (event) => {
@@ -79,7 +56,7 @@ export const Game20 = () => {
     if (playAudio) return;
     
     let tempWord = text;
-    let tempRightPoints;
+    let tempRightPoints = rightPoints;
     let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
@@ -100,7 +77,7 @@ export const Game20 = () => {
         return
       }
 
-      tempRightPoints = PointRule(nivel, rightPoints);
+      tempRightPoints += 3;
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -119,40 +96,47 @@ export const Game20 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua") {
       setTimeout(() =>{
         setCountQ(0);
         setColorAnswer(0);
         newRound(tempRound);
-      }, 1500);
-    } else if (rule === "Game over"){
-      setNewPontos(0,0);
+      }, 1000);
+    } else if (rule === "Score") {
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
-        navigate("/GameOver");
+        const scoreFinal = Score(pontosF, pontosM, pontosD);
+        let valorRank = 0;
+
+        if (scoreFinal >= 70) {
+            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
+              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
+              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
+              frequencia++;
+
+              if (frequencia === 4) {
+                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
+              }
+
+              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
+              const rank = PontosRank(frequencia,oldRank);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            } else {
+              localStorage.setItem("cyber_pro_task2","1");
+              localStorage.setItem("cyber_pro_msg_task2","1");
+              localStorage.setItem("cyber_pro_frequencia_task1",1);
+              const rank = PontosRank(1,0);
+              valorRank = rank;
+              localStorage.setItem("cyber_pro_rank",rank);
+            }
+          }
+
+        alert(`SCORE: ${scoreFinal}%`);
+        alert(`PONTOS PARA O RANKING: ${valorRank}`);
         setNewContainer(1);
-      },1500);
-    } else if (rule === "Score"){
-      const pontos = Score(pontosF, pontosM, pontosD);
-      const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
-    } else {
-      setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
-        if(nivel === 0){
-          setNewNivel(1);
-          const atividade = conteudoMedio[0].id_tipo;
-          setNewAtividade(atividade);
-        }else{
-          setNewNivel(2);
-          const atividade = conteudoDificil[0].id_tipo;
-          setNewAtividade(atividade);
-        }
-      },1500);
+      }, 1000);
     }
   }
 
@@ -164,16 +148,11 @@ export const Game20 = () => {
     text.trim() === "" || playAudio ? setBlockButton(true) : setBlockButton(false);
   }, [text, setBlockButton]);
 
-  if (isLoading) {
-    return (
-      <Loading />
-    )
-  }
-
   return (
     <Container>
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <SubTitleLesson title="Listen and answer the questions." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson5/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
