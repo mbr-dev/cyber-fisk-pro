@@ -1,4 +1,5 @@
 import { useEffect, useState, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
@@ -14,7 +15,7 @@ import LogoImg from "./images/logoIcon.png";
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL2 = () => {
-  const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  const { setTimeElapsed, timeElapsed, conteudoSuperTask, newInfoST } = useContext(LessonContext);
 
   const [playing, setPlaying] = useState(false);
   const [level, setLevel] = useState(0);
@@ -25,20 +26,20 @@ export const GameSL2 = () => {
   const [reset, setReset] = useState(false);
   const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState();
 
+  const [restartGame, setRestartGame] = useState(false);
+  const navigate = useNavigate();
   const loadLesson = useCallback(async() => {
-    try {
-      setIsLoading(true);
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
-      const res = response.data;
-      const dataItems = res.dados[0].dados_conteudo;
-      setData(dataItems);
-
-      const items = dataItems.map(item => {
+    console.log('SL2');
+    setIsLoading(true);
+      let data = conteudoSuperTask;
+      
+      const items = data.map(item => {
         const conteudo = JSON.parse(item.conteudo);
+        
         return conteudo
       });
+      const dataLength = level === 0 ? 6 : 8;
 
       const nameFilter = items.filter(item => item.name);
     
@@ -259,7 +260,7 @@ export const GameSL2 = () => {
 
   return (
     <Container>
-      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
+      {/* <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" /> */}
       <TitleLesson title="Memory Game." />
 
       <Main>
@@ -273,7 +274,6 @@ export const GameSL2 = () => {
                 {card.permanentShown === false && card.shown === false &&
                   <Icon src={LogoImg} alt="" opacity={0.3} />
                 }
-
                 {(card.permanentShown || card.shown) && card.item !== null &&
                   <>
                     {card.item.name ?

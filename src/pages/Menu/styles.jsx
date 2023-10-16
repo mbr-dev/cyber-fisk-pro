@@ -98,6 +98,9 @@ export const Main = styled.main`
 export const Top = styled.div`
   display: flex;
   flex-direction: column;
+  p{
+    cursor: pointer;
+  }
 `;
 
 export const Bottom = styled.div`

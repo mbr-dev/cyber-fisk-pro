@@ -2,17 +2,15 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { HeaderLesson } from "../HeaderLesson";
 import { TitleLesson } from "../TitleLesson";
 
-import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { conteudoSuperTask, newInfoST, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -38,11 +36,9 @@ export const GameSL3 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
-      const res = response.data;
-      setData(res.dados[0].dados_conteudo);
       
-      let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+      setData(conteudoSuperTask);
+      let items = JSON.parse(conteudoSuperTask[0].conteudo);
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
       
@@ -239,7 +235,6 @@ export const GameSL3 = () => {
   
   return (
     <Container>
-      <HeaderLesson numStart="Super Task" numEnd="Finish" superTaskStart trophyEnd />
       {changed ? 
         <TitleLesson title="Now answer the question." />
         :

@@ -7,7 +7,7 @@ import LogoFisk from "../../assets/logoFisk2.svg";
 
 import { Container, TopHeader, BottomHeader } from "./styles";
 
-export const TopMenuHeader = ({ title, hasAvatar, hasLogo }) => {
+export const TopMenuHeader = ({ title, hasAvatar, hasLogo, enabledClose }) => {
   const [name, setName] = useState('');
 
   useEffect(() => {
@@ -20,7 +20,10 @@ export const TopMenuHeader = ({ title, hasAvatar, hasLogo }) => {
       <TopHeader>
         <ButtonMenuHeader />
         <p>{title}</p>
-        <ButtonCloseHeader />
+        {enabledClose ? null :
+          <ButtonCloseHeader />
+        }
+        
       </TopHeader>
 
       <BottomHeader>
