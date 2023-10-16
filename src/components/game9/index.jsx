@@ -177,7 +177,7 @@ export const Game9 = () => {
   return (
     <Container>
       <TitleLesson title="Mark all the correct answer for each question you hear." />
-      <SubTitleLessonAudio size={40} audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
+      <SubTitleLessonAudio size={40} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {

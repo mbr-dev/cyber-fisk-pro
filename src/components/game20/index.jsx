@@ -15,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game20 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -24,6 +24,7 @@ export const Game20 = () => {
   const [sound, setSound] = useState(null);
   const [question, setQuestion] = useState([]);
   const [answer, setAnswer] = useState([]);
+  const [data, setData] = useState([]);
   const [text, setText] = useState("");
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
@@ -38,15 +39,15 @@ export const Game20 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -64,7 +65,7 @@ export const Game20 = () => {
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound])
+  }, [setIsLoading, setData, setRandomNumber, setSound, round, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
@@ -82,7 +83,6 @@ export const Game20 = () => {
     let tempRightPoints;
     let tempColorA = colorAnswers;
 
-    tempWord = tempWord.replace(/'/g, "’");
     let answerIndex = answer[countQ];
 
     if (answerIndex.includes(tempWord)) {
@@ -96,10 +96,12 @@ export const Game20 = () => {
         setTimeout(() => {
           setColorAnswer(0);
           setText("");
-        }, 1000);
+        }, 1500);
         return
       }
 
+      tempColorA = 1;
+      setColorAnswer(tempColorA);
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
@@ -121,13 +123,13 @@ export const Game20 = () => {
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
         setCountQ(0);
         setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         setCountQ(0);
@@ -135,7 +137,7 @@ export const Game20 = () => {
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
@@ -143,11 +145,11 @@ export const Game20 = () => {
       setTimeout(() =>{
         setCountQ(0);
         setColorAnswer(0);
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);

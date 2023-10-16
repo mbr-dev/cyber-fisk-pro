@@ -174,11 +174,11 @@ export const Game4 = () => {
     } else {
       setTimeout(() =>{
         setIdClick([0, 0, 0, 0, 0, 0]);
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);

@@ -67,9 +67,8 @@ export const Game22 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(items.resposta[a]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
 
     setBlockButton(false);
@@ -86,9 +85,8 @@ export const Game22 = () => {
     
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(items.resposta[a]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }

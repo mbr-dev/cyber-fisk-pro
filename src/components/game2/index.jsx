@@ -35,15 +35,15 @@ export const Game2 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if(nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -67,7 +67,6 @@ export const Game2 = () => {
     for (let a = 0; a < idClick.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
     
     setBlockButton(false);
@@ -86,7 +85,6 @@ export const Game2 = () => {
     for (let a = 0; a < idClick.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }
@@ -134,7 +132,7 @@ export const Game2 = () => {
       setNewPontos(0,0);
       setTimeout(() =>{
         setOptionColor([0, 0, 0]);
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score"){
@@ -143,7 +141,7 @@ export const Game2 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() => {
-        console.log('MUDA DE RODADA!!');
+        console.log("MUDA DE RODADA!!");
         setOptionColor([0, 0, 0]);
         if(nivel === 0){
           setNewNivel(1);

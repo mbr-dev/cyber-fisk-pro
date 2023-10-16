@@ -144,7 +144,7 @@ export const Game8 = () => {
         setNewContainer(1);
         navigate("/GameOver");
       }, 1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);

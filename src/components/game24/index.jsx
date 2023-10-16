@@ -173,7 +173,6 @@ export const Game24 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <TitleLesson title="LISTEN TO COMPLETE THE PARAGRAPH." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson6/${sound}.mp3`} />
 

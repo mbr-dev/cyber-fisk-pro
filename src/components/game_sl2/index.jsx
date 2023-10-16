@@ -1,9 +1,8 @@
 import { useEffect, useState, useContext, useCallback } from "react";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { ButtonBg } from "../ButtonBg";
+import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -156,21 +155,17 @@ export const GameSL2 = () => {
   }
 
   const generateScore = () => {
-    let tempPoints = points;
-
     if (timeElapsed < 60) {
-      tempPoints += 5;
+      setPoints(state => state + 5);
     } else if (timeElapsed >= 61 || timeElapsed <= 75) {
-      tempPoints += 4;
+      setPoints(state => state + 4);
     } else if (timeElapsed >= 76 || timeElapsed <= 90) {
-      tempPoints += 3;
+      setPoints(state => state + 3);
     } else if (timeElapsed >= 91 || timeElapsed <= 120) {
-      tempPoints += 2;
+      setPoints(state => state + 2);
     } else {
-      tempPoints += 1;
+      setPoints(state => state + 1);
     }
-
-    return tempPoints;
   }
 
   const handleChangeLevel = () => {
@@ -178,8 +173,7 @@ export const GameSL2 = () => {
     tempLevel++;
     setLevel(tempLevel);
     
-    let tempPoints = generateScore();
-    setPoints(tempPoints);
+    generateScore();
     setPlaying(false);
     
     setTimeout(() => {
@@ -189,12 +183,13 @@ export const GameSL2 = () => {
   }
 
   const handleFinish = () => {
-    let tempPoints = generateScore();
-    setPoints(tempPoints);
+    generateScore();
     setPlaying(false);
     setFinished(false);
-    
-    console.log("game finalizado");
+
+    setTimeout(() => {
+      navigate("/WellDone")
+    }, 2000);
   }
   
   useEffect(() => {
@@ -259,7 +254,6 @@ export const GameSL2 = () => {
 
   return (
     <Container>
-      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
       <TitleLesson title="Memory Game." />
 
       <Main>

@@ -4,7 +4,6 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { HeaderLesson } from "../HeaderLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -121,7 +120,6 @@ export const GameSL1 = () => {
         }
 
         setRightPoints(tempRightPoints);
-        alert("Pontos: " + tempRightPoints);
       } else {
         return;
       }
@@ -154,7 +152,6 @@ export const GameSL1 = () => {
 
   return (
     <Container>
-      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
       <TitleLesson title={
         `How many nationalities can you write with these letters? There are ${wordLength} ${wordLength > 1 ? "words" : "word"}.`
       } />
