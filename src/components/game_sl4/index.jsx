@@ -1,8 +1,8 @@
 import { useState, useCallback, useEffect, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -12,7 +12,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys } from "./styles";
 
 export const GameSL4 = () => {
-  const { rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+
+  const navigate = useNavigate();
   
   const [optionColor, setOptionColor] = useState([]);
   const [images, setImages] = useState([]);
@@ -43,7 +45,7 @@ export const GameSL4 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+      const items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
 
       let letterQuestion = items.letras;
       letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
@@ -73,7 +75,6 @@ export const GameSL4 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setIsCompleted(false);
     let letterQuestion = items.letras;
-    letterQuestion = letterQuestion.sort(() => Math.random() - 0.5);
     setLettersQ(letterQuestion);
 
     let tempImages = [];
@@ -125,6 +126,16 @@ export const GameSL4 = () => {
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
       setIsCompleted(true);
+
+      if (tempRound === 5) {
+        setTimeout(() => {
+          navigate("/WellDone")
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          newRound(tempRound);
+        }, 1500);
+      }
     }
   }
 
@@ -134,7 +145,9 @@ export const GameSL4 = () => {
 
   useEffect(() => {
     if (points === 0) {
-      alert("game over");
+      setTimeout(() => {
+        navigate("/GameOver")
+      }, 1500);
     }
   }, [points])
 
@@ -146,6 +159,16 @@ export const GameSL4 = () => {
     }
   }, [round, newRound, isCompleted]);
 
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeElapsed(state => state + 1)
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed]);
+
   if (isLoading) {
     return (
       <Loading />
@@ -154,7 +177,6 @@ export const GameSL4 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Super task" numEnd="Finish" superTaskStart trophyEnd />
       <TitleLesson title="What’s the word in common?" />
 
       <Main>
@@ -162,7 +184,7 @@ export const GameSL4 = () => {
           {images.map((image, index) => {
             return (
               <Photo key={index}>
-                <img src={`${URL_FISKPRO}images/essentials1/lesson4//${image}.png`} alt="" />
+                <img src={`${URL_FISKPRO}images/essentials1/lesson4/${image}.png`} alt="" />
               </Photo>
             )
           })}
