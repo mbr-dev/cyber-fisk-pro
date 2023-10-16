@@ -17,6 +17,7 @@ import { QRCode } from "../features/qrCode/pages/Home";
 import { QRReader } from "../features/qrCode/pages/QrReader";
 import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
 import { TaskLesson } from "../components/taskLesson";
+import { SuperTaskLesson } from "../components/supertaskLesson";
 
 import { Game1 } from "../components/game1";
 import { Game2 } from "../components/game2";
@@ -72,6 +73,7 @@ export const Router =() => {
       <Route path="/qr-code/reader" element={<QRReader />} />
       <Route path="/qr-code/:code" element={<GamesTemplate />} />
       <Route path="/Lesson" element={<TaskLesson />} />
+      <Route path="/SuperTask" element={<SuperTaskLesson />} />
 
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>

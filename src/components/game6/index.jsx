@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { TitleLesson } from "../TitleLesson";
 import { HeaderLesson } from "../HeaderLesson";
@@ -15,8 +16,12 @@ import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 import { Container, Main } from "./styles";
 
 export const Game6 = () => {
-  const {playAudio, setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
   
+  const navigate = useNavigate();
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2, 3, 4, 5]);
   const [data, setData] = useState([]);
@@ -33,10 +38,21 @@ export const Game6 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      const response  = await api.get("/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=2");
-      const res = response.data;
-      setData(res.dados[2].dados_conteudo);
-      const dataLength = res.dados[2].dados_conteudo.length;
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
 
       let tempSounds = [];
       for (let a = 0; a < dataLength; a++) {
@@ -45,7 +61,8 @@ export const Game6 = () => {
       tempSounds = tempSounds.sort(() => Math.random() - 0.5);
       setRandomNumber(tempSounds);
 
-      let items = JSON.parse(res.dados[2].dados_conteudo[tempSounds[round]].conteudo);
+      //let items = JSON.parse(res.dados[2].dados_conteudo[tempSounds[round]].conteudo);
+      let items = JSON.parse(tempData[tempRandom[round]].conteudo);
       setSound(items.pergunta);
       
       let tempRandomNumber = idClick;
@@ -134,40 +151,22 @@ export const Game6 = () => {
         setOptionColor([0, 0, 0, 0, 0, 0]);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Score") {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() => {
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-        if (scoreFinal >= 70) {
-          if (localStorage.getItem('cyber_pro_frequencia_task2')) {
-            let frequencia = parseInt(localStorage.getItem('cyber_pro_frequencia_task2'));
-            let oldRank = parseInt(localStorage.getItem('cyber_pro_rank'));
-            frequencia++;
-            if (frequencia === 4) {
-              alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-            }
-            localStorage.setItem('cyber_pro_frequencia_task2', frequencia);
-            const rank = PontosRank(frequencia, oldRank);
-            valorRank = rank;
-            localStorage.setItem('cyber_pro_rank', rank);
-          } else {
-            localStorage.setItem('cyber_pro_supertask', '1');
-            localStorage.setItem('cyber_pro_msg_supertask', '1');
-            localStorage.setItem('cyber_pro_frequencia_task2', 1);
-            if (localStorage.getItem('cyber_pro_rank')) {
-              let oldRank = parseInt(localStorage.getItem('cyber_pro_rank'));
-              const rank = PontosRank(1, oldRank);
-              valorRank = rank;
-            } else {
-              const rank = PontosRank(1, 0);
-              valorRank = rank;
-            }
-            localStorage.setItem('cyber_pro_rank', valorRank);
-          }
+        setOptionColor([0, 0, 0, 0, 0, 0]);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
         }
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
-        setNewContainer(1);
       }, 1500);
     }
   }
@@ -188,7 +187,7 @@ export const Game6 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
 

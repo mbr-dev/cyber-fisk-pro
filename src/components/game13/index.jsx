@@ -1,4 +1,5 @@
 import { useContext, useCallback, useEffect, useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
@@ -12,7 +13,12 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio, Options, Form } from "./styles";
 
 export const Game13 = () => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
   const [question, setQuestion] = useState("");
@@ -25,9 +31,24 @@ export const Game13 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState([]);
+  const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    const totalOfQuestions = L4_T2_Dificil.length;
+    let totalOfQuestions = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfQuestions = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfQuestions = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfQuestions = conteudoDificil.length;
+    }
 
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
@@ -35,19 +56,19 @@ export const Game13 = () => {
     }
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setRandomNumber(tempQuestions);
-    let tempQ = L4_T2_Dificil[tempQuestions[round]].pergunta;
+    let tempQ = tempData[tempQuestions[round]].pergunta;
     setQuestion(tempQ);
 
     let tempAnswers = [];
-    let tempAnswersLength = L4_T2_Dificil[tempQuestions[round]].resposta.length;
+    let tempAnswersLength = tempData[tempQuestions[round]].resposta.length;
     for (let a = 0; a < tempAnswersLength; a++) {
-      tempAnswers.push(L4_T2_Dificil[tempQuestions[round]].resposta[a].label);
+      tempAnswers.push(tempData[tempQuestions[round]].resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
     for (let a = 0; a < tempAnswersLength; a++) {
-      tempRightA.push(L4_T2_Dificil[tempQuestions[round]].resposta[a].status);
+      tempRightA.push(tempData[tempQuestions[round]].resposta[a].status);
     }
     setRightAnswers(tempRightA);
 
@@ -55,19 +76,19 @@ export const Game13 = () => {
 
   const newRound = (number) => {
     setSelectedRadio([]);
-    let tempQuestion  = L4_T2_Dificil[randomNumber[number]].pergunta;
+    let tempQuestion  = data[randomNumber[number]].pergunta;
     setQuestion(tempQuestion);
 
     let tempAnswers = [];
-    let tempAnswersLength = L4_T2_Dificil[randomNumber[number]].resposta;
+    let tempAnswersLength = data[randomNumber[number]].resposta;
     for (let a = 0; a < tempAnswersLength.length; a++) {
-      tempAnswers.push(L4_T2_Dificil[randomNumber[number]].resposta[a].label);
+      tempAnswers.push(data[randomNumber[number]].resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
     for (let a = 0; a < tempAnswersLength.length; a++) {
-      tempRightA.push(L4_T2_Dificil[randomNumber[number]].resposta[a].status);
+      tempRightA.push(data[randomNumber[number]].resposta[a].status);
     }
     setRightAnswers(tempRightA);
   }
@@ -129,39 +150,34 @@ export const Game13 = () => {
         setColorAnswer([0, 0, 0, 0, 0]);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Score") {
+    } else if (rule === "Game over"){
+      setNewPontos(0,0);
       setTimeout(() =>{
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-
-        if (scoreFinal >= 70) {
-            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
-              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
-              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-              frequencia++;
-
-              if (frequencia === 4) {
-                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-              }
-
-              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
-              const rank = PontosRank(frequencia,oldRank);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            } else {
-              localStorage.setItem("cyber_pro_task2","1");
-              localStorage.setItem("cyber_pro_msg_task2","1");
-              localStorage.setItem("cyber_pro_frequencia_task1",1);
-              const rank = PontosRank(1,0);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            }
-          }
-
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        navigate('/GameOver');
         setNewContainer(1);
-      }, 1500);
+      },1500);
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
+      setTimeout(() =>{
+        setColorQuestions([0, 0, 0]);
+        setColorAnswer([0, 0, 0, 0, 0]);
+        setCountClick(0);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      },1500);
     }
   }
 

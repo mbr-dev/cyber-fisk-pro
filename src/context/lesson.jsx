@@ -16,10 +16,31 @@ function LessonProvider({children}){
   const [rodadaGeral, setRodadaGeral] = useState(0);
   const [playAudio, setPlayAudio] = useState(false);
   const [timeElapsed, setTimeElapsed] = useState(0);
+  const [dataST, setDataST] = useState({
+    score:0,
+    time:0
+  });
+  const [dollarAtividade, setDollarAtividade] = useState(0);
   //conteudos
   const [conteudoFacil, setConteudoFacil] = useState(null);
   const [conteudoMedio, setConteudoMedio] = useState(null);
   const [conteudoDificil, setConteudoDificil] = useState(null);
+  const [conteudoSuperTask, setConteudoSuperTask] = useState(null);
+
+  const setNewDollarAtividade = (value) => {
+    setDollarAtividade(value);
+  }
+
+  const newInfoST = (pontos, tempo) => {
+    setDataST({
+      score: pontos,
+      time: tempo
+    })
+  }
+
+  const setNewConteudoSuperTask = (data) => {
+    setConteudoSuperTask(data);
+  }
 
   const setNewConteudoFacil = (data) => {
     setConteudoFacil(data);
@@ -73,7 +94,10 @@ function LessonProvider({children}){
   }
 
   const setNewAtividade = (num) => {
-    setNumAtividade(num);
+    setNumAtividade(0);
+    setTimeout(() => {
+      setNumAtividade(num);
+    }, 500);
   }
 
   const setStatusLessons = (data) => {
@@ -98,6 +122,9 @@ function LessonProvider({children}){
       conteudoFacil,
       conteudoMedio,
       conteudoDificil,
+      conteudoSuperTask,
+      dataST,
+      dollarAtividade,
       setTimeElapsed,
       setStatusLessons,
       setNewContainer,
@@ -111,7 +138,10 @@ function LessonProvider({children}){
       setNewSuperTask,
       setNewConteudoFacil,
       setNewConteudoMedio,
-      setNewConteudoDificil
+      setNewConteudoDificil,
+      setNewConteudoSuperTask,
+      newInfoST,
+      setNewDollarAtividade
     }}>
       {children}
     </LessonContext.Provider>

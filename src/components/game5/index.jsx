@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../TitleLesson";
@@ -6,17 +7,19 @@ import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
-import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L1_T2_Medio } from "../../utils/lesson1_Task";
 
 import { Container, Main } from "./styles";
 
 export const Game5 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio} = useContext(LessonContext);
-
+  const { setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
@@ -32,10 +35,21 @@ export const Game5 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true)
-      const response  = await api.get("/CyberProAtividades/Retorno?id_livro=53&num_lesson=1&num_task=2");
-      const res = response.data;
-      setData(res.dados[1].dados_conteudo);
-      const dataLength = res.dados[0].dados_conteudo.length;
+      let dataLength = 0;
+      let tempData;
+      if(nivel === 0){
+        setData(conteudoFacil);
+        tempData = conteudoFacil;        
+        dataLength = conteudoFacil.length;
+      }else if(nivel === 1){
+        setData(conteudoMedio);
+        tempData = conteudoMedio;
+        dataLength = conteudoMedio.length;
+      }else{
+        setData(conteudoDificil);
+        tempData = conteudoDificil;
+        dataLength = conteudoDificil.length;
+      }
 
       let tempSounds = [];
       for (let a = 0; a < dataLength; a++) {
@@ -44,7 +58,7 @@ export const Game5 = () => {
       tempSounds = tempSounds.sort(() => Math.random() - 0.5);
       setRandomNumber(tempSounds);
 
-      let items = JSON.parse(res.dados[1].dados_conteudo[tempSounds[round]].conteudo);
+      let items = JSON.parse(tempData[tempSounds[round]].conteudo);
       setSound(items.pergunta);
 
       let tempRandomNumber = idClick;
@@ -125,14 +139,26 @@ export const Game5 = () => {
       setNewPontos(0, 0);
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
-        alert("GAME OVER!!");
+        navigate('/GameOver');
         setNewContainer(1);
       }, 1500);
-    } else {
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
       setTimeout(() => {
         setOptionColor([0, 0, 0]);
-        alert("Troca de nível!!");
-        setNewLesson(6);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(6);
       }, 1500);
     }
   }
@@ -153,7 +179,7 @@ export const Game5 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super task" superTaskEnd /> */}
       <TitleLesson title='Choose the correct alternative' />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
       

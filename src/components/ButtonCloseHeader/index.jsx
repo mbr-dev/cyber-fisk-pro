@@ -3,13 +3,11 @@ import { useNavigate } from "react-router-dom";
 
 import { Container } from "./styles";
 
-export function ButtonCloseHeader() {
+export function ButtonCloseHeader(props) {
   const navigate = useNavigate();
   
-  function alterPage(){
-    console.log('TESTE');
-    const page = localStorage.getItem("lastAccess");
-    navigate(`/${page}`);
+  const alterPage = () => {
+    navigate(-1);
   }
 
   return (

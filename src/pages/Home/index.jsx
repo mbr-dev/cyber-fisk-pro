@@ -49,7 +49,7 @@ export const Home = () => {
 
   return(
     <Container>
-      <TopMenuHeader hasAvatar hasLogo />
+      <TopMenuHeader hasAvatar hasLogo enabledClose={true}/>
       <Main>
         <Cards>
           {translateHome.map((text, index) => {            

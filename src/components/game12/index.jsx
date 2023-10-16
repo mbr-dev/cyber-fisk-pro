@@ -1,4 +1,5 @@
 import { useEffect, useState, useCallback, useContext } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../TitleLesson";
@@ -12,7 +13,12 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Input, Form, Words } from "./styles";
 
 export const Game12 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
+    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
+    numSelLesson, numTask } = useContext(LessonContext);
+  
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [question, setQuestion] = useState([]);
@@ -24,10 +30,25 @@ export const Game12 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isloading, setIsLoading] = useState(false);
-  
+  const [data, setData] = useState([]);
+
   const loadLesson = useCallback(() => {
-    const totalOfQuestions = L4_T2_Medio.length;
-    
+    let totalOfQuestions = 0;
+    let tempData;
+    if(nivel === 0){
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      totalOfQuestions = conteudoFacil.length;
+    }else if(nivel === 1){
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      totalOfQuestions = conteudoMedio.length;
+    }else{
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      totalOfQuestions = conteudoDificil.length;
+    }
+
     let tempQuestions = [];
     for (let a = 0; a < totalOfQuestions; a++) {
       tempQuestions.push(a);
@@ -36,14 +57,14 @@ export const Game12 = () => {
     setRandomNumber(tempQuestions);
     
     let tempRandomQuestion = [];
-    let questionLength = L4_T2_Medio[tempQuestions[round]].pergunta;
+    let questionLength = tempData[tempQuestions[round]].pergunta;
     for (let a = 0; a < questionLength.length; a ++) {
-      tempRandomQuestion.push(L4_T2_Medio[tempQuestions[round]].pergunta[a]);
+      tempRandomQuestion.push(tempData[tempQuestions[round]].pergunta[a]);
     }
     tempRandomQuestion = tempRandomQuestion.sort(() => Math.random() - 0.5);
     setQuestion(tempRandomQuestion);
 
-    let tempAnswer = L4_T2_Medio[tempQuestions[round]].resposta.toLowerCase();
+    let tempAnswer = tempData[tempQuestions[round]].resposta.toLowerCase();
     setAnswer(tempAnswer);
   }, [setRandomNumber, round, setQuestion, setAnswer]);
 
@@ -51,14 +72,14 @@ export const Game12 = () => {
     setText("");
 
     let tempRandomQuestion = [];
-    let questionLength = L4_T2_Medio[randomNumber[number]].pergunta;
+    let questionLength = data[randomNumber[number]].pergunta;
     for (let a = 0; a < questionLength.length; a ++) {
-      tempRandomQuestion.push(L4_T2_Medio[randomNumber[number]].pergunta[a]);
+      tempRandomQuestion.push(data[randomNumber[number]].pergunta[a]);
     }
     tempRandomQuestion = tempRandomQuestion.sort(() => Math.random() - 0.5);
     setQuestion(tempRandomQuestion);
 
-    let tempAnswer = L4_T2_Medio[randomNumber[number]].resposta.toLowerCase();
+    let tempAnswer = data[randomNumber[number]].resposta.toLowerCase();
     setAnswer(tempAnswer);
   }
 
@@ -100,21 +121,29 @@ export const Game12 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      alert('GAME OVER!!');
       setNewPontos(0, 0);
-      
-      setTimeout(() => {
-        alert('Passou para próxima task');
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
-        setNewContainer(1);
-      }, 1500);
-    } else {
+      tempColorA = 0;
+      setColorAnswer(tempColorA);
+      navigate('/GameOver');
+    } else if (rule === "Score"){
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    }else {
 
       setTimeout(() => {
         tempColorA = 0;
         setColorAnswer(tempColorA);
-        setNewLesson(2);
+        if(nivel === 0){
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        }else{
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -129,7 +158,7 @@ export const Game12 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
+      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Make questions with the words below. You don’t need to use all words." />
 
       <Main>
