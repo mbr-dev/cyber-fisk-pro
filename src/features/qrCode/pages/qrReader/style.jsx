@@ -104,7 +104,7 @@ export const ContainerQRReader = styled.div`
   background: ${colors.black};
   display: flex;
   align-items: center;
-  /*padding-inline: 10px;*/
+  padding-inline: ${(props) => props.denied === 'denied' ? "10px" : 0};
 `;
 export const Permission = styled.p`
   color: ${colors.white};

@@ -76,9 +76,11 @@ export const QRReader = () => {
       setPermission("denied");
     });
 
-  const handleSubmit = () => {
-    navigate(`${location.pathname.replace("/reader", "")}/${code.trim()}`);
-  };
+  const handleSubmit = (autoCode) => {
+    navigate(`${location.pathname.replace("/reader", "")}/${autoCode ? autoCode.trim() : code.trim()}`);
+	};
+	
+	console.log('per', permission)
 
   return (
     <Container>
@@ -98,20 +100,21 @@ export const QRReader = () => {
             <>
               <Info>{traduction?.instruction[language]}</Info>
               <ContainerQRBorder>
-                <ContainerQRReader>
-                  {permission === "denied" ? (
+                <ContainerQRReader denied={permission}>
+                  {permission !== "denied" ? (
                     <QrReader
                       constraints={{ facingMode: "environment" }}
                       onResult={(result, error) => {
                         if (result) {
-                          console.log("res", result);
+													console.log("res", result);
+													handleSubmit(result)
                         }
                         if (error) {
                           console.log(error);
                         }
                       }}
                       scanDelay={1000}
-                      containerStyle={{ height: 300, width: '100%' }}
+                      containerStyle={{ height: 300, width: '100%', transform: "rotateY(180deg)" }}
                       videoContainerStyle={{ height: 300, width: '100%' }}
                       videoStyle={{ objectFit: "cover" }}
                     />
