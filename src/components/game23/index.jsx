@@ -1,7 +1,6 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 
 import { ButtonBg } from "../ButtonBg";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -14,7 +13,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
 
 export const Game23 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, numSelLesson } = useContext(LessonContext);
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
@@ -115,9 +114,8 @@ export const Game23 = () => {
 
   return (
     <Container>
-      <HeaderLesson numStart="Task 1" numEnd="Task 2" />
       <SubTitleLesson title="Answer the questions you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson3/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>

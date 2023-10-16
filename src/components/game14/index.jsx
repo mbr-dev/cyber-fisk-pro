@@ -20,7 +20,7 @@ export const Game14 = () => {
   const navigate = useNavigate();
   
   const [optionColor, setOptionColor] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2, 3]);
+  const [idClick, setIdClick] = useState([0, 1, 2]);
   const [image, setImage] = useState("");
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -37,15 +37,15 @@ export const Game14 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -69,12 +69,8 @@ export const Game14 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
-      tempAnswers.push({
-        label: items.resposta[a].label,
-        status: items.resposta[a].status,
-      })
+      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
 
     setBlockButton(false);
@@ -93,12 +89,8 @@ export const Game14 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
-      tempAnswers.push({
-        label: items.resposta[a].label,
-        status: items.resposta[a].status
-      })
+      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }
@@ -186,7 +178,7 @@ export const Game14 = () => {
 
       <Main>
         <Image>
-          <img src={`${URL_FISKPRO}images/essentials1/lesson5/${image}.png`} alt="" />
+          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
         </Image>
 
         <SubTitleLesson title={question} />
@@ -200,6 +192,7 @@ export const Game14 = () => {
                 key={index}
                 onPress={() => handleClick(index)}
                 optionColor={optionColor[index]}
+                disabledButton={blockButton}
               >
                 {answer.label}
               </ButtonAnswer>

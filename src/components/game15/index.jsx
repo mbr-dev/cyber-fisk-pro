@@ -34,15 +34,15 @@ export const Game15 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -112,7 +112,7 @@ export const Game15 = () => {
           setPhrase([]);
           newRound(tempRound);
         }, 1500);
-      } else if (rule === "Game over"){
+      } else if (rule === "Game over") {
         setNewPontos(0,0);
         setTimeout(() =>{
           setHit(0);
@@ -120,7 +120,7 @@ export const Game15 = () => {
           navigate("/GameOver");
           setNewContainer(1);
         },1500);
-      } else if (rule === "Score"){
+      } else if (rule === "Score") {
         const pontos = Score(pontosF, pontosM, pontosD);
         const page = ScoreFinal(pontos, numSelLesson, numTask);
         navigate(`/${page}`);
@@ -128,11 +128,11 @@ export const Game15 = () => {
         setTimeout(() =>{
           setHit(0);
           setPhrase([]);
-          if(nivel === 0){
+          if (nivel === 0) {
             setNewNivel(1);
             const atividade = conteudoMedio[0].id_tipo;
             setNewAtividade(atividade);
-          }else{
+          } else {
             setNewNivel(2);
             const atividade = conteudoDificil[0].id_tipo;
             setNewAtividade(atividade);

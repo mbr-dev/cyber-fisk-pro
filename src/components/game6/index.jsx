@@ -191,7 +191,7 @@ export const Game6 = () => {
   return (
     <Container>
       <TitleLesson title="Choose the correct alternative" />
-      <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
+      <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {
