@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
+import { SubTitleLessonAudioImg } from "../subTitleLessonAudioImg";
 import { Loading } from "../Loading";
 
 import { api } from "../../lib/api";
