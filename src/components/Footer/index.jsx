@@ -4,7 +4,7 @@ import { CyberContext } from "../../context/cyber";
 import { translateFooter } from "../../utils/Translate";
 
 import Instagram from "./images/iconInstagram.svg";
-import logoFisk from "./images/logofiskFooter.png";
+import logoFisk from "./images/logoFiskFooter.png";
 import Facebook from "./images/iconFacebook.svg";
 import Youtube from "./images/iconYoutube.svg";
 
