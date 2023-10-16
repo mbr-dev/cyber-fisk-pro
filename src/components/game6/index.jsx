@@ -1,16 +1,13 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
+import { SubTitleLessonAudioImg } from "../subTitleLessonAudioImg";
 import { Loading } from "../Loading";
 
-import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L1_T2_Dificil } from "../../utils/lesson1_Task";
 import { Score, PontosRank, TrocaAtividade } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
@@ -187,7 +184,6 @@ export const Game6 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson1/${sound}.mp3`} />
 

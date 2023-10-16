@@ -2,12 +2,10 @@ import { useEffect, useState, useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../titleLesson";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L4_T2_Medio } from "../../utils/lesson4_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Input, Form, Words } from "./styles";
@@ -158,7 +156,6 @@ export const Game12 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd /> */}
       <TitleLesson title="Make questions with the words below. You don’t need to use all words." />
 
       <Main>

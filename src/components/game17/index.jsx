@@ -1,7 +1,7 @@
 import { useState, useContext, useEffect, useCallback } from "react";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
@@ -9,7 +9,7 @@ import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
 import { URL_FISKPRO } from "../../config/infos";
-import { L3_T1_Facil } from "../../utils/Lesson3_Task";
+import { L3_T1_Facil } from "../../utils/lesson3_Task";
 
 import { Container, Main, Image} from "./styles";
 
