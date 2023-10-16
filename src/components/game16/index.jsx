@@ -8,7 +8,7 @@ import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L2_T2_Dificil } from "../../utils/lesson2_Task";
+import { L2_T2_Dificil } from "../../utils/Lesson2_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Form } from "./styles";

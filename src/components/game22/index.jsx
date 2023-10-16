@@ -8,7 +8,7 @@ import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade } from "../../utils/regras";
-import { L2_T1_Dificil } from "../../utils/lesson2_Task";
+import { L2_T1_Dificil } from "../../utils/Lesson2_Task";
 import { URL_FISKPRO } from "../../config/infos";
 
 import { Container, Main } from "./styles";
