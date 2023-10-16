@@ -7,7 +7,7 @@ import trofeuExcellentImg from "./../../../assets/images/Trofeu_excelente.png";
 import trofeuGoodImg from "./../../../assets/images/Trofeu_bom.png";
 import trofeuBadImg from "./../../../assets/images/Trofeu_ruim.png";
 import IconSad from "../../../assets/icons/Icon_sad.png";
-import IconHappy from "../../../assets/icons/Icon_happy.png";
+import IconHappy from "../../../assets/icons/Icon_Happy.png";
 
 import {
   Header,
