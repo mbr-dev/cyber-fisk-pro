@@ -1,19 +1,23 @@
 import { useState, useEffect, useContext, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
-import { TrocaAtividade } from "../../utils/regras";
+import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { L6_T1_Medio } from "../../utils/lesson6_Task";
-import { URL_FISKPRO } from "../../config/infos";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
 
 export const Game23 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, numSelLesson } = useContext(LessonContext);
+  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, numSelLesson, nivel } = useContext(LessonContext);
+
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
@@ -24,45 +28,51 @@ export const Game23 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
+    setIsLoading(true);
     const totalOfSounds = L6_T1_Medio.length;
     
-    let tempSounds = [];
+    let tempRandom = [];
     for (let a = 0; a < totalOfSounds; a ++) {
-      tempSounds.push(a);
+      tempRandom.push(a);
     }
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
 
-    setSound(L6_T1_Medio[tempSounds[round]].pergunta);
-    
-    let tempAnswer = L6_T1_Medio[tempSounds[round]].resposta;
-    setAnswer(tempAnswer);
+    setSound(L6_T1_Medio[tempRandom[round]].pergunta);    
+    setAnswer(L6_T1_Medio[tempRandom[round]].resposta);
+    setIsLoading(true);
   }, [setRandomNumber, setSound, setAnswer]);
 
   const newRound = (number) => {
     setText("");
     setSound(L6_T1_Medio[randomNumber[number]].pergunta);
-    let tempAnswer = L6_T1_Medio[randomNumber[round]].resposta;
-    setAnswer(tempAnswer);
+    setAnswer(L6_T1_Medio[randomNumber[number]].resposta);
   }
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
     
-    let tempWord = text;
-    let tempRightPoints = rightPoints;
+    let tempWord = text.trim().toLowerCase().replace(/'/g, "’");;
+    let tempRightPoints;
     let tempColorA = colorAnswers;
 
-    tempWord = tempWord.replace(/'/g, "’");
+    let isAnswerCorrect = false;
 
-    if (answer.includes(tempWord)) {
+    answer.forEach((answerItem) => {
+      if (tempWord.includes(answerItem.toLowerCase())) {
+        isAnswerCorrect = true;
+      }
+    });
+
+    if (isAnswerCorrect) {
       tempColorA = 1;
       setColorAnswer(tempColorA);
-      tempRightPoints += 2;
+
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -81,7 +91,7 @@ export const Game23 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() =>{
@@ -89,16 +99,16 @@ export const Game23 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
+      setNewPontos(0, 0);
       setTimeout(() =>{
         setColorAnswer(0);
-        alert('GAME OVER!!');
+        alert("GAME OVER!!");
         setNewContainer(1);
       }, 1500);
     } else {
       setTimeout(() =>{
         setColorAnswer(0);
-        alert('Proximo lesson!!');
+        alert("Proximo lesson!!");
         setNewLesson(2);
       }, 1500);
     }
@@ -112,10 +122,16 @@ export const Game23 = () => {
     text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
   }, [text, setBlockButton]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
       <SubTitleLesson title="Answer the questions you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson6/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>

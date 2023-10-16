@@ -25,10 +25,8 @@ export const GameSL5 = () => {
   const [points, setPoints] = useState(5);
   const [hints, setHints] = useState(3);
   const [hint, setHint] = useState("");
-  const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [completedWords, setCompletedWords] = useState([]);
-  const [correctWordIndices, setCorrectWordIndices] = useState([]);
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
 
@@ -55,12 +53,11 @@ export const GameSL5 = () => {
         tempLetters.push(items.letras[tempRandomL[a]]);
       }
       setLetters(tempLetters);
-      setBlockButton(false);
       setIsLoading(false);
     } catch (error) {
       console.log(error);
     }
-  }, [setIsLoading, setQuestions, setAnswers, setLetters, setBlockButton])
+  }, [setIsLoading, setQuestions, setAnswers, setLetters])
 
   const handleSelected = (letter, index) => {
     if (!clickedButtons[index] && !completedWords.includes(letter)) {
@@ -170,7 +167,6 @@ export const GameSL5 = () => {
         <Answers>
           {questions.map((question, qIndex) => {
             const isCompleted = completedWords.includes(qIndex);
-            const isCorrect = correctWordIndices.includes(qIndex);
             return (
               <Div key={qIndex}>
                 <DivQ>
@@ -187,7 +183,7 @@ export const GameSL5 = () => {
                           backgroundColor: isCompleted ? defaultTheme["red-200"] : ""
                         }}
                       >
-                        {isCompleted || isCorrect ? item : hint === item ? item : ""}
+                        {isCompleted ? item : hint === item ? item : ""}
                       </Answer>
                     )
                   })}

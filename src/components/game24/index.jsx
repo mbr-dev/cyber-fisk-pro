@@ -1,20 +1,25 @@
 import { useCallback, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 import { L6_T1_Dificil } from "../../utils/lesson6_Task";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Form, Main, Input } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game24 = () => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, nivel, playAudio
+  } = useContext(LessonContext);
+
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
@@ -78,24 +83,25 @@ export const Game24 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
-    if (blockButton) return;
+
+    if (blockButton || playAudio) return;
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = colorAnswers;
 
     if (
-      text0 === answer0 && 
-      text1 === answer1 && 
-      text2 === answer2 && 
-      text3 === answer3 && 
-      text4 === answer4
+      text0.replace(/'/g, "’") === answer0 && 
+      text1.replace(/'/g, "’") === answer1 && 
+      text2.replace(/'/g, "’") === answer2 && 
+      text3.replace(/'/g, "’") === answer3 && 
+      text4.replace(/'/g, "’") === answer4
       ) {
       tempColor = 1;
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -115,7 +121,7 @@ export const Game24 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua") {
       setTimeout(() =>{
@@ -123,38 +129,7 @@ export const Game24 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Score") {
-      setTimeout(() =>{
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-
-        if (scoreFinal >= 70) {
-            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
-              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
-              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-              frequencia++;
-
-              if (frequencia === 4) {
-                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-              }
-
-              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
-              const rank = PontosRank(frequencia,oldRank);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            } else {
-              localStorage.setItem("cyber_pro_task2","1");
-              localStorage.setItem("cyber_pro_msg_task2","1");
-              localStorage.setItem("cyber_pro_frequencia_task1",1);
-              const rank = PontosRank(1,0);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            }
-          }
-
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
-        setNewContainer(1);
-      }, 1500);
+  
     }
   }
 
@@ -170,6 +145,12 @@ export const Game24 = () => {
     text4.trim() === "" 
     ? setBlockButton(true) : setBlockButton(false);
   }, [text0, text2, text3, text4, text1, setBlockButton]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>
@@ -240,7 +221,7 @@ export const Game24 = () => {
         <ButtonBg
           form="myForm"
           type="submit"
-          disabledButton={blockButton}
+          disabledButton={blockButton || playAudio}
           title="Check"
           w="15.875rem"
           h="2.5rem"

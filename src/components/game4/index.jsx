@@ -127,6 +127,9 @@ export const Game4 = () => {
         return;
       }
       
+      arr[index] = 1;
+      setIdClick(arr);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(0, tempRightPoints);
