@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLessonAudioImg } from "../SubTitleLessonAudioImg";
+import { SubTitleLessonAudioImg } from "../subTitleLessonAudioImg";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
