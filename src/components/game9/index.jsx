@@ -1,21 +1,21 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
 
 export const Game9 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -28,35 +28,38 @@ export const Game9 = () => {
   const [correctPoints, setCorrectPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    
-    let totalOfSounds = 0;
+    setIsLoading(true);
+
+    let dataLength = 0;
     let tempData;
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
-      totalOfSounds = conteudoFacil.length;
+      dataLength = conteudoFacil.length;
     }else if(nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
-      totalOfSounds = conteudoMedio.length;
+      dataLength = conteudoMedio.length;
     }else{
       setData(conteudoDificil);
       tempData = conteudoDificil;
-      totalOfSounds = conteudoDificil.length;
+      dataLength = conteudoDificil.length;
     }
+      
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     
-    let tempSounds = [];
-    for (let a = 0; a < totalOfSounds; a++) {
-      tempSounds.push(a);
-    }
-    let items = JSON.parse(tempData[tempSounds[round]].conteudo);
-    tempSounds = tempSounds.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempSounds);
-    setSound(items[tempSounds[round]].pergunta);
+    setSound(items.pergunta);
     
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -64,15 +67,18 @@ export const Game9 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(items[tempSounds[round]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
-  }, [setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton]);
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton, idClick]);
 
   const newRound = (number) => {
-    setSound(data[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -80,7 +86,7 @@ export const Game9 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
@@ -91,12 +97,12 @@ export const Game9 = () => {
 
     setBlockButton(true);
 
-    let tempPoint = correctPoints;
+    let tempPoint;
     let tempColor = colorAnswers;
     let answerSelected = answers[index].status;
 
     if (answerSelected === 1) {
-      tempPoint += 2;
+      tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
       setNewPontos(1, tempPoint);
 
@@ -119,7 +125,7 @@ export const Game9 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
@@ -160,7 +166,13 @@ export const Game9 = () => {
 
   useEffect(() => {
     playAudio ? setBlockButton(true) : setBlockButton(false);
-  }, [playAudio, setBlockButton])
+  }, [playAudio, setBlockButton]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>

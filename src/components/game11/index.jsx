@@ -1,19 +1,19 @@
 import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answers, Questions, Button } from "./styles";
 
 export const Game11 = () => {
-  const {setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -33,30 +33,36 @@ export const Game11 = () => {
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const [rightQuestions, setRightQuestions] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    let totalOfQuestions = 0;
+    setIsLoading(true);
+
+    let dataLength = 0;
     let tempData;
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
-      totalOfQuestions = conteudoFacil.length;
+      dataLength = conteudoFacil.length;
     }else if(nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
-      totalOfQuestions = conteudoMedio.length;
+      dataLength = conteudoMedio.length;
     }else{
       setData(conteudoDificil);
       tempData = conteudoDificil;
-      totalOfQuestions = conteudoDificil.length;
+      dataLength = conteudoDificil.length;
     }
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestions.push(a);
+    
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     let tempRandomQ = idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
@@ -64,7 +70,7 @@ export const Game11 = () => {
 
     let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(tempData[tempQuestions[round]].pergunta[tempRandomQ[a]]);
+      tempQ.push(items.pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
@@ -74,16 +80,15 @@ export const Game11 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(tempData[tempQuestions[round]].resposta[tempRandomAnswer[a]]);
+      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
 
     setBlockQuestions(false);
-  }, [setRandomNumber, idClickQuestion, setIdClickQuestion, setQuestions, idClickAnswer, setIdClickAnswer, setAnswers, setBlockQuestions])
+  }, [setIsLoading, setData, setRandomNumber, idClickQuestion, setIdClickQuestion, setQuestions, idClickAnswer, setIdClickAnswer, setAnswers, setBlockQuestions])
 
   const newRound = (number) => {
-    setRightQuestions([]);
-    setRightAnswers([]);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempRandomQ= idClickQuestion;
     tempRandomQ = tempRandomQ.sort(() => Math.random() - 0.5);
@@ -91,7 +96,7 @@ export const Game11 = () => {
 
     let tempQ = [];
     for (let a = 0; a < idClickQuestion.length; a++) {
-      tempQ.push(data[randomNumber[number]].pergunta[tempRandomQ[a]]);
+      tempQ.push(items.pergunta[tempRandomQ[a]]);
     }
     setQuestions(tempQ);
 
@@ -101,9 +106,12 @@ export const Game11 = () => {
 
     let tempAnswers = [];
     for (let a = 0; a < idClickAnswer.length; a++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomAnswer[a]]);
+      tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
+
+    setRightQuestions([]);
+    setRightAnswers([]);
     setBlockQuestions(false);
     setBlockAnswers(true);
   }
@@ -129,7 +137,7 @@ export const Game11 = () => {
 
     let tempColorQ = [...colorQuestions];
     let tempColorA = [...colorAnswers];
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     
     const selectedQuestion = questions[selectedQuestionIndex];
     const selectedAnswer = answers[index];
@@ -147,7 +155,7 @@ export const Game11 = () => {
         return;
       }
 
-      tempRightPoints++;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(0, tempRightPoints);
     } else {
@@ -169,7 +177,7 @@ export const Game11 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(0, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua"){
       setTimeout(() =>{
@@ -184,7 +192,7 @@ export const Game11 = () => {
         setColorQuestions([0, 0, 0]);
         setColorAnswer([0, 0, 0, 0, 0]);
         setCountClick(0);
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
       },1500);
     } else if (rule === "Score"){
@@ -241,6 +249,12 @@ export const Game11 = () => {
 
     return () => clearTimeout(resetBorders);
   }, [colorQuestions, colorAnswers, selectedQuestionIndex]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>

@@ -1,5 +1,4 @@
 import { useState, useCallback, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
@@ -13,7 +12,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys } from "./styles";
 
 export const GameSL4 = () => {
-  const { rodadaGeral, setNewRodada, conteudoSuperTask, newInfoST } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada } = useContext(LessonContext);
   
   const [optionColor, setOptionColor] = useState([]);
   const [images, setImages] = useState([]);

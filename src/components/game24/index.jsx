@@ -1,9 +1,9 @@
 import { useCallback, useContext, useState, useEffect } from "react";
 
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade } from "../../utils/regras";

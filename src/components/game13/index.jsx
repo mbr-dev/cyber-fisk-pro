@@ -1,20 +1,21 @@
 import { useContext, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Question, Answers, AnswersRow, RadioG, Radio, Options, Form } from "./styles";
 
 export const Game13 = () => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
@@ -27,66 +28,68 @@ export const Game13 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState([]);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    let totalOfQuestions = 0;
+    setIsLoading(true);
+
+    let dataLength = 0;
     let tempData;
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
-      totalOfQuestions = conteudoFacil.length;
+      dataLength = conteudoFacil.length;
     }else if(nivel === 1){
       setData(conteudoMedio);
       tempData = conteudoMedio;
-      totalOfQuestions = conteudoMedio.length;
+      dataLength = conteudoMedio.length;
     }else{
       setData(conteudoDificil);
       tempData = conteudoDificil;
-      totalOfQuestions = conteudoDificil.length;
+      dataLength = conteudoDificil.length;
     }
 
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestions.push(a);
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
     }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    let tempQ = tempData[tempQuestions[round]].pergunta;
-    setQuestion(tempQ);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    setQuestion(items.pergunta);
 
     let tempAnswers = [];
-    let tempAnswersLength = tempData[tempQuestions[round]].resposta.length;
-    for (let a = 0; a < tempAnswersLength; a++) {
-      tempAnswers.push(tempData[tempQuestions[round]].resposta[a].label);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempAnswers.push(items.resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
-    for (let a = 0; a < tempAnswersLength; a++) {
-      tempRightA.push(tempData[tempQuestions[round]].resposta[a].status);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
-
-  }, [setRandomNumber, setQuestion, setAnswers, round, setRightAnswers])
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, setQuestion, setAnswers, round, setRightAnswers])
 
   const newRound = (number) => {
     setSelectedRadio([]);
-    let tempQuestion  = data[randomNumber[number]].pergunta;
-    setQuestion(tempQuestion);
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setQuestion(items.pergunta);
 
     let tempAnswers = [];
-    let tempAnswersLength = data[randomNumber[number]].resposta;
-    for (let a = 0; a < tempAnswersLength.length; a++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[a].label);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempAnswers.push(items.resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
-    for (let a = 0; a < tempAnswersLength.length; a++) {
-      tempRightA.push(data[randomNumber[number]].resposta[a].status);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
   }
@@ -109,7 +112,7 @@ export const Game13 = () => {
 
     let tempAnswers = selectedRadio;
     let tempColor = [...colorAnswers];
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
@@ -119,7 +122,7 @@ export const Game13 = () => {
       }
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
     } else {
@@ -141,7 +144,7 @@ export const Game13 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if(rule === "Continua") {
       setTimeout(() =>{
@@ -154,7 +157,7 @@ export const Game13 = () => {
         setColorQuestions([0, 0, 0]);
         setColorAnswer([0, 0, 0, 0, 0]);
         setCountClick(0);
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
       },1500);
     } else if (rule === "Score"){
@@ -183,8 +186,15 @@ export const Game13 = () => {
     loadLesson();
   }, []);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
+      <HeaderLesson numStart="Task 2" numEnd="Super Task" superTaskEnd />
       <TitleLesson title="Read and choose TRUE or FALSE." />
 
       <Main>

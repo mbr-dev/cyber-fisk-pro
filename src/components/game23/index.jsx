@@ -2,8 +2,8 @@ import { useState, useEffect, useContext, useCallback } from "react";
 
 import { ButtonBg } from "../ButtonBg";
 import { HeaderLesson } from "../HeaderLesson";
-import { SubTitleLesson } from "../SubTitleLesson";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+import { SubTitleLesson } from "../subTitleLesson";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";

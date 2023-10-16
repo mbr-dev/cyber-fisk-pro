@@ -40,7 +40,7 @@ export const Card = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 0.7rem;
+    font-size: 1rem;
     font-weight: bold;
     text-align: center;
   }
