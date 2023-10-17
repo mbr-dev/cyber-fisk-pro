@@ -32,10 +32,12 @@ export const Game26 = () => {
   const [rightAnswers, setRightAnswers] = useState([]);
   const [data, setData] = useState([]);
   const [round, setRound] = useState(0);
+  const [countClick, setCountClick] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
+  const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const sensors = useSensors(
@@ -202,6 +204,12 @@ export const Game26 = () => {
     playAudio ? setBlockButton(true) : setBlockButton(false);
   }, [playAudio, setBlockButton]);
 
+  useEffect(() => {
+    if (countClick === 2) {
+      setBlockAudio(true);
+    }
+  }, [countClick, setBlockAudio])
+
   if (isLoading) {
     return (
       <Loading />
@@ -211,7 +219,12 @@ export const Game26 = () => {
   return (
     <Container>
       <TitleLesson title="Listen and put the sentences in order." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson7/${sound}.mp3`} />
+      <SubTitleLessonAudio
+        audio={`${URL_FISKPRO}sounds/essentials1/lesson7/${sound}.mp3`}
+        countC={countClick}
+        setCountC={setCountClick}
+        disabledButton={blockAudio}
+      />
       
       <Main>
         <DndContext

@@ -19,7 +19,7 @@ export const Game9 = () => {
   
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
+  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -58,7 +58,7 @@ export const Game9 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    
+    setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
     
     let tempRandomNumber = idClick;
@@ -74,10 +74,11 @@ export const Game9 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton, idClick]);
+  }, [setIsLoading, setData, setRandomNumber, setSound, setIdClick, round, setAnswers, setBlockButton, idClick, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
@@ -98,7 +99,7 @@ export const Game9 = () => {
     setBlockButton(true);
 
     let tempPoint;
-    let tempColor = colorAnswers;
+    let tempColor = optionColor;
     let answerSelected = answers[index].status;
 
     if (answerSelected === 1) {
@@ -107,14 +108,14 @@ export const Game9 = () => {
       setNewPontos(1, tempPoint);
 
       tempColor[index] = 1;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     } else {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
 
       tempColor[index] = 2;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     }
 
     let tempRound = round;
@@ -129,14 +130,12 @@ export const Game9 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        setColorAnswers([0, 0, 0]);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
       navigate('/GameOver');
       setTimeout(() => {
-        setColorAnswers([0, 0, 0]);
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score"){
@@ -145,7 +144,6 @@ export const Game9 = () => {
       navigate(`/${page}`);
     }else {
       setTimeout(() => {
-        setColorAnswers([0, 0, 0]);
         //setNewLesson(2);
         if(nivel === 0){
           setNewNivel(1);
@@ -187,7 +185,7 @@ export const Game9 = () => {
               w="14rem"
               h="3rem"
               onPress={() => handleClick(index)}
-              optionColor={colorAnswers[index]}
+              optionColor={optionColor[index]}
               disabledButton={blockButton}
             >
               <p>{answer.label}</p>

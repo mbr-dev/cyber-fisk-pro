@@ -21,7 +21,7 @@ export const Game4 = () => {
 
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
   const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
-  const [idClick, setIdClick] = useState([0, 0, 0, 0, 0, 0]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sounds, setSounds] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -60,7 +60,7 @@ export const Game4 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    
+    setIdClick(Array(items.resposta.length).fill(0));
     setSounds(items.pergunta);
     setType(items.tipo);
     
@@ -80,10 +80,11 @@ export const Game4 = () => {
     
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setIdClick]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setIdClick(Array(items.resposta.length).fill(0));
     setSounds(items.pergunta);
     setType(items.tipo);
     
@@ -160,13 +161,11 @@ export const Game4 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setIdClick([0, 0, 0, 0, 0, 0]);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
-        setIdClick([0, 0, 0, 0, 0, 0]);
         navigate('/GameOver');
         setNewContainer(1);
       },1500);
@@ -176,7 +175,6 @@ export const Game4 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setIdClick([0, 0, 0, 0, 0, 0]);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

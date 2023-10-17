@@ -19,7 +19,7 @@ export const Game6 = () => {
   
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0]);
+  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([0, 1, 2, 3, 4, 5]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -59,7 +59,7 @@ export const Game6 = () => {
     setRandomNumber(tempSounds);
 
     const items = JSON.parse(tempData[tempSounds[round]].conteudo);
-    
+    setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
     
     let tempRandomNumber = idClick;
@@ -75,10 +75,11 @@ export const Game6 = () => {
     
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setSound, idClick, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, idClick, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
     let tempRandomNumber = idClick;
@@ -118,6 +119,8 @@ export const Game6 = () => {
         return;
       }
 
+      tempColor[index] = 1;
+      setOptionColor(tempColor);
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(2, tempRightPoints);
@@ -144,14 +147,12 @@ export const Game6 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        setOptionColor([0, 0, 0, 0, 0, 0]);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(nivel, 0);
       setTimeout(() => {
         navigate("/GameOver");
-        setOptionColor([0, 0, 0, 0, 0, 0]);
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score") {
@@ -160,7 +161,6 @@ export const Game6 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() => {
-        setOptionColor([0, 0, 0, 0, 0, 0]);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

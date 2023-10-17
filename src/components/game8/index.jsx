@@ -20,7 +20,7 @@ export const Game8 = () => {
 
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswers] = useState([]);
+  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -60,10 +60,8 @@ export const Game8 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-
+    setOptionColor(Array(items.resposta.length).fill(0));
     setQuestion(items.pergunta);
-
-    setColorAnswers(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -77,10 +75,11 @@ export const Game8 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setColorAnswers, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
+  }, [setIsLoading, setRandomNumber, setOptionColor, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setOptionColor(Array(items.resposta.length).fill(0));
     setQuestion(items.pergunta);
     
     let tempRandomNumber = idClick;
@@ -99,7 +98,7 @@ export const Game8 = () => {
     if (blockButton) return;
 
     setBlockButton(true);
-    let tempColor = colorAnswers;
+    let tempColor = optionColor;
     let tempPoint;
     const rightAnswer = answers[index];
 
@@ -109,14 +108,14 @@ export const Game8 = () => {
       setNewPontos(1, tempPoint);
 
       tempColor[index] = 1;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     } else {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
 
       tempColor[index] = 2;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     }
 
     let tempRound = round;
@@ -131,8 +130,6 @@ export const Game8 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
         setChangeText("______");
         newRound(tempRound);
       }, 1500);
@@ -140,8 +137,6 @@ export const Game8 = () => {
       setNewPontos(0, 0);
 
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
         setChangeText("______");
         setNewContainer(1);
         navigate("/GameOver");
@@ -152,8 +147,6 @@ export const Game8 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
         setChangeText("______");
         if (nivel === 0) {
           setNewNivel(1);
@@ -244,7 +237,7 @@ export const Game8 = () => {
                 <ButtonAnswer
                   w="5rem"
                   h="3rem"
-                  optionColor={colorAnswers[index]}
+                  optionColor={optionColor[index]}
                   disabledButton={blockButton}
                 >
                   {answers.label}
