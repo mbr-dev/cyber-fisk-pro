@@ -6,14 +6,14 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
-import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
+import { L6_SUPER_LESSON } from "../../utils/lesson6_Task";
 
 import LogoImg from "./images/logoIcon.png";
 
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
-export const GameSL2 = () => {
+export const GameSL6 = () => {
   const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -31,38 +31,39 @@ export const GameSL2 = () => {
 
   const loadLesson = useCallback(async() => {
     try {
-      setIsLoading(true);
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
-      const res = response.data;
-      const dataItems = res.dados[0].dados_conteudo;
-      setData(dataItems);
+      //setIsLoading(true);
+      // const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
+      // const res = response.data;
+      // const dataItems = res.dados[0].dados_conteudo;
+      // setData(dataItems);
 
-      const items = dataItems.map(item => {
-        const conteudo = JSON.parse(item.conteudo);
-        return conteudo
-      });
+      // const items = dataItems.map(item => {
+      //   const conteudo = JSON.parse(item.conteudo);
+      //   return conteudo
+      // });
+      const items = L6_SUPER_LESSON;
 
-      const nameFilter = items.filter(item => item.name);
-    
+      const nameFilter = L6_SUPER_LESSON.filter(item => item.name);
+      
       let tempRandom = [];
       for (let a = 0; a < nameFilter.length; a++) {
         tempRandom.push(a);
       }
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-
+      
       let nameRandom = []
       for (let a = 0; a < 6; a++) {
         nameRandom.push(nameFilter[tempRandom[a]]);
       }
 
-      let imgFilter = [];
+      let answersFilter = [];
       nameRandom.forEach(nameItem => {
         const status = nameItem.status;
-        const images = items.filter(item => item.status === status && item.img);
-        imgFilter = imgFilter.concat(images);
+        const answers = items.filter(item => item.status === status && item.resposta);
+        answersFilter = answersFilter.concat(answers);
       });
 
-      let tempGridFake = nameRandom.concat(imgFilter);
+      let tempGridFake = nameRandom.concat(answersFilter);
       tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
       
       let tempGrid = [];
@@ -86,19 +87,23 @@ export const GameSL2 = () => {
       
       setCards(tempGrid);
       setPlaying(true);
-      setIsLoading(false);
+      //setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
   }, [setIsLoading, setData, setPlaying, setCards]);
 
-  const newRound = () => {
-    const items = data.map(item => {
-      const conteudo = JSON.parse(item.conteudo);
-      return conteudo
-    });
+  const newRound = (level) => {
+    // const items = data.map(item => {
+    //   const conteudo = JSON.parse(item.conteudo);
+    //   return conteudo
+    // });
+    const itemLength = level === 1 ? 8 : 10;
+    const items = L6_SUPER_LESSON;
 
-    const nameFilter = items.filter(item => item.name);
+    const nameFilter = L6_SUPER_LESSON.filter(item => item.name);
+
+    //const nameFilter = items.filter(item => item.name);
     
     let tempRandom = [];
     for (let a = 0; a < nameFilter.length; a++) {
@@ -107,22 +112,22 @@ export const GameSL2 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
 
     let nameRandom = []
-    for (let a = 0; a < 8; a++) {
+    for (let a = 0; a < itemLength; a++) {
       nameRandom.push(nameFilter[tempRandom[a]]);
     }
 
-    let imgFilter = [];
+    let answersFilter = [];
     nameRandom.forEach(nameItem => {
       const status = nameItem.status;
-      const images = items.filter(item => item.status === status && item.img);
-      imgFilter = imgFilter.concat(images);
+      const answers = items.filter(item => item.status === status && item.resposta);
+      answersFilter = answersFilter.concat(answers);
     });
 
-    let tempGridFake = nameRandom.concat(imgFilter);
+    let tempGridFake = nameRandom.concat(answersFilter);
     tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
       
     let tempGrid = [];
-    for (let a = 0; a < (8 * 2 ); a++) {
+    for (let a = 0; a < (itemLength * 2 ); a++) {
       tempGrid.push({
         item: null,
         shown: false,
@@ -131,12 +136,12 @@ export const GameSL2 = () => {
     }
 
     let tempRandomGrid = [];
-    for (let a = 0; a < (8 * 2); a++) {
+    for (let a = 0; a < (itemLength * 2); a++) {
       tempRandomGrid.push(a);
     }
     tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
     
-    for (let a = 0; a < (8 * 2); a++) {
+    for (let a = 0; a < (itemLength * 2); a++) {
       tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
     }
     
@@ -158,16 +163,22 @@ export const GameSL2 = () => {
   }
 
   const generateScore = () => {
+    let tempPoints = points;
     if (timeElapsed < 60) {
-      setPoints(state => state + 5);
+      tempPoints += 5;
+      setPoints(tempPoints);
     } else if (timeElapsed >= 61 || timeElapsed <= 75) {
-      setPoints(state => state + 4);
+      tempPoints += 4;
+      setPoints(tempPoints);
     } else if (timeElapsed >= 76 || timeElapsed <= 90) {
-      setPoints(state => state + 3);
+      tempPoints += 3;
+      setPoints(tempPoints);
     } else if (timeElapsed >= 91 || timeElapsed <= 120) {
-      setPoints(state => state + 2);
+      tempPoints += 2;
+      setPoints(tempPoints);
     } else {
-      setPoints(state => state + 1);
+      tempPoints++;
+      setPoints(tempPoints);
     }
   }
 
@@ -181,7 +192,7 @@ export const GameSL2 = () => {
     
     setTimeout(() => {
       setReset(false);
-      newRound();
+      newRound(tempLevel);
     }, 1500);
   }
 
@@ -192,7 +203,7 @@ export const GameSL2 = () => {
 
     setTimeout(() => {
       navigate("/WellDone")
-    }, 2000);
+    }, 1500);
   }
   
   useEffect(() => {
@@ -231,10 +242,10 @@ export const GameSL2 = () => {
     const allItemShown = cards.every(item => item.permanentShown === true);
   
     if (moveCount > 0 && allItemShown) {
-      if (level === 1) {
-        setFinished(true);
-      } else {
+      if (level < 2) {
         setReset(true);
+      } else {
+        setFinished(true);
       }
     }
   }, [cards, setReset, setFinished]);
@@ -276,7 +287,7 @@ export const GameSL2 = () => {
                     {card.item.name ?
                       <p>{card.item.name}</p>
                       :
-                      <img src={`${URL_FISKPRO}images/essentials1/lesson2/${card.item.img}.png`} alt="" />
+                      <p>{card.item.resposta}</p>
                     }
                   </>
                 }
