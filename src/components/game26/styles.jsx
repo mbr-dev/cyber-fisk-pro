@@ -2,21 +2,24 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
-export const Main = styled.div`
+export const Main = styled.main`
+  flex: 1;
   width: 100%;
+  height: 100%;
   display: flex;
-  flex-wrap: wrap;
-  align-items: center;
+  flex-direction: column;
   justify-content: center;
-  margin-top: 2rem;
+  align-items: center;
+  gap: 1rem;
+  margin-top: 1rem;
 
   @media(max-width: 320px) {
-    margin-top: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 `;

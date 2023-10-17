@@ -102,7 +102,7 @@ export const LessonSelection = () => {
           </BottomRight>
         </ButtonAreaBottom>
         <LineSeparator w="80%" mt="10px" />
-        <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
+        <ButtonBg title="Home" w="15rem" h="2.5rem" onPress={home}/>
       </Main>
     </Container>
   )

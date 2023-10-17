@@ -93,6 +93,7 @@ export const ButtonTask = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
+
   img {
     width: 36px;
   }
@@ -108,17 +109,17 @@ export const ButtonTask = styled.button`
   }
 
   @media(max-width: 320px) {
+    width: 5rem;
     height: 5rem;
     gap: 0.5rem;
 
     img {
       width: 24px;
     }
-  }
 
-  @media(min-width: 600px) {
-    width: 10rem;
-    height: 12rem;
+    p {
+      font-size: 0.875rem;
+    }
   }
 `;
 
@@ -151,8 +152,10 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(max-width: 320px) {
+    width: 7rem;
+
     p {
-      font-size: 1.25rem;
+      font-size: 0.875rem;
     }
 
     img {
@@ -210,6 +213,10 @@ export const ButtonAreaBottom = styled.div`
 export const BottomRight = styled.div`
   width: 9rem;
 
+  @media(max-width: 320px) {
+    width: 7rem;
+  }
+
   @media(min-width: 600px) {
     width: 13rem;
   }
@@ -217,6 +224,10 @@ export const BottomRight = styled.div`
 
 export const BottomLeft = styled.div`
   width: 6.5rem;
+
+  @media(max-width: 320px) {
+    width: 5rem;
+  }
   
   @media(min-width: 600px) {
     width: 10rem;
@@ -252,10 +263,10 @@ export const ButtonBottom = styled.button`
 
   @media(max-width: 320px) {
     height: 4rem;
-    gap: 0.5rem;
+    gap: 0rem;
 
     p { 
-      font-size: 0.75rem;
+      font-size: 0.875rem;
     }
 
     img {

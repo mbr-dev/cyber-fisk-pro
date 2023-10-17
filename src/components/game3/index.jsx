@@ -177,7 +177,7 @@ export const Game3 = () => {
           return(
             <ButtonAnswer 
               key={index}
-              w="13rem"
+              w="14.5rem"
               h="3.5rem"
               onPress={() => {handleClick(index)}}
               optionColor={optionColor[index]}

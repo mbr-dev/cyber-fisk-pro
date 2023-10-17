@@ -20,8 +20,8 @@ export const Game8 = () => {
 
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [colorAnswers, setColorAnswers] = useState([]);
+  const [idClick, setIdClick] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -63,7 +63,9 @@ export const Game8 = () => {
 
     setQuestion(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    setColorAnswers(Array(items.resposta.length).fill(0));
+
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
@@ -75,7 +77,7 @@ export const Game8 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
+  }, [setIsLoading, setRandomNumber, setColorAnswers, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -232,13 +234,16 @@ export const Game8 = () => {
           <SubTitleLesson title={question.replace("______", changeText)} />
         </Droppable>
 
-        <Main>
+        <Main style={{
+          flexDirection: answers.length > 3 ? "row" : "column",
+          gap: answers.length > 3 ? "2rem" : "1.5rem",
+        }}>
           {answers.map((answers, index) => {
             return (
               <Draggable index={index} key={index}>
                 <ButtonAnswer
-                  w="10rem"
-                  h="3.5rem"
+                  w="5rem"
+                  h="3rem"
                   optionColor={colorAnswers[index]}
                   disabledButton={blockButton}
                 >
