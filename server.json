@@ -2747,7 +2747,130 @@
       "option4": "create"
     }
   ],
-  "L6_T2_Facil": [],
-  "L6_T2_Medio": [],
-  "L6_T2_Dificil": []
+  "L6_T2_Facil": [
+    {
+      "pergunta": "When can we meet? (after class)",
+      "resposta": "We can meet after class."
+    },
+    {
+      "pergunta": "What board game can you play? (chess)",
+      "resposta": "I can play chess."
+    },
+    {
+      "pergunta": "What sport can he play? (basketball)",
+      "resposta": "He can play basketball."
+    },
+    {
+      "pergunta": "Who is the couch potato in your family? (my brother)",
+      "resposta": "My brother is the couch potato in my family."
+    },
+    {
+      "pergunta": "What can’t your mom do? (play the guitar)",
+      "resposta": "She can’t play the guitar."
+    },
+    {
+      "pergunta": "Why don’t you want to go to the party? (can’t dance).",
+      "resposta": "Because I can’t dance."
+    },
+    {
+      "pergunta": "Can you lift weights? (No)",
+      "resposta": "No, I can’t (lift weights)."
+    },
+    {
+      "pergunta": "What can you do to be fit? (work out and eat healthy food)",
+      "resposta": "I can work out and eat healthy food."
+    },
+    {
+      "pergunta": "Can you do 20 crunches in 1 minute? (yes)",
+      "resposta": "Yes, I can do 20 crunches in 1 minute."
+    },
+    {
+      "pergunta": "Why do you exercise regularly? (want to get fit)",
+      "resposta": "Because I want to get fit."
+    }
+  ],
+  "L6_T2_Medio": [
+    {
+      "pergunta": ["swim", "can", "Tral", "well", "very"],
+      "resposta": "Tral can swim very well."
+    },
+    {
+      "pergunta": ["can’t", "Nami", "tennis", "play"],
+      "resposta": "Nami can’t play tennis."
+    },
+    {
+      "pergunta": ["things", "do", "can", "Karen", "a lot of"],
+      "resposta": "Karen can do a lot of things."
+    },
+    {
+      "pergunta": ["Tim and Barbara", "dance", "can"],
+      "resposta": "Tim and Barbara can dance."
+    },
+    {
+      "pergunta": ["teach", "to", "chopsticks", "how", "can", "use", "Tina"],
+      "resposta": "Tina can teach how to use chopsticks."
+    },
+    {
+      "pergunta": ["can", "Jorge", "treadmill", "use", "at the gym"],
+      "resposta": "Jorge can use the treadmill at the gym"
+    },
+    {
+      "pergunta": ["can’t", "drums", "Michael", "play"],
+      "resposta": "Michael can’t play drums"
+    },
+    {
+      "pergunta": ["skateboard", "Mia", "can’t"],
+      "resposta": "Mia can’t skateboard"
+    },
+    {
+      "pergunta": ["lift", "weights", "Jenny", "can"],
+      "resposta": "Jenny can lift weights"
+    },
+    {
+      "pergunta": ["write", "books", "can", "Julia"],
+      "resposta": "Julia can write books"
+    }
+  ],
+  "L6_T2_Dificil": [
+    {
+      "pergunta": "Louise can sing very well.",
+      "resposta": "What Louise can do?"
+    },
+    {
+      "pergunta": "Yes, he can swim.",
+      "resposta": "Can he swim?"
+    },
+    {
+      "pergunta": "I’m angry because I’m hungry.",
+      "resposta": "Why are you angry?"
+    },
+    {
+      "pergunta": "He is doing crunches.",
+      "resposta": "What is he doing?"
+    },
+    {
+      "pergunta": "Yes. He can play tennis very well.",
+      "resposta": "Can he play tennis?"
+    },
+    {
+      "pergunta": "He studies Spanish because he wants to move to Spain.",
+      "resposta": "Why does he study Spanish?"
+    },
+    {
+      "pergunta": "No, she can’t jump kick.",
+      "resposta": "Can she jump kick?"
+    },
+    {
+      "pergunta": "They can play video games with their parents.",
+      "resposta": "What can they do with their parents?"
+    },
+    {
+      "pergunta": "Candy can sing.",
+      "resposta": "What can Candy do?"
+    },
+    {
+      "pergunta": "No. My grandpa can’t use a smartphone.",
+      "resposta": "Can your grandpa use a smartphone?"
+    }
+  ]
 }
