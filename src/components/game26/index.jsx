@@ -47,7 +47,8 @@ export const Game26 = () => {
     })
   );
 
-  const loadLesson = () => {
+  const loadLesson = useCallback(() => {
+    setIsLoading(true);
     const dataLength = L7_T2_Medio.length;
 
     let tempRandom = [];
@@ -72,7 +73,8 @@ export const Game26 = () => {
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
-  }
+    setIsLoading(false);
+  }, [setIsLoading, setRandomNumber, setOptionColor, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
 
   const newRound = (number) => {
     setOptionColor(Array(L7_T2_Medio[randomNumber[number]].resposta.length).fill(0));
@@ -106,7 +108,7 @@ export const Game26 = () => {
     let tempColor = optionColor;
 
     const isCorrect = answers.every((answer, index) => {
-      return answer.label === rightAnswers[index].label;
+      return answer.status === rightAnswers[index].status;
     });
 
     if (isCorrect) {
@@ -114,8 +116,8 @@ export const Game26 = () => {
       setOptionColor(tempColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
-      setNewPontos(nivel, tempRightPoints);
       setRightPoints(tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor = Array(answers.length).fill(2);
       setOptionColor(tempColor);

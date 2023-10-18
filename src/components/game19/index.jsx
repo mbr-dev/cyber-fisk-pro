@@ -178,7 +178,7 @@ export const Game19 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor = 2;
       setColorAnswer(tempColor);

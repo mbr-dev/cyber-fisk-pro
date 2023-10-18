@@ -14,7 +14,7 @@ import { Container, Main } from "./styles";
 
 export const Game18 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -106,8 +106,8 @@ export const Game18 = () => {
       setOptionColor(tempColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
-      setNewPontos(0, tempRightPoints);
       setRightPoints(tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);

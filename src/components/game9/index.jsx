@@ -105,7 +105,7 @@ export const Game9 = () => {
     if (answerSelected === 1) {
       tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
-      setNewPontos(1, tempPoint);
+      setNewPontos(nivel, tempPoint);
 
       tempColor[index] = 1;
       setOptionColor(tempColor);

@@ -45,6 +45,7 @@ import { Game23 } from "../components/game23";
 import { Game24 } from "../components/game24";
 import { Game25 } from "../components/game25";
 import { Game26 } from "../components/game26";
+import { Game27 } from "../components/game27";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -52,6 +53,7 @@ import { GameSL3 } from "../components/game_sl3";
 import { GameSL4 } from "../components/game_sl4";
 import { GameSL5 } from "../components/game_sl5";
 import { GameSL6 } from "../components/game_sl6";
+import { GameSL7 } from "../components/game_sl7";
 import { GameWordle } from "../components/GameWordle";
 
 export const Router =() => {
@@ -104,12 +106,14 @@ export const Router =() => {
       <Route path = "/Game24" element={<Game24 />}/>
       <Route path = "/Game25" element={<Game25 />}/>
       <Route path = "/Game26" element={<Game26 />}/>
+      <Route path = "/Game27" element={<Game27 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>
       <Route path = "/GameSL4" element={<GameSL4 />}/>
       <Route path = "/GameSL5" element={<GameSL5 />}/>
       <Route path = "/GameSL6" element={<GameSL6 />}/>
+      <Route path = "/GameSL7" element={<GameSL7 />}/>
       <Route path = "/GameWordle" element={<GameWordle />}/>
     </Routes>
   )

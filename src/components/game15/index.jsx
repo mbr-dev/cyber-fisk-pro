@@ -88,7 +88,7 @@ export const Game15 = () => {
 
         tempRightPoints = PointRule(nivel, rightPoints);
         setRightPoints(tempRightPoints);
-        setNewPontos(0, tempRightPoints);
+        setNewPontos(nivel, tempRightPoints);
       } else {
         setHit(2);
         let tempE = wrongPoints;

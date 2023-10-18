@@ -108,8 +108,8 @@ export const Game5 = () => {
       setOptionColor(tempColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
-      setNewPontos(1, tempRightPoints);
       setRightPoints(tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
