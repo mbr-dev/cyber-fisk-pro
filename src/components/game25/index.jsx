@@ -59,7 +59,7 @@ export const Game25 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     
     setQuestion(items.pergunta);
-    setAnswer(items.resposta.replace(/'/g, "’"));
+    setAnswer(items.resposta);
     setIsLoading(false);
   }, [setIsLoading, round, setData, data, setRandomNumber, setQuestion, setAnswer]);
 
@@ -67,7 +67,7 @@ export const Game25 = () => {
     setText("");
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setQuestion(items.pergunta);
-    setAnswer(items.resposta.replace(/'/g, "’"));
+    setAnswer(items.resposta);
   }
 
   const handleVerify = (event) => {
@@ -76,8 +76,6 @@ export const Game25 = () => {
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;
-
-    tempWord = tempWord.replace(/'/g, "’");
 
     if (tempWord.toLowerCase() === answer.toLowerCase()) {
       tempColorA = 1;
@@ -137,9 +135,9 @@ export const Game25 = () => {
     }
   }
 
-  // useEffect(() => {
-  //   loadLesson();
-  // }, []);
+  useEffect(() => {
+    loadLesson();
+  }, []);
 
   useEffect(() => {
     text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
@@ -156,10 +154,8 @@ export const Game25 = () => {
       <TitleLesson title="Answer the questions using the words given." />
 
       <Main>
-        <p>When can we meet? (after class)</p>
+        <p>{question}</p>
         <Form id="myForm" onSubmit={handleVerify}>
-          {/* <p>{question}</p> */}
-
           <input
             type="text"
             placeholder="Type here"

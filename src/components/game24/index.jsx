@@ -8,7 +8,6 @@ import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L6_T1_Dificil } from "../../utils/lesson6_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Form, Main, Input } from "./styles";
@@ -16,7 +15,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game24 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM, nivel, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -42,28 +41,44 @@ export const Game24 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  /* arrumar a parte do ' para o ’ */
 
   const loadLesson = useCallback(async() => {
-    const questionLength = L6_T1_Dificil.length;
+    setIsLoading(true);
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if(nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
-    for (let a = 0; a < questionLength; a++) {
+    for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setSound(L6_T1_Dificil[tempRandom[round]].audio);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    setQuestion(L6_T1_Dificil[tempRandom[round]].pergunta);
-
-    setAnswer0(L6_T1_Dificil[tempRandom[round]].option0);
-    setAnswer1(L6_T1_Dificil[tempRandom[round]].option1);
-    setAnswer2(L6_T1_Dificil[tempRandom[round]].option2);
-    setAnswer3(L6_T1_Dificil[tempRandom[round]].option3);
-    setAnswer4(L6_T1_Dificil[tempRandom[round]].option4);
-  }, [setRandomNumber]);
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setAnswer0(items.option0);
+    setAnswer1(items.option1);
+    setAnswer2(items.option2);
+    setAnswer3(items.option3);
+    setAnswer4(items.option4);
+    setIsLoading(false);
+  }, [setIsLoading, setData, round, setRandomNumber, setSound, setQuestion, setAnswer0, setAnswer1, setAnswer2, setAnswer3, setAnswer4]);
 
   const newRound = (number) => {
     setText0("");
@@ -71,14 +86,15 @@ export const Game24 = () => {
     setText2("");
     setText3("");
     setText4("");
-    
-    setSound(L6_T1_Dificil[randomNumber[number]].audio);
 
-    setAnswer0(L6_T1_Dificil[randomNumber[number]].option0);
-    setAnswer1(L6_T1_Dificil[randomNumber[number]].option1);
-    setAnswer2(L6_T1_Dificil[randomNumber[number]].option2);
-    setAnswer3(L6_T1_Dificil[randomNumber[number]].option3);
-    setAnswer4(L6_T1_Dificil[randomNumber[number]].option4);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setAnswer0(items.option0);
+    setAnswer1(items.option1);
+    setAnswer2(items.option2);
+    setAnswer3(items.option3);
+    setAnswer4(items.option4);
   }
 
   const handleVerify = (event) => {
@@ -92,11 +108,11 @@ export const Game24 = () => {
     let tempColor = colorAnswers;
 
     if (
-      text0.replace(/'/g, "’") === answer0 && 
-      text1.replace(/'/g, "’") === answer1 && 
-      text2.replace(/'/g, "’") === answer2 && 
-      text3.replace(/'/g, "’") === answer3 && 
-      text4.replace(/'/g, "’") === answer4
+      text0 === answer0 && 
+      text1 === answer1 && 
+      text2 === answer2 && 
+      text3 === answer3 && 
+      text4 === answer4
       ) {
       tempColor = 1;
       setColorAnswer(tempColor);
@@ -123,13 +139,35 @@ export const Game24 = () => {
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
         setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
+    } else if (rule === "Game over") {
+      setNewPontos(0,0);
+      setTimeout(() =>{
+        setColorAnswer(0);
+        navigate("/GameOver");
+        setNewContainer(1);
+      },1500);
     } else if (rule === "Score") {
-  
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    } else {
+      setTimeout(() =>{
+        setColorAnswer(0);
+        if (nivel === 0) {
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        } else {
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      },1500);
     }
   }
 
@@ -155,7 +193,7 @@ export const Game24 = () => {
   return (
     <Container>
       <TitleLesson title="LISTEN TO COMPLETE THE PARAGRAPH." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson6/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>

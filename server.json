@@ -2791,43 +2791,43 @@
   ],
   "L6_T2_Medio": [
     {
-      "pergunta": ["swim", "can", "Tral", "well", "very"],
-      "resposta": "Tral can swim very well."
+      "pergunta": ["swim ", "can ", "Tral ", "well", "very "],
+      "resposta": "Tral can swim very well"
     },
     {
-      "pergunta": ["can’t", "Nami", "tennis", "play"],
-      "resposta": "Nami can’t play tennis."
+      "pergunta": ["can’t ", "Nami ", "tennis", "play "],
+      "resposta": "Nami can’t play tennis"
     },
     {
-      "pergunta": ["things", "do", "can", "Karen", "a lot of"],
-      "resposta": "Karen can do a lot of things."
+      "pergunta": ["things", "do ", "can ", "Karen ", "a lot of "],
+      "resposta": "Karen can do a lot of things"
     },
     {
-      "pergunta": ["Tim and Barbara", "dance", "can"],
-      "resposta": "Tim and Barbara can dance."
+      "pergunta": ["Tim and Barbara ", "dance", "can "],
+      "resposta": "Tim and Barbara can dance"
     },
     {
-      "pergunta": ["teach", "to", "chopsticks", "how", "can", "use", "Tina"],
-      "resposta": "Tina can teach how to use chopsticks."
+      "pergunta": ["teach ", "to ", "chopsticks", "how ", "can ", "use ", "Tina "],
+      "resposta": "Tina can teach how to use chopsticks"
     },
     {
-      "pergunta": ["can", "Jorge", "treadmill", "use", "at the gym"],
+      "pergunta": ["can ", "Jorge ", "treadmill ", "use ", "at the gym"],
       "resposta": "Jorge can use the treadmill at the gym"
     },
     {
-      "pergunta": ["can’t", "drums", "Michael", "play"],
+      "pergunta": ["can’t ", "drums", "Michael ", "play "],
       "resposta": "Michael can’t play drums"
     },
     {
-      "pergunta": ["skateboard", "Mia", "can’t"],
+      "pergunta": ["skateboard", "Mia ", "can’t "],
       "resposta": "Mia can’t skateboard"
     },
     {
-      "pergunta": ["lift", "weights", "Jenny", "can"],
+      "pergunta": ["lift ", "weights", "Jenny ", "can "],
       "resposta": "Jenny can lift weights"
     },
     {
-      "pergunta": ["write", "books", "can", "Julia"],
+      "pergunta": ["write ", "books", "can ", "Julia "],
       "resposta": "Julia can write books"
     }
   ],
@@ -3364,6 +3364,86 @@
         {"label": "The girls are talking about the boys. ", "status": 2},
         {"label": "There is a boy at the café looking at the girls.", "status": 3}
       ]
+    },
+    {
+      "pergunta": "Task_2_M_0",
+      "resposta": [
+        {"label": "DCongratulations on your promotion!", "status": 0},
+        {"label": "DThank you! I have a new office now. Come see it!", "status": 1},
+        {"label": "DIs there an iPad in your office?", "status": 2},
+        {"label": "DNo, there isn’t.", "status": 3},
+        {"label": "DOf course, there is. Take a look. It’s a gift from all of us.", "status": 4},
+        {"label": "DThank you very much!", "status": 5}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_1",
+      "resposta": [
+        {"label": "DHi, Amy.", "status": 0},
+        {"label": "DHi, Bruce. What are you wearing?", "status": 1},
+        {"label": "DI'm wearing jeans, a white shirt and a brown jacket.", "status": 2},
+        {"label": "DAnd I'm wearing black pants and a pink sweater.", "status": 3},
+        {"label": "DI found you.", "status": 4}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_2",
+      "resposta": [
+        {"label": "DThere are five girls wearing jeans.", "status": 0},
+        {"label": "DAnd six boys wearing pants and shirts.", "status": 1},
+        {"label": "DThe girls are talking about the boys. ", "status": 2},
+        {"label": "DThere is a boy at the café looking at the girls.", "status": 3}
+      ]
+    }
+  ],
+  "L7_T2_Dificil": [
+    {
+      "pergunta": "L7_Task2_D_0",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_0", "status": 1},
+        {"image": "Ess1_L7_T1D_1", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L7_Task2_D_1",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_2", "status": 0},
+        {"image": "Ess1_L7_T1D_3", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L7_Task2_D_2",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_4", "status": 0},
+        {"image": "Ess1_L7_T1D_5", "status": 1}
+      ]
+    }
+  ],
+  "L7_SUPER_LESSON": [
+    {
+      "images": ["Ess1_L7_SPL_0", "Ess1_L7_SPL_1", "Ess1_L7_T1F_2", "Ess1_L7_T1F_3"],
+      "letras": ["A", "D", "E", "O", "M", "G", "R", "F", "S", "V", "T", "U"],
+      "resposta": "DRUGSTORE"
+    },
+    {
+      "images": ["Ess1_L7_T1F_4", "Ess1_L7_T1F_5", "Ess1_L7_T1F_6", "Ess1_L7_T1F_7"],
+      "letras": ["A", "E", "O", "M", "N", "G", "R", "D", "S", "V", "T", "H"],
+      "resposta": "MODERN"
+    },
+    {
+      "images": ["Ess1_L7_T1F_8", "Ess1_L7_T1F_9", "Ess1_L7_T1F_10", "Ess1_L7_T1F_11"],
+      "letras": ["A", "I", "O", "S", "N", "G", "R", "D", "Y", "J", "T", "P"],
+      "resposta": "DIRTY"
+    },
+    {
+      "images": ["Ess1_L7_T1F_12", "Ess1_L7_T1F_13", "Ess1_L7_T1F_14", "Ess1_L7_T1F_15"],
+      "letras": ["E", "I", "O", "U", "M", "H", "R", "D", "V", "B", "T", "N"],
+      "resposta": "UNDER"
+    },
+    {
+      "images": ["Ess1_L7_T1F_16", "Ess1_L7_T1F_17", "Ess1_L7_T1F_18", "Ess1_L7_T1F_19"],
+      "letras": ["A", "E", "O", "U", "B", "E", "T", "D", "W", "F", "E", "N"],
+      "resposta": "BETWEEN"
     }
   ]
 }

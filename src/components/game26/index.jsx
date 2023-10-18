@@ -55,7 +55,7 @@ export const Game26 = () => {
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
     setOptionColor(Array(L7_T2_Medio[tempRandom[round]].resposta.length).fill(0));

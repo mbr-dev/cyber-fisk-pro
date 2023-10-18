@@ -50,6 +50,7 @@ export const Game27 = () => {
     setSound(L7_T2_Dificil[tempRandom[round]].pergunta);
 
     let tempRandomNumber = [...Array(L7_T2_Dificil[tempRandom[round]].resposta.length).keys()];
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
@@ -171,7 +172,7 @@ export const Game27 = () => {
               }}
               disabled={blockButton}
             >
-              <img src={img1} alt="" />
+              <img src={`${URL_FISKPRO}images/essentials1/lesson7/${answer.image}.jpg`} alt="" />
             </Photo>
           )
         })}

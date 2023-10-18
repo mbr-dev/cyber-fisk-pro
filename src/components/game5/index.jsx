@@ -74,7 +74,7 @@ export const Game5 = () => {
     
     setBlockButton(false);
     setIsLoading(false);
-  }, [setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);

@@ -440,6 +440,36 @@ export const L7_T2_Medio = [
       {label: "The girls are talking about the boys. ", status: 2},
       {label: "There is a boy at the café looking at the girls.", status: 3}
     ]
+  },
+  {
+    pergunta: "Task_2_M_0",
+    resposta: [
+      {label: "DCongratulations on your promotion!", status: 0},
+      {label: "DThank you! I have a new office now. Come see it!", status: 1},
+      {label: "DIs there an iPad in your office?", status: 2},
+      {label: "DNo, there isn’t.", status: 3},
+      {label: "DOf course, there is. Take a look. It’s a gift from all of us.", status: 4},
+      {label: "DThank you very much!", status: 5}
+    ]
+  },
+  {
+    pergunta: "Task_2_M_1",
+    resposta: [
+      {label: "DHi, Amy.", status: 0},
+      {label: "DHi, Bruce. What are you wearing?", status: 1},
+      {label: "DI'm wearing jeans, a white shirt and a brown jacket.", status: 2},
+      {label: "DAnd I'm wearing black pants and a pink sweater.", status: 3},
+      {label: "DI found you.", status: 4}
+    ]
+  },
+  {
+    pergunta: "Task_2_M_2",
+    resposta: [
+      {label: "DThere are five girls wearing jeans.", status: 0},
+      {label: "DAnd six boys wearing pants and shirts.", status: 1},
+      {label: "DThe girls are talking about the boys. ", status: 2},
+      {label: "DThere is a boy at the café looking at the girls.", status: 3}
+    ]
   }
 ]
 
