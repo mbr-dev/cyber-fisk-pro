@@ -29,8 +29,9 @@ export const Game23 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("game23")
+  
   const loadLesson = useCallback(() => {
+    console.log("game23")
     setIsLoading(true);
     const totalOfSounds = L6_T1_Medio.length;
     
@@ -43,7 +44,7 @@ export const Game23 = () => {
 
     setSound(L6_T1_Medio[tempRandom[round]].pergunta);    
     setAnswer(L6_T1_Medio[tempRandom[round]].resposta);
-    setIsLoading(true);
+    setIsLoading(false);
   }, [setRandomNumber, setSound, setAnswer]);
 
   const newRound = (number) => {
