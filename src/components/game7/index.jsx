@@ -159,6 +159,8 @@ export const Game7 = () => {
         return;
       }
       
+      tempColor[index] = 1;
+      setOptionColor(tempColor);
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(tempRightPoints);
@@ -221,6 +223,10 @@ export const Game7 = () => {
     loadLesson();
   }, []);
 
+  useEffect(() => {
+    playAudio ? setBlockAnswer(true) : setBlockAnswer(false);
+  }, [playAudio, setBlockAnswer]);
+
   if (isLoading) {
     return (
       <Loading />
@@ -259,7 +265,7 @@ export const Game7 = () => {
                 h="2.625rem"
                 onPress={() => handleGetAnswer(index)}
                 optionColor={optionColor[index]}
-                disabledButton={disabledRes}
+                disabledButton={disabledRes || blockAnswer}
               >
                 <p>{answer.label}</p>
               </ButtonAnswer>

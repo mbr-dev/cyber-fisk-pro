@@ -96,6 +96,11 @@ export const Game26 = () => {
     if (blockButton || playAudio) return;
 
     setBlockButton(true);
+    setBlockAudio(false);
+
+    let tempCountClick = countClick;
+    tempCountClick = 0;
+    setCountClick(tempCountClick);
 
     let tempRightPoints;
     let tempColor = optionColor;
@@ -109,7 +114,7 @@ export const Game26 = () => {
       setOptionColor(tempColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
-      setNewPontos(1, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
       setRightPoints(tempRightPoints);
     } else {
       tempColor = Array(answers.length).fill(2);
