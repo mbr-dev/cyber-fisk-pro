@@ -175,7 +175,7 @@ export const Game14 = () => {
 
       <Main>
         <Image>
-          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
+          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.jpg`} alt="" />
         </Image>
 
         <SubTitleLesson title={question} />

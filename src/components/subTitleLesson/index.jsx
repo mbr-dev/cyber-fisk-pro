@@ -4,10 +4,8 @@ import { SubtitleLessonContainer } from "./styles";
 
 export const SubTitleLesson = ({ title }) => {
   return(
-    <>
-      <SubtitleLessonContainer>
-        <span className='title'>{title}</span>
-      </SubtitleLessonContainer>
-    </>
+    <SubtitleLessonContainer>
+      <span className="title">{title}</span>
+    </SubtitleLessonContainer>
   )
 }

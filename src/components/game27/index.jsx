@@ -31,6 +31,7 @@ export const Game27 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  console.log("game27");
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);

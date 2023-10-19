@@ -68,7 +68,7 @@ export const Game8 = () => {
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
-    for (let a = 0; a < 3; a ++) {
+    for (let a = 0; a < tempRandomNumber.length; a ++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
@@ -87,7 +87,7 @@ export const Game8 = () => {
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
-    for (let a = 0; a < 3; a++) {
+    for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]])
     }
     setAnswers(tempAnswers);
@@ -227,10 +227,7 @@ export const Game8 = () => {
           <SubTitleLesson title={question.replace("______", changeText)} />
         </Droppable>
 
-        <Main style={{
-          flexDirection: answers.length > 3 ? "row" : "column",
-          gap: answers.length > 3 ? "2rem" : "1.5rem",
-        }}>
+        <Main>
           {answers.map((answers, index) => {
             return (
               <Draggable index={index} key={index}>
