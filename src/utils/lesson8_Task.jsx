@@ -238,7 +238,76 @@ export const L8_T1_Dificil = [
 ]
 
 export const L8_T2_Facil = [
-
+  {
+    pergunta: "Task_2_F_0",
+    resposta: {
+      label: ["", "Yes. I have a reservation for 2 nights.", "Yes, I can swim.", "No, I can’t make a reservation today."],
+      status: "Yes. I have a reservation for 2 nights."
+    }
+  },
+  {
+    pergunta: "Task_2_F_1",
+    resposta: {
+      label: ["", "Yes. We are going to call an old friend.", "Yes, we are.", "Yes. We are going to make new friends."],
+      status: "Yes, we are."
+    }
+  },
+  {
+    pergunta: "Task_2_F_2",
+    resposta: {
+      label: ["", "Yes. I’m going to have dinner.", "No, I don’t like lasagna.", "A lasagna."],
+      status: "A lasagna."
+    }
+  },
+  {
+    pergunta: "Task_2_F_3",
+    resposta: {
+      label: ["", "I study English at night.", "We’re going out for dinner.", "They are reading."],
+      status: "We’re going out for dinner."
+    }
+  },
+  {
+    pergunta: "Task_2_F_4",
+    resposta: {
+      label: ["", "It’s on the second floor.", "Yes, we have a restaurant.", "No. There isn’t a restaurant."],
+      status: "It’s on the second floor."
+    }
+  },
+  {
+    pergunta: "Task_2_F_5",
+    resposta: {
+      label: ["", "Yes, I have a pet.", "Yes, they are.", "No. I have a dog."],
+      status: "Yes, they are."
+    }
+  },
+  {
+    pergunta: "Task_2_F_6",
+    resposta: {
+      label: ["", "Yes, he is.", "Yes, I am.", "Yes, please."],
+      status: "Yes, please."
+    }
+  },
+  {
+    pergunta: "Task_2_F_7",
+    resposta: {
+      label: ["", "Thanks.", "Here you are.", "Yes, I have one"],
+      status: "Here you are."
+    }
+  },
+  {
+    pergunta: "Task_2_F_8",
+    resposta: {
+      label: ["", "Here you are. ", "Thanks.", "No, thanks."],
+      status: "Thanks."
+    }
+  },
+  {
+    pergunta: "Task_2_F_9",
+    resposta: {
+      label: ["", "$70.00 for a single room and $90.00 for a double.", "I have $150.00.", "Here you are."],
+      status: "$70.00 for a single room and $90.00 for a double."
+    }
+  },
 ]
 
 export const L8_T2_Medio = [
