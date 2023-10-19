@@ -185,7 +185,56 @@ export const L8_T1_Medio = [
 ]
 
 export const L8_T1_Dificil = [
-
+  {
+    option: {
+      pergunta: ["going ", "travel.", "are ", "do ", "to ", "weekend? ", "What ", "They ",  "to ", "going ", "are ", "next ", "they "],
+      resposta: "What are they going to do next weekend? They are going to travel."
+    },
+    option1: {
+      pergunta: ["going ", "am ", "I ", "travel? ", "month.", "you ", "are ", "go ", "to ", "When ", "going ", "to ", "next "],
+      resposta: "When are you going to travel? I am going to go next month."
+    }
+  },
+  {
+    option: {
+      pergunta: ["Dan ", "going ", "is ", "next ", "month.", "Who ", "to ", "is ", "going ", "travel? ", "Disney "],
+      resposta: "Who is going travel? Dan is going to Disney next month."
+    },
+    option1: {
+      pergunta: ["going ", "What ", "time ", "flight? ", "is ", "midnight.", "They ", "are ", "at ", "their "],
+      resposta: "What time is their flight? They are going at midnight."
+    }
+  },
+  {
+    option: {
+      pergunta: ["are ", "to ", "going ", "go? ", "travel ", "Where ", "are ", "We ", "to ", "going ", "to.", "you "],
+      resposta: "Where are you going to go? We are going to travel to."
+    },
+    option1: {
+      pergunta: ["at ", "8 ", "p.m.", "is ", "your ", "ticket? ", "What ", "time ", "The ", "bus ", "leaves "],
+      resposta: "What time is your ticket? The bus leaves at 8 p.m."
+    }
+  },
+  {
+    option: {
+      pergunta: ["a ", "dress ", "and ", "boots.", "she ", "wearing? ", "is ", "She ", "What ", "wears "],
+      resposta: "What is she wearing? She wears a dress and boots."
+    },
+    option1: {
+      pergunta: ["next ", "week.", "get ", "an ", "American ", "visa? ", "going ", "to ", "get ", "When ", "are ", "you ", "I ", "am ", "going ", "to ", "go "],
+      resposta: "When are you going to get an American visa? I am going to go get next week."
+    }
+  },
+  {
+    option: {
+      pergunta: ["live? ", "in ", "L.A.", "are ", "they ", "going ", "to ", "Where ", "going ", "They ", "are ", "to ", "live "],
+      resposta: "Where are they going to live? They are going to live in L.A."
+    },
+    option1: {
+      pergunta: ["to ", "have ", "lunch ", "tomorrow ", "Who ", "is ", "going ", "to ", "at ", "the ", "mall? ", "are ", "We ", "going ", "have ", "lunch ", "tomorrow."],
+      resposta: "Who is going to have lunch tomorrow at the mall? We are going to have lunch tomorrow."
+    }
+  },
 ]
 
 export const L8_T2_Facil = [

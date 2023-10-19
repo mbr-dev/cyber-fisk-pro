@@ -10,8 +10,6 @@ import { LessonContext } from "../../context/lesson";
 import { L7_T2_Dificil } from "../../utils/lesson7_Task";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
-import img1 from "./images/Ess1_L7_T1D_0.jpg";
-
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Photo } from "./styles";
 

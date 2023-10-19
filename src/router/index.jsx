@@ -11,13 +11,13 @@ import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SelectLesson } from "../pages/selectLesson";
-import { LessonSelection } from "../pages/LessonSelection";
-import { GravaAudioTest } from "../pages/GravaAudioTest";
-import { QRCode } from "../features/qrCode/pages/Home";
-import { QRReader } from "../features/qrCode/pages/qrReader";
-import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
 import { TaskLesson } from "../components/taskLesson";
+import { QRCode } from "../features/qrCode/pages/Home";
+import { GravaAudioTest } from "../pages/GravaAudioTest";
+import { LessonSelection } from "../pages/LessonSelection";
+import { QRReader } from "../features/qrCode/pages/qrReader";
 import { SuperTaskLesson } from "../components/supertaskLesson";
+import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
 
 import { Game1 } from "../components/game1";
 import { Game2 } from "../components/game2";
@@ -47,6 +47,7 @@ import { Game25 } from "../components/game25";
 import { Game26 } from "../components/game26";
 import { Game27 } from "../components/game27";
 import { Game28 } from "../components/game28";
+import { Game29 } from "../components/game29";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -109,6 +110,7 @@ export const Router =() => {
       <Route path = "/Game26" element={<Game26 />}/>
       <Route path = "/Game27" element={<Game27 />}/>
       <Route path = "/Game28" element={<Game28 />}/>
+      <Route path = "/Game29" element={<Game29 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>
