@@ -499,27 +499,27 @@ export const L7_T2_Dificil = [
 
 export const L7_SUPER_LESSON = [
   {
-    images: ["Ess1_L7_SPL_0", "Ess1_L7_SPL_1", "Ess1_L7_T1F_2", "Ess1_L7_T1F_3"],
+    images: ["Ess1_L7_SPL_0", "Ess1_L7_SPL_1", "Ess1_L7_SPL_2", "Ess1_L7_SPL_3"],
     letras: ["A", "D", "E", "O", "M", "G", "R", "F", "S", "V", "T", "U"],
     resposta: "DRUGSTORE"
   },
   {
-    images: ["Ess1_L7_T1F_4", "Ess1_L7_T1F_5", "Ess1_L7_T1F_6", "Ess1_L7_T1F_7"],
+    images: ["Ess1_L7_SPL_4", "Ess1_L7_SPL_5", "Ess1_L7_SPL_6", "Ess1_L7_SPL_7"],
     letras: ["A", "E", "O", "M", "N", "G", "R", "D", "S", "V", "T", "H"],
     resposta: "MODERN"
   },
   {
-    images: ["Ess1_L7_T1F_8", "Ess1_L7_T1F_9", "Ess1_L7_T1F_10", "Ess1_L7_T1F_11"],
+    images: ["Ess1_L7_SPL_8", "Ess1_L7_SPL_9", "Ess1_L7_SPL_10", "Ess1_L7_SPL_11"],
     letras: ["A", "I", "O", "S", "N", "G", "R", "D", "Y", "J", "T", "P"],
     resposta: "DIRTY"
   },
   {
-    images: ["Ess1_L7_T1F_12", "Ess1_L7_T1F_13", "Ess1_L7_T1F_14", "Ess1_L7_T1F_15"],
+    images: ["Ess1_L7_SPL_12", "Ess1_L7_SPL_13", "Ess1_L7_SPL_14", "Ess1_L7_SPL_15"],
     letras: ["E", "I", "O", "U", "M", "H", "R", "D", "V", "B", "T", "N"],
     resposta: "UNDER"
   },
   {
-    images: ["Ess1_L7_T1F_16", "Ess1_L7_T1F_17", "Ess1_L7_T1F_18", "Ess1_L7_T1F_19"],
+    images: ["Ess1_L7_SPL_16", "Ess1_L7_SPL_17", "Ess1_L7_SPL_18", "Ess1_L7_SPL_19"],
     letras: ["A", "E", "O", "U", "B", "E", "T", "D", "W", "F", "E", "N"],
     resposta: "BETWEEN"
   },
