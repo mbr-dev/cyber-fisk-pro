@@ -42,7 +42,7 @@ export const Div = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 
   @media(max-width: 360px) {
     gap: 0.5rem;
@@ -61,11 +61,11 @@ export const DivQ = styled.div`
 
 export const DivQuestion = styled.div`
   width: 11rem;
-  height: 3rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${props => props.theme["gray-700"]};
+  border: 3px solid ${props => props.theme["gray-700"]};
   border-radius: 6px;
   align-items: center;
   padding-inline: 0.5rem;
@@ -73,10 +73,10 @@ export const DivQuestion = styled.div`
 
   @media(max-width: 360px) {
     width: 10rem;
-    height: 2.75rem;
+    height: 3rem;
 
     span {
-      font-size: 0.875rem;
+      font-size: 0.75rem;
     }
   }
 `;
@@ -105,8 +105,8 @@ export const Answer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3rem;
-  height: 3rem;
+  width: 3.5rem;
+  height: 3.5rem;
   border-radius: 6px;
   background-color: ${props => props.theme["gray-700"]};
   color: ${props => props.theme.white};
@@ -123,7 +123,8 @@ export const WordSelected = styled.div`
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  border: 2px solid ${props => props.theme["gray-700"]};
+  border: 3px solid ${props => props.theme["gray-700"]};
+  border-radius: 8px;
 `;
 
 export const Words = styled.div`

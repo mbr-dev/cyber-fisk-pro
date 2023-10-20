@@ -437,5 +437,15 @@ export const L8_T2_Dificil = [
 ]
 
 export const L8_SUPER_LESSON = [
-
+  {
+    pergunta: [
+      {label: "a person traveling on vacation", answer: ["TOU", "RIST"]},
+      {label: "a place to stay when traveling", answer: ["HOT", "EL"]},
+      {label: "you need to buy one to travel by plane or bus", answer: ["TICK", "ET"]},
+      {label: "document for traveling abroad", answer: ["PAS", "SP", "ORT"]},
+      {label: "object to put your clothes when traveling", answer: ["SUI", "TC", "ASE"]}
+    ],
+    letras: ["ASE", "EL", "ET", "HOT", "ORT", "PAS", "RIST", "SP", "SUI", "TC", "TICK", "TOU"],
+    resposta: ["TOURIST", "HOTEL", "TICKET", "PASSPORT", "SUITCASE"],
+  }
 ]

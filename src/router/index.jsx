@@ -59,6 +59,7 @@ import { GameSL4 } from "../components/game_sl4";
 import { GameSL5 } from "../components/game_sl5";
 import { GameSL6 } from "../components/game_sl6";
 import { GameSL7 } from "../components/game_sl7";
+import { GameSL8 } from "../components/game_sl8";
 import { GameWordle } from "../components/GameWordle";
 
 export const Router =() => {
@@ -124,6 +125,7 @@ export const Router =() => {
       <Route path = "/GameSL5" element={<GameSL5 />}/>
       <Route path = "/GameSL6" element={<GameSL6 />}/>
       <Route path = "/GameSL7" element={<GameSL7 />}/>
+      <Route path = "/GameSL8" element={<GameSL8 />}/>
       <Route path = "/GameWordle" element={<GameWordle />}/>
     </Routes>
   )
