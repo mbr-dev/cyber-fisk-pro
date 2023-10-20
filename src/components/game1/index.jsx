@@ -20,7 +20,7 @@ export const Game1 = () => {
   const navigate = useNavigate();
   
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -61,15 +61,14 @@ export const Game1 = () => {
     setOptionColor(Array(items.images.length).fill(0));
     setQuestion(items.pergunta);
     
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.images.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
     
     let tempImages = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < items.images.length; a++) {
       tempImages.push(items.images[tempIdClick[a]]);
     }
-    tempImages = tempImages.sort(() => Math.random() - 0.5);
     setAnswers(tempImages);
     
     setBlockButton(false);
@@ -81,15 +80,14 @@ export const Game1 = () => {
     setOptionColor(Array(items.images.length).fill(0));
     setQuestion(items.pergunta);
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.images.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
     
     let tempImages = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < tempIdClick.length; a++) {
       tempImages.push(items.images[tempIdClick[a]]);
     }
-    tempImages = tempImages.sort(() => Math.random() - 0.5);
     setAnswers(tempImages);
     setBlockButton(false);
   }

@@ -60,12 +60,12 @@ export const Game2 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setQuestion(items.pergunta);
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);
@@ -79,12 +79,12 @@ export const Game2 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setQuestion(items.pergunta);
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < tempIdClick.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);

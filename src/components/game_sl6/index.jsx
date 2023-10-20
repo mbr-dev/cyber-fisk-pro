@@ -7,9 +7,8 @@ import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
-import { L6_SUPER_LESSON } from "../../utils/lesson6_Task";
 
-import LogoImg from "./images/logoIcon.png";
+import LogoImg from "../../assets/logoIcon.png";
 
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
@@ -19,6 +18,7 @@ export const GameSL6 = () => {
   const navigate = useNavigate();
 
   const [playing, setPlaying] = useState(false);
+  const [data, setData] = useState();
   const [level, setLevel] = useState(0);
   const [moveCount, setMoveCount] = useState(0);
   const [shownCount, setShownCount] = useState(0);
@@ -27,23 +27,21 @@ export const GameSL6 = () => {
   const [reset, setReset] = useState(false);
   const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState();
 
   const loadLesson = useCallback(async() => {
     try {
-      //setIsLoading(true);
-      // const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
-      // const res = response.data;
-      // const dataItems = res.dados[0].dados_conteudo;
-      // setData(dataItems);
-
-      // const items = dataItems.map(item => {
-      //   const conteudo = JSON.parse(item.conteudo);
-      //   return conteudo
-      // });
-      const items = L6_SUPER_LESSON;
-
-      const nameFilter = L6_SUPER_LESSON.filter(item => item.name);
+      setIsLoading(true);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=6&num_task=1");
+      const res = response.data;
+      const dataItems = res.dados[0].dados_conteudo;
+      setData(dataItems);
+      
+      const items = dataItems.map(item => {
+        const conteudo = JSON.parse(item.conteudo);
+        return conteudo
+      });
+      
+      const nameFilter = items.filter(item => item.name);
       
       let tempRandom = [];
       for (let a = 0; a < nameFilter.length; a++) {
@@ -87,23 +85,20 @@ export const GameSL6 = () => {
       
       setCards(tempGrid);
       setPlaying(true);
-      //setIsLoading(false);
+      setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
   }, [setIsLoading, setData, setPlaying, setCards]);
 
   const newRound = (level) => {
-    // const items = data.map(item => {
-    //   const conteudo = JSON.parse(item.conteudo);
-    //   return conteudo
-    // });
+    const items = data.map(item => {
+      const conteudo = JSON.parse(item.conteudo);
+      return conteudo
+    });
     const itemLength = level === 1 ? 8 : 10;
-    const items = L6_SUPER_LESSON;
 
-    const nameFilter = L6_SUPER_LESSON.filter(item => item.name);
-
-    //const nameFilter = items.filter(item => item.name);
+    const nameFilter = items.filter(item => item.name);
     
     let tempRandom = [];
     for (let a = 0; a < nameFilter.length; a++) {

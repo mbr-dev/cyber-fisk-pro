@@ -20,7 +20,7 @@ export const Game7 = () => {
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0, 0]);
+  const [optionColor, setOptionColor] = useState([]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -66,10 +66,11 @@ export const Game7 = () => {
 
     const items = tempData.map(item => item.conteudo);
     const dataItem = items.map(item => JSON.parse(item));
-
+    
     let tempAudios = [];
     let tempAnswers = [];
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
       tempAnswers.push(dataItem[randomIndices[a]].resposta);
@@ -103,6 +104,7 @@ export const Game7 = () => {
     let tempAudios = [];
     let tempAnswers = [];
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
       tempAnswers.push(dataItem[randomIndices[a]].resposta);

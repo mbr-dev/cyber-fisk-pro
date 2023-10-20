@@ -21,7 +21,7 @@ export const Game30 = () => {
   
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
+  const [optionColor, setOptionColor] = useState(0);
   const [idClick, setIdClick] = useState(0);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -44,7 +44,7 @@ export const Game30 = () => {
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
     setSound(L8_T2_Facil[tempRandom[round]].pergunta);
@@ -54,6 +54,7 @@ export const Game30 = () => {
   }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
+    setOptionColor(0);
     setSound(L8_T2_Facil[randomNumber[number]].pergunta);
     setAnswers(L8_T2_Facil[randomNumber[number]].resposta.status);
     setOption(L8_T2_Facil[randomNumber[number]].resposta.label);
@@ -101,14 +102,12 @@ export const Game30 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        setOptionColor(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setOptionColor(0);
       setNewPontos(0, 0);
       setTimeout(() => {
-        setOptionColor(0);
         navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
@@ -119,7 +118,6 @@ export const Game30 = () => {
     } else {
       setTimeout(() => {
         if (nivel === 0) {
-          setOptionColor(0);
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);

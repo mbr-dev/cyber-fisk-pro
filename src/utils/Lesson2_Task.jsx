@@ -296,11 +296,15 @@ export const L2_T2_Dificil = [
   },
   {
     pergunta: "No, I don’t eat rice.",
-    resposta: "Do you like steaks?",
+    resposta: "Do you eat rice?",
   },
   {
-    pergunta: "Yes, I need a protein bar.",
-    resposta: "Do you need a protein bar?",
+    pergunta: "No, I don’t eat rice.",
+    resposta: "Do you eat rice?",
+  },
+  {
+    pergunta: "No, I don’t like steaks.",
+    resposta: "Do you like steaks?",
   },
   {
     pergunta: "No, I don’t eat salad.",

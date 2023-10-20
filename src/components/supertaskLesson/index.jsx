@@ -10,6 +10,8 @@ import { GameSL2 } from "../game_sl2";
 import { GameSL3 } from "../game_sl3";
 import { GameSL4 } from "../game_sl4";
 import { GameSL5 } from "../game_sl5";
+import { GameSL6 } from "../game_sl6";
+import { GameSL7 } from "../game_sl7";
 
 export const SuperTaskLesson = () => {
   const { setNewRodada, numTask, numAtividade, numSelLesson, setNewConteudoSuperTask} = useContext(LessonContext);
@@ -43,6 +45,10 @@ export const SuperTaskLesson = () => {
         return(<GameSL4 />);
       case 5 :
         return(<GameSL5 />);
+      case 6 :
+      return(<GameSL6 />);
+      case 7 :
+      return(<GameSL7 />);
     }
   }
 

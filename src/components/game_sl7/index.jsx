@@ -33,9 +33,10 @@ export const GameSL7 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=4&num_task=1");
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=7&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
+      console.log("data7: ", res.dados[0].dados_conteudo)
       let totalOfQuestions = res.dados[0].dados_conteudo.length;
 
       let tempRandom = [];
@@ -184,7 +185,7 @@ export const GameSL7 = () => {
           {images.map((image, index) => {
             return (
               <Photo key={index}>
-                <img src={`${URL_FISKPRO}images/essentials1/lesson4/${image}.png`} alt="" />
+                <img src={`${URL_FISKPRO}images/essentials1/lesson7/${image}.jpg`} alt="" />
               </Photo>
             )
           })}

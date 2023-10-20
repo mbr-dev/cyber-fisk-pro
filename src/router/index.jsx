@@ -49,6 +49,8 @@ import { Game27 } from "../components/game27";
 import { Game28 } from "../components/game28";
 import { Game29 } from "../components/game29";
 import { Game30 } from "../components/game30";
+import { Game31 } from "../components/game31";
+import { Game32 } from "../components/game32";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -113,6 +115,8 @@ export const Router =() => {
       <Route path = "/Game28" element={<Game28 />}/>
       <Route path = "/Game29" element={<Game29 />}/>
       <Route path = "/Game30" element={<Game30 />}/>
+      <Route path = "/Game31" element={<Game31 />}/>
+      <Route path = "/Game32" element={<Game32 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>

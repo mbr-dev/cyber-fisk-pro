@@ -73,7 +73,7 @@ export const Game12 = () => {
 
   const newRound = (number) => {
     setText("");
-
+    setColorAnswer(0)
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempRandomQuestion = [];
@@ -121,14 +121,10 @@ export const Game12 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
-      tempColorA = 0;
-      setColorAnswer(tempColorA);
       navigate("/GameOver");
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
@@ -136,8 +132,6 @@ export const Game12 = () => {
       navigate(`/${page}`);
     }else {
       setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
         if(nivel === 0){
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

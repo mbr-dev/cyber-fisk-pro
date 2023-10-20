@@ -93,6 +93,7 @@ export const Game26 = () => {
   }, [setIsLoading, setRandomNumber, round, setOptionColor, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
 
   const newRound = (number) => {
+    setCountClick(0);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setOptionColor(Array(items.resposta.length).fill(0));
 
@@ -109,17 +110,13 @@ export const Game26 = () => {
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
+    setBlockAudio(false);
   } 
 
   const handleVerify = () => {
     if (blockButton || playAudio) return;
 
     setBlockButton(true);
-    setBlockAudio(false);
-
-    let tempCountClick = countClick;
-    tempCountClick = 0;
-    setCountClick(tempCountClick);
 
     let tempRightPoints;
     let tempColor = optionColor;
@@ -232,7 +229,7 @@ export const Game26 = () => {
     if (countClick === 2) {
       setBlockAudio(true);
     }
-  }, [countClick, setBlockAudio])
+  }, [countClick, setBlockAudio]);
 
   if (isLoading) {
     return (

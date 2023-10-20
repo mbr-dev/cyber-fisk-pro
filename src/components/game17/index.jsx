@@ -19,7 +19,7 @@ export const Game17 = () => {
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [image, setImage] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -60,12 +60,12 @@ export const Game17 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setImage(items.img);
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
@@ -80,12 +80,12 @@ export const Game17 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setImage(items.img);
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < tempIdClick.length; a ++) {
       tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);

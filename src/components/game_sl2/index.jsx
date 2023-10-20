@@ -9,7 +9,7 @@ import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 
-import LogoImg from "./images/logoIcon.png";
+import LogoImg from "../../assets/logoIcon.png";
 
 import { Container, Main, Grid, Card, Icon } from "./styles";
 

@@ -89,6 +89,7 @@ export const Game19 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+    setColorAnswer(0);
     setOption0("");
     setOption1("");
     setOption2("");
@@ -200,13 +201,11 @@ export const Game19 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -216,7 +215,6 @@ export const Game19 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setColorAnswer(0);
         if(nivel === 0){
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

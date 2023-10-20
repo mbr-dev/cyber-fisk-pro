@@ -311,11 +311,129 @@ export const L8_T2_Facil = [
 ]
 
 export const L8_T2_Medio = [
-
+  {
+    pergunta: "Task_2_M_0",
+    resposta: {
+      label: "No / backpack",
+      status: [
+        "No, I’m not. I’m going to buy a backpack.",
+        "No. I’m going to buy a backpack."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_1",
+    resposta: {
+      label: "No / France",
+      status: [
+        "No, he isn’t. He is going to live in France.",
+        "No, he’s not. He is going to live in France.",
+        "No. He’s going to live in France.",
+        "No. He is going to live in France."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_2",
+    resposta: {
+      label: "No / sandals",
+      status: [
+        "No, she isn’t. She is going to wear sandals.",
+        "No, she is going to wear sandals."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_3",
+    resposta: {
+      label: "No / apple pie",
+      status: [
+        "No, we aren’t. We are going to eat apple pie.",
+        "No. We are going to eat apple pie."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_4",
+    resposta: {
+      label: "No / manager",
+      status: [
+        "No, they aren’t. They are going to talk to the manager.",
+        "No. They are going to talk to the manager."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_5",
+    resposta: {
+      label: "No / Alice",
+      status: [
+        "No, I’m not. I’m going to invite Alice.",
+        "No. I’m going to invite Alice."
+      ]
+    }
+  },
+  {
+    pergunta: "Task_2_M_6",
+    resposta: {
+      label: "Because / do research on the internet",
+      status: ["Because she is going to do research on the internet."]
+    }
+  },
+  {
+    pergunta: "Task_2_M_7",
+    resposta: {
+      label: "I'm / the day after tomorrow",
+      status: [
+        "I’m going to call him the day after tomorrow.",
+        "I’m going to call Mr. Adams the day after tomorrow."
+      ],
+    }
+  },
+  {
+    pergunta: "Task_2_M_8",
+    resposta: {
+      label: "Because / have a job interview",
+      status: ["Because he is going to have a job interview."]
+    }
+  },
+  {
+    pergunta: "Task_2_M_9",
+    resposta: {
+      label: "She's / new salsa club",
+      status: ["She’s going to learn how to dance salsa at the new salsa club."]
+    }
+  }
 ]
 
 export const L8_T2_Dificil = [
-  
+  {
+    pergunta: "Task_2_D_0",
+    resposta: [
+      {label: "The man is at a hotel.", status: 1},
+      {label: "He is sharing a room with another person.", status: 0},
+      {label: "He knows why there are a lot of people there.", status: 0},
+      {label: "He doesn’t smoke.", status: 1}
+    ]
+  },
+  {
+    pergunta: "Task_2_D_1",
+    resposta: [
+      {label: "Jack doesn’t need help at the store.", status: 0},
+      {label: "Jack and Tom are friends.", status: 1},
+      {label: "Tom invites Jack to have dinner at his house.", status: 1},
+      {label: "Jack can’t go.", status: 0}
+    ]
+  },
+  {
+    pergunta: "Task_2_D_2",
+    resposta: [
+      {label: "Alice works at a hotel.", status: 1},
+      {label: "There is breakfast from 6 to 10 am.", status: 1},
+      {label: "Alexander Rakaov wants to make a reservation at the hotel.", status: 0},
+      {label: "He wants to stay 6 days there.", status: 0}
+    ]
+  }
 ]
 
 export const L8_SUPER_LESSON = [

@@ -69,6 +69,8 @@ export const Game20 = () => {
 
   const newRound = (number) => {
     setText("");
+    setColorAnswer(0);
+    setCountQ(0);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setSound(items.audio);
     setQuestion(items.pergunta);
@@ -125,15 +127,11 @@ export const Game20 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -143,8 +141,6 @@ export const Game20 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

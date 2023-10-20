@@ -86,7 +86,7 @@ export const Game24 = () => {
     setText2("");
     setText3("");
     setText4("");
-
+    setColorAnswer(0);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setSound(items.audio);
     setQuestion(items.pergunta);
@@ -141,13 +141,11 @@ export const Game24 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -157,7 +155,6 @@ export const Game24 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setColorAnswer(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
