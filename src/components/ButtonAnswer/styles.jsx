@@ -7,7 +7,7 @@ export const Container = styled.button`
   padding-inline: 1rem;
   justify-content: center;
   border-radius: 8px;
-  border: 2px solid transparent;
+  border: 3px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
   transition: all 0.2s;

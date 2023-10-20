@@ -12,7 +12,6 @@ import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L7_T2_Medio } from "../../utils/lesson7_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
@@ -27,10 +26,10 @@ export const Game26 = () => {
 
   const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
+  const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
-  const [data, setData] = useState([]);
   const [round, setRound] = useState(0);
   const [countClick, setCountClick] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -49,46 +48,64 @@ export const Game26 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    const dataLength = L7_T2_Medio.length;
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if(nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setOptionColor(Array(L7_T2_Medio[tempRandom[round]].resposta.length).fill(0));
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    setSound(L7_T2_Medio[tempRandom[round]].pergunta);
-    setRightAnswers(L7_T2_Medio[tempRandom[round]].resposta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+    setSound(items.pergunta);
+    setRightAnswers(items.resposta);
 
-    let tempRandomNumber = [...Array(L7_T2_Medio[tempRandom[round]].resposta.length).keys()];
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
-    for (let a = 0; a < tempRandomNumber.length; a ++) {
-      tempAnswers.push(L7_T2_Medio[tempRandom[round]].resposta[tempRandomNumber[a]]);
+    for (let a = 0; a < items.resposta.length; a ++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setOptionColor, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
+  }, [setIsLoading, setRandomNumber, round, setOptionColor, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
 
   const newRound = (number) => {
-    setOptionColor(Array(L7_T2_Medio[randomNumber[number]].resposta.length).fill(0));
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
-    setSound(L7_T2_Medio[randomNumber[number]].pergunta);
-    setRightAnswers(L7_T2_Medio[randomNumber[number]].resposta);
+    setSound(items.pergunta);
+    setRightAnswers(items.resposta);
 
-    let tempRandomNumber = [...Array(L7_T2_Medio[randomNumber[number]].resposta.length).keys()];
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
     for (let a = 0; a < tempRandomNumber.length; a ++) {
-      tempAnswers.push(L7_T2_Medio[randomNumber[number]].resposta[tempRandomNumber[a]]);
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
     setBlockButton(false);
@@ -227,7 +244,7 @@ export const Game26 = () => {
     <Container>
       <TitleLesson title="Listen and put the sentences in order." />
       <SubTitleLessonAudio
-        audio={`${URL_FISKPRO}sounds/essentials1/lesson7/${sound}.mp3`}
+        audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
         setCountC={setCountClick}
         disabledButton={blockAudio}
@@ -247,7 +264,7 @@ export const Game26 = () => {
                    w="14rem"
                    h="3rem"
                    optionColor={optionColor[index]}
-                   >
+                  >
                   <p>{answer.label}</p>
                 </ButtonAnswer>
               </SortableItem>

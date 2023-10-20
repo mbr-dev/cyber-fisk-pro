@@ -20,7 +20,7 @@ export const Game5 = () => {
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -61,17 +61,16 @@ export const Game5 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
     
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < items.resposta.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
   }, [setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
@@ -81,15 +80,14 @@ export const Game5 = () => {
     setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
     
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }
@@ -101,9 +99,9 @@ export const Game5 = () => {
 
     let tempRightPoints;
     let tempColor = optionColor;
-    const selectedAnswer = answers[index].status;
+    const selectedAnswer = answers[index];
 
-    if (selectedAnswer === 1) {
+    if (selectedAnswer.status === 1) {
       tempColor[index] = 1;
       setOptionColor(tempColor);
 

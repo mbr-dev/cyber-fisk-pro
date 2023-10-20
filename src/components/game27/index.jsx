@@ -7,7 +7,6 @@ import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L7_T2_Dificil } from "../../utils/lesson7_Task";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -31,11 +30,25 @@ export const Game27 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("game27");
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    const dataLength = L7_T2_Dificil.length;
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if(nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -44,36 +57,38 @@ export const Game27 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setOptionColor(Array(L7_T2_Dificil[tempRandom[round]].resposta.length).fill(0));
-
-    setSound(L7_T2_Dificil[tempRandom[round]].pergunta);
-
-    let tempRandomNumber = [...Array(L7_T2_Dificil[tempRandom[round]].resposta.length).keys()];
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    
+    setOptionColor(Array(items.resposta.length).fill(0));
+    setSound(items.pergunta);
+    
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
-    for (let a = 0; a < tempRandomNumber.length; a ++) {
-      tempAnswers.push(L7_T2_Dificil[tempRandom[round]].resposta[tempRandomNumber[a]]);
+    for (let a = 0; a < items.resposta.length; a ++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setOptionColor, setSound, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setRandomNumber, setData, round, setOptionColor, setSound, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
+    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
     
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
     setBlockButton(false);
   }
@@ -159,19 +174,20 @@ export const Game27 = () => {
   return (
     <Container>
       <TitleLesson title="Choose the correct alternative" />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson7/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
         {answers.map((answer, index) => {
           return (
             <Photo
+              key={index}
               onClick={() => handleClick(index)}
               style={{
                 backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : ""
               }}
               disabled={blockButton}
             >
-              <img src={`${URL_FISKPRO}images/essentials1/lesson7/${answer.image}.jpg`} alt="" />
+              <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`} alt="" />
             </Photo>
           )
         })}

@@ -31,6 +31,10 @@ import { Game23 } from "../game23";
 import { Game24 } from "../game24";
 import { Game25 } from "../game25";
 import { Game26 } from "../game26";
+import { Game27 } from "../game27";
+import { Game28 } from "../game28";
+import { Game29 } from "../game29";
+import { Game30 } from "../game30";
 
 export const TaskLesson = () => {
   const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed } = useContext(LessonContext);
@@ -113,6 +117,14 @@ export const TaskLesson = () => {
         return(<Game25 />);
       case 26 :
         return(<Game26 />);
+      case 27 :
+      return(<Game27 />);
+      case 28 :
+        return(<Game28 />);
+      case 29 :
+      return(<Game29 />);
+      case 30 :
+        return(<Game30 />);
     }
   }
 

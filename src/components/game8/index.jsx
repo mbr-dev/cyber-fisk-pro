@@ -68,7 +68,7 @@ export const Game8 = () => {
     setIdClick(tempRandomNumber);
 
     let tempAnswers = [];
-    for (let a = 0; a < tempRandomNumber.length; a ++) {
+    for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
@@ -78,11 +78,13 @@ export const Game8 = () => {
   }, [setIsLoading, setRandomNumber, setOptionColor, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
 
   const newRound = (number) => {
+    setChangeText("______");
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     setOptionColor(Array(items.resposta.length).fill(0));
     setQuestion(items.pergunta);
     
-    let tempRandomNumber = idClick;
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
 
@@ -130,14 +132,12 @@ export const Game8 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        setChangeText("______");
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
 
       setTimeout(() => {
-        setChangeText("______");
         setNewContainer(1);
         navigate("/GameOver");
       }, 1500);
@@ -147,7 +147,6 @@ export const Game8 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() => {
-        setChangeText("______");
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

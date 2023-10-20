@@ -20,7 +20,8 @@ export const Game14 = () => {
   const navigate = useNavigate();
   
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [idClick, setIdClick] = useState([]);
+  const [data, setData] = useState([]);
   const [image, setImage] = useState("");
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -30,7 +31,6 @@ export const Game14 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
   
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -63,7 +63,7 @@ export const Game14 = () => {
     setQuestion(items.pergunta);
     setImage(items.image);
 
-    let tempRandomAnswer = idClick;
+    let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomAnswer);
 
@@ -83,12 +83,12 @@ export const Game14 = () => {
     setQuestion(items.pergunta);
     setImage(items.image);
 
-    let tempRandomAnswer = idClick;
+    let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomAnswer);
 
     let tempAnswers = [];
-    for (let a = 0; a < items.resposta.length; a++) {
+    for (let a = 0; a < tempRandomAnswer.length; a++) {
       tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
@@ -101,7 +101,7 @@ export const Game14 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = [...optionColor];
+    let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
