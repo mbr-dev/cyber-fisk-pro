@@ -4254,5 +4254,100 @@
       "pergunta": "No. She stayed home yesterday.",
       "resposta": "Did Mary go to a shopping mall yesterday afternoon?"
     }
+  ],
+  "L9_T2_Dificil": [
+    {
+      "pergunta": [
+        "Last Monday, Annie",
+        "a lot till 12:30 and then she stopped for lunch. In the afternoon she",
+        "a lot of emails and presented a project to her boss at 4 p.m. At home, as usual, she switched off from work,",
+        "a delicious dinner and",
+        " ",
+        "favorite TV show."
+      ],
+      "option0": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "worked"
+      },
+      "option1": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "answered"
+      },
+      "option2": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "cooked "
+      },
+      "option3": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "watched "
+      },
+      "option4": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "her"
+      }
+    },
+    {
+      "pergunta": [
+        "Timothy Collins",
+        "the hotel to make a reservation for two nights. When he",
+        "at the hotel, the desk clerk couldn’t",
+        "his reservation at first, but then she did. He",
+        "a double room. She handed him the keys to the room and",
+        "him to complete a form."
+      ],
+      "option0": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "called"
+      },
+      "option1": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "arrived"
+      },
+      "option2": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "find"
+      },
+      "option3": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "booked"
+      },
+      "option4": {
+        "label": ["", "arrived", "find", "asked", "called", "booked", "call"],
+        "status": "asked"
+      }
+    },
+    {
+      "pergunta": [
+        "Last",
+        ", Ashley",
+        "to go to the movies, but she",
+        ". She",
+        "home and watched a video. James",
+        "soccer in the afternoon and video games in the evening."
+      ],
+      "option0": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "Sunday"
+      },
+      "option1": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "wanted"
+      },
+      "option2": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "didn’t"
+      },
+      "option3": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "stayed"
+      },
+      "option4": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "played"
+      }
+    }
+  ],
+  "L9_SUPER_LESSON": [
+    
   ]
 }

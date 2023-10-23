@@ -6,12 +6,13 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
+import { L9_SUPER_LESSON } from "../../utils/lesson9_Task";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
-export const GameSL3 = () => {
+export const GameSL9 = () => {
   const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
@@ -38,11 +39,12 @@ export const GameSL3 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
-      const res = response.data;
-      setData(res.dados[0].dados_conteudo);
+      //const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
+      //const res = response.data;
+      //setData(res.dados[0].dados_conteudo);
       
-      let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+      //let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+      const items = L9_SUPER_LESSON[round];
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
       
@@ -72,8 +74,8 @@ export const GameSL3 = () => {
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
 
-    const items = JSON.parse(data[number].conteudo);
-
+    //const items = JSON.parse(data[number].conteudo);
+    const items = L9_SUPER_LESSON[number];
     let tempQuestion = items.pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
@@ -140,19 +142,18 @@ export const GameSL3 = () => {
       tempP = 0;
     }
 
-    const userText = text.replace(/'/g, "’");
-  
-    if (round >= 6 && round <= 9) {
-      const correctStarts = [
-        "I have dinner at",
-        "I need to buy",
-        "They",
-        "I have"
-      ];
+    let tempWord = text.trim().replace(/'/g, "’").toLowerCase();
 
-      const isStartCorrect = correctStarts.some((start) => userText.startsWith(start));
+    let isAnswerCorrect = false;
 
-      if (isStartCorrect) {
+    if (round >= 4 && round <= 9) {
+      answersOfQuestion.forEach((answer) => {
+        if (tempWord.includes(answer.toLowerCase())) {
+          isAnswerCorrect = true
+        }
+      });
+
+      if (isAnswerCorrect) {
         setOptionColorQ(1);
         setCorrectPoints(tempP);
       } else {
@@ -162,7 +163,11 @@ export const GameSL3 = () => {
         setWrongPoints(tempE);
       }
     } else {
-      const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
+      answersOfQuestion.forEach((answer) => {
+        if (tempWord === answer.toLowerCase()) {
+          isAnswerCorrect = true
+        }
+      });
 
       if (isAnswerCorrect) {
         setOptionColorQ(1);
