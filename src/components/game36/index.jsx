@@ -7,13 +7,14 @@ import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
+import { L10_T1_Facil } from "../../utils/lesson10_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
-export const Game7 = () => {
+export const Game36 = () => {
   const {
     rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
@@ -37,8 +38,8 @@ export const Game7 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-
-    let dataLength = 0;
+    let dataLength = L10_T1_Facil.length;
+    /* let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -52,68 +53,62 @@ export const Game7 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    }
+    } */
     
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    tempRandom = shuffleArray(tempRandom);
-    setRandomNumber(tempRandom);
-
-    const items = tempData.map(item => item.conteudo);
-    const dataItem = items.map(item => JSON.parse(item));
+    //const items = tempData.map(item => item.conteudo);
+    //const dataItem = items.map(item => JSON.parse(item));
+    const items = L10_T1_Facil[tempRandom[round]];
+    //setOptionColor(Array(randomIndices.length).fill(0));
+    setOptionColor(Array(items.resposta.length).fill(0));
     
     let tempAudios = [];
-    let tempAnswers = [];
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
-    setOptionColor(Array(randomIndices.length).fill(0));
-    for (let a = 0; a < randomIndices.length; a++) {
-      tempAudios.push(dataItem[randomIndices[a]].pergunta);
-      tempAnswers.push(dataItem[randomIndices[a]].resposta);
+    for (let a = 0; a < items.pergunta.length; a++) {
+      tempAudios.push(items.pergunta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
+
+
+    let tempAnswers = [];
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempAnswers.push(items.resposta[a]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
-
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  const newRound = () => {
+  }, [setIsLoading, setRandomNumber, round, setAudios, setAnswers, setData]);
+  console.log(audios);
+  const newRound = (number) => {
     setCountClick(0);
-    let tempRandom = [];
-    for (let a = 0; a < data.length; a++) {
-      tempRandom.push(a);
-    }
-    tempRandom = shuffleArray(randomNumber);
-
-    const items = data.map(item => item.conteudo);
-    const dataItem = items.map(item => JSON.parse(item));
-
+    //const items = data.map(item => item.conteudo);
+    //const dataItem = items.map(item => JSON.parse(item));
+    const items = L10_T1_Facil[randomNumber[number]];
+    setOptionColor(Array(items.resposta.length).fill(0));
+    
     let tempAudios = [];
-    let tempAnswers = [];
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
-    setOptionColor(Array(randomIndices.length).fill(0));
-    for (let a = 0; a < randomIndices.length; a++) {
-      tempAudios.push(dataItem[randomIndices[a]].pergunta);
-      tempAnswers.push(dataItem[randomIndices[a]].resposta);
+    for (let a = 0; a < items.pergunta.length; a++) {
+      tempAudios.push(items.pergunta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
+
+
+    let tempAnswers = [];
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempAnswers.push(items.resposta[a]);
+    }
+    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
+
+    setIsLoading(false);
     
     setRightAudios([]);
     setRightAnswers([]);
@@ -128,7 +123,7 @@ export const Game7 = () => {
     setSelectAudio(tempSound);
     setBlockAnswer(false);    
 
-    const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
+    const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson10/${sound.audio}.mp3`);
 
     audio.play();
     newStatusPlay(true);
@@ -153,7 +148,7 @@ export const Game7 = () => {
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
-      if (clicks < 4) {
+      if (clicks < 2) {
         tempColor[index] = 1;
         setOptionColor(tempColor);
         
@@ -188,7 +183,7 @@ export const Game7 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        newRound();
+        newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
@@ -232,7 +227,7 @@ export const Game7 = () => {
   
   return (
     <Container>
-      <TitleLesson title="Make pairs." />
+      <TitleLesson title="Listen and choose the correct past." />
 
       <Main>
         <ButtonRow>
