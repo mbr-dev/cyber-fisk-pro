@@ -5,7 +5,6 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
-import { L8_T1_Medio } from "../../utils/lesson8_Task";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
@@ -34,7 +33,22 @@ export const Game28 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    const dataLength = L8_T1_Medio.length;
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if (nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -42,18 +56,23 @@ export const Game28 = () => {
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
-    
-    setQuestion(L8_T1_Medio[tempRandom[round]].pergunta);
-    setOption(L8_T1_Medio[tempRandom[round]].resposta.label);
-    setAnswer(L8_T1_Medio[tempRandom[round]].resposta.status);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setQuestion(items.pergunta);
+    setOption(items.resposta.label);
+    setAnswer(items.resposta.status);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setQuestion, setOption, setAnswer]);
+  }, [setIsLoading, setData, round, setRandomNumber, setQuestion, setOption, setAnswer]);
 
   const newRound = (number) => {
+    setColorAnswer(0);
     setOption("");
-    setQuestion(L8_T1_Medio[randomNumber[number]].pergunta);
-    setOption(L8_T1_Medio[randomNumber[number]].resposta.label);
-    setAnswer(L8_T1_Medio[randomNumber[number]].resposta.status);
+    setSelected("");
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setQuestion(items.pergunta);
+    setOption(items.resposta.label);
+    setAnswer(items.resposta.status);
   }
 
   const handleSelect = (event) => {
@@ -70,9 +89,7 @@ export const Game28 = () => {
     let tempRightPoints;
     let tempColor = colorAnswers;
 
-    if (
-      selected === answer
-      ) {
+    if (selected === answer) {
       tempColor = 1;
       setColorAnswer(tempColor);
 
@@ -100,13 +117,11 @@ export const Game28 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -116,7 +131,6 @@ export const Game28 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setColorAnswer(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

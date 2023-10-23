@@ -147,12 +147,12 @@ export const TaskLesson = () => {
   }
 
   useEffect(()=>{
-    if(numTask === '1'){
-      setStrStart('Task 1');
-      setStrEnd('Task 2');
-    }else if(numTask === '2'){
-      setStrStart('Task 2');
-      setStrEnd('Super Task');
+    if(numTask === 1){
+      setStrStart("Task 1");
+      setStrEnd("Task 2");
+    }else if(numTask === 2){
+      setStrStart("Task 2");
+      setStrEnd("Super Task");
     }
     loadContent();
   },[])

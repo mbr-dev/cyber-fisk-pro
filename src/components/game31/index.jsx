@@ -8,7 +8,6 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L8_T2_Medio } from "../../utils/lesson8_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -38,7 +37,22 @@ export const Game31 = () => {
   
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    const dataLength = L8_T2_Medio.length;
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if (nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -47,22 +61,24 @@ export const Game31 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setSound(L8_T2_Medio[tempRandom[round]].pergunta);
-    setWord(L8_T2_Medio[tempRandom[round]].resposta.label);
-    setAnswers(L8_T2_Medio[tempRandom[round]].resposta.status);
-    setIsLoading(false);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-  }, [setIsLoading, /* setData, */ setRandomNumber, round, setSound, setWord, setAnswers]);
+    setSound(items.pergunta);
+    setWord(items.resposta.label);
+    setAnswers(items.resposta.status);
+    setIsLoading(false);
+    setBlockAudio(false);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setWord, setAnswers, setBlockAudio]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
     setCountClick(0);
-    /* const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setSound(items.pergunta); */
-    setSound(L8_T2_Medio[randomNumber[number]].pergunta);
-    setWord(L8_T2_Medio[randomNumber[number]].resposta.label);
-    setAnswers(L8_T2_Medio[randomNumber[number]].resposta.status);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setSound(items.pergunta);
+    setWord(items.resposta.label);
+    setAnswers(items.resposta.status);
     setBlockAudio(false);
   }
 
@@ -70,7 +86,7 @@ export const Game31 = () => {
     event.preventDefault();
     if (playAudio) return;
     
-    let tempWord = text.trim().replace(/'/g, "’").toLowerCase();
+    let tempWord = text.trim().toLowerCase();
     let tempRightPoints;
     let tempColorA = colorAnswers;
 

@@ -2,13 +2,12 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../titleLesson";
 import { ButtonBg } from "../ButtonBg";
+import { TitleLesson } from "../titleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L8_T2_Facil } from "../../utils/lesson8_Task";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -22,7 +21,6 @@ export const Game30 = () => {
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
-  const [idClick, setIdClick] = useState(0);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState("");
@@ -38,7 +36,21 @@ export const Game30 = () => {
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
-    const dataLength = L8_T2_Facil.length;
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if (nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -47,17 +59,21 @@ export const Game30 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setSound(L8_T2_Facil[tempRandom[round]].pergunta);
-    setAnswers(L8_T2_Facil[tempRandom[round]].resposta.status);
-    setOption(L8_T2_Facil[tempRandom[round]].resposta.label);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setSound(items.pergunta);
+    setAnswers(items.resposta.status);
+    setOption(items.resposta.label);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setOptionColor(0);
-    setSound(L8_T2_Facil[randomNumber[number]].pergunta);
-    setAnswers(L8_T2_Facil[randomNumber[number]].resposta.status);
-    setOption(L8_T2_Facil[randomNumber[number]].resposta.label);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setSound(items.pergunta);
+    setAnswers(items.resposta.status);
+    setOption(items.resposta.label);
   }
 
   const handleSelect = (event) => {
@@ -105,7 +121,6 @@ export const Game30 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setOptionColor(0);
       setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
@@ -136,7 +151,7 @@ export const Game30 = () => {
   }, []);
 
   useEffect(() => {
-    selected === "" ? setBlockButton(true) : setBlockButton(false);
+    selected !== "" && setBlockButton(false);
   }, [setBlockButton, selected]);
 
   if (isLoading) {
