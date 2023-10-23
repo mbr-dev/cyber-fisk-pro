@@ -313,11 +313,90 @@ export const L9_T2_Facil = [
 ]
 
 export const L9_T2_Medio = [
+  {
+    audio: "L9_Task2_M_0",
+    pergunta: "She played it yesterday.",
+    resposta: "When did she play the tambourine?"
+  },
+  {
+    audio: "L9_Task2_M_1",
+    pergunta: "We watched talk shows and cartoons.",
+    resposta: "What did you do yesterday?"
+  },
+  {
+    audio: "L9_Task2_M_2",
+    pergunta: "They watched it last night.",
+    resposta: "When did they watch the talk show?"
+  },
+  {
+    audio: "L9_Task2_M_3",
+    pergunta: "We needed to buy them in January.",
+    resposta: "When did you need to buy the books?"
+  },
+  {
+    audio: "L9_Task2_M_4",
+    pergunta: "She studied English. ",
+    resposta: "What did she study yesterday?"
+  },
+  {
+    audio: "L9_Task2_M_5",
+    pergunta: "He started a computer course on February 3rd.",
+    resposta: "When did Nick start a computer course?"
+  },
+  {
+    audio: "L9_Task2_M_6",
+    pergunta: "He studied Spanish yesterday morning.",
+    resposta: "When did Ken study Spanish?"
+  },
+  {
+    audio: "L9_Task2_M_7",
+    pergunta: "Yes. She watched a jazz concert on July 1st.",
+    resposta: "Did Julie watch a jazz concert on TV?"
+  },
+  {
+    audio: "L9_Task2_M_8",
+    pergunta: "He worked late last night.",
+    resposta: "What did Tim do last night?"
+  },
+  {
+    audio: "L9_Task2_M_9",
+    pergunta: "No. She stayed home yesterday.",
+    resposta: "Did Mary go to a shopping mall yesterday afternoon?"
+  }
 
 ]
 
 export const L9_T2_Dificil = [
-
+  {
+    pergunta: [
+      "Last Monday, Annie",
+      "a lot till 12:30 and then she stopped for lunch. In the afternoon she",
+      "a lot of emails and presented a project to her boss at 4 p.m. At home, as usual, she switched off from work,",
+      "a delicious dinner and",
+      " ",
+      "favorite TV show."
+    ],
+    option0: {
+      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+      status: "worked"
+    },
+    option1: {
+      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+      status: "answered"
+    },
+    option2: {
+      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+      status: "cooked "
+    },
+    option3: {
+      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+      status: "watched "
+    },
+    option4: {
+      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+      status: "her"
+    }
+  },
 ]
 
 export const L9_SUPER_LESSON = [
