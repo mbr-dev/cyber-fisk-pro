@@ -10,6 +10,7 @@ import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
+import { SpinWheel } from "../pages/SpinWheel";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
 import { QRCode } from "../features/qrCode/pages/Home";
@@ -85,6 +86,7 @@ export const Router =() => {
       <Route path="/Profile" element={<Profile/>} />
       <Route path="/Ranking" element={<Ranking />} />
       <Route path="/WellDone" element={<WellDone />} />
+      <Route path="/SpinWheel" element={<SpinWheel />} />
       <Route path="/GameOver" element={<GameOver />} />
       <Route path="/LessonSelection" element={<LessonSelection />} />
       <Route path="/SelectLesson" element={<SelectLesson />} />
