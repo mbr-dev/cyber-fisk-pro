@@ -27,9 +27,23 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  padding: 1rem 2rem;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  padding: 1rem;
   background-color: ${props => props.theme["gray-100"]};
+  text-align: center;
+
+  label {
+    line-height: 1.7;
+    color: ${props => props.theme["gray-700"]};
+  }
+
+  @media(max-width: 360px) {
+    label {
+      line-height: 1.6;
+      padding-inline: 1.5rem;
+    }
+  }
 
   @media(max-width: 320px) {
     margin-top: 0.5rem;
@@ -41,7 +55,6 @@ export const Form = styled.form`
 `;
 
 export const Select = styled.select`
-  width: 20rem;
   height: 2.5rem;
   border: none;
   border-radius: 6px;

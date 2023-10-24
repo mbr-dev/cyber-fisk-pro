@@ -26,6 +26,10 @@ export const Photo = styled.button`
   all: unset;
   width: 16rem;
   height: 10rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 4px solid transparent;
   border-radius: 8px;
@@ -33,8 +37,6 @@ export const Photo = styled.button`
   transition: all 0.2s;
 
   img {
-    width: 100%;
-    height: 100%;
     object-fit: cover;
   }
 

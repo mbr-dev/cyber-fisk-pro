@@ -4412,5 +4412,167 @@
       "pergunta": "When did you visit a small city?",
       "resposta": ["I visited a small city"]
     }
+  ],
+
+  "L10_T1_Facil": [
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_0", "status": 0},
+        { "audio": "L10_Task1_F_1", "status": 1}
+      ],
+      "resposta": [
+        { "label": "broke", "status": 0},
+        { "label": "bought", "status": 1},
+        { "label": "bet", "status": -1},
+        { "label": "booked", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_2", "status": 0},
+        { "audio": "L10_Task1_F_3", "status": 1}
+      ],
+      "resposta": [
+        { "label": "drinks", "status": -1},
+        { "label": "drunk", "status": 0},
+        { "label": "eating", "status": -1},
+        { "label": "ate", "status": 1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_4", "status": 0},
+        { "audio": "L10_Task1_F_5", "status": 1}
+      ],
+      "resposta": [
+        { "label": "felt", "status": -1},
+        { "label": "fought", "status": -1},
+        { "label": "found", "status": 0},
+        { "label": "forgot", "status": 1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_6", "status": 0},
+        { "audio": "L10_Task1_F_7", "status": 1}
+      ],
+      "resposta": [
+        { "label": "gave", "status": 0},
+        { "label": "were", "status": -1},
+        { "label": "went", "status": 1},
+        { "label": "got", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_8", "status": 0},
+        { "audio": "L10_Task1_F_9", "status": 1}
+      ],
+      "resposta": [
+        { "label": "met", "status": -1},
+        { "label": "made", "status": 0},
+        { "label": "saw", "status": 1},
+        { "label": "sewed", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_10", "status": 0},
+        { "audio": "L10_Task1_F_11", "status": 1}
+      ],
+      "resposta": [
+        { "label": "sang", "status": -1},
+        { "label": "sold", "status": 0},
+        { "label": "thought", "status": -1},
+        { "label": "took", "status": 1}
+      ]
+    }
+  ],
+  "L10_T1_Medio": [
+    {
+      "pergunta": "L10_Task1_F_0",
+      "resposta": {
+        "label": "eat / big breakfast",
+        "status": ["Did you eat a big breakfast?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_1",
+      "resposta": {
+        "label": "When / come back",
+        "status": ["When did you come back?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_2",
+      "resposta": {
+        "label": "have / fun / your vacation",
+        "status": ["Did you have fun on your vacation?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_3",
+      "resposta": {
+        "label": "finish / your project",
+        "status": ["Did you finish your project?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_4",
+      "resposta": {
+        "label": "Drink / coffee / tea",
+        "status": ["Did you drink coffee or tea?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_5",
+      "resposta": {
+        "label": "What / Mike / do / yesterday",
+        "status": ["What did Mike do yesterday?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_6",
+      "resposta": {
+        "label": "Jonathan / yesterday / on the net",
+        "status": ["What did Jonathan pay on the net yesterday?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_7",
+      "resposta": {
+        "label": "Wendy / yesterday / morning",
+        "status": ["What did Wendy send yesterday morning?"]
+      }
+    }
+  ],
+  "L10_T1_Dificil": [
+    {
+      "pergunta": "L10_Task1_D_0",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_0", "status": 1},
+        {"image": "Ess1_L10_Task1_D_1", "status": 0},
+        {"image": "Ess1_L10_Task1_D_2", "status": 0},
+        {"image": "Ess1_L10_Task1_D_3", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L10_Task1_D_1",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_4", "status": 0},
+        {"image": "Ess1_L10_Task1_D_5", "status": 0},
+        {"image": "Ess1_L10_Task1_D_6", "status": 1},
+        {"image": "Ess1_L10_Task1_D_7", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L10_Task1_D_2",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_8", "status": 1},
+        {"image": "Ess1_L10_Task1_D_9", "status": 0},
+        {"image": "Ess1_L10_Task1_D_10", "status": 0},
+        {"image": "Ess1_L10_Task1_D_11", "status": 0}
+      ]
+    }
   ]
 }

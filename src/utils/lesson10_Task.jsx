@@ -75,233 +75,158 @@ export const L10_T1_Facil = [
 
 export const L10_T1_Medio = [
   {
-    pergunta: "_______ you watch the movie last weekend?",
-    resposta: [
-      {label: "Do", status: 0},
-      {label: "Did", status: 1},
-      {label: "Can", status: 0}
-    ]
+    pergunta: "L10_Task1_F_0",
+    resposta: {
+      label: "eat / big breakfast",
+      status: ["Did you eat a big breakfast?"]
+    }
   },
   {
-    pergunta: "Did you _____ the cast of the movie?",
-    resposta: [
-      {label: "liked ", status: 0},
-      {label: "likes ", status: 0},
-      {label: "like ", status: 1}
-    ]
+    pergunta: "L10_Task1_F_1",
+    resposta: {
+      label: "When / come back",
+      status: ["When did you come back?"]
+    }
   },
   {
-    pergunta: "When _____ you _____ the movie?",
-    resposta: [
-      {label: "do – watched", status: 0},
-      {label: "does – watch", status: 0},
-      {label: "did – watch", status: 1}
-    ]
+    pergunta: "L10_Task1_F_2",
+    resposta: {
+      label: "have / fun / your vacation",
+      status: ["Did you have fun on your vacation?"]
+    }
   },
   {
-    pergunta: "Where ____ you ____ on your last vacation?",
-    resposta: [
-      {label: "did – go", status: 1},
-      {label: "do – go", status: 0},
-      {label: "can – go", status: 0}
-    ]
+    pergunta: "L10_Task1_F_3",
+    resposta: {
+      label: "finish / your project",
+      status: ["Did you finish your project?"]
+    }
   },
   {
-    pergunta: "___ he ___ about it to his teacher last class?",
-    resposta: [
-      {label: "Does – talk", status: 0},
-      {label: "Did – talk", status: 1},
-      {label: "Do – talk", status: 0}
-    ]
+    pergunta: "L10_Task1_F_4",
+    resposta: {
+      label: "Drink / coffee / tea",
+      status: ["Did you drink coffee or tea?"]
+    }
   },
   {
-    pergunta: "She _____ her grandmother two days ago.",
-    resposta: [
-      {label: "visits", status: 0},
-      {label: "visited", status: 1},
-      {label: "visit", status: 0}
-    ]
+    pergunta: "L10_Task1_F_5",
+    resposta: {
+      label: "What / Mike / do / yesterday",
+      status: ["What did Mike do yesterday?"]
+    }
   },
   {
-    pergunta: "____ Mary and her friends ____ to go backpacking one year ago?",
-    resposta: [
-      {label: "Do – decide", status: 0},
-      {label: "Does – decide", status: 0},
-      {label: "Did – decide", status: 1}
-    ]
+    pergunta: "L10_Task1_F_6",
+    resposta: {
+      label: "Jonathan / yesterday / on the net",
+      status: ["What did Jonathan pay on the net yesterday?"]
+    }
   },
   {
-    pergunta: "He _______ his last trip online.",
-    resposta: [
-      {label: "search", status: 0},
-      {label: "searched", status: 1},
-      {label: "to search", status: 0}
-    ]
-  },
-  {
-    pergunta: "Her teacher ____ because she ____ the test.",
-    resposta: [
-      {label: "talked – missed", status: 0},
-      {label: "called – misses", status: 0},
-      {label: "called – missed", status: 1}
-    ]
-  },
-  {
-    pergunta: "They _____ a delicious dinner last Saturday.",
-    resposta: [
-      {label: "cooked", status: 1},
-      {label: "cooking", status: 0},
-      {label: "cook", status: 0}
-    ]
+    pergunta: "L10_Task1_F_7",
+    resposta: {
+      label: "Wendy / yesterday / morning",
+      status: ["What did Wendy send yesterday morning?"]
+    }
   }
 ]
 
 export const L10_T1_Dificil = [
   {
-    pergunta: [
-      {label: "Yes, I do. Did you move in yesterday?", status: 1},
-      {label: "Do you live here?", status: 0},
-      {label: "Yes, I did.", status: 2}
-    ],
+    pergunta: "L10_Task1_D_0",
     resposta: [
-      {label: "Do you live here?", status: 0},
-      {label: "Yes, I do. Did you move in yesterday?", status: 1},
-      {label: "Yes, I did.", status: 2}
+      {image: "Ess1_L10_Task1_D_0", status: 1},
+      {image: "Ess1_L10_Task1_D_1", status: 0},
+      {image: "Ess1_L10_Task1_D_2", status: 0},
+      {image: "Ess1_L10_Task1_D_3", status: 0},
     ]
   },
   {
-    pergunta: [
-      {label: "Hi. I’m Alison, Alison Hill.", status: 1},
-      {label: "Good morning, I’m Daniel Murray", status: 0},
-      {label: "Nice to meet you too.", status: 3},
-      {label: "Nice to meet you", status: 2}
-    ],
+    pergunta: "L10_Task1_D_1",
     resposta: [
-      {label: "Good morning, I’m Daniel Murray", status: 0},
-      {label: "Hi. I’m Alison, Alison Hill.", status: 1},
-      {label: "Nice to meet you.", status: 2},
-      {label: "Nice to meet you too.", status: 3}
+      {image: "Ess1_L10_Task1_D_4", status: 0},
+      {image: "Ess1_L10_Task1_D_5", status: 0},
+      {image: "Ess1_L10_Task1_D_6", status: 1},
+      {image: "Ess1_L10_Task1_D_7", status: 0},
     ]
   },
   {
-    pergunta: [
-      {label: "Me? No, I didn’t!", status: 1},
-      {label: "Did you break the remote control?", status: 0},
-      {label: "Well, I think I need to buy new batteries tomorrow.", status: 2}
-    ],
+    pergunta: "L10_Task1_D_2",
     resposta: [
-      {label: "Did you break the remote control?", status: 0},
-      {label: "Me? No, I didn’t!", status: 1},
-      {label: "Well, I think I need to buy new batteries tomorrow.", status: 2}
-    ]
-  },
-  {
-    pergunta: [
-      {label: "Yes, I watched it yesterday.", status: 1},
-      {label: "Is it a good movie?", status: 2},
-      {label: "Did you watch the movie?", status: 0},
-      {label: "For me, it was really nice.", status: 3}
-    ],
-    resposta: [
-      {label: "Did you watch the movie?", status: 0},
-      {label: "Yes, I watched it yesterday.", status: 1},
-      {label: "Is it a good movie?", status: 2},
-      {label: "For me, it was really nice.", status: 3}
+      {image: "Ess1_L10_Task1_D_8", status: 0},
+      {image: "Ess1_L10_Task1_D_9", status: 1},
+      {image: "Ess1_L10_Task1_D_10", status: 0},
+      {image: "Ess1_L10_Task1_D_11", status: 0},
     ]
   },
 ]
 
 export const L10_T2_Facil = [
   {
-    pergunta: "L9_Task2_F_0",
-    resposta: [
-      {label: "Called", status: 1},
-      {label: "Played", status: 1},
-      {label: "Watched", status: 0},
-      {label: "Needed", status: 0}
-    ]
+    pergunta: "Oh! It’s Friday. Thank God!",
+    label: ["Yeah!", ""],
+    resposta: {
+      label: ["", "Let’s work on the weekend.", "Let’s enjoy our weekend!", "Let’s see!"],
+      status: "Let’s enjoy our weekend!"
+    }
   },
   {
-    pergunta: "L9_Task2_F_1",
-    resposta: [
-      {label: "Remembered", status: 1},
-      {label: "Stayed", status: 1},
-      {label: "Helped", status: 0},
-      {label: "Studied", status: 0}
-    ]
-  },
-  {  
-    pergunta: "L9_Task2_F_2",
-    resposta: [
-      {label: "Studied", status: 1},
-      {label: "Asked", status: 1},
-      {label: "Started", status: 0},
-      {label: "Needed", status: 0}
-    ]
+    pergunta: "Where can we go this weekend?",
+    label: ["I", "this new place on the Main Avenue is awesome."],
+    resposta: {
+      label: ["", "hear", "heard", "get"],
+      status: "heard"
+    }
   },
   {
-    pergunta: "L9_Task2_F_3",
-    resposta: [
-      {label: "Liked", status: 1},
-      {label: "Stopped", status: 1},
-      {label: "Lived", status: 0},
-      {label: "Watched", status: 0}
-    ]
+    pergunta: "Let’s get a taxi!",
+    label: ["", "to Main Avenue, please."],
+    resposta: {
+      label: ["", "Get us", "Take us", "Move us"],
+      status: "Take us"
+    }
   },
   {
-    pergunta: "L9_Task2_F_4",
-    resposta: [
-      {label: "Helped", status: 1},
-      {label: "Watched", status: 1},
-      {label: "Wanted", status: 0},
-      {label: "Needed", status: 0}
-    ],
+    pergunta: "Here it is.",
+    label: ["Here’s", "."],
+    resposta: {
+      label: ["", "your change", "your money", "the rest"],
+      status: "your change"
+    }
   },
   {
-    pergunta: "L9_Task2_F_5",
-    resposta: [
-      {label: "Invited", status: 1},
-      {label: "Texted", status: 1},
-      {label: "Wanted", status: 0},
-      {label: "Played", status: 0},
-    ]
+    pergunta: "Hi! You are back!",
+    label: ["Yes. Last weekend I", "with my friends."],
+    resposta: {
+      label: ["", "traveled", "travel", "travels"],
+      status: "traveled "
+    }
   },
   {
-    pergunta: "L9_Task2_F_6",
-    resposta: [
-      {label: "Wanted", status: 1},
-      {label: "Needed", status: 1},
-      {label: "Called", status: 0},
-      {label: "Helped", status: 0}
-    ]
+    pergunta: "What are you going to do next weekend?",
+    label: ["I", "with my friends."],
+    resposta: {
+      label: ["", "went out", "am going to go out", "go out"],
+      status: "am going to go out "
+    }
   },
   {
-    pergunta: "L9_Task2_F_7",
-    resposta: [
-      {label: "Decided", status: 1},
-      {label: "Lived", status: 1},
-      {label: "Used", status: 0},
-      {label: "Liked", status: 0},
-    ]
+    pergunta: "Did you sleep well last night?",
+    label: ["Yes. I", "very well last night."],
+    resposta: {
+      label: ["", "sleep", "slept", "sleeps"],
+      status: "slept"
+    }
   },
   {
-    pergunta: "L9_Task2_F_8",
-    resposta: [
-      {label: "Used", status: 1},
-      {label: "Started", status: 1},
-      {label: "Studied", status: 0},
-      {label: "Stayed", status: 0}
-    ]
-  },
-  {
-    pergunta: "L9_Task2_F_9",
-    resposta: [
-      {label: "Worked", status: 1},
-      {label: "Enjoyed", status: 1},
-      {label: "Played", status: 0},
-      {label: "Watched", status: 0}
-    ]
-  },
+    pergunta: "",
+    label: ["Carla didn’t", "out with her friends last Saturday."],
+    resposta: {
+      label: ["", "hang", "hung", "hangs"],
+      status: "slept"
+    }
+  }
 ]
 
 export const L10_T2_Medio = [

@@ -183,11 +183,18 @@ export const Game27 = () => {
               key={index}
               onClick={() => handleClick(index)}
               style={{
-                backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : ""
+                backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : "",
+                flexDirection: answers.length === 2 ? "column" : "row",
               }}
               disabled={blockButton}
             >
-              <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`} alt="" />
+              <img
+                style={{
+                  width: answers.length === 2 ? "19rem" : "8rem",
+                  height: answers.length === 2 ? "10rem" : "6rem",
+                }}
+                src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`}alt="" 
+              />
             </Photo>
           )
         })}
