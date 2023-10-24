@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { SubTitleLesson } from "../subTitleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { L9_T2_Medio } from "../../utils/lesson9_Task";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
@@ -16,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game35 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -36,8 +35,8 @@ export const Game35 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    let dataLength = L9_T2_Medio.length;
-    /* let dataLength = 0;
+
+    let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -51,7 +50,7 @@ export const Game35 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
+    }
     
     let tempRandom = [];
     for (let a = 0; a < dataLength; a ++) {
@@ -60,8 +59,7 @@ export const Game35 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    const items = L9_T2_Medio[tempRandom[round]];
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.audio);
     setQuestion(items.pergunta);
@@ -72,8 +70,8 @@ export const Game35 = () => {
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
-    //const items = JSON.parse(data[randomNumber[number]].conteudo);
-    const items = L9_T2_Medio[randomNumber[number]];
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
@@ -158,7 +156,7 @@ export const Game35 = () => {
   return (
     <Container>
       <SubTitleLesson title="write what you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson9/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>

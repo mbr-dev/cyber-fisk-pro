@@ -1,6 +1,6 @@
 export const L9_T1_Facil = [
   {
-    img: "Ess1_L9_TF_0",
+    img: "Ess1_L9_TF_1",
     resposta: [
       {label: "They watched a horror movie yesterday. ", status: 1},
       {label: "They saw a horror movie yesterday.", status: 0},
@@ -8,7 +8,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_1",
+    img: "Ess1_L9_TF_2",
     resposta: [
       {label: "I watched a drama movie last weekend.", status: 0},
       {label: "I watched an action movie last weekend.", status: 1},
@@ -16,7 +16,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_2",
+    img: "Ess1_L9_TF_3",
     resposta: [
       {label: "The jazz concert started at 9 o’clock.", status: 0},
       {label: "They played country music.", status: 0},
@@ -24,7 +24,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_3",
+    img: "Ess1_L9_TF_4",
     resposta: [
       {label: "They played electronic music at the party.", status: 1},
       {label: "They play good music.", status: 0},
@@ -32,7 +32,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_4",
+    img: "Ess1_L9_TF_5",
     resposta: [
       {label: "The lady didn’t cook yesterday.", status: 0},
       {label: "The lady didn’t have time to go out yesterday.", status: 1},
@@ -40,7 +40,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_5",
+    img: "Ess1_L9_TF_6",
     resposta: [
       {label: "The boy listened to music yesterday.", status: 1},
       {label: "The boy surfed the internet yesterday.", status: 0},
@@ -48,7 +48,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_6",
+    img: "Ess1_L9_TF_7",
     resposta: [
       {label: "The boy watched a movie yesterday.", status: 0},
       {label: "She listened to music online yesterday.", status: 0},
@@ -56,7 +56,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_7",
+    img: "Ess1_L9_TF_8",
     resposta: [
       {label: "He traveled last month.", status: 1},
       {label: "He visited a big city last week.", status: 0},
@@ -64,7 +64,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_8",
+    img: "Ess1_L9_TF_9",
     resposta: [
       {label: "She didn’t eat this morning.", status: 0},
       {label: "She prepared a big breakfast this morning.", status: 1},
@@ -72,7 +72,7 @@ export const L9_T1_Facil = [
     ]
   },
   {
-    img: "Ess1_L9_TF_9",
+    img: "Ess1_L9_TF_10",
     resposta: [
       {label: "They traveled by car.", status: 1},
       {label: "They traveled by plane.", status: 0},
@@ -516,11 +516,11 @@ export const L9_SUPER_LESSON = [
     resposta: ["I like"]
   },
   {
-    pergunta: "What is your favorite TV show?",
+    pergunta: "What is your favorite TV show",
     resposta: ["My favorite TV show is"]
   },
   {
-    pergunta: "When did you visit a small city?",
+    pergunta: "When did you visit a small city",
     resposta: ["I visited a small city"]
   }
 ]

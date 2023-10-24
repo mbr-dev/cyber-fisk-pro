@@ -4405,11 +4405,11 @@
       "resposta": ["I like"]
     },
     {
-      "pergunta": "What is your favorite TV show?",
+      "pergunta": "What is your favorite TV show",
       "resposta": ["My favorite TV show is"]
     },
     {
-      "pergunta": "When did you visit a small city?",
+      "pergunta": "When did you visit a small city",
       "resposta": ["I visited a small city"]
     }
   ],

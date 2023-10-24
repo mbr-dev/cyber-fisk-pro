@@ -61,6 +61,7 @@ export const Game4 = () => {
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     setIdClick(Array(items.resposta.length).fill(0));
+    
     setSounds(items.pergunta);
     setType(items.tipo);
     

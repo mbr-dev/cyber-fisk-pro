@@ -14,7 +14,7 @@ import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styl
 
 export const Game29 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
   
   const navigate = useNavigate();
@@ -75,7 +75,7 @@ export const Game29 = () => {
     setAnswer(items.option.resposta);
     setAnswer1(items.option1.resposta);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
+  }, [setIsLoading, setData, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
 
   const newRound = (number) => {
     setWordsIndex([]);

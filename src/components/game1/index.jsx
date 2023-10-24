@@ -73,7 +73,7 @@ export const Game1 = () => {
     
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, idClick, setQuestion, setRandomNumber, setOptionColor]);
+  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, setQuestion, setRandomNumber, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -181,7 +181,7 @@ export const Game1 = () => {
               optionColor={optionColor[index]}
               disabledButton={blockButton}
             >
-              <img src={`${URL_FISKPRO}/images/essentials1/lesson1/${answer.img}.png`} alt="" />
+              <img src={`${URL_FISKPRO}/images/essentials1/lesson${numSelLesson}/${answer.img}.png`} alt="" />
             </ButtonAnswer>
           )
         })}

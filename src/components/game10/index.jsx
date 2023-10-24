@@ -63,7 +63,7 @@ export const Game10 = () => {
     setAnswer(items.resposta.replace(/'/g, "’"));
     
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound, setAnswer]);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setAnswer]);
 
   const newRound = (number) => {
     setText("");

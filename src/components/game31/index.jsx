@@ -15,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game31 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -156,7 +156,6 @@ export const Game31 = () => {
   useEffect(() => {
     loadLesson();
   }, []);
-  console.log("countclick: ", countClick);
 
   useEffect(() => {
     text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
@@ -178,7 +177,7 @@ export const Game31 = () => {
     <Container>
       <SubTitleLesson title="Listen and answer using the words you see." />
       <SubTitleLessonAudio
-        audio={`${URL_FISKPRO}sounds/essentials1/lesson8/${sound}.mp3`}
+        audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
         setCountC={setCountClick}
         disabledButton={blockAudio}

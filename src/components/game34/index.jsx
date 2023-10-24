@@ -4,10 +4,9 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { L9_T2_Facil } from "../../utils/lesson9_Task";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 
@@ -36,9 +35,7 @@ export const Game34 = () => {
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
-    let dataLength = L9_T2_Facil.length;
-
-    /* let dataLength = 0;
+    let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -52,17 +49,16 @@ export const Game34 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    const items = L9_T2_Facil[tempRandom[round]];
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
     setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 
@@ -78,12 +74,11 @@ export const Game34 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     setCountClick(0);
-    //const items = JSON.parse(data[randomNumber[number]].conteudo);
-    const items = L9_T2_Facil[randomNumber[number]];
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
     setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
 

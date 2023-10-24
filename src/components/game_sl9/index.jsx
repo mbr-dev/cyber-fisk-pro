@@ -6,7 +6,6 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
-import { L9_SUPER_LESSON } from "../../utils/lesson9_Task";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -39,12 +38,12 @@ export const GameSL9 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
-      //const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
-      //const res = response.data;
-      //setData(res.dados[0].dados_conteudo);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=9&num_task=1");
+      const res = response.data;
+      setData(res.dados[0].dados_conteudo);
       
-      //let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
-      const items = L9_SUPER_LESSON[round];
+      let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
       
@@ -66,7 +65,7 @@ export const GameSL9 = () => {
     } catch(error) {
       console.log(error);
     }
-  }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
+  }, [setIsLoading, setData, round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
     setText("");
@@ -74,8 +73,8 @@ export const GameSL9 = () => {
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
 
-    //const items = JSON.parse(data[number].conteudo);
-    const items = L9_SUPER_LESSON[number];
+    const items = JSON.parse(data[number].conteudo);
+
     let tempQuestion = items.pergunta.toUpperCase();
     setQuestion(tempQuestion);
 
@@ -142,7 +141,7 @@ export const GameSL9 = () => {
       tempP = 0;
     }
 
-    let tempWord = text.trim().replace(/'/g, "’").toLowerCase();
+    let tempWord = text.trim().toLowerCase();
 
     let isAnswerCorrect = false;
 

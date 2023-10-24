@@ -81,7 +81,7 @@ export const Game7 = () => {
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
+  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData, setOptionColor]);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
