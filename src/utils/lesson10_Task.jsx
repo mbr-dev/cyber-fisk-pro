@@ -282,160 +282,40 @@ export const L10_T2_Medio = [
 
 export const L10_T2_Dificil = [
   {
-    pergunta: [
-      "Last Monday, Annie",
-      "a lot till 12:30 and then she stopped for lunch. In the afternoon she",
-      "a lot of emails and presented a project to her boss at 4 p.m. At home, as usual, she switched off from work,",
-      "a delicious dinner and",
-      " ",
-      "favorite TV show."
-    ],
-    option0: {
-      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
-      status: "worked"
-    },
-    option1: {
-      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
-      status: "answered"
-    },
-    option2: {
-      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
-      status: "cooked "
-    },
-    option3: {
-      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
-      status: "watched "
-    },
-    option4: {
-      label: ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
-      status: "her"
-    }
+    label: "Past",
+    pergunta: "last Friday. / Dan / shopping / go",
+    resposta: ["Dan went shopping last Friday.", "Last Friday, Dan went shopping."]
   },
   {
-    pergunta: [
-      "Timothy Collins",
-      "the hotel to make a reservation for two nights. When he",
-      "at the hotel, the desk clerk couldn’t",
-      "his reservation at first, but then she did. He",
-      "a double room. She handed him the keys to the room and",
-      "him to complete a form."
-    ],
-    option0: {
-      label: ["", "arrived", "find", "ask", "called", "booked", "call"],
-      status: "called"
-    },
-    option1: {
-      label: ["", "arrived", "find", "ask", "called", "booked", "call"],
-      status: "arrived"
-    },
-    option2: {
-      label: ["", "arrived", "find", "ask", "called", "booked", "call"],
-      status: "find"
-    },
-    option3: {
-      label: ["", "arrived", "find", "ask", "called", "booked", "call"],
-      status: "booked"
-    },
-    option4: {
-      label: ["", "arrived", "find", "asked", "called", "booked", "call"],
-      status: "asked"
-    }
+    label: "Present",
+    pergunta: "Josh / early / up / to / get",
+    resposta: ["Josh gets up early."]
   },
   {
-    pergunta: [
-      "Last",
-      ", Ashley",
-      "to go to the movies, but she",
-      ". She",
-      "home and watched a video. James",
-      "soccer in the afternoon and video games in the evening."
-    ],
-    option0: {
-      label: ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
-      status: "Sunday"
-    },
-    option1: {
-      label: ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
-      status: "wanted"
-    },
-    option2: {
-      label: ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
-      status: "didn’t"
-    },
-    option3: {
-      label: ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
-      status: "stayed"
-    },
-    option4: {
-      label: ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
-      status: "played"
-    }
-  }
+    label: "Past",
+    pergunta: "Christmas / gift / get / What / you / last / ?",
+    resposta: ["What gift did you get last Christmas?"]
+  },
+  {
+    label: "Present",
+    pergunta: "lunch / at / school / have / you / ?",
+    resposta: ["Do you have lunch at school?"]
+  },
+  {
+    label: "Past",
+    pergunta: "yesterday. / eat out / Luiza / friends / her",
+    resposta: ["Luiza ate out with her friends yesterday."]
+  },
+  {
+    label: "Past",
+    pergunta: "night./ last / Marta / drive / beach / the / to",
+    resposta: ["Marta drove to the beach last night."]
+  },
 ]
 
 export const L10_SUPER_LESSON = [
-  {
-    pergunta: "Do you ever go to music festivals",
-    resposta: [
-      "Yes, I do.",
-      "Yes, I go to music festivals.",
-      "No, I don’t.",
-      "No, I don’t go to music festivals."
-    ]
-  },
-  {
-    pergunta: "Did you watch a horror movie yesterday",
-    resposta: [
-      "Yes, I did.",
-      "Yes, I watched a horror movie yesterday.",
-      "No, I didn’t.",
-      "No, I didn’t watch a horror movie."
-    ]
-  },
-  {
-    pergunta: "Did you listen to music this morning",
-    resposta: [
-      "Yes, I did.",
-      "Yes, I listened to music this morning.",
-      "No, I didn’t.",
-      "No, I didn’t listen to music this morning."
-    ]
-  },
-  {
-    pergunta: "Did you talk to your friend today",
-    resposta: [
-      "Yes, I did.",
-      "Yes, I talked to my friend today.",
-      "No, I didn’t.",
-      "No, I didn’t talk to my friend today."
-    ]
-  },
-  {
-    pergunta: "When did you shop for new clothes",
-    resposta: ["I shopped for new clothes"]
-  },
-  {
-    pergunta: "What kind of music do you like",
-    resposta: ["I like"]
-  },
-  {
-    pergunta: "What time did you work out yesterday",
-    resposta: [
-      "At",
-      "I worked out at",
-      "I worked out"
-    ]
-  },
-  {
-    pergunta: "What kind of food do you like",
-    resposta: ["I like"]
-  },
-  {
-    pergunta: "What is your favorite TV show?",
-    resposta: ["My favorite TV show is"]
-  },
-  {
-    pergunta: "When did you visit a small city?",
-    resposta: ["I visited a small city"]
+  { 
+    letras: ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+    resposta: ["classical", "dance", "country", "reggae", "rock", "jazz"]
   }
 ]

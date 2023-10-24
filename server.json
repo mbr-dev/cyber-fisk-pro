@@ -4690,5 +4690,43 @@
       "pergunta": ["play ", "can ", "Where ", "you ", "tennis", "?"],
       "resposta": "Where can you play tennis?"
     }
+  ],
+  "L10_T2_Dificil": [
+    {
+      "label": "Past",
+      "pergunta": "last Friday. / Dan / shopping / go",
+      "resposta": ["Dan went shopping last Friday.", "Last Friday, Dan went shopping."]
+    },
+    {
+      "label": "Present",
+      "pergunta": "Josh / early / up / to / get",
+      "resposta": ["Josh gets up early."]
+    },
+    {
+      "label": "Past",
+      "pergunta": "Christmas / gift / get / What / you / last / ?",
+      "resposta": ["What gift did you get last Christmas?"]
+    },
+    {
+      "label": "Present",
+      "pergunta": "lunch / at / school / have / you / ?",
+      "resposta": ["Do you have lunch at school?"]
+    },
+    {
+      "label": "Past",
+      "pergunta": "yesterday. / eat out / Luiza / friends / her",
+      "resposta": ["Luiza ate out with her friends yesterday."]
+    },
+    {
+      "label": "Past",
+      "pergunta": "night./ last / Marta / drive / beach / the / to",
+      "resposta": ["Marta drove to the beach last night."]
+    }
+  ],
+  "L10_SUPER_LESSON": [
+    { 
+      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "resposta": ["classical", "dance", "country", "reggae", "rock", "jazz"]
+    }
   ]
 }
