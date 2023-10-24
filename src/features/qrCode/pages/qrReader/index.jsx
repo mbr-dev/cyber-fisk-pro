@@ -1,6 +1,7 @@
 import React, { useRef, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import { QrReader } from "react-qr-reader";
+import { isMobile } from "react-device-detect";
 import {
   Container,
   ContentLimiter,
@@ -58,7 +59,11 @@ export const QRReader = () => {
   //   });
 
   const askCameraPermission = async () =>
-    await navigator.mediaDevices.getUserMedia({ video: true });
+		await navigator.mediaDevices.getUserMedia({ video: isMobile ? { facingMode: 'environment' } : true });
+	
+		//navigator?.mediaDevices?.getUserMedia({ video: { facingMode: 'environment' } }).then(() => {
+		//	console.log('success');
+		//}).catch((err) => console.error(err));
 
   //let localstream2;
   askCameraPermission()
@@ -107,14 +112,14 @@ export const QRReader = () => {
                       onResult={(result, error) => {
                         if (result) {
 													console.log("res", result);
-													handleSubmit(result)
+													handleSubmit(result?.text)
                         }
                         if (error) {
                           console.log(error);
                         }
                       }}
                       scanDelay={1000}
-                      containerStyle={{ height: 300, width: '100%', transform: "rotateY(180deg)" }}
+                      containerStyle={{ height: 300, width: '100%', transform: isMobile ? "rotateY(0)" : "rotateY(180deg)" }}
                       videoContainerStyle={{ height: 300, width: '100%' }}
                       videoStyle={{ objectFit: "cover" }}
                     />

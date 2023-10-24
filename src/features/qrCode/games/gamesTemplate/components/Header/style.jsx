@@ -101,9 +101,11 @@ export const LessonBookContainer = styled.div`
 export const LessonTitle = styled.p`
   font-size: 40px;
   color: ${colors.white};
+	text-align: center;
 `;
 export const BookTitle = styled.h2`
   color: ${colors.white};
+	text-align: center;
 `;
 export const Title = styled.h2`
   margin-top: 28px;

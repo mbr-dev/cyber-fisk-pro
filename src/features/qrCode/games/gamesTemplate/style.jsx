@@ -135,6 +135,8 @@ export const BookTitle = styled.h2`
 export const Title = styled.h2`
   margin-top: 28px;
   margin-bottom: 8px;
+	padding-inline: 8px;
+	text-align: center;
 `;
 export const ContainerMain = styled.div`
   width: 100%;
