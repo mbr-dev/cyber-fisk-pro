@@ -15,7 +15,7 @@ export const Game13 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
@@ -58,8 +58,9 @@ export const Game13 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -72,6 +73,7 @@ export const Game13 = () => {
       tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setQuestion, setAnswers, round, setRightAnswers, setOptionColor])
 
@@ -79,8 +81,9 @@ export const Game13 = () => {
     setSelectedRadio([]);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {

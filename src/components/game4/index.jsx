@@ -16,7 +16,7 @@ export const Game4 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
@@ -36,7 +36,7 @@ export const Game4 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    
+
     let dataLength = 0;
     let tempData;
     if (nivel === 0) {
@@ -52,6 +52,7 @@ export const Game4 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
@@ -60,11 +61,11 @@ export const Game4 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setIdClick(Array(items.resposta.length).fill(0));
-    
-    setSounds(items.pergunta);
+
     setType(items.tipo);
-    
+    setSounds(items.pergunta);
+    setIdClick(Array(items.resposta.length).fill(0));
+
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     if (items.tipo === 3) {
@@ -72,23 +73,24 @@ export const Game4 = () => {
     } else {
       setIdTipo4(tempSortNum);
     }
-    
+
     let tempAnswers = [];
     for (let a = 0; a < tempSortNum.length; a ++) {
       tempAnswers.push(items.resposta[tempSortNum[a]]);
     }
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, data, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setIdClick]);
+  }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setIdClick]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setIdClick(Array(items.resposta.length).fill(0));
-    setSounds(items.pergunta);
+
     setType(items.tipo);
-    
+    setSounds(items.pergunta);
+    setIdClick(Array(items.resposta.length).fill(0));
+
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
     if (items.tipo === 3) {
@@ -96,12 +98,13 @@ export const Game4 = () => {
     } else {
       setIdTipo4(tempSortNum);
     }
-    
+
     let tempAnswers = [];
     for (let a = 0; a < tempSortNum.length; a ++) {
       tempAnswers.push(items.resposta[tempSortNum[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -115,7 +118,7 @@ export const Game4 = () => {
     setCountClick(clicks);
 
     let arr = idClick;
-    
+
     let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
@@ -128,7 +131,7 @@ export const Game4 = () => {
         setIdClick(arr);
         return;
       }
-      
+
       arr[index] = 1;
       setIdClick(arr);
 
@@ -221,11 +224,11 @@ export const Game4 = () => {
               }}
               disabled={blockButton}
             >
-              <p
-                style={{
-                  fontSize: type === 3 ? "2rem" : ""
-                }}
-              >{answer.label}</p>
+              <p style={{
+                fontSize: type === 3 ? "2rem" : ""
+              }}>
+                {answer.label}
+              </p>
             </Button>
           )
         })}

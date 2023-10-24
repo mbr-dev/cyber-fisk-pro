@@ -12,7 +12,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -41,17 +41,17 @@ export const GameSL3 = () => {
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      
+
       let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
-      
+
       let letterQuestion = tempQuestion.split(" ");
       const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
       const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
       setDivLetter(lettersIndex);
       setDivLetterRight(lettersWord);
-      
+
       const answersLength = items.resposta.length;
       let tempAnswers = [];
 
@@ -59,6 +59,7 @@ export const GameSL3 = () => {
         tempAnswers.push(items.resposta[a]);
       }
       setAnswersOfQuestion(tempAnswers);
+
       setBlock(false);
       setIsLoading(false);
     } catch(error) {
@@ -125,7 +126,7 @@ export const GameSL3 = () => {
     event.preventDefault();
 
     let tempP = correctPoints;
-    
+
     if (countTimer <= 30) {
       tempP += 5;
     } else if (countTimer >= 31 && countTimer <= 45) {
@@ -141,7 +142,7 @@ export const GameSL3 = () => {
     }
 
     const userText = text.replace(/'/g, "’");
-  
+
     if (round >= 6 && round <= 9) {
       const correctStarts = [
         "I have dinner at",
@@ -154,9 +155,11 @@ export const GameSL3 = () => {
 
       if (isStartCorrect) {
         setOptionColorQ(1);
+
         setCorrectPoints(tempP);
       } else {
         setOptionColorQ(2);
+
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
@@ -166,15 +169,17 @@ export const GameSL3 = () => {
 
       if (isAnswerCorrect) {
         setOptionColorQ(1);
+
         setCorrectPoints(tempP);
       } else {
         setOptionColorQ(2);
+
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
       }
     }
-    
+
     let tempRound = round;
     tempRound++;
     setRound(tempRound);
@@ -243,7 +248,7 @@ export const GameSL3 = () => {
       <Loading />
     )
   }
-  
+
   return (
     <Container>
       {changed ? 

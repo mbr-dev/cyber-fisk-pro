@@ -38,7 +38,7 @@ export const GameSL8 = () => {
       const res = response.data;
 
       const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
-      
+
       setQuestions(items.pergunta);
       setAnswers(items.resposta);
 
@@ -53,6 +53,7 @@ export const GameSL8 = () => {
         tempLetters.push(items.letras[tempRandomL[a]]);
       }
       setLetters(tempLetters);
+
       setIsLoading(false);
     } catch (error) {
       console.log(error);
@@ -112,6 +113,7 @@ export const GameSL8 = () => {
     if (availableHints.length === 0) {
       return;
     }
+
     let randomHintIndex = Math.floor(Math.random() * availableHints.length);
     let randomHint = availableHints[randomHintIndex];
     setHint(randomHint);

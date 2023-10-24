@@ -12,7 +12,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL9 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -38,21 +38,22 @@ export const GameSL9 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=9&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      
+
       let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
 
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
-      
+
       let letterQuestion = tempQuestion.split(" ");
       const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
       const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
       setDivLetter(lettersIndex);
       setDivLetterRight(lettersWord);
-      
+
       const answersLength = items.resposta.length;
       let tempAnswers = [];
 
@@ -60,6 +61,7 @@ export const GameSL9 = () => {
         tempAnswers.push(items.resposta[a]);
       }
       setAnswersOfQuestion(tempAnswers);
+
       setBlock(false);
       setIsLoading(false);
     } catch(error) {
@@ -69,6 +71,7 @@ export const GameSL9 = () => {
 
   const newRound = (number) => {
     setText("");
+    setCountTimer(0);
     setOptionColorQ(0);
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
@@ -90,9 +93,8 @@ export const GameSL9 = () => {
     for (let a = 0; a < answersLength; a ++) {
       tempAnswers.push(items.resposta[a]);
     }
-
-    setCountTimer(0);
     setAnswersOfQuestion(tempAnswers);
+
     setChanged(false);
   }
 
@@ -178,7 +180,7 @@ export const GameSL9 = () => {
         setWrongPoints(tempE);
       }
     }
-    
+
     let tempRound = round;
     tempRound++;
     setRound(tempRound);

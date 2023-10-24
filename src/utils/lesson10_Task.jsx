@@ -75,56 +75,56 @@ export const L10_T1_Facil = [
 
 export const L10_T1_Medio = [
   {
-    pergunta: "L10_Task1_F_0",
+    pergunta: "L10_Task1_M_0",
     resposta: {
       label: "eat / big breakfast",
       status: ["Did you eat a big breakfast?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_1",
+    pergunta: "L10_Task1_M_1",
     resposta: {
       label: "When / come back",
       status: ["When did you come back?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_2",
+    pergunta: "L10_Task1_M_2",
     resposta: {
       label: "have / fun / your vacation",
       status: ["Did you have fun on your vacation?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_3",
+    pergunta: "L10_Task1_M_3",
     resposta: {
       label: "finish / your project",
       status: ["Did you finish your project?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_4",
+    pergunta: "L10_Task1_M_4",
     resposta: {
       label: "Drink / coffee / tea",
       status: ["Did you drink coffee or tea?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_5",
+    pergunta: "L10_Task1_M_5",
     resposta: {
       label: "What / Mike / do / yesterday",
       status: ["What did Mike do yesterday?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_6",
+    pergunta: "L10_Task1_M_6",
     resposta: {
       label: "Jonathan / yesterday / on the net",
       status: ["What did Jonathan pay on the net yesterday?"]
     }
   },
   {
-    pergunta: "L10_Task1_F_7",
+    pergunta: "L10_Task1_M_7",
     resposta: {
       label: "Wendy / yesterday / morning",
       status: ["What did Wendy send yesterday morning?"]

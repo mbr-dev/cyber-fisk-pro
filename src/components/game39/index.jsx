@@ -6,7 +6,6 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { L10_T2_Dificil } from "../../utils/lesson10_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -14,9 +13,9 @@ import { Container, Main, Form } from "./styles";
 
 export const Game39 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
@@ -34,8 +33,8 @@ export const Game39 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    let dataLength = L10_T2_Dificil.length;
-   /*  let dataLength = 0;
+
+   let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -49,29 +48,30 @@ export const Game39 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a ++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    const items = L10_T2_Dificil[tempRandom[round]];
-    
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
     setLabel(items.label);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, round, setData, setRandomNumber, setLabel, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
-    //const items = JSON.parse(data[randomNumber[number]].conteudo);
-    const items = L10_T2_Dificil[randomNumber[number]];
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setLabel(items.label);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
@@ -79,7 +79,7 @@ export const Game39 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;

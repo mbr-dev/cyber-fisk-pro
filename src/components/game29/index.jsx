@@ -16,7 +16,7 @@ export const Game29 = () => {
   const {
     rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
@@ -74,6 +74,7 @@ export const Game29 = () => {
 
     setAnswer(items.option.resposta);
     setAnswer1(items.option1.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
 
@@ -83,6 +84,7 @@ export const Game29 = () => {
     setWordsDropped([]);
     setWordsDropped1([]);
     setOptionColor(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempWord = items.option.pergunta;
@@ -107,7 +109,7 @@ export const Game29 = () => {
 
     let tempRightPoints;
     let tempColor = optionColor;
-      
+
     if (word === answer.toLowerCase() && word1 === answer1.toLowerCase()) {
       tempColor = 1;
       setOptionColor(tempColor);
@@ -174,7 +176,6 @@ export const Game29 = () => {
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
     } : undefined;
-  
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -182,7 +183,7 @@ export const Game29 = () => {
       </div>
     );
   }
-  
+
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
       id: "droppable",
@@ -192,7 +193,7 @@ export const Game29 = () => {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
       borderRadius: isOver ? "8px" : ""
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -209,7 +210,7 @@ export const Game29 = () => {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
       borderRadius: isOver ? "8px" : ""
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}

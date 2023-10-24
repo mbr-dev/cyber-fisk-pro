@@ -78,6 +78,7 @@ export const Game21 = () => {
     setAnswer0(items.option0.status);
     setAnswer1(items.option1.status);
     setAnswer2(items.option2.status);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setSound, setQuestion, setOption0, setOption1, setOption2, setAnswer0, setAnswer1, setAnswer2]);
 
@@ -204,7 +205,7 @@ export const Game21 = () => {
   useEffect(() => {
     countClick >= 3 ? setBlockButton(false) : setBlockButton(true)
   }, [countClick, setBlockButton]);
-  
+
   if (isLoading) {
     return (
       <Loading />

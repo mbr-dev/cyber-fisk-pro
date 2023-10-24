@@ -56,6 +56,7 @@ export const Game28 = () => {
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
+
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setQuestion(items.pergunta);
@@ -68,6 +69,7 @@ export const Game28 = () => {
     setColorAnswer(0);
     setOption("");
     setSelected("");
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setQuestion(items.pergunta);
@@ -151,7 +153,7 @@ export const Game28 = () => {
   useEffect(() => {
     selected !== "" ? setBlockButton(false) : setBlockButton(true);
   }, [selected, setBlockButton]);
-  
+
   if (isLoading) {
     return (
       <Loading />

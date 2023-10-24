@@ -52,7 +52,7 @@ export const Game20 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-    
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a ++) {
       tempRandom.push(a);
@@ -64,6 +64,7 @@ export const Game20 = () => {
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setQuestion, setAnswer]);
 
@@ -71,7 +72,9 @@ export const Game20 = () => {
     setText("");
     setColorAnswer(0);
     setCountQ(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
@@ -80,7 +83,7 @@ export const Game20 = () => {
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -104,12 +107,14 @@ export const Game20 = () => {
 
       tempColorA = 1;
       setColorAnswer(tempColorA);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);

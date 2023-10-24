@@ -68,6 +68,8 @@ export const Game33 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setAnswers(items.resposta);
     setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
@@ -81,13 +83,14 @@ export const Game33 = () => {
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setQuestions(tempQuestions);
 
-    setAnswers(items.resposta);
     setBlockButton(false);
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setOptionColor, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setAnswers(items.resposta);
     setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
@@ -101,7 +104,6 @@ export const Game33 = () => {
     tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
     setQuestions(tempQuestions);
 
-    setAnswers(items.resposta);
     setBlockButton(false);
   }
 
@@ -147,23 +149,23 @@ export const Game33 = () => {
       setTimeout(() =>{
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -174,12 +176,7 @@ export const Game33 = () => {
 
   const SortableItem = ({ id, children }) => {
     const {
-      attributes,
-      listeners,
-      setNodeRef,
-      isDragging,
-      transform,
-      transition
+      attributes, listeners, setNodeRef, isDragging, transform, transition
     } = useSortable({id: id});
 
     const style = {
@@ -189,7 +186,7 @@ export const Game33 = () => {
       border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
       borderRadius: isDragging && "8px",
     };
-    
+
     return (
       <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
         {children}
@@ -199,7 +196,7 @@ export const Game33 = () => {
 
   function handleDragEnd(event) {
     const { active, over } = event;
-  
+
     if (active.id !== over.id) {
       setQuestions((items) => {
         const oldIndex = items.indexOf(active.id);
@@ -222,7 +219,7 @@ export const Game33 = () => {
   return (
     <Container>
       <TitleLesson title="Organizar a ordem das frases." />
-      
+
       <Main>
         <DndContext
           sensors={sensors}
@@ -234,17 +231,17 @@ export const Game33 = () => {
               return (
               <SortableItem key={index} id={question}>
                 <ButtonAnswer
-                   w="14rem"
-                   h="3rem"
-                   optionColor={optionColor[index]}
-                  >
+                  w="14rem"
+                  h="3rem"
+                  optionColor={optionColor[index]}
+                >
                   <p>{question.label}</p>
                 </ButtonAnswer>
               </SortableItem>
             )})}
           </SortableContext>
         </DndContext>
-        <ButtonBg 
+        <ButtonBg
           h="2rem"
           w="10rem"
           disabledButton={blockButton}

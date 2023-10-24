@@ -14,9 +14,9 @@ import { Container, Main } from "./styles";
 
 export const Game9 = () => {
   const {
-    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
@@ -49,7 +49,7 @@ export const Game9 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-      
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
@@ -58,9 +58,10 @@ export const Game9 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
-    
+    setOptionColor(Array(items.resposta.length).fill(0));
+
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
@@ -78,8 +79,9 @@ export const Game9 = () => {
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -90,6 +92,7 @@ export const Game9 = () => {
       tempAnswers.push(items.resposta[a]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -103,12 +106,12 @@ export const Game9 = () => {
     let answerSelected = answers[index].status;
 
     if (answerSelected === 1) {
+      tempColor[index] = 1;
+      setOptionColor(tempColor);
+
       tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
       setNewPontos(nivel, tempPoint);
-
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
     } else {
       let tempE = wrongPoints;
       tempE++;
@@ -134,7 +137,7 @@ export const Game9 = () => {
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
-      navigate('/GameOver');
+      navigate("/GameOver");
       setTimeout(() => {
         setNewContainer(1);
       }, 1500);
@@ -144,7 +147,6 @@ export const Game9 = () => {
       navigate(`/${page}`);
     }else {
       setTimeout(() => {
-        //setNewLesson(2);
         if(nivel === 0){
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -16,7 +16,7 @@ export const Game27 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
@@ -58,10 +58,10 @@ export const Game27 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
-    
+    setOptionColor(Array(items.resposta.length).fill(0));
+
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
@@ -78,18 +78,20 @@ export const Game27 = () => {
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    
+
     let tempAnswers = [];
     for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -105,14 +107,14 @@ export const Game27 = () => {
     if (selectedAnswer.status === 1) {
       tempColor[index] = 1;
       setOptionColor(tempColor);
-      
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setNewPontos(nivel, tempRightPoints);
       setRightPoints(tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
-      
+
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
@@ -176,25 +178,22 @@ export const Game27 = () => {
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
-      <Main>
+      <Main style={{
+        flexDirection: answers.length === 2 ? "column" : "row",
+      }}>
         {answers.map((answer, index) => {
           return (
             <Photo
               key={index}
               onClick={() => handleClick(index)}
               style={{
-                backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : "",
-                flexDirection: answers.length === 2 ? "column" : "row",
+                borderColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : "",
+                width: answers.length === 2 ? "16rem" : "10rem",
+                height: answers.length === 2 ? "10rem" : "7rem",
               }}
               disabled={blockButton}
             >
-              <img
-                style={{
-                  width: answers.length === 2 ? "19rem" : "8rem",
-                  height: answers.length === 2 ? "10rem" : "6rem",
-                }}
-                src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`}alt="" 
-              />
+              <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`} alt="" />
             </Photo>
           )
         })}

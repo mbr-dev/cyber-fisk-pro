@@ -66,26 +66,29 @@ export const Game31 = () => {
     setSound(items.pergunta);
     setWord(items.resposta.label);
     setAnswers(items.resposta.status);
-    setIsLoading(false);
+
     setBlockAudio(false);
+    setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setSound, setWord, setAnswers, setBlockAudio]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
     setCountClick(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
     setWord(items.resposta.label);
     setAnswers(items.resposta.status);
+
     setBlockAudio(false);
   }
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text.trim().toLowerCase();
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -175,7 +178,7 @@ export const Game31 = () => {
 
   return (
     <Container>
-      <SubTitleLesson title="Listen and answer using the words you see." />
+      <SubTitleLesson title="Listen and write a question." />
       <SubTitleLessonAudio
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
@@ -186,7 +189,7 @@ export const Game31 = () => {
       <Main>
         <p>{word}</p>
         <form id="myForm" onSubmit={handleVerifyWord}>
-          <Input 
+          <Input
             placeholder="Type here"
             maxLength={100}
             value={text}

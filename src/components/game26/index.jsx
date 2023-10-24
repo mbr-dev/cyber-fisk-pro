@@ -74,9 +74,9 @@ export const Game26 = () => {
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    setOptionColor(Array(items.resposta.length).fill(0));
     setSound(items.pergunta);
     setRightAnswers(items.resposta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -94,11 +94,12 @@ export const Game26 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     setSound(items.pergunta);
     setRightAnswers(items.resposta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -109,6 +110,7 @@ export const Game26 = () => {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
     setBlockAudio(false);
   } 
@@ -155,23 +157,23 @@ export const Game26 = () => {
       setTimeout(() =>{
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -182,12 +184,7 @@ export const Game26 = () => {
 
   const SortableItem = ({ id, children }) => {
     const {
-      attributes,
-      listeners,
-      setNodeRef,
-      isDragging,
-      transform,
-      transition
+      attributes, listeners, setNodeRef, isDragging, transform, transition
     } = useSortable({id: id});
 
     const style = {
@@ -197,7 +194,7 @@ export const Game26 = () => {
       border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
       borderRadius: isDragging && "8px",
     };
-    
+
     return (
       <div ref={setNodeRef} style={style} {...attributes} {...listeners}>
         {children}
@@ -207,7 +204,7 @@ export const Game26 = () => {
 
   function handleDragEnd(event) {
     const { active, over } = event;
-  
+
     if (active.id !== over.id) {
       setAnswers((items) => {
         const oldIndex = items.indexOf(active.id);

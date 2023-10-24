@@ -6,7 +6,6 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { L10_T2_Facil } from "../../utils/lesson10_Task";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -16,7 +15,7 @@ export const Game37 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
@@ -35,8 +34,8 @@ export const Game37 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    let dataLength = L10_T2_Facil.length;
-   /*  let dataLength = 0;
+
+   let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -50,7 +49,7 @@ export const Game37 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -59,20 +58,20 @@ export const Game37 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    const items = L10_T2_Facil[tempRandom[round]];
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setQuestion(items.pergunta);
     setLabelQ(items.label);
     setAnswers(items.resposta.status);
     setOption(items.resposta.label);
+
     setIsLoading(false);
   }, [setIsLoading, setRandomNumber, setOption, setData, round, setAnswers, setLabelQ, setBlockButton]);
 
   const newRound = (number) => {
     setOptionColor(0);
-    //const items = JSON.parse(data[randomNumber[number]].conteudo);
-    const items = L10_T2_Facil[randomNumber[number]];
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setQuestion(items.pergunta);
     setLabelQ(items.label);
@@ -141,7 +140,6 @@ export const Game37 = () => {
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
         } else {
-          setOptionColor(0);
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -167,10 +165,10 @@ export const Game37 = () => {
   return (
     <Container>
       <TitleLesson title="Complete." />
-      
+
       <Main>
         <p>{question}</p>
-        <Form 
+        <Form
           id="myForm"
           onSubmit={handleVerify}
           style={{

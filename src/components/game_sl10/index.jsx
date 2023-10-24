@@ -28,12 +28,13 @@ export const GameSL10 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       /* const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data; */
 
       //const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
       const items = L10_SUPER_LESSON[0];
-      
+
       let tempLetters = items.letras;
       setLetters(tempLetters);
       let tempAnswers = items.resposta;
@@ -53,7 +54,7 @@ export const GameSL10 = () => {
     if (tempNumber < 1) {
       tempNumber = 0;
     }
-    
+
     setLettersAnswer(tempLetters);
     setNumberClick(tempNumber);
   }
@@ -108,7 +109,7 @@ export const GameSL10 = () => {
     if (answers.length > 0) {
       if (finished) {
         let tempRightPoints = rightPoints;
-        
+
         if (timeElapsed <= 60) {
           tempRightPoints += 5;
         } else if (timeElapsed >= 61 && timeElapsed <= 75) {
@@ -191,7 +192,6 @@ export const GameSL10 = () => {
             )
           })}
         </ButtonArea>
-
         <ButtonBg
           h="2.5rem"
           w="9rem"

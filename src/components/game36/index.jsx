@@ -7,7 +7,6 @@ import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L10_T1_Facil } from "../../utils/lesson10_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import ImgBtn from "../../assets/ruido.svg";
@@ -38,8 +37,8 @@ export const Game36 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    let dataLength = L10_T1_Facil.length;
-    /* let dataLength = 0;
+
+    let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -53,28 +52,25 @@ export const Game36 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
-    
+    }
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = tempData.map(item => item.conteudo);
-    //const dataItem = items.map(item => JSON.parse(item));
-    const items = L10_T1_Facil[tempRandom[round]];
-    //setOptionColor(Array(randomIndices.length).fill(0));
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
     setOptionColor(Array(items.resposta.length).fill(0));
-    
+
     let tempAudios = [];
     for (let a = 0; a < items.pergunta.length; a++) {
       tempAudios.push(items.pergunta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
-
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -84,22 +80,21 @@ export const Game36 = () => {
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setAudios, setAnswers, setData]);
-  console.log(audios);
+  }, [setIsLoading, setRandomNumber, round, setAudios, setAnswers, setData, setOptionColor]);
+
   const newRound = (number) => {
     setCountClick(0);
-    //const items = data.map(item => item.conteudo);
-    //const dataItem = items.map(item => JSON.parse(item));
-    const items = L10_T1_Facil[randomNumber[number]];
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setOptionColor(Array(items.resposta.length).fill(0));
-    
+
     let tempAudios = [];
     for (let a = 0; a < items.pergunta.length; a++) {
       tempAudios.push(items.pergunta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
-
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -108,8 +103,6 @@ export const Game36 = () => {
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
 
-    setIsLoading(false);
-    
     setRightAudios([]);
     setRightAnswers([]);
     setSelectAudio(null);
@@ -123,7 +116,7 @@ export const Game36 = () => {
     setSelectAudio(tempSound);
     setBlockAnswer(false);    
 
-    const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson10/${sound.audio}.mp3`);
+    const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
 
     audio.play();
     newStatusPlay(true);
@@ -151,14 +144,15 @@ export const Game36 = () => {
       if (clicks < 2) {
         tempColor[index] = 1;
         setOptionColor(tempColor);
-        
+
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
-      
+
       tempColor[index] = 1;
       setOptionColor(tempColor);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
@@ -206,7 +200,6 @@ export const Game36 = () => {
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -224,7 +217,7 @@ export const Game36 = () => {
       <Loading />
     )
   }
-  
+
   return (
     <Container>
       <TitleLesson title="Listen and choose the correct past." />
@@ -234,7 +227,7 @@ export const Game36 = () => {
           {audios.map((audio, index) => {
             const disabledAud = rightAudios.includes(audio.status);
             return (
-              <ButtonAudio 
+              <ButtonAudio
                 key={index}
                 onClick={() => handlePlayAudio(audio)}
                 disabled={disabledAud}
@@ -251,7 +244,7 @@ export const Game36 = () => {
             const disabledRes = rightAnswers.includes(answer);
 
             return (
-              <ButtonAnswer 
+              <ButtonAnswer
                 key={index}
                 w="8rem"
                 h="2.625rem"

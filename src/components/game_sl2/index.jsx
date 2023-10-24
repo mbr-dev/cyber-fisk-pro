@@ -64,7 +64,7 @@ export const GameSL2 = () => {
 
       let tempGridFake = nameRandom.concat(imgFilter);
       tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
+
       let tempGrid = [];
       for (let a = 0; a < (6 * 2 ); a++) {
         tempGrid.push({
@@ -79,13 +79,14 @@ export const GameSL2 = () => {
         tempRandomGrid.push(a);
       }
       tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-      
+
       for (let a = 0; a < (6 * 2); a++) {
         tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
       }
-      
+
       setCards(tempGrid);
       setPlaying(true);
+
       setIsLoading(false);
     } catch(error) {
       console.log(error);
@@ -99,7 +100,7 @@ export const GameSL2 = () => {
     });
 
     const nameFilter = items.filter(item => item.name);
-    
+
     let tempRandom = [];
     for (let a = 0; a < nameFilter.length; a++) {
       tempRandom.push(a);
@@ -120,7 +121,7 @@ export const GameSL2 = () => {
 
     let tempGridFake = nameRandom.concat(imgFilter);
     tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
+
     let tempGrid = [];
     for (let a = 0; a < (8 * 2 ); a++) {
       tempGrid.push({
@@ -135,11 +136,11 @@ export const GameSL2 = () => {
       tempRandomGrid.push(a);
     }
     tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-    
+
     for (let a = 0; a < (8 * 2); a++) {
       tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
     }
-    
+
     setCards(tempGrid);
     setPlaying(true);
   }
@@ -175,10 +176,10 @@ export const GameSL2 = () => {
     let tempLevel = level;
     tempLevel++;
     setLevel(tempLevel);
-    
+
     generateScore();
     setPlaying(false);
-    
+
     setTimeout(() => {
       setReset(false);
       newRound();
@@ -194,7 +195,7 @@ export const GameSL2 = () => {
       navigate("/WellDone")
     }, 2000);
   }
-  
+
   useEffect(() => {
     loadLesson();
   }, []);
@@ -229,7 +230,7 @@ export const GameSL2 = () => {
 
   useEffect(() => {
     const allItemShown = cards.every(item => item.permanentShown === true);
-  
+
     if (moveCount > 0 && allItemShown) {
       if (level === 1) {
         setFinished(true);
@@ -270,7 +271,6 @@ export const GameSL2 = () => {
                 {card.permanentShown === false && card.shown === false &&
                   <Icon src={LogoImg} alt="" opacity={0.3} />
                 }
-
                 {(card.permanentShown || card.shown) && card.item !== null &&
                   <>
                     {card.item.name ?

@@ -7,7 +7,6 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { L10_T2_Medio } from "../../utils/lesson10_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -15,9 +14,9 @@ import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styl
 
 export const Game38 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
@@ -35,8 +34,8 @@ export const Game38 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    let dataLength = L10_T2_Medio.length
-    /* let dataLength = 0;
+
+    let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -50,7 +49,7 @@ export const Game38 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    } */
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -59,29 +58,29 @@ export const Game38 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    const items = L10_T2_Medio[tempRandom[round]];
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setAnswer(items.resposta);
 
     let tempWord = items.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
 
-    setAnswer(items.resposta);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setWords, setAnswer]);
+  }, [setIsLoading, setData, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
     setWordsIndex([]);
     setWordsDropped([]);
     setOptionColor(0);
-    //const items = JSON.parse(data[randomNumber[number]].conteudo);
-    const items = L10_T2_Medio[randomNumber[number]];
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setAnswer(items.resposta);
 
     let tempWord = items.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
-
-    setAnswer(items.resposta);
   }
 
   const handleVerify = () => {
@@ -93,7 +92,7 @@ export const Game38 = () => {
 
     let tempRightPoints;
     let tempColor = optionColor;
-      
+
     if (word === answer.toLowerCase()) {
       tempColor = 1;
       setOptionColor(tempColor);
@@ -141,7 +140,6 @@ export const Game38 = () => {
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
         } else {
-          setOptionColor(0);
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -160,8 +158,7 @@ export const Game38 = () => {
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
     } : undefined;
-  
-    
+
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
         {children}
@@ -178,7 +175,7 @@ export const Game38 = () => {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
       borderRadius: isOver ? "8px" : ""
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -246,7 +243,7 @@ export const Game38 = () => {
             </Droppable>
           </DndContext>
 
-          <ButtonBg 
+          <ButtonBg
             w="14rem"
             h="2.5rem"
             greenBtn

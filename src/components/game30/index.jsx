@@ -17,7 +17,7 @@ export const Game30 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
@@ -64,11 +64,13 @@ export const Game30 = () => {
     setSound(items.pergunta);
     setAnswers(items.resposta.status);
     setOption(items.resposta.label);
+
     setIsLoading(false);
   }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setOptionColor(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
@@ -137,7 +139,6 @@ export const Game30 = () => {
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
         } else {
-          setOptionColor(0);
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -164,7 +165,7 @@ export const Game30 = () => {
     <Container>
       <TitleLesson title="Listen and choose the correct alternative." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
-      
+
       <Main>
         <Form 
           id="myForm"

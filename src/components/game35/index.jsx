@@ -51,7 +51,7 @@ export const Game35 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-    
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a ++) {
       tempRandom.push(a);
@@ -64,23 +64,26 @@ export const Game35 = () => {
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.audio);
     setQuestion(items.pergunta);
+
     setAnswer(items.resposta);
   }
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -95,6 +98,7 @@ export const Game35 = () => {
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -157,10 +161,10 @@ export const Game35 = () => {
     <Container>
       <SubTitleLesson title="write what you hear." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
-      
+
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
-          <Input 
+          <Input
             placeholder="Type here"
             maxLength={100}
             value={text}
@@ -170,7 +174,7 @@ export const Game35 = () => {
               color: colorAnswers === 0 ? "" : defaultTheme.white,
               border: colorAnswers === 0 ? "" : "none",
             }}
-            />
+          />
         </form>
         <p>{question}</p>
         <ButtonBg
