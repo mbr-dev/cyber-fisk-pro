@@ -212,6 +212,14 @@ export const L10_T2_Facil = [
     }
   },
   {
+    pergunta: "",
+    label: ["Where did you", "last weekend? To the new restaurant!"],
+    resposta: {
+      label: ["", "went", "go", "going"],
+      status: "go"
+    }
+  },
+  {
     pergunta: "Did you sleep well last night?",
     label: ["Yes. I", "very well last night."],
     resposta: {
@@ -224,62 +232,52 @@ export const L10_T2_Facil = [
     label: ["Carla didn’t", "out with her friends last Saturday."],
     resposta: {
       label: ["", "hang", "hung", "hangs"],
-      status: "slept"
+      status: "hang"
     }
   }
 ]
 
 export const L10_T2_Medio = [
   {
-    audio: "L9_Task2_M_0",
-    pergunta: "She played it yesterday.",
-    resposta: "When did she play the tambourine?"
+    pergunta: ["rather ", "would ", "do ", "Kyle ", "exciting ", "things."],
+    resposta: "Kyle would rather do exciting things."
   },
   {
-    audio: "L9_Task2_M_1",
-    pergunta: "We watched talk shows and cartoons.",
-    resposta: "What did you do yesterday?"
+    pergunta: ["on ", "Chris ", "birthday.", "cake ", "for ", "his ", "breakfast ", "had "],
+    resposta: "Chris had cake for breakfast on his birthday."
   },
   {
-    audio: "L9_Task2_M_2",
-    pergunta: "They watched it last night.",
-    resposta: "When did they watch the talk show?"
+    pergunta: ["America", "going ", "he ", "Is ", "to ", "move ", "to ", "?"],
+    resposta: "Is he going to move to America?"
   },
   {
-    audio: "L9_Task2_M_3",
-    pergunta: "We needed to buy them in January.",
-    resposta: "When did you need to buy the books?"
+    pergunta: ["would ", "be ", "Cindy ", "rather ", "not ", "alone."],
+    resposta: "Cindy would rather not be alone."
   },
   {
-    audio: "L9_Task2_M_4",
-    pergunta: "She studied English. ",
-    resposta: "What did she study yesterday?"
+    pergunta: ["yesterday.", "after ", "took ", "a ", "nap ", "lunch ", "Phil "],
+    resposta: "Phil took a nap after lunch yesterday."
   },
   {
-    audio: "L9_Task2_M_5",
-    pergunta: "He started a computer course on February 3rd.",
-    resposta: "When did Nick start a computer course?"
+    pergunta: ["book", "When ", "you ", "read ", "did ", "the ", "?"],
+    resposta: "When did you read the book?"
   },
   {
-    audio: "L9_Task2_M_6",
-    pergunta: "He studied Spanish yesterday morning.",
-    resposta: "When did Ken study Spanish?"
+    pergunta: ["classroom", "there ", "chairs ", "in ", "Are ", "the ", "?"],
+    resposta: "Are there chairs in the classroom?"
   },
   {
-    audio: "L9_Task2_M_7",
-    pergunta: "Yes. She watched a jazz concert on July 1st.",
-    resposta: "Did Julie watch a jazz concert on TV?"
+    pergunta: ["did ", "Who ", "call ", "morning", "you ", "yesterday ", "?"],
+    resposta: "Who did you call yesterday morning?"
   },
   {
-    audio: "L9_Task2_M_8",
-    pergunta: "He worked late last night.",
-    resposta: "What did Tim do last night?"
+    pergunta: ["wearing", "What ", "he ", "is ", "?"],
+    resposta: "What is he wearing?"
   },
   {
-    audio: "L9_Task2_M_9",
-    pergunta: "No. She stayed home yesterday.",
-    resposta: "Did Mary go to a shopping mall yesterday afternoon?"
-  }
+    pergunta: ["play ", "can ", "Where ", "you ", "tennis", "?"],
+    resposta: "Where can you play tennis?"
+  },
 ]
 
 export const L10_T2_Dificil = [

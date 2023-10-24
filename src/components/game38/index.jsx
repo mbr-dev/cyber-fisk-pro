@@ -7,12 +7,13 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
+import { L10_T2_Medio } from "../../utils/lesson10_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styles";
 
-export const Game29 = () => {
+export const Game38 = () => {
   const {
     rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
@@ -21,9 +22,7 @@ export const Game29 = () => {
 
   const [optionColor, setOptionColor] = useState(0);
   const [words, setWords] = useState([]);
-  const [words1, setWords1] = useState([]);
   const [answer, setAnswer] = useState("");
-  const [answer1, setAnswer1] = useState("");
   const [data, setData] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
@@ -33,13 +32,11 @@ export const Game29 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [wordsDropped, setWordsDropped] = useState([]);
   const [wordsIndex, setWordsIndex] = useState([]);
-  const [wordsIndex1, setWordsIndex1] = useState([]);
-  const [wordsDropped1, setWordsDropped1] = useState([]);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-
-    let dataLength = 0;
+    let dataLength = L10_T2_Medio.length
+    /* let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -53,7 +50,7 @@ export const Game29 = () => {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
-    }
+    } */
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
@@ -62,39 +59,29 @@ export const Game29 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    //const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    const items = L10_T2_Medio[tempRandom[round]];
 
-    let tempWord = items.option.pergunta;
+    let tempWord = items.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
 
-    let tempWord1 = items.option1.pergunta;
-    tempWord1 = tempWord1.sort(() => Math.random() - 0.5);
-    setWords1(tempWord1);
-
-    setAnswer(items.option.resposta);
-    setAnswer1(items.option1.resposta);
+    setAnswer(items.resposta);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
+  }, [setIsLoading, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
     setWordsIndex([]);
-    setWordsIndex1([]);
     setWordsDropped([]);
-    setWordsDropped1([]);
     setOptionColor(0);
-    const items = JSON.parse(data[randomNumber[number]].conteudo);
+    //const items = JSON.parse(data[randomNumber[number]].conteudo);
+    const items = L10_T2_Medio[randomNumber[number]];
 
-    let tempWord = items.option.pergunta;
+    let tempWord = items.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
 
-    let tempWord1 = items.option1.pergunta;
-    tempWord1 = tempWord1.sort(() => Math.random() - 0.5);
-    setWords1(tempWord1);
-
-    setAnswer(items.option.resposta);
-    setAnswer1(items.option1.resposta);
+    setAnswer(items.resposta);
   }
 
   const handleVerify = () => {
@@ -103,12 +90,11 @@ export const Game29 = () => {
     setBlockButton(true);
 
     const word = wordsDropped.join("").toLowerCase();
-    const word1 = wordsDropped1.join("").toLowerCase();
 
     let tempRightPoints;
     let tempColor = optionColor;
       
-    if (word === answer.toLowerCase() && word1 === answer1.toLowerCase()) {
+    if (word === answer.toLowerCase()) {
       tempColor = 1;
       setOptionColor(tempColor);
 
@@ -200,23 +186,6 @@ export const Game29 = () => {
     );
   }
 
-  const Droppable1 = (props) => {
-    const {isOver, setNodeRef} = useDroppable({
-      id: "droppable1",
-    });
-
-    const style = {
-      backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
-      borderRadius: isOver ? "8px" : ""
-    };
-    
-    return (
-      <div ref={setNodeRef} style={style}>
-        {props.children}
-      </div>
-    );
-  }
-
   const handleDragEnd = (event) => {
     const { active, over } = event;
     if (over && over.id === "droppable") {
@@ -227,27 +196,17 @@ export const Game29 = () => {
     }
   }
 
-  const handleDragEnd1 = (event) => {
-    const { active, over } = event;
-    if (over && over.id === "droppable1") {
-      const droppedIndex = Number(active.id.split("-")[1]);
-      const text = over ? words1[droppedIndex] : "";
-      setWordsDropped1(state => [...state, text]);
-      setWordsIndex1(state => [...state, droppedIndex])
-    }
-  }
-
   useEffect(() => {
     loadLesson();
   }, []);
 
   useEffect(() => {
-      if (wordsDropped.length === words.length && wordsDropped1.length === words1.length) {
+      if (wordsDropped.length === words.length) {
         setBlockButton(false);
       } else {
         setBlockButton(true);
       }
-  }, [wordsDropped, wordsDropped1, setBlockButton]);
+  }, [wordsDropped, setBlockButton, words]);
 
   if (isLoading) {
     return (
@@ -257,7 +216,7 @@ export const Game29 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Drag and Drop the words to make sentences." />
+      <TitleLesson title="Unscramble." />
 
         <Main>
           <DndContext onDragEnd={handleDragEnd}>
@@ -285,33 +244,6 @@ export const Game29 = () => {
                 })}
               </AreaAnswers>
             </Droppable>
-          </DndContext>
-
-          <DndContext onDragEnd={handleDragEnd1}>
-            <AreaWord>                
-              {words1.map((word, index) => {
-                const containIndex = wordsIndex1.includes(index);
-
-                return (
-                  <Draggable index={index} key={index}>
-                    <Words style={{
-                        display: containIndex ? "none" : ""
-                      }}>{word}</Words>
-                  </Draggable>
-                )
-              })}
-            </AreaWord>
-            <Droppable1>
-              <AreaAnswers style={{
-                borderColor: optionColor === 1 ? defaultTheme["green-200"] : optionColor === 2 ? defaultTheme["red-200"] : ""
-              }}>
-                {wordsDropped1.map((word, index) => {
-                  return (
-                    <WordsDrop key={index}>{word}</WordsDrop>
-                  )
-                })}
-              </AreaAnswers>
-            </Droppable1>
           </DndContext>
 
           <ButtonBg 

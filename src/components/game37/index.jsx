@@ -56,7 +56,7 @@ export const Game37 = () => {
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
     //const items = JSON.parse(tempData[tempRandom[round]].conteudo);

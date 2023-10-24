@@ -4574,5 +4574,121 @@
         {"image": "Ess1_L10_Task1_D_11", "status": 0}
       ]
     }
+  ],
+  "L10_T2_Facil": [
+    {
+      "pergunta": "Oh! It’s Friday. Thank God!",
+      "label": ["Yeah!", ""],
+      "resposta": {
+        "label": ["", "Let’s work on the weekend.", "Let’s enjoy our weekend!", "Let’s see!"],
+        "status": "Let’s enjoy our weekend!"
+      }
+    },
+    {
+      "pergunta": "Where can we go this weekend?",
+      "label": ["I", "this new place on the Main Avenue is awesome."],
+      "resposta": {
+        "label": ["", "hear", "heard", "get"],
+        "status": "heard"
+      }
+    },
+    {
+      "pergunta": "Let’s get a taxi!",
+      "label": ["", "to Main Avenue, please."],
+      "resposta": {
+        "label": ["", "Get us", "Take us", "Move us"],
+        "status": "Take us"
+      }
+    },
+    {
+      "pergunta": "Here it is.",
+      "label": ["Here’s", "."],
+      "resposta": {
+        "label": ["", "your change", "your money", "the rest"],
+        "status": "your change"
+      }
+    },
+    {
+      "pergunta": "Hi! You are back!",
+      "label": ["Yes. Last weekend I", "with my friends."],
+      "resposta": {
+        "label": ["", "traveled", "travel", "travels"],
+        "status": "traveled "
+      }
+    },
+    {
+      "pergunta": "What are you going to do next weekend?",
+      "label": ["I", "with my friends."],
+      "resposta": {
+        "label": ["", "went out", "am going to go out", "go out"],
+        "status": "am going to go out "
+      }
+    },
+    {
+      "pergunta": "",
+      "label": ["Where did you", "last weekend? To the new restaurant!"],
+      "resposta": {
+        "label": ["", "went", "go", "going"],
+        "status": "go"
+      }
+    },
+    {
+      "pergunta": "Did you sleep well last night?",
+      "label": ["Yes. I", "very well last night."],
+      "resposta": {
+        "label": ["", "sleep", "slept", "sleeps"],
+        "status": "slept"
+      }
+    },
+    {
+      "pergunta": "",
+      "label": ["Carla didn’t", "out with her friends last Saturday."],
+      "resposta": {
+        "label": ["", "hang", "hung", "hangs"],
+        "status": "hang"
+      }
+    }
+  ],
+  "L10_T2_Medio": [
+    {
+      "pergunta": ["rather ", "would ", "do ", "Kyle ", "exciting ", "things."],
+      "resposta": "Kyle would rather do exciting things."
+    },
+    {
+      "pergunta": ["on ", "Chris ", "birthday.", "cake ", "for ", "his ", "breakfast ", "had "],
+      "resposta": "Chris had cake for breakfast on his birthday."
+    },
+    {
+      "pergunta": ["America", "going ", "he ", "Is ", "to ", "move ", "to ", "?"],
+      "resposta": "Is he going to move to America?"
+    },
+    {
+      "pergunta": ["would ", "be ", "Cindy ", "rather ", "not ", "alone."],
+      "resposta": "Cindy would rather not be alone."
+    },
+    {
+      "pergunta": ["yesterday.", "after ", "took ", "a ", "nap ", "lunch ", "Phil "],
+      "resposta": "Phil took a nap after lunch yesterday."
+    },
+    {
+      "pergunta": ["book", "When ", "you ", "read ", "did ", "the ", "?"],
+      "resposta": "When did you read the book?"
+    },
+    {
+      "pergunta": ["classroom", "there ", "chairs ", "in ", "Are ", "the ", "?"],
+      "resposta": "Are there chairs in the classroom?"
+    },
+    {
+      "pergunta": ["did ", "Who ", "call ", "morning", "you ", "yesterday ", "?"],
+      "resposta": "Who did you call yesterday morning?"
+    },
+    {
+      "pergunta": ["wearing", "What ", "he ", "is ", "?"],
+      "resposta": "What is he wearing?"
+    },
+    {
+      "pergunta": ["play ", "can ", "Where ", "you ", "tennis", "?"],
+      "resposta": "Where can you play tennis?"
+    }
   ]
 }
