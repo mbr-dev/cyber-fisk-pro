@@ -2,8 +2,8 @@ import { useState } from "react";
 import { Wheel } from "react-custom-roulette";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { Modal } from "./components/Modal";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
 import Roleta from "./images/roleta.png";
 import Setta from "./images/setta.png";

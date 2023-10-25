@@ -2,6 +2,7 @@ export const defaultTheme = {
   white: "#FFFFFF",
   black: "#000000",
 
+  "gradient-blue": "radial-gradient(78.01% 55.16% at 50% 46.55%, #2648B1 0%, #001453 100%);",
 
   "gray-100": "#EFEFEF",
   "gray-200": "#E6E6E6",
@@ -36,4 +37,5 @@ export const defaultTheme = {
   "blue-500": "#2C4485",
   "blue-600": "#0A1D66",
   "blue-700": "#142D56",
+  "blue-800": "#061A60",
 }

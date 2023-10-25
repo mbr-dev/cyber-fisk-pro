@@ -6,7 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  background: radial-gradient(78.01% 55.16% at 50% 46.55%, #2648B1 0%, #001453 100%);
+  background: ${props => props.theme["gradient-blue"]};
 `;
 
 export const Header = styled.header`
