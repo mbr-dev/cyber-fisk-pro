@@ -12,7 +12,7 @@ export function ButtonCloseHeader(props) {
 
   return (
     <Container onClick={() => {alterPage()}}>
-      <X size={18} strokeWidth={2.5} />
+      <X size={18} strokeWidth={3} />
     </Container>
   )
 }
