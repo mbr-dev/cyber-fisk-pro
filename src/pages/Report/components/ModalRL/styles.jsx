@@ -99,14 +99,13 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   width: 100%;
-  margin-top: 1.5rem;
-  text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  text-align: left;
   padding-inline: 1.125rem;
-  padding-bottom: 3rem;
+  padding-block: 1.5rem;
   
   p {
     font-weight: 500;
@@ -125,13 +124,5 @@ export const Main = styled.main`
     p {
       font-size: 0.875rem;
     }
-  }
-`;
-
-export const Text = styled.section`
-  width: 16rem;
-  h2 {
-    font-size: 1.25rem;
-    margin-bottom: 0.75rem;
   }
 `;

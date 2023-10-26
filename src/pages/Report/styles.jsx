@@ -2,16 +2,9 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-`;
-
-export const Main = styled.main`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
 `;
 
 export const AvatarArea = styled.div`
@@ -68,6 +61,14 @@ export const Print = styled.div`
   }
 `;
 
+export const Main = styled.main`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const XP = styled.div`
   width: 100%;
   padding-inline: 2rem;
@@ -75,7 +76,7 @@ export const XP = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 1rem;
+  gap: 0.5rem;
   background-color: ${props => props.theme["gray-100"]};
 `;
 
@@ -114,6 +115,7 @@ export const XPRight = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: all ease 0.3s;
 
   p {
     color: ${props => props.theme["blue-100"]};
@@ -122,6 +124,12 @@ export const XPRight = styled.div`
     text-decoration: underline;
     cursor: pointer;
   }
+
+  &:hover {
+    p {
+      color: ${props => props.theme["blue-600"]};
+    }
+  }
 `;
 
 export const Stage = styled.div`
@@ -129,30 +137,27 @@ export const Stage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 2rem 2rem;
-  gap: 0.5rem;
+  padding: 0.5rem 2rem;
 `;
 
 export const SLeft = styled.div`
+  width: 8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  
   h2 {
     font-size: 1rem;
-  }
-
-  div {
-    width: 80px;
-    height:80px;
-    border-radius: 9999px;
-    background-color: red;
+    z-index: 100;
   }
 `;
 
 export const SRight = styled.div`
   flex: 1;
   text-align: center;
+  transition: all ease 0.3s;
+  cursor: pointer;
+
   span {
     color: ${props => props.theme["red-200"]};
   }
@@ -161,17 +166,83 @@ export const SRight = styled.div`
     color: ${props => props.theme["gray-700"]};
     font-weight: 500;
   }
+
+  &:hover {
+    transform: scale(1.05);
+  }
 `;
 
 export const Details = styled.div`
   width: 100%;
+  height: 15rem;
   padding-inline: 2rem;
+  padding-top: 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-  gap: 1rem;
+  gap: 0.5rem;
   background-color: ${props => props.theme["gray-100"]};
+  overflow-y: scroll;
 `;
 
-export const DDiv = styled.div``;
+export const DDiv = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 2px solid ${props => props.theme["gray-200"]};
+  padding-bottom: 0.25rem;
+`;
+
+export const DivBar = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  p {
+    padding: 0.135rem;
+    font-size: 0.75rem;
+    border-radius: 6px;
+    border: 2px solid ${props => props.theme["red-300"]};
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["red-200"]};
+  }
+`;
+
+export const Bar = styled.div`
+  width: 2rem;
+  height: 4rem;
+  background-color: ${props => props.theme.white};
+  position: relative;
+`;
+
+export const BarColor = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["yellow-500"]};
+  border: 1px solid ${props => props.theme["yellow-600"]};
+  position: absolute;
+  bottom: 0;
+
+  span {
+    text-align: center;
+    font-size: 0.75rem;
+    color: ${props => props.theme.white};
+  }
+`;
+
+export const ViewDetails = styled.div`
+  width: 12rem;
+  
+  h2 {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+
+  li {
+    font-size: 0.875rem;
+    font-weight: 500;
+  }
+`;
