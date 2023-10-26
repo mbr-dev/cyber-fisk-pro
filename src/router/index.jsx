@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 
 import { Home } from "../pages/Home";
+import { Help } from "../pages/Help";
 import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
@@ -79,6 +80,7 @@ export const Router =() => {
 
       <Route path="/Home" element={<Home/>} />
       <Route path="/Menu" element={<Menu/>} />
+      <Route path="/Help" element={<Help />} />
       <Route path="/Books" element={<Books />} />
       <Route path="/Login" element={<Login />} />
       <Route path="/Report" element={<Report />} />
