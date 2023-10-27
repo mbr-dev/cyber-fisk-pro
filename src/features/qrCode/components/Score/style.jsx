@@ -56,10 +56,12 @@ export const ScoreText = styled.p`
   font-size: 40px;
   color: ${colors.white};
   font-weight: bold;
+	text-align: center;
 `;
 export const MyScoreText = styled.h2`
   color: ${colors["red-100"]};
   font-weight: bold;
+	text-align: center;
 `;
 export const Title = styled.h2`
   margin-top: 28px;

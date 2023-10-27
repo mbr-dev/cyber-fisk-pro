@@ -38,7 +38,8 @@
     "react-speech-kit": "^3.0.1",
     "styled-components": "^6.0.7",
     "universal-cookie": "^6.1.1",
-    "use-sound": "^4.0.1"
+    "use-sound": "^4.0.1",
+    "vite-plugin-mkcert": "^1.16.0"
   },
   "devDependencies": {
     "@types/react": "^18.2.15",
