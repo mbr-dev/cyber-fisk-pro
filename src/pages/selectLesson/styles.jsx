@@ -10,14 +10,15 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  /* width: 18.75rem; */
   width: 100%;
-  margin-top: 1rem;
-  margin-bottom: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-around;
+
+  @media(max-width: 360px) {
+    margin-top: 1rem;
+  }
 `;
 
 export const SelectLessonArea = styled.div`

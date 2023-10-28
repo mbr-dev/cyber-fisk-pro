@@ -13,9 +13,9 @@ import { Container, Main } from "./styles";
 
 export const Game2 = () => {
   const {
-    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask 
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask 
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
@@ -57,8 +57,9 @@ export const Game2 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -69,15 +70,16 @@ export const Game2 = () => {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setQuestion, round, setIdClick, idClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, setQuestion, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -88,6 +90,7 @@ export const Game2 = () => {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -125,6 +128,7 @@ export const Game2 = () => {
     setNewRodada(tempGeneralRound);
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
+
     if (rule === "Continua") {
       setTimeout(() =>{
         newRound(tempRound);
@@ -154,7 +158,7 @@ export const Game2 = () => {
       }, 1500);
     }
   }
-    
+
   useEffect(() => { 
     loadLesson();
   }, []);
@@ -164,7 +168,7 @@ export const Game2 = () => {
       <Loading />
     )
   }
-    
+
   return (
     <Container>
       <TitleLesson title="Choose the correct alternative" />

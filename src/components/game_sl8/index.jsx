@@ -9,7 +9,6 @@ import { ButtonAnswer } from "../ButtonAnswer";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
-import { L8_SUPER_LESSON } from "../../utils/lesson8_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea } from "./styles";
@@ -30,17 +29,16 @@ export const GameSL8 = () => {
   const [completedWords, setCompletedWords] = useState([]);
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
-  console.log("letterselected: ", questions);
 
   const loadLesson = useCallback(async() => {
-    //try {
-      //setIsLoading(true);
+    try {
+      setIsLoading(true);
 
-      /* const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=5&num_task=1");
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=8&num_task=1");
       const res = response.data;
 
-      const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo); */
-      const items = L8_SUPER_LESSON[0];
+      const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+
       setQuestions(items.pergunta);
       setAnswers(items.resposta);
 
@@ -55,10 +53,11 @@ export const GameSL8 = () => {
         tempLetters.push(items.letras[tempRandomL[a]]);
       }
       setLetters(tempLetters);
-      //setIsLoading(false);
-    // } catch (error) {
-    //   console.log(error);
-    // }
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   }, [setIsLoading, setQuestions, setAnswers, setLetters])
 
   const handleSelected = (letter, index) => {
@@ -114,6 +113,7 @@ export const GameSL8 = () => {
     if (availableHints.length === 0) {
       return;
     }
+
     let randomHintIndex = Math.floor(Math.random() * availableHints.length);
     let randomHint = availableHints[randomHintIndex];
     setHint(randomHint);

@@ -8,7 +8,6 @@ import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
-import { L8_T2_Dificil } from "../../utils/lesson8_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -16,7 +15,7 @@ import { Container, Main, Answers, AnswersRow, RadioG, Radio, Options, Form } fr
 
 export const Game32 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
   
   const navigate = useNavigate();
@@ -35,7 +34,7 @@ export const Game32 = () => {
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
-    /* 
+    setIsLoading(true);
 
     let dataLength = 0;
     let tempData;
@@ -61,8 +60,9 @@ export const Game32 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setSound(items.pergunta);
     setOptionColor(Array(items.resposta.length).fill(0));
-    setQuestion(items.pergunta);
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -75,50 +75,27 @@ export const Game32 = () => {
       tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
-    ; */
-    setIsLoading(true);
-    const dataLength = L8_T2_Dificil.length;
 
-    let tempRandom = [];
-    for (let a = 0; a < dataLength; a++) {
-      tempRandom.push(a);
-    }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempRandom);
-
-    setSound(L8_T2_Dificil[tempRandom[round]].pergunta);
-
-    let tempAnswers = [];
-    for (let a = 0; a < L8_T2_Dificil[tempRandom[round]].resposta.length; a++) {
-      tempAnswers.push(L8_T2_Dificil[tempRandom[round]].resposta[a].label);
-    }
-    setAnswers(tempAnswers);
-
-    let tempRightA = [];
-    for (let a = 0; a < L8_T2_Dificil[tempRandom[round]].resposta.length; a++) {
-      tempRightA.push(L8_T2_Dificil[tempRandom[round]].resposta[a].status);
-    }
-    setRightAnswers(tempRightA);
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, setAnswers, round, setRightAnswers, setOptionColor])
 
   const newRound = (number) => {
     setSelectedRadio([]);
 
-   /*  const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0)); */
-    setOptionColor([]);
-    setSound(L8_T2_Dificil[randomNumber[number]].pergunta);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
-    for (let a = 0; a < L8_T2_Dificil[randomNumber[number]].resposta.length; a++) {
-      tempAnswers.push(L8_T2_Dificil[randomNumber[number]].resposta[a].label);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempAnswers.push(items.resposta[a].label);
     }
     setAnswers(tempAnswers);
 
     let tempRightA = [];
-    for (let a = 0; a < L8_T2_Dificil[randomNumber[number]].resposta.length; a++) {
-      tempRightA.push(L8_T2_Dificil[randomNumber[number]].resposta[a].status);
+    for (let a = 0; a < items.resposta.length; a++) {
+      tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
   }
@@ -135,7 +112,7 @@ export const Game32 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
-    if (blockButton) return;
+    if (blockButton || playAudio) return;
 
     setBlockButton(true);
 
@@ -207,6 +184,10 @@ export const Game32 = () => {
   useEffect(() => {
     loadLesson();
   }, []);
+
+  useEffect(() => {
+    playAudio && setBlockButton(true);
+  }, [playAudio, setBlockButton]);
 
   if (isLoading) {
     return (

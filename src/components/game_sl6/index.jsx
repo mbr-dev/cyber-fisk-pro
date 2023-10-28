@@ -31,24 +31,25 @@ export const GameSL6 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=6&num_task=1");
       const res = response.data;
       const dataItems = res.dados[0].dados_conteudo;
       setData(dataItems);
-      
+
       const items = dataItems.map(item => {
         const conteudo = JSON.parse(item.conteudo);
         return conteudo
       });
-      
+
       const nameFilter = items.filter(item => item.name);
-      
+
       let tempRandom = [];
       for (let a = 0; a < nameFilter.length; a++) {
         tempRandom.push(a);
       }
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
-      
+
       let nameRandom = []
       for (let a = 0; a < 6; a++) {
         nameRandom.push(nameFilter[tempRandom[a]]);
@@ -63,7 +64,7 @@ export const GameSL6 = () => {
 
       let tempGridFake = nameRandom.concat(answersFilter);
       tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
+
       let tempGrid = [];
       for (let a = 0; a < (6 * 2 ); a++) {
         tempGrid.push({
@@ -78,13 +79,14 @@ export const GameSL6 = () => {
         tempRandomGrid.push(a);
       }
       tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-      
+
       for (let a = 0; a < (6 * 2); a++) {
         tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
       }
-      
+
       setCards(tempGrid);
       setPlaying(true);
+
       setIsLoading(false);
     } catch(error) {
       console.log(error);
@@ -99,7 +101,7 @@ export const GameSL6 = () => {
     const itemLength = level === 1 ? 8 : 10;
 
     const nameFilter = items.filter(item => item.name);
-    
+
     let tempRandom = [];
     for (let a = 0; a < nameFilter.length; a++) {
       tempRandom.push(a);
@@ -120,7 +122,7 @@ export const GameSL6 = () => {
 
     let tempGridFake = nameRandom.concat(answersFilter);
     tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
+
     let tempGrid = [];
     for (let a = 0; a < (itemLength * 2 ); a++) {
       tempGrid.push({
@@ -135,12 +137,12 @@ export const GameSL6 = () => {
       tempRandomGrid.push(a);
     }
     tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-    
+
     for (let a = 0; a < (itemLength * 2); a++) {
       tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
     }
-    
     setCards(tempGrid);
+
     setPlaying(true);
   }
 
@@ -159,6 +161,7 @@ export const GameSL6 = () => {
 
   const generateScore = () => {
     let tempPoints = points;
+
     if (timeElapsed < 60) {
       tempPoints += 5;
       setPoints(tempPoints);
@@ -181,10 +184,10 @@ export const GameSL6 = () => {
     let tempLevel = level;
     tempLevel++;
     setLevel(tempLevel);
-    
+
     generateScore();
     setPlaying(false);
-    
+
     setTimeout(() => {
       setReset(false);
       newRound(tempLevel);
@@ -276,7 +279,6 @@ export const GameSL6 = () => {
                 {card.permanentShown === false && card.shown === false &&
                   <Icon src={LogoImg} alt="" opacity={0.3} />
                 }
-
                 {(card.permanentShown || card.shown) && card.item !== null &&
                   <>
                     {card.item.name ?
@@ -292,7 +294,7 @@ export const GameSL6 = () => {
         </Grid>
       </Main>
       {reset && 
-        <ButtonBg 
+        <ButtonBg
           w="10rem"
           h="3"
           title="Next Level"
@@ -301,7 +303,7 @@ export const GameSL6 = () => {
         />
       }
       {finished && 
-        <ButtonBg 
+        <ButtonBg
           w="10rem"
           h="3"
           title="Finished"

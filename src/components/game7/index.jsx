@@ -53,7 +53,7 @@ export const Game7 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-    
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
@@ -66,10 +66,12 @@ export const Game7 = () => {
 
     const items = tempData.map(item => item.conteudo);
     const dataItem = items.map(item => JSON.parse(item));
-    
+
     let tempAudios = [];
     let tempAnswers = [];
+
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+
     setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
@@ -81,7 +83,7 @@ export const Game7 = () => {
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
+  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData, setOptionColor]);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -92,6 +94,8 @@ export const Game7 = () => {
   }
 
   const newRound = () => {
+    setCountClick(0);
+
     let tempRandom = [];
     for (let a = 0; a < data.length; a++) {
       tempRandom.push(a);
@@ -103,7 +107,9 @@ export const Game7 = () => {
 
     let tempAudios = [];
     let tempAnswers = [];
+
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+
     setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
@@ -113,7 +119,7 @@ export const Game7 = () => {
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
     setAnswers(tempAnswers);
-    
+
     setRightAudios([]);
     setRightAnswers([]);
     setSelectAudio(null);
@@ -132,7 +138,7 @@ export const Game7 = () => {
     audio.play();
     newStatusPlay(true);
 
-    audio.addEventListener('ended', () => {
+    audio.addEventListener("ended", () => {
       newStatusPlay(false);
     });
   }
@@ -148,21 +154,22 @@ export const Game7 = () => {
 
     let tempColor = optionColor;
     let tempRightPoints;
-    
+
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
       if (clicks < 4) {
         tempColor[index] = 1;
         setOptionColor(tempColor);
-        
+
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
-      
+
       tempColor[index] = 1;
       setOptionColor(tempColor);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
@@ -187,15 +194,11 @@ export const Game7 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0, 0]);
-        setCountClick(0);
         newRound();
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setOptionColor([0, 0, 0, 0]);
-        setCountClick(0);
         navigate("/GameOver");
         setNewContainer(1);
       }, 1500);
@@ -205,8 +208,6 @@ export const Game7 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0, 0]);
-        setCountClick(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -216,7 +217,6 @@ export const Game7 = () => {
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -234,7 +234,7 @@ export const Game7 = () => {
       <Loading />
     )
   }
-  
+
   return (
     <Container>
       <TitleLesson title="Make pairs." />

@@ -2,16 +2,17 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
+import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Button, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
@@ -40,17 +41,17 @@ export const GameSL3 = () => {
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=3&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      
+
       let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
-      
+
       let letterQuestion = tempQuestion.split(" ");
       const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
       const lettersWord = lettersIndex.map(word => word.map(index => keyboardLetters[index]));
       setDivLetter(lettersIndex);
       setDivLetterRight(lettersWord);
-      
+
       const answersLength = items.resposta.length;
       let tempAnswers = [];
 
@@ -58,6 +59,7 @@ export const GameSL3 = () => {
         tempAnswers.push(items.resposta[a]);
       }
       setAnswersOfQuestion(tempAnswers);
+
       setBlock(false);
       setIsLoading(false);
     } catch(error) {
@@ -120,34 +122,27 @@ export const GameSL3 = () => {
   //   const letter = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
   //   setDivLetter(letter);
   // }
-  console.log("correctPoints: ", correctPoints)
   const handleVerifyAnswers = (event) => {
     event.preventDefault();
 
     let tempP = correctPoints;
-    
+
     if (countTimer <= 30) {
       tempP += 5;
-      console.log('ganhou 5 pontos')
     } else if (countTimer >= 31 && countTimer <= 45) {
       tempP += 4;
-      console.log('ganhou 4 pontos')
     } else if (countTimer >= 46 && countTimer <= 75) {
       tempP += 3;
-      console.log('ganhou 3 pontos')
     } else if (countTimer >= 76 && countTimer <= 105) {
       tempP += 2;
-      console.log('ganhou 2 pontos')
     } else if (countTimer >= 106 && countTimer <= 120) {
       tempP += 1;
-      console.log('ganhou 1 pontos')
     } else {
       tempP = 0;
-      console.log('ganhou 0 pontos')
     }
 
     const userText = text.replace(/'/g, "’");
-  
+
     if (round >= 6 && round <= 9) {
       const correctStarts = [
         "I have dinner at",
@@ -160,9 +155,11 @@ export const GameSL3 = () => {
 
       if (isStartCorrect) {
         setOptionColorQ(1);
+
         setCorrectPoints(tempP);
       } else {
         setOptionColorQ(2);
+
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
@@ -172,15 +169,17 @@ export const GameSL3 = () => {
 
       if (isAnswerCorrect) {
         setOptionColorQ(1);
+
         setCorrectPoints(tempP);
       } else {
         setOptionColorQ(2);
+
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
       }
     }
-    
+
     let tempRound = round;
     tempRound++;
     setRound(tempRound);
@@ -240,12 +239,16 @@ export const GameSL3 = () => {
     }
   }, [setTimeElapsed]);
 
+  useEffect(() => {
+    text.trim() === "" ? setBlock(true) : setBlock(false);
+  }, [text, setBlock]);
+
   if (isLoading) {
     return (
       <Loading />
     )
   }
-  
+
   return (
     <Container>
       {changed ? 
@@ -332,11 +335,16 @@ export const GameSL3 = () => {
                 }}
               />
             </form>
-            <Button
+            <ButtonBg
+              mt="1.5rem"
+              w="13rem"
+              h="3rem"
               form="myForm"
               type="submit"
-              title="Enter"
-            ><p>Check</p></Button>
+              title="Check"
+              greenBtn
+              disabledButton={block}
+            />
           </Answer>
         }
       </Main>

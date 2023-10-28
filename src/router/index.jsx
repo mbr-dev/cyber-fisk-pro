@@ -1,6 +1,7 @@
 import {Routes, Route} from "react-router-dom";
 
 import { Home } from "../pages/Home";
+import { Help } from "../pages/Help";
 import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
@@ -10,11 +11,13 @@ import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
+import { SpinWheel } from "../pages/SpinWheel";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
 import { QRCode } from "../features/qrCode/pages/Home";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { LessonSelection } from "../pages/LessonSelection";
+import { BalanceAndReward } from "../pages/BalanceAndReward";
 import { QRReader } from "../features/qrCode/pages/qrReader";
 import { SuperTaskLesson } from "../components/supertaskLesson";
 import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
@@ -51,6 +54,13 @@ import { Game29 } from "../components/game29";
 import { Game30 } from "../components/game30";
 import { Game31 } from "../components/game31";
 import { Game32 } from "../components/game32";
+import { Game33 } from "../components/game33";
+import { Game34 } from "../components/game34";
+import { Game35 } from "../components/game35";
+import { Game36 } from "../components/game36";
+import { Game37 } from "../components/game37";
+import { Game38 } from "../components/game38";
+import { Game39 } from "../components/game39";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -60,6 +70,8 @@ import { GameSL5 } from "../components/game_sl5";
 import { GameSL6 } from "../components/game_sl6";
 import { GameSL7 } from "../components/game_sl7";
 import { GameSL8 } from "../components/game_sl8";
+import { GameSL9 } from "../components/game_sl9";
+import { GameSL10 } from "../components/game_sl10";
 import { GameWordle } from "../components/GameWordle";
 
 export const Router =() => {
@@ -67,24 +79,27 @@ export const Router =() => {
     <Routes>
       <Route path = "/" element={<Login />}/>
 
-      <Route path="/Home" element={<Home/>} />
-      <Route path="/Menu" element={<Menu/>} />
-      <Route path="/Books" element={<Books />} />
-      <Route path="/Login" element={<Login />} />
-      <Route path="/Report" element={<Report />} />
-      <Route path="/Studio" element={<Studio />} />
-      <Route path="/Profile" element={<Profile/>} />
-      <Route path="/Ranking" element={<Ranking />} />
-      <Route path="/WellDone" element={<WellDone />} />
-      <Route path="/GameOver" element={<GameOver />} />
-      <Route path="/LessonSelection" element={<LessonSelection />} />
-      <Route path="/SelectLesson" element={<SelectLesson />} />
-      <Route path="/GravaAudioTest" element={<GravaAudioTest />} />
-      <Route path="/qr-code" element={<QRCode />} />
-      <Route path="/qr-code/reader" element={<QRReader />} />
-      <Route path="/qr-code/:code" element={<GamesTemplate />} />
-      <Route path="/Lesson" element={<TaskLesson />} />
-      <Route path="/SuperTask" element={<SuperTaskLesson />} />
+      <Route path="/Home" element={<Home/>}/>
+      <Route path="/Menu" element={<Menu/>}/>
+      <Route path="/Help" element={<Help />}/>
+      <Route path="/Books" element={<Books />}/>
+      <Route path="/Login" element={<Login />}/>
+      <Route path="/Studio" element={<Studio />}/>
+      <Route path="/Report" element={<Report />}/>
+      <Route path="/qr-code" element={<QRCode />}/>
+      <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/Ranking" element={<Ranking />}/>
+      <Route path="/GameOver" element={<GameOver />}/>
+      <Route path="/Lesson" element={<TaskLesson />}/>
+      <Route path="/WellDone" element={<WellDone />}/>
+      <Route path="/SpinWheel" element={<SpinWheel />}/>
+      <Route path="/qr-code/reader" element={<QRReader />}/>
+      <Route path="/SelectLesson" element={<SelectLesson />}/>
+      <Route path="/SuperTask" element={<SuperTaskLesson />}/>
+      <Route path="/qr-code/:code" element={<GamesTemplate />}/>
+      <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>
+      <Route path="/LessonSelection" element={<LessonSelection />}/>
+      <Route path="/BalanceAndReward" element={<BalanceAndReward />}/>
 
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>
@@ -118,6 +133,13 @@ export const Router =() => {
       <Route path = "/Game30" element={<Game30 />}/>
       <Route path = "/Game31" element={<Game31 />}/>
       <Route path = "/Game32" element={<Game32 />}/>
+      <Route path = "/Game33" element={<Game33 />}/>
+      <Route path = "/Game34" element={<Game34 />}/>
+      <Route path = "/Game35" element={<Game35 />}/>
+      <Route path = "/Game36" element={<Game36 />}/>
+      <Route path = "/Game37" element={<Game37 />}/>
+      <Route path = "/Game38" element={<Game38 />}/>
+      <Route path = "/Game39" element={<Game39 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>
@@ -126,6 +148,8 @@ export const Router =() => {
       <Route path = "/GameSL6" element={<GameSL6 />}/>
       <Route path = "/GameSL7" element={<GameSL7 />}/>
       <Route path = "/GameSL8" element={<GameSL8 />}/>
+      <Route path = "/GameSL9" element={<GameSL9 />}/>
+      <Route path = "/GameSL10" element={<GameSL10 />}/>
       <Route path = "/GameWordle" element={<GameWordle />}/>
     </Routes>
   )

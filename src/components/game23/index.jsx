@@ -15,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game23 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -31,7 +31,7 @@ export const Game23 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -57,18 +57,21 @@ export const Game23 = () => {
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
-    
+
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);    
     setAnswers(items.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, setAnswers, round]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.pergunta);
     setAnswers(items.resposta);
   }
@@ -76,7 +79,7 @@ export const Game23 = () => {
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text.trim().toLowerCase();
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -99,6 +102,7 @@ export const Game23 = () => {
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -161,7 +165,7 @@ export const Game23 = () => {
     <Container>
       <SubTitleLesson title="Answer the questions you hear." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
-      
+
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
           <Input 

@@ -15,7 +15,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game24 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -40,7 +40,6 @@ export const Game24 = () => {
   const [text4, setText4] = useState("");
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
 
   const loadLesson = useCallback(async() => {
     setIsLoading(true);
@@ -77,6 +76,7 @@ export const Game24 = () => {
     setAnswer2(items.option2);
     setAnswer3(items.option3);
     setAnswer4(items.option4);
+
     setIsLoading(false);
   }, [setIsLoading, setData, round, setRandomNumber, setSound, setQuestion, setAnswer0, setAnswer1, setAnswer2, setAnswer3, setAnswer4]);
 
@@ -87,7 +87,9 @@ export const Game24 = () => {
     setText3("");
     setText4("");
     setColorAnswer(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer0(items.option0);
@@ -99,7 +101,6 @@ export const Game24 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
-
     if (blockButton || playAudio) return;
 
     setBlockButton(true);

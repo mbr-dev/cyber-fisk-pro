@@ -77,7 +77,7 @@ export const SelectLesson = () => {
               )
             })}
           </SelectLessonArea>
-          <LineSeparator w="80%" mt="10px" />
+          <LineSeparator w="80%" />
           <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home} />
         </Main>
       }

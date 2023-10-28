@@ -13,9 +13,9 @@ import { Container, Main, Form } from "./styles";
 
 export const Game25 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
@@ -60,20 +60,23 @@ export const Game25 = () => {
     
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
+
     setIsLoading(false);
-  }, [setIsLoading, round, setData, data, setRandomNumber, setQuestion, setAnswer]);
+  }, [setIsLoading, round, setData, setRandomNumber, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
     setColorAnswer(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
   }
 
   const handleVerify = (event) => {
     event.preventDefault();
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;

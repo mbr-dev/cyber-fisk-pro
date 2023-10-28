@@ -33,10 +33,11 @@ export const GameSL7 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=7&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      console.log("data7: ", res.dados[0].dados_conteudo)
+
       let totalOfQuestions = res.dados[0].dados_conteudo.length;
 
       let tempRandom = [];
@@ -74,7 +75,7 @@ export const GameSL7 = () => {
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setIsCompleted(false);
+
     let letterQuestion = items.letras;
     setLettersQ(letterQuestion);
 
@@ -93,6 +94,7 @@ export const GameSL7 = () => {
 
     setOptionColor([])
     setRightLetter([]);
+    setIsCompleted(false);
     setBlockButton(false);
   }
 

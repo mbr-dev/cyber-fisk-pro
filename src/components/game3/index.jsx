@@ -15,7 +15,7 @@ export const Game3 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
@@ -57,37 +57,40 @@ export const Game3 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
-    
+
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
-    
+
     let tempAnswers = [];
     for (let a = 0; a < tempIdClick.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 

@@ -33,6 +33,7 @@ export const GameSL4 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=4&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
@@ -69,11 +70,11 @@ export const GameSL4 = () => {
     } catch(error) {
       console.log(error);
     }
-  }, [setRandomNumber, round, setLettersQ, setImages, setDivAnswer, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, round, setLettersQ, setImages, setDivAnswer, setBlockButton, setAnswer]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setIsCompleted(false);
+
     let letterQuestion = items.letras;
     setLettersQ(letterQuestion);
 
@@ -92,6 +93,7 @@ export const GameSL4 = () => {
 
     setOptionColor([])
     setRightLetter([]);
+    setIsCompleted(false);
     setBlockButton(false);
   }
 

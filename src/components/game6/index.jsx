@@ -16,11 +16,11 @@ export const Game6 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2, 3, 4, 5]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -34,7 +34,7 @@ export const Game6 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    
+
     let dataLength = 0;
     let tempData;
     if (nivel === 0) {
@@ -59,37 +59,40 @@ export const Game6 = () => {
     setRandomNumber(tempSounds);
 
     const items = JSON.parse(tempData[tempSounds[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
-    
+    setOptionColor(Array(items.resposta.length).fill(0));
+
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    
+
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setSound, idClick, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
+
     setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    
+
     let tempAnswers = [];
     for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -97,7 +100,7 @@ export const Game6 = () => {
     if (blockButton || playAudio) return;
 
     setBlockButton(false);
-    
+
     let clicks = countClick;
     clicks++;
     setCountClick(clicks);
@@ -119,6 +122,7 @@ export const Game6 = () => {
 
       tempColor[index] = 1;
       setOptionColor(tempColor);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
@@ -140,7 +144,7 @@ export const Game6 = () => {
     setBlockButton(true);
     clicks = 0;
     setCountClick(clicks);
-    
+
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {

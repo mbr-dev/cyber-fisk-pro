@@ -27,19 +27,21 @@ export const GameSL1 = () => {
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data;
 
       let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
-      
+
       let tempLetters = items.letras;
       setLetters(tempLetters);
       let tempAnswers = items.resposta;
       setAnswers(tempAnswers);
+
+      setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-    setIsLoading(false);
   }, [setLetters, setAnswers]);
 
   const handleClearField = () => {
@@ -51,7 +53,7 @@ export const GameSL1 = () => {
     if (tempNumber < 1) {
       tempNumber = 0;
     }
-    
+
     setLettersAnswer(tempLetters);
     setNumberClick(tempNumber);
   }
@@ -106,7 +108,7 @@ export const GameSL1 = () => {
     if (answers.length > 0) {
       if (finished) {
         let tempRightPoints = rightPoints;
-        
+
         if (timeElapsed <= 60) {
           tempRightPoints += 5;
         } else if (timeElapsed >= 61 && timeElapsed <= 75) {
@@ -165,8 +167,7 @@ export const GameSL1 = () => {
                 style={{
                   borderColor: numberClick === index ? defaultTheme["red-200"] : optionColor[index] === 1 ? "transparent" : "",
                   backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : "",
-                  color: optionColor[index] === 1 ? defaultTheme.white : "",
-                  
+                  color: optionColor[index] === 1 ? defaultTheme.white : ""
                 }}
               >
                 {letter}
@@ -189,7 +190,6 @@ export const GameSL1 = () => {
             )
           })}
         </ButtonArea>
-
         <ButtonBg
           h="2.5rem"
           w="9rem"

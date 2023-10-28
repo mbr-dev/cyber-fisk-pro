@@ -3,12 +3,10 @@ import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../titleLesson";
 import { ButtonBg } from "../ButtonBg";
-import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { L8_T1_Dificil } from "../../utils/lesson8_Task";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -16,9 +14,9 @@ import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styl
 
 export const Game29 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState(0);
@@ -40,37 +38,65 @@ export const Game29 = () => {
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
-    const dataLength = L8_T1_Dificil.length;
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if (nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    let tempWord = L8_T1_Dificil[tempRandom[round]].option.pergunta;
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    let tempWord = items.option.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
-    let tempWord1 = L8_T1_Dificil[tempRandom[round]].option1.pergunta;
+
+    let tempWord1 = items.option1.pergunta;
     tempWord1 = tempWord1.sort(() => Math.random() - 0.5);
     setWords1(tempWord1);
 
-    setAnswer(L8_T1_Dificil[tempRandom[round]].option.resposta);
-    setAnswer1(L8_T1_Dificil[tempRandom[round]].option1.resposta);
+    setAnswer(items.option.resposta);
+    setAnswer1(items.option1.resposta);
+
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
+  }, [setIsLoading, setData, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
 
   const newRound = (number) => {
-    let tempWord = L8_T1_Dificil[randomNumber[number]].option.pergunta;
+    setWordsIndex([]);
+    setWordsIndex1([]);
+    setWordsDropped([]);
+    setWordsDropped1([]);
+    setOptionColor(0);
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    let tempWord = items.option.pergunta;
     tempWord = tempWord.sort(() => Math.random() - 0.5);
     setWords(tempWord);
-    let tempWord1 = L8_T1_Dificil[randomNumber[number]].option1.pergunta;
+
+    let tempWord1 = items.option1.pergunta;
     tempWord1 = tempWord1.sort(() => Math.random() - 0.5);
     setWords1(tempWord1);
 
-    setAnswer(L8_T1_Dificil[randomNumber[number]].option.resposta);
-    setAnswer1(L8_T1_Dificil[randomNumber[number]].option1.resposta);
+    setAnswer(items.option.resposta);
+    setAnswer1(items.option1.resposta);
   }
 
   const handleVerify = () => {
@@ -83,7 +109,7 @@ export const Game29 = () => {
 
     let tempRightPoints;
     let tempColor = optionColor;
-      
+
     if (word === answer.toLowerCase() && word1 === answer1.toLowerCase()) {
       tempColor = 1;
       setOptionColor(tempColor);
@@ -112,13 +138,11 @@ export const Game29 = () => {
 
     if(rule === "Continua") {
       setTimeout(() =>{
-        setOptionColor(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setOptionColor(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -129,7 +153,6 @@ export const Game29 = () => {
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
-          setOptionColor(0);
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
@@ -153,7 +176,6 @@ export const Game29 = () => {
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
     } : undefined;
-  
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -161,7 +183,7 @@ export const Game29 = () => {
       </div>
     );
   }
-  
+
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
       id: "droppable",
@@ -171,7 +193,7 @@ export const Game29 = () => {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
       borderRadius: isOver ? "8px" : ""
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -188,7 +210,7 @@ export const Game29 = () => {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
       borderRadius: isOver ? "8px" : ""
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -236,7 +258,6 @@ export const Game29 = () => {
 
   return (
     <Container>
-      <HeaderLesson />
       <TitleLesson title="Drag and Drop the words to make sentences." />
 
         <Main>

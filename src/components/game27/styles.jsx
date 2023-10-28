@@ -10,22 +10,24 @@ export const Container = styled.div`
 export const Main = styled.main`
   width: 100%;
   display: flex;
-  flex-direction: column;
+  flex-wrap: wrap;
+  padding-inline: 0.5rem;
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  gap: 1.5rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 1rem;
+    gap: 0.5rem;
     margin-top: 1rem;
   }  
 `;
 
 export const Photo = styled.button`
   all: unset;
-  width: 16rem;
-  height: 10rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   overflow: hidden;
   border: 4px solid transparent;
   border-radius: 8px;

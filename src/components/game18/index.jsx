@@ -14,13 +14,13 @@ import { Container, Main } from "./styles";
 
 export const Game18 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
   const [optionColor, setOptionColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2, 3]);
+  const [idClick, setIdClick] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
@@ -57,38 +57,41 @@ export const Game18 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
-    setSound(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    
+
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
+    for (let a = 0; a < items.resposta.length; a++) {
       tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
 
     setBlockButton(false);
-  }, [setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+    setIsLoading(false);
+  }, [setIsLoading, setData, setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
-    setSound(items.pergunta);
 
-    let tempRandomNumber = idClick;
+    setSound(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempRandomNumber = [...Array(items.resposta.length).key()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    
+
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a++) {
-      tempAnswers.push(items.resposta[a]);
+    for (let a = 0; a < tempRandomNumber.length; a++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 

@@ -14,11 +14,11 @@ import { Container, Main, Image, ButtonArea } from "./styles";
 
 export const Game14 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
-  
+
   const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
@@ -31,7 +31,7 @@ export const Game14 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -59,9 +59,10 @@ export const Game14 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
-    setQuestion(items.pergunta);
+    
     setImage(items.image);
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
@@ -79,9 +80,10 @@ export const Game14 = () => {
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setOptionColor(Array(items.resposta.length).fill(0));
-    setQuestion(items.pergunta);
+
     setImage(items.image);
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
@@ -92,6 +94,7 @@ export const Game14 = () => {
       tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -134,23 +137,23 @@ export const Game14 = () => {
       setTimeout(() =>{
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -177,9 +180,7 @@ export const Game14 = () => {
         <Image>
           <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
         </Image>
-
         <SubTitleLesson title={question} />
-
         <ButtonArea>
           {answers.map((answer, index) => {
             return (

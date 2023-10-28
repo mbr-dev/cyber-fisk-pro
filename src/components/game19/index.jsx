@@ -13,7 +13,7 @@ import { Container, Form, Main, Select } from "./styles";
 
 export const Game19 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -84,6 +84,7 @@ export const Game19 = () => {
     setAnswer2(items.option2.status);
     setAnswer3(items.option3.status);
     setAnswer4(items.option4.status);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setQuestion, setOption0, setOption1, setOption2, setOption3, setOption4, setAnswer0, setAnswer1, setAnswer2, setAnswer3, setAnswer4]);
 
@@ -209,17 +210,17 @@ export const Game19 = () => {
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -235,7 +236,7 @@ export const Game19 = () => {
   useEffect(() => {
     countClick >= 5 ? setBlockButton(false) : setBlockButton(true)
   }, [countClick, setBlockButton]);
-  
+
   if (isLoading) {
     return (
       <Loading />
