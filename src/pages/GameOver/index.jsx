@@ -1,18 +1,22 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
-import { LessonContext } from "../../context/lesson";
 
 import { ButtonBg } from "../../components/ButtonBg";
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
-import DollarImg from "../../assets/Dollar.svg";
-import MulherSvg from "./images/Mulher.svg";
+import { LessonContext } from "../../context/lesson";
+
+import Robo from "../../assets/RoboGO.png";
+import Fundo from "../../assets/Fundo.png";
+import Dollars from "../../assets/Dollar.svg";
+import Xp from "../../assets/Xp.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, AreaAvatar, AreaInfo, AreaXp, Avatar, AreaXpInfo, AvatarImg, AreaInfoBottom, Top, AreaButton } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed} = useContext(LessonContext);
@@ -35,54 +39,57 @@ export const GameOver = () => {
     setTime(`${hours}:${minutes}:${seconds}`);
   },[]);
 
-  const tryAgain = () => {
-    navigate('/LessonSelection');
-  }
-
-  const home = () => {
-    navigate('/Home');
+  const handleTryAgain = () => {
+    navigate("/LessonSelection");
   }
 
   return (
     <Container>
       <Header>
+        <img src={Fundo} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
           <ButtonCloseHeader />
         </Top>
-        <AreaAvatar>
-          <Avatar>
-            <AvatarImg>
-              <img src={MulherSvg} alt="" />
-            </AvatarImg>
-            <p>{name}</p>
-          </Avatar>
+        <Middle>
+          <AvatarArea>
+            <img src={Robo} alt="" />
+            <p>Camila Eduarda</p>
+          </AvatarArea>
           <h2>Game Over</h2>
-        </AreaAvatar>
-        <AreaXp>
-          <AreaXpInfo>
-            <img src={DollarImg} alt="Dollar" />
+        </Middle>
+        <Bottom>
+          <AreaItem>
+            <img src={Dollars} alt="" />
             <span>0</span>
-            <p>Fisk Dollar</p>
-          </AreaXpInfo>
-        </AreaXp>
+            <p>Fisk Dollars</p>
+          </AreaItem>
+          <LineSeparator w="80%" bg={defaultTheme.white} />
+          <AreaItem style={{marginRight: "64px"}}>
+          <img src={Xp} alt="" />
+          <span>0</span>
+          <p>Xp</p>
+          </AreaItem>
+        </Bottom>
       </Header>
 
       <Main>
-        <AreaInfo>
-          <ButtonBg title="TRY AGAIN" w="15.875rem" h="2.5rem" onPress={tryAgain} />
-          <p>Activities done in</p>
-          <span>{time}</span>
-          <AreaInfoBottom>
-            <p>You were better then 30</p>
-            <p>people in your level.</p>
-          </AreaInfoBottom>
-        </AreaInfo>
-        <AreaButton>
-          <LineSeparator w="18rem" bg={defaultTheme["gray-200"]} />
-          <ButtonBg title="Home" w="15rem" h="2rem" onPress={home}/>
-        </AreaButton>
+        <ButtonBg
+          onPress={handleTryAgain}
+          title="Try Again"
+          w="260px"
+          h="56px"
+        />
+        <p>Activities done in</p>
+        <span>00:00</span>
+
+        <Text>
+          <p>Remember, everyone faces</p>
+          <p>challegens. Try it once more!</p>
+        </Text>
       </Main>
+
+      <FooterBtnHome hasLS />
     </Container>
   )
 }

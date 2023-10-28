@@ -1,21 +1,23 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import Confetti from "react-confetti"
+
+import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { LineSeparator } from "../../components/LineSeparator";
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+
 import { LessonContext } from "../../context/lesson";
 
-import Confetti from "react-confetti";
-
-import { ButtonBg } from "../../components/ButtonBg";
-import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
-import { LineSeparator } from "../../components/LineSeparator";
-
-import DollarImg from "../../assets/Dollar.svg";
-import ConfetesImg from "../../assets/Confetes.png";
-import MulherSvg from "./images/Mulher.svg";
+import Xp from "../../assets/Xp.svg";
+import Robo from "../../assets/RoboWD.png";
+import Fundo from "../../assets/Fundo.png";
+import Dollars from "../../assets/Dollar.svg";
+import Confetes from "../../assets/Confetes.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, AreaAvatar, AreaInfo, AreaXp, Avatar, AreaXpInfo, AvatarImg, AreaInfoBottom, Top, AreaButton } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed } from "./styles";
 
 export const WellDone = () => {
   const {timeElapsed} = useContext(LessonContext);
@@ -40,55 +42,52 @@ export const WellDone = () => {
     setTime(`${hours}:${minutes}:${seconds}`);
   },[]);
 
-  const home = () => {
-    navigate('/Home');
-  }
-
   return (
     <Container>
-      <Confetti 
-        numberOfPieces={130}
-        gravity={0.03}
-      />
+      <Confetti numberOfPieces={120} />
       <Header>
+        <img src={Fundo} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
           <ButtonCloseHeader />
         </Top>
-        <AreaAvatar>
-          <img src={ConfetesImg} alt="" />
-          <Avatar>
-            <AvatarImg>
-              <img src={MulherSvg} alt="" />
-            </AvatarImg>
-            <p>{name}</p>
-          </Avatar>
+        <Middle>
+          <AvatarArea>
+            <img src={Confetes} alt="" className="bgConfetes" />
+            <img src={Robo} alt="" />
+            <p>Camila Eduarda</p>
+          </AvatarArea>
           <h2>WELL DONE!</h2>
-        </AreaAvatar>
-        <AreaXp>
-          <AreaXpInfo>
-            <img src={DollarImg} alt="Dollar" />
-            <span>{dollar}</span>
-            <p>Fisk Dollar</p>
-          </AreaXpInfo>
-        </AreaXp>
+        </Middle>
+        <Bottom>
+          <AreaItem>
+            <img src={Dollars} alt="" />
+            <span>0</span>
+            <p>Fisk Dollars</p>
+          </AreaItem>
+          <LineSeparator w="80%" bg={defaultTheme.white} />
+          <AreaItem style={{marginRight: "64px"}}>
+          <img src={Xp} alt="" />
+          <span>0</span>
+          <p>Xp</p>
+          </AreaItem>
+        </Bottom>
       </Header>
 
       <Main>
-        <AreaInfo>
-          <ButtonBg title="Boost your avatar" w="15.875rem" h="2.5rem" />
-          <p>Activities done in</p>
-          <span>{time}</span>
-          <AreaInfoBottom>
-            <p>You were better then 30</p>
-            <p>people in your level.</p>
-          </AreaInfoBottom>
-        </AreaInfo>
-        <AreaButton>
-          <LineSeparator w="18rem" bg={defaultTheme["gray-200"]} />
-          <ButtonBg title="Home" w="15rem" h="2rem" onPress={home}/>
-        </AreaButton>
+        <ButtonRed>
+          <p>Boost your avatar</p>
+        </ButtonRed>
+        <p>Activities done in</p>
+        <span>00:00</span>
+
+        <Text>
+          <p>Remember, everyone faces</p>
+          <p>challegens. Try it once more!</p>
+        </Text>
       </Main>
+
+      <FooterBtnHome hasLS />
     </Container>
   )
 }
