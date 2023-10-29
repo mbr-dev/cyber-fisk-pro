@@ -4,7 +4,7 @@ import { Delete } from "lucide-react";
 
 import { Modal } from "./components/Modal";
 import { Notifications } from "../Notifications";
-import { TopMenuHeader } from "../TopMenuHeader";
+import { HeaderTextImage } from "../HeaderTextImage";
 
 import { LessonContext } from "../../context/lesson";
 
@@ -108,7 +108,7 @@ export const GameWordle = () => {
 
   return (
     <Container>
-      <TopMenuHeader title="Desafio Diário" />
+      <HeaderTextImage title="Desafio Diário" />
 
       {wordLength > 5 &&
         <Notifications

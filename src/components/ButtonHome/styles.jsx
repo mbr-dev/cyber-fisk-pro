@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
+  width: 254px;
+  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,11 +16,20 @@ export const Container = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: bold;
   }
 
   &:hover {
     opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
   }
 `;

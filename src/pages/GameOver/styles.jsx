@@ -23,6 +23,10 @@ export const Header = styled.header`
     position: absolute;
     z-index: -1;
   }
+
+  @media(max-width: 360px) {
+    gap: 8px;
+  }
 `;
 
 export const Top = styled.section`
@@ -80,6 +84,10 @@ export const Bottom = styled.section`
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  @media(max-width: 360px) {
+    gap: 6px;
+  }
 `;
 
 export const AreaItem = styled.section`
@@ -118,7 +126,6 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-top: -32px;
   
   span {
     width: 120px;
@@ -131,6 +138,32 @@ export const Main = styled.main`
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
   }
+`;
+
+export const ButtonRed = styled.button`
+    all: unset;
+    width: 280px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 28px;
+    margin-top: -32px;
+    background-color: ${props => props.theme["red-200"]};
+    color: ${props => props.theme.white};
+    border: 2px solid ${props => props.theme["red-300"]};
+    border-radius: 10px;
+    transition: all 0.2s;
+    cursor: pointer;
+
+    p {
+      font-size: 1.25rem;
+      font-weight: bold;
+    }
+
+    &:hover {
+      background-color: ${props => props.theme["red-300"]};
+    }
 `;
 
 export const Text = styled.div`

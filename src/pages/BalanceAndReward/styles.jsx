@@ -5,7 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  overflow: hidden;
 `;
 
 export const Main = styled.main`
@@ -13,14 +13,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
-`;
-
-export const MainTop = styled.div`
-  width: 100vw;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
+  justify-content: space-between;
+  padding-block: 16px;
 `;
 
 export const Top = styled.div`
@@ -28,18 +22,19 @@ export const Top = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 13rem;
-  height: 2.5rem;
+  width: 198px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  background-color: ${props => props.theme["gray-600"]};
+  font-weight: normal;
+  background-color: ${props => props.theme["gray-700"]};
   color: ${props => props.theme.white};
   cursor: pointer;
   transition: all ease 0.3s;
@@ -50,76 +45,41 @@ export const Button = styled.button`
 `;
 
 export const Money = styled.div`
-  width: 100%;
-  padding-inline: 1.5rem;
+  width: 80%;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 2rem;
+  justify-content: space-between;
 
   img {
-    width: 3rem;
+    width: 54px;
   }
 
   span {
-    width: 2rem;
-    height: 2rem;
+    width: 42px;
+    height: 42px;
     display: flex;
     align-items: center;
     justify-content: center;
+    font-size: 20px;
     border-radius: 6px;
     background-color: ${props => props.theme["gray-200"]};
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
   }
 `;
 
 export const Separator = styled.div`
   width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1rem;
-  overflow: hidden;
-  padding: 0.5rem;
+  height: 86px;
+  padding: 12px;
   background-color: ${props => props.theme["gray-200"]};
-`;
 
-export const CardBody = styled.div`
-  width: 9rem;
-  height: 3rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding-right: 0.5rem;
-  gap: 0.5rem;
-  border-radius: 6px;
-  border: 2px solid ${props => props.theme["gray-700"]};
-  background-color: ${props => props.theme.white};
-
-  img {
-    width: 22px;
-  }
-`;
-
-export const CardRed = styled.div`
-  flex: 1;
-  height: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding-inline: 0.25rem;
-  border-right: 2px solid ${props => props.theme["gray-700"]};
-  border-top-right-radius: 6px;
-  border-bottom-right-radius: 6px;
-  color: ${props => props.theme.white};
-  background-color: ${props => props.theme["red-200"]};
-
-  img {
-    width: 20px;
-  }
-
-  p {
-    font-weight: 500;
+  div {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -138,27 +98,39 @@ export const Card = styled.div`
 `;
 
 export const Bottom = styled.div`
-  width: 100vw;
-  height: 9rem;
-  display: flex;
-  align-items: center;
-  padding-left: 1.5rem;
+  width: 100%;
+  height: 154px;
+  padding: 12px 16px;
 
   div {
-    img {
-      width: 100%;
-    }
+    width: 100%;
+    height: 100%;
   }
 `;
 
-export const BottomButton = styled.div`
+export const CardReward = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  border: 2px solid ${props => props.theme["gray-200"]};
+
+  .RoboCard {
+    width: 70%;
+  }
+`;
+
+export const Footer = styled.div`
   width: 100vw;
+  height: 78px;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 18px;
 
   div {
     display: flex;
-    gap: 1rem;
+    gap: 16px;
   }
 `;

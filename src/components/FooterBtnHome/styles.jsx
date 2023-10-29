@@ -8,4 +8,9 @@ export const Container = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-bottom: 14px;
+
+  @media(max-width: 320px) {
+    height: 64px;
+    padding-bottom: 10px;
+  }
 `;

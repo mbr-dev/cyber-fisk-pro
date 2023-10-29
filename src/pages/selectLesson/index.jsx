@@ -4,11 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 
-import { TopMenuHeader } from "../../components/TopMenuHeader";
-import { ButtonBg } from "../../components/ButtonBg";
 import { Loading } from "../../components/Loading";
+import { HeaderText } from "../../components/HeaderText";
+import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { Notifications } from "../../components/Notifications";
-import { LineSeparator } from "../../components/LineSeparator";
 
 import { apiQAS } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
@@ -21,7 +20,7 @@ export const SelectLesson = () => {
   const [isLoading, setIsLoading] = useState(false);
   const { book, chooseNotification } = useContext(CyberContext);
   const { setNewSelLesson } = useContext(LessonContext);
-  const [msgError, setMsgError] = useState('');
+  const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
 
   const fetchLessons = async() => {
@@ -51,38 +50,33 @@ export const SelectLesson = () => {
     navigate("/LessonSelection");
   }
 
-  const home = () => {
-    navigate(`/Home`);
-  }
-
   useEffect(() => {
     fetchLessons();
   }, []);
 
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <Container>
-      <TopMenuHeader title={book.name} />
-      {isLoading ? 
-        <Loading />
-        :
-        <Main>
-          {error ? <Notifications description={msgError} event={clickAlert}/> : null}
-          <SelectLessonArea>
-            {activities.map((activity) => {
-              return (
-                <ButtonLesson key={activity.Id} disabled={activity.Status === 0 ? true : false} onClick={() => {activity.Status === 1 ? clickLesson(activity.Numero) : null}}>
-                  <p>{activity.Numero}</p>
-                  <span>{activity.Label}</span>
-                </ButtonLesson>
-              )
-            })}
-          </SelectLessonArea>
-          <LineSeparator w="80%" />
-          <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home} />
-        </Main>
-      }
+      <HeaderText title={book.name} />
 
+      <Main>
+        {error ? <Notifications description={msgError} event={clickAlert}/> : null}
+        <SelectLessonArea>
+          {activities.map((activity) => {
+            return (
+              <ButtonLesson key={activity.Id} disabled={activity.Status === 0 ? true : false} onClick={() => {activity.Status === 1 ? clickLesson(activity.Numero) : null}}>
+                <p>{activity.Numero}</p>
+                <span>{activity.Label}</span>
+              </ButtonLesson>
+            )
+          })}
+        </SelectLessonArea>
+      </Main>
       
+      <FooterBtnHome hasLS />
     </Container>
   )
 }

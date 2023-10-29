@@ -1,9 +1,9 @@
-import { useKeenSlider } from "keen-slider/react";
+import { useKeenSlider } from "keen-slider/react"
+import "keen-slider/keen-slider.min.css"
 
 import { ButtonBg } from "../../components/ButtonBg";
+import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
-import { ButtonAnswer } from "../../components/ButtonAnswer";
-import { TopMenuHeader } from "../../components/TopMenuHeader";
 
 import Robo from "./images/Robo.png";
 import Cabelo from "./images/Cabelo.png";
@@ -14,104 +14,110 @@ import Colors from "./images/Colors.png";
 import Person from "./images/Person.png";
 import Dollar from "../../assets/Dollar.svg";
 
-import "../../pages/Books/styles.css";
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Bottom, Main, Separator, Top, BottomButton, Button, Money, MainTop, Card, CardBody, CardRed } from "./styles";
+import { Container, Bottom, Main, Separator, Top, Footer, Button, Money, Card, CardReward } from "./styles";
 
 export const BalanceAndReward = () => {
   const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 3,
-      spacing: 10,
+      perView: 2.5,
+      spacing: 16,
     },
-  })
+  });
+
+  const [sliderRef2] = useKeenSlider({
+    slides: {
+      perView: 5,
+      spacing: 12,
+    },
+  });
   
   return (
     <Container>
-      <TopMenuHeader title="XP Balance & Rewards" />
+      <HeaderText title="XP Balance & Rewards" />
 
       <Main>
-        <MainTop>
-          <Top>
-            <Button>Balance</Button>
-            <Money>
-              <img src={Dollar} alt="Dollar" />
-              <span>10</span>
-              <p>Fisk Dollars</p>
-            </Money>
-            <LineSeparator w="18rem" bg={defaultTheme["gray-200"]} mb="0" mt="0"  />
-            <Button>Rewards</Button>
-          </Top>
-          <Separator>
-            <CardBody>
-              <CardRed><img src={Person} alt="" /> Body</CardRed>
-              <img src={Colors} alt="" />
-            </CardBody>
-            <Card>
+        <Top>
+          <Button>Balance</Button>
+          <Money>
+            <img src={Dollar} alt="Dollar" />
+            <span>10</span>
+            <p>Fisk Dollars</p>
+          </Money>
+          <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
+          <Button>Rewards</Button>
+        </Top>
+
+        <Separator>
+          <div ref={sliderRef2} className="keen-slider">
+            <Card className="keen-slider__slide">
               <img src={Camisa} alt="" />
             </Card>
-            <Card>
+            <Card className="keen-slider__slide">
               <img src={Cabelo} alt="" />
             </Card>
-            <Card>
+            <Card className="keen-slider__slide">
               <img src={Naris} alt="" />
             </Card>
-            <Card>
+            <Card className="keen-slider__slide">
               <img src={Camisa} alt="" />
             </Card>
-            <Card>
+            <Card className="keen-slider__slide">
               <img src={Oculos} alt="" />
             </Card>
-          </Separator>
-          <Bottom ref={sliderRef} className="keen-slider">
-            <div className="keen-slider__slide number-slide">
-              <ButtonAnswer w="6rem" h="7.5rem">
-                <img src={Robo} alt="" />
-              </ButtonAnswer>
-            </div>
-            <div className="keen-slider__slide number-slide">
-              <ButtonAnswer w="6rem" h="7.5rem">
-                <img src={Robo} alt="" />
-              </ButtonAnswer>
-            </div>
-            <div className="keen-slider__slide number-slide">
-              <ButtonAnswer w="6rem" h="7.5rem">
-                <img src={Robo} alt="" />
-              </ButtonAnswer>
-            </div>
-            <div className="keen-slider__slide number-slide">
-              <ButtonAnswer w="6rem" h="7.5rem">
-                <img src={Robo} alt="" />
-              </ButtonAnswer>
-            </div>
-            <div className="keen-slider__slide number-slide">
-              <ButtonAnswer w="6rem" h="7.5rem">
-                <img src={Robo} alt="" />
-              </ButtonAnswer>
+            <Card className="keen-slider__slide">
+              <img src={Oculos} alt="" />
+            </Card>
+            <Card className="keen-slider__slide">
+              <img src={Oculos} alt="" />
+            </Card>
+            <Card className="keen-slider__slide">
+              <img src={Oculos} alt="" />
+            </Card>
+          </div>
+        </Separator>
+
+        <Bottom>
+          <div ref={sliderRef} className="keen-slider">
+            <CardReward className="keen-slider__slide">
+              <img src={Robo} alt="" className="RoboCard" />
+            </CardReward>
+            <CardReward className="keen-slider__slide">
+              <img src={Robo} alt="" className="RoboCard" />
+            </CardReward>
+            <CardReward className="keen-slider__slide">
+              <img src={Robo} alt="" className="RoboCard" />
+            </CardReward>
+            <CardReward className="keen-slider__slide">
+              <img src={Robo} alt="" className="RoboCard" />
+            </CardReward>
+            <CardReward className="keen-slider__slide">
+              <img src={Robo} alt="" className="RoboCard" />
+            </CardReward>
           </div>
         </Bottom>
-        </MainTop>
-        <BottomButton>
-          <LineSeparator w="18rem" bg={defaultTheme["gray-200"]}  />
-          <div>
-            <ButtonBg
-              title="Home"
-              w="9rem"
-              h="2rem"
-              mt="10px"
-              onPress={() => navigate("/home")}
-            />
-            <ButtonBg
-              title="Shop"
-              w="9rem"
-              h="2rem"
-              mt="10px"
-              greenBtn
-              onPress={() => navigate("/home")}
-            />
-          </div>
-        </BottomButton>
       </Main>
+
+      <Footer>
+        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
+        <div>
+          <ButtonBg
+            title="Home"
+            w="9rem"
+            h="2rem"
+            mt="10px"
+            onPress={() => navigate("/home")}
+          />
+          <ButtonBg
+            title="Shop"
+            w="9rem"
+            h="2rem"
+            mt="10px"
+            greenBtn
+            onPress={() => navigate("/home")}
+          />
+        </div>
+      </Footer>
     </Container>
   )
 }

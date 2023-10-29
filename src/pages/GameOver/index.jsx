@@ -1,8 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
-import { ButtonBg } from "../../components/ButtonBg";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
@@ -16,7 +15,7 @@ import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed} = useContext(LessonContext);
@@ -74,12 +73,12 @@ export const GameOver = () => {
       </Header>
 
       <Main>
-        <ButtonBg
+        <ButtonRed
           onPress={handleTryAgain}
           title="Try Again"
           w="260px"
           h="56px"
-        />
+        ><p>Try Again</p></ButtonRed>
         <p>Activities done in</p>
         <span>00:00</span>
 

@@ -1,7 +1,7 @@
-import { useState, useEffect, useContext } from "react";
-import { useNavigate } from "react-router-dom";
-import Cookies from 'universal-cookie';
 import Confetti from "react-confetti"
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
@@ -17,7 +17,7 @@ import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, IconAvatar } from "./styles";
 
 export const WellDone = () => {
   const {timeElapsed} = useContext(LessonContext);
@@ -76,6 +76,9 @@ export const WellDone = () => {
 
       <Main>
         <ButtonRed>
+          <IconAvatar>
+            <img src={Robo} alt="" />
+          </IconAvatar>
           <p>Boost your avatar</p>
         </ButtonRed>
         <p>Activities done in</p>

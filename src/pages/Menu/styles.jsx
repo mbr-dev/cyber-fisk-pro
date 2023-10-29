@@ -9,45 +9,53 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
+  height: 118px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 0.25rem;
-  padding: 1rem;
-  background-color: ${props => props.theme["gray-200"]};
-  border-end-end-radius: 24px;
-  border-end-start-radius: 24px;
-  
-  @media(max-width: 320px) {
-    padding: 0.5rem 1rem;
-    padding-bottom: 0;
+  gap: 12px;
+  padding: 12px 16px 0 16px;
+  position: relative;
+
+  .bgHeaderImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
     border-end-end-radius: 18px;
     border-end-start-radius: 18px;
+  }
+
+  @media(max-width: 320px) {
+    height: 98px;
   }
 `;
 
 export const Avatar = styled.div`
-  width: 7rem;
+  width: 100px;
+  height: 100px;
   display: flex;
-  bottom: -10px;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.5rem;
-  background-color: ${props => props.theme.white};
-  border-radius: 10px;
-  border: 1px solid ${props => props.theme["red-200"]};
   position: relative;
+  z-index: 20;
 
   img {
-    width: 80%;
+    width: 100%;
+    margin-top: -12px;
   }
 
   p {
-    width: 9rem;
+    width: 174px;
+    height: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     position: absolute;
-    bottom: -18px;
+    bottom: -20px;
     text-align: center;
-    padding: 0.25rem 0.5rem;
     border-radius: 6px;
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
@@ -58,54 +66,38 @@ export const Avatar = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 6rem;
-    bottom: 5px;
-
     img {
-      width: 70%;
+      width: 80%;
     }
 
     p {
-      width: 8rem;
-      position: absolute;
-      font-size: 0.75rem;
-      bottom: -15px;
+      bottom: 2px;
     }
   }
 `;
 
 export const Main = styled.main`
   flex: 1;
-  width: 100%;
-  padding-block: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-
+  gap: 16px;
+  margin-top: 64px;
+  
   p {
-    font-size: 1.375rem;
-    margin-bottom: 0.5rem;
+    width: 80%;
+    display: flex;
+    align-items: flex-start;
+    font-size: 24px;
+    font-weight: 500;
   }
 
   @media(max-width: 320px) {
+    gap: 12px;
+    margin-top: 32px;
+
     p {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
-`;
-
-export const Top = styled.div`
-  display: flex;
-  flex-direction: column;
-  p{
-    cursor: pointer;
-  }
-`;
-
-export const Bottom = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
 `;
