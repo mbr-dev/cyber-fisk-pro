@@ -15,10 +15,20 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme["blue-500"]};
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  overflow: hidden;
+  position: relative;
 
   img {
     width: 200px;
+  }
+
+  .bgImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
   }
 
   @media(max-width: 320px) {
@@ -36,6 +46,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
+  padding-bottom: 16px;
 `;
 
 export const Form = styled.div`
@@ -158,7 +170,7 @@ export const Input = styled.input`
   height: 2.625rem;
   padding-left: 2rem;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["gray-400"]};
+  border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
   color: ${props => props.theme["gray-600"]};
 

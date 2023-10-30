@@ -5,6 +5,8 @@ import { Container } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const FooterBtnHome = ({ hasLS }) => {
+  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+
   return (
     <Container
       style={{
@@ -12,7 +14,7 @@ export const FooterBtnHome = ({ hasLS }) => {
         paddingBottom: !hasLS && "0",
       }}
     >
-      {hasLS && <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
+      {hasLS && <LineSeparator w={isDesktop ? "60%" : "80%"} bg={defaultTheme["gray-200"]} />}
       <ButtonHome />
     </Container>
   )

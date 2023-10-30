@@ -43,7 +43,6 @@ export const Form = styled.form`
     width: 18.75rem;
     padding: 0.5rem 1rem;
     border-radius: 6px;
-    border: 2px solid transparent;
     background-color: ${props => props.theme.white};
     color: ${props => props.theme["gray-700"]};
     font-weight: bold;

@@ -14,12 +14,11 @@ import { Container, Main } from "./styles";
 
 export const Game1 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
@@ -60,7 +59,6 @@ export const Game1 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setQuestion(items.pergunta);
-    setOptionColor(Array(items.images.length).fill(0));
 
     let tempIdClick = [...Array(items.images.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -74,13 +72,12 @@ export const Game1 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, setQuestion, setRandomNumber, setOptionColor]);
+  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, setQuestion, setRandomNumber]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setQuestion(items.pergunta);
-    setOptionColor(Array(items.images.length).fill(0));
 
     let tempIdClick = [...Array(items.images.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -100,19 +97,20 @@ export const Game1 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = [...optionColor];
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor[index] = 2;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -138,11 +136,15 @@ export const Game1 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -181,7 +183,6 @@ export const Game1 = () => {
               w="6rem"
               h="7rem"
               onPress={() => handleClick(index)}
-              optionColor={optionColor[index]}
               disabledButton={blockButton}
             >
               <img src={`${URL_FISKPRO}/images/essentials1/lesson${numSelLesson}/${answer.img}.png`} alt="" />

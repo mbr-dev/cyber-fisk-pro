@@ -1,27 +1,19 @@
-import { useNavigate } from "react-router-dom";
-
-import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { HeaderText } from "../../components/HeaderText";
+import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
-import { ButtonBg } from "../../components/ButtonBg";
 
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
-import Avatar1Img from "./images/Avatar1.png";
-import Avatar2Img from "./images/Avatar2.png";
-import Avatar3Img from "./images/Avatar3.png";
+import RoboWD from "../../assets/RoboWD.png";
 
-import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea } from "./styles"
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Ranking = () => {
-  const navigate = useNavigate();
-
-  const home = () => {
-    navigate(`/Home`);
-  }
 
   return (
     <Container>
-      <HeaderTextImage title="Ranking" />
+      <HeaderText title="Ranking" />
 
       <Main>
         <MainTop>
@@ -40,18 +32,16 @@ export const Ranking = () => {
 
           <TextArea>
             <h2>Gold Division</h2>
-            <p>Take the next lesson below</p>
-            <p>01 minute and get 10 Fisk XP</p>
+            <p>You are awesome!</p>
           </TextArea>
         </MainTop>
 
-        <LineSeparator w="100%" />
-
+        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
         <MainBottom>
           <LevelPosition $selected>
             <p>1</p>
             <AvatarArea>
-              <img src={Avatar1Img} alt="Avatar" />
+              <img src={RoboWD} alt="Avatar" />
             </AvatarArea>
             <span>Camila Eduarda</span>
             <p>500 xp</p>
@@ -60,7 +50,7 @@ export const Ranking = () => {
           <LevelPosition>
             <p>2</p>
             <AvatarArea>
-              <img src={Avatar2Img} alt="Avatar" />
+              <img src={RoboWD} alt="Avatar" />
             </AvatarArea>
             <span>Camila Eduarda</span>
             <p>300 xp</p>
@@ -69,15 +59,44 @@ export const Ranking = () => {
           <LevelPosition>
             <p>3</p>
             <AvatarArea>
-              <img src={Avatar3Img} alt="Avatar" />
+              <img src={RoboWD} alt="Avatar" />
             </AvatarArea>
             <span>Camila Eduarda</span>
             <p>250 xp</p>
           </LevelPosition>
+
+          <LevelPosition>
+            <p>4</p>
+            <AvatarArea>
+              <img src={RoboWD} alt="Avatar" />
+            </AvatarArea>
+            <span>Camila Eduarda</span>
+            <p>250 xp</p>
+          </LevelPosition>
+
+          <LevelPosition>
+            <p>5</p>
+            <AvatarArea>
+              <img src={RoboWD} alt="Avatar" />
+            </AvatarArea>
+            <span>Camila Eduarda</span>
+            <p>250 xp</p>
+          </LevelPosition>
+
+          <LevelPosition>
+            <p>6</p>
+            <AvatarArea>
+              <img src={RoboWD} alt="Avatar" />
+            </AvatarArea>
+            <span>Camila Eduarda</span>
+            <p>250 xp</p>
+          </LevelPosition>
+
         </MainBottom>
+        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
       </Main>
 
-      <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
+      <FooterBtnHome />
     </Container>
   )
 }

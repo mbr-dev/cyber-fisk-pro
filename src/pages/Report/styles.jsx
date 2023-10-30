@@ -12,7 +12,7 @@ export const AvatarArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 1rem 2rem;
+  padding: 16px 32px;
 `;
 
 export const AvatarInfo = styled.div`
@@ -71,7 +71,7 @@ export const Main = styled.main`
 
 export const XP = styled.div`
   width: 100%;
-  padding-inline: 2rem;
+  padding-inline: 32px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -137,7 +137,7 @@ export const Stage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem 2rem;
+  padding: 0 32px;
 `;
 
 export const SLeft = styled.div`
@@ -174,7 +174,7 @@ export const SRight = styled.div`
 
 export const Details = styled.div`
   width: 100%;
-  height: 15rem;
+  height: 220px;
   padding-inline: 2rem;
   padding-top: 0.5rem;
   display: flex;

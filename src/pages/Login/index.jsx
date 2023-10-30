@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { User, Lock, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 import { Footer } from "../../components/Footer";
 import { ButtonBg } from "../../components/ButtonBg";
@@ -15,12 +15,14 @@ import logoImg from "./image/logo.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 import Brazil from "../../assets/Brazil.svg";
+import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
 import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
 import { Container, Main, Header, Select, Form, AreaInput, Input } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Login = () => {
   const { selectLanguage, chooseLanguage, signIn, chooseNotification } = useContext(CyberContext);
@@ -45,13 +47,13 @@ export const Login = () => {
   }
 
   const handleSignIn = async() => {
-    if(raf === ''){
+    if(raf === ""){
       chooseNotification(2);
       setMsgError(Mensagens.rafInvalido);
       setError(true);
       return;
     }
-    if(userPassword === ''){
+    if(userPassword === ""){
       chooseNotification(2);
       setMsgError(Mensagens.senhaVazia);
       setError(true);
@@ -62,23 +64,23 @@ export const Login = () => {
       await signIn(raf, userPassword)
         .then((resp) =>{
           setLoading(false);
-          console.log('resp ==> ', resp);
+          console.log("resp ==> ", resp);
           setError(false);
           if(resp.succeeded){
             const cookies = new Cookies();
-            cookies.set("token", resp.data[0].cd_professor, { path: '/' });
-            cookies.set("raf", raf, { path: '/' });
+            cookies.set("token", resp.data[0].cd_professor, { path: "/" });
+            cookies.set("raf", raf, { path: "/" });
             navigate("/home");
           }else{
-            console.log('login invalido ');
+            console.log("login invalido ");
             setLoading(false);
             chooseNotification(3);
             setMsgError(resp.message);
             setError(true);
-            if(resp.message === 'Network Error'){
+            if(resp.message === "Network Error"){
               const cookies = new Cookies();
-              cookies.set("token", 'A123', { path: '/' });
-              cookies.set("raf", raf, { path: '/' });
+              cookies.set("token", "A123", { path: "/" });
+              cookies.set("raf", raf, { path: "/" });
               navigate("/home");
             }
           }
@@ -103,6 +105,7 @@ export const Login = () => {
     <Container>
       {loading ? <Loading /> : null}
       <Header>
+        <img src={bgHeaderImg} alt="" className="bgImg" />
         <img src={logoImg} alt="Logo do Fisk Pro" />
       </Header>
       <Main>
@@ -149,7 +152,7 @@ export const Login = () => {
             </Select>
           </AreaInput>
         </Form>
-        <LineSeparator w="18rem" />
+        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
           <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"

@@ -1,9 +1,9 @@
 import { useContext } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
-import { ButtonBg } from "../../components/ButtonBg";
-import { LineSeparator } from "../../components/LineSeparator";
+import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
@@ -12,14 +12,16 @@ import Brazil from "../../assets/Brazil.svg";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 
-import { Container, Main, Form, Input, AreaInput, Select } from "./styles";
+import { Container, Content, Main, Input, AreaInput, Select, HeaderDesktop } from "./styles";
 
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
+  
+  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
 
   const handleSelectLanguage = (event) => {
     event.preventDefault();
-    chooseLanguage(event)
+    chooseLanguage(event);
   }
   
   return(
@@ -28,8 +30,14 @@ export const Profile = () => {
         selectLanguage === 0 ? translateProfile[0].title : selectLanguage === 1 ? translateProfile[1].title : translateProfile[2].title
       } />
 
-      <Main>
-        <Form>
+      <Content>
+        {isDesktop && 
+          <HeaderDesktop>
+            <p>Profile</p>
+            <ButtonCloseHeader />
+          </HeaderDesktop>
+        }
+        <Main>
           <AreaInput>
             {selectLanguage === 0 && <label>{translateProfile[0].selectLanguage}</label>}
             {selectLanguage === 1 && <label>{translateProfile[1].selectLanguage}</label>}
@@ -83,10 +91,10 @@ export const Profile = () => {
             <Mail size={16} strokeWidth={2.5} />
             <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
           </AreaInput>
-          <LineSeparator w="100%" />
-        </Form>
-        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
-      </Main>
+        </Main>
+
+        <FooterBtnHome hasLS />
+      </Content>
     </Container>
   )
 }

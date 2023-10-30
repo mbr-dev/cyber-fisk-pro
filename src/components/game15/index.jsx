@@ -13,7 +13,7 @@ import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
 
 export const Game15 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -24,7 +24,6 @@ export const Game15 = () => {
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(true);
-  const [hit, setHit] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
   const [data, setData] = useState([]);
@@ -68,7 +67,6 @@ export const Game15 = () => {
   }, [setIsLoading, setData, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
-    setHit(0);
     setPhrase([]);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -88,13 +86,17 @@ export const Game15 = () => {
 
     if (phrase.length === words.length) {
       if (word === answer.toLowerCase()) {
-        setHit(1);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
 
         tempRightPoints = PointRule(nivel, rightPoints);
         setRightPoints(tempRightPoints);
         setNewPontos(nivel, tempRightPoints);
       } else {
-        setHit(2);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -116,15 +118,19 @@ export const Game15 = () => {
           newRound(tempRound);
         }, 1500);
       } else if (rule === "Game over") {
-        setNewPontos(0,0);
-        setTimeout(() =>{
+        setNewPontos(nivel, 0);
+        setTimeout(() => {
           navigate("/GameOver");
           setNewContainer(1);
-        },1500);
+          setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+        }, 2000);
       } else if (rule === "Score") {
         const pontos = Score(pontosF, pontosM, pontosD);
         const page = ScoreFinal(pontos, numSelLesson, numTask);
-        navigate(`/${page}`);
+        setTimeout(() => {
+          navigate(`/${page}`);
+          setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+        }, 2000);
       } else {
         setTimeout(() =>{
           if (nivel === 0) {
@@ -212,11 +218,7 @@ export const Game15 = () => {
       <DndContext onDragEnd={handleDragEnd}>
         <Main>
           <Droppable>
-            <AreaAnswers
-              style={{
-                color: hit === 1 ? defaultTheme["green-200"] : hit === 2 ? defaultTheme["red-200"] : "",
-              }}
-            >
+            <AreaAnswers>
               <span>{phrase}</span>
             </AreaAnswers>
           </Droppable>

@@ -13,12 +13,11 @@ import { Container, Main, Form } from "./styles";
 
 export const Game16 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answer, setAnswer] = useState("");
@@ -66,7 +65,6 @@ export const Game16 = () => {
 
   const newRound = (number) => {
     setText("");
-    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -84,15 +82,17 @@ export const Game16 = () => {
     tempWord = tempWord.replace(/'/g, "’");
 
     if (tempWord.toLowerCase() === answer.toLowerCase()) {
-      tempColorA = 1;
-      setColorAnswer(tempColorA);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColorA = 2;
-      setColorAnswer(tempColorA);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -114,15 +114,19 @@ export const Game16 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
-      setTimeout(() =>{
+      setNewPontos(nivel, 0);
+      setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      },1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -164,11 +168,6 @@ export const Game16 = () => {
             maxLength={50}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            style={{
-              backgroundColor: colorAnswers === 0 ? "" : colorAnswers === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-              color: colorAnswers === 0 ? "" : defaultTheme.white,
-              border: colorAnswers === 0 ? "" : "none",
-            }}
           />
         </Form>
 

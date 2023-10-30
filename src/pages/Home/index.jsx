@@ -1,11 +1,12 @@
+import Cookies from 'universal-cookie';
 import { useContext, useEffect } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
 import { useNavigate } from "react-router-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+
 import { Footer } from "../../components/Footer";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 import { ButtonPronunciation } from "../../components/ButtonPronunciation";
-import Cookies from 'universal-cookie';
 
 import { CyberContext } from "../../context/cyber";
 import { translateHome } from "../../utils/Translate";
@@ -45,11 +46,12 @@ export const Home = () => {
     if(!token){
       navigate("/Login");
     }
-  },[])
+  },[]);
 
   return(
     <Container>
       <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
+
       <Main>
         <Cards>
           {translateHome.map((text, index) => {            
@@ -63,7 +65,7 @@ export const Home = () => {
               </Card>
               :
               <Dialog.Root>
-                <Dialog.Trigger style={{border: 'none'}}>
+                <Dialog.Trigger style={{border: "none"}}>
                   <Card key={index}>
                     <img src={images[index]} alt="" />
                     {selectLanguage === 0 && <p>{text.name[0]}</p>}

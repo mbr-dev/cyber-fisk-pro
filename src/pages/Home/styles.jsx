@@ -55,21 +55,22 @@ export const Cards = styled.div`
 `;
 
 export const Card = styled.a`
-  width: 7.5rem;
-  height: 7.25rem;
+  width: 112px;
+  height: 110px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
+  border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   box-shadow: 0px 4px 10px 0px #00000033;
-  border-radius: 8px;
+  border-radius: 18px;
   cursor: pointer;
   transition: all ease 0.3s;
 
   img {
-    height: 50%;
+    height: 50px;
   }
 
   p {
@@ -79,7 +80,12 @@ export const Card = styled.a`
   }
 
   &:hover {
-    scale: 1.05;
+    border-color: ${props => props.theme["gray-700"]};
+    background-color: ${props => props.theme["red-200"]};
+
+    p {
+    color: ${props => props.theme.white};
+  }
   }
 
   @media(max-width: 360px) {

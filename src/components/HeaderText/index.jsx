@@ -9,7 +9,7 @@ export const HeaderText = ({ title }) => {
 
   return (
     <Container>
-      <img src={bgHeaderText} alt="" />
+      <img src={bgHeaderText} alt="" className="bgImg" />
       <ButtonMenuHeader />
       <p>{title}</p>
       <ButtonCloseHeader />

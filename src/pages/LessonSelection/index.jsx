@@ -2,18 +2,17 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { ButtonBg } from "../../components/ButtonBg";
 import { LessonContext } from "../../context/lesson";
-import { HeaderText } from "../../components/HeaderText"
+import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
 import FoneImg from "./images/Fone.svg";
 import MicroImg from "./images/Micro.svg";
-import QrCodeImg from "./images/QrCode.svg";
-import ListaImg from "./images/Lista.svg";
-import { LineSeparator } from "../../components/LineSeparator";
-import { ModalPronunciation } from "../../components/ModalPronunciation";
+import QrCodeImg from "./images/QrCode.png";
+import ListaImg from "./images/Lista.png";
 
 import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
@@ -47,19 +46,19 @@ export const LessonSelection = () => {
   
   return (
     <Container>
-      <HeaderText title={`Lesson ${numSelLesson}`} />
+      <HeaderTextImage title={`Lesson ${numSelLesson}`} />
 
       <Main>
         <ButtonAreaTop>
           <DivRight>
             <ButtonTask onClick={() => {clickTask(1)}}>
               <img src={TaskImg}  alt="" />
-              <p>Task1</p>
+              <p>Task 1</p>
             </ButtonTask>
 
             <ButtonTask onClick={() => {clickTask(2)}}>
               <img src={TaskImg}  alt="" />
-              <p>Task2</p>
+              <p>Task 2</p>
             </ButtonTask>
           </DivRight>
 
@@ -71,10 +70,11 @@ export const LessonSelection = () => {
 
         <ButtonAreaBottom>
           <BottomLeft>
-            <ButtonBottom className="button">
+            <ButtonBottom>
               <img src={FoneImg} alt="" />
               <p>Audio</p>
             </ButtonBottom>
+
             <ButtonBottom onClick={() => {click('qr-code')}}>
               <img src={QrCodeImg} alt="" />
               <p>QR</p>
@@ -82,18 +82,15 @@ export const LessonSelection = () => {
           </BottomLeft>
 
           <BottomRight>
-            <ButtonBottom className="button">
+            <ButtonBottom>
               <img src={ListaImg} alt="" />
               <p>Studio</p>
             </ButtonBottom>
-            {/* <ButtonBottom>
-              <img className="micro" src={MicroImg} alt="" />
-              <p>Pronunciation</p>
-            </ButtonBottom> */}
+
              <Dialog.Root>
                 <Dialog.Trigger style={{border: 'none', backgroundColor: 'white', width: '100%'}}>
                   <ButtonBottom>
-                    <img className="micro" src={MicroImg} alt="" />
+                    <img src={MicroImg} alt="" />
                     <p>Pronunciation</p>
                   </ButtonBottom>
                 </Dialog.Trigger>
@@ -101,9 +98,9 @@ export const LessonSelection = () => {
               </Dialog.Root>
           </BottomRight>
         </ButtonAreaBottom>
-        <LineSeparator w="80%" mt="10px" />
-        <ButtonBg title="Home" w="15rem" h="2.5rem" onPress={home}/>
       </Main>
+
+      <FooterBtnHome hasLS />
     </Container>
   )
 }

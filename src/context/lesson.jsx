@@ -7,6 +7,7 @@ function LessonProvider({children}){
   const [numSelLesson, setNumSelLesson] = useState(1);
   const [numTask, setNumTask] = useState(1);
   const [lessons, setLessons] = useState([0,0,0,0,0,0,0,0,0,0]);//0 = neutro 1 = acerto 2 = erro
+  const [statusColor, setStatusColor] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [container, setContainer] = useState(0);
   const [superTask, setSuperTask] = useState(false);
   const [pontosF, setPontosF] = useState(0);
@@ -97,7 +98,7 @@ function LessonProvider({children}){
     setNumAtividade(0);
     setTimeout(() => {
       setNumAtividade(num);
-    }, 500);
+    }, 300);
   }
 
   const setStatusLessons = (data) => {
@@ -108,6 +109,7 @@ function LessonProvider({children}){
     <LessonContext.Provider value={{
       numAtividade,
       pontosD,
+      statusColor,
       lessons,
       pontosF,
       container,
@@ -125,23 +127,24 @@ function LessonProvider({children}){
       conteudoSuperTask,
       dataST,
       dollarAtividade,
-      setTimeElapsed,
-      setStatusLessons,
-      setNewContainer,
-      setNewPontos,
-      setNewNivel,
-      setNewAtividade,
+      newInfoST,
+      setStatusColor,
       setNewTask,
-      setNewSelLesson,
+      setNewNivel,
       setNewRodada,
+      setNewPontos,
       newStatusPlay,
+      setTimeElapsed,
       setNewSuperTask,
+      setNewSelLesson,
+      setNewContainer,
+      setNewAtividade,
+      setStatusLessons,
       setNewConteudoFacil,
       setNewConteudoMedio,
+      setNewDollarAtividade,
       setNewConteudoDificil,
       setNewConteudoSuperTask,
-      newInfoST,
-      setNewDollarAtividade
     }}>
       {children}
     </LessonContext.Provider>

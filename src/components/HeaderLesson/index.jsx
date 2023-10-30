@@ -10,16 +10,18 @@ import iconStart from "./images/iconStart.png";
 import iconFinish from "./images/iconFinish.png";
 import iconSuper from "./images/iconSuper.png";
 import iconTrophy from "./images/iconTrophy.png";
+import bgHeader from "../../assets/bgHeaderText.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
 export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
-  const { rodadaGeral } = useContext(LessonContext);
+  const { rodadaGeral, statusColor } = useContext(LessonContext);
 
   return(
     <Container>
       <Main>
+      <img src={bgHeader} alt="" className="bgImg" />
         <Icons>
           {superTaskStart ?
             <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />
@@ -30,35 +32,37 @@ export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, t
         </Icons>
 
         <BarStep>
-          <HeaderStepLessonStart color={rodadaGeral > 0 ? defaultTheme["blue-100"] : defaultTheme["yellow-100"]} />
+          <HeaderStepLessonStart
+            color={statusColor[0] === 0 ? defaultTheme["gray-100"] : statusColor[0] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]} 
+          />
 
-          <HeaderStepLesson 
-            color={rodadaGeral === 1 ? defaultTheme["yellow-100"] : rodadaGeral < 1 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 2 ? defaultTheme["yellow-100"] : rodadaGeral < 2 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 3 ? defaultTheme["yellow-100"] : rodadaGeral < 3 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 4 ? defaultTheme["yellow-100"] : rodadaGeral < 4 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 5 ? defaultTheme["yellow-100"] : rodadaGeral < 5 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 6 ? defaultTheme["yellow-100"] : rodadaGeral < 6 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
-          />
-          <HeaderStepLesson 
-            color={rodadaGeral === 7 ? defaultTheme["yellow-100"] : rodadaGeral < 7 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
+          <HeaderStepLesson
+            color={statusColor[1] === 0 ? defaultTheme["gray-100"] : statusColor[1] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
           />
           <HeaderStepLesson
-            color={rodadaGeral === 8 ? defaultTheme["yellow-100"] : rodadaGeral < 8 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]}
+            color={statusColor[2] === 0 ? defaultTheme["gray-100"] : statusColor[2] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[3] === 0 ? defaultTheme["gray-100"] : statusColor[3] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[4] === 0 ? defaultTheme["gray-100"] : statusColor[4] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[5] === 0 ? defaultTheme["gray-100"] : statusColor[5] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[6] === 0 ? defaultTheme["gray-100"] : statusColor[6] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[7] === 0 ? defaultTheme["gray-100"] : statusColor[7] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+          />
+          <HeaderStepLesson
+            color={statusColor[8] === 0 ? defaultTheme["gray-100"] : statusColor[8] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
           />
 
-          <HeaderStepLessonEnd 
-            color={rodadaGeral === 9 ? defaultTheme["yellow-100"] : rodadaGeral < 9 ? defaultTheme["gray-200"] : defaultTheme["blue-100"]} 
+          <HeaderStepLessonEnd
+            color={statusColor[9] === 0 ? defaultTheme["gray-100"] : statusColor[9] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
           />
         </BarStep>
 

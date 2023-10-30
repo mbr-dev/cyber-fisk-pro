@@ -15,12 +15,11 @@ import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswer] = useState(0);
   const [sound, setSound] = useState(null);
   const [answer, setAnswer] = useState("");
   const [text, setText] = useState("");
@@ -82,20 +81,22 @@ export const Game10 = () => {
 
     let tempWord = text;
     let tempRightPoints;
-    let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
 
     if (tempWord === answer) {
-      tempColorA = 1;
-      setColorAnswer(tempColorA);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColorA = 2;
-      setColorAnswer(tempColorA);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -116,15 +117,19 @@ export const Game10 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0, 0);
-      navigate('/GameOver');
+      setNewPontos(nivel, 0);
       setTimeout(() => {
+        navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -166,11 +171,6 @@ export const Game10 = () => {
             maxLength={100}
             value={text}
             onChange={(e) => setText(e.target.value)}
-            style={{
-              backgroundColor: colorAnswers === 0 ? "" : colorAnswers === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-              color: colorAnswers === 0 ? "" : defaultTheme.white,
-              border: colorAnswers === 0 ? "" : "none",
-            }}
           />
         </form>
         <ButtonBg

@@ -15,12 +15,11 @@ import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game7 = () => {
   const {
-    rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewPontos, setNewRodada, newStatusPlay, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -72,7 +71,6 @@ export const Game7 = () => {
 
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
 
-    setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
       tempAnswers.push(dataItem[randomIndices[a]].resposta);
@@ -83,7 +81,7 @@ export const Game7 = () => {
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData, setOptionColor]);
+  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
 
   function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -110,7 +108,6 @@ export const Game7 = () => {
 
     const randomIndices = shuffleArray(tempRandom).slice(0, 4);
 
-    setOptionColor(Array(randomIndices.length).fill(0));
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
       tempAnswers.push(dataItem[randomIndices[a]].resposta);
@@ -152,30 +149,30 @@ export const Game7 = () => {
     clicks++;
     setCountClick(clicks);
 
-    let tempColor = optionColor;
     let tempRightPoints;
 
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
-      if (clicks < 4) {
-        tempColor[index] = 1;
-        setOptionColor(tempColor);
+      let newStatus = [...statusColor];
 
+      if (clicks < 4) {
+        newStatus[rodadaGeral] = 2;
+        
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
 
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor[index] = 2;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE += 1;
@@ -201,11 +198,15 @@ export const Game7 = () => {
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -266,7 +267,6 @@ export const Game7 = () => {
                 w="8rem"
                 h="2.625rem"
                 onPress={() => handleGetAnswer(index)}
-                optionColor={optionColor[index]}
                 disabledButton={disabledRes || blockAnswer}
               >
                 <p>{answer.label}</p>

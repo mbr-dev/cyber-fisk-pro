@@ -1,5 +1,8 @@
 import { AlignJustify } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+import menuImg from "../../assets/menuImg.png";
+
 import { Container } from "./styles";
 
 export function ButtonMenuHeader() {
@@ -11,7 +14,7 @@ export function ButtonMenuHeader() {
 
   return (
     <Container onClick={() =>{menu()}}>
-      <AlignJustify size={18} strokeWidth={2.5} />
+      <img src={menuImg} alt="" />
     </Container>
   )
 }

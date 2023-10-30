@@ -14,12 +14,11 @@ import { Container, Main } from "./styles";
 
 export const Game34 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -61,7 +60,6 @@ export const Game34 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -75,7 +73,7 @@ export const Game34 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setRandomNumber, setData, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setCountClick(0);
@@ -83,7 +81,6 @@ export const Game34 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -106,26 +103,26 @@ export const Game34 = () => {
     setCountClick(tempCountClick);
 
     let tempRightPoints;
-    let tempColor = optionColor;
 
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
+      let newStatus = [...statusColor];
+
       if (tempCountClick < (answers.length / 2)) {
-        tempColor[index] = 1;
-        setOptionColor(tempColor);
+        newStatus[rodadaGeral] = 2;
         return;
       }
 
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor[index] = 2;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -149,15 +146,19 @@ export const Game34 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0, 0);
+      setNewPontos(nivel, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -200,7 +201,6 @@ export const Game34 = () => {
               w="13rem"
               h="3.5rem"
               onPress={() => handleClick(index)}
-              optionColor={optionColor[index]}
               disabledButton={blockButton}
             >
               {answer.label}

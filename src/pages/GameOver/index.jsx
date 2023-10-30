@@ -74,7 +74,7 @@ export const GameOver = () => {
 
       <Main>
         <ButtonRed
-          onPress={handleTryAgain}
+          onClick={handleTryAgain}
           title="Try Again"
           w="260px"
           h="56px"

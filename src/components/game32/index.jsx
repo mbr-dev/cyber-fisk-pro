@@ -15,12 +15,11 @@ import { Container, Main, Answers, AnswersRow, RadioG, Radio, Options, Form } fr
 
 export const Game32 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio, statusColor, setStatusColor
   } = useContext(LessonContext);
   
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
@@ -62,7 +61,6 @@ export const Game32 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -77,7 +75,7 @@ export const Game32 = () => {
     setRightAnswers(tempRightA);
 
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound, setAnswers, round, setRightAnswers, setOptionColor])
+  }, [setIsLoading, setData, setRandomNumber, setSound, setAnswers, round, setRightAnswers])
 
   const newRound = (number) => {
     setSelectedRadio([]);
@@ -85,7 +83,6 @@ export const Game32 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -117,25 +114,22 @@ export const Game32 = () => {
     setBlockButton(true);
 
     let tempAnswers = selectedRadio;
-    let tempColor = optionColor;
     let tempRightPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
 
     if (isCorrect) {
-      for (let a = 0; a < tempAnswers.length; a++) {
-        tempColor[a] = 1;
-      }
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      for (let a = 0; a < tempAnswers.length; a++) {
-        tempColor[a] = tempAnswers[a] === rightAnswers[a] ? 1 : 2;
-      }
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -157,15 +151,19 @@ export const Game32 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
-      setTimeout(() =>{
+      setNewPontos(nivel, 0);
+      setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      },1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -211,9 +209,7 @@ export const Game32 = () => {
             {answers.map((answer, index) => {
               return (
                 <AnswersRow key={index}>
-                  <p style={{borderColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : ""}}>
-                    {answer}
-                  </p>
+                  <p>{answer}</p>
                   <RadioG>
                     <Radio value={1} onClick={() => handleRadioChange(1, index)}>
                       <span style={{backgroundColor: selectedRadio[index] === 1 ? defaultTheme["red-200"] : ""}}></span>

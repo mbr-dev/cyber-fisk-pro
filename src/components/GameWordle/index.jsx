@@ -18,11 +18,11 @@ export const GameWordle = () => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const correctWord = "RIGHT";
+  const correctWord = "RIGHRRT";
   const wordLength = correctWord.length;
   const numberOfRows = 6;
   const boardDefault = Array.from({ length: numberOfRows }, () => Array(wordLength).fill(""));
-  const maxColumn = Math.min(6, wordLength);
+  const maxColumn = Math.min(correctWord.length, wordLength);
   
   const [board, setBoard] = useState(boardDefault);
   const [currentAttempt, setCurrentAttempt] = useState({ attempt: 0, letter: 0 });
@@ -110,7 +110,7 @@ export const GameWordle = () => {
     <Container>
       <HeaderTextImage title="Desafio Diário" />
 
-      {wordLength > 5 &&
+      {wordLength > 7 &&
         <Notifications
           description="Palavra deve conter no máximo 8 caracteres." 
         />
@@ -127,7 +127,7 @@ export const GameWordle = () => {
           </Dialog.Root>
           
           <Coin>
-            <img src={CoinImg} /> <span>200</span>
+            <img src={CoinImg} /> <span>10</span>
           </Coin>
         </InfoArea>
 

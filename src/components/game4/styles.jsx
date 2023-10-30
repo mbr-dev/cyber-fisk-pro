@@ -28,7 +28,6 @@ export const Button = styled.button`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 3px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
   transition: all 0.2s;

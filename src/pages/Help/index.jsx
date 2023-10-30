@@ -20,7 +20,7 @@ export const Help = () => {
       <Main>
         <Items onClick={() => setShowR(!showR)} style={{
           borderColor: showR ? defaultTheme["red-200"] : "",
-          height: showR ? "220px" : "",
+          height: showR ? "250px" : "",
           overflowY: showR ? "scroll" : "",
         }}>
           <Top>
@@ -45,7 +45,7 @@ export const Help = () => {
 
         <Items onClick={() => setShowD(!showD)} style={{
           borderColor: showD ? defaultTheme["red-200"] : "",
-          height: showD ? "220px" : "",
+          height: showD ? "250px" : "",
           overflowY: showD ? "scroll" : "",
         }}>
           <Top>
@@ -84,7 +84,7 @@ export const Help = () => {
 
         <Items onClick={() => setShowG(!showG)} style={{
           borderColor: showG ? defaultTheme["red-200"] : "",
-          height: showG ? "220px" : "",
+          height: showG ? "250px" : "",
           overflowY: showG ? "scroll" : "",
         }}>
           <Top>
@@ -104,7 +104,7 @@ export const Help = () => {
 
         <Items onClick={() => setShowW(!showW)} style={{
           borderColor: showW ? defaultTheme["red-200"] : "",
-          height: showW ? "220px" : "",
+          height: showW ? "250px" : "",
           overflowY: showW ? "scroll" : "",
         }}>
           <Top>

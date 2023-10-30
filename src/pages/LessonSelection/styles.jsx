@@ -5,59 +5,65 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Main = styled.main`
   flex: 1;
-  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin-top: 2rem;
+  gap: 20px;
+  padding-block: 20px;
 
-  @media(max-width: 376px) {
-    gap: 1rem;
+  @media(max-width: 360px) {
+    gap: 16px
   }
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.75rem;
+    gap: 8px;
+    padding-block: 10px;
+  }
+
+  @media(min-width: 768px) {
+    padding-block: 32px;
+    gap: 32px;
   }
 `;
 
 export const ButtonAreaTop = styled.div`
-  width: 100%;
-  height: 13rem;
+  width: 80%;
+  height: 208px;
   display: flex;
   align-items: flex-start;
-  justify-content: space-around;
+  justify-content: space-between;
 
   p {
-    font-size: 1.125rem;
+    font-size: 16px;
     font-weight: 500;
   }
 
-  @media(max-width: 376px) {
-    height: 12.75rem;
-  }
-
-  @media(max-width: 320px) {
-    height: 9rem;
-
+  @media(max-width: 360px) {
     p {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
-  @media(min-width: 600px) {
-    justify-content: center;
-    gap: 5rem;
-    height: 19rem;
+  @media(max-width: 320px) {
+    width: 70%;
+    height: 128px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 60%;
+    height: 300px;
+    gap: 64px;
+
+    p {
+      font-size: 24px;
     }
   }
 `;
@@ -66,29 +72,21 @@ export const DivRight = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-
-  @media(max-width: 320px) {
-    gap: 0.75rem;
-  }
-
-  @media(min-width: 600px) {
-    gap: 2rem;
-  }
 `;
 
 export const ButtonTask = styled.button`
   all: unset;
-  width: 6.5rem;
-  height: 6rem;
+  width: 120px;
+  height: 96px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 8px;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
@@ -103,41 +101,49 @@ export const ButtonTask = styled.button`
     border-color: ${props => props.theme.black};
   }
 
-  @media(max-width: 376px) {
-    height: 5.75rem;
+  @media(max-width: 360px) {
+    width: 116px;
+    gap: 6px;
   }
 
   @media(max-width: 320px) {
-    width: 5rem;
-    height: 5rem;
-    gap: 0.5rem;
+    width: 74px;
+    height: 58px;
+    gap: 4px;
 
     img {
       width: 24px;
     }
+  }
 
-    p {
-      font-size: 0.875rem;
+  @media(min-width: 768px) {
+    width: 154px;
+    height: 138px;
+    gap: 10px;
+
+    img {
+      width: 54px;
     }
   }
 `;
 
 export const ButtonSuperTask = styled.button`
   all: unset;
-  width: 9rem;
+  width: 164px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
+
   p {
-    font-size: 1.25rem;
+    font-size: 20px;
   }
 
   img {
@@ -150,108 +156,114 @@ export const ButtonSuperTask = styled.button`
     border-color: ${props => props.theme.black};
   }
 
+  @media(max-width: 360px) {
+    width: 148px;
+  }
+
   @media(max-width: 320px) {
-    width: 7rem;
+    width: 108px;
+    gap: 6px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
 
     img {
-      width: 36px;
+      width: 44px;
     }
   }
 
-  @media(min-width: 600px) {
-    width: 13rem;
+  @media(min-width: 768px) {
+    width: 220px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 28px;
+    }
+
+    img {
+      width: 92px;
     }
   }
 `;
 
 export const ButtonAreaBottom = styled.div`
-  width: 100%;
+  width: 80%;
   display: flex;
-  align-items: flex-end;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: space-between;
 
-  img {
-    width: 28px;
+  @media(max-width: 320px) {
+    width: 70%;
   }
 
-  .micro {
-    height: 50%;
-  }
-
-  p {
-    font-size: 1.125rem;
-    font-weight: 500;
-  }
-
-  .button {
-    margin-bottom: 1rem;
-  }
-
-  @media(min-width: 600px) {
-    width: 38rem;
-    justify-content: center;
-    gap: 5rem;
-
-    p {
-      font-size: 1.5rem;
-    }
-
-    .button {
-      margin-bottom: 2rem;
-    }
+  @media(min-width: 768px) {
+    width: 60%;
   }
 `;
 
 export const BottomRight = styled.div`
-  width: 9rem;
+  width: 164px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
 
-  @media(max-width: 320px) {
-    width: 7rem;
+   @media(max-width: 360px) {
+    width: 148px;
+    gap: 12px;
   }
 
-  @media(min-width: 600px) {
-    width: 13rem;
+  @media(max-width: 320px) {
+    width: 108px;
+    gap: 8px;
+  }
+
+  @media(min-width: 768px) {
+    width: 220px;
   }
 `;
 
 export const BottomLeft = styled.div`
-  width: 6.5rem;
+  width: 120px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media(max-width: 360px) {
+    width: 116px;
+  }
 
   @media(max-width: 320px) {
-    width: 5rem;
+    width: 74px;
+    gap: 8px;
   }
   
-  @media(min-width: 600px) {
-    width: 10rem;
+  @media(min-width: 768px) {
+    width: 154px;
+    gap: 16px;
   }
 `;
 
 export const ButtonBottom = styled.button`
   all: unset;
   width: 100%;
-  height: 4.5rem;
+  height: 76px;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 16px;
   border-radius: 8px;
-  border: 1px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
   cursor: pointer;
+
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
   }
 
   img {
-    width: 24px;
+    width: 36px;
   }
 
   &:hover {
@@ -260,12 +272,22 @@ export const ButtonBottom = styled.button`
     border-color: ${props => props.theme.black};
   }
 
+  @media(max-width: 360px) {
+    p {
+      font-size: 14px;
+    }
+
+    img {
+      width: 32px;
+    }
+  }
+
   @media(max-width: 320px) {
-    height: 4rem;
-    gap: 0rem;
+    height: 54px;
+    gap: 8px;
 
     p { 
-      font-size: 0.875rem;
+      font-size: 12px;
     }
 
     img {
@@ -273,17 +295,17 @@ export const ButtonBottom = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    height: 6rem;
-    justify-content: center;
-    gap: 1rem;
+  @media(min-width: 768px) {
+    height: 108px;
+    justify-content: space-around;
+    gap: 0;
 
     p {
-      font-size: 1rem;
+      font-size: 24px;
     }
 
     img {
-      width: 32px;
+      width: 44px;
     }
   }
 `;
