@@ -99,3 +99,16 @@ export const PontosRank = (jogadas, pontos) => {
 
   return res;
 }
+
+export const PointRule = (nivel, points) => {
+  let tempPoints = points;
+  if (nivel === 0) {
+    tempPoints++;
+  } else if (nivel === 1) {
+    tempPoints += 2;
+  } else {
+    tempPoints += 3;
+  }
+
+  return tempPoints;
+}

@@ -627,76 +627,94 @@
 
   "L2_T1_Facil": [
     {
-      "pergunta": [
-        { "audio": "L2_Task1_F_0", "status": 0},
-        { "audio": "L2_Task1_F_1", "status": 1},
-        { "audio": "L2_Task1_F_2", "status": 2},
-        { "audio": "L2_Task1_F_3", "status": 3}
-      ],
-      "resposta": [
-        { "label": "chicken", "status": 0},
-        { "label": "an iced tea", "status": 1},
-        { "label": "an orange juice", "status": 2},
-        { "label": "steak", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_F_0", "status": 0},
+      "resposta": {"label": "chicken", "status": 0}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_F_4", "status": 0},
-        { "audio": "L2_Task1_F_5", "status": 1},
-        { "audio": "L2_Task1_F_6", "status": 2},
-        { "audio": "L2_Task1_F_7", "status": 3}
-      ],
-      "resposta": [
-        { "label": "crackers", "status": 0},
-        { "label": "potato chips", "status": 1},
-        { "label": "protein bar", "status": 2},
-        { "label": "chocolate cake", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_F_1", "status": 1},
+      "resposta": {"label": "an iced tea", "status": 1}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_2", "status": 2},
+      "resposta": {"label": "an orange juice", "status": 2}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_3", "status": 3},
+      "resposta": {"label": "steak", "status": 3}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_4", "status": 4},
+      "resposta": {"label": "crackers", "status": 4}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_5", "status": 5},
+      "resposta": {"label": "potato chips", "status": 5}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_6", "status": 6},
+      "resposta": {"label": "protein bar", "status": 6}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_7", "status": 7},
+      "resposta": { "label": "chocolate cake", "status": 7}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_8", "status": 8},
+      "resposta": { "label": "frozen yogurt", "status": 8}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_F_9", "status": 9},
+      "resposta": { "label": "rice", "status": 9}
     }
   ],
   "L2_T1_Medio": [
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_0", "status": 0},
-        { "audio": "L2_Task1_M_1", "status": 1},
-        { "audio": "L2_Task1_M_2", "status": 2},
-        { "audio": "L2_Task1_M_3", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, they do.", "status": 0},
-        { "label": "No, he doesn’t.", "status": 1},
-        { "label": "Yes, I do.", "status": 2},
-        { "label": "Yes, she does.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_0", "status": 0},
+      "resposta": {"label": "Yes, they do.", "status": 0}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_4", "status": 0},
-        { "audio": "L2_Task1M_5", "status": 1},
-        { "audio": "L2_Task1_M_6", "status": 2},
-        { "audio": "L2_Task1_M_7", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, he does.", "status": 0},
-        { "label": "No, it doesn’t.", "status": 1},
-        { "label": "No, we don’t.", "status": 2},
-        { "label": "Yes, they do.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_1", "status": 1},
+      "resposta": {"label": "No, he doesn’t.", "status": 1}
     },
     {
-      "pergunta": [
-        { "audio": "L2_Task1_M_8", "status": 0},
-        { "audio": "L2_Task1_M_9", "status": 1},
-        { "audio": "L2_Task1_M_10", "status": 2},
-        { "audio": "L2_Task1_M_11", "status": 3}
-      ],
-      "resposta": [
-        { "label": "Yes, we do.", "status": 0},
-        { "label": "No, they don’t.", "status": 1},
-        { "label": "No, he doesn’t.", "status": 2},
-        { "label": "Yes, she does.", "status": 3}
-      ]
+      "pergunta": {"audio": "L2_Task1_M_2", "status": 2},
+      "resposta":  {"label": "Yes, I do.", "status": 2}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_3", "status": 3},
+      "resposta": {"label": "Yes, she does.", "status": 3}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_4", "status": 4},
+      "resposta": {"label": "Yes, he does.", "status": 4}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1M_5", "status": 5},
+      "resposta": {"label": "No, it doesn’t.", "status": 5}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_6", "status": 6},
+      "resposta": {"label": "No, we don’t.", "status": 6}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_7", "status": 7},
+      "resposta": {"label": "Yes, they do.", "status": 7}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_8", "status": 8},
+      "resposta": {"label": "Yes, we do.", "status": 8}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_9", "status": 9},
+      "resposta": {"label": "No, they don’t.", "status": 9}
+    },
+    {
+      "pergunta": { "audio": "L2_Task1_M_10", "status": 10},
+      "resposta": { "label": "No, he doesn’t.", "status": 10}
+    },
+    {
+      "pergunta": {"audio": "L2_Task1_M_11", "status": 11},
+      "resposta": {"label": "Yes, she does.", "status": 11}
     }
   ],
   "L2_T1_Dificil": [
@@ -2142,7 +2160,7 @@
   "L5_T1_Dificil": [
     {
       "pergunta": [
-        "James Hawkins is",
+        "James Hawkins",
         "from Dallas, but he",
         "in New York. He",
         "fashion. His favorite",
@@ -2599,6 +2617,2116 @@
         {"label": "surfing", "status": 0},
         {"label": "cycling", "status": 0}
       ]
+    }
+  ],
+  "L6_T1_Medio": [
+    {
+      "pergunta": "L6_Task1_M_0",
+      "resposta": [
+        "Yes, I can",
+        "Yes, we can",
+        "No I can’t",
+        "No we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_1",
+      "resposta": [
+        "Yes, he can",
+        "No, he can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_2",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_3",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_4",
+      "resposta": [
+        "Yes, she can",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_5",
+      "resposta": [
+        "Yes, they can",
+        "No, they can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_6",
+      "resposta": [
+        "Yes, we can",
+        "No, we can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_7",
+      "resposta": [
+        "Yes, Sarah can",
+        "Yes, she can",
+        "No, Sarah can’t",
+        "No, she can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_8",
+      "resposta": [
+        "Yes, I can",
+        "No, I can’t"
+      ]
+    },
+    {
+      "pergunta": "L6_Task1_M_9",
+      "resposta": [
+        "Yes, the kids can",
+        "Yes, they can",
+        "No, the kids can’t",
+        "No, they can’t"
+      ]
+    }
+  ],
+  "L6_T1_Dificil": [
+    {
+      "audio": "L6_Task1_D_0",
+      "pergunta": [
+        "I’m",
+        "and my name is Alice. I",
+        ". I can do 50 sit-ups in one minute. I",
+        "5 kilometers in 30 minutes. I",
+        ".",
+        "and milkshakes are my favorite fast food."
+      ],
+      "option0": "16 years old",
+      "option1": "can swim",
+      "option2": "can run",
+      "option3": "can’t dance",
+      "option4": "Cheeseburgers"
+    },
+    {
+      "audio": "L6_Task1_D_1",
+      "pergunta": [
+        "My name is Zack.",
+        "years old. I",
+        ". I can",
+        "sandwiches. I can also make chocolate milkshakes. I",
+        "guitar. Pizza is my favorite",
+        "."
+      ],
+      "option0": "I’m 13",
+      "option1": "can cook",
+      "option2": "make different",
+      "option3": "can’t play the",
+      "option4": "fast food"
+    },
+    {
+      "audio": "L6_Task1_D_2",
+      "pergunta": [
+        "There are only three main",
+        "create all the other colors.",
+        "the primary colors:",
+        ".",
+        "mix them, we",
+        "other colors. Orange, violet and green are the secondary colors."
+      ],
+      "option0": "colors that",
+      "option1": "They are",
+      "option2": "red, yellow, and blue",
+      "option3": "When we",
+      "option4": "create"
+    }
+  ],
+  "L6_T2_Facil": [
+    {
+      "pergunta": "When can we meet? (after class)",
+      "resposta": "We can meet after class."
+    },
+    {
+      "pergunta": "What board game can you play? (chess)",
+      "resposta": "I can play chess."
+    },
+    {
+      "pergunta": "What sport can he play? (basketball)",
+      "resposta": "He can play basketball."
+    },
+    {
+      "pergunta": "Who is the couch potato in your family? (my brother)",
+      "resposta": "My brother is the couch potato in my family."
+    },
+    {
+      "pergunta": "What can’t your mom do? (play the guitar)",
+      "resposta": "She can’t play the guitar."
+    },
+    {
+      "pergunta": "Why don’t you want to go to the party? (can’t dance).",
+      "resposta": "Because I can’t dance."
+    },
+    {
+      "pergunta": "Can you lift weights? (No)",
+      "resposta": "No, I can’t lift weights."
+    },
+    {
+      "pergunta": "What can you do to be fit? (work out and eat healthy food)",
+      "resposta": "I can work out and eat healthy food."
+    },
+    {
+      "pergunta": "Can you do 20 crunches in 1 minute? (yes)",
+      "resposta": "Yes, I can do 20 crunches in 1 minute."
+    },
+    {
+      "pergunta": "Why do you exercise regularly? (want to get fit)",
+      "resposta": "Because I want to get fit."
+    }
+  ],
+  "L6_T2_Medio": [
+    {
+      "pergunta": ["swim ", "can ", "Tral ", "well", "very "],
+      "resposta": "Tral can swim very well"
+    },
+    {
+      "pergunta": ["can’t ", "Nami ", "tennis", "play "],
+      "resposta": "Nami can’t play tennis"
+    },
+    {
+      "pergunta": ["things", "do ", "can ", "Karen ", "a lot of "],
+      "resposta": "Karen can do a lot of things"
+    },
+    {
+      "pergunta": ["Tim and Barbara ", "dance", "can "],
+      "resposta": "Tim and Barbara can dance"
+    },
+    {
+      "pergunta": ["teach ", "to ", "chopsticks", "how ", "can ", "use ", "Tina "],
+      "resposta": "Tina can teach how to use chopsticks"
+    },
+    {
+      "pergunta": ["can ", "Jorge ", "treadmill ", "use ", "the ", "at the gym"],
+      "resposta": "Jorge can use the treadmill at the gym"
+    },
+    {
+      "pergunta": ["can’t ", "drums", "Michael ", "play "],
+      "resposta": "Michael can’t play drums"
+    },
+    {
+      "pergunta": ["skateboard", "Mia ", "can’t "],
+      "resposta": "Mia can’t skateboard"
+    },
+    {
+      "pergunta": ["lift ", "weights", "Jenny ", "can "],
+      "resposta": "Jenny can lift weights"
+    },
+    {
+      "pergunta": ["write ", "books", "can ", "Julia "],
+      "resposta": "Julia can write books"
+    }
+  ],
+  "L6_T2_Dificil": [
+    {
+      "pergunta": "Louise can sing very well.",
+      "resposta": "What Louise can do?"
+    },
+    {
+      "pergunta": "Yes, he can swim.",
+      "resposta": "Can he swim?"
+    },
+    {
+      "pergunta": "I’m angry because I’m hungry.",
+      "resposta": "Why are you angry?"
+    },
+    {
+      "pergunta": "He is doing crunches.",
+      "resposta": "What is he doing?"
+    },
+    {
+      "pergunta": "Yes. He can play tennis very well.",
+      "resposta": "Can he play tennis?"
+    },
+    {
+      "pergunta": "He studies Spanish because he wants to move to Spain.",
+      "resposta": "Why does he study Spanish?"
+    },
+    {
+      "pergunta": "No, she can’t jump kick.",
+      "resposta": "Can she jump kick?"
+    },
+    {
+      "pergunta": "They can play video games with their parents.",
+      "resposta": "What can they do with their parents?"
+    },
+    {
+      "pergunta": "Candy can sing.",
+      "resposta": "What can Candy do?"
+    },
+    {
+      "pergunta": "No. My grandpa can’t use a smartphone.",
+      "resposta": "Can your grandpa use a smartphone?"
+    }
+  ],
+  "L6_SUPER_LESSON": [
+    {"name": "Six-pack", "status": 0},
+    {"resposta": "abs", "status": 0},
+    {"name": "Sports", "status": 1},
+    {"resposta": "nut", "status": 1},
+    {"name": "Fitness", "status": 2},
+    {"resposta": "freak", "status": 2},
+    {"name": "Health", "status": 3},
+    {"resposta": "club", "status": 3},
+    {"name": "On a", "status": 4},
+    {"resposta": "diet", "status": 4},
+    {"name": "Dance", "status": 5},
+    {"resposta": "class", "status": 5},
+    {"name": "Beach", "status": 6},
+    {"resposta": "volleyball", "status": 6},
+    {"name": "Lift", "status": 7},
+    {"resposta": "weights", "status": 7},
+    {"name": "Burn", "status": 8},
+    {"resposta": "calories", "status": 8},
+    {"name": "Get", "status": 9},
+    {"resposta": "strong", "status": 9},
+    {"name": "Personal", "status": 10},
+    {"resposta": "trainer", "status": 10},
+    {"name": "Give", "status": 11},
+    {"resposta": "up", "status": 11},
+    {"name": "Fast", "status": 12},
+    {"resposta": "food", "status": 12},
+    {"name": "Lie", "status": 13},
+    {"resposta": "down", "status": 13},
+    {"name": "Do", "status": 14},
+    {"resposta": "pushups", "status": 14},
+    {"name": "Exercise", "status": 15},
+    {"resposta": "regularly", "status": 15},
+    {"name": "Work", "status":16},
+    {"resposta": "out", "status": 16},
+    {"name": "Free", "status": 17},
+    {"resposta": "time", "status": 17},
+    {"name": "Watch", "status": 18},
+    {"resposta": "TV", "status": 18},
+    {"name": "Go to", "status": 19},
+    {"resposta": "the gym", "status": 19},
+    {"name": "Martial", "status": 20},
+    {"resposta": "arts", "status": 20},
+    {"name": "Physical", "status": 22},
+    {"resposta": "conditioning", "status": 22},
+    {"name": "Run", "status": 23},
+    {"resposta": "10k", "status": 23},
+    {"name": "Stand on", "status": 24},
+    {"resposta": "your head", "status": 24},
+    {"name": "Couch", "status": 25},
+    {"resposta": "potato", "status": 25}
+  ],
+
+  "L7_T1_Facil": [
+    {
+      "image": "Ess1_L7_T1F_0",
+      "pergunta": "The bird is _____the boxes.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "under", "status": 0},
+        {"label": "between", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_1",
+      "pergunta": "The bird is _______ the box.",
+      "resposta": [
+        {"label": "in front of", "status": 1},
+        {"label": "behind", "status": 0},
+        {"label": "between", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_2",
+      "pergunta": "The bird is ______ the box.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "in", "status": 1},
+        {"label": "among", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_3",
+      "pergunta": "The bird is ______the box.",
+      "resposta": [
+        {"label": "under", "status": 0},
+        {"label": "on", "status": 0},
+        {"label": "behind", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_4",
+      "pergunta": "The bird is ______ the box.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "under", "status": 1},
+        {"label": "in front of", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_5",
+      "pergunta": "The bird is _____ the boxes.",
+      "resposta": [
+        {"label": "behind", "status": 0},
+        {"label": "between", "status": 0},
+        {"label": "among", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_6",
+      "pergunta": "The pizza place is _______ the corner.",
+      "resposta": [
+        {"label": "in", "status": 0},
+        {"label": "on", "status": 1},
+        {"label": "at", "status": 0}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_7",
+      "pergunta": "The bakery is ____ the pizza place and the restaurant.",
+      "resposta": [
+        {"label": "next", "status": 0},
+        {"label": "beside", "status": 0},
+        {"label": "between", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_8",
+      "pergunta": "The hospital is ____ 58 Alfred Avenue.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "under", "status": 0},
+        {"label": "at", "status": 1}
+      ]
+    },
+    {
+      "image": "Ess1_L7_T1F_9",
+      "pergunta": "The gym is _____ of Main Avenue.",
+      "resposta": [
+        {"label": "on", "status": 0},
+        {"label": "at the end", "status": 1},
+        {"label": "next", "status": 0}
+      ]
+    }
+  ],
+  "L7_T1_Medio": [
+    {
+      "pergunta": "Can you help me? Is there a coffee shop near here?",
+      "resposta": [
+        {"label": "No, there is no park.", "status": 0},
+        {"label": "Yes, there is one on Park Avenue.", "status": 1},
+        {"label": "Yes, there is a coffee shop.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Where is the subway?",
+      "resposta": [
+        {"label": "Yes, there is a subway.", "status": 0},
+        {"label": "The subway is opposite the school.", "status": 1},
+        {"label": "There is a subway in the city.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are there restaurants in the hotel?",
+      "resposta": [
+        {"label": "No, there aren’t restaurants in the hotel.", "status": 1},
+        {"label": "Yes, there is a hotel.", "status": 0},
+        {"label": "No, there is a hotel here.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Where is the drugstore?",
+      "resposta": [
+        {"label": "There is a drugstore.", "status": 0},
+        {"label": "It is on Albert Street.", "status": 1},
+        {"label": "Yes, there is a drugstore.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Can you help me? Is there a hospital near here?",
+      "resposta": [
+        {"label": "No.", "status": 0},
+        {"label": "There is a shop near here.", "status": 0},
+        {"label": "Yes, there is a hospital on the corner.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Excuse me. Where is the gas station?",
+      "resposta": [
+        {"label": "It’s on Main Street.", "status": 1},
+        {"label": "There is a gas station.", "status": 0},
+        {"label": "No, there is a hotel.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Is there a good pizza place in your city?",
+      "resposta": [
+        {"label": "There are restaurants on Main Avenue.", "status": 0},
+        {"label": "Yes, there is.", "status": 1},
+        {"label": "Yes, there are good pizzas at the restaurant.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "I’m sorry.",
+      "resposta": [
+        {"label": "That’s ok.", "status": 1},
+        {"label": "Sorry.", "status": 0},
+        {"label": "What?", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Where is the bus station?",
+      "resposta": [
+        {"label": "There is bus station.", "status": 0},
+        {"label": "There are buses near the park.", "status": 0},
+        {"label": "It’s at 65 Main Avenue.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Where is there a supermarket?",
+      "resposta": [
+        {"label": "There is one behind the gym.", "status": 1},
+        {"label": "No, there isn’t a gym.", "status": 0},
+        {"label": "There are two supermarkets.", "status": 0}
+      ]
+    }
+  ],
+  "L7_T1_Dificil": [
+    {
+      "pergunta": "I am ______ visit my best friend.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 1},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "She is going ______ pizza for dinner.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 1},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "We are going to study abroad ______ year.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 1},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "They ______ going to visit the United States.",
+      "resposta": [
+        {"label": "are", "status": 1},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "He is going to travel ______ plane.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 1},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "______ a bakery on Main Street.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 1},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "The gym is ______ the school.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "______ two hospitals near here.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 1},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "There are ______ restaurants on 5th Avenue.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 1},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 0},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "There is a supermarket near ______.",
+      "resposta": [
+        {"label": "are", "status": 0},
+        {"label": "good", "status": 0},
+        {"label": "going to", "status": 0},
+        {"label": "next", "status": 0},
+        {"label": "the park", "status": 1},
+        {"label": "to have", "status": 0},
+        {"label": "there is", "status": 0},
+        {"label": "by", "status": 0},
+        {"label": "there are", "status": 0},
+        {"label": "behind", "status": 0}
+      ]
+    }
+  ],
+  "L7_T2_Facil": [
+    {
+      "pergunta": "Task_2_F_0",
+      "resposta": [
+        {"label": "There is a good gym behind the park.", "status": 1},
+        {"label": "There is a gym in the park.", "status": 0},
+        {"label": "There is a gym near the park. ", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_1",
+      "resposta": [
+        {"label": "There are restaurants on Green Street.", "status": 0},
+        {"label": "The new restaurant is on Green Street.", "status": 1},
+        {"label": "The new restaurant.", "status": 0}
+      ]
+    },
+    {  
+      "pergunta": "Task_2_F_2",
+      "resposta": [
+        {"label": "Is there a coffee shop here?", "status": 0},
+        {"label": "Is there a coffee shop near here?", "status": 0},
+        {"label": "Is there a good coffee shop near here?", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_3",
+      "resposta": [
+        {"label": "Are there good outlet malls around here?", "status": 1},
+        {"label": "Are there outlet malls around here?", "status": 0},
+        {"label": "Are there shopping malls around here?", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_4",
+      "resposta": [
+        {"label": "There are good hotels at the end of this street.", "status": 0},
+        {"label": "There are nice hotels at the end of this avenue.", "status": 1},
+        {"label": "There are nice hotels around here.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_5",
+      "resposta": [
+        {"label": "The new supermarket is on the corner of Main and Green.", "status": 1},
+        {"label": "The new supermarket is behind the part on Main Street.", "status": 0},
+        {"label": "The supermarket is on Main Street.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_6",
+      "resposta": [
+        {"label": "There is a gas station near here.", "status": 0},
+        {"label": "There isn’t a gas station on the corner.", "status": 0},
+        {"label": "There isn’t gas station around here.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_7",
+      "resposta": [
+        {"label": "Excuse me, where is there a hospital?", "status": 1},
+        {"label": "Hi, where is there a hospital?", "status": 0},
+        {"label": "Excuse me, where is there a hospital near here?", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_8",
+      "resposta": [
+        {"label": "There isn’t a superhero in the taxi.", "status": 0},
+        {"label": "There is a superhero in the taxi.", "status": 1},
+        {"label": "There is a person in the taxi.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_F_9",
+      "resposta": [
+        {"label": "There is a tablet in my backpack.", "status": 0},
+        {"label": "There isn’t a tablet in your backpack.", "status": 0},
+        {"label": "There is a tablet under your backpack.", "status": 1}
+      ]
+    }
+  ],
+  "L7_T2_Medio": [
+    {
+      "pergunta": "Task_2_M_0",
+      "resposta": [
+        {"label": "Congratulations on your promotion!", "status": 0},
+        {"label": "Thank you! I have a new office now. Come see it!", "status": 1},
+        {"label": "Is there an iPad in your office?", "status": 2},
+        {"label": "No, there isn’t.", "status": 3},
+        {"label": "Of course, there is. Take a look. It’s a gift from all of us.", "status": 4},
+        {"label": "Thank you very much!", "status": 5}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_1",
+      "resposta": [
+        {"label": "Hi, Amy.", "status": 0},
+        {"label": "Hi, Bruce. What are you wearing?", "status": 1},
+        {"label": "I'm wearing jeans, a white shirt and a brown jacket.", "status": 2},
+        {"label": "And I'm wearing black pants and a pink sweater.", "status": 3},
+        {"label": "I found you.", "status": 4}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_2",
+      "resposta": [
+        {"label": "There are five girls wearing jeans.", "status": 0},
+        {"label": "And six boys wearing pants and shirts.", "status": 1},
+        {"label": "The girls are talking about the boys. ", "status": 2},
+        {"label": "There is a boy at the café looking at the girls.", "status": 3}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_0",
+      "resposta": [
+        {"label": "DCongratulations on your promotion!", "status": 0},
+        {"label": "DThank you! I have a new office now. Come see it!", "status": 1},
+        {"label": "DIs there an iPad in your office?", "status": 2},
+        {"label": "DNo, there isn’t.", "status": 3},
+        {"label": "DOf course, there is. Take a look. It’s a gift from all of us.", "status": 4},
+        {"label": "DThank you very much!", "status": 5}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_1",
+      "resposta": [
+        {"label": "DHi, Amy.", "status": 0},
+        {"label": "DHi, Bruce. What are you wearing?", "status": 1},
+        {"label": "DI'm wearing jeans, a white shirt and a brown jacket.", "status": 2},
+        {"label": "DAnd I'm wearing black pants and a pink sweater.", "status": 3},
+        {"label": "DI found you.", "status": 4}
+      ]
+    },
+    {
+      "pergunta": "Task_2_M_2",
+      "resposta": [
+        {"label": "DThere are five girls wearing jeans.", "status": 0},
+        {"label": "DAnd six boys wearing pants and shirts.", "status": 1},
+        {"label": "DThe girls are talking about the boys. ", "status": 2},
+        {"label": "DThere is a boy at the café looking at the girls.", "status": 3}
+      ]
+    }
+  ],
+  "L7_T2_Dificil": [
+    {
+      "pergunta": "L7_Task2_D_0",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_0", "status": 1},
+        {"image": "Ess1_L7_T1D_1", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L7_Task2_D_1",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_2", "status": 0},
+        {"image": "Ess1_L7_T1D_3", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "L7_Task2_D_2",
+      "resposta": [
+        {"image": "Ess1_L7_T1D_4", "status": 0},
+        {"image": "Ess1_L7_T1D_5", "status": 1}
+      ]
+    }
+  ],
+  "L7_SUPER_LESSON": [
+    {
+      "images": ["Ess1_L7_SPL_0", "Ess1_L7_SPL_1", "Ess1_L7_SPL_2", "Ess1_L7_SPL_3"],
+      "letras": ["A", "D", "E", "O", "M", "G", "R", "F", "S", "V", "T", "U"],
+      "resposta": "DRUGSTORE"
+    },
+    {
+      "images": ["Ess1_L7_SPL_4", "Ess1_L7_SPL_5", "Ess1_L7_SPL_6", "Ess1_L7_SPL_7"],
+      "letras": ["A", "E", "O", "M", "N", "G", "R", "D", "S", "V", "T", "H"],
+      "resposta": "MODERN"
+    },
+    {
+      "images": ["Ess1_L7_SPL_8", "Ess1_L7_SPL_9", "Ess1_L7_SPL_10", "Ess1_L7_SPL_11"],
+      "letras": ["A", "I", "O", "S", "N", "G", "R", "D", "Y", "J", "T", "P"],
+      "resposta": "DIRTY"
+    },
+    {
+      "images": ["Ess1_L7_SPL_12", "Ess1_L7_SPL_13", "Ess1_L7_SPL_14", "Ess1_L7_SPL_15"],
+      "letras": ["E", "I", "O", "U", "M", "H", "R", "D", "V", "B", "T", "N"],
+      "resposta": "UNDER"
+    },
+    {
+      "images": ["Ess1_L7_SPL_16", "Ess1_L7_SPL_17", "Ess1_L7_SPL_18", "Ess1_L7_SPL_19"],
+      "letras": ["A", "E", "O", "U", "B", "E", "T", "D", "W", "F", "E", "N"],
+      "resposta": "BETWEEN"
+    }
+  ],
+
+  "L8_T1_Facil": [
+    {
+      "pergunta": "What’s the nature of your trip?",
+      "resposta": [
+        {"label": "Yes, it is.", "status": 0},
+        {"label": "I’m going to San Francisco.", "status": 0},
+        {"label": "I’m here on business.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Are you going to get an American visa?",
+      "resposta": [
+        {"label": "Yes, next week.", "status": 1},
+        {"label": "No, you are not.", "status": 0},
+        {"label": "Yes, I do.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are Mike and Lisa going to visit their grandma on Sunday?",
+      "resposta": [
+        {"label": "Yes, they visit her on Sunday.", "status": 0},
+        {"label": "Yes, they are going to visit her on Sunday.", "status": 1},
+        {"label": "No, they don’t.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Is Patrick going to study abroad next year?",
+      "resposta": [
+        {"label": "Yes, he’s going to study in France.", "status": 1},
+        {"label": "Yes, he’s studying in France.", "status": 0},
+        {"label": "No, he’s at home.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are they going to have lunch at that new pizza place?",
+      "resposta": [
+        {"label": "Yes, they do.", "status": 0},
+        {"label": "No, they are on a diet.", "status": 1},
+        {"label": "No, they aren’t having lunch at that new pizza place.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Are your parents going to rent a car in Miami?",
+      "resposta": [
+        {"label": "Yes, they’re going to rent a big car there.", "status": 1},
+        {"label": "Yes, they have a big car there.", "status": 0},
+        {"label": "Yes, they do.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Is Kate going to stay in a good hotel in Seattle?",
+      "resposta": [
+        {"label": "No, she doesn’t.", "status": 0},
+        {"label": "Yes, she stays in a good hotel.", "status": 0},
+        {"label": "No, she’s going to stay with her mom. She lives there.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Where is your best friend going to have lunch tonight?",
+      "resposta": [
+        {"label": "She’s going to have lunch with her boyfriend.", "status": 0},
+        {"label": "She’s going to have lunch at that new Italian restaurant.", "status": 1},
+        {"label": "She’s at the restaurant.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "What is Mike going to cook for dinner?",
+      "resposta": [
+        {"label": "He’s going to cook rice and beans.", "status": 1},
+        {"label": "He’s going to cook dinner for his friends.", "status": 0},
+        {"label": "Mike likes chicken and salad.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "When are you going to visit Disney World?",
+      "resposta": [
+        {"label": "I’m going to visit Disney World in Orlando.", "status": 0},
+        {"label": "I’m going to visit Disney World next December.", "status": 1},
+        {"label": "I like to visit Disney on December. ", "status": 0}
+      ]
+    }
+  ],
+  "L8_T1_Medio": [
+    {
+      "pergunta": [
+        "Lucas is going to travel",
+        "next month."
+      ],
+      "resposta": {
+        "label": ["", "by plane", "road trip", "buy a ticket"],
+        "status": "by plane"
+      }
+    },
+    {
+      "pergunta": [
+        "Shirley is going to",
+        "to Dubai."
+      ],
+      "resposta": {
+        "label": ["", "buy a ticket", "go backpacking", "to travel by plane"],
+        "status": "buy a ticket"
+      }
+    },
+    {
+      "pergunta": [
+        "When are you going to",
+        "for your trip?"
+      ],
+      "resposta": {
+        "label": ["", "take a city tour", "travel by plane", "pack your bags"],
+        "status": "pack your bags"
+      }
+    },
+    {
+      "pergunta": [
+        "Jared isn’t going to L.A",
+        "."
+      ],
+      "resposta": {
+        "label": ["", "go backpacking", "by bus", "pack his bags"],
+        "status": "by bus"
+      }
+    },
+    {
+      "pergunta": [
+        "Nina is going to",
+        "at the hotel."
+      ],
+      "resposta": {
+        "label": ["", "make a reservation", "take a city tour", "take a road trip"],
+        "status": "make a reservation"
+      }
+    },
+    {
+      "pergunta": [
+        "Is she going to",
+        "an American visa?"
+      ],
+      "resposta": {
+        "label": ["", "take", "get", "buy"],
+        "status": "get"
+      }
+    },
+    {
+      "pergunta": [
+        "Mary doesn’t like to travel",
+        "."
+      ],
+      "resposta": {
+        "label": ["", "by bus", "go backpacking", "take a road trip"],
+        "status": "by bus"
+      }
+    },
+    {
+      "pergunta": [
+        "João is going to",
+        "on his next vacation."
+      ],
+      "resposta": {
+        "label": ["", "pack his bags", "go backpacking", "make a reservation"],
+        "status": "go backpacking"
+      }
+    },
+    {
+      "pergunta": [
+        "May I see your",
+        "?"
+      ],
+      "resposta": {
+        "label": ["", "ticket online", "passport", "make a reservation"],
+        "status": "passport"
+      }
+    },
+    {
+      "pergunta": [
+        "People love to",
+        "when they are in New York City."
+      ],
+      "resposta": {
+        "label": ["", "pack your bag", "take a road trip", "take a city tour"],
+        "status": "take a city tour"
+      }
+    }
+  ],
+  "L8_T1_Dificil": [
+    {
+      "option": {
+        "pergunta": ["going ", "travel.", "are ", "do ", "to ", "weekend? ", "What ", "They ",  "to ", "going ", "are ", "next ", "they "],
+        "resposta": "What are they going to do next weekend? They are going to travel."
+      },
+      "option1": {
+        "pergunta": ["going ", "am ", "I ", "travel? ", "month.", "you ", "are ", "go ", "to ", "When ", "going ", "to ", "next "],
+        "resposta": "When are you going to travel? I am going to go next month."
+      }
+    },
+    {
+      "option": {
+        "pergunta": ["Dan ", "going ", "is ", "next ", "month.", "Who ", "to ", "is ", "going ", "travel? ", "Disney "],
+        "resposta": "Who is going travel? Dan is going to Disney next month."
+      },
+      "option1": {
+        "pergunta": ["going ", "What ", "time ", "flight? ", "is ", "midnight.", "They ", "are ", "at ", "their "],
+        "resposta": "What time is their flight? They are going at midnight."
+      }
+    },
+    {
+      "option": {
+        "pergunta": ["are ", "to ", "going ", "go? ", "travel ", "Where ", "are ", "We ", "to ", "going ", "to.", "you "],
+        "resposta": "Where are you going to go? We are going to travel to."
+      },
+      "option1": {
+        "pergunta": ["at ", "8 ", "p.m.", "is ", "your ", "ticket? ", "What ", "time ", "The ", "bus ", "leaves "],
+        "resposta": "What time is your ticket? The bus leaves at 8 p.m."
+      }
+    },
+    {
+      "option": {
+        "pergunta": ["a ", "dress ", "and ", "boots.", "she ", "wearing? ", "is ", "She ", "What ", "wears "],
+        "resposta": "What is she wearing? She wears a dress and boots."
+      },
+      "option1": {
+        "pergunta": ["next ", "week.", "get ", "an ", "American ", "visa? ", "going ", "to ", "get ", "When ", "are ", "you ", "I ", "am ", "going ", "to ", "go "],
+        "resposta": "When are you going to get an American visa? I am going to go get next week."
+      }
+    },
+    {
+      "option": {
+        "pergunta": ["live? ", "in ", "L.A.", "are ", "they ", "going ", "to ", "Where ", "going ", "They ", "are ", "to ", "live "],
+        "resposta": "Where are they going to live? They are going to live in L.A."
+      },
+      "option1": {
+        "pergunta": ["to ", "have ", "lunch ", "tomorrow ", "Who ", "is ", "going ", "to ", "at ", "the ", "mall? ", "are ", "We ", "going ", "have ", "lunch ", "tomorrow."],
+        "resposta": "Who is going to have lunch tomorrow at the mall? We are going to have lunch tomorrow."
+      }
+    }
+  ],
+  "L8_T2_Facil": [
+    {
+      "pergunta": "Task_2_F_0",
+      "resposta": {
+        "label": ["", "Yes. I have a reservation for 2 nights.", "Yes, I can swim.", "No, I can’t make a reservation today."],
+        "status": "Yes. I have a reservation for 2 nights."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_1",
+      "resposta": {
+        "label": ["", "Yes. We are going to call an old friend.", "Yes, we are.", "Yes. We are going to make new friends."],
+        "status": "Yes, we are."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_2",
+      "resposta": {
+        "label": ["", "Yes. I’m going to have dinner.", "No, I don’t like lasagna.", "A lasagna."],
+        "status": "A lasagna."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_3",
+      "resposta": {
+        "label": ["", "I study English at night.", "We’re going out for dinner.", "They are reading."],
+        "status": "We’re going out for dinner."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_4",
+      "resposta": {
+        "label": ["", "It’s on the second floor.", "Yes, we have a restaurant.", "No. There isn’t a restaurant."],
+        "status": "It’s on the second floor."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_5",
+      "resposta": {
+        "label": ["", "Yes, I have a pet.", "Yes, they are.", "No. I have a dog."],
+        "status": "Yes, they are."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_6",
+      "resposta": {
+        "label": ["", "Yes, he is.", "Yes, I am.", "Yes, please."],
+        "status": "Yes, please."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_7",
+      "resposta": {
+        "label": ["", "Thanks.", "Here you are.", "Yes, I have one"],
+        "status": "Here you are."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_8",
+      "resposta": {
+        "label": ["", "Here you are. ", "Thanks.", "No, thanks."],
+        "status": "Thanks."
+      }
+    },
+    {
+      "pergunta": "Task_2_F_9",
+      "resposta": {
+        "label": ["", "$70.00 for a single room and $90.00 for a double.", "I have $150.00.", "Here you are."],
+        "status": "$70.00 for a single room and $90.00 for a double."
+      }
+    }
+  ],
+  "L8_T2_Medio": [
+    {
+      "pergunta": "Task_2_M_0",
+      "resposta": {
+        "label": "No / backpack",
+        "status": [
+          "No, I’m not. I’m going to buy a backpack.",
+          "No. I’m going to buy a backpack."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_1",
+      "resposta": {
+        "label": "No / France",
+        "status": [
+          "No, he isn’t. He is going to live in France.",
+          "No, he’s not. He is going to live in France.",
+          "No. He’s going to live in France.",
+          "No. He is going to live in France."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_2",
+      "resposta": {
+        "label": "No / sandals",
+        "status": [
+          "No, she isn’t. She is going to wear sandals.",
+          "No, she is going to wear sandals."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_3",
+      "resposta": {
+        "label": "No / apple pie",
+        "status": [
+          "No, we aren’t. We are going to eat apple pie.",
+          "No. We are going to eat apple pie."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_4",
+      "resposta": {
+        "label": "No / manager",
+        "status": [
+          "No, they aren’t. They are going to talk to the manager.",
+          "No. They are going to talk to the manager."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_5",
+      "resposta": {
+        "label": "No / Alice",
+        "status": [
+          "No, I’m not. I’m going to invite Alice.",
+          "No. I’m going to invite Alice."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_6",
+      "resposta": {
+        "label": "Because / do research on the internet",
+        "status": ["Because she is going to do research on the internet."]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_7",
+      "resposta": {
+        "label": "I'm / the day after tomorrow",
+        "status": [
+          "I’m going to call him the day after tomorrow.",
+          "I’m going to call Mr. Adams the day after tomorrow."
+        ]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_8",
+      "resposta": {
+        "label": "Because / have a job interview",
+        "status": ["Because he is going to have a job interview."]
+      }
+    },
+    {
+      "pergunta": "Task_2_M_9",
+      "resposta": {
+        "label": "She's / new salsa club",
+        "status": ["She’s going to learn how to dance salsa at the new salsa club."]
+      }
+    }
+  ],
+  "L8_T2_Dificil": [
+    {
+      "pergunta": "Task_2_D_0",
+      "resposta": [
+        {"label": "The man is at a hotel.", "status": 1},
+        {"label": "He is sharing a room with another person.", "status": 0},
+        {"label": "He knows why there are a lot of people there.", "status": 0},
+        {"label": "He doesn’t smoke.", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Task_2_D_1",
+      "resposta": [
+        {"label": "Jack doesn’t need help at the store.", "status": 0},
+        {"label": "Jack and Tom are friends.", "status": 1},
+        {"label": "Tom invites Jack to have dinner at his house.", "status": 1},
+        {"label": "Jack can’t go.", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Task_2_D_2",
+      "resposta": [
+        {"label": "Alice works at a hotel.", "status": 1},
+        {"label": "There is breakfast from 6 to 10 am.", "status": 1},
+        {"label": "Alexander Rakaov wants to make a reservation at the hotel.", "status": 0},
+        {"label": "He wants to stay 6 days there.", "status": 0}
+      ]
+    }
+  ],
+  "L8_SUPER_LESSON": [
+    {
+      "pergunta": [
+        {"label": "a person traveling on vacation", "answer": ["TOU", "RIST"]},
+        {"label": "a place to stay when traveling", "answer": ["HOT", "EL"]},
+        {"label": "you need to buy one to travel by plane or bus", "answer": ["TICK", "ET"]},
+        {"label": "document for traveling abroad", "answer": ["PAS", "SP", "ORT"]},
+        {"label": "object to put your clothes when traveling", "answer": ["SUI", "TC", "ASE"]}
+      ],
+      "letras": ["ASE", "EL", "ET", "HOT", "ORT", "PAS", "RIST", "SP", "SUI", "TC", "TICK", "TOU"],
+      "resposta": ["TOURIST", "HOTEL", "TICKET", "PASSPORT", "SUITCASE"]
+    }
+  ],
+
+  "L9_T1_Facil": [
+    {
+      "img": "Ess1_L9_TF_0",
+      "resposta": [
+        {"label": "They watched a horror movie yesterday. ", "status": 1},
+        {"label": "They saw a horror movie yesterday.", "status": 0},
+        {"label": "They looked at a horror movie yesterday.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_1",
+      "resposta": [
+        {"label": "I watched a drama movie last weekend.", "status": 0},
+        {"label": "I watched an action movie last weekend.", "status": 1},
+        {"label": "I didn’t watch an action movie.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_2",
+      "resposta": [
+        {"label": "The jazz concert started at 9 o’clock.", "status": 0},
+        {"label": "They played country music.", "status": 0},
+        {"label": "We decided to go to a rock concert.", "status": 1}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_3",
+      "resposta": [
+        {"label": "They played electronic music at the party.", "status": 1},
+        {"label": "They play good music.", "status": 0},
+        {"label": "They like rock music.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_4",
+      "resposta": [
+        {"label": "The lady didn’t cook yesterday.", "status": 0},
+        {"label": "The lady didn’t have time to go out yesterday.", "status": 1},
+        {"label": "The lady didn’t work at home yesterday. ", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_5",
+      "resposta": [
+        {"label": "The boy listened to music yesterday.", "status": 1},
+        {"label": "The boy surfed the internet yesterday.", "status": 0},
+        {"label": "The boy watched a movie yesterday.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_6",
+      "resposta": [
+        {"label": "The boy watched a movie yesterday.", "status": 0},
+        {"label": "She listened to music online yesterday.", "status": 0},
+        {"label": "She studied for tests yesterday.", "status": 1}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_7",
+      "resposta": [
+        {"label": "He traveled last month.", "status": 1},
+        {"label": "He visited a big city last week.", "status": 0},
+        {"label": "He watched an action movie yesterday.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_8",
+      "resposta": [
+        {"label": "She didn’t eat this morning.", "status": 0},
+        {"label": "She prepared a big breakfast this morning.", "status": 1},
+        {"label": "She invited her friends to eat out this morning.", "status": 0}
+      ]
+    },
+    {
+      "img": "Ess1_L9_TF_9",
+      "resposta": [
+        {"label": "They traveled by car.", "status": 1},
+        {"label": "They traveled by plane.", "status": 0},
+        {"label": "They traveled by train.", "status": 0}
+      ]
+    }
+  ],
+  "L9_T1_Medio": [
+    {
+      "pergunta": "_______ you watch the movie last weekend?",
+      "resposta": [
+        {"label": "Do", "status": 0},
+        {"label": "Did", "status": 1},
+        {"label": "Can", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Did you _____ the cast of the movie?",
+      "resposta": [
+        {"label": "liked ", "status": 0},
+        {"label": "likes ", "status": 0},
+        {"label": "like ", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "When _____ you _____ the movie?",
+      "resposta": [
+        {"label": "do – watched", "status": 0},
+        {"label": "does – watch", "status": 0},
+        {"label": "did – watch", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "Where ____ you ____ on your last vacation?",
+      "resposta": [
+        {"label": "did – go", "status": 1},
+        {"label": "do – go", "status": 0},
+        {"label": "can – go", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "___ he ___ about it to his teacher last class?",
+      "resposta": [
+        {"label": "Does – talk", "status": 0},
+        {"label": "Did – talk", "status": 1},
+        {"label": "Do – talk", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "She _____ her grandmother two days ago.",
+      "resposta": [
+        {"label": "visits", "status": 0},
+        {"label": "visited", "status": 1},
+        {"label": "visit", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "____ Mary and her friends ____ to go backpacking one year ago?",
+      "resposta": [
+        {"label": "Do – decide", "status": 0},
+        {"label": "Does – decide", "status": 0},
+        {"label": "Did – decide", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "He _______ his last trip online.",
+      "resposta": [
+        {"label": "search", "status": 0},
+        {"label": "searched", "status": 1},
+        {"label": "to search", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "Her teacher ____ because she ____ the test.",
+      "resposta": [
+        {"label": "talked – missed", "status": 0},
+        {"label": "called – misses", "status": 0},
+        {"label": "called – missed", "status": 1}
+      ]
+    },
+    {
+      "pergunta": "They _____ a delicious dinner last Saturday.",
+      "resposta": [
+        {"label": "cooked", "status": 1},
+        {"label": "cooking", "status": 0},
+        {"label": "cook", "status": 0}
+      ]
+    }
+  ],
+  "L9_T1_Dificil": [
+    {
+      "pergunta": [
+        {"label": "Yes, I do. Did you move in yesterday?", "status": 1},
+        {"label": "Do you live here?", "status": 0},
+        {"label": "Yes, I did.", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Do you live here?", "status": 0},
+        {"label": "Yes, I do. Did you move in yesterday?", "status": 1},
+        {"label": "Yes, I did.", "status": 2}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Hi. I’m Alison, Alison Hill.", "status": 1},
+        {"label": "Good morning, I’m Daniel Murray", "status": 0},
+        {"label": "Nice to meet you too.", "status": 3},
+        {"label": "Nice to meet you", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Good morning, I’m Daniel Murray", "status": 0},
+        {"label": "Hi. I’m Alison, Alison Hill.", "status": 1},
+        {"label": "Nice to meet you.", "status": 2},
+        {"label": "Nice to meet you too.", "status": 3}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Me? No, I didn’t!", "status": 1},
+        {"label": "Did you break the remote control?", "status": 0},
+        {"label": "Well, I think I need to buy new batteries tomorrow.", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Did you break the remote control?", "status": 0},
+        {"label": "Me? No, I didn’t!", "status": 1},
+        {"label": "Well, I think I need to buy new batteries tomorrow.", "status": 2}
+      ]
+    },
+    {
+      "pergunta": [
+        {"label": "Yes, I watched it yesterday.", "status": 1},
+        {"label": "Is it a good movie?", "status": 2},
+        {"label": "Did you watch the movie?", "status": 0},
+        {"label": "For me, it was really nice.", "status": 3}
+      ],
+      "resposta": [
+        {"label": "Did you watch the movie?", "status": 0},
+        {"label": "Yes, I watched it yesterday.", "status": 1},
+        {"label": "Is it a good movie?", "status": 2},
+        {"label": "For me, it was really nice.", "status": 3}
+      ]
+    }
+  ],
+  "L9_T2_Facil": [
+    {
+      "pergunta": "L9_Task2_F_0",
+      "resposta": [
+        {"label": "Called", "status": 1},
+        {"label": "Played", "status": 1},
+        {"label": "Watched", "status": 0},
+        {"label": "Needed", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_1",
+      "resposta": [
+        {"label": "Remembered", "status": 1},
+        {"label": "Stayed", "status": 1},
+        {"label": "Helped", "status": 0},
+        {"label": "Studied", "status": 0}
+      ]
+    },
+    {  
+      "pergunta": "L9_Task2_F_2",
+      "resposta": [
+        {"label": "Studied", "status": 1},
+        {"label": "Asked", "status": 1},
+        {"label": "Started", "status": 0},
+        {"label": "Needed", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_3",
+      "resposta": [
+        {"label": "Liked", "status": 1},
+        {"label": "Stopped", "status": 1},
+        {"label": "Lived", "status": 0},
+        {"label": "Watched", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_4",
+      "resposta": [
+        {"label": "Helped", "status": 1},
+        {"label": "Watched", "status": 1},
+        {"label": "Wanted", "status": 0},
+        {"label": "Needed", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_5",
+      "resposta": [
+        {"label": "Invited", "status": 1},
+        {"label": "Texted", "status": 1},
+        {"label": "Wanted", "status": 0},
+        {"label": "Played", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_6",
+      "resposta": [
+        {"label": "Wanted", "status": 1},
+        {"label": "Needed", "status": 1},
+        {"label": "Called", "status": 0},
+        {"label": "Helped", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_7",
+      "resposta": [
+        {"label": "Decided", "status": 1},
+        {"label": "Lived", "status": 1},
+        {"label": "Used", "status": 0},
+        {"label": "Liked", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_8",
+      "resposta": [
+        {"label": "Used", "status": 1},
+        {"label": "Started", "status": 1},
+        {"label": "Studied", "status": 0},
+        {"label": "Stayed", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L9_Task2_F_9",
+      "resposta": [
+        {"label": "Worked", "status": 1},
+        {"label": "Enjoyed", "status": 1},
+        {"label": "Played", "status": 0},
+        {"label": "Watched", "status": 0}
+      ]
+    }
+  ],
+  "L9_T2_Medio": [
+    {
+      "audio": "L9_Task2_M_0",
+      "pergunta": "She played it yesterday.",
+      "resposta": "When did she play the tambourine?"
+    },
+    {
+      "audio": "L9_Task2_M_1",
+      "pergunta": "We watched talk shows and cartoons.",
+      "resposta": "What did you do yesterday?"
+    },
+    {
+      "audio": "L9_Task2_M_2",
+      "pergunta": "They watched it last night.",
+      "resposta": "When did they watch the talk show?"
+    },
+    {
+      "audio": "L9_Task2_M_3",
+      "pergunta": "We needed to buy them in January.",
+      "resposta": "When did you need to buy the books?"
+    },
+    {
+      "audio": "L9_Task2_M_4",
+      "pergunta": "She studied English. ",
+      "resposta": "What did she study yesterday?"
+    },
+    {
+      "audio": "L9_Task2_M_5",
+      "pergunta": "He started a computer course on February 3rd.",
+      "resposta": "When did Nick start a computer course?"
+    },
+    {
+      "audio": "L9_Task2_M_6",
+      "pergunta": "He studied Spanish yesterday morning.",
+      "resposta": "When did Ken study Spanish?"
+    },
+    {
+      "audio": "L9_Task2_M_7",
+      "pergunta": "Yes. She watched a jazz concert on July 1st.",
+      "resposta": "Did Julie watch a jazz concert on TV?"
+    },
+    {
+      "audio": "L9_Task2_M_8",
+      "pergunta": "He worked late last night.",
+      "resposta": "What did Tim do last night?"
+    },
+    {
+      "audio": "L9_Task2_M_9",
+      "pergunta": "No. She stayed home yesterday.",
+      "resposta": "Did Mary go to a shopping mall yesterday afternoon?"
+    }
+  ],
+  "L9_T2_Dificil": [
+    {
+      "pergunta": [
+        "Last Monday, Annie",
+        "a lot till 12:30 and then she stopped for lunch. In the afternoon she",
+        "a lot of emails and presented a project to her boss at 4 p.m. At home, as usual, she switched off from work,",
+        "a delicious dinner and",
+        " ",
+        "favorite TV show."
+      ],
+      "option0": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "worked"
+      },
+      "option1": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "answered"
+      },
+      "option2": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "cooked "
+      },
+      "option3": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "watched "
+      },
+      "option4": {
+        "label": ["", "answered", "cooked", "worked", "her", "cooks", "watched"],
+        "status": "her"
+      }
+    },
+    {
+      "pergunta": [
+        "Timothy Collins",
+        "the hotel to make a reservation for two nights. When he",
+        "at the hotel, the desk clerk couldn’t",
+        "his reservation at first, but then she did. He",
+        "a double room. She handed him the keys to the room and",
+        "him to complete a form."
+      ],
+      "option0": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "called"
+      },
+      "option1": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "arrived"
+      },
+      "option2": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "find"
+      },
+      "option3": {
+        "label": ["", "arrived", "find", "ask", "called", "booked", "call"],
+        "status": "booked"
+      },
+      "option4": {
+        "label": ["", "arrived", "find", "asked", "called", "booked", "call"],
+        "status": "asked"
+      }
+    },
+    {
+      "pergunta": [
+        "Last",
+        ", Ashley",
+        "to go to the movies, but she",
+        ". She",
+        "home and watched a video. James",
+        "soccer in the afternoon and video games in the evening."
+      ],
+      "option0": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "Sunday"
+      },
+      "option1": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "wanted"
+      },
+      "option2": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "didn’t"
+      },
+      "option3": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "stayed"
+      },
+      "option4": {
+        "label": ["", "played", "Sunday", "didn’t", "don’t", "stayed", "wanted"],
+        "status": "played"
+      }
+    }
+  ],
+  "L9_SUPER_LESSON": [
+    {
+      "pergunta": "Do you ever go to music festivals",
+      "resposta": [
+        "Yes, I do.",
+        "Yes, I go to music festivals.",
+        "No, I don’t.",
+        "No, I don’t go to music festivals."
+      ]
+    },
+    {
+      "pergunta": "Did you watch a horror movie yesterday",
+      "resposta": [
+        "Yes, I did.",
+        "Yes, I watched a horror movie yesterday.",
+        "No, I didn’t.",
+        "No, I didn’t watch a horror movie."
+      ]
+    },
+    {
+      "pergunta": "Did you listen to music this morning",
+      "resposta": [
+        "Yes, I did.",
+        "Yes, I listened to music this morning.",
+        "No, I didn’t.",
+        "No, I didn’t listen to music this morning."
+      ]
+    },
+    {
+      "pergunta": "Did you talk to your friend today",
+      "resposta": [
+        "Yes, I did.",
+        "Yes, I talked to my friend today.",
+        "No, I didn’t.",
+        "No, I didn’t talk to my friend today."
+      ]
+    },
+    {
+      "pergunta": "When did you shop for new clothes",
+      "resposta": ["I shopped for new clothes"]
+    },
+    {
+      "pergunta": "What kind of music do you like",
+      "resposta": ["I like"]
+    },
+    {
+      "pergunta": "What time did you work out yesterday",
+      "resposta": [
+        "At",
+        "I worked out at",
+        "I worked out"
+      ]
+    },
+    {
+      "pergunta": "What kind of food do you like",
+      "resposta": ["I like"]
+    },
+    {
+      "pergunta": "What is your favorite TV show",
+      "resposta": ["My favorite TV show is"]
+    },
+    {
+      "pergunta": "When did you visit a small city",
+      "resposta": ["I visited a small city"]
+    }
+  ],
+
+  "L10_T1_Facil": [
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_0", "status": 0},
+        { "audio": "L10_Task1_F_1", "status": 1}
+      ],
+      "resposta": [
+        { "label": "broke", "status": 0},
+        { "label": "bought", "status": 1},
+        { "label": "bet", "status": -1},
+        { "label": "booked", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_2", "status": 0},
+        { "audio": "L10_Task1_F_3", "status": 1}
+      ],
+      "resposta": [
+        { "label": "drinks", "status": -1},
+        { "label": "drunk", "status": 0},
+        { "label": "eating", "status": -1},
+        { "label": "ate", "status": 1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_4", "status": 0},
+        { "audio": "L10_Task1_F_5", "status": 1}
+      ],
+      "resposta": [
+        { "label": "felt", "status": -1},
+        { "label": "fought", "status": -1},
+        { "label": "found", "status": 0},
+        { "label": "forgot", "status": 1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_6", "status": 0},
+        { "audio": "L10_Task1_F_7", "status": 1}
+      ],
+      "resposta": [
+        { "label": "gave", "status": 0},
+        { "label": "were", "status": -1},
+        { "label": "went", "status": 1},
+        { "label": "got", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_8", "status": 0},
+        { "audio": "L10_Task1_F_9", "status": 1}
+      ],
+      "resposta": [
+        { "label": "met", "status": -1},
+        { "label": "made", "status": 0},
+        { "label": "saw", "status": 1},
+        { "label": "sewed", "status": -1}
+      ]
+    },
+    {
+      "pergunta": [
+        { "audio": "L10_Task1_F_10", "status": 0},
+        { "audio": "L10_Task1_F_11", "status": 1}
+      ],
+      "resposta": [
+        { "label": "sang", "status": -1},
+        { "label": "sold", "status": 0},
+        { "label": "thought", "status": -1},
+        { "label": "took", "status": 1}
+      ]
+    }
+  ],
+  "L10_T1_Medio": [
+    {
+      "pergunta": "L10_Task1_M_0",
+      "resposta": {
+        "label": "eat / big breakfast",
+        "status": ["Did you eat a big breakfast?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_F_1",
+      "resposta": {
+        "label": "When / come back",
+        "status": ["When did you come back?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_2",
+      "resposta": {
+        "label": "have / fun / your vacation",
+        "status": ["Did you have fun on your vacation?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_3",
+      "resposta": {
+        "label": "finish / your project",
+        "status": ["Did you finish your project?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_4",
+      "resposta": {
+        "label": "Drink / coffee / tea",
+        "status": ["Did you drink coffee or tea?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_5",
+      "resposta": {
+        "label": "What / Mike / do / yesterday",
+        "status": ["What did Mike do yesterday?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_6",
+      "resposta": {
+        "label": "Jonathan / yesterday / on the net",
+        "status": ["What did Jonathan pay on the net yesterday?"]
+      }
+    },
+    {
+      "pergunta": "L10_Task1_M_7",
+      "resposta": {
+        "label": "Wendy / yesterday / morning",
+        "status": ["What did Wendy send yesterday morning?"]
+      }
+    }
+  ],
+  "L10_T1_Dificil": [
+    {
+      "pergunta": "L10_Task1_D_0",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_0", "status": 1},
+        {"image": "Ess1_L10_Task1_D_1", "status": 0},
+        {"image": "Ess1_L10_Task1_D_2", "status": 0},
+        {"image": "Ess1_L10_Task1_D_3", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L10_Task1_D_1",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_4", "status": 0},
+        {"image": "Ess1_L10_Task1_D_5", "status": 0},
+        {"image": "Ess1_L10_Task1_D_6", "status": 1},
+        {"image": "Ess1_L10_Task1_D_7", "status": 0}
+      ]
+    },
+    {
+      "pergunta": "L10_Task1_D_2",
+      "resposta": [
+        {"image": "Ess1_L10_Task1_D_8", "status": 0},
+        {"image": "Ess1_L10_Task1_D_9", "status": 1},
+        {"image": "Ess1_L10_Task1_D_10", "status": 0},
+        {"image": "Ess1_L10_Task1_D_11", "status": 0}
+      ]
+    }
+  ],
+  "L10_T2_Facil": [
+    {
+      "pergunta": "Oh! It’s Friday. Thank God!",
+      "label": ["Yeah!", ""],
+      "resposta": {
+        "label": ["", "Let’s work on the weekend.", "Let’s enjoy our weekend!", "Let’s see!"],
+        "status": "Let’s enjoy our weekend!"
+      }
+    },
+    {
+      "pergunta": "Where can we go this weekend?",
+      "label": ["I", "this new place on the Main Avenue is awesome."],
+      "resposta": {
+        "label": ["", "hear", "heard", "get"],
+        "status": "heard"
+      }
+    },
+    {
+      "pergunta": "Let’s get a taxi!",
+      "label": ["", "to Main Avenue, please."],
+      "resposta": {
+        "label": ["", "Get us", "Take us", "Move us"],
+        "status": "Take us"
+      }
+    },
+    {
+      "pergunta": "Here it is.",
+      "label": ["Here’s", "."],
+      "resposta": {
+        "label": ["", "your change", "your money", "the rest"],
+        "status": "your change"
+      }
+    },
+    {
+      "pergunta": "Hi! You are back!",
+      "label": ["Yes. Last weekend I", "with my friends."],
+      "resposta": {
+        "label": ["", "traveled", "travel", "travels"],
+        "status": "traveled "
+      }
+    },
+    {
+      "pergunta": "What are you going to do next weekend?",
+      "label": ["I", "with my friends."],
+      "resposta": {
+        "label": ["", "went out", "am going to go out", "go out"],
+        "status": "am going to go out "
+      }
+    },
+    {
+      "pergunta": "",
+      "label": ["Where did you", "last weekend? To the new restaurant!"],
+      "resposta": {
+        "label": ["", "went", "go", "going"],
+        "status": "go"
+      }
+    },
+    {
+      "pergunta": "Did you sleep well last night?",
+      "label": ["Yes. I", "very well last night."],
+      "resposta": {
+        "label": ["", "sleep", "slept", "sleeps"],
+        "status": "slept"
+      }
+    },
+    {
+      "pergunta": "",
+      "label": ["Carla didn’t", "out with her friends last Saturday."],
+      "resposta": {
+        "label": ["", "hang", "hung", "hangs"],
+        "status": "hang"
+      }
+    }
+  ],
+  "L10_T2_Medio": [
+    {
+      "pergunta": ["rather ", "would ", "do ", "Kyle ", "exciting ", "things."],
+      "resposta": "Kyle would rather do exciting things."
+    },
+    {
+      "pergunta": ["on ", "Chris ", "birthday.", "cake ", "for ", "his ", "breakfast ", "had "],
+      "resposta": "Chris had cake for breakfast on his birthday."
+    },
+    {
+      "pergunta": ["America", "going ", "he ", "Is ", "to ", "move ", "to ", "?"],
+      "resposta": "Is he going to move to America?"
+    },
+    {
+      "pergunta": ["would ", "be ", "Cindy ", "rather ", "not ", "alone."],
+      "resposta": "Cindy would rather not be alone."
+    },
+    {
+      "pergunta": ["yesterday.", "after ", "took ", "a ", "nap ", "lunch ", "Phil "],
+      "resposta": "Phil took a nap after lunch yesterday."
+    },
+    {
+      "pergunta": ["book", "When ", "you ", "read ", "did ", "the ", "?"],
+      "resposta": "When did you read the book?"
+    },
+    {
+      "pergunta": ["classroom", "there ", "chairs ", "in ", "Are ", "the ", "?"],
+      "resposta": "Are there chairs in the classroom?"
+    },
+    {
+      "pergunta": ["did ", "Who ", "call ", "morning", "you ", "yesterday ", "?"],
+      "resposta": "Who did you call yesterday morning?"
+    },
+    {
+      "pergunta": ["wearing", "What ", "he ", "is ", "?"],
+      "resposta": "What is he wearing?"
+    },
+    {
+      "pergunta": ["play ", "can ", "Where ", "you ", "tennis", "?"],
+      "resposta": "Where can you play tennis?"
+    }
+  ],
+  "L10_T2_Dificil": [
+    {
+      "label": "Past",
+      "pergunta": "last Friday. / Dan / shopping / go",
+      "resposta": ["Dan went shopping last Friday.", "Last Friday, Dan went shopping."]
+    },
+    {
+      "label": "Present",
+      "pergunta": "Josh / early / up / to / get",
+      "resposta": ["Josh gets up early."]
+    },
+    {
+      "label": "Past",
+      "pergunta": "Christmas / gift / get / What / you / last / ?",
+      "resposta": ["What gift did you get last Christmas?"]
+    },
+    {
+      "label": "Present",
+      "pergunta": "lunch / at / school / have / you / ?",
+      "resposta": ["Do you have lunch at school?"]
+    },
+    {
+      "label": "Past",
+      "pergunta": "yesterday. / eat out / Luiza / friends / her",
+      "resposta": ["Luiza ate out with her friends yesterday."]
+    },
+    {
+      "label": "Past",
+      "pergunta": "night./ last / Marta / drive / beach / the / to",
+      "resposta": ["Marta drove to the beach last night."]
+    }
+  ],
+  "L10_SUPER_LESSON": [
+    { 
+      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "resposta": ["classical", "dance", "country", "reggae", "rock", "jazz"]
     }
   ]
 }

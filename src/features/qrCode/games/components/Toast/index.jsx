@@ -1,6 +1,6 @@
 import React from "react";
 import IconSad from "../../../assets/icons/Icon_sad.png";
-import IconHappy from "../../../assets/icons/Icon_happy.png";
+import IconHappy from "../../../assets/icons/Icon_Happy.png";
 
 import { ToastContainer, ToastText, ToastIcon } from "./style";
 

@@ -25,6 +25,11 @@ export const Button = styled.button`
     transform: scale(0.9);
   }
 
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+
   @media(max-width: 320px) {
     width: 3rem;
     height: 3rem;

@@ -34,7 +34,7 @@ export const AreaAnswers = styled.div`
   border-top-left-radius: 8px;
 
   span {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: bold;
   }
   
@@ -42,7 +42,6 @@ export const AreaAnswers = styled.div`
     width: 15rem;
 
     span {
-      font-size: 1rem;
       font-weight: bold;
     }
   }

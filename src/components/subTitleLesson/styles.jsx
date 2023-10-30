@@ -2,12 +2,11 @@ import styled from "styled-components";
 
 export const SubtitleLessonContainer = styled.div`
   display: flex;
-  flex-direction: row;
   justify-content: center;
   align-items: center;
   width: 100%;
   background-color: ${props => props.theme["gray-300"]};
-  padding-block: 0.625rem;
+  padding: 0.5rem;
   text-align: center;
 
   span {
@@ -17,7 +16,7 @@ export const SubtitleLessonContainer = styled.div`
 
   @media(max-width: 320px) {
     span {
-      padding-inline: 0.3125rem;
+      padding: 0.3125rem;
       font-size: 1.25rem;
     }
   }

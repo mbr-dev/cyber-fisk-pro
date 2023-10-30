@@ -9,61 +9,46 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 18.75rem;
-  height: 100%;
+  flex: 1;
+  width: 80%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1.5rem;
-  gap: 0.5rem;
+  justify-content: space-around;
 
   p {
-    text-align: left;
+    font-size: 20px;
     font-weight: 500;
-    font-size: 1.125rem;
+  }
+
+  @media(max-width: 320px) {
+    p {
+      font-size: 14px;
+    }
   }
 `;
 
-export const CurrentBooksArea = styled.div`
-  width: 100%;
-  margin-bottom: 0.5rem;
-
-  p {
-    margin-bottom: 1.5rem;
-  }
-`;
-
-export const BooksImagesArea = styled.div`
+export const BooksArea = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.75rem;
+  flex-direction: column;
+  gap: 12px;
+
+  @media(max-width: 320px) {
+    gap: 8px;
+  }
 `;
 
-export const BooksImagesCarrousel = styled.div`
-  height: 8.25rem;
-`;
-
-export const ImagesCarrousel = styled.div`
-  /* img {
-    width: 100%;
-    height: auto;
-  } */
+export const BooksImage = styled.div`
   cursor: pointer;
+  
   img {
     width: 30%;
   }
-`;
 
-export const PreviousBooksArea = styled.div`
-  width: 100%;
-
-  p {
-    margin-bottom: 1.5rem;
-  }
-
-  img {
-    opacity: 0.3;
+  @media(max-width: 320px) {
+    img {
+      width: 25%;
+    }
   }
 `;

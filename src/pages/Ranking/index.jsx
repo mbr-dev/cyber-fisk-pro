@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 
-import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonBg } from "../../components/ButtonBg";
 
@@ -21,7 +21,7 @@ export const Ranking = () => {
 
   return (
     <Container>
-      <TopMenuHeader title="Ranking" />
+      <HeaderTextImage title="Ranking" />
 
       <Main>
         <MainTop>

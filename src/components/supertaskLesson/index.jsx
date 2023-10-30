@@ -10,6 +10,11 @@ import { GameSL2 } from "../game_sl2";
 import { GameSL3 } from "../game_sl3";
 import { GameSL4 } from "../game_sl4";
 import { GameSL5 } from "../game_sl5";
+import { GameSL6 } from "../game_sl6";
+import { GameSL7 } from "../game_sl7";
+import { GameSL8 } from "../game_sl8";
+import { GameSL9 } from "../game_sl9";
+import { GameSL10 } from "../game_sl10";
 
 export const SuperTaskLesson = () => {
   const { setNewRodada, numTask, numAtividade, numSelLesson, setNewConteudoSuperTask} = useContext(LessonContext);
@@ -43,16 +48,26 @@ export const SuperTaskLesson = () => {
         return(<GameSL4 />);
       case 5 :
         return(<GameSL5 />);
+      case 6 :
+        return(<GameSL6 />);
+      case 7 :
+        return(<GameSL7 />);
+      case 8 :
+        return(<GameSL8 />);
+      case 9 :
+        return(<GameSL9 />);
+      case 10 :
+        return(<GameSL9 />);
     }
   }
 
   useEffect(()=>{
-    if(numTask === '1'){
-      setStrStart('Task 1');
-      setStrEnd('Task 2');
-    }else if(numTask === '2'){
-      setStrStart('Task 2');
-      setStrEnd('Super Task');
+    if(numTask === 1){
+      setStrStart("Task 1");
+      setStrEnd("Task 2");
+    }else if(numTask === 2){
+      setStrStart("Task 2");
+      setStrEnd("Super Task");
     }
     loadContent();
   },[])

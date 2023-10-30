@@ -2,7 +2,7 @@ import { useContext, useEffect } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useNavigate } from "react-router-dom";
 import { Footer } from "../../components/Footer";
-import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 import { ButtonPronunciation } from "../../components/ButtonPronunciation";
 import Cookies from 'universal-cookie';
@@ -49,7 +49,7 @@ export const Home = () => {
 
   return(
     <Container>
-      <TopMenuHeader hasAvatar hasLogo enabledClose={true}/>
+      <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
       <Main>
         <Cards>
           {translateHome.map((text, index) => {            

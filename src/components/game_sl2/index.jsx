@@ -2,19 +2,21 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
+import { ButtonBg } from "../ButtonBg";
+import { TitleLesson } from "../titleLesson";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 
-import LogoImg from "./images/logoIcon.png";
+import LogoImg from "../../assets/logoIcon.png";
 
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL2 = () => {
-  const { setTimeElapsed, timeElapsed, conteudoSuperTask, newInfoST } = useContext(LessonContext);
+  const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
+
+  const navigate = useNavigate();
 
   const [playing, setPlaying] = useState(false);
   const [level, setLevel] = useState(0);
@@ -22,20 +24,23 @@ export const GameSL2 = () => {
   const [shownCount, setShownCount] = useState(0);
   const [points, setPoints] = useState(0);
   const [cards, setCards] = useState([]);
+  const [reset, setReset] = useState(false);
+  const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-  const [restartGame, setRestartGame] = useState(false);
-  const navigate = useNavigate();
+  const [data, setData] = useState();
+
   const loadLesson = useCallback(async() => {
-    console.log('SL2');
-    setIsLoading(true);
-      let data = conteudoSuperTask;
-      
-      const items = data.map(item => {
+    try {
+      setIsLoading(true);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=2&num_task=1");
+      const res = response.data;
+      const dataItems = res.dados[0].dados_conteudo;
+      setData(dataItems);
+
+      const items = dataItems.map(item => {
         const conteudo = JSON.parse(item.conteudo);
-        
         return conteudo
       });
-      const dataLength = level === 0 ? 6 : 8;
 
       const nameFilter = items.filter(item => item.name);
     
@@ -46,7 +51,7 @@ export const GameSL2 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
 
       let nameRandom = []
-      for (let a = 0; a < dataLength; a++) {
+      for (let a = 0; a < 6; a++) {
         nameRandom.push(nameFilter[tempRandom[a]]);
       }
 
@@ -59,9 +64,9 @@ export const GameSL2 = () => {
 
       let tempGridFake = nameRandom.concat(imgFilter);
       tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
-      
+
       let tempGrid = [];
-      for (let a = 0; a < (dataLength * 2 ); a++) {
+      for (let a = 0; a < (6 * 2 ); a++) {
         tempGrid.push({
           item: null,
           shown: false,
@@ -70,20 +75,75 @@ export const GameSL2 = () => {
       }
 
       let tempRandomGrid = [];
-      for (let a = 0; a < (dataLength * 2); a++) {
+      for (let a = 0; a < (6 * 2); a++) {
         tempRandomGrid.push(a);
       }
       tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
-      
-      for (let a = 0; a < (dataLength * 2); a++) {
+
+      for (let a = 0; a < (6 * 2); a++) {
         tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
       }
-      
+
       setCards(tempGrid);
       setPlaying(true);
-      setIsLoading(false);
 
-  }, [setPlaying, setCards]);
+      setIsLoading(false);
+    } catch(error) {
+      console.log(error);
+    }
+  }, [setIsLoading, setData, setPlaying, setCards]);
+
+  const newRound = () => {
+    const items = data.map(item => {
+      const conteudo = JSON.parse(item.conteudo);
+      return conteudo
+    });
+
+    const nameFilter = items.filter(item => item.name);
+
+    let tempRandom = [];
+    for (let a = 0; a < nameFilter.length; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+
+    let nameRandom = []
+    for (let a = 0; a < 8; a++) {
+      nameRandom.push(nameFilter[tempRandom[a]]);
+    }
+
+    let imgFilter = [];
+    nameRandom.forEach(nameItem => {
+      const status = nameItem.status;
+      const images = items.filter(item => item.status === status && item.img);
+      imgFilter = imgFilter.concat(images);
+    });
+
+    let tempGridFake = nameRandom.concat(imgFilter);
+    tempGridFake = tempGridFake.sort(() => Math.random() - 0.5);
+
+    let tempGrid = [];
+    for (let a = 0; a < (8 * 2 ); a++) {
+      tempGrid.push({
+        item: null,
+        shown: false,
+        permanentShown: false
+      });
+    }
+
+    let tempRandomGrid = [];
+    for (let a = 0; a < (8 * 2); a++) {
+      tempRandomGrid.push(a);
+    }
+    tempRandomGrid = tempRandomGrid.sort(() => Math.random() - 0.5);
+
+    for (let a = 0; a < (8 * 2); a++) {
+      tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
+    }
+
+    setCards(tempGrid);
+    setPlaying(true);
+  }
 
   const handleShowCard = (index) => {
     if (playing && index !== null && shownCount < 2) {
@@ -98,18 +158,47 @@ export const GameSL2 = () => {
     }
   }
 
+  const generateScore = () => {
+    if (timeElapsed < 60) {
+      setPoints(state => state + 5);
+    } else if (timeElapsed >= 61 || timeElapsed <= 75) {
+      setPoints(state => state + 4);
+    } else if (timeElapsed >= 76 || timeElapsed <= 90) {
+      setPoints(state => state + 3);
+    } else if (timeElapsed >= 91 || timeElapsed <= 120) {
+      setPoints(state => state + 2);
+    } else {
+      setPoints(state => state + 1);
+    }
+  }
+
+  const handleChangeLevel = () => {
+    let tempLevel = level;
+    tempLevel++;
+    setLevel(tempLevel);
+
+    generateScore();
+    setPlaying(false);
+
+    setTimeout(() => {
+      setReset(false);
+      newRound();
+    }, 1500);
+  }
+
+  const handleFinish = () => {
+    generateScore();
+    setPlaying(false);
+    setFinished(false);
+
+    setTimeout(() => {
+      navigate("/WellDone")
+    }, 2000);
+  }
+
   useEffect(() => {
     loadLesson();
   }, []);
-
-  useEffect(() => {
-    if (restartGame) {
-      setTimeout(() => {
-        loadLesson();
-        setRestartGame(false);
-      }, 1500);
-    }
-  }, [restartGame])
 
   useEffect(() => {
     if (shownCount === 2) {
@@ -143,29 +232,13 @@ export const GameSL2 = () => {
     const allItemShown = cards.every(item => item.permanentShown === true);
 
     if (moveCount > 0 && allItemShown) {
-      let tempPoints = points;
-
-      if (timeElapsed < 60) {
-        tempPoints += 5;
-        setPoints(tempPoints);
-      } else if (timeElapsed >= 61 || timeElapsed <= 75) {
-        tempPoints += 4;
-        setPoints(tempPoints);
-      } else if (timeElapsed >= 76 || timeElapsed <= 90) {
-        tempPoints += 3;
-        setPoints(tempPoints);
-      } else if (timeElapsed >= 91 || timeElapsed <= 120) {
-        tempPoints += 2;
-        setPoints(tempPoints);
+      if (level === 1) {
+        setFinished(true);
       } else {
-        tempPoints += 1;
-        setPoints(tempPoints);
+        setReset(true);
       }
-      setPlaying(false);
-
-      setRestartGame(true);
     }
-  }, [moveCount, cards, timeElapsed, level]);
+  }, [cards, setReset, setFinished]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -185,7 +258,6 @@ export const GameSL2 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" /> */}
       <TitleLesson title="Memory Game." />
 
       <Main>
@@ -213,6 +285,24 @@ export const GameSL2 = () => {
           })}
         </Grid>
       </Main>
+      {reset && 
+        <ButtonBg 
+          w="10rem"
+          h="3"
+          title="Next Level"
+          mt="2rem"
+          onPress={handleChangeLevel}
+        />
+      }
+      {finished && 
+        <ButtonBg 
+          w="10rem"
+          h="3"
+          title="Finished"
+          mt="2rem"
+          onPress={handleFinish}
+        />
+      }
     </Container>
   )
 }

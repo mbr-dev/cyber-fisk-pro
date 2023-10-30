@@ -1,17 +1,23 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext, useCallback } from "react";
 import { X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
-import { HeaderLesson } from "../HeaderLesson";
+import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 
-import { L5_SUPER_LESSON } from "../../utils/lesson5_Task";
+import { api } from "../../lib/api";
+import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea } from "./styles";
 
 export const GameSL5 = () => {
+  const { setTimeElapsed } = useContext(LessonContext);
+
+  const navigate = useNavigate();
+
   const [questions, setQuestions] = useState([]);
   const [answers, setAnswers] = useState([]);
   const [letters, setLetters] = useState([]);
@@ -19,34 +25,43 @@ export const GameSL5 = () => {
   const [points, setPoints] = useState(5);
   const [hints, setHints] = useState(3);
   const [hint, setHint] = useState("");
-  const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
   const [completedWords, setCompletedWords] = useState([]);
-  const [correctWordIndices, setCorrectWordIndices] = useState([]);
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
 
+  const loadLesson = useCallback(async() => {
+    try {
+      setIsLoading(true);
 
-  const loadLesson = () => {
-    setQuestions(L5_SUPER_LESSON[0].pergunta);
-    setAnswers(L5_SUPER_LESSON[0].resposta);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=5&num_task=1");
+      const res = response.data;
 
-    let tempRandomL = [];
-    for (let a = 0; a < L5_SUPER_LESSON[0].letras.length; a++) {
-      tempRandomL.push(a);
+      const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+
+      setQuestions(items.pergunta);
+      setAnswers(items.resposta);
+
+      let tempRandomL = [];
+      for (let a = 0; a < items.letras.length; a++) {
+        tempRandomL.push(a);
+      }
+      tempRandomL = tempRandomL.sort(() => Math.random() - 0.5);
+
+      let tempLetters = [];
+      for (let a = 0; a < items.letras.length; a++) {
+        tempLetters.push(items.letras[tempRandomL[a]]);
+      }
+      setLetters(tempLetters);
+
+      setIsLoading(false);
+    } catch (error) {
+      console.log(error);
     }
-    tempRandomL = tempRandomL.sort(() => Math.random() - 0.5);
-
-    let tempLetters = [];
-    for (let a = 0; a < L5_SUPER_LESSON[0].letras.length; a++) {
-      tempLetters.push(L5_SUPER_LESSON[0].letras[tempRandomL[a]]);
-    }
-    setLetters(tempLetters);
-    setBlockButton(false);
-  }
+  }, [setIsLoading, setQuestions, setAnswers, setLetters])
 
   const handleSelected = (letter, index) => {
-    if (!clickedButtons[index]) {
+    if (!clickedButtons[index] && !completedWords.includes(letter)) {
       setLetterSelected(state => [...state, letter]);
       setClickedButtons(state => {
         const newState = [...state];
@@ -68,16 +83,27 @@ export const GameSL5 = () => {
       tempPoint--;
       setPoints(tempPoint);
       setLetterSelected([]);
-      setClickedButtons(Array(letters.length).fill(false));
+
+      setClickedButtons(state => {
+        const newState = [...state];
+        letterSelected.forEach(letter => {
+          const letterIndex = letters.findIndex(item => item === letter);
+          if (letterIndex !== -1) {
+            newState[letterIndex] = false;
+          }
+        });
+        return newState;
+      });
 
       if (tempPoint === 0) {
-        alert("perdeu");
+        setTimeout(() => {
+          navigate("/GameOver");
+        }, 1500);
       }
     }
   }
 
   const handleShowHint = () => {
-    if (hints === 0) return; 
     let tempHint = hints;
     tempHint--;
     setHints(tempHint);
@@ -87,10 +113,10 @@ export const GameSL5 = () => {
     if (availableHints.length === 0) {
       return;
     }
+
     let randomHintIndex = Math.floor(Math.random() * availableHints.length);
     let randomHint = availableHints[randomHintIndex];
     setHint(randomHint);
-    console.log("hint: ", randomHint);
   }
 
   const handleDelete = () => {
@@ -112,20 +138,37 @@ export const GameSL5 = () => {
     if (completedWords.length > 0) {
 
       if (completedWords.length === questions.length) {
-        console.log("Parabéns! Você completou todas as palavras!");
+        setTimeout(() => {
+          navigate("/WellDone")
+        }, 1500);
       }
     }
   }, [completedWords, questions.length]);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setTimeElapsed(state => state + 1)
+    }, 1000);
+
+    return () => {
+      clearInterval(timer)
+    }
+  }, [setTimeElapsed]);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      <HeaderLesson numEnd="Finish" numStart="Super task" superTaskStart trophyEnd />
       <TitleLesson title="Make 5 Words" />
 
       <Main>
         <Answers>
           {questions.map((question, qIndex) => {
             const isCompleted = completedWords.includes(qIndex);
-            const isCorrect = correctWordIndices.includes(qIndex);
             return (
               <Div key={qIndex}>
                 <DivQ>
@@ -142,7 +185,7 @@ export const GameSL5 = () => {
                           backgroundColor: isCompleted ? defaultTheme["red-200"] : ""
                         }}
                       >
-                        {isCompleted || isCorrect ? item : hint === item ? item : ""}
+                        {isCompleted ? item : hint === item ? item : ""}
                       </Answer>
                     )
                   })}
@@ -185,6 +228,7 @@ export const GameSL5 = () => {
             h="1.5rem"
             title={`${hints} ${hints > 1 ? "hints" : "hint"}`}
             onPress={handleShowHint}
+            disabledButton={hints === 0}
           />
           <ButtonBg
             w="9rem"

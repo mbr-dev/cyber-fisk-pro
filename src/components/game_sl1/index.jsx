@@ -1,23 +1,18 @@
 import { useState, useContext, useEffect, useCallback } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
-import { TitleLesson } from "../TitleLesson";
+import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { HeaderLesson } from "../HeaderLesson";
-import { Notifications } from "../../components/Notifications";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
-import { CyberContext } from "../../context/cyber";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, ButtonArea, Letter, LettersArea } from "./styles";
 
 export const GameSL1 = () => {
-  const {setTimeElapsed, timeElapsed, conteudoSuperTask, newInfoST} = useContext(LessonContext);
-  const {chooseNotification} = useContext(CyberContext);
+  const {setTimeElapsed, timeElapsed} = useContext(LessonContext);
 
   const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
   const [lettersAnswer, setLettersAnswer] = useState(["", "", "", "", "", "", "", "", ""]);
@@ -28,23 +23,25 @@ export const GameSL1 = () => {
   const [rightPoints, setRightPoints] = useState(0);
   const [wordLength, setWordLength] = useState(6);
   const [isLoading, setIsLoading] = useState(false);
-  const [attention, setAttention] = useState(false);
-  const [msg, setMsg] = useState('');
 
-  const navigate = useNavigate();
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
 
-      let items = JSON.parse(conteudoSuperTask[0].conteudo);
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const res = response.data;
+
+      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+
       let tempLetters = items.letras;
       setLetters(tempLetters);
       let tempAnswers = items.resposta;
       setAnswers(tempAnswers);
+
+      setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-    setIsLoading(false);
   }, [setLetters, setAnswers]);
 
   const handleClearField = () => {
@@ -56,7 +53,7 @@ export const GameSL1 = () => {
     if (tempNumber < 1) {
       tempNumber = 0;
     }
-    
+
     setLettersAnswer(tempLetters);
     setNumberClick(tempNumber);
   }
@@ -86,9 +83,7 @@ export const GameSL1 = () => {
     answers.map((world) => {
       if (rightWord.toUpperCase() === world.toUpperCase()) {
         if (answered.includes(world)) {
-          setMsg(`Voce já acertou esta palavra: ${world}`);
-          chooseNotification(2);
-          setAttention(true);
+          alert(`Voce já acertou esta palavra: ${world}`);
         } else {
           let tempAnswer = answered;
           tempAnswer.push(world);
@@ -113,7 +108,7 @@ export const GameSL1 = () => {
     if (answers.length > 0) {
       if (finished) {
         let tempRightPoints = rightPoints;
-        
+
         if (timeElapsed <= 60) {
           tempRightPoints += 5;
         } else if (timeElapsed >= 61 && timeElapsed <= 75) {
@@ -125,19 +120,14 @@ export const GameSL1 = () => {
         } else {
           tempRightPoints += 1;
         }
-        newInfoST(tempRightPoints, timeElapsed);
+
         setRightPoints(tempRightPoints);
-        navigate('/WellDone');
       } else {
         return;
       }
     } else {
       return;
     }
-  }
-
-  const clickAlert = () =>{
-    setAttention(false);
   }
 
   useEffect(() => {
@@ -164,15 +154,11 @@ export const GameSL1 = () => {
 
   return (
     <Container>
-      {/* <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" /> */}
       <TitleLesson title={
         `How many nationalities can you write with these letters? There are ${wordLength} ${wordLength > 1 ? "words" : "word"}.`
       } />
 
       <Main>
-        {attention ? 
-            <Notifications description={msg} event={clickAlert}/> : null
-        }
         <LettersArea>
           {lettersAnswer.map((letter, index) => {
             return (
@@ -181,8 +167,7 @@ export const GameSL1 = () => {
                 style={{
                   borderColor: numberClick === index ? defaultTheme["red-200"] : optionColor[index] === 1 ? "transparent" : "",
                   backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : "",
-                  color: optionColor[index] === 1 ? defaultTheme.white : "",
-                  
+                  color: optionColor[index] === 1 ? defaultTheme.white : ""
                 }}
               >
                 {letter}
@@ -205,7 +190,6 @@ export const GameSL1 = () => {
             )
           })}
         </ButtonArea>
-
         <ButtonBg
           h="2.5rem"
           w="9rem"

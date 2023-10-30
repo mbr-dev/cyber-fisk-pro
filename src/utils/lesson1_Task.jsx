@@ -490,5 +490,5 @@ export const L1_SUPER_LESSON = [
   { 
     letras: ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
     resposta: ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"]
-  },
+  }
 ]

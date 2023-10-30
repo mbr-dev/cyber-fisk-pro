@@ -2,84 +2,97 @@ import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 import { useNavigate } from "react-router-dom";
 
-import { HeaderLesson } from "../HeaderLesson";
-import { TitleLesson } from "../TitleLesson";
-import { SubTitleLesson } from "../SubTitleLesson";
+import { Loading } from "../Loading";
+import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { SubTitleLesson } from "../subTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
-import { TrocaAtividade } from "../../utils/regras";
-import { L3_T1_Medio } from "../../utils/Lesson3_Task";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main } from "./styles";
 
 export const Game8 = () => {
-  const { setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada,
-    nivel, conteudoFacil, conteudoMedio, conteudoDificil,
-    pontosD, pontosF, pontosM, setNewAtividade, setNewNivel,
-    numSelLesson, numTask } = useContext(LessonContext);
+  const {
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+  } = useContext(LessonContext);
 
   const navigate = useNavigate();
-  const [colorAnswers, setColorAnswers] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
-  const [question, setQuestion] = useState('');
+
+  const [optionColor, setOptionColor] = useState([]);
+  const [idClick, setIdClick] = useState([]);
+  const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [correctPoints, setCorrectPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(true);
   const [blockButton, setBlockButton] = useState(true);
-  const [isloading, setIsLoading] = useState(false);
   const [changeText, setChangeText] = useState("______");
   const [data, setData] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   const loadLesson = useCallback(() => {
-    let totalOfQuestions = 0;
+    setIsLoading(true);
+
+    let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
-      totalOfQuestions = conteudoFacil.length;
-    }else if(nivel === 1){
+      dataLength = conteudoFacil.length;
+    } else if(nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
-      totalOfQuestions = conteudoMedio.length;
-    }else{
+      dataLength = conteudoMedio.length;
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
-      totalOfQuestions = conteudoDificil.length;
+      dataLength = conteudoDificil.length;
     }
-    let items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    let tempQuestions = [];
-    for (let a = 0; a < totalOfQuestions; a++) {
-      tempQuestions.push(a);
-    }
-    tempQuestions = tempQuestions.sort(() => Math.random() - 0.5);
-    setRandomNumber(tempQuestions);
-    setQuestion(items[tempQuestions[round]].pergunta);
 
-    let tempAnswers = [];
-    let tempRandomNumber = idClick;
+    let tempRandom = [];
+    for (let a = 0; a < dataLength; a++) {
+      tempRandom.push(a);
+    }
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    setRandomNumber(tempRandom);
+
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    for (let a = 0; a < 3; a ++) {
-      tempAnswers.push(items[tempQuestions[round]].resposta[tempRandomNumber[a]]);
+
+    let tempAnswers = [];
+    for (let a = 0; a < items.resposta.length; a ++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
 
     setBlockButton(false);
-  }, [setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton]);
+    setIsLoading(false);
+  }, [setIsLoading, setRandomNumber, setOptionColor, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
 
   const newRound = (number) => {
-    setQuestion(data[randomNumber[number]].pergunta);
-    
-    let tempAnswers = [];
-    let tempRandomNumber = idClick;
+    setChangeText("______");
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-    for (let a = 0; a < 3; a++) {
-      tempAnswers.push(data[randomNumber[number]].resposta[tempRandomNumber[a]])
+
+    let tempAnswers = [];
+    for (let a = 0; a < tempRandomNumber.length; a++) {
+      tempAnswers.push(items.resposta[tempRandomNumber[a]])
     }
     setAnswers(tempAnswers);
 
@@ -90,25 +103,24 @@ export const Game8 = () => {
     if (blockButton) return;
 
     setBlockButton(true);
-    let tempColor = colorAnswers;
-    let tempPoint = correctPoints;
-    const rightAnswer = answers[index].status;
-    console.log("rightAnswer: ", rightAnswer)
+    let tempColor = optionColor;
+    let tempPoint;
+    const rightAnswer = answers[index];
 
-    if (rightAnswer === 1) {
-      tempPoint += 2;
+    if (rightAnswer.status === 1) {
+      tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
-      setNewPontos(1, tempPoint);
+      setNewPontos(nivel, tempPoint);
 
       tempColor[index] = 1;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     } else {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
 
       tempColor[index] = 2;
-      setColorAnswers(tempColor);
+      setOptionColor(tempColor);
     }
 
     let tempRound = round;
@@ -119,44 +131,33 @@ export const Game8 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(1, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempPoint, tempRound);
 
     if (rule === "Continua") {
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
-        setChangeText("______");
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
-
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
-        setChangeText("______");
         setNewContainer(1);
-        navigate('/GameOver');
+        navigate("/GameOver");
       }, 1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
-        tempColor[index] = 0;
-        setColorAnswers(tempColor);
-        setChangeText("______");
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(2);
       }, 1500);
     }
   }
@@ -168,9 +169,8 @@ export const Game8 = () => {
 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      border: isDragging ? `1px solid ${defaultTheme['gray-400']}` : '',
+      border: isDragging ? `1px solid ${defaultTheme['gray-400']}` : "",
     } : undefined;
-  
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -178,17 +178,17 @@ export const Game8 = () => {
       </div>
     );
   }
-  
+
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
-      id: 'droppable',
+      id: "droppable",
     });
 
     const style = {
       color: isOver ? defaultTheme["gray-400"] : undefined,
-      border: isOver ? `1px solid ${defaultTheme['gray-200']}` : '1px solid transparent',
+      border: isOver ? `1px solid ${defaultTheme["gray-200"]}` : "1px solid transparent",
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -203,18 +203,22 @@ export const Game8 = () => {
       const droppedIndex = Number(active.id.split("-")[1]);
       const changeTxt = over ? answers[droppedIndex].label : "______";
       setChangeText(changeTxt);
-      
       verifyAnswer(droppedIndex);
     }
   }
 
   useEffect(() => {
     loadLesson();
-  }, [])
-  
+  }, []);
+
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
-      {/* <HeaderLesson superTaskEnd numStart="Task 2" numEnd="Super task" /> */}
       <TitleLesson title="Choose the best alternative." />
 
       <DndContext onDragEnd={handleDragEnd}>
@@ -227,9 +231,9 @@ export const Game8 = () => {
             return (
               <Draggable index={index} key={index}>
                 <ButtonAnswer
-                  w="10rem"
-                  h="3.5rem"
-                  optionColor={colorAnswers[index]}
+                  w="5rem"
+                  h="3rem"
+                  optionColor={optionColor[index]}
                   disabledButton={blockButton}
                 >
                   {answers.label}

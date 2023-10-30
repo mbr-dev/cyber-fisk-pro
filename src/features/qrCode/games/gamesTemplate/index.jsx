@@ -11,7 +11,7 @@ import {
 import { GamesFooter } from "./components/Footer";
 import { GamesHeader } from "./components/Header";
 import { URL_HMLG, URL_HMLG_PRO } from "../../../../config/infos";
-import { DragAndDropGame } from "../DragAndDrop";
+import { DragAndDropGame } from "../dragAndDrop";
 import { ListenAndClick } from "../ListenAndClick";
 import { ListenAndType } from "../ListenAndType";
 import { SelectGame } from "../SelectGame";

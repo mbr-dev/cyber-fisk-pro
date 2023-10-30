@@ -149,7 +149,6 @@ export const Delete = styled.div`
   align-items: center;
   justify-content: center;
   margin-top: -2px;
-  margin-right: -0.3125rem;
   background-color: ${props => props.theme["red-200"]};
   line-height: 0;
   border-radius: 6px;
