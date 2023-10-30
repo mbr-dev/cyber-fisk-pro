@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";

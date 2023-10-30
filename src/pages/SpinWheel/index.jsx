@@ -5,7 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Modal } from "./components/Modal";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
-import Roleta from "./images/roleta.png";
+import Roleta from "./images/Roleta.png";
 import Setta from "./images/setta.png";
 import Lose from "./images/lose.png";
 
