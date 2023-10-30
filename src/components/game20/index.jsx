@@ -15,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game20 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -52,7 +52,7 @@ export const Game20 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-    
+
     let tempRandom = [];
     for (let a = 0; a < dataLength; a ++) {
       tempRandom.push(a);
@@ -64,12 +64,17 @@ export const Game20 = () => {
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
+    setColorAnswer(0);
+    setCountQ(0);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.audio);
     setQuestion(items.pergunta);
     setAnswer(items.resposta);
@@ -78,7 +83,7 @@ export const Game20 = () => {
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -102,12 +107,14 @@ export const Game20 = () => {
 
       tempColorA = 1;
       setColorAnswer(tempColorA);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -125,15 +132,11 @@ export const Game20 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -143,8 +146,6 @@ export const Game20 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setCountQ(0);
-        setColorAnswer(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;

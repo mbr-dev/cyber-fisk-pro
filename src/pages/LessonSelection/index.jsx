@@ -2,9 +2,9 @@ import { useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 
+import { ButtonBg } from "../../components/ButtonBg";
 import { LessonContext } from "../../context/lesson";
-import { TopMenuHeader } from "../../components/TopMenuHeader"
-import { ButtonBg } from "../../components/ButtonBg"
+import { HeaderText } from "../../components/HeaderText"
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
@@ -47,7 +47,7 @@ export const LessonSelection = () => {
   
   return (
     <Container>
-      <TopMenuHeader title={`Lesson ${numSelLesson}`} />
+      <HeaderText title={`Lesson ${numSelLesson}`} />
 
       <Main>
         <ButtonAreaTop>
@@ -102,7 +102,7 @@ export const LessonSelection = () => {
           </BottomRight>
         </ButtonAreaBottom>
         <LineSeparator w="80%" mt="10px" />
-        <ButtonBg title="Home" w="15.875rem" h="2.5rem" onPress={home}/>
+        <ButtonBg title="Home" w="15rem" h="2.5rem" onPress={home}/>
       </Main>
     </Container>
   )

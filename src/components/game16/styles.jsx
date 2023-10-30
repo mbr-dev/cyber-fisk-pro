@@ -14,6 +14,10 @@ export const Main = styled.main`
   align-items: center;
   gap: 4rem;
 
+  p {
+    padding-inline: 1rem;
+  }
+
   @media(max-width: 320px) {
     gap: 3rem;
   }

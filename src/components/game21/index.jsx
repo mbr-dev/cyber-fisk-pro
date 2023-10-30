@@ -15,7 +15,7 @@ import { Container, Form, Main, Select } from "./styles";
 
 export const Game21 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -78,11 +78,13 @@ export const Game21 = () => {
     setAnswer0(items.option0.status);
     setAnswer1(items.option1.status);
     setAnswer2(items.option2.status);
+
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound, setQuestion, setOption0, setOption1, setOption2, setAnswer0, setAnswer1, setAnswer2]);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setQuestion, setOption0, setOption1, setOption2, setAnswer0, setAnswer1, setAnswer2]);
 
   const newRound = (number) => {
     setCountClick(0);
+    setColorAnswer(0);
     setOption0("");
     setOption1("");
     setOption2("");
@@ -147,7 +149,7 @@ export const Game21 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(0, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor = 2;
       setColorAnswer(tempColor);
@@ -169,13 +171,11 @@ export const Game21 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setColorAnswer(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -185,7 +185,6 @@ export const Game21 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setColorAnswer(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -206,7 +205,7 @@ export const Game21 = () => {
   useEffect(() => {
     countClick >= 3 ? setBlockButton(false) : setBlockButton(true)
   }, [countClick, setBlockButton]);
-  
+
   if (isLoading) {
     return (
       <Loading />

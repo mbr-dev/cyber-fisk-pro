@@ -15,10 +15,10 @@ export const Game13 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswer] = useState([0, 0, 0, 0, 0]);
+  const [optionColor, setOptionColor] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
@@ -58,7 +58,9 @@ export const Game13 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -71,14 +73,17 @@ export const Game13 = () => {
       tempRightA.push(items.resposta[a].status);
     }
     setRightAnswers(tempRightA);
+
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setQuestion, setAnswers, round, setRightAnswers])
+  }, [setIsLoading, setData, setRandomNumber, setQuestion, setAnswers, round, setRightAnswers, setOptionColor])
 
   const newRound = (number) => {
     setSelectedRadio([]);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempAnswers = [];
     for (let a = 0; a < items.resposta.length; a++) {
@@ -110,7 +115,7 @@ export const Game13 = () => {
     setBlockButton(true);
 
     let tempAnswers = selectedRadio;
-    let tempColor = [...colorAnswers];
+    let tempColor = [...optionColor];
     let tempRightPoints;
 
     const isCorrect = tempAnswers.every((value, index) => value === rightAnswers[index]);
@@ -119,16 +124,16 @@ export const Game13 = () => {
       for (let a = 0; a < tempAnswers.length; a++) {
         tempColor[a] = 1;
       }
-      setColorAnswer(tempColor);
+      setOptionColor(tempColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       for (let a = 0; a < tempAnswers.length; a++) {
         tempColor[a] = tempAnswers[a] === rightAnswers[a] ? 1 : 2;
       }
-      setColorAnswer(tempColor);
+      setOptionColor(tempColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -147,15 +152,11 @@ export const Game13 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer([0, 0, 0, 0, 0]);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setColorQuestions([0, 0, 0]);
-        setColorAnswer([0, 0, 0, 0, 0]);
-        setCountClick(0);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -165,9 +166,6 @@ export const Game13 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setColorQuestions([0, 0, 0]);
-        setColorAnswer([0, 0, 0, 0, 0]);
-        setCountClick(0);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -210,7 +208,7 @@ export const Game13 = () => {
             {answers.map((answer, index) => {
               return (
                 <AnswersRow key={index}>
-                  <p style={{borderColor: colorAnswers[index] === 1 ? defaultTheme["green-200"] : colorAnswers[index] === 2 ? defaultTheme["red-200"] : ""}}>
+                  <p style={{borderColor: optionColor[index] === 1 ? defaultTheme["green-200"] : optionColor[index] === 2 ? defaultTheme["red-200"] : ""}}>
                     {answer}
                   </p>
                   <RadioG>

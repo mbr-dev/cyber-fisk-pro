@@ -1,20 +1,24 @@
 import { useCallback, useContext, useState, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
 
+import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { HeaderLesson } from "../HeaderLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { TrocaAtividade } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
-import { L6_T1_Dificil } from "../../utils/lesson6_Task";
+import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Form, Main, Input } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game24 = () => {
-  const {setNewContainer, setNewPontos, rodadaGeral, setNewRodada, pontosD, pontosF, pontosM} = useContext(LessonContext);
+  const {
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+  } = useContext(LessonContext);
+
+  const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
@@ -37,28 +41,44 @@ export const Game24 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
-  /* arrumar a parte do ' para o ’ */
-
   const loadLesson = useCallback(async() => {
-    const questionLength = L6_T1_Dificil.length;
+    setIsLoading(true);
+
+    let dataLength = 0;
+    let tempData;
+    if (nivel === 0) {
+      setData(conteudoFacil);
+      tempData = conteudoFacil;
+      dataLength = conteudoFacil.length;
+    } else if(nivel === 1) {
+      setData(conteudoMedio);
+      tempData = conteudoMedio;
+      dataLength = conteudoMedio.length;
+    } else {
+      setData(conteudoDificil);
+      tempData = conteudoDificil;
+      dataLength = conteudoDificil.length;
+    }
 
     let tempRandom = [];
-    for (let a = 0; a < questionLength; a++) {
+    for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
-    //tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+    tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    setSound(L6_T1_Dificil[tempRandom[round]].audio);
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    setQuestion(L6_T1_Dificil[tempRandom[round]].pergunta);
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setAnswer0(items.option0);
+    setAnswer1(items.option1);
+    setAnswer2(items.option2);
+    setAnswer3(items.option3);
+    setAnswer4(items.option4);
 
-    setAnswer0(L6_T1_Dificil[tempRandom[round]].option0);
-    setAnswer1(L6_T1_Dificil[tempRandom[round]].option1);
-    setAnswer2(L6_T1_Dificil[tempRandom[round]].option2);
-    setAnswer3(L6_T1_Dificil[tempRandom[round]].option3);
-    setAnswer4(L6_T1_Dificil[tempRandom[round]].option4);
-  }, [setRandomNumber]);
+    setIsLoading(false);
+  }, [setIsLoading, setData, round, setRandomNumber, setSound, setQuestion, setAnswer0, setAnswer1, setAnswer2, setAnswer3, setAnswer4]);
 
   const newRound = (number) => {
     setText0("");
@@ -66,23 +86,26 @@ export const Game24 = () => {
     setText2("");
     setText3("");
     setText4("");
-    
-    setSound(L6_T1_Dificil[randomNumber[number]].audio);
+    setColorAnswer(0);
 
-    setAnswer0(L6_T1_Dificil[randomNumber[number]].option0);
-    setAnswer1(L6_T1_Dificil[randomNumber[number]].option1);
-    setAnswer2(L6_T1_Dificil[randomNumber[number]].option2);
-    setAnswer3(L6_T1_Dificil[randomNumber[number]].option3);
-    setAnswer4(L6_T1_Dificil[randomNumber[number]].option4);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setAnswer0(items.option0);
+    setAnswer1(items.option1);
+    setAnswer2(items.option2);
+    setAnswer3(items.option3);
+    setAnswer4(items.option4);
   }
 
   const handleVerify = (event) => {
     event.preventDefault();
-    if (blockButton) return;
+    if (blockButton || playAudio) return;
 
     setBlockButton(true);
 
-    let tempRightPoints = rightPoints;
+    let tempRightPoints;
     let tempColor = colorAnswers;
 
     if (
@@ -95,9 +118,9 @@ export const Game24 = () => {
       tempColor = 1;
       setColorAnswer(tempColor);
 
-      tempRightPoints += 3;
+      tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor = 2;
       setColorAnswer(tempColor);
@@ -115,46 +138,34 @@ export const Game24 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(2, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-    if(rule === "Continua") {
+    if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Score") {
+    } else if (rule === "Game over") {
+      setNewPontos(0,0);
       setTimeout(() =>{
-        const scoreFinal = Score(pontosF, pontosM, pontosD);
-        let valorRank = 0;
-
-        if (scoreFinal >= 70) {
-            if(localStorage.getItem("cyber_pro_frequencia_task1")) {
-              let frequencia = parseInt(localStorage.getItem("cyber_pro_frequencia_task1"));
-              let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-              frequencia++;
-
-              if (frequencia === 4) {
-                alert(`Parabéns voce ganhou: 10 Fisk Dollars`);
-              }
-
-              localStorage.setItem("cyber_pro_frequencia_task1",frequencia);
-              const rank = PontosRank(frequencia,oldRank);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            } else {
-              localStorage.setItem("cyber_pro_task2","1");
-              localStorage.setItem("cyber_pro_msg_task2","1");
-              localStorage.setItem("cyber_pro_frequencia_task1",1);
-              const rank = PontosRank(1,0);
-              valorRank = rank;
-              localStorage.setItem("cyber_pro_rank",rank);
-            }
-          }
-
-        alert(`SCORE: ${scoreFinal}%`);
-        alert(`PONTOS PARA O RANKING: ${valorRank}`);
+        navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+      },1500);
+    } else if (rule === "Score") {
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    } else {
+      setTimeout(() =>{
+        if (nivel === 0) {
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        } else {
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      },1500);
     }
   }
 
@@ -171,10 +182,16 @@ export const Game24 = () => {
     ? setBlockButton(true) : setBlockButton(false);
   }, [text0, text2, text3, text4, text1, setBlockButton]);
 
+  if (isLoading) {
+    return (
+      <Loading />
+    )
+  }
+
   return (
     <Container>
       <TitleLesson title="LISTEN TO COMPLETE THE PARAGRAPH." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson6/${sound}.mp3`} />
+      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>
@@ -240,7 +257,7 @@ export const Game24 = () => {
         <ButtonBg
           form="myForm"
           type="submit"
-          disabledButton={blockButton}
+          disabledButton={blockButton || playAudio}
           title="Check"
           w="15.875rem"
           h="2.5rem"

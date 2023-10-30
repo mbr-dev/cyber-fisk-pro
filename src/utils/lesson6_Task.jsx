@@ -175,7 +175,7 @@ export const L6_T1_Dificil = [
     option1: "can swim",
     option2: "can run",
     option3: "can’t dance",
-    option4: "Cheeseburgers",
+    option4: "Cheeseburgers"
   },
   {
     audio: "L6_Task1_D_1",
@@ -191,270 +191,204 @@ export const L6_T1_Dificil = [
     option1: "can cook",
     option2: "make different",
     option3: "can’t play the",
-    option4: "fast food",
+    option4: "fast food"
   },
   {
     audio: "L6_Task1_D_2",
+    pergunta: [
+      "There are only three main",
+      "create all the other colors.",
+      "the primary colors:",
+      ".",
+      "mix them, we",
+      "other colors. Orange, violet and green are the secondary colors."
+    ],
+    option0: "colors that",
+    option1: "They are",
+    option2: "red, yellow, and blue",
+    option3: "When we",
+    option4: "create"
   }
 ]
 
 export const L6_T2_Facil = [
   {
-    audio: "Ess1_L5_TF_0",
-    pergunta: [
-      "Carol is wearing a",
-      "",
-      ", a white blouse and",
-      "."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "pink"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "skirt"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "sandals"
-    },
+    pergunta: "When can we meet? (after class)",
+    resposta: "We can meet after class."
   },
   {
-    audio: "Ess1_L5_TF_1",
-    pergunta: [
-      "Josh is wearing a dark",
-      "",
-      ", blue",
-      "and brown sneakers."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "gray"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "T-shirt"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "jeans"
-    },
+    pergunta: "What board game can you play? (chess)",
+    resposta: "I can play chess."
   },
   {
-    audio: "Ess1_L5_TF_2",
-    pergunta: [
-      "Julian is wearing a gray",
-      ", a",
-      "and",
-      "shoes."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "suit"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "tie"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "black"
-    },
+    pergunta: "What sport can he play? (basketball)",
+    resposta: "He can play basketball."
   },
   {
-    audio: "Ess1_L5_TF_3",
-    pergunta: [
-      "Harry is wearing a white shirt,",
-      "",
-      "and red",
-      ".",
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "red"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "pants"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "sneakers"
-    },
+    pergunta: "Who is the couch potato in your family? (my brother)",
+    resposta: "My brother is the couch potato in my family."
   },
   {
-    audio: "Ess1_L5_TF_4",
-    pergunta: [
-      "Sarah is wearing a",
-      "dress and",
-      "",
-      "."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "red"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "black"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "high heels"
-    },
+    pergunta: "What can’t your mom do? (play the guitar)",
+    resposta: "She can’t play the guitar."
   },
   {
-    audio: "Ess1_L5_TF_5",
-    pergunta: [
-      "Justin is wearing a gray",
-      ", a blue",
-      ", black",
-      "and black sneakers."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "sweatshirt"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "T-shirt"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "pants"
-    },
+    pergunta: "Why don’t you want to go to the party? (can’t dance).",
+    resposta: "Because I can’t dance."
   },
   {
-    audio: "Ess1_L5_TF_6",
-    pergunta: [
-      "Lisa is wearing a",
-      "",
-      "and black",
-      "."
-    ],
-    option0: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "black"
-    },
-    option1: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "coat"
-    },
-    option2: {
-      label: ["", "black", "blue", "coat", "pink", "suit", "skirt", "red", "tie", "gray", "pants", "jeans", "T-shirt", "boots", "sneakers", "sandals", "sweatshirt", "high heels"],
-      status: "boots"
-    },
+    pergunta: "Can you lift weights? (No)",
+    resposta: "No, I can’t (lift weights)."
   },
+  {
+    pergunta: "What can you do to be fit? (work out and eat healthy food)",
+    resposta: "I can work out and eat healthy food."
+  },
+  {
+    pergunta: "Can you do 20 crunches in 1 minute? (yes)",
+    resposta: "Yes, I can do 20 crunches in 1 minute."
+  },
+  {
+    pergunta: "Why do you exercise regularly? (want to get fit)",
+    resposta: "Because I want to get fit."
+  }
 ]
 
 export const L6_T2_Medio = [
   {
-    pergunta: "Task_2_M_0",
-    resposta: "I’m a medium."
+    pergunta: ["swim ", "can ", "Tral ", "well", "very "],
+    resposta: "Tral can swim very well"
   },
   {
-    pergunta: "Task_2_M_1",
-    resposta: "I’m a large."
+    pergunta: ["can’t ", "Nami ", "tennis", "play "],
+    resposta: "Nami can’t play tennis"
   },
   {
-    pergunta: "Task_2_M_2",
-    resposta: "They’re perfect."
+    pergunta: ["things", "do ", "can ", "Karen ", "a lot of "],
+    resposta: "Karen can do a lot of things"
   },
   {
-    pergunta: "Task_2_M_3",
-    resposta: "I’ll take it."
+    pergunta: ["Tim and Barbara ", "dance", "can "],
+    resposta: "Tim and Barbara can dance"
   },
   {
-    pergunta: "Task_2_M_4",
-    resposta: "What do you wear at home?"
+    pergunta: ["teach ", "to ", "chopsticks", "how ", "can ", "use ", "Tina "],
+    resposta: "Tina can teach how to use chopsticks"
   },
   {
-    pergunta: "Task_2_M_5",
-    resposta: "I wear jeans and T-shirts."
+    pergunta: ["can ", "Jorge ", "treadmill ", "use ", "at the gym"],
+    resposta: "Jorge can use the treadmill at the gym"
   },
   {
-    pergunta: "Task_2_M_6",
-    resposta: "My mom is shopping for housewares."
+    pergunta: ["can’t ", "drums", "Michael ", "play "],
+    resposta: "Michael can’t play drums"
   },
   {
-    pergunta: "Task_2_M_7",
-    resposta: "I cook on Mondays and Wednesdays."
+    pergunta: ["skateboard", "Mia ", "can’t "],
+    resposta: "Mia can’t skateboard"
   },
   {
-    pergunta: "Task_2_M_8",
-    resposta: "I have English classes on Tuesdays and Thursdays."
+    pergunta: ["lift ", "weights", "Jenny ", "can "],
+    resposta: "Jenny can lift weights"
   },
   {
-    pergunta: "Task_2_M_9",
-    resposta: "I go out with my friends on Fridays and Saturdays."
-  }
+    pergunta: ["write ", "books", "can ", "Julia "],
+    resposta: "Julia can write books"
+  },
 ]
 
 export const L6_T2_Dificil = [
   {
-    audio: "Task_2_D_0",
-    pergunta: [
-      "What are the parents doing?",
-      "What are they baking?",
-      "Are they baking a cake too?",
-      "Does the son like baked potatoes?",
-      "Where is the son going?"
-    ],
-    resposta: [
-      "They are cooking.",
-      "They are baking potatoes.",
-      ["No, they aren’t.", "No, they aren’t baking a cake too.", "No. They are baking an apple pie."],
-      ["Yes, he does.", "Yes, he likes baked potatoes."],
-      "He’s going to his parent’s house."
-    ]
+    pergunta: "Louise can sing very well.",
+    resposta: "What Louise can do?"
   },
   {
-    audio: "Task_2_D_1",
-    pergunta: [
-      "Where are they?",
-      "What does the man want?",
-      "What size is he?",
-      "Does the lady give him the polo shirt?",
-      "Where does the man try on the shirt?",
-    ],
-    resposta: [
-      ["They are in a store.", "In a store."],
-      "He wants a polo shirt in red.",
-      "He is a small.",
-      ["Yes, she does.", "Yes, she gives him the polo shirt."],
-      "In the fitting room."
-    ]
+    pergunta: "Yes, he can swim.",
+    resposta: "Can he swim?"
   },
   {
-    audio: "Task_2_D_2",
-    pergunta: [
-      "Is Sarah fine?",
-      "Where is the man?",
-      "Is the man wearing a costume?",
-      "Is the man eating?",
-      "What is the girl doing?",
-    ],
-    resposta: [
-      ["Yes, she is.", "Yes, she is fine."],
-      ["At a costume party.", "He is at a costume party."],
-      ["Yes, he is.", "Yes, he is wearing a costume."],
-      ["No, he isn’t.", "No, he isn’t eating."],
-      "She is watching TV."
-    ]
+    pergunta: "I’m angry because I’m hungry.",
+    resposta: "Why are you angry?"
+  },
+  {
+    pergunta: "He is doing crunches.",
+    resposta: "What is he doing?"
+  },
+  {
+    pergunta: "Yes. He can play tennis very well.",
+    resposta: "Can he play tennis?"
+  },
+  {
+    pergunta: "He studies Spanish because he wants to move to Spain.",
+    resposta: "Why does he study Spanish?"
+  },
+  {
+    pergunta: "No, she can’t jump kick.",
+    resposta: "Can she jump kick?"
+  },
+  {
+    pergunta: "They can play video games with their parents.",
+    resposta: "What can they do with their parents?"
+  },
+  {
+    pergunta: "Candy can sing.",
+    resposta: "What can Candy do?"
+  },
+  {
+    pergunta: "No. My grandpa can’t use a smartphone.",
+    resposta: "Can your grandpa use a smartphone?"
   }
 ]
 
 export const L6_SUPER_LESSON = [
-  {
-    pergunta: [
-      {label: "color of a fruit", answer: ["ORA", "NGE"]},
-      {label: "children wear this on Halloween", answer: ["COS", "TU", "MES"]},
-      {label: "people wear this at weddings", answer: ["SU", "IT"]},
-      {label: "a celebration", answer: ["CHR", "IST", "MAS"]},
-      {label: "a family member", answer: ["BRO", "THER"]}
-    ],
-    letras: ["BRO", "CHR", "COS", "IST", "IT", "MAS", "MES", "NGE","ORA", "SU", "THER", "TU"],
-    resposta: ["ORANGE", "COSTUMES", "SUIT", "CHRISTMAS", "BROTHER"],
-  }
+  {name: "Six-pack", status: 0},
+  {resposta: "abs", status: 0},
+  {name: "Sports", status: 1},
+  {resposta: "nut", status: 1},
+  {name: "Fitness", status: 2},
+  {resposta: "freak", status: 2},
+  {name: "Health", status: 3},
+  {resposta: "club", status: 3},
+  {name: "On a", status: 4},
+  {resposta: "diet", status: 4},
+  {name: "Dance", status: 5},
+  {resposta: "class", status: 5},
+  {name: "Beach", status: 6},
+  {resposta: "volleyball", status: 6},
+  {name: "Lift", status: 7},
+  {resposta: "weights", status: 7},
+  {name: "Burn", status: 8},
+  {resposta: "calories", status: 8},
+  {name: "Get", status: 9},
+  {resposta: "strong", status: 9},
+  {name: "Personal", status: 10},
+  {resposta: "trainer", status: 10},
+  {name: "Give", status: 11},
+  {resposta: "up", status: 11},
+  {name: "Fast", status: 12},
+  {resposta: "food", status: 12},
+  {name: "Lie", status: 13},
+  {resposta: "down", status: 13},
+  {name: "Do", status: 14},
+  {resposta: "pushups", status: 14},
+  {name: "Exercise", status: 15},
+  {resposta: "regularly", status: 15},
+  {name: "Work", status:16},
+  {resposta: "out", status: 16},
+  {name: "Free", status: 17},
+  {resposta: "time", status: 17},
+  {name: "Watch", status: 18},
+  {resposta: "TV", status: 18},
+  {name: "Go to", status: 19},
+  {resposta: "the gym", status: 19},
+  {name: "Martial", status: 20},
+  {resposta: "arts", status: 20},
+  {name: "Physical", status: 22},
+  {resposta: "conditioning", status: 22},
+  {name: "Run", status: 23},
+  {resposta: "10k", status: 23},
+  {name: "Stand on", status: 24},
+  {resposta: "your head", status: 24},
+  {name: "Couch", status: 25},
+  {resposta: "potato", status: 25}
 ]

@@ -7,16 +7,24 @@ import { Container, Button } from "./style";
 
 export const SubTitleLessonAudio = (props) => {
   const { newStatusPlay, playAudio } = useContext(LessonContext);
+  const { countC, setCountC } = props;
 
   const handleClick = () => {
     if (playAudio) return;
+
+    let tempClick = countC;
+    tempClick++;
+    
+    if (setCountC) {
+      setCountC(tempClick);
+    }
 
     const audio = new Audio(props.audio);
 
     audio.play();
     newStatusPlay(true);
 
-    audio.addEventListener('ended', () => {
+    audio.addEventListener("ended", () => {
       newStatusPlay(false);
     });
   }
@@ -24,12 +32,12 @@ export const SubTitleLessonAudio = (props) => {
   return (
     <Container>
       {playAudio ?
-        <Button onClick={handleClick}>
-          <Headphones size={props.size ? props.size : '36'} strokeWidth={2.5} />
+        <Button onClick={handleClick} disabled={props.disabledButton}>
+          <Headphones size={props.size ? props.size : "36"} strokeWidth={2.5} />
         </Button>
         :
-        <Button onClick={handleClick}>
-          <Volume2 size={props.size ? props.size : '36'} strokeWidth={2.5} />
+        <Button onClick={handleClick} disabled={props.disabledButton}>
+          <Volume2 size={props.size ? props.size : "36"} strokeWidth={2.5} />
         </Button>
       }
     </Container>

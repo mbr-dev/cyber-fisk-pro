@@ -13,13 +13,13 @@ import { Container, Main, Image} from "./styles";
 
 export const Game17 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [optionColor, setOptionColor] = useState([]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [image, setImage] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -59,13 +59,14 @@ export const Game17 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setImage(items.img);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
-    let tempIdClick = idClick;
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[a]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
@@ -73,22 +74,25 @@ export const Game17 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setImage, round, setIdClick, idClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, setImage, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setImage(items.img);
 
-    let tempIdClick = idClick;
+    setImage(items.img);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
 
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
-      tempAnswers.push(items.resposta[a]);
+    for (let a = 0; a < tempIdClick.length; a ++) {
+      tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
     tempAnswers = tempAnswers.sort(() => Math.random() * - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -98,7 +102,7 @@ export const Game17 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = [...optionColor];
+    let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
@@ -107,7 +111,7 @@ export const Game17 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(1,tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -126,16 +130,14 @@ export const Game17 = () => {
     setNewRodada(tempGeneralRound);
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
-    
+
     if(rule === "Continua") {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
@@ -145,7 +147,6 @@ export const Game17 = () => {
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -158,7 +159,7 @@ export const Game17 = () => {
       },1500);
     }
   }
-    
+
   useEffect(() => { 
     loadLesson();
   }, []);
@@ -168,7 +169,7 @@ export const Game17 = () => {
       <Loading />
     )
   }
-    
+
   return (
     <Container>
       <TitleLesson title="Choose the correct alternative"/>

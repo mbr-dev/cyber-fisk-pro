@@ -15,7 +15,7 @@ import { Main, Container, Input } from "./styles";
 
 export const Game10 = () => {
   const {
-    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
   
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ export const Game10 = () => {
       tempData = conteudoDificil;
       totalOfSounds = conteudoDificil.length;
     }
-    
+
     let tempRandom = [];
     for (let a = 0; a < totalOfSounds; a ++) {
       tempRandom.push(a);
@@ -59,16 +59,19 @@ export const Game10 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+
     setSound(items.pergunta);
     setAnswer(items.resposta.replace(/'/g, "’"));
-    
+
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setSound, setAnswer])
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setAnswer]);
 
   const newRound = (number) => {
     setText("");
+    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+
     setSound(items.pergunta);
     setAnswer(items.resposta.replace(/'/g, "’"));
   }
@@ -76,7 +79,7 @@ export const Game10 = () => {
   const handleVerifyWord = (event) => {
     event.preventDefault();
     if (playAudio) return;
-    
+
     let tempWord = text;
     let tempRightPoints;
     let tempColorA = colorAnswers;
@@ -89,7 +92,7 @@ export const Game10 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(2, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
@@ -110,35 +113,32 @@ export const Game10 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setColorAnswer(0);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
       navigate('/GameOver');
       setTimeout(() => {
-        setColorAnswer(0);
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score") {
-        const pontos = Score(pontosF, pontosM, pontosD);
-        const page = ScoreFinal(pontos, numSelLesson, numTask);
-        navigate(`/${page}`);
-      } else {
-        setTimeout(() => {
-          setColorAnswer(0);
-          if (nivel === 0) {
-            setNewNivel(1);
-            const atividade = conteudoMedio[0].id_tipo;
-            setNewAtividade(atividade);
-          } else {
-            setNewNivel(2);
-            const atividade = conteudoDificil[0].id_tipo;
-            setNewAtividade(atividade);
-          }
-        }, 1500);
-      }
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      navigate(`/${page}`);
+    } else {
+      setTimeout(() => {
+        if (nivel === 0) {
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        } else {
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      }, 1500);
     }
+  }
 
   useEffect(() => {
     loadLesson();

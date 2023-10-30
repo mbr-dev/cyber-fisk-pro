@@ -13,9 +13,9 @@ import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
 
 export const Game15 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [words, setWords] = useState([]);
@@ -56,17 +56,21 @@ export const Game15 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-      
+
     let tempWords = items.pergunta;
     tempWords = tempWords.sort(() => Math.random() - 0.5);
     setWords(tempWords);
-    
+
     let tempAnswer = items.resposta;
     setAnswer(tempAnswer);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
+    setHit(0);
+    setPhrase([]);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempWords = items.pergunta;
@@ -88,9 +92,10 @@ export const Game15 = () => {
 
         tempRightPoints = PointRule(nivel, rightPoints);
         setRightPoints(tempRightPoints);
-        setNewPontos(0, tempRightPoints);
+        setNewPontos(nivel, tempRightPoints);
       } else {
         setHit(2);
+
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
@@ -99,24 +104,20 @@ export const Game15 = () => {
       let tempRound = round;
       tempRound++;
       setRound(tempRound);
-  
+
       let tempGeneralRound = rodadaGeral;
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
-  
+
       const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-      if(rule === "Continua") {
+      if (rule === "Continua") {
         setTimeout(() =>{
-          setHit(0);
-          setPhrase([]);
           newRound(tempRound);
         }, 1500);
       } else if (rule === "Game over") {
         setNewPontos(0,0);
         setTimeout(() =>{
-          setHit(0);
-          setPhrase([]);
           navigate("/GameOver");
           setNewContainer(1);
         },1500);
@@ -126,8 +127,6 @@ export const Game15 = () => {
         navigate(`/${page}`);
       } else {
         setTimeout(() =>{
-          setHit(0);
-          setPhrase([]);
           if (nivel === 0) {
             setNewNivel(1);
             const atividade = conteudoMedio[0].id_tipo;
@@ -152,15 +151,14 @@ export const Game15 = () => {
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
     } : undefined;
-  
-    
+
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
         {children}
       </div>
     );
   }
-  
+
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
       id: "droppable",
@@ -174,7 +172,7 @@ export const Game15 = () => {
       backgroundColor: isOver ? defaultTheme["gray-100"] : undefined,
       border: isOver ? `1px solid ${defaultTheme["gray-200"]}` : "2px solid transparent",
     };
-    
+
     return (
       <div ref={setNodeRef} style={style}>
         {props.children}
@@ -194,7 +192,7 @@ export const Game15 = () => {
   useEffect(() => {
     loadLesson();
   }, []);
-  
+
   useEffect(() => {
     if (answer.length > 1) {
       verifyWord();

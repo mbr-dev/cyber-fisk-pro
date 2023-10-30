@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { Modal } from "./components/Modal";
 import { TitleLesson } from "../../components/titleLesson";
-import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { HeaderTextImage } from "../../components/HeaderTextImage";
 
 import { CyberContext } from "../../context/cyber";
 import { translateStudio } from "../../utils/Translate";
@@ -27,7 +27,7 @@ export const Studio = () => {
 
   return (
     <Container>
-      <TopMenuHeader title={
+      <HeaderTextImage title={
         selectLanguage === 0 ? translateStudio[0].title : selectLanguage === 1 ? translateStudio[1].title : translateStudio[2].title
       } />
       <TitleLesson title={

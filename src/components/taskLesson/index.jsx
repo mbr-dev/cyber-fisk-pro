@@ -27,6 +27,23 @@ import { Game19 } from "../game19";
 import { Game20 } from "../game20";
 import { Game21 } from "../game21";
 import { Game22 } from "../game22";
+import { Game23 } from "../game23";
+import { Game24 } from "../game24";
+import { Game25 } from "../game25";
+import { Game26 } from "../game26";
+import { Game27 } from "../game27";
+import { Game28 } from "../game28";
+import { Game29 } from "../game29";
+import { Game30 } from "../game30";
+import { Game31 } from "../game31";
+import { Game32 } from "../game32";
+import { Game33 } from "../game33";
+import { Game34 } from "../game34";
+import { Game35 } from "../game35";
+import { Game36 } from "../game36";
+import { Game37 } from "../game37";
+import { Game38 } from "../game38";
+import { Game39 } from "../game39";
 
 export const TaskLesson = () => {
   const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed } = useContext(LessonContext);
@@ -101,16 +118,50 @@ export const TaskLesson = () => {
         return(<Game21 />);
       case 22 :
         return(<Game22 />);
+      case 23 :
+          return(<Game23 />);
+      case 24 :
+        return(<Game24 />);
+      case 25 :
+        return(<Game25 />);
+      case 26 :
+        return(<Game26 />);
+      case 27 :
+      return(<Game27 />);
+      case 28 :
+        return(<Game28 />);
+      case 29 :
+      return(<Game29 />);
+      case 30 :
+        return(<Game30 />);
+      case 31 :
+        return(<Game31 />);
+      case 32 :
+        return(<Game32 />);
+      case 33 :
+        return(<Game33 />);
+      case 34 :
+        return(<Game34 />);
+      case 35 :
+        return(<Game35 />);
+      case 36 :
+        return(<Game36 />);
+      case 37 :
+        return(<Game37 />);
+      case 38 :
+        return(<Game38 />);
+      case 39 :
+        return(<Game39 />);
     }
   }
 
   useEffect(()=>{
-    if(numTask === '1'){
-      setStrStart('Task 1');
-      setStrEnd('Task 2');
-    }else if(numTask === '2'){
-      setStrStart('Task 2');
-      setStrEnd('Super Task');
+    if(numTask === 1){
+      setStrStart("Task 1");
+      setStrEnd("Task 2");
+    }else if(numTask === 2){
+      setStrStart("Task 2");
+      setStrEnd("Super Task");
     }
     loadContent();
   },[])

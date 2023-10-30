@@ -14,13 +14,14 @@ import { Container, Main, Image, ButtonArea } from "./styles";
 
 export const Game14 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, setNewLesson, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
-  
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+
+  const [optionColor, setOptionColor] = useState([]);
+  const [idClick, setIdClick] = useState([]);
+  const [data, setData] = useState([]);
   const [image, setImage] = useState("");
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -30,8 +31,7 @@ export const Game14 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
-  
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -59,11 +59,12 @@ export const Game14 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-
-    setQuestion(items.pergunta);
+    
     setImage(items.image);
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
-    let tempRandomAnswer = idClick;
+    let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomAnswer);
 
@@ -75,23 +76,25 @@ export const Game14 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setIdClick, setQuestion, setAnswers, setBlockButton, setImage]);
+  }, [setIsLoading, setData, setRandomNumber, round, setIdClick, setQuestion, setAnswers, setBlockButton, setImage, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
-    setQuestion(items.pergunta);
     setImage(items.image);
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
 
-    let tempRandomAnswer = idClick;
+    let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomAnswer);
 
     let tempAnswers = [];
-    for (let a = 0; a < items.resposta.length; a++) {
+    for (let a = 0; a < tempRandomAnswer.length; a++) {
       tempAnswers.push(items.resposta[tempRandomAnswer[a]]);
     }
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -101,7 +104,7 @@ export const Game14 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = [...optionColor];
+    let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
@@ -110,7 +113,7 @@ export const Game14 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(0, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -132,28 +135,25 @@ export const Game14 = () => {
 
     if(rule === "Continua") {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over"){
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         navigate("/GameOver");
         setNewContainer(1);
       },1500);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
     } else {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -180,9 +180,7 @@ export const Game14 = () => {
         <Image>
           <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
         </Image>
-
         <SubTitleLesson title={question} />
-
         <ButtonArea>
           {answers.map((answer, index) => {
             return (

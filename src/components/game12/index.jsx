@@ -13,10 +13,10 @@ import { Container, Main, Input, Form, Words } from "./styles";
 
 export const Game12 = () => {
   const {
-    setNewContainer, setNewPontos, setNewLesson, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil,
+    setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil,
     pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
   const [colorAnswers, setColorAnswer] = useState(0);
@@ -58,7 +58,7 @@ export const Game12 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-      
+
     let tempRandomQuestion = [];
     for (let a = 0; a < items.pergunta.length; a ++) {
       tempRandomQuestion.push(items.pergunta[a]);
@@ -68,11 +68,13 @@ export const Game12 = () => {
 
     let tempAnswer = items.resposta.toLowerCase();
     setAnswer(tempAnswer);
+
     setIsLoading(false);
   }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setAnswer]);
 
   const newRound = (number) => {
     setText("");
+    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -100,10 +102,11 @@ export const Game12 = () => {
 
       tempRightPoints = PointRule(nivel, correctPoints);
       setCorrectPoints(tempRightPoints);
-      setNewPontos(1, tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColorA = 2;
       setColorAnswer(tempColorA);
+
       let tempEr = wrongPoints;
       tempEr++;
       setWrongPoints(tempEr);
@@ -121,33 +124,26 @@ export const Game12 = () => {
 
     if (rule === "Continua") {
       setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0, 0);
-      tempColorA = 0;
-      setColorAnswer(tempColorA);
       navigate("/GameOver");
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       navigate(`/${page}`);
-    }else {
+    } else {
       setTimeout(() => {
-        tempColorA = 0;
-        setColorAnswer(tempColorA);
-        if(nivel === 0){
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-        //setNewLesson(2);
       }, 1500);
     }
   }

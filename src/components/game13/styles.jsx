@@ -62,7 +62,7 @@ export const AnswersRow = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid ${props => props.theme.black};
+    border: 3px solid ${props => props.theme.black};
     border-radius: 8px;
   }
 `;

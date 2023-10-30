@@ -1,11 +1,12 @@
-import ImgLoadGif from "./images/Loading_Cyber_Fisk_Pro_Gif.gif"
+import Logo from "./images/logoGif.gif";
 
 import { Container } from "./styles";
 
 export const Loading = () => {
   return (
     <Container>
-      <img src={ImgLoadGif} alt="" />
+      <img src={Logo} alt="" />
+      <p className="blinking-text">Carregando...</p>
     </Container>
   )
 }

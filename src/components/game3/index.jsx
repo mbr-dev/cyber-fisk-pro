@@ -15,11 +15,11 @@ export const Game3 = () => {
   const {
     setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
   } = useContext(LessonContext);
-  
+
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [optionColor, setOptionColor] = useState([]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
@@ -57,37 +57,40 @@ export const Game3 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
-    setQuestion(items.pergunta);
 
-    let tempIdClick = idClick;
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
-    
+
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < items.resposta.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
-    
+
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, idClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setOptionColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-    setQuestion(items.pergunta);
 
-    let tempIdClick = idClick;
+    setQuestion(items.pergunta);
+    setOptionColor(Array(items.resposta.length).fill(0));
+
+    let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
     setIdClick(tempIdClick);
-    
+
     let tempAnswers = [];
-    for (let a = 0; a < idClick.length; a ++) {
+    for (let a = 0; a < tempIdClick.length; a ++) {
       tempAnswers.push(items.resposta[tempIdClick[a]]);
     }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAnswers(tempAnswers);
+
     setBlockButton(false);
   }
 
@@ -96,7 +99,7 @@ export const Game3 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = [...optionColor];
+    let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
@@ -105,7 +108,7 @@ export const Game3 = () => {
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
-      setNewPontos(1,tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       tempColor[index] = 2;
       setOptionColor(tempColor);
@@ -127,14 +130,12 @@ export const Game3 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        setOptionColor([0, 0, 0]);
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(nivel, 0);
       setTimeout(() => {
         navigate("/GameOver");
-        setOptionColor([0, 0, 0]);
         setNewContainer(1);
       }, 1500);
     } else if (rule === "Score") {
@@ -144,7 +145,6 @@ export const Game3 = () => {
     } else {
       setTimeout(() => {
         console.log('MUDA DE RODADA!!');
-        setOptionColor([0, 0, 0]);
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -177,7 +177,7 @@ export const Game3 = () => {
           return(
             <ButtonAnswer 
               key={index}
-              w="13rem"
+              w="14.5rem"
               h="3.5rem"
               onPress={() => {handleClick(index)}}
               optionColor={optionColor[index]}

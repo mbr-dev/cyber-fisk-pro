@@ -3,7 +3,7 @@ import { CalendarDays, Mail, School, User } from "lucide-react";
 
 import { ButtonBg } from "../../components/ButtonBg";
 import { LineSeparator } from "../../components/LineSeparator";
-import { TopMenuHeader } from "../../components/TopMenuHeader";
+import { HeaderTextImage } from "../../components/HeaderTextImage";
 
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
@@ -24,7 +24,7 @@ export const Profile = () => {
   
   return(
     <Container>
-      <TopMenuHeader hasAvatar hasLogo title={
+      <HeaderTextImage hasAvatar hasLogo title={
         selectLanguage === 0 ? translateProfile[0].title : selectLanguage === 1 ? translateProfile[1].title : translateProfile[2].title
       } />
 
