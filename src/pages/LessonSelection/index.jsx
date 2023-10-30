@@ -1,10 +1,15 @@
-import { useContext } from "react";
+import { useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
+import { apiQAS } from "../../lib/api";
+import Cookies from 'universal-cookie';
 
 import { ButtonBg } from "../../components/ButtonBg";
 import { LessonContext } from "../../context/lesson";
+import { CyberContext } from "../../context/cyber";
 import { HeaderText } from "../../components/HeaderText"
+import { Loading } from "../../components/Loading";
+import { Notifications } from "../../components/Notifications";
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
@@ -20,6 +25,13 @@ import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSup
 export const LessonSelection = () => {
   const navigate = useNavigate();
   const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
+  const { book, chooseNotification } = useContext(CyberContext);
+  const [task1, setTask1] = useState(false);
+  const [task2, setTask2] = useState(false);
+  const [superTask, setSuperTask] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
+  const [msgError, setMsgError] = useState("");
+  const [error, setError] = useState(false);
 
   const click = (page) => {
     if(page === 'qr-code'){
@@ -45,25 +57,62 @@ export const LessonSelection = () => {
     navigate(`/Home`);
   }
   
+  const verificaTask = async () => {
+    setIsLoading(true);
+    try {
+      const cookies = new Cookies();
+      const raf = cookies.get("raf");
+      await apiQAS.get(`XPUsuario/RetornoTask?raf=${raf}&id_livro=${book.id}&num_lesson=${numSelLesson}`)
+      .then((resp) => {
+        console.log('verificaTask ==> ', resp.data)
+        if(resp.data.erro === null){
+          
+          setTask1(resp.data.dados[0].task1);
+          setTask2(resp.data.dados[0].task2);
+          setSuperTask(resp.data.dados[0].super_task);
+        }
+        setIsLoading(false);
+      })
+    } catch(error) {
+      setIsLoading(false);
+      chooseNotification(3);
+      setMsgError(error);
+      setError(true);
+    }
+  }
+
+  function clickAlert(){
+    setError(false);
+  }
+
+  useEffect(() => {
+    verificaTask();
+  },[]);
+
+  if (isLoading) {
+    return <Loading />
+  }
+
   return (
     <Container>
       <HeaderText title={`Lesson ${numSelLesson}`} />
 
       <Main>
+        {error ? <Notifications description={msgError} event={clickAlert}/> : null}
         <ButtonAreaTop>
           <DivRight>
-            <ButtonTask onClick={() => {clickTask(1)}}>
+            <ButtonTask onClick={() => {clickTask(1)}} disabled={!task1} style={{backgroundColor: !task1 ? '#d3d3d3' : ''}}>
               <img src={TaskImg}  alt="" />
               <p>Task1</p>
             </ButtonTask>
 
-            <ButtonTask onClick={() => {clickTask(2)}}>
+            <ButtonTask onClick={() => {clickTask(2)}} disabled={!task2} style={{backgroundColor: !task2 ? '#d3d3d3' : ''}}>
               <img src={TaskImg}  alt="" />
               <p>Task2</p>
             </ButtonTask>
           </DivRight>
 
-          <ButtonSuperTask onClick={() => {clickTask(0)}}>
+          <ButtonSuperTask onClick={() => {clickTask(0)}} disabled={!superTask} style={{backgroundColor: !superTask ? '#d3d3d3' : ''}}>
             <img src={SuperImg}  alt="" />
             <p>Super Task</p>
           </ButtonSuperTask>

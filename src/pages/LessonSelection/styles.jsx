@@ -253,7 +253,7 @@ export const ButtonBottom = styled.button`
   img {
     width: 24px;
   }
-
+  
   &:hover {
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};

@@ -40,6 +40,13 @@ export const TrocaAtividade = (nivel, rodada, pontos, rodadaNivel) => {
 }
 
 export const Score = (pontosF, pontosM, pontosD) => {
+  const cookies = new Cookies();
+  const total = pontosF + pontosM + pontosD;
+  cookies.set('totalPontos', total);
+  console.log('pontosF: ', pontosF);
+  console.log('pontosM: ', pontosM);
+  console.log('pontosD: ', pontosD);
+  console.log('total: ', total);
   const resF = pontosF * 10;
   const resM = pontosM * 5;
   const resD = ((pontosD / 3) * 10);
@@ -52,52 +59,34 @@ export const Score = (pontosF, pontosM, pontosD) => {
 }
 
 export const ScoreFinal = (pontos, lesson, task) => {
-  let msg = '';
+  let page = '';
   const cookies = new Cookies();
+  const resInt = Math.floor(pontos);
+  cookies.set('score', resInt);
+  const total = cookies.get('totalPontos');
+  console.log('TOTAL ==> ', total);
   if(pontos >= 70){
     //gravar e retornar a frequencia com q jogou o exercicio
     let valorRank = 0;
-    if(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`)) {
-      let frequencia = parseInt(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`));
-      let oldRank = parseInt(localStorage.getItem("cyber_pro_rank"));
-      frequencia++;
-
-      if (frequencia === 4) {
-        //localStorage.setItem(`cyber_pro_dolar`,10);
-        cookies.set('dollar', 10);
-      }else{
-        //localStorage.setItem(`cyber_pro_dolar`,0);
-        cookies.set('dollar', 0);
-      }
-
-      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,frequencia);
-      const rank = PontosRank(frequencia,oldRank);
-      valorRank = rank;
-      localStorage.setItem("cyber_pro_rank",rank);
-    } else {
-      localStorage.setItem(`cyber_pro_frequencia_${lesson}_${task}`,1);
-      const rank = PontosRank(1,0);
-      valorRank = rank;
-      localStorage.setItem("cyber_pro_rank",rank);
+    let frequencia = parseInt(localStorage.getItem(`cyber_pro_frequencia_${lesson}_${task}`));
+    frequencia++;
+    if (frequencia > 3) {
+      //localStorage.setItem(`cyber_pro_dolar`,10);
+      cookies.set('dolar', 10);
+      cookies.set('xp', 0);
+    }else{
+      //localStorage.setItem(`cyber_pro_dolar`,0);
+      cookies.set('dolar', 0);
+      cookies.set('xp', total);
     }
-    msg = 'WellDone';
+    page = 'WellDone';
   }else{
-    msg = 'GameOver';
-  }
-  return msg;
-}
-
-export const PontosRank = (jogadas, pontos) => {
-  let res = pontos;
-  if (jogadas > 3) {
-    return pontos;
-  } else if (jogadas === 1) {
-    res = res + 14;
-  } else {
-    res = res + 17;
+    cookies.set("dolar", 0);
+    cookies.set("xp", 0);
+    page = 'GameOver';
   }
 
-  return res;
+  return page;
 }
 
 export const PointRule = (nivel, points) => {
