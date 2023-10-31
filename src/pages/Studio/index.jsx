@@ -20,7 +20,7 @@ import micro2Icon from "../../assets/micro1.svg";
 import instagramIcon from "./image/Instagram.svg";
 import volumeIcon from "../../assets/btnAudio.svg";
 import australia from "../../assets/Australia.png";
-import eua from "../../assets/eua.svg";
+import eua from "../../assets/Eua.svg";
 
 import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec } from "./styles";
 

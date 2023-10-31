@@ -11,14 +11,14 @@ function CyberProvider({children}){
   const [selectLanguage, setSelectLanguage] = useState(0);
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
 
-  function chooseLanguage(e) {
-    const selectedOption = e.target.value
+  function chooseLanguage(item) {
+    const selectedOption = item
 
-    if (selectedOption === "0") {
+    if (selectedOption === 0) {
       setSelectLanguage(0);
-    } else if (selectedOption === "1") {
+    } else if (selectedOption === 1) {
       setSelectLanguage(1);
-    } else if (selectedOption === "2") {
+    } else if (selectedOption === 2) {
       setSelectLanguage(2);
     }
   }

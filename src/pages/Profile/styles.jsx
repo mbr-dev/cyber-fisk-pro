@@ -73,22 +73,6 @@ export const AreaInput = styled.div`
     left: 10px;
     color: ${props => props.theme["gray-400"]};
   }
-  
-  img {
-    width: 20px;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-    color: ${props => props.theme["gray-400"]};
-  }
-
-  .language {
-    background-color: ${props => props.theme["red-200"]};
-    border: 0;
-    color: ${props => props.theme.white};
-    font-size: 18px;
-    font-weight: 500;
-  }
 
   .selectState {
     color: ${props => props.theme["gray-600"]};
@@ -99,10 +83,6 @@ export const AreaInput = styled.div`
   }
 
   @media(max-width: 320px) {
-    .language {
-      font-size: 12px;
-    }
-
     .selectState {
       font-size: 12px;
     }
@@ -114,11 +94,6 @@ export const AreaInput = styled.div`
     }
 
     svg {
-      top: 26px;
-    }
-    
-    img {
-      width: 18px;
       top: 26px;
     }
   }
@@ -164,5 +139,58 @@ export const Select = styled.select`
   @media(max-width: 360px) {
     padding-left: 30px;
     height: 30px;
+  }
+`;
+
+export const SelectIdioma = styled.div`
+  width: 100%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+`;
+
+export const SelectTitle = styled.div`
+  width: 100%;
+  height: 42px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+
+  p {
+    flex: 1;
+    font-size: 18px;
+  }
+`;
+
+export const SelectUl = styled.ul`
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  bottom: -94px;
+  padding: 8px;
+  display: flex;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline: 16px;
+  gap: 12px;
+  background-color: ${props => props.theme["red-200"]};
+`;
+
+export const SelectLi = styled.li`
+  width: 100%;
+  list-style: none;
+  color: ${props => props.theme.white};
+
+  &:hover {
+    background-color: ${props => props.theme["red-300"]};
   }
 `;
