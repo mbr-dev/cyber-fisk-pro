@@ -19,6 +19,7 @@ export const Game6 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -60,6 +61,7 @@ export const Game6 = () => {
     const items = JSON.parse(tempData[tempSounds[round]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -79,6 +81,7 @@ export const Game6 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -105,13 +108,19 @@ export const Game6 = () => {
     let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
+    let tempSelectedColor = selectedColor;
 
     const answer = answers[index];
 
     if (answer.status === 1) {
       if (clicks < 3) {
+        tempSelectedColor[index] = 1;
+        setSelectedColor(tempSelectedColor);
         return;
       }
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
       
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -121,6 +130,9 @@ export const Game6 = () => {
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
@@ -191,7 +203,7 @@ export const Game6 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative" />
+      <TitleLesson title="Choose the 3 correct alternatives." />
       <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
@@ -202,6 +214,7 @@ export const Game6 = () => {
               w="7rem"
               h="3.25rem"
               onPress={() => handleClick(index)}
+              optionColor={selectedColor[index]}
               disabledButton={blockButton}
             >
               <p>{answer.label}</p>

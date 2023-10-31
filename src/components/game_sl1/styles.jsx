@@ -53,8 +53,16 @@ export const ButtonArea = styled.div`
   justify-content: center;
   align-items: center;
   gap: 1rem;
-
+  
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+`;
+
+export const AreaButtons = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;  
 `;

@@ -81,13 +81,15 @@ export const Home = () => {
         </Cards>
       </Main>
 
-      {/* <Dialog.Root>
+      {/* 
+      <Dialog.Root>
         <Dialog.Trigger>
-          <ButtonPronunciation />
+          <p>mostrar modal</p>
         </Dialog.Trigger>
 
-        <ModalPronunciation />
-      </Dialog.Root> */}
+        <ModalReward />
+      </Dialog.Root> 
+      */}
       <Footer />
     </Container>
   )

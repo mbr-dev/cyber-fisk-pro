@@ -19,6 +19,7 @@ export const Game4 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
   const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
   const [data, setData] = useState([]);
@@ -60,6 +61,7 @@ export const Game4 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     setType(items.tipo);
     setSounds(items.pergunta);
@@ -80,13 +82,14 @@ export const Game4 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setType(items.tipo);
     setSounds(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
@@ -117,13 +120,19 @@ export const Game4 = () => {
     let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
+    let tempSelectedColor = selectedColor;
 
     const answer = answers[index];
 
     if(answer.status === 1) {
       if (clicks < 3) {
+        tempSelectedColor[index] = 1;
+        setSelectedColor(tempSelectedColor);
         return;
       }
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
       
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -138,6 +147,9 @@ export const Game4 = () => {
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
     } else {
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
@@ -207,7 +219,7 @@ export const Game4 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct alternative" />
+      <TitleLesson title="Choose the 3 correct alternatives." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
 
       <Main>
@@ -219,6 +231,7 @@ export const Game4 = () => {
                 width: type === 3 ? "4.5rem" : "8.5rem",
                 height: type === 3 ? "4.5rem" : "3rem",
                 opacity: blockButton ? "0.5" : "1",
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
               disabled={blockButton}
             >

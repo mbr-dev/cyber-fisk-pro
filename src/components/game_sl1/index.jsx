@@ -1,4 +1,5 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
@@ -8,42 +9,79 @@ import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
+import { L1_SUPER_LESSON } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, Letter, LettersArea } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons } from "./styles";
 
 export const GameSL1 = () => {
-  const {setTimeElapsed, timeElapsed} = useContext(LessonContext);
+  const { 
+    setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada 
+  } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  const [lettersAnswer, setLettersAnswer] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [optionColor, setOptionColor] = useState([]);
+  const [lettersAnswer, setLettersAnswer] = useState([]);
   const [numberClick, setNumberClick] = useState(0);
+  const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
   const [letters, setLetters] = useState([]);
-  const [answers, setAnswers] = useState([]);
-  const [answered, setAnswered] = useState([]);
+  const [answers, setAnswers] = useState("");
   const [rightPoints, setRightPoints] = useState(0);
-  const [wordLength, setWordLength] = useState(6);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [blockButton, setBlockButton] = useState(true);
+  const [blockLetters, setBlockLetters] = useState(false);
+
+  const navigate = useNavigate();
+  console.log(answers);
 
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
 
-      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      /* const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data;
 
-      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
+      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo); */
 
-      let tempLetters = items.letras;
-      setLetters(tempLetters);
-      let tempAnswers = items.resposta;
-      setAnswers(tempAnswers);
+      let dataLength = L1_SUPER_LESSON.length;
+
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+
+      let items = L1_SUPER_LESSON[tempRandom[round]];
+      setOptionColor(Array(items.resposta.length).fill(0));
+
+      const letter = Array(items.resposta.length).fill("");
+      setLettersAnswer(letter);
+
+      setAnswers(items.resposta);
+      setLetters(items.letras);
 
       setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-  }, [setLetters, setAnswers]);
+  }, [setIsLoading, setOptionColor, setRandomNumber, round, setLettersAnswer, setLetters, setAnswers]);
+
+  const newRound = (number) => {
+    setNumberClick(0);
+
+    const items = L1_SUPER_LESSON[randomNumber[number]];
+
+    const letter = Array(items.resposta.length).fill("");
+    setLettersAnswer(letter);
+
+    setAnswers(items.resposta);
+    setLetters(items.letras);
+
+    setBlockLetters(false);
+    setBlockButton(true);
+  }
 
   const handleClearField = () => {
     let tempLetters = lettersAnswer;
@@ -59,13 +97,6 @@ export const GameSL1 = () => {
     setNumberClick(tempNumber);
   }
 
-  const clearFields = () => {
-    let temp = ["", "", "", "", "", "", "", "", ""];
-    setNumberClick(0);
-    setLettersAnswer(temp);
-    setOptionColor([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  }
-
   const handleClick = (letter) => {
     let temp = lettersAnswer;
     let tempNumber = numberClick;
@@ -75,60 +106,40 @@ export const GameSL1 = () => {
 
     setLettersAnswer(temp);
     setNumberClick(tempNumber);
-    let rightWord = "";
+  }
 
-    lettersAnswer.map((index) => {
-      rightWord += index;
-    });
+  const handleVerify = () => {
+    const word = lettersAnswer.join("");
 
-    answers.map((world) => {
-      if (rightWord.toUpperCase() === world.toUpperCase()) {
-        if (answered.includes(world)) {
-          alert(`Voce já acertou esta palavra: ${world}`);
-        } else {
-          let tempAnswer = answered;
-          tempAnswer.push(world);
-          setAnswered(tempAnswer);
+    if (word.toLowerCase() === answers.toLowerCase()) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
-          setOptionColor([1, 1, 1, 1, 1, 1, 1, 1, 1]);
-          setWordLength(state => state - 1);
-        }
-
-        setTimeout(() => {
-          clearFields();
-        }, 1500);
-      }
-    })
-
-    if (tempNumber > 9) {
-      clearFields();
-    }
-
-    let finished = answers.every(word => answered.includes(word));
-
-    if (answers.length > 0) {
-      if (finished) {
-        let tempRightPoints = rightPoints;
-
-        if (timeElapsed <= 60) {
-          tempRightPoints += 5;
-        } else if (timeElapsed >= 61 && timeElapsed <= 75) {
-          tempRightPoints += 4;
-        } else if (timeElapsed >= 76 && timeElapsed <= 90) {
-          tempRightPoints += 3;
-        } else if (timeElapsed >= 91 && timeElapsed <= 120) {
-          tempRightPoints += 2;
-        } else {
-          tempRightPoints += 1;
-        }
-
-        setRightPoints(tempRightPoints);
-      } else {
-        return;
-      }
+      let tempA = rightPoints;
+      tempA++;
+      setWrongPoints(tempA);
     } else {
-      return;
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
     }
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    setTimeout(() => {
+      newRound(tempRound);
+    }, 1500);
   }
 
   useEffect(() => {
@@ -147,6 +158,30 @@ export const GameSL1 = () => {
     }
   }, [setTimeElapsed]);
 
+  useEffect(() => {
+    if (round === 6) {
+      if (rightPoints >= 3) {
+        setTimeout(() => {
+          navigate("/WellDone");
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          navigate("/GameOver");
+        }, 1500);
+      }
+    }
+  }, [round, rightPoints])
+
+  useEffect(() => {
+    if (lettersAnswer.length === numberClick) {
+      setBlockButton(false);
+      setBlockLetters(true);
+    } else {
+      setBlockButton(true);
+      setBlockLetters(false);
+    }
+  }, [numberClick, lettersAnswer, setBlockButton, setBlockLetters])
+
   if (isLoading) {
     return (
       <Loading />
@@ -155,9 +190,7 @@ export const GameSL1 = () => {
 
   return (
     <Container>
-      <TitleLesson title={
-        `How many nationalities can you write with these letters? There are ${wordLength} ${wordLength > 1 ? "words" : "word"}.`
-      } />
+      <TitleLesson title="How many nationalities can you write with these letters?"/>
 
       <Main>
         <LettersArea>
@@ -185,21 +218,32 @@ export const GameSL1 = () => {
                 w="1rem"
                 h="2.75rem"
                 onPress={() => handleClick(letter)}
+                disabledButton={blockLetters}
               >
                 <p className="pBold">{letter}</p>
               </ButtonAnswer>
             )
           })}
         </ButtonArea>
+      </Main>
+
+      <AreaButtons>
         <ButtonBg
           h="2.5rem"
           w="9rem"
           onPress={handleClearField}
           title="Clear"
         />
-      </Main>
 
-      <FooterBtnHome hasLS title="Lesson Menu" />
+        <ButtonBg
+          h="2.5rem"
+          w="9rem"
+          greenBtn
+          onPress={handleVerify}
+          disabledButton={blockButton}
+          title="Check"
+        />
+      </AreaButtons>
     </Container>
   )
 }
