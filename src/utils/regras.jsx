@@ -79,7 +79,12 @@ export const ScoreFinal = (pontos, lesson, task) => {
       cookies.set('dolar', 0);
       cookies.set('xp', total);
     }
-    page = 'WellDone';
+    //o usuario so vai ser redirecionado para a roleta se ele cumprir 100% na primeira tentativa
+    if(pontos === 100 && frequencia === 1){
+      page = 'SpinWheel';
+    }else{
+      page = 'WellDone';
+    }
   }else{
     cookies.set("dolar", 0);
     cookies.set("xp", 0);

@@ -41,6 +41,7 @@ export const WellDone = () => {
   const salvar = async(tempoCronometro) =>{
     if(salvou) return;
     setSalvou(true);
+    setIsLoading(true);
     const cookies = new Cookies();
     //gravar a data do acesso
     const newDate = new Date();
@@ -72,6 +73,19 @@ export const WellDone = () => {
       const raf = cookies.get("raf");
       const dolar = cookies.get("dolar");
       const xp = cookies.get("xp");
+      if(dolar > 0)
+      {
+        await apiQAS.get(`/FiskDolars/Registrar?raf=${raf}&tipo=credito&descricao=lesson${numSelLesson}-task${numTask}&valor=${dolar}`)
+        .then((res) =>{
+          if(res.data.erro !== null){
+            chooseNotification(3);
+            setMsgError(res.data.erro);
+            setError(true);
+            setIsLoading(false);
+            return;
+          }
+        })
+      }
       setXPAtividade(xp);
       await apiQAS.get(`XPUsuario/Registrar?raf=${raf}&id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}&pontos_xp=${xp}&score=${score}&dolar=${dolar}&tempo=${seconds}&data_inicio=${dataInicio}&data_fim=${dateComplete}`)
       .then((resp) => {
@@ -103,7 +117,7 @@ export const WellDone = () => {
   useEffect(() => {
     const cookies = new Cookies();
     setName(cookies.get('raf'));
-    setDollar(cookies.get('dollar'));
+    setDollar(cookies.get('dolar'));
     //time
     let minutes = Math.floor(timeElapsed / 60);
     minutes = minutes < 10 ? `0${minutes}` : minutes.toString();
@@ -112,7 +126,7 @@ export const WellDone = () => {
     let hours = Math.floor(timeElapsed / 3600);
     hours = hours < 10 ? `0${hours}` : hours.toString;
     setTime(`${hours}:${minutes}:${seconds}`);
-    salvar(`${hours}:${minutes}:${seconds}`);
+    //salvar(`${hours}:${minutes}:${seconds}`);
   },[]);
 
   if (isLoading) {
