@@ -24,6 +24,7 @@ import { Mensagens } from "../../utils/Mensagens";
 
 import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { apiQAS } from "../../lib/api";
 
 export const Login = () => {
   const { selectLanguage, chooseLanguage, signIn, chooseNotification } = useContext(CyberContext);
@@ -66,15 +67,16 @@ export const Login = () => {
     setLoading(true);
     try {
       await signIn(raf, userPassword)
-        .then((resp) =>{
+        .then(async(resp) =>{
           setLoading(false);
           console.log("resp ==> ", resp);
           setError(false);
           if(resp.succeeded){
             const cookies = new Cookies();
-            cookies.set("token", resp.data[0].cd_professor, { path: "/" });
-            cookies.set("raf", raf, { path: "/" });
-            navigate("/home");
+            cookies.set("token", resp.data[0].cd_professor, { path: '/' });
+            cookies.set("raf", raf, { path: '/' });
+            await salvarAcesso(raf);
+            //navigate("/home");
           }else{
             console.log("login invalido ");
             setLoading(false);
@@ -83,9 +85,10 @@ export const Login = () => {
             setError(true);
             if(resp.message === "Network Error"){
               const cookies = new Cookies();
-              cookies.set("token", "A123", { path: "/" });
-              cookies.set("raf", raf, { path: "/" });
-              navigate("/home");
+              cookies.set("token", 'A123', { path: '/' });
+              cookies.set("raf", raf, { path: '/' });
+              await salvarAcesso(raf);
+              //navigate("/home");
             }
           }
         })
@@ -97,11 +100,35 @@ export const Login = () => {
     }
   }
 
+  const salvarAcesso = async(raf) => {
+    try {
+      await apiQAS.get(`/LogAcesso/Registrar?raf=${raf}&projeto=cyber_pro_web`)
+      .then((resp) => {
+        if(resp.data.erro === null){
+          setLoading(false);
+          setError(false);
+          navigate(`/Home`);
+        }else{
+          setLoading(false);
+          chooseNotification(3);
+          setMsgError('Falha ao gravar o acesso do usuário!');
+          setError(true);
+        }
+      })
+    } catch(error) {
+      setLoading(false);
+      chooseNotification(3);
+      setMsgError(error);
+      setError(true);
+    }
+  }
+
   useEffect(() =>{
     const cookies = new Cookies();
     const token = cookies.get("token");
+    const raf = cookies.get("raf");
     if(token){
-      navigate("/Home");
+      salvarAcesso(raf);
     }
   },[])
 

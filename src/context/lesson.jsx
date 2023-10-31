@@ -27,6 +27,11 @@ function LessonProvider({children}){
   const [conteudoMedio, setConteudoMedio] = useState(null);
   const [conteudoDificil, setConteudoDificil] = useState(null);
   const [conteudoSuperTask, setConteudoSuperTask] = useState(null);
+  const [dataInicio, setDataInicio] = useState(null);
+
+  const setNewDataInicio = (value) => {
+    setDataInicio(value);
+  }
 
   const setNewDollarAtividade = (value) => {
     setDollarAtividade(value);
@@ -129,6 +134,13 @@ function LessonProvider({children}){
       dollarAtividade,
       newInfoST,
       setStatusColor,
+      dataInicio,
+      setTimeElapsed,
+      setStatusLessons,
+      setNewContainer,
+      setNewPontos,
+      setNewNivel,
+      setNewAtividade,
       setNewTask,
       setNewNivel,
       setNewRodada,
@@ -145,6 +157,9 @@ function LessonProvider({children}){
       setNewDollarAtividade,
       setNewConteudoDificil,
       setNewConteudoSuperTask,
+      newInfoST,
+      setNewDollarAtividade,
+      setNewDataInicio
     }}>
       {children}
     </LessonContext.Provider>

@@ -1,9 +1,12 @@
 import { useState, useContext, useEffect } from "react";
+import Cookies from 'universal-cookie';
 import { Container } from "./styles";
 import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
 import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
+import { apiQAS } from "../../lib/api";
+
 //Games
 import { Game1 } from "../game1";
 import { Game2 } from "../game2";
@@ -46,15 +49,45 @@ import { Game38 } from "../game38";
 import { Game39 } from "../game39";
 
 export const TaskLesson = () => {
-  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed } = useContext(LessonContext);
+  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed, setNewDataInicio } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
   const [strStart, setStrStart] = useState('');
   const [strEnd, setStrEnd] = useState('');
 
   const loadContent = async () => {
+    const cookies = new Cookies();
+    const raf = cookies.get("raf");
+    //gravar a frequencia com que o usuario jogou a atividade
+    await apiQAS.get(`/XPUsuario/Frequencia?raf=${raf}&id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
+    .then((res) =>{
+      localStorage.setItem(`cyber_pro_frequencia_${numSelLesson}_${numTask}`,res.data.Valor);
+    })
+    //retornar o conteudo da atividade
     await api.get(`/CyberProAtividades/Retorno?id_livro=${book.id}&num_lesson=${numSelLesson}&num_task=${numTask}`)
     .then((resp) =>{
       console.log('resp.data ==> ', resp.data);
+      //gravar a data do acesso
+      const newDate = new Date();
+      //dia
+      let date = newDate.getDate();
+      if(date < 10) date = `0${date}`;
+      //mes
+      let month = newDate.getMonth()+1;
+      if(month < 10) month = `0${month}`;
+      //ano
+      const year = newDate.getFullYear();
+      //hora
+      let hour = newDate.getHours();
+      if(hour < 10) hour = `0${hour}`;
+      //minutos
+      let minute = newDate.getMinutes();
+      if(minute < 10) minute = `0${minute}`;
+      //segundos
+      let second = newDate.getSeconds();
+      if(second < 10) second = `0${second}`;
+      const dateComplete = `${date}/${month}/${year} ${hour}:${minute}:${second}`;
+      setNewDataInicio(dateComplete);
+      
       //pega o primeiro jogo do nivel facil e o primeiro tipo do jogo
       const atividade = resp.data.dados[0].dados_conteudo[0].id_tipo;
       //iniciando no nivel facil 0=facil, 1=medio, 2=dificil
