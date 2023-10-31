@@ -15,12 +15,11 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game24 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, playAudio, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState([]);
   const [question, setQuestion] = useState([]);
@@ -86,7 +85,6 @@ export const Game24 = () => {
     setText2("");
     setText3("");
     setText4("");
-    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -106,7 +104,6 @@ export const Game24 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = colorAnswers;
 
     if (
       text0 === answer0 && 
@@ -115,15 +112,17 @@ export const Game24 = () => {
       text3 === answer3 && 
       text4 === answer4
       ) {
-      tempColor = 1;
-      setColorAnswer(tempColor);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor = 2;
-      setColorAnswer(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -145,15 +144,19 @@ export const Game24 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
-      setTimeout(() =>{
+      setNewPontos(nivel, 0);
+      setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      },1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -195,9 +198,7 @@ export const Game24 = () => {
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[0]}</label>
+          <label>{question[0]}</label>
           <Input
             type="text"
             style={{width: "7rem"}}
@@ -206,9 +207,7 @@ export const Game24 = () => {
             required
           />
 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[1]}</label>
+          <label>{question[1]}</label>
           <Input
             type="text"
             style={{width: "5.5rem"}}
@@ -217,9 +216,7 @@ export const Game24 = () => {
             required
           />
 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[2]}</label>
+          <label>{question[2]}</label>
           <Input
             type="text"
             style={{width: "10.75rem"}}
@@ -228,9 +225,7 @@ export const Game24 = () => {
             required
           />
 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[3]}</label>
+          <label>{question[3]}</label>
           <Input
             type="text"
             style={{width: "7.25rem"}}
@@ -239,9 +234,7 @@ export const Game24 = () => {
             required
           />
 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[4]}</label>
+          <label>{question[4]}</label>
           <Input
             type="text"
             style={{width: "8rem"}}
@@ -250,9 +243,7 @@ export const Game24 = () => {
             required
           />
 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[5]}</label>
+          <label>{question[5]}</label>
         </Form>
         <ButtonBg
           form="myForm"

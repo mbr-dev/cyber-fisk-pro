@@ -24,9 +24,21 @@ export const Container = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 120px;
+    height: 126px;
     gap: 8px;
     padding: 12px 12px 0 12px;
+  }
+
+  @media(min-width: 768px) {
+    height: 184px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 480px;
+    height: 100vh;
+    padding: 32px 32px 0 32px;
+    border-end-end-radius: 0px;
+    border-end-start-radius: 0px;
   }
 `;
 
@@ -47,22 +59,83 @@ export const TopHeader = styled.div`
       font-size: 20px;
     }
   }
+
+  @media(min-width: 768px) {
+    p {
+      font-size: 44px;
+    }
+  }
 `;
 
 export const BottomHeader = styled.div`
   display: flex;
-  justify-content: center;
   align-items: center;
-  align-items: flex-start;
-  gap: 1.5rem;
+  gap: 8px;
   
   .logoFisk {
-    width: 55%;
+    width: 196px;
   }
 
   @media(max-width: 320px) {
     .logoFisk {
-      width: 45%;
+      width: 150px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    .logoFisk {
+      width: 210px;
+    }
+  }
+`;
+
+export const Avatar = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 100px;
+    margin-top: -24px;
+  }
+
+  .roboPe {
+    width: 200px;
+  }
+
+  p {
+    width: 120px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["red-200"]};
+  }
+
+  @media(max-width: 320px) {
+    img {
+      width: 80px;
+    }
+
+    p {
+      width: 110px;
+      height: 20px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 350px;
+    height: 500px;
+
+    p {
+      width: 350px;
+      height: 60px;
+      font-size: 32px;
+      margin-top: -50px;
     }
   }
 `;

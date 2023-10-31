@@ -7,7 +7,7 @@ import { ModalAC } from "./components/ModalAC";
 import { ModalRL } from "./components/ModalRL";
 import { ButtonBg } from "../../components/ButtonBg";
 import { LineSeparator } from "../../components/LineSeparator";
-import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { HeaderText } from "../../components/HeaderText";
 
 import Robo from "../../assets/avatarRobo.png";
 import PrintImg from "../../assets/print.png";
@@ -44,7 +44,7 @@ export const Report = () => {
 
   return (
     <Container>
-      <HeaderTextImage title="Report" />
+      <HeaderText title="Report" />
       
       <AvatarArea>
         <AvatarInfo>

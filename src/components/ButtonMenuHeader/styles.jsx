@@ -13,8 +13,22 @@ export const Container = styled.div`
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
 
+  img {
+    width: 16px;
+  }
+
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 54px;
+    height: 54px;
+    border-radius: 8px;
+
+    img {
+      width: 28px;
+    }
   }
 `;

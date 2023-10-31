@@ -1,9 +1,10 @@
-import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+
+import xImg from "../../assets/xImg.png";
 
 import { Container } from "./styles";
 
-export function ButtonCloseHeader(props) {
+export function ButtonCloseHeader() {
   const navigate = useNavigate();
   
   const alterPage = () => {
@@ -12,7 +13,7 @@ export function ButtonCloseHeader(props) {
 
   return (
     <Container onClick={() => {alterPage()}}>
-      <X size={18} strokeWidth={3} />
+      <img src={xImg} alt="" />
     </Container>
   )
 }

@@ -12,7 +12,7 @@ export const Container = styled.header`
   overflow: hidden;
   position: relative;
 
-  img {
+  .bgImg {
     width: 100%;
     height: 100%;
     position: absolute;

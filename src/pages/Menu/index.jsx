@@ -1,4 +1,4 @@
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -11,7 +11,7 @@ import Robo from "../../assets/RoboWD.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
 import { Container, Main, Header, Avatar } from "./styles";
-import { defaultTheme } from '../../themes/defaultTheme';
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Menu = () => {
   const [name, setName] = useState("");

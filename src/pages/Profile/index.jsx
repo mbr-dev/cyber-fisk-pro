@@ -1,9 +1,9 @@
-import { useContext } from "react";
+import { useContext, useState } from "react";
 import { CalendarDays, Mail, School, User } from "lucide-react";
 
-import { ButtonBg } from "../../components/ButtonBg";
-import { LineSeparator } from "../../components/LineSeparator";
+import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
@@ -11,15 +11,20 @@ import { CyberContext } from "../../context/cyber";
 import Brazil from "../../assets/Brazil.svg";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
+import arrowBottom from "../../assets/arrowBottom.svg";
 
-import { Container, Main, Form, Input, AreaInput, Select } from "./styles";
+import { Container, Content, Main, Input, AreaInput, HeaderDesktop, Select, SelectIdioma, SelectLi, SelectTitle, SelectUl } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
-  const handleSelectLanguage = (event) => {
-    event.preventDefault();
-    chooseLanguage(event)
+  const [isOpen, setIsOpen] = useState("");
+  
+  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+
+  const handleSelectLanguage = (item) => {
+    chooseLanguage(item)
   }
   
   return(
@@ -28,22 +33,40 @@ export const Profile = () => {
         selectLanguage === 0 ? translateProfile[0].title : selectLanguage === 1 ? translateProfile[1].title : translateProfile[2].title
       } />
 
-      <Main>
-        <Form>
+      <Content>
+        {isDesktop && 
+          <HeaderDesktop>
+            <p>Profile</p>
+            <ButtonCloseHeader />
+          </HeaderDesktop>
+        }
+        <Main>
           <AreaInput>
             {selectLanguage === 0 && <label>{translateProfile[0].selectLanguage}</label>}
             {selectLanguage === 1 && <label>{translateProfile[1].selectLanguage}</label>}
             {selectLanguage === 2 && <label>{translateProfile[2].selectLanguage}</label>}
-            
-            {selectLanguage === 0 && <img src={Brazil} alt="Flag Brazil" />}
-            {selectLanguage === 1 && <img src={Eua} alt="Flag Eua" />}
-            {selectLanguage === 2 && <img src={Spain} alt="Flag Espanha" />}
               
-            <Select className="language" value={selectLanguage} onChange={handleSelectLanguage}>
-              <option value="0" >Português</option>
-              <option value="1">Inglês</option>
-              <option value="2">Espanhol</option>
-            </Select>
+            <SelectIdioma
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["red-200"] : "",
+              }}
+            >
+              <SelectTitle style={{
+                borderColor: isOpen && defaultTheme["gray-700"],
+              }}>
+                {selectLanguage === 0 ? <img src={Brazil} alt="" /> : selectLanguage === 1 ? <img src={Eua} alt="" /> : <img src={Spain} alt="" />}
+                {selectLanguage === 0 ? <p>Português</p> : selectLanguage === 1 ? <p>English</p> : <p>Spanish</p>}
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={() => handleSelectLanguage(0)}>Português</SelectLi>
+                  <SelectLi onClick={() => handleSelectLanguage(1)}>English</SelectLi>
+                  <SelectLi onClick={() => handleSelectLanguage(2)}>Spanish</SelectLi>
+                </SelectUl>
+              }
+            </SelectIdioma>
           </AreaInput>
 
           <AreaInput>
@@ -83,10 +106,10 @@ export const Profile = () => {
             <Mail size={16} strokeWidth={2.5} />
             <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
           </AreaInput>
-          <LineSeparator w="100%" />
-        </Form>
-        <ButtonBg title="Home" w="15.875rem" h="2.5rem" />
-      </Main>
+        </Main>
+
+        <FooterBtnHome hasLS />
+      </Content>
     </Container>
   )
 }

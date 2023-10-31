@@ -1,6 +1,6 @@
 import { useState, useEffect, useContext } from "react";
 import Confetti from "react-confetti"
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import { apiQAS } from "../../lib/api";
 
@@ -27,8 +27,19 @@ export const WellDone = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
-  const [name, setName] = useState('---');
+  const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
+
+  const phrase = [
+    "Good job!",
+    "Keep up the good work!",
+    "You doing awesome! Congrats!",
+    "Your efforts are truly impressive. Congratulations.",
+    "You’re a true champion!",
+    "Keep up the excellent work!"
+  ]
+
+  const randomPhrase = Math.floor(Math.random() * phrase.length);
   const [time, setTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
@@ -177,12 +188,11 @@ export const WellDone = () => {
         <span>{time}</span>
 
         <Text>
-          <p>Remember, everyone faces</p>
-          <p>challegens. Try it once more!</p>
+          <p>{phrase[randomPhrase]}</p>
         </Text>
       </Main>
 
-      <FooterBtnHome hasLS />
+      <FooterBtnHome hasLS title="Lesson Menu" />
     </Container>
   )
 }

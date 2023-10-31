@@ -32,4 +32,13 @@ export const Container = styled.button`
       font-size: 16px;
     }
   }
+
+  @media(min-width: 768px) {
+    width: 400px;
+    height: 56px;
+
+    p {
+      font-size: 32px;
+    }
+  }
 `;

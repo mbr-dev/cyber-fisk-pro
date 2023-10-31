@@ -13,12 +13,11 @@ import { Container, Main } from "./styles";
 
 export const Game3 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
@@ -59,7 +58,6 @@ export const Game3 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setQuestion(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -73,13 +71,12 @@ export const Game3 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setQuestion(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -99,19 +96,20 @@ export const Game3 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = optionColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor[index] = 2;
-      setOptionColor(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -137,14 +135,18 @@ export const Game3 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() => {
-        console.log('MUDA DE RODADA!!');
+        console.log("MUDA DE RODADA!!");
         if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
@@ -169,7 +171,7 @@ export const Game3 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct alternative" />
+      <TitleLesson title="Choose the correct sentences." />
       <SubTitleLesson title={question}/>
 
       <Main>
@@ -180,7 +182,6 @@ export const Game3 = () => {
               w="14.5rem"
               h="3.5rem"
               onPress={() => {handleClick(index)}}
-              optionColor={optionColor[index]}
               disabledButton={blockButton}
             >
               <p>{answer.label}</p>

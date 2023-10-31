@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -13,8 +13,21 @@ export const Container = styled.button`
   color: ${props => props.theme.white};
   cursor: pointer;
 
+  img {
+    width: 14px;
+  }
+
   @media(max-width: 320px) {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
+  }
+
+  @media(min-width: 768px) {
+    width: 54px;
+    height: 54px;
+
+    img {
+      width: 24px;
+    }
   }
 `;

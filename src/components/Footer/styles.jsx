@@ -9,8 +9,8 @@ export const Container = styled.footer`
   gap: 0.5rem;
   padding-block: 0.75rem;
   background-color: ${props => props.theme["red-200"]};
-  border-top-left-radius: 8px;
-  border-top-right-radius: 8px;
+  border-top-left-radius: 18px;
+  border-top-right-radius: 18px;
 
   p {
     font-weight: normal;

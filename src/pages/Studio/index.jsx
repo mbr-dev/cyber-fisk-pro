@@ -3,7 +3,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { Modal } from "./components/Modal";
 import { TitleLesson } from "../../components/titleLesson";
-import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { HeaderText } from "../../components/HeaderText";
 
 import { CyberContext } from "../../context/cyber";
 import { translateStudio } from "../../utils/Translate";
@@ -19,6 +19,8 @@ import dribbbleIcon from "./image/Dribbble.svg";
 import micro2Icon from "../../assets/micro1.svg";
 import instagramIcon from "./image/Instagram.svg";
 import volumeIcon from "../../assets/btnAudio.svg";
+import australia from "../../assets/Australia.png";
+import eua from "../../assets/Eua.svg";
 
 import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec } from "./styles";
 
@@ -27,7 +29,7 @@ export const Studio = () => {
 
   return (
     <Container>
-      <HeaderTextImage title={
+      <HeaderText title={
         selectLanguage === 0 ? translateStudio[0].title : selectLanguage === 1 ? translateStudio[1].title : translateStudio[2].title
       } />
       <TitleLesson title={
@@ -46,12 +48,18 @@ export const Studio = () => {
 
           <UserInfo>
             <From>
-              <p>{selectLanguage === 0 ? translateStudio[0].from : selectLanguage === 1 ? translateStudio[1].from : translateStudio[2].from}</p>
-              <span>The USA</span>
+              <img src={eua} alt="" />
+              <div>
+                <p>{selectLanguage === 0 ? translateStudio[0].from : selectLanguage === 1 ? translateStudio[1].from : translateStudio[2].from}</p>
+                <span>The USA</span>
+              </div>
             </From>
             <From>
-              <p>{selectLanguage === 0 ? translateStudio[0].live : selectLanguage === 1 ? translateStudio[1].live : translateStudio[2].live}</p>
-              <span>Australia</span>
+              <img src={australia} alt="" />
+              <div>
+                <p>{selectLanguage === 0 ? translateStudio[0].live : selectLanguage === 1 ? translateStudio[1].live : translateStudio[2].live}</p>
+                <span>Australia</span>
+              </div>
             </From>
           </UserInfo>
 

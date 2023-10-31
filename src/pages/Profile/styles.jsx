@@ -5,7 +5,37 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  overflow-x: hidden;
+  
+  @media(min-width: 800px) {
+    flex-direction: row;
+  }
+`;
+
+export const Content = styled.div`
+  flex: 1;
+  display: flex;
+  flex-direction: column;
   align-items: center;
+  
+  @media(min-width: 800px) {
+    width: calc(100vw - 480px);
+  }
+`;
+
+export const HeaderDesktop = styled.div`
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-top: 32px;
+  gap: calc(80% / 2);
+
+  p {
+    font-size: 36px;
+    font-weight: 500;
+    color: ${props => props.theme["gray-700"]};
+  }
 `;
 
 export const Main = styled.main`
@@ -15,37 +45,15 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  gap: 10px;
 
   @media(max-width: 320px) {
-    padding-top: 0.5rem;
-  }
-`;
-
-export const Form = styled.form`
-  width: 20rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  gap: 1rem;
-
-  @media(max-width: 376px) {
-    width: 18.75rem;
-    gap: 0.875rem;
-  }
-
-  @media(max-width: 360px) {
-    gap: 0.5rem;
-  }
-
-  @media(max-width: 320px) {
-    width: 16rem;
-    gap: 0.375rem;
+    gap: 2px;
   }
 `;
 
 export const AreaInput = styled.div`
-  width: 100%;
+  width: 80%;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -53,10 +61,10 @@ export const AreaInput = styled.div`
 
   label {
     color: ${props => props.theme["gray-600"]};
-    padding-left: 1rem;
-    font-size: 1.125rem;
+    padding-left: 16px;
+    font-size: 18px;
     font-weight: 500;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
   }
 
   svg {
@@ -64,22 +72,6 @@ export const AreaInput = styled.div`
     top: 41px;
     left: 10px;
     color: ${props => props.theme["gray-400"]};
-  }
-  
-  img {
-    width: 1.25rem;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-    color: ${props => props.theme["gray-400"]};
-  }
-
-  .language {
-    background-color: ${props => props.theme["red-200"]};
-    border: 0;
-    color: ${props => props.theme.white};
-    font-size: 1.125rem;
-    font-weight: 500;
   }
 
   .selectState {
@@ -91,62 +83,114 @@ export const AreaInput = styled.div`
   }
 
   @media(max-width: 320px) {
-    .language {
-      font-size: 1rem;
+    .selectState {
+      font-size: 12px;
     }
 
     label {
-      font-size: 1rem;
-      padding-left: 0.75rem;
+      font-size: 12px;
+      padding-left: 12px;
+      margin-bottom: 6px;
     }
 
     svg {
-      top: 38px;
-    }
-    
-    img {
-      top: 38px;
+      top: 26px;
     }
   }
 `;
 
 export const Input = styled.input`
   width: 100%;
-  height: 2.625rem;
-  padding-left: 2rem;
+  height: 42px;
+  padding-left: 32px;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["gray-400"]};
+  border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
 
   &::placeholder {
     font-weight: normal;
     font-family: "Ubuntu", sans-serif;
-    font-size: 1rem;
+    font-size: 16px;
     color: ${props => props.theme["gray-600"]};
   }
 
   @media(max-width: 360px) {
-    height: 2.5rem;
+    height: 40px;
   }
 
   @media(max-width: 320px) {
-    height: 2.25rem;
+    height: 30px;
+    padding-left: 30px;
 
     &::placeholder {
-      font-size: 0.875rem;
+      font-size: 12px;
     }
   }
 `;
 
 export const Select = styled.select`
-  height: 2.625rem;
-  padding-left: 2rem;
+  height: 42px;
+  padding-left: 32px;
   border-radius: 8px;
   background-color: transparent;
   font-weight: normal;
   font-family: "Ubuntu", sans-serif;
 
   @media(max-width: 360px) {
-    height: 2.5rem;
+    padding-left: 30px;
+    height: 30px;
+  }
+`;
+
+export const SelectIdioma = styled.div`
+  width: 100%;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+`;
+
+export const SelectTitle = styled.div`
+  width: 100%;
+  height: 42px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+
+  p {
+    flex: 1;
+    font-size: 18px;
+  }
+`;
+
+export const SelectUl = styled.ul`
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  bottom: -94px;
+  padding: 8px;
+  display: flex;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  flex-direction: column;
+  align-items: flex-start;
+  padding-inline: 16px;
+  gap: 12px;
+  background-color: ${props => props.theme["red-200"]};
+`;
+
+export const SelectLi = styled.li`
+  width: 100%;
+  list-style: none;
+  color: ${props => props.theme.white};
+
+  &:hover {
+    background-color: ${props => props.theme["red-300"]};
   }
 `;

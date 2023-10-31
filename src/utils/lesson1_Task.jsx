@@ -488,7 +488,27 @@ export const L1_T2_Dificil = [
 
 export const L1_SUPER_LESSON = [
   { 
+    letras: ["A", "B", "C", "J", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+    resposta: "American"
+  },
+  { 
+    letras: ["A", "B", "C", "D", "O", "F", "H", "I", "L", "W", "N", "P", "R", "S", "T", "Z"],
+    resposta: "Canadian"
+  },
+  { 
     letras: ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
-    resposta: ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"]
+    resposta: "Brazilian"
+  },
+  { 
+    letras: ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+    resposta: "French"
+  },
+  { 
+    letras: ["A", "B", "C", "D", "E", "F", "J", "I", "L", "M", "N", "Q", "R", "U", "T", "Z"],
+    resposta: "Italian"
+  },
+  { 
+    letras: ["A", "B", "C", "D", "E", "F", "H", "I", "U", "M", "N", "P", "R", "S", "W", "Z"],
+    resposta: "Spanish"
   }
 ]

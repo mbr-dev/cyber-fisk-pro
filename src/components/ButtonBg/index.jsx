@@ -1,8 +1,6 @@
-import { Play } from "lucide-react";
-import { useNavigate } from "react-router-dom";
 import { Container } from "./styles";
 
-export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, type="button", mt, form, w, h }) => {  
+export const ButtonBg = ({ title, disabledButton, onPress, greenBtn, type="button", mt, form, w, h, mb }) => {  
   return (
     <Container 
       onClick={onPress}
@@ -12,7 +10,8 @@ export const ButtonBg = ({ title, hasIcon, disabledButton, onPress, greenBtn, ty
       style={{
         marginTop: mt,
         height: h,
-        width: w
+        width: w,
+        marginBottom: mb,
       }}
       disabled={disabledButton}
       >

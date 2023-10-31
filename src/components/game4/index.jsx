@@ -14,14 +14,14 @@ import { Container, Main, Button } from "./styles";
 
 export const Game4 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idTipo3, setIdTipo3] = useState([0, 1, 2, 3, 4, 5]);
   const [idTipo4, setIdTipo4] = useState([0, 1, 2, 3, 4]);
-  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sounds, setSounds] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -61,10 +61,10 @@ export const Game4 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     setType(items.tipo);
     setSounds(items.pergunta);
-    setIdClick(Array(items.resposta.length).fill(0));
 
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
@@ -82,14 +82,14 @@ export const Game4 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setIdClick]);
+  }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setType(items.tipo);
     setSounds(items.pergunta);
-    setIdClick(Array(items.resposta.length).fill(0));
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempSortNum = items.tipo === 3 ? idTipo3 : idTipo4;
     tempSortNum = tempSortNum.sort(() => Math.random() - 0.5);
@@ -117,23 +117,26 @@ export const Game4 = () => {
     clicks++;
     setCountClick(clicks);
 
-    let arr = idClick;
-
     let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
+    let tempSelectedColor = selectedColor;
 
     const answer = answers[index];
 
     if(answer.status === 1) {
       if (clicks < 3) {
-        arr[index] = 1;
-        setIdClick(arr);
+        tempSelectedColor[index] = 1;
+        setSelectedColor(tempSelectedColor);
         return;
       }
 
-      arr[index] = 1;
-      setIdClick(arr);
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
@@ -144,8 +147,12 @@ export const Game4 = () => {
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
     } else {
-      arr[index] = 2;
-      setIdClick(arr);
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -170,13 +177,17 @@ export const Game4 = () => {
     } else if (rule === "Game over"){
       setNewPontos(0,0);
       setTimeout(() =>{
-        navigate('/GameOver');
+        navigate("/GameOver");
         setNewContainer(1);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       },1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -208,7 +219,7 @@ export const Game4 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct alternative" />
+      <TitleLesson title="Choose the 3 correct alternatives." />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
 
       <Main>
@@ -220,7 +231,7 @@ export const Game4 = () => {
                 width: type === 3 ? "4.5rem" : "8.5rem",
                 height: type === 3 ? "4.5rem" : "3rem",
                 opacity: blockButton ? "0.5" : "1",
-                borderColor: idClick[index] === 1 ? defaultTheme["green-200"] : idClick[index] === 2 ? defaultTheme["red-200"] : "",
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
               disabled={blockButton}
             >

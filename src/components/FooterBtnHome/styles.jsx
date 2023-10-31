@@ -10,7 +10,12 @@ export const Container = styled.div`
   padding-bottom: 14px;
 
   @media(max-width: 320px) {
-    height: 64px;
-    padding-bottom: 10px;
+    height: 54px;
+    padding-bottom: 6px;
+  }
+
+  @media(min-width: 768px) {
+    height: 120px;
+    padding-bottom: 32px;
   }
 `;

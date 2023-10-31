@@ -13,12 +13,11 @@ import { Container, Form, Main, Select } from "./styles";
 
 export const Game19 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [colorAnswers, setColorAnswer] = useState(0);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState([]);
   const [answer0, setAnswer0] = useState("");
@@ -90,7 +89,6 @@ export const Game19 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
-    setColorAnswer(0);
     setOption0("");
     setOption1("");
     setOption2("");
@@ -166,7 +164,6 @@ export const Game19 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
-    let tempColor = colorAnswers;
 
     if (
       selected0 === answer0 && 
@@ -175,15 +172,17 @@ export const Game19 = () => {
       selected3 === answer3 && 
       selected4 === answer4
       ) {
-      tempColor = 1;
-      setColorAnswer(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor = 2;
-      setColorAnswer(tempColor);
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -205,15 +204,19 @@ export const Game19 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over"){
-      setNewPontos(0,0);
-      setTimeout(() =>{
+      setNewPontos(nivel, 0);
+      setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      },1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -249,9 +252,7 @@ export const Game19 = () => {
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[0]}</label>
+          <label>{question[0]}</label>
           <Select value={selected0} onChange={handleSelect0}>
             {option0.map((option, index) => {
               return (
@@ -259,9 +260,7 @@ export const Game19 = () => {
               )
             })}
           </Select>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[1]}</label>
+          <label>{question[1]}</label>
           <Select value={selected1} onChange={handleSelect1}>
             {option1.map((option, index) => {
               return (
@@ -269,9 +268,7 @@ export const Game19 = () => {
               )
             })}
           </Select>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[2]}</label>
+          <label>{question[2]}</label>
           <Select value={selected2} onChange={handleSelect2}>
             {option2.map((option, index) => {
               return (
@@ -279,9 +276,7 @@ export const Game19 = () => {
               )
             })}
           </Select>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[3]}</label>
+          <label>{question[3]}</label>
           <Select value={selected3} onChange={handleSelect3}>
             {option3.map((option, index) => {
               return (
@@ -289,9 +284,7 @@ export const Game19 = () => {
               )
             })}
           </Select> 
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[4]}</label>
+          <label>{question[4]}</label>
           <Select value={selected4} onChange={handleSelect4}>
             {option4.map((option, index) => {
               return (
@@ -299,9 +292,7 @@ export const Game19 = () => {
               )
             })}
           </Select>
-          <label style={{
-            color: colorAnswers === 1 ? defaultTheme["green-200"] : colorAnswers === 2 ? defaultTheme["red-200"] : "",
-          }}>{question[5]}</label>
+          <label>{question[5]}</label>
         </Form>
         <ButtonBg
           form="myForm"

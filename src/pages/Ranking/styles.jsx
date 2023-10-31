@@ -2,19 +2,17 @@ import styled from "styled-components";
 
 export const Container  = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Main  = styled.main`
   flex: 1;
-  width: 18.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-block: 1rem;
+  padding-top: 16px;
 `;
 
 export const MainTop  = styled.section`
@@ -23,9 +21,9 @@ export const MainTop  = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 12px;
   text-align: center;
-  margin-bottom: 1rem;
+  padding-bottom: 12px;
 `;
 
 export const ButtonRakingArea  = styled.div`
@@ -74,7 +72,7 @@ export const TextArea  = styled.div`
   h2 {
     font-weight: bold;
     color: ${props => props.theme["red-200"]};
-    margin-bottom: 0.5rem;
+    margin-bottom: 6px;
   }
 
   p {
@@ -84,17 +82,21 @@ export const TextArea  = styled.div`
 
 export const MainBottom  = styled.section`
   width: 100%;
+  height: 330px;
   display: flex;
   flex-direction: column;
+  padding-top: 16px;
+  overflow-y: scroll;
+  background-color: ${props => props.theme["gray-100"]};
 `;
 
 export const LevelPosition  = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
   padding: 1rem 1.5rem;
-  background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme.white};
+  background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme["gray-100"]};
 
   p {
     font-size: 1.25rem;
@@ -121,7 +123,8 @@ export const AvatarArea  = styled.section`
   display: flex;
   align-items: flex-end;
   justify-content: center;
+
   img {
-    width: 36px;
+    width: 46px;
   }
 `;

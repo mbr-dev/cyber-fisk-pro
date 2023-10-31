@@ -7,11 +7,19 @@ export const Container = styled.div`
 export const Main = styled.div`
   width: 100%;
   display: flex;
-  height: 4.5rem;
+  height: 72px;
   align-items: center;
-  background-color: ${props => props.theme["gray-200"]};
-  border-end-end-radius: 24px;
-  border-end-start-radius: 24px;
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  overflow: hidden;
+  position: relative;
+
+  .bgImg {
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    position: absolute;
+  }
 `
 
 export const BarStep = styled.div`
@@ -43,11 +51,11 @@ export const Icons = styled.div`
   p {
     font-size: 0.75rem;
     font-weight: 500;
-    color: ${props => props.theme["gray-700"]};
+    color: ${props => props.theme.white};
   }
 
   img {
-    width: 32px;
+    width: 34px;
   }
 
   @media(max-width: 320px) {

@@ -109,11 +109,14 @@ export const UserInfo = styled.div`
 
 export const From = styled.div`
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.25rem;
   color: ${props => props.theme.white};
+
+  img {
+    width: 36px;
+  }
 
   p {
     padding: 0.125rem 0.25rem;

@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { useContext } from "react";
 import { User, Lock, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 import { Footer } from "../../components/Footer";
 import { ButtonBg } from "../../components/ButtonBg";
@@ -15,27 +15,32 @@ import logoImg from "./image/logo.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 import Brazil from "../../assets/Brazil.svg";
+import arrowBottom from "../../assets/arrowBottom.svg";
+import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
 import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
+import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 import { apiQAS } from "../../lib/api";
-
-import { Container, Main, Header, Select, Form, AreaInput, Input } from "./styles";
 
 export const Login = () => {
   const { selectLanguage, chooseLanguage, signIn, chooseNotification } = useContext(CyberContext);
+
   const navigate = useNavigate();
+
   const [raf, setRaf] = useState("");
   const [userPassword, setUserPassword] = useState("");
-  const [msgError, setMsgError] = useState('');
+  const [msgError, setMsgError] = useState("");
+  const [isOpen, setIsOpen] = useState("");
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState(false);
 
-  const handleSelectLanguage = (event) => {
-    chooseLanguage(event)
+  const handleSelectLanguage = (item) => {
+    chooseLanguage(item)
   }
 
   function clickAlert(){
@@ -47,13 +52,13 @@ export const Login = () => {
   }
 
   const handleSignIn = async() => {
-    if(raf === ''){
+    if(raf === ""){
       chooseNotification(2);
       setMsgError(Mensagens.rafInvalido);
       setError(true);
       return;
     }
-    if(userPassword === ''){
+    if(userPassword === ""){
       chooseNotification(2);
       setMsgError(Mensagens.senhaVazia);
       setError(true);
@@ -64,7 +69,7 @@ export const Login = () => {
       await signIn(raf, userPassword)
         .then(async(resp) =>{
           setLoading(false);
-          console.log('resp ==> ', resp);
+          console.log("resp ==> ", resp);
           setError(false);
           if(resp.succeeded){
             const cookies = new Cookies();
@@ -73,12 +78,12 @@ export const Login = () => {
             await salvarAcesso(raf);
             //navigate("/home");
           }else{
-            console.log('login invalido ');
+            console.log("login invalido ");
             setLoading(false);
             chooseNotification(3);
             setMsgError(resp.message);
             setError(true);
-            if(resp.message === 'Network Error'){
+            if(resp.message === "Network Error"){
               const cookies = new Cookies();
               cookies.set("token", 'A123', { path: '/' });
               cookies.set("raf", raf, { path: '/' });
@@ -131,6 +136,7 @@ export const Login = () => {
     <Container>
       {loading ? <Loading /> : null}
       <Header>
+        <img src={bgHeaderImg} alt="" className="bgImg" />
         <img src={logoImg} alt="Logo do Fisk Pro" />
       </Header>
       <Main>
@@ -168,26 +174,45 @@ export const Login = () => {
           </AreaInput>
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].language}</label> : selectLanguage === 1 ? <label>{translateLogin[1].language}</label> : <label>{translateLogin[2].language}</label>}
-            {selectLanguage === 0 ? <img src={Brazil} alt="Flag Brazil" /> : selectLanguage === 1 ? <img src={Eua} alt="Flag Eua" /> : <img src={Spain} alt=""/>}
-              
-            <Select className="language" value={selectLanguage} onChange={handleSelectLanguage}>
-              <option value="0" >Português</option>
-              <option value="1">Inglês</option>
-              <option value="2">Espanhol</option>
-            </Select>
+
+            <SelectIdioma
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["red-200"] : "",
+              }}
+            >
+              <SelectTitle style={{
+                borderColor: isOpen && defaultTheme["gray-700"],
+              }}>
+                {selectLanguage === 0 ? <img src={Brazil} alt="" /> : selectLanguage === 1 ? <img src={Eua} alt="" /> : <img src={Spain} alt="" />}
+                {selectLanguage === 0 ? <p>Português</p> : selectLanguage === 1 ? <p>English</p> : <p>Spanish</p>}
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={() => handleSelectLanguage(0)}>Português</SelectLi>
+                  <SelectLi onClick={() => handleSelectLanguage(1)}>English</SelectLi>
+                  <SelectLi onClick={() => handleSelectLanguage(2)}>Spanish</SelectLi>
+                </SelectUl>
+              }
+            </SelectIdioma>
           </AreaInput>
         </Form>
-        <LineSeparator w="18rem" />
-          <ButtonBg
-            title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
-            form="myForm"
-            greenBtn
-            type="submit"
-            w="15.875rem"
-            h="2.5rem"
-            onPress={handleSignIn}
-          />
+        
       </Main>
+
+      <LineSeparator w="80%" bg={defaultTheme["gray-200"]}  />
+      <ButtonBg
+        title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
+        form="myForm"
+        greenBtn
+        type="submit"
+        w="15.875rem"
+        h="2.5rem"
+        mb="12px"
+        mt="12px"
+        onPress={handleSignIn}
+      />
       <Footer />
     </Container>
   )

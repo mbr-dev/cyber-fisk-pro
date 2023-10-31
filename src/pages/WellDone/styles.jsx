@@ -192,9 +192,9 @@ export const Text = styled.div`
   width: 280px;
   height: 48px;
   display: flex;
-  flex-direction: column;
   align-items: center;
   justify-content: center;
+  text-align: center;
   border: 2px solid ${props => props.theme["gray-700"]};
   border-radius: 6px;
   opacity: 0.5;

@@ -1,11 +1,12 @@
-import { useContext, useEffect, useState } from "react";
-import * as Dialog from "@radix-ui/react-dialog";
+import Cookies from 'universal-cookie';
+import { useContext, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import * as Dialog from "@radix-ui/react-dialog";
+
 import { Footer } from "../../components/Footer";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 import { ButtonPronunciation } from "../../components/ButtonPronunciation";
-import Cookies from 'universal-cookie';
 import { apiQAS } from "../../lib/api";
 
 import { CyberContext } from "../../context/cyber";
@@ -78,7 +79,7 @@ export const Home = () => {
     }else{
       verificaPremio();
     }
-  },[])
+  },[]);
 
   return(
     <Container>
@@ -86,6 +87,7 @@ export const Home = () => {
         <ModalReward funcao={fecharModal} valor={valor}/>
       </Dialog.Root>
       <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
+
       <Main>
         
         <Cards>
@@ -100,7 +102,7 @@ export const Home = () => {
               </Card>
               :
               <Dialog.Root>
-                <Dialog.Trigger style={{border: 'none'}}>
+                <Dialog.Trigger style={{border: "none"}}>
                   <Card key={index}>
                     <img src={images[index]} alt="" />
                     {selectLanguage === 0 && <p>{text.name[0]}</p>}
@@ -115,13 +117,15 @@ export const Home = () => {
         </Cards>
       </Main>
 
-      {/* <Dialog.Root>
+      {/* 
+      <Dialog.Root>
         <Dialog.Trigger>
-          <ButtonPronunciation />
+          <p>mostrar modal</p>
         </Dialog.Trigger>
 
-        <ModalPronunciation />
-      </Dialog.Root> */}
+        <ModalReward />
+      </Dialog.Root> 
+      */}
       <Footer />
     </Container>
   )

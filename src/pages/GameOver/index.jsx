@@ -25,6 +25,16 @@ export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
+  const phrase = [
+    "We know you can do better.",
+    "Practice makes perfect. Try again!",
+    "Just focus, and you’ll see progress!",
+    "We know you can reach better results next time!",
+    "Take this as a learning experience and try again!",
+    "Remember, everyone faces challenges. Try it once more!"
+  ]
+
+  const randomPhrase = Math.floor(Math.random() * phrase.length);
   const [name, setName] = useState('---');
   const [time, setTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
@@ -97,7 +107,7 @@ export const GameOver = () => {
 
   useEffect(() => {
     const cookies = new Cookies();
-    setName(cookies.get('raf'));
+    setName(cookies.get("raf"));
     //time
     let minutes = Math.floor(timeElapsed / 60);
     minutes = minutes < 10 ? `0${minutes}` : minutes.toString();
@@ -150,7 +160,7 @@ export const GameOver = () => {
 
       <Main>
         <ButtonRed
-          onPress={handleTryAgain}
+          onClick={handleTryAgain}
           title="Try Again"
           w="260px"
           h="56px"
@@ -159,12 +169,11 @@ export const GameOver = () => {
         <span>00:00</span>
 
         <Text>
-          <p>Remember, everyone faces</p>
-          <p>challegens. Try it once more!</p>
+          <p>{phrase[randomPhrase]}</p>
         </Text>
       </Main>
 
-      <FooterBtnHome hasLS />
+      <FooterBtnHome hasLS title="Lesson Menu" />
     </Container>
   )
 }

@@ -246,7 +246,7 @@
     {
       "pergunta": "Have __________.",
       "resposta": [
-        {"label": "a nice day.", "status": 1},
+        {"label": "a nice day", "status": 1},
         {"label": "to go", "status": 0},
         {"label": "fine, thanks", "status": 0}
       ]
@@ -546,7 +546,7 @@
       "pergunta": "L1_Task2_M_5",
       "resposta": [
         {"label": "No, I am not.", "status": 1},
-        {"label": "Yes, I am.", "status": 0},
+        {"label": "Yes, I do.", "status": 0},
         {"label": "No, I don’t.", "status": 0}
       ]
     },
@@ -620,8 +620,28 @@
   ],
   "L1_SUPER_LESSON": [
     { 
+      "letras": ["A", "B", "C", "J", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+      "resposta": "American"
+    },
+    { 
+      "letras": ["A", "B", "C", "D", "O", "F", "H", "I", "L", "W", "N", "P", "R", "S", "T", "Z"],
+      "resposta": "Canadian"
+    },
+    { 
       "letras": ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
-      "resposta": ["American", "Canadian", "Brazilian", "French", "Italian", "Spanish"]
+      "resposta": "Brazilian"
+    },
+    { 
+      "letras": ["A", "B", "C", "D", "E", "F", "H", "I", "L", "M", "N", "P", "R", "S", "T", "Z"],
+      "resposta": "French"
+    },
+    { 
+      "letras": ["A", "B", "C", "D", "E", "F", "J", "I", "L", "M", "N", "Q", "R", "U", "T", "Z"],
+      "resposta": "Italian"
+    },
+    { 
+      "letras": ["A", "B", "C", "D", "E", "F", "H", "I", "U", "M", "N", "P", "R", "S", "W", "Z"],
+      "resposta": "Spanish"
     }
   ],
 

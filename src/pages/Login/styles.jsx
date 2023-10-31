@@ -15,10 +15,20 @@ export const Header = styled.header`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme["blue-500"]};
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  overflow: hidden;
+  position: relative;
 
   img {
     width: 200px;
+  }
+
+  .bgImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    z-index: -1;
   }
 
   @media(max-width: 320px) {
@@ -32,10 +42,10 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   flex: 1;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Form = styled.div`
@@ -100,7 +110,7 @@ export const AreaInput = styled.div`
     color: ${props => props.theme["gray-400"]};
   }
   
-  .eye{
+  .eye {
     position: absolute;
     top: 44px;
     left: 300px !important;
@@ -108,21 +118,6 @@ export const AreaInput = styled.div`
     @media(max-width: 1024px) {
       left: 270px !important;
     }
-  }
-  img {
-    width: 1.25rem;
-    position: absolute;
-    top: 40px;
-    left: 10px;
-    color: ${props => props.theme["gray-400"]};
-  }
-
-  .language {
-    background-color: ${props => props.theme["red-200"]};
-    border: 0;
-    color: ${props => props.theme.white};
-    font-size: 1.125rem;
-    font-weight: 500;
   }
 
   .selectState {
@@ -134,10 +129,6 @@ export const AreaInput = styled.div`
   }
 
   @media(max-width: 320px) {
-    .language {
-      font-size: 1rem;
-    }
-
     label {
       font-size: 1rem;
       padding-left: 0.75rem;
@@ -145,10 +136,6 @@ export const AreaInput = styled.div`
 
     svg {
       top: 38px;
-    }
-    
-    img {
-      top: 36px;
     }
   }
 `;
@@ -158,7 +145,7 @@ export const Input = styled.input`
   height: 2.625rem;
   padding-left: 2rem;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["gray-400"]};
+  border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
   color: ${props => props.theme["gray-600"]};
 
@@ -182,16 +169,55 @@ export const Input = styled.input`
   }
 `;
 
-export const Select = styled.select`
+export const SelectIdioma = styled.div`
   width: 100%;
-  height: 2.625rem;
-  padding-left: 2rem;
-  border-radius: 8px;
-  background-color: transparent;
-  font-weight: normal;
-  font-family: "Ubuntu", sans-serif;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+`;
 
-  @media(max-width: 360px) {
-    height: 2.5rem;
+export const SelectTitle = styled.div`
+  width: 100%;
+  height: 42px;
+  display: flex;
+  position: relative;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 5px;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  gap: 10px;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+
+  p {
+    flex: 1;
+    font-size: 18px;
+  }
+`;
+
+export const SelectUl = styled.ul`
+  width: 100%;
+  position: absolute;
+  z-index: 10;
+  bottom: -94px;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-inline: 16px;
+  gap: 12px;
+  background-color: ${props => props.theme["red-200"]};
+`;
+
+export const SelectLi = styled.li`
+  width: 100%;
+  list-style: none;
+  color: ${props => props.theme.white};
+
+  &:hover {
+    background-color: ${props => props.theme["red-300"]};
   }
 `;

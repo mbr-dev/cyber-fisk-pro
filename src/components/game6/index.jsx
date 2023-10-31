@@ -14,12 +14,12 @@ import { Container, Main } from "./styles";
 
 export const Game6 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask
+    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [optionColor, setOptionColor] = useState([]);
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -61,7 +61,7 @@ export const Game6 = () => {
     const items = JSON.parse(tempData[tempSounds[round]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -75,13 +75,13 @@ export const Game6 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
-    setOptionColor(Array(items.resposta.length).fill(0));
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -105,30 +105,37 @@ export const Game6 = () => {
     clicks++;
     setCountClick(clicks);
 
-    let tempColor = optionColor;
-
     let tempRightPoints;
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
+    let tempSelectedColor = selectedColor;
 
     const answer = answers[index];
 
     if (answer.status === 1) {
       if (clicks < 3) {
-        tempColor[index] = 1;
-        setOptionColor(tempColor);
+        tempSelectedColor[index] = 1;
+        setSelectedColor(tempSelectedColor);
         return;
       }
 
-      tempColor[index] = 1;
-      setOptionColor(tempColor);
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
-      tempColor[index] = 2;
-      setOptionColor(tempColor);
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+      
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
       let tempE = wrongPoints;
       tempE++;
@@ -156,11 +163,15 @@ export const Game6 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      }, 1500);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
-      navigate(`/${page}`);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -192,7 +203,7 @@ export const Game6 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative" />
+      <TitleLesson title="Choose the 3 correct alternatives." />
       <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
@@ -202,8 +213,8 @@ export const Game6 = () => {
               key={index}
               w="7rem"
               h="3.25rem"
-              onPress={() => handleClick(index)} 
-              optionColor={optionColor[index]}
+              onPress={() => handleClick(index)}
+              optionColor={selectedColor[index]}
               disabledButton={blockButton}
             >
               <p>{answer.label}</p>
