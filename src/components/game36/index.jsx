@@ -137,15 +137,15 @@ export const Game36 = () => {
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
-      let newStatus = [...statusColor];
       if (clicks < 2) {
-        newStatus[rodadaGeral] = 1;
         
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
-      
+
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);
@@ -153,7 +153,7 @@ export const Game36 = () => {
       setNewPontos(nivel, tempRightPoints);
     } else {
       const newStatus = [...statusColor];
-      newStatus[rodadaGeral] = 1;
+      newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
 
       let tempE = wrongPoints;

@@ -154,16 +154,14 @@ export const Game7 = () => {
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
-      let newStatus = [...statusColor];
-
       if (clicks < 4) {
-        newStatus[rodadaGeral] = 2;
-        
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
 
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

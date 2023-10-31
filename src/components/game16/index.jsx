@@ -77,7 +77,6 @@ export const Game16 = () => {
 
     let tempWord = text;
     let tempRightPoints;
-    let tempColorA = colorAnswers;
 
     tempWord = tempWord.replace(/'/g, "’");
 

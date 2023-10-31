@@ -90,7 +90,7 @@ export const Game37 = () => {
 
     if (selected === answers) {
       const newStatus = [...statusColor];
-      newStatus[rodadaGeral] = 2;
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

@@ -140,11 +140,7 @@ export const Game11 = () => {
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === selectedQuestion.status) {
-      let newStatus = [...statusColor];
-
       if (countClick < 3) {
-        newStatus[rodadaGeral] = 1;
-
         setRightAnswers(state => [...state, index]);
         setRightQuestions(state => [...state, selectedQuestionIndex]);
         setBlockQuestions(false);
@@ -152,6 +148,8 @@ export const Game11 = () => {
         return;
       }
 
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

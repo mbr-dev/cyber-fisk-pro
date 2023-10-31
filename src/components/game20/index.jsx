@@ -88,11 +88,7 @@ export const Game20 = () => {
     let answerIndex = answer[countQ];
 
     if (answerIndex.includes(tempWord)) {
-      let newStatus = [...statusColor];
-
       if (countQ < 4) {
-        newStatus[rodadaGeral] = 1;
-
         let tempCount = countQ;
         tempCount++;
         setCountQ(tempCount);
@@ -103,6 +99,8 @@ export const Game20 = () => {
         return
       }
 
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

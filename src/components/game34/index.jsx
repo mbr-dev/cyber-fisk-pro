@@ -107,13 +107,12 @@ export const Game34 = () => {
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
-      let newStatus = [...statusColor];
-
       if (tempCountClick < (answers.length / 2)) {
-        newStatus[rodadaGeral] = 2;
         return;
       }
 
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

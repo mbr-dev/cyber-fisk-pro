@@ -121,13 +121,12 @@ export const Game4 = () => {
     const answer = answers[index];
 
     if(answer.status === 1) {
-      let newStatus = [...statusColor];
-
       if (clicks < 3) {
-        newStatus[rodadaGeral] = 1;
         return;
       }
       
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
       tempRightPoints = PointRule(nivel, rightPoints);

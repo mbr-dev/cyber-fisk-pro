@@ -128,7 +128,7 @@ export const Game32 = () => {
       setNewPontos(nivel, tempRightPoints);
     } else {
       const newStatus = [...statusColor];
-      newStatus[rodadaGeral] = 1;
+      newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
 
       let tempE = wrongPoints;
