@@ -1,5 +1,5 @@
 import Confetti from "react-confetti"
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 
@@ -22,11 +22,22 @@ import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Tex
 export const WellDone = () => {
   const {timeElapsed} = useContext(LessonContext);
 
-  const [name, setName] = useState('---');
+  const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
  
   const navigate = useNavigate();
+
+  const phrase = [
+    "Good job!",
+    "Keep up the good work!",
+    "You doing awesome! Congrats!",
+    "Your efforts are truly impressive. Congratulations.",
+    "You’re a true champion!",
+    "Keep up the excellent work!"
+  ]
+
+  const randomPhrase = Math.floor(Math.random() * phrase.length);
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -85,12 +96,11 @@ export const WellDone = () => {
         <span>00:00</span>
 
         <Text>
-          <p>Remember, everyone faces</p>
-          <p>challegens. Try it once more!</p>
+          <p>{phrase[randomPhrase]}</p>
         </Text>
       </Main>
 
-      <FooterBtnHome hasLS />
+      <FooterBtnHome hasLS title="Lesson Menu" />
     </Container>
   )
 }

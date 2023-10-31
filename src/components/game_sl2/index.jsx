@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -290,7 +291,8 @@ export const GameSL2 = () => {
           w="10rem"
           h="3"
           title="Next Level"
-          mt="2rem"
+          mt="20px"
+          mb="20px"
           onPress={handleChangeLevel}
         />
       }
@@ -299,10 +301,12 @@ export const GameSL2 = () => {
           w="10rem"
           h="3"
           title="Finished"
-          mt="2rem"
+          mt="16px"
+          mb="20px"
           onPress={handleFinish}
         />
       }
+      <FooterBtnHome hasLS title="Lesson Menu" mt={!reset && !finished && "48px"} />
     </Container>
   )
 }

@@ -4,6 +4,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -197,6 +198,8 @@ export const GameSL1 = () => {
           title="Clear"
         />
       </Main>
+
+      <FooterBtnHome hasLS title="Lesson Menu" />
     </Container>
   )
 }

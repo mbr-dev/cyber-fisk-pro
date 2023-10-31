@@ -3,6 +3,7 @@ import { useContext } from "react";
 import { User, Lock, Eye, EyeOff } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
+import * as Select from '@radix-ui/react-select';
 
 import { Footer } from "../../components/Footer";
 import { ButtonBg } from "../../components/ButtonBg";
@@ -21,7 +22,7 @@ import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
-import { Container, Main, Header, Select, Form, AreaInput, Input } from "./styles";
+import { Container, Main, Header, Form, AreaInput, Input } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Login = () => {
@@ -143,26 +144,65 @@ export const Login = () => {
           </AreaInput>
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].language}</label> : selectLanguage === 1 ? <label>{translateLogin[1].language}</label> : <label>{translateLogin[2].language}</label>}
-            {selectLanguage === 0 ? <img src={Brazil} alt="Flag Brazil" /> : selectLanguage === 1 ? <img src={Eua} alt="Flag Eua" /> : <img src={Spain} alt=""/>}
+           {/*  {selectLanguage === 0 ? <img src={Brazil} alt="Flag Brazil" /> : selectLanguage === 1 ? <img src={Eua} alt="Flag Eua" /> : <img src={Spain} alt="Flag Spanish"/>}
               
             <Select className="language" value={selectLanguage} onChange={handleSelectLanguage}>
               <option value="0" >Português</option>
               <option value="1">Inglês</option>
               <option value="2">Espanhol</option>
-            </Select>
+            </Select> */}
+
+<Select.Root>
+    <Select.Trigger>
+      <Select.Value />
+      <Select.Icon />
+    </Select.Trigger>
+
+    <Select.Portal>
+      <Select.Content>
+        <Select.ScrollUpButton />
+        <Select.Viewport>
+          <Select.Item>
+            <Select.ItemText />
+            <Select.ItemIndicator />
+          </Select.Item>
+
+          <Select.Group>
+            <Select.Label />
+            <Select.Item>
+              Por
+            </Select.Item>
+            <Select.Item>
+              santos
+            </Select.Item>
+          </Select.Group>
+
+          <Select.Separator />
+        </Select.Viewport>
+        <Select.ScrollDownButton />
+        <Select.Arrow />
+      </Select.Content>
+    </Select.Portal>
+  </Select.Root>
+
+
           </AreaInput>
         </Form>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
-          <ButtonBg
-            title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
-            form="myForm"
-            greenBtn
-            type="submit"
-            w="15.875rem"
-            h="2.5rem"
-            onPress={handleSignIn}
-          />
       </Main>
+
+      <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
+      <ButtonBg
+        title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
+        form="myForm"
+        greenBtn
+        type="submit"
+        w="15.875rem"
+        h="2.5rem"
+        mt="12px"
+        mb="12px"
+        onPress={handleSignIn}
+      />
+
       <Footer />
     </Container>
   )

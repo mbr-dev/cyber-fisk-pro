@@ -12,16 +12,11 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
   
   p {
     font-size: 1.25rem;
     font-weight: 500;
     color: ${props => props.theme["gray-700"]};
-  }
-
-  @media(max-width: 320px) {
-   margin-top: 0;
   }
 `;
 

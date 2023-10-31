@@ -2,22 +2,21 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
 `;
 
 export const Main = styled.div`
-  width: 100vw;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-bottom: 52px;
   
   @media(max-width: 320px) {
-    margin-top: 0;
-    gap: 0.5rem;
+    gap: 8px;
   }
 `;
 

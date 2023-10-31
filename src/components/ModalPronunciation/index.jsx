@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { X, Volume2 } from "lucide-react";
 import { useSpeechSynthesis } from "react-speech-kit";
@@ -39,7 +39,7 @@ export const ModalPronunciation = () => {
   const [valueTxt, setValueTxt] = useState("");
   const [selectLanguage, setSelectLanguage] = useState("pt-BR");
 
-  const handleGetText = () => {
+  const handleGetText = useCallback(() => {
     if (selectLanguage) {
       const mappedVoice = voices.find((voice) => voice.name === languageToVoice[selectLanguage]);
 
@@ -47,11 +47,12 @@ export const ModalPronunciation = () => {
         speak({ text: valueTxt, voice: mappedVoice });
       }
     }
-  }
+  }, [speak, voices, selectLanguage, valueTxt])
 
   const handleLanguageChange = (language) => {
     setSelectLanguage(language);
   };
+
   return (
     <Dialog.Portal>
       <Overlay />

@@ -168,9 +168,9 @@ export const ButtonRed = styled.button`
 
 export const Text = styled.div`
   width: 280px;
-  height: 48px;
+  height: 52px;
   display: flex;
-  flex-direction: column;
+  text-align: center;
   align-items: center;
   justify-content: center;
   border: 2px solid ${props => props.theme["gray-700"]};

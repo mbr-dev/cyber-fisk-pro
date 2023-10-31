@@ -42,12 +42,10 @@ export const Header = styled.header`
 
 export const Main = styled.main`
   flex: 1;
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  padding-bottom: 16px;
 `;
 
 export const Form = styled.div`
@@ -112,7 +110,7 @@ export const AreaInput = styled.div`
     color: ${props => props.theme["gray-400"]};
   }
   
-  .eye{
+  .eye {
     position: absolute;
     top: 44px;
     left: 300px !important;
@@ -121,20 +119,24 @@ export const AreaInput = styled.div`
       left: 270px !important;
     }
   }
+
   img {
     width: 1.25rem;
     position: absolute;
     top: 40px;
-    left: 10px;
+    left: 6px;
     color: ${props => props.theme["gray-400"]};
+    -webkit-transform: translate3d(0, 0, 0);
   }
 
   .language {
     background-color: ${props => props.theme["red-200"]};
     border: 0;
     color: ${props => props.theme.white};
-    font-size: 1.125rem;
+    font-size: 18px;
     font-weight: 500;
+
+
   }
 
   .selectState {
@@ -197,7 +199,7 @@ export const Input = styled.input`
 export const Select = styled.select`
   width: 100%;
   height: 2.625rem;
-  padding-left: 2rem;
+  padding-left: 38px;
   border-radius: 8px;
   background-color: transparent;
   font-weight: normal;
