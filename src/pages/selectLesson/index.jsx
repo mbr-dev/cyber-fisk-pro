@@ -57,6 +57,10 @@ export const SelectLesson = () => {
   if (isLoading) {
     return <Loading />
   }
+  
+  function clickAlert(){
+    setError(false);
+  }
 
   return (
     <Container>

@@ -1,6 +1,9 @@
 import { useState } from "react";
 import { Wheel } from "react-custom-roulette";
 import * as Dialog from "@radix-ui/react-dialog";
+import { apiQAS } from "../../lib/api";
+import Cookies from 'universal-cookie';
+import { useNavigate } from "react-router-dom";
 
 import { Modal } from "./components/Modal";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
@@ -15,6 +18,8 @@ export const SpinWheel = () => {
   const [mustSpin, setMustSpin] = useState(false);
   const [prizeNumber, setPrizeNumber] = useState(0);
   
+  const navigate = useNavigate();
+
   const data = [
     {option: "150 $", style: {backgroundColor: "#3171FF", textColor: "#232323", borderRadius: "50px" }},
     {option: "10 $", style: {backgroundColor: "#F5DB02", textColor: "#232323"}},
@@ -43,12 +48,36 @@ export const SpinWheel = () => {
     },
   };
   
-  const handleSpinClick = () => {
+  const handleSpinClick = async() => {
     if (!mustSpin) {
       const newPrizeNumber = Math.floor(Math.random() * data.length);
       setPrizeNumber(newPrizeNumber);
       setMustSpin(true);
-      console.log("Você ganho: ", data[newPrizeNumber].option)
+      setTimeout(async() =>{
+        console.log("Você ganho: ", data[newPrizeNumber].option);
+        const cookies = new Cookies();
+        const raf = cookies.get("raf");
+        let valor = 0;
+        let tipo = "credito";
+        try{
+          if(data[newPrizeNumber].option.includes("LOSE")){
+            valor = parseInt(data[newPrizeNumber].option.replace("LOSE","").trim());
+            tipo = "debito"
+          }else if(data[newPrizeNumber].option.includes("$")){
+            valor = parseInt(data[newPrizeNumber].option.replace("$","").trim());
+          }
+        }catch{
+          valor = 0;
+        }
+        await apiQAS.get(`/FiskDolars/Registrar?raf=${raf}&tipo=${tipo}&descricao=roleta&valor=${valor}`)
+        .then((resp) =>{
+          if(resp.data.erro === null){
+            navigate("/WellDone");
+          }
+        })
+      }, 12000);
+      
+      
     }
   }
 
@@ -63,7 +92,7 @@ export const SpinWheel = () => {
 
           <Modal />
         </Dialog.Root>
-          <ButtonCloseHeader />
+          {/* <ButtonCloseHeader /> */}
         </HeaderButton>
         <h2>SPIN</h2>
         <h2>THE WHEELS</h2>
