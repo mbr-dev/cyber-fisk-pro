@@ -33,10 +33,12 @@ export const AreaAnswers = styled.div`
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
 
-  span {
+  p {
     font-size: 1rem;
     font-weight: bold;
   }
+
+  
   
   @media(max-width: 320px) {
     width: 15rem;
@@ -68,3 +70,12 @@ export const Words = styled.span`
   transition: all 0.2s;
   text-align: center;
 `;
+
+  export const AreaButton = styled.div`
+    width: 100%;
+    display: flex;
+    margin-top: 32px;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+  `;

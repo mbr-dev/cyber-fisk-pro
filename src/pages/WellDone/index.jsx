@@ -192,7 +192,7 @@ export const WellDone = () => {
         </Text>
       </Main>
 
-      <FooterBtnHome hasLS title="Lesson Menu" />
+      <FooterBtnHome hasLS rota="SelectLesson" title="Lesson Menu" />
     </Container>
   )
 }

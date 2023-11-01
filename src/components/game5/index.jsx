@@ -19,6 +19,7 @@ export const Game5 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -59,6 +60,7 @@ export const Game5 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -78,6 +80,7 @@ export const Game5 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -98,12 +101,16 @@ export const Game5 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
@@ -112,6 +119,9 @@ export const Game5 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -188,6 +198,7 @@ export const Game5 = () => {
               w="13rem"
               h="3.5rem"
               onPress={() => handleClick(index)}
+              optionColor={selectedColor[index]}
               disabledButton={blockButton}
             >
               {answer.label}

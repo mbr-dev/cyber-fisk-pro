@@ -336,7 +336,7 @@ export const L3_T2_Medio = [
     resposta: [
       {label: "No, I do stay home on weekends. ", status: 0},
       {label: "Yes, I stay home on weekends.", status: 1},
-      {label: "No, I don’t stay home on weekends", status: 1}
+      {label: "No, I don’t stay home on weekends.", status: 1}
     ]
   },
   {  

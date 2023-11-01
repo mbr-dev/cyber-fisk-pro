@@ -1,12 +1,11 @@
-import Cookies from 'universal-cookie';
-import { useContext, useEffect } from "react";
+import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
+import { useContext, useEffect, useState } from "react";
 
 import { Footer } from "../../components/Footer";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
-import { ButtonPronunciation } from "../../components/ButtonPronunciation";
 import { apiQAS } from "../../lib/api";
 
 import { CyberContext } from "../../context/cyber";
@@ -20,7 +19,9 @@ import Note from "../../assets/noteImage.png";
 import Reporte from "../../assets/reporteImage.png";
 import { ModalReward } from "../../components/ModalReward";
 
-import { Container, Main, Card, Cards } from "./styles";
+import dayChImg from "./images/dayChallenge.gif"
+
+import { Container, Main, Card, Cards, ButtonDayCh } from "./styles";
 
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
@@ -31,7 +32,7 @@ export const Home = () => {
   const navigate = useNavigate();
 
   function alterPage(index){
-    console.log('==> ', index);
+    console.log("==> ", index);
     if(index === 0){
       localStorage.setItem("lastAccess","Books");
       navigate("/Books");
@@ -71,6 +72,10 @@ export const Home = () => {
     setModal(false);
   }
 
+  const handleDayChallenge = () => {
+    navigate("/GameWordle");
+  }
+
   useEffect(()=>{
     const cookies = new Cookies();
     const token = cookies.get("token");
@@ -89,7 +94,6 @@ export const Home = () => {
       <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
 
       <Main>
-        
         <Cards>
           {translateHome.map((text, index) => {            
             return (
@@ -115,17 +119,10 @@ export const Home = () => {
             )
           })}
         </Cards>
+        <ButtonDayCh onClick={handleDayChallenge}>
+          <img src={dayChImg} alt="" />
+        </ButtonDayCh>
       </Main>
-
-      {/* 
-      <Dialog.Root>
-        <Dialog.Trigger>
-          <p>mostrar modal</p>
-        </Dialog.Trigger>
-
-        <ModalReward />
-      </Dialog.Root> 
-      */}
       <Footer />
     </Container>
   )

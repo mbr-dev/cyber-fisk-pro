@@ -167,12 +167,16 @@ export const Game8 = () => {
   const Draggable = ({ index, children }) => {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
       id: `draggable-${index}`,
+      touchAction: "none",
     });
 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      border: isDragging ? `1px solid ${defaultTheme['gray-400']}` : "",
-    } : undefined;
+      borderRadius: isDragging && "8px",
+      border: isDragging ? `2px solid ${defaultTheme["red-200"]}` : "",
+    } : {
+      touchAction: "none",
+    };
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -221,7 +225,7 @@ export const Game8 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the best alternative." />
+      <TitleLesson title="Drag and drop / Choose the correct answers." />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>

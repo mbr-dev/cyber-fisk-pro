@@ -5,7 +5,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
-import { FooterBtnHome } from "../FooterBtnHome";
+import { HeaderLessonSL1 } from "../HeaderLessonSL1";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -70,7 +70,7 @@ export const GameSL1 = () => {
       console.log(error);
     }
   }, [setIsLoading, setOptionColor, setRandomNumber, round, setLettersAnswer, setLetters, setAnswers]);
-
+console.log(answers);
   const newRound = (number) => {
     setNumberClick(0);
 
@@ -154,6 +154,7 @@ export const GameSL1 = () => {
   useEffect(() => {
     loadLesson();
   }, []);
+  console.log(answers);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -193,6 +194,7 @@ export const GameSL1 = () => {
 
   return (
     <Container>
+      <HeaderLessonSL1 trophyEnd superTaskStart numStart="Super task" numEnd="Finish" />
       <TitleLesson title="How many nationalities can you write with these letters?"/>
 
       <Main>

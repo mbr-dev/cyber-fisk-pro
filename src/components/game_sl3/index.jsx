@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -188,15 +189,11 @@ export const GameSL3 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    if (tempRound === 10) {
-      setTimeout(() => {
-        navigate("/WellDone")
-      }, 2000);
-    } else {
-      setTimeout(() => {
-        newRound(tempRound);
-      }, 2000);
-    }
+    
+    setTimeout(() => {
+      newRound(tempRound);
+    }, 2000);
+    
   }
 
   useEffect(() => {
@@ -240,6 +237,14 @@ export const GameSL3 = () => {
   }, [setTimeElapsed]);
 
   useEffect(() => {
+    if (round === 10) {
+      setTimeout(() => {
+        navigate("/WellDone")
+      }, 2000);
+    }
+  }, [round]);
+
+  useEffect(() => {
     text.trim() === "" ? setBlock(true) : setBlock(false);
   }, [text, setBlock]);
 
@@ -251,6 +256,7 @@ export const GameSL3 = () => {
 
   return (
     <Container>
+      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
       {changed ? 
         <TitleLesson title="Now answer the question." />
         :

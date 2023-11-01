@@ -4,7 +4,7 @@ import { LineSeparator } from "../LineSeparator";
 import { Container } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
-export const FooterBtnHome = ({ hasLS, title, mt }) => {
+export const FooterBtnHome = ({ hasLS, title, mt, rota }) => {
   const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
 
   return (
@@ -16,7 +16,7 @@ export const FooterBtnHome = ({ hasLS, title, mt }) => {
       }}
     >
       {hasLS && <LineSeparator w={isDesktop ? "60%" : "80%"} bg={defaultTheme["gray-200"]} />}
-      <ButtonHome title={title} />
+      <ButtonHome title={title} rota={rota} />
     </Container>
   )
 }

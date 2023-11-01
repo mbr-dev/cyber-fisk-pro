@@ -1,6 +1,6 @@
 import { Container } from "./styles";
 
-export const ButtonBg = ({ title, disabledButton, onPress, greenBtn, type="button", mt, form, w, h, mb }) => {  
+export const ButtonBg = ({ title, disabledButton, onPress, greenBtn, type="button", mt, form, w, h, mb, fs }) => {  
   return (
     <Container 
       onClick={onPress}
@@ -15,7 +15,9 @@ export const ButtonBg = ({ title, disabledButton, onPress, greenBtn, type="butto
       }}
       disabled={disabledButton}
       >
-      <p>{title}</p>
+      <p style={{
+        fontSize: fs ? fs : "20px",
+      }}>{title}</p>
     </Container>
   )
 }

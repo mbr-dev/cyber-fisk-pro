@@ -7,7 +7,7 @@ yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
 .lock
-yarn.lock*
+yarn.lock
 package-lock.json*
 vite.config.js*
 

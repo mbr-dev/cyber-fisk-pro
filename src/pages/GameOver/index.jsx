@@ -44,7 +44,7 @@ export const GameOver = () => {
 
   const navigate = useNavigate();
 
-  const salvar = async(tempoCronometro) =>{
+  const salvar = async(tempoCronometro) => {
     if(salvou) return;
     setSalvou(true);
     const cookies = new Cookies();
@@ -116,7 +116,7 @@ export const GameOver = () => {
     let hours = Math.floor(timeElapsed / 3600);
     hours = hours < 10 ? `0${hours}` : hours.toString;
     setTime(`${hours}:${minutes}:${seconds}`);
-    salvar(`${hours}:${minutes}:${seconds}`);
+    //salvar(`${hours}:${minutes}:${seconds}`);
   },[]);
 
   const handleTryAgain = () => {
@@ -164,7 +164,9 @@ export const GameOver = () => {
           title="Try Again"
           w="260px"
           h="56px"
-        ><p>Try Again</p></ButtonRed>
+        >
+          <p>Try Again</p>
+        </ButtonRed>
         <p>Activities done in</p>
         <span>00:00</span>
 

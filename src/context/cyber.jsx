@@ -8,7 +8,7 @@ function CyberProvider({children}){
     id:'53',
     name:'Essentials 1'
   });
-  const [selectLanguage, setSelectLanguage] = useState(0);
+  const [selectLanguage, setSelectLanguage] = useState(0);//0 portugues, 1 ingles, 2 espanhol
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
 
   function chooseLanguage(item) {

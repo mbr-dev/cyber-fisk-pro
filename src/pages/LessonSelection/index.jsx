@@ -62,7 +62,7 @@ export const LessonSelection = () => {
     try {
       const cookies = new Cookies();
       const raf = cookies.get("raf");
-      await apiQAS.get(`XPUsuario/RetornoTask?raf=${raf}&id_livro=${book.id}&num_lesson=${numSelLesson}`)
+      await apiQAS.get(`XPUsuario/RetornoTask?raf=${raf}&id_livro=${book.id}&num_lesson=${numSelLesson}&all=1`) //lembra de tirar
       .then((resp) => {
         console.log('verificaTask ==> ', resp.data)
         if(resp.data.erro === null){

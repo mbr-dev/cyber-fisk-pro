@@ -21,7 +21,6 @@ export const Game7 = () => {
 
   const navigate = useNavigate();
 
-  const [colorAudio, setColorAudio] = useState([0, 0, 0]);
   const [colorAnswer, setColorAnswer] = useState([0, 0, 0]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);

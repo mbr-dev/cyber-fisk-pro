@@ -35,7 +35,7 @@ export const Card = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
   }

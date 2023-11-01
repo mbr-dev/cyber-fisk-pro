@@ -813,43 +813,43 @@
   ],
   "L2_T2_Facil": [
     {
-      "pergunta": ["order", "can ", "take ", "I ", "your ", "?"],
+      "pergunta": ["order", "can", "take", "I", "your", "?"],
       "resposta": "Can I take your order?"
     },
     {
-      "pergunta": ["all", "will ", "be ", "that ", "?"],
+      "pergunta": ["all", "will", "be", "that", "?"],
       "resposta": "Will that be all?"
     },
     {
-      "pergunta": ["some ", "would ", "like ", "water", "you ", "?"],
+      "pergunta": ["some", "would", "like", "water", "you", "?"],
       "resposta": "Would you like some water?"
     },
     {
-      "pergunta": ["name", "’s ", "what", "your ", "?"],
+      "pergunta": ["name", "’s", "what", "your", "?"],
       "resposta": "What’s your name?"
     },
     {
-      "pergunta": ["spell ", "please", "name ", "your ", "last ", "."],
+      "pergunta": ["spell", "please", "name", "your", "last", "."],
       "resposta": "Spell your last name please."
     },
     {
-      "pergunta": ["dessert", "like ", "would ", "you ", "a ", "?"],
+      "pergunta": ["dessert", "like", "would", "you", "a", "?"],
       "resposta": "Would you like a dessert?"
     },
     {
-      "pergunta": ["1 to 10", "please ", "count ", "from ", "."],
+      "pergunta": ["1 to 10", "please", "count", "from", "."],
       "resposta": "Please count from 1 to 10."
     },
     {
-      "pergunta": ["I’d ", "thanks ", "no ", "like ", "tea", "some ", "."],
-      "resposta": "No thanks I’d like some tea."
+      "pergunta": ["I’d", "like", "tea", "some", "."],
+      "resposta": "I’d like some tea."
     },
     {
-      "pergunta": ["cookies", "would ", "like ", "you ", "some ", "?"],
+      "pergunta": ["cookies", "would", "like", "you", "some", "?"],
       "resposta": "Would you like some cookies?"
     },
     {
-      "pergunta": ["salad", "do ", "you ", "eat ", "?"],
+      "pergunta": ["salad", "do", "you", "eat", "?"],
       "resposta": "Do you eat salad?"
     }
   ],

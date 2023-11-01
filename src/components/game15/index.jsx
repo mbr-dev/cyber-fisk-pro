@@ -1,15 +1,16 @@
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
+import { ButtonBg } from "../ButtonBg";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaAnswers, Words, AreaWord } from "./styles";
+import { Container, Main, AreaAnswers, Words, AreaWord, AreaButton } from "./styles";
 
 export const Game15 = () => {
   const {
@@ -26,6 +27,7 @@ export const Game15 = () => {
   const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
+  const [phraseFix, setPhraseFix] = useState("");
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
@@ -46,14 +48,14 @@ export const Game15 = () => {
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
     }
-
+    
     let tempRandom = [];
     for (let a = 0; a < dataLength; a++) {
       tempRandom.push(a);
     }
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
-
+    
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     let tempWords = items.pergunta;
@@ -79,71 +81,74 @@ export const Game15 = () => {
     setAnswer(tempAnswer);
   }
 
+  const handleClear = () => {
+    setPhrase([]);
+  }
+
   const verifyWord = () => {
     const word = phrase.join("").toLowerCase();
+    const answerRight = answer.split(" ").join("");
 
     let tempRightPoints;
 
-    if (phrase.length === words.length) {
-      if (word === answer.toLowerCase()) {
-        const newStatus = [...statusColor];
-        newStatus[rodadaGeral] = 1;
-        setStatusColor(newStatus);
+    if (word === answerRight.toLowerCase()) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
-        tempRightPoints = PointRule(nivel, rightPoints);
-        setRightPoints(tempRightPoints);
-        setNewPontos(nivel, tempRightPoints);
-      } else {
-        const newStatus = [...statusColor];
-        newStatus[rodadaGeral] = 2;
-        setStatusColor(newStatus);
+      tempRightPoints = PointRule(nivel, rightPoints);
+      setRightPoints(tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
+    } else {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
 
-        let tempE = wrongPoints;
-        tempE++;
-        setWrongPoints(tempE);
-      }
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
+    }
 
-      let tempRound = round;
-      tempRound++;
-      setRound(tempRound);
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
 
-      let tempGeneralRound = rodadaGeral;
-      tempGeneralRound++;
-      setNewRodada(tempGeneralRound);
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
 
-      const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
-      if (rule === "Continua") {
-        setTimeout(() =>{
-          newRound(tempRound);
-        }, 1500);
-      } else if (rule === "Game over") {
-        setNewPontos(nivel, 0);
-        setTimeout(() => {
-          navigate("/GameOver");
-          setNewContainer(1);
-          setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-        }, 2000);
-      } else if (rule === "Score") {
-        const pontos = Score(pontosF, pontosM, pontosD);
-        const page = ScoreFinal(pontos, numSelLesson, numTask);
-        setTimeout(() => {
-          navigate(`/${page}`);
-          setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-        }, 2000);
-      } else {
-        setTimeout(() =>{
-          if (nivel === 0) {
-            setNewNivel(1);
-            const atividade = conteudoMedio[0].id_tipo;
-            setNewAtividade(atividade);
-          } else {
-            setNewNivel(2);
-            const atividade = conteudoDificil[0].id_tipo;
-            setNewAtividade(atividade);
-          }
-        },1500);
-      }
+    if (rule === "Continua") {
+      setTimeout(() =>{
+        newRound(tempRound);
+      }, 1500);
+    } else if (rule === "Game over") {
+      setNewPontos(nivel, 0);
+      setTimeout(() => {
+        navigate("/GameOver");
+        setNewContainer(1);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
+    } else if (rule === "Score") {
+      const pontos = Score(pontosF, pontosM, pontosD);
+      const page = ScoreFinal(pontos, numSelLesson, numTask);
+      setTimeout(() => {
+        navigate(`/${page}`);
+        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
+      }, 2000);
+    } else {
+      setTimeout(() =>{
+        if (nivel === 0) {
+          setNewNivel(1);
+          const atividade = conteudoMedio[0].id_tipo;
+          setNewAtividade(atividade);
+        } else {
+          setNewNivel(2);
+          const atividade = conteudoDificil[0].id_tipo;
+          setNewAtividade(atividade);
+        }
+      },1500);
     }
   }
 
@@ -154,7 +159,7 @@ export const Game15 = () => {
 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
+      border: isDragging ? `2px solid ${defaultTheme["red-200"]}` : "",
       borderRadius: isDragging ? "8px" : "",
       touchAction: "none",
     } : {
@@ -179,7 +184,6 @@ export const Game15 = () => {
       alignItems: "flex-end",
       justifyContent: "center",
       backgroundColor: isOver ? defaultTheme["gray-100"] : undefined,
-      border: isOver ? `1px solid ${defaultTheme["gray-200"]}` : "2px solid transparent",
       touchAction: "none",
     };
 
@@ -204,10 +208,13 @@ export const Game15 = () => {
   }, []);
 
   useEffect(() => {
-    if (answer.length > 1) {
-      verifyWord();
-    }
-  }, [phrase, answer]);
+    const text = phrase.join(" ");
+
+    const textUp = text.charAt(0).toUpperCase()+text.slice(1);
+
+    setPhraseFix(textUp);
+  }, [phrase, setPhraseFix]);
+  
 
   if (isLoading) {
     return (
@@ -223,7 +230,7 @@ export const Game15 = () => {
         <Main>
           <Droppable>
             <AreaAnswers>
-              <span>{phrase}</span>
+              <p>{phraseFix}</p>
             </AreaAnswers>
           </Droppable>
 
@@ -242,6 +249,25 @@ export const Game15 = () => {
             })}
           </AreaWord>
         </Main>
+        
+        <AreaButton>
+          <ButtonBg
+            w="100px"
+            h="28px"
+            fs="16px"
+            title="Clear"
+            onPress={handleClear}
+          />
+
+          <ButtonBg
+            w="100px"
+            h="28px"
+            fs="16px"
+            title="Check"
+            greenBtn
+            onPress={verifyWord}
+          />
+        </AreaButton>
       </DndContext>
     </Container>
   )

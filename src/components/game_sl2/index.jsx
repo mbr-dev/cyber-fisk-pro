@@ -5,6 +5,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { FooterBtnHome } from "../FooterBtnHome";
+import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -194,7 +195,7 @@ export const GameSL2 = () => {
 
     setTimeout(() => {
       navigate("/WellDone")
-    }, 2000);
+    }, 1500);
   }
 
   useEffect(() => {
@@ -259,6 +260,7 @@ export const GameSL2 = () => {
 
   return (
     <Container>
+      <HeaderLessonSLTitle trophyEnd superTaskStart numStart="Super task" numEnd="Finish" title="Super task 2" />
       <TitleLesson title="Memory Game." />
 
       <Main>
@@ -306,7 +308,7 @@ export const GameSL2 = () => {
           onPress={handleFinish}
         />
       }
-      <FooterBtnHome hasLS title="Lesson Menu" mt={!reset && !finished && "48px"} />
+      <FooterBtnHome hasLS rota="SelectLesson" title="Lesson Menu" mt={!reset && !finished && "48px"} />
     </Container>
   )
 }
