@@ -88,7 +88,7 @@ export const Game26 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setOptionColor, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
+  }, [setIsLoading, setRandomNumber, round, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
 
   const newRound = (number) => {
     setCountClick(0);
@@ -195,6 +195,7 @@ export const Game26 = () => {
       backgroundColor: isDragging && defaultTheme["gray-300"],
       border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
       borderRadius: isDragging && "8px",
+      touchAction: "none"
     };
 
     return (

@@ -156,11 +156,9 @@ export const Game29 = () => {
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
-          setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
         } else {
-          setOptionColor(0);
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
@@ -178,7 +176,9 @@ export const Game29 = () => {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
-    } : undefined;
+    } : {
+      touchAction: "none",
+    };
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -194,7 +194,8 @@ export const Game29 = () => {
 
     const style = {
       backgroundColor: isOver ? defaultTheme["gray-200"] : undefined,
-      borderRadius: isOver ? "8px" : ""
+      borderRadius: isOver ? "8px" : "",
+      touchAction: "none",
     };
 
     return (

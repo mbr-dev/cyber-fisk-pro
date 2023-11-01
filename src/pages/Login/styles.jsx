@@ -200,7 +200,7 @@ export const SelectUl = styled.ul`
   width: 100%;
   position: absolute;
   z-index: 10;
-  bottom: -94px;
+  bottom: -96px;
   padding: 8px;
   display: flex;
   flex-direction: column;

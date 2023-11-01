@@ -62,7 +62,7 @@ export const ButtonAudio = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    border: 2px solid ${props => props.theme["red-200"]};
   }
 
   @media(max-width: 320px) {

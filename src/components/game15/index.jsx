@@ -156,7 +156,10 @@ export const Game15 = () => {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
-    } : undefined;
+      touchAction: "none",
+    } : {
+      touchAction: "none",
+    };
 
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -177,6 +180,7 @@ export const Game15 = () => {
       justifyContent: "center",
       backgroundColor: isOver ? defaultTheme["gray-100"] : undefined,
       border: isOver ? `1px solid ${defaultTheme["gray-200"]}` : "2px solid transparent",
+      touchAction: "none",
     };
 
     return (

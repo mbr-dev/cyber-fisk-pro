@@ -117,7 +117,7 @@ export const L2_T1_Dificil = [
       { label: "Bread, eggs and coffee", status: 0},
       { label: "Bread, cereal and milk", status: 0},
       { label: "Bread, butter and chocolate", status: 0},
-      { label: "bread, butter and coffee", status: 1}
+      { label: "Bread, butter and coffee", status: 1}
     ]
   },
   {
@@ -153,7 +153,7 @@ export const L2_T1_Dificil = [
       { label: "Cereal and milk", status: 0},
       { label: "Milk, cereal and eggs", status: 0},
       { label: "Bread, milk and coffee", status: 0},
-      { label: "bread, cereal and milk", status: 1}
+      { label: "Bread, cereal and milk", status: 1}
     ]
   },
   {

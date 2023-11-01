@@ -12,6 +12,7 @@ import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game7 = () => {
   const {
@@ -20,6 +21,8 @@ export const Game7 = () => {
 
   const navigate = useNavigate();
 
+  const [colorAudio, setColorAudio] = useState([0, 0, 0]);
+  const [colorAnswer, setColorAnswer] = useState([0, 0, 0]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -69,7 +72,7 @@ export const Game7 = () => {
     let tempAudios = [];
     let tempAnswers = [];
 
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    const randomIndices = shuffleArray(tempRandom).slice(0, 3);
 
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
@@ -93,6 +96,7 @@ export const Game7 = () => {
 
   const newRound = () => {
     setCountClick(0);
+    setColorAnswer([0, 0, 0]);
 
     let tempRandom = [];
     for (let a = 0; a < data.length; a++) {
@@ -106,7 +110,7 @@ export const Game7 = () => {
     let tempAudios = [];
     let tempAnswers = [];
 
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
+    const randomIndices = shuffleArray(tempRandom).slice(0, 3);
 
     for (let a = 0; a < randomIndices.length; a++) {
       tempAudios.push(dataItem[randomIndices[a]].pergunta);
@@ -128,7 +132,7 @@ export const Game7 = () => {
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
-    setBlockAnswer(false);    
+    setBlockAnswer(false);
 
     const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
 
@@ -150,15 +154,22 @@ export const Game7 = () => {
     setCountClick(clicks);
 
     let tempRightPoints;
+    let tempColorAnswer = colorAnswer;
 
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
-      if (clicks < 4) {
+      if (clicks < 3) {
+        tempColorAnswer[index] = 1;
+        setColorAnswer(tempColorAnswer);
+
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
+
+      tempColorAnswer[index] = 1;
+      setColorAnswer(tempColorAnswer);
 
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -246,6 +257,9 @@ export const Game7 = () => {
               <ButtonAudio 
                 key={index}
                 onClick={() => handlePlayAudio(audio)}
+                style={{
+                  borderColor: selectAudio === audio.status && defaultTheme["red-200"],
+                }}
                 disabled={disabledAud}
               >
                 <img src={ImgBtn2} alt="" className="btn2" />
@@ -265,7 +279,8 @@ export const Game7 = () => {
                 w="8rem"
                 h="2.625rem"
                 onPress={() => handleGetAnswer(index)}
-                disabledButton={disabledRes || blockAnswer}
+                disabledButton={disabledRes}
+                optionColor={colorAnswer[index]}
               >
                 <p>{answer.label}</p>
               </ButtonAnswer>

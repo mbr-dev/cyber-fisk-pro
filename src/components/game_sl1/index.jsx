@@ -53,13 +53,16 @@ export const GameSL1 = () => {
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
 
-      let items = L1_SUPER_LESSON[tempRandom[round]];
+      const items = L1_SUPER_LESSON[tempRandom[round]];
       setOptionColor(Array(items.resposta.length).fill(0));
 
       const letter = Array(items.resposta.length).fill("");
       setLettersAnswer(letter);
 
       setAnswers(items.resposta);
+
+      let tempLetters = items.letras;
+      tempLetters = tempLetters.sort(() => Math.random() - 0.5);
       setLetters(items.letras);
 
       setIsLoading(false);
@@ -97,6 +100,11 @@ export const GameSL1 = () => {
     setNumberClick(tempNumber);
   }
 
+  const resetField = () => {
+    setNumberClick(0);
+    setLettersAnswer(Array(L1_SUPER_LESSON[randomNumber[round]].resposta.length).fill(""));
+  }
+
   const handleClick = (letter) => {
     let temp = lettersAnswer;
     let tempNumber = numberClick;
@@ -119,6 +127,17 @@ export const GameSL1 = () => {
       let tempA = rightPoints;
       tempA++;
       setWrongPoints(tempA);
+      let tempRound = round;
+      tempRound++;
+      setRound(tempRound);
+
+      let tempGeneralRound = rodadaGeral;
+      tempGeneralRound++;
+      setNewRodada(tempGeneralRound);
+
+      setTimeout(() => {
+        newRound(tempRound);
+      }, 1500);
     } else {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
@@ -127,19 +146,9 @@ export const GameSL1 = () => {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
+
+      resetField();
     }
-
-    let tempRound = round;
-    tempRound++;
-    setRound(tempRound);
-
-    let tempGeneralRound = rodadaGeral;
-    tempGeneralRound++;
-    setNewRodada(tempGeneralRound);
-
-    setTimeout(() => {
-      newRound(tempRound);
-    }, 1500);
   }
 
   useEffect(() => {
@@ -160,17 +169,11 @@ export const GameSL1 = () => {
 
   useEffect(() => {
     if (round === 6) {
-      if (rightPoints >= 3) {
-        setTimeout(() => {
-          navigate("/WellDone");
-        }, 1500);
-      } else {
-        setTimeout(() => {
-          navigate("/GameOver");
-        }, 1500);
-      }
+      setTimeout(() => {
+        navigate("/WellDone");
+      }, 1500);
     }
-  }, [round, rightPoints])
+  }, [round]);
 
   useEffect(() => {
     if (lettersAnswer.length === numberClick) {

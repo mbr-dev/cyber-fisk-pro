@@ -160,7 +160,9 @@ export const Game38 = () => {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
-    } : undefined;
+    } : {
+      touchAction: "none",
+    };
 
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -172,6 +174,7 @@ export const Game38 = () => {
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
       id: "droppable",
+      touchAction: "none",
     });
 
     const style = {
