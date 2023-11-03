@@ -80,7 +80,6 @@ export const Game20 = () => {
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
-    if (playAudio) return;
 
     let tempWord = text;
     let tempRightPoints;
@@ -164,7 +163,7 @@ export const Game20 = () => {
   }, []);
 
   useEffect(() => {
-    text.trim() === "" || playAudio ? setBlockButton(true) : setBlockButton(false);
+    text.trim() === "" ? setBlockButton(true) : setBlockButton(false);
   }, [text, setBlockButton]);
 
   if (isLoading) {

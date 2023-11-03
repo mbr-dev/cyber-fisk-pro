@@ -36,7 +36,7 @@ export const Answers = styled.div`
   @media(max-width: 360px) {
     gap: 0.25rem;
   }
-  `;
+`;
 
 export const Div = styled.div`
   width: 100%;
@@ -131,7 +131,6 @@ export const Words = styled.div`
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
-  gap: 0.5rem;
 
   @media(max-width: 360px) {
     width: 17rem;

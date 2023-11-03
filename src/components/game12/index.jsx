@@ -72,7 +72,6 @@ export const Game12 = () => {
 
   const newRound = (number) => {
     setText("");
-    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -170,7 +169,7 @@ export const Game12 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Make questions with the words below. You don’t need to use all words." />
+      <TitleLesson title="Make questions with the words below. You don’t need to use all the words." />
 
       <Main>
         <Words>
@@ -184,7 +183,7 @@ export const Game12 = () => {
         <Form id="myForm" onSubmit={handleVerify}>
           <Input
             type="text"
-            placeholder="Write here"
+            placeholder="Type here"
             value={text}
             onChange={(e) => setText(e.target.value)}
           />

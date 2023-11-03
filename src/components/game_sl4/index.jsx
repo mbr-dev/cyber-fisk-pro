@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLessonSL4 } from "../HeaderLessonSL4";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -12,7 +13,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys } from "./styles";
 
 export const GameSL4 = () => {
-  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const { 
+    rodadaGeral, setNewRodada, setTimeElapsed, statusColor, setStatusColor
+  } = useContext(LessonContext);
 
   const navigate = useNavigate();
   
@@ -120,6 +123,10 @@ export const GameSL4 = () => {
     setDivAnswer(updateDivLetters);
 
     if (updateDivLetters.every((letter) => letter !== "")) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
+      
       let tempRound = round;
       tempRound++;
       setRound(tempRound);
@@ -179,6 +186,7 @@ export const GameSL4 = () => {
 
   return (
     <Container>
+      <HeaderLessonSL4 superTaskStart trophyEnd numStart="Super task" numEnd="Finished" />
       <TitleLesson title="What’s the word in common?" />
 
       <Main>
@@ -209,9 +217,7 @@ export const GameSL4 = () => {
                 key={index}
                 onClick={() => handleClick(index)}
                 style={{
-                  borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? "transparent" : "",
-                  backgroundColor: hasLetter ? defaultTheme["gray-400"] : "",
-                  color: hasLetter ? defaultTheme["gray-400"] : "",
+                  borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? defaultTheme["gray-700"] : "",
                 }}
                 disabled={hasLetter}
               >

@@ -13,17 +13,19 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
 
 export const GameSL3 = () => {
-  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const {
+    rodadaGeral, setNewRodada, setTimeElapsed, timeElapsed, statusColor, setStatusColor
+  } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const navigate = useNavigate();
 
-  const [optionColorQ, setOptionColorQ] = useState(0);
   const [round, setRound] = useState(0);
   const [question, setQuestion] = useState("");
   const [data, setData] = useState([]);
   const [divLetter, setDivLetter] = useState([]);
+  const [randomNumber, setRandomNumber] = useState([]);
   const [divLetterRight, setDivLetterRight] = useState([]);
   const [answersOfQuestion, setAnswersOfQuestion] = useState([]);
   const [correctPoints, setCorrectPoints] = useState(0);
@@ -43,7 +45,15 @@ export const GameSL3 = () => {
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
 
-      let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+      let tempRandom = [];
+      for (let a = 0; a < 10; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+
+      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
 
@@ -66,17 +76,18 @@ export const GameSL3 = () => {
     } catch(error) {
       console.log(error);
     }
-  }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
+  }, [round, keyboardLetters, setRandomNumber, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
     setText("");
-    setOptionColorQ(0);
+    setTimeElapsed(0);
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
 
-    const items = JSON.parse(data[number].conteudo);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempQuestion = items.pergunta.toUpperCase();
+
     setQuestion(tempQuestion);
 
     let letterQuestion = tempQuestion.split(" ");
@@ -144,7 +155,7 @@ export const GameSL3 = () => {
 
     const userText = text.replace(/'/g, "’");
 
-    if (round >= 6 && round <= 9) {
+    if (answersOfQuestion.length === 1) {
       const correctStarts = [
         "I have dinner at",
         "I need to buy",
@@ -155,11 +166,15 @@ export const GameSL3 = () => {
       const isStartCorrect = correctStarts.some((start) => userText.startsWith(start));
 
       if (isStartCorrect) {
-        setOptionColorQ(1);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
 
         setCorrectPoints(tempP);
       } else {
-        setOptionColorQ(2);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -169,11 +184,15 @@ export const GameSL3 = () => {
       const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
 
       if (isAnswerCorrect) {
-        setOptionColorQ(1);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
 
         setCorrectPoints(tempP);
       } else {
-        setOptionColorQ(2);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -189,11 +208,15 @@ export const GameSL3 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    
-    setTimeout(() => {
-      newRound(tempRound);
-    }, 2000);
-    
+    if (round === 9) {
+      setTimeout(() => {
+        navigate("/WellDone")
+      }, 2000);
+    } else {
+      setTimeout(() => {
+        newRound(tempRound);
+      }, 2000);
+    }
   }
 
   useEffect(() => {
@@ -227,22 +250,18 @@ export const GameSL3 = () => {
   }, [countTimer]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
-      setTimeElapsed(state => state + 1)
-    }, 1000);
+    let timer = 0;
+
+    if (changed) {
+      timer = setInterval(() => {
+        setTimeElapsed(state => state + 1)
+      }, 1000);
+    }
 
     return () => {
       clearInterval(timer)
     }
-  }, [setTimeElapsed]);
-
-  useEffect(() => {
-    if (round === 10) {
-      setTimeout(() => {
-        navigate("/WellDone")
-      }, 2000);
-    }
-  }, [round]);
+  }, [setTimeElapsed, changed]);
 
   useEffect(() => {
     text.trim() === "" ? setBlock(true) : setBlock(false);
@@ -262,6 +281,7 @@ export const GameSL3 = () => {
         :
         <TitleLesson title="Solve the code to answer the question." />
       }
+      <p>{timeElapsed}</p>
       <Main>
         {!changed ? 
           <Phrase>
@@ -335,10 +355,6 @@ export const GameSL3 = () => {
                 required
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                style={{
-                  backgroundColor: optionColorQ === 0 ? "" : optionColorQ === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: optionColorQ === 0 ? "" : defaultTheme.white
-                }}
               />
             </form>
             <ButtonBg

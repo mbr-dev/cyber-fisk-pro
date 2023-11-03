@@ -6,6 +6,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -163,6 +164,7 @@ export const GameSL5 = () => {
 
   return (
     <Container>
+      <HeaderLessonSLTitle title="Super Lesson 5" />
       <TitleLesson title="Make 5 Words" />
 
       <Main>
@@ -176,17 +178,20 @@ export const GameSL5 = () => {
                     <span>{qIndex + 1}. {question.label}</span>
                   </DivQuestion>
                 </DivQ>
-                <DivA>
+                <DivA style={{ gap: isCompleted && "0"}}>
                   {questions[qIndex].answer.map((item, index) => {
-                    return (
+                    return !isCompleted ? (
                       <Answer 
                         key={index}
                         style={{
-                          backgroundColor: isCompleted ? defaultTheme["red-200"] : ""
+                          backgroundColor: isCompleted ? defaultTheme["red-200"] : "",
+                          marginLeft: isCompleted && "-9px"
                         }}
                       >
                         {isCompleted ? item : hint === item ? item : ""}
                       </Answer>
+                    ) : (
+                    <>{item}</>
                     )
                   })}
                 </DivA>
@@ -198,7 +203,7 @@ export const GameSL5 = () => {
           <Words>
             {letterSelected.map((letter, index) => {
               return (
-                <span key={index}>{letter},</span>
+                <span key={index}>{letter}</span>
               )
             })}
           </Words>

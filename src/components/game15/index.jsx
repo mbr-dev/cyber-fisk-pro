@@ -27,6 +27,7 @@ export const Game15 = () => {
   const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
+  const [blockButton, setBlockButton] = useState(true);
   const [phraseFix, setPhraseFix] = useState("");
   const [data, setData] = useState([]);
 
@@ -214,7 +215,6 @@ export const Game15 = () => {
 
     setPhraseFix(textUp);
   }, [phrase, setPhraseFix]);
-  
 
   if (isLoading) {
     return (

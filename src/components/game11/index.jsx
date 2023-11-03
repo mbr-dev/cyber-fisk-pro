@@ -17,6 +17,8 @@ export const Game11 = () => {
 
   const navigate = useNavigate();
 
+  const [colorAnswer, setColorAnswer] = useState([0, 0, 0, 0, 0]);
+  const [colorQuestions, setColorQuestions] = useState([0, 0, 0]);
   const [idClickQuestion, setIdClickQuestion] = useState([]);
   const [idClickAnswer, setIdClickAnswer] = useState([]);
   const [questions, setQuestions] = useState([]);
@@ -111,6 +113,9 @@ export const Game11 = () => {
 
     setRightQuestions([]);
     setRightAnswers([]);
+    setColorAnswer([0, 0, 0, 0, 0]);
+    setColorQuestions([0, 0, 0]);
+    setSelectedQuestionIndex(null);
     setBlockQuestions(false);
     setBlockAnswers(true);
   }
@@ -135,12 +140,19 @@ export const Game11 = () => {
     if (blockAnswers) return;
 
     let tempRightPoints;
+    let tempColorQ = colorQuestions;
+    let tempColorA = colorAnswer;
 
     const selectedQuestion = questions[selectedQuestionIndex];
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === selectedQuestion.status) {
       if (countClick < 3) {
+        tempColorQ[index] = 1;
+        setColorQuestions(tempColorQ);
+        tempColorA[index] = 1;
+        setColorAnswer(tempColorQ);
+
         setRightAnswers(state => [...state, index]);
         setRightQuestions(state => [...state, selectedQuestionIndex]);
         setBlockQuestions(false);
@@ -152,6 +164,11 @@ export const Game11 = () => {
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
+      tempColorQ[index] = 1;
+      setColorQuestions(tempColorQ);
+      tempColorA[index] = 1;
+      setColorAnswer(tempColorQ);
+
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
@@ -159,6 +176,9 @@ export const Game11 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempColorA[index] = 1;
+      setColorAnswer(tempColorQ);
 
       let tempE = wrongPoints;
       tempE++;
@@ -237,7 +257,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Match the question to their answers." />
+      <TitleLesson title="Match the questions to their answers." />
 
       <Main>
         <Questions>
@@ -248,7 +268,7 @@ export const Game11 = () => {
                   key={index}
                   onClick={() => handleGetQuestion(index)}
                   style={{
-                    opacity: (blockQuestions && selectedQuestionIndex === index) || disabledQ ? 0.5 : 1
+                    borderColor: (selectedQuestionIndex === index || disabledQ) && defaultTheme["red-200"]
                   }}
                   disabled={disabledQ}
                 >
@@ -265,7 +285,10 @@ export const Game11 = () => {
               <Button 
                 key={index}
                 onClick={() => handleGetAnswer(index)}
-                disabled={disabledA}
+                style={{
+                  borderColor: colorAnswer[index] === 1 && defaultTheme["red-200"]
+                }}
+                disabled={blockAnswers || disabledA}
               >
                 <p>{answer.label}</p>
               </Button>

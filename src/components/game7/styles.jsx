@@ -31,7 +31,6 @@ export const ButtonRow = styled.div`
 
   button:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
   }
 `;
 

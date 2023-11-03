@@ -177,7 +177,7 @@ export const L5_T1_Dificil = [
       status: "lives"
     },
     option2: {
-      label: ["", "lives", "studies", "likes"],
+      label: ["", "lives", "works", "likes"],
       status: "likes"
     },
     option3: {
@@ -241,7 +241,7 @@ export const L5_T1_Dificil = [
       status: "lunch"
     },
     option3: {
-      label: ["", "get", "have", "make"],
+      label: ["", "get", "have", "do"],
       status: "have"
     },
     option4: {

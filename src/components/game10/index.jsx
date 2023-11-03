@@ -67,7 +67,6 @@ export const Game10 = () => {
 
   const newRound = (number) => {
     setText("");
-    setColorAnswer(0);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 

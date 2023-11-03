@@ -9,7 +9,6 @@ export const ButtonAnswer = ({ w, h, children, onPress, disabledButton, bgColor,
       style={{
         width: w,
         height: h,
-        opacity: disabledButton ? "0.3" : "1",
         backgroundColor: bgColor ? defaultTheme["gray-400"] : "",
         color: bgColor ? defaultTheme["gray-400"] : "",
         borderColor: optionColor === 1 && defaultTheme["red-200"],

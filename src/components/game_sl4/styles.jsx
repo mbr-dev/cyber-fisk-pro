@@ -12,7 +12,11 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 3rem;
+  gap: 28px;
+
+  @media(max-width: 320px) {
+   gap: 8px;
+  }
 `;
 
 export const Photos = styled.div`
@@ -22,6 +26,10 @@ export const Photos = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 1rem;
+
+  @media(max-width: 320px) {
+   gap: 8px;
+  }
 `;
 
 export const Photo = styled.div`
@@ -36,25 +44,41 @@ export const Photo = styled.div`
     height: 100%;
     object-fit: cover;
   }
+
+  @media(max-width: 320px) {
+    width: 140px;
+    height: 70px;
+    border-radius: 6px;
+  }
 `;
 
 export const Types = styled.div`
-  width: 22rem;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 0.5rem;
+  gap: 4px;
 `;
 
 export const Type = styled.div`
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 30px;
+  height: 30px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   border: 2px solid ${props => props.theme.black};
+
+  @media(max-width: 360px) {
+    width: 28px;
+    height: 28px;
+  }
+
+  @media(max-width: 320px) {
+    width: 24px;
+    height: 24px;
+  }
 `;
 
 export const Keyboard = styled.div`
@@ -66,6 +90,10 @@ export const Keyboard = styled.div`
   flex-wrap: wrap;
   gap: 0.75rem;
   background-color: ${props => props.theme["gray-300"]};
+
+  @media(max-width: 320px) {
+    gap: 8px;
+  }
 `;
 
 export const Keys = styled.button`
@@ -88,5 +116,11 @@ export const Keys = styled.button`
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  @media(max-width: 320px) {
+    width: 28px;
+    height: 28px;
+    border-radius: 6px;
   }
 `;

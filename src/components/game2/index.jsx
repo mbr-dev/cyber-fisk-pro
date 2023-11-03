@@ -18,6 +18,7 @@ export const Game2 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([0, 1, 2]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
@@ -58,6 +59,7 @@ export const Game2 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setQuestion(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -77,6 +79,7 @@ export const Game2 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setQuestion(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -97,12 +100,16 @@ export const Game2 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
@@ -111,6 +118,9 @@ export const Game2 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -183,6 +193,7 @@ export const Game2 = () => {
               key={index}
               w="9rem"
               h="3rem"
+              optionColor={selectedColor[index]}
               onPress={() => handleClick(index)}
               disabledButton={blockButton}
             >

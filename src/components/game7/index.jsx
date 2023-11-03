@@ -278,7 +278,7 @@ export const Game7 = () => {
                 w="8rem"
                 h="2.625rem"
                 onPress={() => handleGetAnswer(index)}
-                disabledButton={disabledRes}
+                disabledButton={disabledRes || blockAnswer}
                 optionColor={colorAnswer[index]}
               >
                 <p>{answer.label}</p>

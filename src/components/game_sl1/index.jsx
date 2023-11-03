@@ -19,8 +19,8 @@ export const GameSL1 = () => {
     setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada 
   } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState([]);
   const [lettersAnswer, setLettersAnswer] = useState([]);
+  const [data, setData] = useState([]);
   const [numberClick, setNumberClick] = useState(0);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
@@ -37,24 +37,22 @@ export const GameSL1 = () => {
 
   const loadLesson = useCallback(async() => {
     try {
-      setIsLoading(true);
+      //setIsLoading(true);
 
-      /* const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data;
-
-      let items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo); */
-
-      let dataLength = L1_SUPER_LESSON.length;
-
+      setData(res.dados[0].dados_conteudo);
+      
+      let dataLength = res.dados[0].dados_conteudo.length;
+      
       let tempRandom = [];
       for (let a = 0; a < dataLength; a++) {
         tempRandom.push(a);
       }
       tempRandom = tempRandom.sort(() => Math.random() - 0.5);
       setRandomNumber(tempRandom);
-
-      const items = L1_SUPER_LESSON[tempRandom[round]];
-      setOptionColor(Array(items.resposta.length).fill(0));
+      
+      const items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
 
       const letter = Array(items.resposta.length).fill("");
       setLettersAnswer(letter);
@@ -65,16 +63,16 @@ export const GameSL1 = () => {
       tempLetters = tempLetters.sort(() => Math.random() - 0.5);
       setLetters(items.letras);
 
-      setIsLoading(false);
+      //setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-  }, [setIsLoading, setOptionColor, setRandomNumber, round, setLettersAnswer, setLetters, setAnswers]);
-console.log(answers);
+  }, [setIsLoading, setRandomNumber, setData, round, setLettersAnswer, setLetters, setAnswers]);
+
   const newRound = (number) => {
     setNumberClick(0);
 
-    const items = L1_SUPER_LESSON[randomNumber[number]];
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     const letter = Array(items.resposta.length).fill("");
     setLettersAnswer(letter);
@@ -184,7 +182,7 @@ console.log(answers);
       setBlockButton(true);
       setBlockLetters(false);
     }
-  }, [numberClick, lettersAnswer, setBlockButton, setBlockLetters])
+  }, [numberClick, lettersAnswer, setBlockButton, setBlockLetters]);
 
   if (isLoading) {
     return (
@@ -204,9 +202,7 @@ console.log(answers);
               <Letter 
                 key={index}
                 style={{
-                  borderColor: numberClick === index ? defaultTheme["red-200"] : optionColor[index] === 1 ? "transparent" : "",
-                  backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : "",
-                  color: optionColor[index] === 1 ? defaultTheme.white : ""
+                  borderColor: numberClick === index ? defaultTheme["red-200"] : "",
                 }}
               >
                 {letter}

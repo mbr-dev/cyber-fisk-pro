@@ -13,7 +13,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 12px;
 `;
 
 export const Question = styled.section`
