@@ -5,7 +5,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { FooterBtnHome } from "../FooterBtnHome";
-import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
+import { HeaderLessonSL2 } from "../HeaderLessonSL2";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -16,7 +16,7 @@ import LogoImg from "../../assets/logoIcon.png";
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL2 = () => {
-  const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  const { setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
@@ -30,6 +30,8 @@ export const GameSL2 = () => {
   const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState();
+  const [intervalId, setIntervalId] = useState(null);
+  const [countTimer, setCountTimer] = useState(0);
 
   const loadLesson = useCallback(async() => {
     try {
@@ -88,7 +90,7 @@ export const GameSL2 = () => {
 
       setCards(tempGrid);
       setPlaying(true);
-
+      timePointer();
       setIsLoading(false);
     } catch(error) {
       console.log(error);
@@ -96,6 +98,9 @@ export const GameSL2 = () => {
   }, [setIsLoading, setData, setPlaying, setCards]);
 
   const newRound = () => {
+    setCountTimer(0);
+    timePointer();
+
     const items = data.map(item => {
       const conteudo = JSON.parse(item.conteudo);
       return conteudo
@@ -174,10 +179,34 @@ export const GameSL2 = () => {
     }
   }
 
+  const timePointer = () => {
+    clearInterval(intervalId);
+
+    const newIntervalId = setInterval(() => {
+      setCountTimer(state => state + 1);
+    }, 1000);
+
+    setIntervalId(newIntervalId);
+  }
+
   const handleChangeLevel = () => {
     let tempLevel = level;
     tempLevel++;
     setLevel(tempLevel);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    const newStatus = [...statusColor];
+    newStatus[rodadaGeral] = 1;
+    setStatusColor(newStatus);
+    
+    if (countTimer > 91) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+    }
 
     generateScore();
     setPlaying(false);
@@ -193,14 +222,38 @@ export const GameSL2 = () => {
     setPlaying(false);
     setFinished(false);
 
-    setTimeout(() => {
-      navigate("/WellDone")
-    }, 1500);
+    const newStatus = [...statusColor];
+    newStatus[rodadaGeral] = 1;
+    setStatusColor(newStatus);
+    
+    if (countTimer > 91) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+    }
+
+    if (timeElapsed > 182) {
+      setTimeout(() => {
+        navigate("/GameOver")
+      }, 1500);
+    } else {
+      setTimeout(() => {
+        navigate("/WellDone")
+      }, 1500);
+    }
   }
 
   useEffect(() => {
     loadLesson();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
 
   useEffect(() => {
     if (shownCount === 2) {
@@ -260,7 +313,7 @@ export const GameSL2 = () => {
 
   return (
     <Container>
-      <HeaderLessonSLTitle trophyEnd superTaskStart numStart="Super task" numEnd="Finish" title="Super task 2" />
+      <HeaderLessonSL2 trophyEnd superTaskStart numStart="Super task" numEnd="Finish" title="Super task 2" />
       <TitleLesson title="Memory Game." />
 
       <Main>
@@ -288,6 +341,7 @@ export const GameSL2 = () => {
           })}
         </Grid>
       </Main>
+
       {reset && 
         <ButtonBg 
           w="10rem"
@@ -308,7 +362,8 @@ export const GameSL2 = () => {
           onPress={handleFinish}
         />
       }
-      <FooterBtnHome hasLS rota="SelectLesson" title="Lesson Menu" mt={!reset && !finished && "48px"} />
+      
+      <FooterBtnHome hasLS rota="LessonSelection" title="Tasks" />
     </Container>
   )
 }

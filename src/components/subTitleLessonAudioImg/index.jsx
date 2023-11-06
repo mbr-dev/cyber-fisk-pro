@@ -2,13 +2,14 @@ import { useContext } from "react";
 import { Volume2, Headphones } from "lucide-react";
 
 import { LessonContext } from "../../context/lesson";
+import { URL_FISKPRO } from "../../config/infos";
 
 import img from "./images/img.png";
 
 import { Button, Container } from "./style";
 
 export const SubTitleLessonAudioImg = (props) => {
-  const { newStatusPlay, playAudio } = useContext(LessonContext);
+  const { newStatusPlay, playAudio, numSelLesson } = useContext(LessonContext);
 
   const handleClick = () => {
     if (playAudio) return;
@@ -21,6 +22,7 @@ export const SubTitleLessonAudioImg = (props) => {
       newStatusPlay(false);
     });
   }
+  console.log(props.image)
 
   return (
     <Container>
@@ -34,7 +36,7 @@ export const SubTitleLessonAudioImg = (props) => {
         </Button>
       }
 
-      <img src={img} className="img2" alt="" />
+      <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${props.img}.jpg`} className="img2" alt="" />
     </Container>
   )
 }

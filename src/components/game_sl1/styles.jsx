@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Main = styled.div`
@@ -13,7 +14,6 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-bottom: 52px;
   
   @media(max-width: 320px) {
     gap: 8px;

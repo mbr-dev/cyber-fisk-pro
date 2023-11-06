@@ -88,11 +88,14 @@ export const Game15 = () => {
 
   const verifyWord = () => {
     const word = phrase.join("").toLowerCase();
-    const answerRight = answer.split(" ").join("");
+    const answerRight = answer.split(" ").join("").toLowerCase();
+    console.log("word2: ", word);
+    //fazer aqui
+    console.log("answerRight: ", answerRight);
 
     let tempRightPoints;
 
-    if (word === answerRight.toLowerCase()) {
+    if (word === answerRight) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);

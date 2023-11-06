@@ -19,6 +19,7 @@ export const Game14 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [image, setImage] = useState("");
@@ -61,6 +62,7 @@ export const Game14 = () => {
     
     setImage(items.image);
     setQuestion(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
@@ -81,6 +83,7 @@ export const Game14 = () => {
 
     setImage(items.image);
     setQuestion(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomAnswer = [...Array(items.resposta.length).keys()];
     tempRandomAnswer = tempRandomAnswer.sort(() => Math.random() - 0.5);
@@ -101,12 +104,16 @@ export const Game14 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
@@ -115,6 +122,9 @@ export const Game14 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -190,6 +200,7 @@ export const Game14 = () => {
                 w="10rem"
                 h="3rem"
                 key={index}
+                optionColor={selectedColor[index]}
                 onPress={() => handleClick(index)}
                 disabledButton={blockButton}
               >

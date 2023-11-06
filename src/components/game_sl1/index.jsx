@@ -6,6 +6,7 @@ import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
 import { HeaderLessonSL1 } from "../HeaderLessonSL1";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -16,7 +17,7 @@ import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons } from ".
 
 export const GameSL1 = () => {
   const { 
-    setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada 
+    setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada
   } = useContext(LessonContext);
 
   const [lettersAnswer, setLettersAnswer] = useState([]);
@@ -27,17 +28,17 @@ export const GameSL1 = () => {
   const [letters, setLetters] = useState([]);
   const [answers, setAnswers] = useState("");
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [blockButton, setBlockButton] = useState(true);
+  const [intervalId, setIntervalId] = useState(null);
   const [blockLetters, setBlockLetters] = useState(false);
+  const [countTimer, setCountTimer] = useState(0);
 
   const navigate = useNavigate();
-  console.log(answers);
 
   const loadLesson = useCallback(async() => {
     try {
-      //setIsLoading(true);
+      setIsLoading(true);
 
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
       const res = response.data;
@@ -62,8 +63,8 @@ export const GameSL1 = () => {
       let tempLetters = items.letras;
       tempLetters = tempLetters.sort(() => Math.random() - 0.5);
       setLetters(items.letras);
-
-      //setIsLoading(false);
+      timePointer();
+      setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
@@ -71,6 +72,8 @@ export const GameSL1 = () => {
 
   const newRound = (number) => {
     setNumberClick(0);
+    setCountTimer(0);
+    timePointer();
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -122,9 +125,28 @@ export const GameSL1 = () => {
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
+      if (countTimer > 91) {
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
+      }
+
       let tempA = rightPoints;
-      tempA++;
-      setWrongPoints(tempA);
+
+      if (countTimer < 60) {
+        tempA += 5;
+      } else if (countTimer >= 61 || countTimer <= 75) {
+        tempA += 4;
+      } else if (countTimer >= 76 || countTimer <= 90) {
+        tempA += 3;
+      } else if (countTimer >= 91 || countTimer <= 120) {
+        tempA += 2;
+      } else {
+        tempA += 1;
+      }
+
+      setRightPoints(tempA);
+
       let tempRound = round;
       tempRound++;
       setRound(tempRound);
@@ -137,22 +159,32 @@ export const GameSL1 = () => {
         newRound(tempRound);
       }, 1500);
     } else {
-      const newStatus = [...statusColor];
-      newStatus[rodadaGeral] = 2;
-      setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
-
       resetField();
     }
+  }
+
+  const timePointer = () => {
+    clearInterval(intervalId);
+
+    const newIntervalId = setInterval(() => {
+      setCountTimer(state => state + 1);
+    }, 1000);
+
+    setIntervalId(newIntervalId);
   }
 
   useEffect(() => {
     loadLesson();
   }, []);
   console.log(answers);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -167,12 +199,18 @@ export const GameSL1 = () => {
   }, [setTimeElapsed]);
 
   useEffect(() => {
+    if (timeElapsed >= 300) {
+      setTimeout(() => {
+        navigate("/GameOver");
+      }, 1500);
+    }
+
     if (round === 6) {
       setTimeout(() => {
         navigate("/WellDone");
       }, 1500);
     }
-  }, [round]);
+  }, [round, timeElapsed]);
 
   useEffect(() => {
     if (lettersAnswer.length === numberClick) {
@@ -245,6 +283,8 @@ export const GameSL1 = () => {
           title="Check"
         />
       </AreaButtons>
+
+      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" />
     </Container>
   )
 }

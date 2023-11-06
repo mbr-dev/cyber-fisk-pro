@@ -7,6 +7,7 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../subTitleLessonAudioImg";
 
 import { URL_FISKPRO } from "../../config/infos";
+import { L1_T2_Medio } from "../../utils/lesson1_Task";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
@@ -22,6 +23,7 @@ export const Game6 = () => {
   const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
+  const [image, setImage] = useState(null);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
@@ -61,6 +63,7 @@ export const Game6 = () => {
     const items = JSON.parse(tempData[tempSounds[round]].conteudo);
 
     setSound(items.pergunta);
+    setImage(items.image);
     setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
@@ -75,12 +78,13 @@ export const Game6 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
-
+  }, [setIsLoading, setImage, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
+  console.log("images: ", image);
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setImage(items.image);
     setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
@@ -204,7 +208,7 @@ export const Game6 = () => {
   return (
     <Container>
       <TitleLesson title="Choose the 3 correct alternatives." />
-      <SubTitleLessonAudioImg audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudioImg img={image} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {

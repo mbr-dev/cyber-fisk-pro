@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL4 } from "../HeaderLessonSL4";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -227,6 +228,8 @@ export const GameSL4 = () => {
           })}
         </Keyboard>
       </Main>
+
+      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" />
     </Container>
   )
 }

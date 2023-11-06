@@ -32,7 +32,7 @@ export const Game20 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
+  console.log("answer: ", answer.length)
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -87,7 +87,7 @@ export const Game20 = () => {
     let answerIndex = answer[countQ];
 
     if (answerIndex.includes(tempWord)) {
-      if (countQ < 4) {
+      if (countQ < (answer.length - 1)) {
         let tempCount = countQ;
         tempCount++;
         setCountQ(tempCount);

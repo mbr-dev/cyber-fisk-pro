@@ -586,6 +586,7 @@
   "L1_T2_Dificil": [
     {
       "pergunta": "L1_Task2_D_0",
+      "image": "L1_T2_D_0",
       "resposta": [
         {"label": "Good morning.", "status": 0},
         {"label": "Good afternoon", "status": 1},
@@ -597,6 +598,7 @@
     },
     {
       "pergunta": "L1_Task2_D_1",
+      "image": "L1_T2_D_1",
       "resposta": [
         {"label": "I’m not from the USA.", "status": 1},
         {"label": "I’m from Australia.", "status": 1},
@@ -608,6 +610,7 @@
     },
     {
       "pergunta": "L1_Task2_D_2",
+      "image": "L1_T2_D_2",
       "resposta": [
         {"label": "His name is Adam Brooker.", "status": 1},
         {"label": "His name is Adam Brooks.", "status": 0},
@@ -647,94 +650,138 @@
 
   "L2_T1_Facil": [
     {
-      "pergunta": {"audio": "L2_Task1_F_0", "status": 0},
-      "resposta": {"label": "chicken", "status": 0}
+      "pergunta": [
+        {"audio": "L2_Task1_F_0", "status": 0},
+        {"audio": "L2_Task1_F_1", "status": 1},
+        {"audio": "L2_Task1_F_2", "status": 2}
+      ],
+      "resposta": [
+        {"label": "chicken", "status": 0},
+        {"label": "an iced tea", "status": 1},
+        {"label": "an orange juice", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_F_1", "status": 1},
-      "resposta": {"label": "an iced tea", "status": 1}
+      "pergunta": [
+        {"audio": "L2_Task1_F_3", "status": 0},
+        {"audio": "L2_Task1_F_4", "status": 1},
+        {"audio": "L2_Task1_F_5", "status": 2}
+      ],
+      "resposta": [
+        {"label": "steak", "status": 0},
+        {"label": "crackers", "status": 1},
+        {"label": "potato chips", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_F_2", "status": 2},
-      "resposta": {"label": "an orange juice", "status": 2}
+      "pergunta": [
+        {"audio": "L2_Task1_F_6", "status": 0},
+        {"audio": "L2_Task1_F_7", "status": 1},
+        {"audio": "L2_Task1_F_8", "status": 2}
+      ],
+      "resposta": [
+        {"label": "protein bar", "status": 0},
+        {"label": "chocolate cake", "status": 1},
+        {"label": "frozen yogurt", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_F_3", "status": 3},
-      "resposta": {"label": "steak", "status": 3}
+      "pergunta": [
+        {"audio": "L2_Task1_F_9", "status": 0},
+        {"audio": "L2_Task1_F_10", "status": 1},
+        {"audio": "L2_Task1_F_11", "status": 2}
+      ],
+      "resposta": [
+        {"label": "rice", "status": 0},
+        {"label": "lasagna", "status": 1},
+        {"label": "salad", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_F_4", "status": 4},
-      "resposta": {"label": "crackers", "status": 4}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_F_5", "status": 5},
-      "resposta": {"label": "potato chips", "status": 5}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_F_6", "status": 6},
-      "resposta": {"label": "protein bar", "status": 6}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_F_7", "status": 7},
-      "resposta": { "label": "chocolate cake", "status": 7}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_F_8", "status": 8},
-      "resposta": { "label": "frozen yogurt", "status": 8}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_F_9", "status": 9},
-      "resposta": { "label": "rice", "status": 9}
+      "pergunta": [
+        {"audio": "L2_Task1_F_12", "status": 0},
+        {"audio": "L2_Task1_F_13", "status": 1},
+        {"audio": "L2_Task1_F_14", "status": 2}
+      ],
+      "resposta": [
+        {"label": "spaghetti", "status": 0},
+        {"label": "sushi", "status": 1},
+        {"label": "cookies", "status": 2}
+      ]
     }
   ],
   "L2_T1_Medio": [
     {
-      "pergunta": {"audio": "L2_Task1_M_0", "status": 0},
-      "resposta": {"label": "Yes, they do.", "status": 0}
+      "pergunta": [
+        {"audio": "L2_Task1_M_0", "status": 0},
+        {"audio": "L2_Task1_M_1", "status": 1},
+        {"audio": "L2_Task1_M_2", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Yes, they do.", "status": 0},
+        {"label": "No, he doesn’t.", "status": 1},
+        {"label": "Yes, I do.", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_M_1", "status": 1},
-      "resposta": {"label": "No, he doesn’t.", "status": 1}
+      "pergunta": [
+        {"audio": "L2_Task1_M_3", "status": 0},
+        {"audio": "L2_Task1_M_4", "status": 1},
+        {"audio": "L2_Task1_M_5", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Yes, she does.", "status": 0},
+        {"label": "Yes, he does.", "status": 1},
+        {"label": "No, it doesn’t.", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_M_2", "status": 2},
-      "resposta":  {"label": "Yes, I do.", "status": 2}
+      "pergunta": [
+        {"audio": "L2_Task1_M_6", "status": 0},
+        {"audio": "L2_Task1_M_7", "status": 1},
+        {"audio": "L2_Task1_M_8", "status": 2}
+      ],
+      "resposta": [
+        {"label": "No, we don’t.", "status": 0},
+        {"label": "Yes, they do.", "status": 1},
+        {"label": "No, he doesn’t.", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_M_3", "status": 3},
-      "resposta": {"label": "Yes, she does.", "status": 3}
+      "pergunta": [
+        {"audio": "L2_Task1_M_9", "status": 0},
+        {"audio": "L2_Task1_M_10", "status": 1},
+        {"audio": "L2_Task1_M_11", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Yes, we do.", "status": 0},
+        {"label": "No, they don’t.", "status": 1},
+        {"label": "Yes, she does.", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1_M_4", "status": 4},
-      "resposta": {"label": "Yes, he does.", "status": 4}
+      "pergunta": [
+        {"audio": "L2_Task1_M_12", "status": 0},
+        {"audio": "L2_Task1_M_13", "status": 1},
+        {"audio": "L2_Task1_M_14", "status": 2}
+      ],
+      "resposta": [
+        {"label": "Yes, he does.", "status": 0},
+        {"label": "No, she doesn’t.", "status": 1},
+        {"label": "Yes, it does.", "status": 2}
+      ]
     },
     {
-      "pergunta": {"audio": "L2_Task1M_5", "status": 5},
-      "resposta": {"label": "No, it doesn’t.", "status": 5}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_M_6", "status": 6},
-      "resposta": {"label": "No, we don’t.", "status": 6}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_M_7", "status": 7},
-      "resposta": {"label": "Yes, they do.", "status": 7}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_M_8", "status": 8},
-      "resposta": {"label": "Yes, we do.", "status": 8}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_M_9", "status": 9},
-      "resposta": {"label": "No, they don’t.", "status": 9}
-    },
-    {
-      "pergunta": { "audio": "L2_Task1_M_10", "status": 10},
-      "resposta": { "label": "No, he doesn’t.", "status": 10}
-    },
-    {
-      "pergunta": {"audio": "L2_Task1_M_11", "status": 11},
-      "resposta": {"label": "Yes, she does.", "status": 11}
+      "pergunta": [
+        {"audio": "L2_Task1_M_15", "status": 0},
+        {"audio": "L2_Task1_M_16", "status": 1},
+        {"audio": "L2_Task1_M_17", "status": 2}
+      ],
+      "resposta": [
+        {"label": "No, he doesn’t.", "status": 0},
+        {"label": "Yes, it does.", "status": 1},
+        {"label": "Yes, I do.", "status": 2}
+      ]
     }
   ],
   "L2_T1_Dificil": [
@@ -837,7 +884,7 @@
       "resposta": "Would you like a dessert?"
     },
     {
-      "pergunta": ["1 to 10", "please", "count", "from", "."],
+      "pergunta": ["1", "to", "10", "please", "count", "from", "."],
       "resposta": "Please count from 1 to 10."
     },
     {
@@ -2497,15 +2544,13 @@
         "What are the parents doing?",
         "What are they baking?",
         "Are they baking a cake too?",
-        "Does the son like baked potatoes?",
-        "Where is the son going?"
+        "Does the son like baked potatoes?"
       ],
       "resposta": [
-        "They are cooking.",
-        "They are baking potatoes.",
+        ["They are cooking.", "They are cooking dinner.", "Cooking dinner.", "Cooking."],
+        ["They are baking potatoes.", "Potatoes."],
         ["No, they aren’t.", "No, they aren’t baking a cake too.", "No. They are baking an apple pie."],
-        ["Yes, he does.", "Yes, he likes baked potatoes."],
-        "He’s going to his parent’s house."
+        ["Yes, he does.", "Yes, he likes baked potatoes."]
       ]
     },
     {
@@ -2519,10 +2564,10 @@
       ],
       "resposta": [
         ["They are in a store.", "In a store."],
-        "He wants a polo shirt in red.",
-        "He is a small.",
+        ["He wants a polo shirt in red.", "A red polo shirt.", "A polo shirt in red."],
+        ["He is a small.", "He’s a small.", "Small."],
         ["Yes, she does.", "Yes, she gives him the polo shirt."],
-        "In the fitting room."
+        ["In the fitting room.", "He tries on the shirt in the fitting room."]
       ]
     },
     {
@@ -2536,10 +2581,10 @@
       ],
       "resposta": [
         ["Yes, she is.", "Yes, she is fine."],
-        ["At a costume party.", "He is at a costume party."],
-        ["Yes, he is.", "Yes, he is wearing a costume."],
-        ["No, he isn’t.", "No, he isn’t eating."],
-        "She is watching TV."
+        ["At a costume party.", "He is at a costume party.", "He’s at a costume party."],
+        ["Yes, he is.", "Yes, he is wearing a costume.", "Yes, he’s wearing a costume."],
+        ["No, he isn’t.", "No, he isn’t eating.", "No, he’s not eating."],
+        ["She is watching TV.", "Watching TV."]
       ]
     }
   ],

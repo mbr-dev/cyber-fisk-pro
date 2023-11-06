@@ -14,22 +14,11 @@ export const Main = styled.div`
   overflow: hidden;
   position: relative;
 
-  h2 {
-    font-size: 28px;
-    color: ${props => props.theme.white};
-  }
-
   .bgImg {
     width: 100%;
     height: 100%;
     z-index: -1;
     position: absolute;
-  }
-
-  @media(max-width: 320px) {
-    h2 {
-      font-size: 24px;
-    }
   }
 `
 

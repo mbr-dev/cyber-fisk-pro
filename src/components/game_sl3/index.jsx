@@ -5,6 +5,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -165,16 +166,35 @@ export const GameSL3 = () => {
 
       const isStartCorrect = correctStarts.some((start) => userText.startsWith(start));
 
+      let tempRound = round;
+      let tempGeneralRound = rodadaGeral;
+
       if (isStartCorrect) {
         const newStatus = [...statusColor];
         newStatus[rodadaGeral] = 1;
         setStatusColor(newStatus);
 
+        tempRound++;
+        setRound(tempRound);
+
+        tempGeneralRound++;
+        setNewRodada(tempGeneralRound);
+
+        if (round === 9) {
+          setTimeout(() => {
+            navigate("/WellDone")
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            newRound(tempRound);
+          }, 2000);
+        }
+
         setCorrectPoints(tempP);
       } else {
-        const newStatus = [...statusColor];
-        newStatus[rodadaGeral] = 2;
-        setStatusColor(newStatus);
+        // const newStatus = [...statusColor];
+        // newStatus[rodadaGeral] = 2;
+        // setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -184,38 +204,36 @@ export const GameSL3 = () => {
       const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
 
       if (isAnswerCorrect) {
-        const newStatus = [...statusColor];
-        newStatus[rodadaGeral] = 1;
-        setStatusColor(newStatus);
+        // const newStatus = [...statusColor];
+        // newStatus[rodadaGeral] = 1;
+        // setStatusColor(newStatus);
 
         setCorrectPoints(tempP);
+
+        tempRound++;
+        setRound(tempRound);
+
+        tempGeneralRound++;
+        setNewRodada(tempGeneralRound);
+
+        if (round === 9) {
+          setTimeout(() => {
+            navigate("/WellDone")
+          }, 2000);
+        } else {
+          setTimeout(() => {
+            newRound(tempRound);
+          }, 2000);
+        }
       } else {
-        const newStatus = [...statusColor];
-        newStatus[rodadaGeral] = 2;
-        setStatusColor(newStatus);
+        // const newStatus = [...statusColor];
+        // newStatus[rodadaGeral] = 2;
+        // setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
         setWrongPoints(tempE);
       }
-    }
-
-    let tempRound = round;
-    tempRound++;
-    setRound(tempRound);
-
-    let tempGeneralRound = rodadaGeral;
-    tempGeneralRound++;
-    setNewRodada(tempGeneralRound);
-
-    if (round === 9) {
-      setTimeout(() => {
-        navigate("/WellDone")
-      }, 2000);
-    } else {
-      setTimeout(() => {
-        newRound(tempRound);
-      }, 2000);
     }
   }
 
@@ -281,7 +299,7 @@ export const GameSL3 = () => {
         :
         <TitleLesson title="Solve the code to answer the question." />
       }
-      <p>{timeElapsed}</p>
+
       <Main>
         {!changed ? 
           <Phrase>
@@ -359,6 +377,7 @@ export const GameSL3 = () => {
             </form>
             <ButtonBg
               mt="1.5rem"
+              mb="3rem"
               w="13rem"
               h="3rem"
               form="myForm"
@@ -370,6 +389,8 @@ export const GameSL3 = () => {
           </Answer>
         }
       </Main>
+
+      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" />
     </Container>
   )
 }

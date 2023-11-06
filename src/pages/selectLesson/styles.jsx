@@ -30,6 +30,21 @@ export const SelectLessonArea = styled.div`
     width: 140px;
     gap: 8px;
   }
+
+  @media(min-width: 600px) {
+    grid-template-rows: (2, 5rem);
+    grid-template-columns: repeat(5, 5rem);
+    align-items: center;
+    justify-content: center;
+    padding-block: 16px;
+  }
+  
+  @media(min-width: 1024px) {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 36px;
+    width: 800px;
+  }
 `;
 
 export const ButtonLesson = styled.button`
@@ -48,7 +63,7 @@ export const ButtonLesson = styled.button`
 
   p {
     font-weight: bold;
-    font-size: 32px
+    font-size: 32px;
   }
 
   span {
@@ -84,6 +99,19 @@ export const ButtonLesson = styled.button`
 
     span {
       font-size: 12px
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 124px;
+    height: 120px;
+
+    p {
+      font-size: 48px;
+    }
+
+    span {
+      font-size: 20px;
     }
   }
 `;

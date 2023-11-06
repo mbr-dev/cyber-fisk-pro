@@ -16,7 +16,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
 export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
-  const { rodadaGeral, statusColor } = useContext(LessonContext);
+  const { statusColor } = useContext(LessonContext);
 
   return(
     <Container>

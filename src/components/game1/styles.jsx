@@ -26,4 +26,9 @@ export const Main = styled.main`
     justify-content: center;
     gap: 2rem;
   }
+
+  @media(min-width: 1024px) {
+    gap: 64px;
+    margin-top: 44px;
+  }
 `;

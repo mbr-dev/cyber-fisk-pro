@@ -31,7 +31,15 @@ export const Container = styled.header`
     height: 64px;
 
     p {
-    font-size: 18px;
+      font-size: 18px;
+    }
   }
+
+  @media(min-width: 1024px) {
+    height: 120px;
+
+    p {
+      font-size: 44px;
+    }
   }
 `;

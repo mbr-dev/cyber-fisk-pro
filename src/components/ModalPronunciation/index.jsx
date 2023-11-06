@@ -10,24 +10,6 @@ import SpainImg from "../../assets/Spain.svg";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Content, Close, Overlay, Main, Header, Form, SelectLanguage, ButtonHear, ButtonFlag } from "./styles";
 
-/* 
-  lang: 'en-US' 'Microsoft David - English (United States)'
-  lang: 'en-US' 'Microsoft Mark - English (United States)'
-  lang: 'en-US' 'Microsoft Zira - English (United States)'
-  lang: 'en-US' 'Google US English'
-  lang: 'en-GB' 'Google UK English Female'
-  lang: 'en-GB' 'Google UK English Male'
-
-  lang: 'pt-BR' 'Microsoft Daniel - Portuguese (Brazil)'
-  lang: 'pt-BR' 'Microsoft Maria - Portuguese (Brazil)'
-  lang: 'pt-BR' 'Google português do Brasil'
-  lang: 'pt-BR'
-  lang: 'pt-BR'
-
-  lang: 'es-ES' 'Google español'
-  lang: 'es-US' 'Google español de Estados Unidos'
-*/
-
 export const ModalPronunciation = () => {
   const languageToVoice = {
     "pt-BR": "Microsoft Maria - Portuguese (Brazil)",

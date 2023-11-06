@@ -6,6 +6,7 @@ import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { FooterBtnHome } from "../FooterBtnHome";
 import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
@@ -164,7 +165,7 @@ export const GameSL5 = () => {
 
   return (
     <Container>
-      <HeaderLessonSLTitle title="Super Lesson 5" />
+      <HeaderLessonSLTitle superTaskStart trophyEnd title="Super Lesson 5" numStart="Super task" numEnd="Finish" />
       <TitleLesson title="Make 5 Words" />
 
       <Main>
@@ -244,6 +245,8 @@ export const GameSL5 = () => {
           />
         </ButtonArea>
       </Main>
+
+      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" mt="16px" />
     </Container>
   )
 }

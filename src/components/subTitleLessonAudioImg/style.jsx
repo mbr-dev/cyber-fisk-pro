@@ -7,16 +7,16 @@ export const Container = styled.div`
   justify-content: space-around;
   gap: 1rem;
   background-color: ${props => props.theme["gray-100"]};
-  padding-top: 0.625rem;
+  padding-block: 0.625rem;
   
   .img2 {
-    width: 50%;
-    margin-right: 0.75rem;
+    width: 180px;
+    border-radius: 8px;
   }
 
-  @media(max-width: 320px) {
+  @media(min-width: 320px) {
     .img2 {
-      width: 40%;
+      width: 120px;
     }
   }
 `

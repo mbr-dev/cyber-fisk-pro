@@ -17,12 +17,16 @@ import Spain from "../../assets/Spain.svg";
 import Brazil from "../../assets/Brazil.svg";
 import arrowBottom from "../../assets/arrowBottom.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
+import Buddy from "../../assets/Buddy.png";
+import Youtube from "../../assets/Youtube.png";
+import Instagram from "../../assets/Instagram.png";
+import Facebook from "../../assets/Facebook.png";
 
 import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
-import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl } from "./styles";
+import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { apiQAS } from "../../lib/api";
 
@@ -38,6 +42,8 @@ export const Login = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState(false);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -137,8 +143,21 @@ export const Login = () => {
       {loading ? <Loading /> : null}
       <Header>
         <img src={bgHeaderImg} alt="" className="bgImg" />
-        <img src={logoImg} alt="Logo do Fisk Pro" />
+        <img src={logoImg} alt="Logo do Fisk Pro" className="logoFisk" />
+
+        {isDesktop && <img src={Buddy} alt="" className="buddyImg" />}
+        {isDesktop && 
+          <FooterBlue>
+            <p>Para Dicas e informações</p>
+            <div>
+              <img src={Youtube} alt="Youtube" />
+              <img src={Instagram} alt="Instagram" />
+              <img src={Facebook} alt="Facebook" />
+            </div>
+          </FooterBlue>
+        }
       </Header>
+
       <Main>
         <Form onKeyDown={(e) => {e.keyCode === 13 ? handleSignIn() : null}}>
           {error ? 
@@ -146,7 +165,7 @@ export const Login = () => {
           }
           <AreaInput>
           {selectLanguage === 0 ? <label>{translateLogin[0].name}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].name}:</label> : <label>{translateLogin[2].name}:</label>}
-            <User size={16} strokeWidth={2.5} />
+            <User size={isDesktop ? 24 : 16} strokeWidth={2.5} />
             <Input
               type="text"
               placeholder={selectLanguage === 0 ? translateLogin[0].plName : selectLanguage === 1 ? translateLogin[1].plName : translateLogin[2].plName}
@@ -157,11 +176,11 @@ export const Login = () => {
           </AreaInput>
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].password}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].password}:</label> : <label>{translateLogin[2].password}:</label>}
-            <Lock size={16} strokeWidth={2.5} />
+            <Lock size={isDesktop ? 24 : 16} strokeWidth={2.5} />
             {!viewPass ?
-              <EyeOff size={16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
+              <EyeOff size={isDesktop ? 24 : 16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
               :
-              <Eye size={16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
+              <Eye size={isDesktop ? 24 : 16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
             }
             
             <Input 
@@ -198,22 +217,25 @@ export const Login = () => {
             </SelectIdioma>
           </AreaInput>
         </Form>
-        
+
+        <div>
+          <LineSeparator w="100%" bg={defaultTheme["gray-200"]}  />
+          <ButtonBg
+            title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
+            form="myForm"
+            greenBtn
+            type="submit"
+            w="15.875rem"
+            h="2.5rem"
+            mb="12px"
+            mt="12px"
+            onPress={handleSignIn}
+          />
+        </div>
       </Main>
 
-      <LineSeparator w="80%" bg={defaultTheme["gray-200"]}  />
-      <ButtonBg
-        title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
-        form="myForm"
-        greenBtn
-        type="submit"
-        w="15.875rem"
-        h="2.5rem"
-        mb="12px"
-        mt="12px"
-        onPress={handleSignIn}
-      />
-      <Footer />
+
+      {!isDesktop && <Footer />}
     </Container>
   )
 }

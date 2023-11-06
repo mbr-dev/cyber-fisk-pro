@@ -1,15 +1,15 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 
-export const Container = styled.div`
-  width: 100%;
-`;
-  
+export const Container = styled.div``;
+
 export const Main = styled.div`
-  width: 1.25rem;
+  width: 60px;
   height: 1.25rem;
   background-color: ${props => props.theme["gray-200"]};
   border: 1px solid ${props => props.theme.black};
-  border-left: transparent;
+  border-left: 0;
+  border-top-right-radius: 6px;
+  border-bottom-right-radius: 6px;
 
   @media(max-width: 320px) {
     width: 1rem;
@@ -25,4 +25,4 @@ export const Main = styled.div`
     width: 64px;
     height: 32px;
   }
-`;
+`

@@ -20,4 +20,9 @@ export const Main = styled.div`
     width: 1.5rem;
     height: 1.5rem;
   }
+
+  @media(min-width: 1024px) {
+    width: 64px;
+    height: 32px;
+  }
 `
