@@ -11,11 +11,10 @@ import RoboPe from "../../assets/roboPe.png";
 
 import { Container, TopHeader, BottomHeader, Avatar } from "./styles";
 
-export const HeaderTextImage
- = ({ title, hasAvatar, enabledClose }) => {
+export const HeaderTextImage = ({ title, hasAvatar, enabledClose }) => {
   const [name, setName] = useState("");
 
-  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   useEffect(() => {
     const cookies = new Cookies();
@@ -27,20 +26,22 @@ export const HeaderTextImage
       <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
       <TopHeader>
         <ButtonMenuHeader />
-        {!isDesktop && <p>{title}</p>}
-        {!enabledClose && !isDesktop && <ButtonCloseHeader />}
+        {/* {!isDesktop && <p>{title}</p>} */}
+        {!enabledClose && <ButtonCloseHeader />}
+        {isDesktop && <img src={LogoFisk} className="logoFiskD" alt="Logo Fisk"/>}
       </TopHeader>
 
-      <BottomHeader>
-        {hasAvatar && 
-          <Avatar>
-            {!isDesktop &&<img src={RoboWD} alt="" />}
-            {isDesktop &&<img src={RoboPe} alt="" className="roboPe" />}
-            <p>Maria Santos</p>
-          </Avatar>
-        }
-        {!isDesktop && <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>}
-      </BottomHeader>
+      {!isDesktop &&
+        <BottomHeader>
+          {hasAvatar &&
+            <Avatar>
+              <img src={RoboWD} alt="" />
+              <p>Maria Santos</p>
+            </Avatar>
+          }
+          <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
+        </BottomHeader>
+      }
     </Container>
   )
 }

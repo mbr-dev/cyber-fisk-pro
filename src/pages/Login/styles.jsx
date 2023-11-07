@@ -59,6 +59,18 @@ export const Header = styled.header`
       width: 420px;
     }
   }
+
+  @media(min-width: 2560px) {
+    width: 40%;
+
+    .logoFisk {
+      width: 400px;
+    }
+
+    .buddyImg {
+      width: 500px;
+    }
+  }
 `;
 
 export const FooterBlue = styled.header`
@@ -82,6 +94,20 @@ export const FooterBlue = styled.header`
 
     img {
       width: 56px;
+    }
+  }
+
+  @media(min-width: 2560px) {
+    p {
+      font-size: 28px;
+    }
+
+    div {
+      gap: 44px;
+
+      img {
+        width: 84px;
+      }
     }
   }
 `;
@@ -136,6 +162,10 @@ export const Form = styled.div`
   @media(min-width: 1024px) {
     width: 70%;
   }
+
+  @media(min-width: 2560px) {
+    width: 60%;
+  }
 `;
 
 export const AreaInput = styled.div`
@@ -163,7 +193,7 @@ export const AreaInput = styled.div`
   .eye {
     position: absolute;
     top: 44px;
-    left: 300px;
+    left: 270px;
     color: ${props => props.theme["gray-400"]};
     /* @media(max-width: 1024px) {
       left: 270px !important;
@@ -204,6 +234,18 @@ export const AreaInput = styled.div`
     .eye {
       top: 62px;
       left: 430px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    .eye {
+      left: 540px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    .eye {
+      left: 870px;
     }
   }
 `;
@@ -323,4 +365,12 @@ export const SelectLi = styled.li`
     font-size: 24px;
     font-weight: 500;
   }
+`;
+
+export const AreaButton = styled.div`
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { HeaderStepLesson } from "../HeaderStepLesson";
-import { HeaderStepLessonEnd } from "../HeaderStepLessonEnd";
-import { HeaderStepLessonStart } from "../HeaderStepLessonStart";
+import { HeaderStepLessonEnd } from "./components/HeaderStepLessonEnd";
+import { HeaderStepLessonStart } from "./components/HeaderStepLessonStart";
+import { HeaderStepLesson } from "./components/HeaderStepLesson";
 
 import { LessonContext } from "../../context/lesson";
 
@@ -15,7 +15,7 @@ import bgHeader from "../../assets/bgHeaderText.png";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
-export function HeaderLessonSL1({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
+export const HeaderLessonSL6 = ({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) => {
   const { statusColor } = useContext(LessonContext);
 
   return(
@@ -37,20 +37,11 @@ export function HeaderLessonSL1({ numStart, numEnd, superTaskEnd, superTaskStart
           />
 
           <HeaderStepLesson
-            color={statusColor[1] === 0 ? defaultTheme["gray-100"] : statusColor[1] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
-          />
-          <HeaderStepLesson
-            color={statusColor[2] === 0 ? defaultTheme["gray-100"] : statusColor[2] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
-          />
-          <HeaderStepLesson
-            color={statusColor[3] === 0 ? defaultTheme["gray-100"] : statusColor[3] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
-          />
-          <HeaderStepLesson
-            color={statusColor[4] === 0 ? defaultTheme["gray-100"] : statusColor[4] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+            color={statusColor[1] === 0 ? defaultTheme["gray-100"] : statusColor[1] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]} 
           />
 
           <HeaderStepLessonEnd
-            color={statusColor[5] === 0 ? defaultTheme["gray-100"] : statusColor[5] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
+            color={statusColor[2] === 0 ? defaultTheme["gray-100"] : statusColor[2] === 1 ? defaultTheme["blue-500"] : defaultTheme["orange-100"]}
           />
         </BarStep>
 

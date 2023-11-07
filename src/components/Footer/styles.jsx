@@ -25,6 +25,13 @@ export const Container = styled.footer`
       font-size: 0.865rem;
     }
   }
+
+  @media(min-width: 1024px) {
+    p {
+      font-size: 20px;
+      padding-inline: 44px;
+    }
+  }
 `;
 
 export const Main = styled.div`
@@ -46,8 +53,19 @@ export const Main = styled.div`
     img {
       width: 48px;
     }
+
     .iconFooter {
       width: 1.75rem;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    img {
+      width: 86px;
+    }
+
+    .iconFooter {
+      width: 64px;
     }
   }
 `;

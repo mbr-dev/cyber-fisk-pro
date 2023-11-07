@@ -26,7 +26,7 @@ import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
-import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue } from "./styles";
+import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { apiQAS } from "../../lib/api";
 
@@ -44,6 +44,7 @@ export const Login = () => {
   const [viewPass, setViewPass] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isDesktopUltra = window.matchMedia("(min-width: 2560px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -148,7 +149,10 @@ export const Login = () => {
         {isDesktop && <img src={Buddy} alt="" className="buddyImg" />}
         {isDesktop && 
           <FooterBlue>
-            <p>Para Dicas e informações</p>
+            {
+              selectLanguage === 0 ? <p>Para dicas e informações</p> : selectLanguage === 1 ?  <p>For tips and information</p> : <p>Para consejos e información</p>
+            }
+            
             <div>
               <img src={Youtube} alt="Youtube" />
               <img src={Instagram} alt="Instagram" />
@@ -174,6 +178,7 @@ export const Login = () => {
               required
             />
           </AreaInput>
+
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].password}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].password}:</label> : <label>{translateLogin[2].password}:</label>}
             <Lock size={isDesktop ? 24 : 16} strokeWidth={2.5} />
@@ -191,6 +196,7 @@ export const Login = () => {
               required
             />
           </AreaInput>
+
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].language}</label> : selectLanguage === 1 ? <label>{translateLogin[1].language}</label> : <label>{translateLogin[2].language}</label>}
 
@@ -218,22 +224,22 @@ export const Login = () => {
           </AreaInput>
         </Form>
 
-        <div>
-          <LineSeparator w="100%" bg={defaultTheme["gray-200"]}  />
+        <AreaButton>
+          <LineSeparator w={isDesktopUltra ? "85%" :  isDesktop ? "100%" : "290px"} bg={defaultTheme["gray-200"]}  />
           <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"
             greenBtn
             type="submit"
-            w="15.875rem"
-            h="2.5rem"
-            mb="12px"
-            mt="12px"
+            w={isDesktop ? "300px" : "254px"}
+            h={isDesktop ? "56px" : "40px"}
+            mb={isDesktop ? "28px" : "12px"}
+            mt={isDesktop ? "28px" : "12px"}
+            fs={isDesktop ? "32px" : "24px"}
             onPress={handleSignIn}
           />
-        </div>
+        </AreaButton>
       </Main>
-
 
       {!isDesktop && <Footer />}
     </Container>

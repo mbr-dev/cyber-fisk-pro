@@ -70,6 +70,29 @@ export const Card = styled.button`
       font-size: 0.75rem;
     }
   }
+
+  @media(min-width: 1024px) {
+    width: 96px;
+    height: 96px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    width: 102px;
+    height: 102px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 120px;
+    height: 120px;
+
+    p {
+      font-size: 24px;
+    }
+  }
 `;
 
 export const Icon = styled.img`

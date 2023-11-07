@@ -28,11 +28,14 @@ export const GameSL1 = () => {
   const [letters, setLetters] = useState([]);
   const [answers, setAnswers] = useState("");
   const [rightPoints, setRightPoints] = useState(0);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
   const [blockButton, setBlockButton] = useState(true);
   const [intervalId, setIntervalId] = useState(null);
   const [blockLetters, setBlockLetters] = useState(false);
   const [countTimer, setCountTimer] = useState(0);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const navigate = useNavigate();
 
@@ -146,21 +149,29 @@ export const GameSL1 = () => {
       }
 
       setRightPoints(tempA);
-
-      let tempRound = round;
-      tempRound++;
-      setRound(tempRound);
-
-      let tempGeneralRound = rodadaGeral;
-      tempGeneralRound++;
-      setNewRodada(tempGeneralRound);
-
-      setTimeout(() => {
-        newRound(tempRound);
-      }, 1500);
     } else {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
+
       resetField();
     }
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    setTimeout(() => {
+      newRound(tempRound);
+    }, 1500);
   }
 
   const timePointer = () => {
@@ -176,7 +187,6 @@ export const GameSL1 = () => {
   useEffect(() => {
     loadLesson();
   }, []);
-  console.log(answers);
 
   useEffect(() => {
     return () => {
@@ -199,7 +209,7 @@ export const GameSL1 = () => {
   }, [setTimeElapsed]);
 
   useEffect(() => {
-    if (timeElapsed >= 300) {
+    if (wrongPoints > 3) {
       setTimeout(() => {
         navigate("/GameOver");
       }, 1500);
@@ -254,8 +264,9 @@ export const GameSL1 = () => {
             return (
               <ButtonAnswer 
                 key={index}
-                w="1rem"
-                h="2.75rem"
+                fs={isDesktop ? "32px" : ""}
+                w={isDesktop ? "42px" : "1rem"}
+                h={isDesktop ? "64px" : "2.75rem"}
                 onPress={() => handleClick(letter)}
                 disabledButton={blockLetters}
               >
@@ -268,15 +279,17 @@ export const GameSL1 = () => {
 
       <AreaButtons>
         <ButtonBg
-          h="2.5rem"
-          w="9rem"
+          fs={isDesktop && "28px"}
+          h={isDesktop ? "44px" : "2.5rem"}
+          w={isDesktop ? "200px" : "9rem"}
           onPress={handleClearField}
           title="Clear"
         />
 
         <ButtonBg
-          h="2.5rem"
-          w="9rem"
+          fs={isDesktop && "28px"}
+          h={isDesktop ? "44px" : "2.5rem"}
+          w={isDesktop ? "200px" : "9rem"}
           greenBtn
           onPress={handleVerify}
           disabledButton={blockButton}
@@ -284,7 +297,16 @@ export const GameSL1 = () => {
         />
       </AreaButtons>
 
-      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" />
+      <FooterBtnHome 
+        fs={isDesktop && "32px"}
+        wl={isDesktop ? "48%" : "80%"}
+        hasLS
+        wl="20%"
+        title="Tasks" 
+        rota="LessonSelection"
+        w={isDesktop && "450px"}
+        h={isDesktop && "52px"}
+      />
     </Container>
   )
 }

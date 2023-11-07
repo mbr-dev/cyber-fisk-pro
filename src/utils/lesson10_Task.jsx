@@ -316,6 +316,26 @@ export const L10_T2_Dificil = [
 export const L10_SUPER_LESSON = [
   { 
     letras: ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
-    resposta: ["classical", "dance", "country", "reggae", "rock", "jazz"]
+    resposta: "classical"
+  },
+  { 
+    letras: ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+    resposta: "dance"
+  },
+  { 
+    letras: ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+    resposta: "country"
+  },
+  { 
+    letras: ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+    resposta: "reggae"
+  },
+  { 
+    letras: ["B", "C", "D", "E", "G", "I", "F", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+    resposta: "rock"
+  },
+  { 
+    letras: ["A", "B", "D", "E", "G", "I", "J", "W", "L", "N", "M", "P", "S", "T", "U", "Y", "Z"],
+    resposta: "jazz"
   }
 ]

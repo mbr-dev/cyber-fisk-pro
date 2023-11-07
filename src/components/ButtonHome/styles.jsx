@@ -2,8 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
-  width: 254px;
-  height: 40px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +14,6 @@ export const Container = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 20px;
     font-weight: bold;
   }
 

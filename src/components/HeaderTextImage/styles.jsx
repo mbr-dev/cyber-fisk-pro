@@ -33,12 +33,11 @@ export const Container = styled.header`
     height: 184px;
   }
 
-  @media(min-width: 1280px) {
-    width: 480px;
-    height: 100vh;
-    padding: 32px 32px 0 32px;
-    border-end-end-radius: 0px;
-    border-end-start-radius: 0px;
+  @media(min-width: 1024px) {
+    height: 120px;
+    justify-content: center;
+    padding: 0;
+    padding-inline: 32px;
   }
 `;
 
@@ -47,6 +46,10 @@ export const TopHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  .logoFiskD {
+    width: 120px;
+  }
 
   p {
     font-size: 24px;

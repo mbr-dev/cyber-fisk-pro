@@ -1,49 +1,97 @@
 import { useState, useContext, useEffect, useCallback } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { ButtonAnswer } from "../ButtonAnswer";
+import { HeaderLessonSL1 } from "../HeaderLessonSL1";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
-import { L10_SUPER_LESSON } from "../../utils/lesson10_Task";
 import { LessonContext } from "../../context/lesson";
+import { L1_SUPER_LESSON } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, Letter, LettersArea } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons } from "./styles";
 
 export const GameSL10 = () => {
-  const {setTimeElapsed, timeElapsed} = useContext(LessonContext);
+  const { 
+    setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada
+  } = useContext(LessonContext);
 
-  const [optionColor, setOptionColor] = useState([0, 0, 0, 0, 0, 0, 0, 0, 0]);
-  const [lettersAnswer, setLettersAnswer] = useState(["", "", "", "", "", "", "", "", ""]);
+  const [lettersAnswer, setLettersAnswer] = useState([]);
+  const [data, setData] = useState([]);
   const [numberClick, setNumberClick] = useState(0);
+  const [round, setRound] = useState(0);
+  const [randomNumber, setRandomNumber] = useState([]);
   const [letters, setLetters] = useState([]);
-  const [answers, setAnswers] = useState([]);
-  const [answered, setAnswered] = useState([]);
+  const [answers, setAnswers] = useState("");
   const [rightPoints, setRightPoints] = useState(0);
-  const [wordLength, setWordLength] = useState(6);
+  const [wrongPoints, setWrongPoints] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [blockButton, setBlockButton] = useState(true);
+  const [intervalId, setIntervalId] = useState(null);
+  const [blockLetters, setBlockLetters] = useState(false);
+  const [countTimer, setCountTimer] = useState(0);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isDesktopFull = window.matchMedia("(min-width: 1920px)").matches;
+
+  const navigate = useNavigate();
+
+  console.log(answers);
 
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
 
-      /* const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=1&num_task=1");
-      const res = response.data; */
+      const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=10&num_task=1");
+      const res = response.data;
+      setData(res.dados[0].dados_conteudo);
+      
+      let dataLength = res.dados[0].dados_conteudo.length;
+      
+      let tempRandom = [];
+      for (let a = 0; a < dataLength; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+      
+      const items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
 
-      //const items = JSON.parse(res.dados[0].dados_conteudo[0].conteudo);
-      const items = L10_SUPER_LESSON[0];
+      const letter = Array(items.resposta.length).fill("");
+      setLettersAnswer(letter);
+
+      setAnswers(items.resposta);
 
       let tempLetters = items.letras;
-      setLetters(tempLetters);
-      let tempAnswers = items.resposta;
-      setAnswers(tempAnswers);
+      tempLetters = tempLetters.sort(() => Math.random() - 0.5);
+      setLetters(items.letras);
+      timePointer();
+      setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-    setIsLoading(false);
-  }, [setLetters, setAnswers]);
+  }, [setIsLoading, setRandomNumber, setData, round, setLettersAnswer, setLetters, setAnswers]);
+
+  const newRound = (number) => {
+    setNumberClick(0);
+    setCountTimer(0);
+    timePointer();
+
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
+
+    const letter = Array(items.resposta.length).fill("");
+    setLettersAnswer(letter);
+
+    setAnswers(items.resposta);
+    setLetters(items.letras);
+
+    setBlockLetters(false);
+    setBlockButton(true);
+  }
 
   const handleClearField = () => {
     let tempLetters = lettersAnswer;
@@ -59,11 +107,9 @@ export const GameSL10 = () => {
     setNumberClick(tempNumber);
   }
 
-  const clearFields = () => {
-    let temp = ["", "", "", "", "", "", "", "", ""];
+  const resetField = () => {
     setNumberClick(0);
-    setLettersAnswer(temp);
-    setOptionColor([0, 0, 0, 0, 0, 0, 0, 0, 0]);
+    setLettersAnswer(Array(L1_SUPER_LESSON[randomNumber[round]].resposta.length).fill(""));
   }
 
   const handleClick = (letter) => {
@@ -75,65 +121,83 @@ export const GameSL10 = () => {
 
     setLettersAnswer(temp);
     setNumberClick(tempNumber);
-    let rightWord = "";
+  }
 
-    lettersAnswer.map((index) => {
-      rightWord += index;
-    });
+  const handleVerify = () => {
+    const word = lettersAnswer.join("");
 
-    answers.map((world) => {
-      if (rightWord.toUpperCase() === world.toUpperCase()) {
-        if (answered.includes(world)) {
-          alert(`Voce já acertou esta palavra: ${world}`);
-        } else {
-          let tempAnswer = answered;
-          tempAnswer.push(world);
-          setAnswered(tempAnswer);
+    if (word.toLowerCase() === answers.toLowerCase()) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
 
-          setOptionColor([1, 1, 1, 1, 1, 1, 1, 1, 1]);
-          setWordLength(state => state - 1);
-        }
-
-        setTimeout(() => {
-          clearFields();
-        }, 1500);
+      if (countTimer > 91) {
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
       }
-    })
 
-    if (tempNumber > 9) {
-      clearFields();
-    }
+      let tempA = rightPoints;
 
-    let finished = answers.every(word => answered.includes(word));
-
-    if (answers.length > 0) {
-      if (finished) {
-        let tempRightPoints = rightPoints;
-
-        if (timeElapsed <= 60) {
-          tempRightPoints += 5;
-        } else if (timeElapsed >= 61 && timeElapsed <= 75) {
-          tempRightPoints += 4;
-        } else if (timeElapsed >= 76 && timeElapsed <= 90) {
-          tempRightPoints += 3;
-        } else if (timeElapsed >= 91 && timeElapsed <= 120) {
-          tempRightPoints += 2;
-        } else {
-          tempRightPoints += 1;
-        }
-
-        setRightPoints(tempRightPoints);
+      if (countTimer < 60) {
+        tempA += 5;
+      } else if (countTimer >= 61 || countTimer <= 75) {
+        tempA += 4;
+      } else if (countTimer >= 76 || countTimer <= 90) {
+        tempA += 3;
+      } else if (countTimer >= 91 || countTimer <= 120) {
+        tempA += 2;
       } else {
-        return;
+        tempA += 1;
       }
+
+      setRightPoints(tempA);
     } else {
-      return;
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+
+      let tempE = wrongPoints;
+      tempE++;
+      setWrongPoints(tempE);
+
+      resetField();
     }
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    setTimeout(() => {
+      newRound(tempRound);
+    }, 1500);
+  }
+
+  const timePointer = () => {
+    clearInterval(intervalId);
+
+    const newIntervalId = setInterval(() => {
+      setCountTimer(state => state + 1);
+    }, 1000);
+
+    setIntervalId(newIntervalId);
   }
 
   useEffect(() => {
     loadLesson();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -147,6 +211,30 @@ export const GameSL10 = () => {
     }
   }, [setTimeElapsed]);
 
+  useEffect(() => {
+    if (wrongPoints > 3) {
+      setTimeout(() => {
+        navigate("/GameOver");
+      }, 1500);
+    }
+
+    if (round === 6) {
+      setTimeout(() => {
+        navigate("/WellDone");
+      }, 1500);
+    }
+  }, [round, timeElapsed]);
+
+  useEffect(() => {
+    if (lettersAnswer.length === numberClick) {
+      setBlockButton(false);
+      setBlockLetters(true);
+    } else {
+      setBlockButton(true);
+      setBlockLetters(false);
+    }
+  }, [numberClick, lettersAnswer, setBlockButton, setBlockLetters]);
+
   if (isLoading) {
     return (
       <Loading />
@@ -155,9 +243,8 @@ export const GameSL10 = () => {
 
   return (
     <Container>
-      <TitleLesson title={
-        `How many musical styles can you write with these letters? There are ${wordLength} ${wordLength > 1 ? "words" : "word"}.`
-      } />
+      <HeaderLessonSL1 trophyEnd superTaskStart numStart="Super task" numEnd="Finish" />
+      <TitleLesson title="How many nationalities can you write with these letters?"/>
 
       <Main>
         <LettersArea>
@@ -166,10 +253,7 @@ export const GameSL10 = () => {
               <Letter 
                 key={index}
                 style={{
-                  borderColor: numberClick === index ? defaultTheme["red-200"] : optionColor[index] === 1 ? "transparent" : "",
-                  backgroundColor: optionColor[index] === 1 ? defaultTheme["green-200"] : "",
-                  color: optionColor[index] === 1 ? defaultTheme.white : "",
-                  
+                  borderColor: numberClick === index ? defaultTheme["red-200"] : "",
                 }}
               >
                 {letter}
@@ -183,22 +267,48 @@ export const GameSL10 = () => {
             return (
               <ButtonAnswer 
                 key={index}
-                w="1rem"
-                h="2.75rem"
+                fs={isDesktop ? "32px" : ""}
+                w={isDesktop ? "42px" : "1rem"}
+                h={isDesktop ? "64px" : "2.75rem"}
                 onPress={() => handleClick(letter)}
+                disabledButton={blockLetters}
               >
                 <p className="pBold">{letter}</p>
               </ButtonAnswer>
             )
           })}
         </ButtonArea>
+      </Main>
+
+      <AreaButtons>
         <ButtonBg
-          h="2.5rem"
-          w="9rem"
+          fs={isDesktop && "28px"}
+          h={isDesktop ? "44px" : "2.5rem"}
+          w={isDesktop ? "200px" : "9rem"}
           onPress={handleClearField}
           title="Clear"
         />
-      </Main>
+
+        <ButtonBg
+          fs={isDesktop && "28px"}
+          h={isDesktop ? "44px" : "2.5rem"}
+          w={isDesktop ? "200px" : "9rem"}
+          greenBtn
+          onPress={handleVerify}
+          disabledButton={blockButton}
+          title="Check"
+        />
+      </AreaButtons>
+
+      <FooterBtnHome 
+      fs={isDesktop && "32px"}
+      wl={isDesktop ? "48%" : "80%"}
+      hasLS
+      title="Tasks" 
+      rota="LessonSelection"
+      w={isDesktop && "450px"}
+      h={isDesktop && "52px"}
+    />
     </Container>
   )
 }

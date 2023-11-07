@@ -22,20 +22,20 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 150px;
+    width: 200px;
     height: 32px;
   }
 
   @media(min-width: 1440px) {
-    width: 160px;
+    width: 300px;
     height: 36px;
   }
 
   @media(min-width: 1920px) {
-    width: 220px;
+    width: 500px;
   }
 
   @media(min-width: 2560px) {
-    width: 270px;
+    width: 700px;
   }
 `;

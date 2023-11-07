@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Container } from "./styles";
 
-export const ButtonHome = ({ title, rota }) => {
+export const ButtonHome = ({ title, rota, fs, w, h }) => {
   const navigate = useNavigate();
 
   const handleGoHome = (rota) => {
@@ -14,8 +14,16 @@ export const ButtonHome = ({ title, rota }) => {
   }
 
   return (
-    <Container onClick={() => handleGoHome(rota)}>
-      <p>{title ? title : "Home"}</p>
+    <Container 
+      onClick={() => handleGoHome(rota)}
+      style={{
+        width: w ? w : "256px",
+        height: h ? h : "40px",
+      }}
+    >
+      <p style={{
+        fontSize: fs ? fs : "20px"
+      }}>{title ? title : "Home"}</p>
     </Container>
   )
 }

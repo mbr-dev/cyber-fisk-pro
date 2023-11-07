@@ -22,7 +22,20 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 64px;
+    width: 150px;
     height: 32px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 160px;
+    height: 36px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 220px;
+  }
+
+  @media(min-width: 2560px) {
+    width: 270px;
   }
 `
