@@ -1,8 +1,8 @@
 import { useContext } from "react";
 
-import { HeaderStepLesson } from "../HeaderStepLesson";
-import { HeaderStepLessonEnd } from "../HeaderStepLessonEnd";
-import { HeaderStepLessonStart } from "../HeaderStepLessonStart";
+import { HeaderStepLesson } from "./components/HeaderStepLesson";
+import { HeaderStepLessonEnd } from "./components/HeaderStepLessonEnd";
+import { HeaderStepLessonStart } from "./components/HeaderStepLessonStart";
 
 import { LessonContext } from "../../context/lesson";
 

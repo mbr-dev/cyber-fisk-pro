@@ -10,19 +10,16 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 28px;
-
-  @media(max-width: 320px) {
-   gap: 8px;
-  }
+  justify-content: space-around;
 `;
 
 export const Photos = styled.div`
-  width: 21.25rem;
+  width: 340px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -30,7 +27,24 @@ export const Photos = styled.div`
   gap: 1rem;
 
   @media(max-width: 320px) {
-   gap: 8px;
+    gap: 8px;
+  }
+
+  @media(min-width: 600px) {
+    width: 600px;
+    gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+   gap: 18px;
+  }
+
+  @media(min-width: 1440px) {
+   gap: 28px;
+  }
+
+  @media(min-width: 1920px) {
+   gap: 32px;
   }
 `;
 
@@ -52,6 +66,15 @@ export const Photo = styled.div`
     height: 70px;
     border-radius: 6px;
   }
+
+  @media(min-width: 600px) {
+    width: 250px;
+    height: 154px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 270px;
+  }
 `;
 
 export const Types = styled.div`
@@ -61,6 +84,14 @@ export const Types = styled.div`
   justify-content: center;
   flex-wrap: wrap;
   gap: 4px;
+
+  @media(min-width: 600px) {
+    gap: 12px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 18px;
+  }
 `;
 
 export const Type = styled.div`
@@ -81,6 +112,23 @@ export const Type = styled.div`
     width: 24px;
     height: 24px;
   }
+
+   @media(min-width: 600px) {
+    width: 52px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 52px;
+    height: 60px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 64px;
+    height: 72px;
+    font-size: 36px;
+  }
 `;
 
 export const Keyboard = styled.div`
@@ -95,6 +143,18 @@ export const Keyboard = styled.div`
 
   @media(max-width: 320px) {
     gap: 8px;
+  }
+
+  @media(min-width: 600px) {
+    padding: 18px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1920px) {
+    gap: 20px;
   }
 `;
 
@@ -124,5 +184,22 @@ export const Keys = styled.button`
     width: 28px;
     height: 28px;
     border-radius: 6px;
+  }
+
+  @media(min-width: 600px) {
+    width: 42px;
+    height: 42px;
+    font-size: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 52px;
+    height: 52px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
   }
 `;

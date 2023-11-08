@@ -7,11 +7,10 @@ import { ButtonCloseHeader } from "../ButtonCloseHeader";
 import LogoFisk from "../../assets/logoFisk2.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import RoboWD from "../../assets/RoboWD.png";
-import RoboPe from "../../assets/roboPe.png";
 
 import { Container, TopHeader, BottomHeader, Avatar } from "./styles";
 
-export const HeaderTextImage = ({ title, hasAvatar, enabledClose }) => {
+export const HeaderTextImage = ({ hasAvatar, enabledClose }) => {
   const [name, setName] = useState("");
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
@@ -26,7 +25,6 @@ export const HeaderTextImage = ({ title, hasAvatar, enabledClose }) => {
       <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
       <TopHeader>
         <ButtonMenuHeader />
-        {/* {!isDesktop && <p>{title}</p>} */}
         {!enabledClose && <ButtonCloseHeader />}
         {isDesktop && <img src={LogoFisk} className="logoFiskD" alt="Logo Fisk"/>}
       </TopHeader>
@@ -36,7 +34,7 @@ export const HeaderTextImage = ({ title, hasAvatar, enabledClose }) => {
           {hasAvatar &&
             <Avatar>
               <img src={RoboWD} alt="" />
-              <p>Maria Santos</p>
+              <p>{name}</p>
             </Avatar>
           }
           <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>

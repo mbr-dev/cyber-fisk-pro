@@ -301,7 +301,6 @@ export const GameSL1 = () => {
         fs={isDesktop && "32px"}
         wl={isDesktop ? "48%" : "80%"}
         hasLS
-        wl="20%"
         title="Tasks" 
         rota="LessonSelection"
         w={isDesktop && "450px"}

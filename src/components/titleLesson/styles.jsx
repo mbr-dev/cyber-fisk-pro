@@ -28,6 +28,12 @@ export const Container = styled.div`
     }
   }
 
+  @media(min-width: 600px) {
+    span {
+      font-size: 28px;
+    }
+  }
+
   @media(min-width: 1024px) {
     padding: 0;
     

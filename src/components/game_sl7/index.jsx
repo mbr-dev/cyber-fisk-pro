@@ -3,6 +3,8 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLessonSL4 } from "../HeaderLessonSL4";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -12,7 +14,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys } from "./styles";
 
 export const GameSL7 = () => {
-  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const { 
+    rodadaGeral, setNewRodada, setTimeElapsed, statusColor, setStatusColor, timeElapsed
+  } = useContext(LessonContext);
 
   const navigate = useNavigate();
   
@@ -25,10 +29,16 @@ export const GameSL7 = () => {
   const [divAnswer, setDivAnswer] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
-  const [points, setPoints] = useState(5);
+  const [correctPoints, setCorrectPoints] = useState(0);
+  const [points, setPoints] = useState(4);
+  const [rightPoints, setRightPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isCompleted, setIsCompleted] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+  const [countTimer, setCountTimer] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const loadLesson = useCallback(async() => {
     try {
@@ -37,7 +47,6 @@ export const GameSL7 = () => {
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=7&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-
       let totalOfQuestions = res.dados[0].dados_conteudo.length;
 
       let tempRandom = [];
@@ -67,13 +76,18 @@ export const GameSL7 = () => {
       setDivAnswer(emptyArray);
 
       setBlockButton(false);
+      timePointer();
       setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-  }, [setIsLoading, setData, setAnswer, setRandomNumber, round, setLettersQ, setImages, setDivAnswer, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, round, setLettersQ, setImages, setDivAnswer, setBlockButton, setAnswer]);
 
   const newRound = (number) => {
+    setPoints(4);
+    setCountTimer(0);
+    timePointer();
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let letterQuestion = items.letras;
@@ -98,15 +112,54 @@ export const GameSL7 = () => {
     setBlockButton(false);
   }
 
+  const getPoints = () => {
+    let tempP = correctPoints;
+
+    if (countTimer <= 60) {
+      tempP += 5;
+    } else if (countTimer >= 61 && countTimer <= 75) {
+      tempP += 4;
+    } else if (countTimer >= 76 && countTimer <= 90) {
+      tempP += 3;
+    } else if (countTimer >= 91 && countTimer <= 120) {
+      tempP += 2;
+    } else {
+      tempP += 1;
+    }
+
+    setCorrectPoints(tempP);
+  }
+
   const handleClick = (index) => {
     if (blockButton || isCompleted) return;
 
     const clickedLetter = lettersQ[index];
 
+    let tempRound = round;
+    let tempGeneralRound = rodadaGeral;
+    let tempP = rightPoints;
+
     if (!answer.includes(clickedLetter)) {
       let tempE = points;
       tempE--;
       setPoints(tempE);
+
+      if (tempE === 0) {
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
+
+        tempRound++;
+        setRound(tempRound);
+
+        tempGeneralRound++;
+        setNewRodada(tempGeneralRound);
+
+        setTimeout(() => {
+          newRound(tempRound);
+        }, 1500);
+      }
+
       setOptionColor(state => [...state, index]);
     } else if (!rightLetter.includes(clickedLetter)) {
       setRightLetter(state => [...state, clickedLetter]);
@@ -121,25 +174,45 @@ export const GameSL7 = () => {
     setDivAnswer(updateDivLetters);
 
     if (updateDivLetters.every((letter) => letter !== "")) {
-      let tempRound = round;
+      getPoints();
+
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 1;
+      setStatusColor(newStatus);
+
+      tempP++;
+      setRightPoints(tempP);
+
       tempRound++;
       setRound(tempRound);
 
-      let tempGeneralRound = rodadaGeral;
       tempGeneralRound++;
       setNewRodada(tempGeneralRound);
-      setIsCompleted(true);
 
-      if (tempRound === 5) {
+      setIsCompleted(true);
+    }
+
+    if (tempRound === 5) {
+      if (tempP >= 2) {
         setTimeout(() => {
-          navigate("/WellDone")
+          navigate("/WellDone");
         }, 1500);
       } else {
         setTimeout(() => {
-          newRound(tempRound);
+          navigate("/GameOver");
         }, 1500);
       }
     }
+  }
+
+  const timePointer = () => {
+    clearInterval(intervalId);
+
+    const newIntervalId = setInterval(() => {
+      setCountTimer(state => state + 1);
+    }, 1000);
+
+    setIntervalId(newIntervalId);
   }
 
   useEffect(() => {
@@ -147,18 +220,18 @@ export const GameSL7 = () => {
   }, []);
 
   useEffect(() => {
-    if (points === 0) {
-      setTimeout(() => {
-        navigate("/GameOver")
-      }, 1500);
-    }
-  }, [points])
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
 
   useEffect(() => {
     if (isCompleted) {
       setTimeout(() => {
-        newRound(round)
-      }, 2000);
+        newRound(round);
+      }, 1500);
     }
   }, [round, newRound, isCompleted]);
 
@@ -180,6 +253,7 @@ export const GameSL7 = () => {
 
   return (
     <Container>
+      <HeaderLessonSL4 superTaskStart trophyEnd numStart="Super task" numEnd="Finished" />
       <TitleLesson title="What’s the word in common?" />
 
       <Main>
@@ -203,16 +277,14 @@ export const GameSL7 = () => {
 
         <Keyboard>
           {lettersQ.map((letter, index) => {
-            const noLetter = optionColor.includes(index);
+            const dontHasLetter = optionColor.includes(index);
             const hasLetter = rightLetter.includes(letter);
             return (
               <Keys 
                 key={index}
                 onClick={() => handleClick(index)}
                 style={{
-                  borderColor: noLetter ? defaultTheme["red-200"] : hasLetter ? "transparent" : "",
-                  backgroundColor: hasLetter ? defaultTheme["gray-400"] : "",
-                  color: hasLetter ? defaultTheme["gray-400"] : "",
+                  borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? defaultTheme["gray-700"] : "",
                 }}
                 disabled={hasLetter}
               >
@@ -222,6 +294,16 @@ export const GameSL7 = () => {
           })}
         </Keyboard>
       </Main>
+
+      <FooterBtnHome 
+        fs={isDesktop && "32px"}
+        title="Tasks"
+        hasLS
+        wl={isDesktop && "60%"}
+        rota="LessonSelection"
+        w={isDesktop && "450px"}
+        h={isDesktop && "52px"}
+      />
     </Container>
   )
 }

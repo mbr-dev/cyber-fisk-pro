@@ -2,7 +2,6 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
-  
 `;
 
 export const Main = styled.div`
@@ -20,12 +19,12 @@ export const Main = styled.div`
     height: 100%;
     z-index: -1;
     position: absolute;
+    left: 0;
   }
 
   @media(min-width: 1024px) {
     height: 120px;
     justify-content: space-between;
-    padding-inline: 32px;
   }
 `;
 
@@ -88,7 +87,7 @@ export const Icons = styled.div`
     }
 
     p {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 `;

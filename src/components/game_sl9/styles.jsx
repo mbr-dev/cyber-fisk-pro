@@ -2,18 +2,19 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
-  width: 100%;
-  height: 100%;
+  flex: 1;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
   padding-top: 1rem;
 
   @media(max-width: 320px) {
@@ -25,8 +26,29 @@ export const Phrase = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  
+  @media(min-width: 600px) {
+    width: 70%;
+  }
+
+  @media(min-width: 1024px) {
+    width: 50%;
+  }
+
+  @media(min-width: 1440px) {
+    width: 40%;
+  }
+
+  @media(min-width: 1920px) {
+    width: 30%;
+  }
+
+  @media(min-width: 2560px) {
+    width: 20%;
+  }
 `;
 
 export const Letters = styled.div`
@@ -88,6 +110,48 @@ export const Letters = styled.div`
       height: 2.75rem;
     }
   }
+
+  @media(min-width: 600px) {
+    width: 100%;
+    padding-inline: 0;
+    padding: 0;
+    gap: 14px;
+
+    button {
+      width: 42px;
+      height: 54px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    gap: 16px;
+
+    button {
+      width: 56px;
+      height: 64px;
+    }
+
+    p {
+      font-size: 20px;
+    }
+
+    span {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    gap: 18px;
+
+    button {
+      width: 62px;
+      height: 72px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    gap: 20px;
+  }
 `;
 
 export const LineSeparator = styled.div`
@@ -106,6 +170,12 @@ export const TypeLetters = styled.div`
   .checked {
     border: 2px solid ${props => props.theme["gray-700"]};
   }
+
+  @media(min-width: 600px) {
+    align-items: center;
+    justify-content: center;
+    padding: 20px 16px;
+  }
 `;
 
 export const DivWord = styled.div`
@@ -113,6 +183,11 @@ export const DivWord = styled.div`
   gap: 0.1875rem;
   margin-right: 1rem;
   margin-bottom: 0.375rem;
+
+  @media(min-width: 600px) {
+    gap: 8px;
+    margin-right: 28px;
+  }
 `;
 
 export const DivLetter = styled.div`
@@ -124,62 +199,20 @@ export const DivLetter = styled.div`
   border-radius: 5px;
   border: 2px solid ${props => props.theme["gray-200"]};
   background-color: ${props => props.theme.white};
-`;
 
-export const ButtonClean = styled.div`
-  all: unset;
-  width: 15.875rem;
-  height: 2.5rem;
-  display: flex;
-  margin-top: 0.5rem;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 3px solid ${props => props.theme["red-300"]};
-  border-bottom: 4px solid ${props => props.theme["red-300"]};
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 1.25rem;
-    font-weight: bold;
+  @media(min-width: 600px) {
+    width: 44px;
+    height: 56px;
   }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media(max-width: 320px) {
-    width: 11rem;
-    height: 2rem;
-    margin-top: 0;
-
-    p {
-      font-size: 1rem;
-    }
-  }
-`;
-
-export const TypeLetters2 = styled(TypeLetters)`
-  background-color: transparent;
-  padding: 0.5rem 1.5rem;
-`;
-
-export const DivLetter2 = styled(DivLetter)`
-  border-color: transparent;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
 `;
 
 export const Answer = styled.div`
   width: 100%;
   height: 100%;
   display: flex;
-  align-items: center;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
 
   form {
     width: 100%;
@@ -194,19 +227,36 @@ export const Answer = styled.div`
     margin-top: 1rem;
     gap: 2rem;
   }
+
+  @media(min-width: 600px) {
+    padding-block: 24px;
+  }
+
+  @media(min-width: 1920px) {
+    padding-block: 32px;
+  }
 `;
 
-export const Input = styled.textarea`
+export const TypeLetters2 = styled(TypeLetters)`
+  background-color: transparent;
+  padding: 0.5rem 1.5rem;
+`;
+
+export const DivLetter2 = styled(DivLetter)`
+  border-color: transparent;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+`;
+
+export const Input = styled.input`
   all: unset;
   width: 18.75rem;
-  padding:0.5rem 1rem;
+  padding: 0.5rem 1rem;
   border-radius: 6px;
   border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   color: ${props => props.theme["gray-700"]};
   font-weight: bold;
-  word-wrap: break-word;
-  line-height: 1.3;
 
   &:focus {
     border-color: ${props => props.theme["gray-500"]};
@@ -218,5 +268,18 @@ export const Input = styled.textarea`
 
   @media(max-width: 320px) {
     width: 15rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 500px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 800px;
+    font-size: 24px;
+  }
+
+  @media(min-width: 2560px) {
+    width: 1200px;
   }
 `;

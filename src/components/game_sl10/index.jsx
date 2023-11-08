@@ -49,7 +49,7 @@ export const GameSL10 = () => {
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=10&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      
+      console.log(res.dados[0].dados_conteudo)
       let dataLength = res.dados[0].dados_conteudo.length;
       
       let tempRandom = [];

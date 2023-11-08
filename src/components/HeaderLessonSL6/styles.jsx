@@ -21,7 +21,7 @@ export const Main = styled.div`
     position: absolute;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 600px) {
     height: 100px;
   }
 
@@ -86,7 +86,11 @@ export const Icons = styled.div`
 
   @media(min-width: 600px) {
     p {
-      font-size: 1rem;
+      font-size: 18px;
+    }
+
+    img {
+      width: 48px;
     }
   }
 

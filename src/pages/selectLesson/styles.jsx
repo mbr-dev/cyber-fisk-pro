@@ -32,10 +32,10 @@ export const SelectLessonArea = styled.div`
   }
 
   @media(min-width: 600px) {
+    width: 600px;
     grid-template-rows: (2, 5rem);
     grid-template-columns: repeat(5, 5rem);
     align-items: center;
-    justify-content: center;
     padding-block: 16px;
   }
   
@@ -100,6 +100,11 @@ export const ButtonLesson = styled.button`
     span {
       font-size: 12px
     }
+  }
+
+  @media(min-width: 600px) {
+    width: 96px;
+    height: 96px;
   }
 
   @media(min-width: 1024px) {

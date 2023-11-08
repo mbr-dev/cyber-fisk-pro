@@ -1,18 +1,18 @@
-import { useState, useEffect, useContext } from "react";
 import Confetti from "react-confetti"
 import Cookies from "universal-cookie";
-import { useNavigate } from "react-router-dom";
 import { apiQAS } from "../../lib/api";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
+import { Loading } from "../../components/Loading";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
+import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { Loading } from "../../components/Loading";
-import { Notifications } from "../../components/Notifications";
 
-import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
+import { LessonContext } from "../../context/lesson";
 
 import Xp from "../../assets/Xp.svg";
 import Robo from "../../assets/RoboWD.png";
@@ -21,7 +21,7 @@ import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, IconAvatar } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div } from "./styles";
 
 export const WellDone = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
@@ -29,6 +29,8 @@ export const WellDone = () => {
 
   const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const phrase = [
     "Good job!",
@@ -40,7 +42,7 @@ export const WellDone = () => {
   ]
 
   const randomPhrase = Math.floor(Math.random() * phrase.length);
-  const [time, setTime] = useState('');
+  const [time, setTime] = useState("");
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
@@ -148,12 +150,14 @@ export const WellDone = () => {
     <Container>
       <Confetti numberOfPieces={120} />
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
+
       <Header>
         <img src={Fundo} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
-          <ButtonCloseHeader />
+          {!isDesktop && <ButtonCloseHeader />}
         </Top>
+
         <Middle>
           <AvatarArea>
             <img src={Confetes} alt="" className="bgConfetes" />
@@ -162,37 +166,82 @@ export const WellDone = () => {
           </AvatarArea>
           <h2>WELL DONE!</h2>
         </Middle>
-        <Bottom>
-          <AreaItem>
-            <img src={Dollars} alt="" />
-            <span>{dollar}</span>
-            <p>Fisk Dollars</p>
-          </AreaItem>
-          <LineSeparator w="80%" bg={defaultTheme.white} />
-          <AreaItem style={{marginRight: "64px"}}>
-          <img src={Xp} alt="" />
-          <span>{xpAtividade}</span>
-          <p>Xp</p>
-          </AreaItem>
-        </Bottom>
+        
+        {!isDesktop &&
+          <Bottom>
+            <AreaItem>
+              <img src={Dollars} alt="" />
+              <span>{dollar}</span>
+              <p>Fisk Dollars</p>
+            </AreaItem>
+            <LineSeparator w="80%" bg={defaultTheme.white} />
+            <AreaItem style={{marginRight: "64px"}}>
+            <img src={Xp} alt="" />
+            <span>{xpAtividade}</span>
+            <p>Xp</p>
+            </AreaItem>
+          </Bottom>}
+
+        {isDesktop &&
+          <ButtonRed>
+            <IconAvatar>
+              <img src={Robo} alt="" />
+            </IconAvatar>
+            <p>Boost your avatar</p>
+          </ButtonRed>}
       </Header>
 
-      <Main>
-        <ButtonRed>
-          <IconAvatar>
-            <img src={Robo} alt="" />
-          </IconAvatar>
-          <p>Boost your avatar</p>
-        </ButtonRed>
-        <p>Activities done in</p>
-        <span>{time}</span>
+      <Content>
+        <Main>
+          {isDesktop && 
+            <ButtonClose>
+              <ButtonCloseHeader />
+            </ButtonClose>}
 
-        <Text>
-          <p>{phrase[randomPhrase]}</p>
-        </Text>
-      </Main>
+          {!isDesktop &&
+            <ButtonRed>
+              <IconAvatar>
+                <img src={Robo} alt="" />
+              </IconAvatar>
+              <p>Boost your avatar</p>
+            </ButtonRed>}
 
-      <FooterBtnHome hasLS rota="SelectLesson" title="Lesson Menu" />
+          {isDesktop &&
+            <Bottom2>
+              <img src={Fundo} alt="" className="fundoBg" />
+              <AreaItem2 style={{ marginLeft: "42px"}}>
+                <img src={Dollars} alt="" />
+                <span>{dollar}</span>
+                <p>Fisk Dollars</p>
+              </AreaItem2>
+              <LineSeparator w="80%" bg={defaultTheme.white} />
+              <AreaItem2 style={{marginRight: "64px"}}>
+              <img src={Xp} alt="" />
+              <span>{xpAtividade}</span>
+              <p>Xp</p>
+              </AreaItem2>
+            </Bottom2>}
+
+          <Div>
+            <div>
+              <p>Activities done in</p>
+              <span>{time}</span>
+            </div>
+
+            <Text>
+              <p>{phrase[randomPhrase]}</p>
+            </Text>
+          </Div>
+        </Main>
+
+        <FooterBtnHome 
+          fs={isDesktop && "32px"}
+          wl={isDesktop ? "48%" : "80%"}
+          hasLS
+          w={isDesktop && "450px"}
+          h={isDesktop && "52px"}
+        />
+      </Content>
     </Container>
   )
 }

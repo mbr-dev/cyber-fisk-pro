@@ -4,14 +4,13 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { apiQAS } from "../../lib/api";
 import Cookies from 'universal-cookie';
 
+import { Loading } from "../../components/Loading";
+import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
-import { HeaderTextImage } from "../../components/HeaderTextImage";
-import { ModalPronunciation } from "../../components/ModalPronunciation";
-import { CyberContext } from "../../context/cyber";
-import { HeaderText } from "../../components/HeaderText"
-import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
+import { HeaderTextImage } from "./components/HeaderTextImage";
+import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 import TaskImg from "./images/Vector.svg";
 import SuperImg from "./images/Super.svg";
@@ -32,6 +31,8 @@ export const LessonSelection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const click = (page) => {
     if(page === 'qr-code'){
@@ -150,7 +151,13 @@ export const LessonSelection = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <FooterBtnHome hasLS />
+      <FooterBtnHome 
+          fs={isDesktop && "32px"}
+          wl={isDesktop ? "48%" : "80%"}
+          hasLS
+          w={isDesktop && "450px"}
+          h={isDesktop && "52px"}
+        />
     </Container>
   )
 }

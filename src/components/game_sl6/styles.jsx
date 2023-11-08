@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
@@ -12,16 +14,11 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
   
   p {
     font-size: 1.25rem;
     font-weight: 500;
     color: ${props => props.theme["gray-700"]};
-  }
-
-  @media(max-width: 320px) {
-   margin-top: 0;
   }
 `;
 
@@ -40,7 +37,7 @@ export const Card = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
   }
@@ -71,6 +68,38 @@ export const Card = styled.button`
 
     p {
       font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    width: 120px;
+    height: 120px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 100px;
+    height: 100px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    width: 132px;
+    height: 132px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 136px;
+    height: 136px;
+
+    p {
+      font-size: 24px;
     }
   }
 `;

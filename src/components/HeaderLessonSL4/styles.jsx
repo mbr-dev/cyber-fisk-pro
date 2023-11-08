@@ -20,6 +20,22 @@ export const Main = styled.div`
     z-index: -1;
     position: absolute;
   }
+
+  @media(min-width: 600px) {
+    height: 100px;
+  }
+
+  @media(min-width: 1440px) {
+    height: 110px;
+  }
+
+  @media(min-width: 1920px) {
+    height: 120px;
+  }
+
+  @media(min-width: 2560px) {
+    height: 130px;
+  }
 `
 
 export const BarStep = styled.div`
@@ -37,6 +53,10 @@ export const BarStep = styled.div`
 
   @media(min-width: 600px) {
     padding: 0.75rem 1rem;
+  }
+
+  @media(min-width: 1024px) {
+    padding: 16px;
   }
 `;
 
@@ -66,7 +86,41 @@ export const Icons = styled.div`
 
   @media(min-width: 600px) {
     p {
-      font-size: 1rem;
+      font-size: 18px;
+    }
+
+    img {
+      width: 48px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    p {
+      font-size: 20px;
+    }
+
+    img {
+      width: 48px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    p {
+      font-size: 22px;
+    }
+
+    img {
+      width: 52px;
+    }
+  }
+
+  @media(min-width: 2560px) {
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      width: 64px;
     }
   }
 `;

@@ -90,7 +90,7 @@ export const GameSL6 = () => {
 
       setCards(tempGrid);
       setPlaying(true);
-
+      timePointer();
       setIsLoading(false);
     } catch(error) {
       console.log(error);
@@ -100,7 +100,7 @@ export const GameSL6 = () => {
   const newRound = (level) => {
     setCountTimer(0);
     timePointer();
-
+    console.log("level: ", level)
     const items = data.map(item => {
       const conteudo = JSON.parse(item.conteudo);
       return conteudo
@@ -210,7 +210,7 @@ export const GameSL6 = () => {
 
     generateScore();
     setPlaying(false);
-    newRound();
+    newRound(tempLevel);
   }
 
   const handleFinish = () => {
@@ -318,7 +318,8 @@ export const GameSL6 = () => {
 
       <Main>
         <Grid style={{
-          gridTemplateColumns: cards.length <= 12 ? "repeat(3, auto)" : "repeat(4, auto)",
+          gridTemplateColumns: cards.length === 12 ? "repeat(3, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(4, auto)",
+          gridTemplateRows: cards.length === 12 ? "repeat(4, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(5, auto)",
           gap: cards.length <= 12 ? "1.125rem" : "0.75rem",
         }}>
           {cards.map((card, index) => {
@@ -346,7 +347,6 @@ export const GameSL6 = () => {
         fs={isDesktop && "32px"}
         wl={isDesktop ? "48%" : "80%"}
         hasLS
-        wl={isDesktop && "40%"}
         title="Tasks" 
         rota="LessonSelection"
         w={isDesktop && "450px"}
