@@ -112,7 +112,9 @@ export const Letters = styled.div`
   }
 
   @media(min-width: 600px) {
-    width: 100%;
+    width: 80vw;
+    align-items: center;
+    justify-content: center;
     padding-inline: 0;
     padding: 0;
     gap: 14px;

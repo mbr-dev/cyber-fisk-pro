@@ -36,7 +36,7 @@ export const Photos = styled.div`
   }
 
   @media(min-width: 1024px) {
-   gap: 18px;
+   gap: 12px;
   }
 
   @media(min-width: 1440px) {
@@ -120,8 +120,8 @@ export const Type = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 52px;
-    height: 60px;
+    width: 48px;
+    height: 58px;
   }
 
   @media(min-width: 1440px) {

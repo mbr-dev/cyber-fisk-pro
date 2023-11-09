@@ -34,6 +34,10 @@ export const LettersArea = styled.div`
     gap: 12px;
   }
 
+  @media(min-width: 600px) {
+   gap: 14px;
+  }
+
   @media(min-width: 1440px) {
     padding-block: 16px;
   }
@@ -56,6 +60,12 @@ export const Letter = styled.div`
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 2rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 46px;
+    height: 58px;
+    font-size: 28px;
   }
 
   @media(min-width: 1024px) {

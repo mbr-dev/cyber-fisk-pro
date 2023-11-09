@@ -26,8 +26,8 @@ export const Main = styled.div`
   }
 
   @media(min-width: 600px) {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 180px;
+    height: 24px;
   }
 
   @media(min-width: 1024px) {

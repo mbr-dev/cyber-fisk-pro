@@ -13,7 +13,7 @@ import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea } from "./styles";
+import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right } from "./styles";
 
 export const GameSL5 = () => {
   const { setTimeElapsed } = useContext(LessonContext);
@@ -32,9 +32,12 @@ export const GameSL5 = () => {
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
+      setPoints(5);
 
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=5&num_task=1");
       const res = response.data;
@@ -60,7 +63,7 @@ export const GameSL5 = () => {
     } catch (error) {
       console.log(error);
     }
-  }, [setIsLoading, setQuestions, setAnswers, setLetters])
+  }, [setIsLoading, setPoints, setQuestions, setAnswers, setLetters])
 
   const handleSelected = (letter, index) => {
     if (!clickedButtons[index] && !completedWords.includes(letter)) {
@@ -169,84 +172,102 @@ export const GameSL5 = () => {
       <TitleLesson title="Make 5 Words" />
 
       <Main>
-        <Answers>
-          {questions.map((question, qIndex) => {
-            const isCompleted = completedWords.includes(qIndex);
-            return (
-              <Div key={qIndex}>
-                <DivQ>
-                  <DivQuestion>
-                    <span>{qIndex + 1}. {question.label}</span>
-                  </DivQuestion>
-                </DivQ>
-                <DivA style={{ gap: isCompleted && "0"}}>
-                  {questions[qIndex].answer.map((item, index) => {
-                    return !isCompleted ? (
-                      <Answer 
-                        key={index}
-                        style={{
-                          backgroundColor: isCompleted ? defaultTheme["red-200"] : "",
-                          marginLeft: isCompleted && "-9px"
-                        }}
-                      >
-                        {isCompleted ? item : hint === item ? item : ""}
-                      </Answer>
-                    ) : (
-                    <>{item}</>
-                    )
-                  })}
-                </DivA>
-              </Div>
-            )
-          })}
-        </Answers>
-        <WordSelected>
-          <Words>
-            {letterSelected.map((letter, index) => {
+        <Left>
+          <Answers>
+            {questions.map((question, qIndex) => {
+              const isCompleted = completedWords.includes(qIndex);
               return (
-                <span key={index}>{letter}</span>
+                <Div key={qIndex}>
+                  <DivQ>
+                    <DivQuestion>
+                      <span>{qIndex + 1}. {question.label}</span>
+                    </DivQuestion>
+                  </DivQ>
+                  <DivA style={{ gap: isCompleted && "0"}}>
+                    {questions[qIndex].answer.map((item, index) => {
+                      return !isCompleted ? (
+                        <Answer 
+                          key={index}
+                          style={{
+                            backgroundColor: isCompleted ? defaultTheme["red-200"] : "",
+                            marginLeft: isCompleted && "-9px"
+                          }}
+                        >
+                          {isCompleted ? item : hint === item ? item : ""}
+                        </Answer>
+                      ) : (
+                      <span>{item}</span>
+                      )
+                    })}
+                  </DivA>
+                </Div>
               )
             })}
-          </Words>
-          <Delete onClick={handleDelete}>
-            <X size={32} color="white" strokeWidth={3} />
-          </Delete>
-        </WordSelected>
-        <WordsArea>
-          {letters.map((letter, index) => {
-            return (
-              <ButtonAnswer
-                key={index}
-                w="1rem"
-                h="2.5rem"
-                onPress={() => handleSelected(letter, index)}
-                bgColor={clickedButtons[index]}
-                disabledButton={clickedButtons[index]}
-              >
-                {letter}
-              </ButtonAnswer>
-            )
-          })}
-        </WordsArea>
-        <ButtonArea>
-          <ButtonBg
-            w="9rem"
-            h="1.5rem"
-            title={`${hints} ${hints > 1 ? "hints" : "hint"}`}
-            onPress={handleShowHint}
-            disabledButton={hints === 0}
-          />
-          <ButtonBg
-            w="9rem"
-            h="1.5rem"
-            title="Check"
-            disabledButton={letterSelected.length === 0}
-            onPress={handleVerify}
-          />
-        </ButtonArea>
+          </Answers>
+        </Left>
+
+        <Right>
+          <WordSelected>
+            <Words>
+              {letterSelected.map((letter, index) => {
+                return (
+                  <span key={index}>{letter}</span>
+                )
+              })}
+            </Words>
+            <Delete onClick={handleDelete}>
+              <X size={32} color="white" strokeWidth={3} />
+            </Delete>
+          </WordSelected>
+
+          <WordsArea>
+            {letters.map((letter, index) => {
+              return (
+                <ButtonAnswer
+                  key={index}
+                  w={isDesktop ? "32px" : "1rem"}
+                  h={isDesktop ? "58px" : "2.5rem"}
+                  fs={isDesktop && "22px"}
+                  onPress={() => handleSelected(letter, index)}
+                  bgColor={clickedButtons[index]}
+                  disabledButton={clickedButtons[index]}
+                >
+                  {letter}
+                </ButtonAnswer>
+              )
+            })}
+          </WordsArea>
+
+          <ButtonArea>
+            <ButtonBg
+              w={isDesktop ? "200px" : "9rem"}
+              h={isDesktop ? "52px" : "1.5rem"}
+              fs={isDesktop && "28px"}
+              title={`${hints} ${hints > 1 ? "hints" : "hint"}`}
+              onPress={handleShowHint}
+              disabledButton={hints === 0}
+            />
+            <ButtonBg
+              w={isDesktop ? "200px" : "9rem"}
+              h={isDesktop ? "52px" : "1.5rem"}
+              fs={isDesktop && "28px"}
+              title="Check"
+              disabledButton={letterSelected.length === 0}
+              onPress={handleVerify}
+            />
+          </ButtonArea>
+        </Right>
       </Main>
 
-      <FooterBtnHome hasLS title="Tasks" rota="LessonSelection" mt="16px" />
+      <FooterBtnHome 
+        fs={isDesktop && "32px"}
+        title="Tasks"
+        hasLS
+        wl={isDesktop && "60%"}
+        rota="LessonSelection"
+        w={isDesktop && "450px"}
+        h={isDesktop && "52px"}
+      />
     </Container>
   )
 }

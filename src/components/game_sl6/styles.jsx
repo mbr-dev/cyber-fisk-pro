@@ -72,31 +72,31 @@ export const Card = styled.button`
   }
 
   @media(min-width: 600px) {
-    width: 120px;
-    height: 120px;
+    width: 102px;
+    height: 102px;
 
     p {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 100px;
-    height: 100px;
+    width: 96px;
+    height: 96px;
 
     p {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 
   @media(min-width: 1440px) {
-    width: 132px;
-    height: 132px;
+    width: 102px;
+    height: 102px;
   }
 
   @media(min-width: 1920px) {
-    width: 136px;
-    height: 136px;
+    width: 120px;
+    height: 120px;
 
     p {
       font-size: 24px;

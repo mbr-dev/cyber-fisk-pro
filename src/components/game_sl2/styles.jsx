@@ -71,12 +71,21 @@ export const Card = styled.button`
     }
   }
 
+  @media(min-width: 600px) {
+    width: 102px;
+    height: 102px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
   @media(min-width: 1024px) {
     width: 96px;
     height: 96px;
 
     p {
-      font-size: 20px;
+      font-size: 18px;
     }
   }
 

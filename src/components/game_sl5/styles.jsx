@@ -7,14 +7,14 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-`;/* consitnuar sl5 */
+`;
 
 export const Main = styled.main`
   width: 22rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 8px;
 
   @media(max-width: 360px) {
     width: 20rem;
@@ -22,6 +22,42 @@ export const Main = styled.main`
 
   @media(max-width: 320px) {
     width: 19rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 80%;
+    height: 400px;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  @media(min-width: 1440px) {
+    width: 70%;
+  }
+
+  @media(min-width: 2560px) {
+    width: 50%;
+  }
+`;
+
+export const Left = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media(min-width: 1024px) {
+    width: 45%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 `;
 
@@ -37,6 +73,12 @@ export const Answers = styled.div`
   
   @media(max-width: 360px) {
     gap: 0.25rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
   }
 `;
 
@@ -59,6 +101,8 @@ export const DivQ = styled.div`
   @media(max-width: 320px) {
     gap: 0.25rem;
   }
+
+  
 `;
 
 export const DivQuestion = styled.div`
@@ -81,6 +125,15 @@ export const DivQuestion = styled.div`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 1024px) {
+    width: 200px;
+    height: 64px;
+
+    span {
+      font-size: 18px;
+    }
+  }
 `;
 
 export const DivRight = styled.div`
@@ -101,6 +154,14 @@ export const DivA = styled.div`
   @media(max-width: 360px) {
     gap: 0.25rem;
   }
+
+  @media(min-width: 1024px) {
+    gap: 16px;
+
+    span {
+      font-size: 26px;
+    }
+  }
 `;
 
 export const Answer = styled.div`
@@ -117,6 +178,35 @@ export const Answer = styled.div`
     width: 2.75rem;
     height: 2.75rem;
   }
+
+  @media(min-width: 1024px) {
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const Right = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @media(min-width: 600px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 45%;
+    height: 100%;
+    justify-content: flex-start;
+    gap: 42px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 480px;
+  }
 `;
 
 export const WordSelected = styled.div`
@@ -126,6 +216,11 @@ export const WordSelected = styled.div`
   justify-content: space-between;
   overflow: hidden;
   border: 2px solid ${props => props.theme["gray-700"]};
+
+  @media(min-width: 1024px) {
+    height: 54px;
+    border-radius: 8px;
+  }
 `;
 
 export const Words = styled.div`
@@ -140,6 +235,16 @@ export const Words = styled.div`
 
   @media(max-width: 320px) {
     width: 16rem;
+  }
+
+  @media(min-width: 1024px) {
+    height: 54px;
+    border-radius: 8px;
+    padding-left: 16px;
+
+    span {
+      font-size: 28px;
+    }
   }
 `;
 
@@ -159,6 +264,11 @@ export const Delete = styled.div`
   &:hover {
     scale: 1.05;
   }
+
+  @media(min-width: 1024px) {
+    width: 54px;
+    height: 54px;
+  }
 `;
 
 export const WordsArea = styled.div`
@@ -175,6 +285,15 @@ export const WordsArea = styled.div`
 
   @media(max-width: 320px) {
     width: 19rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    gap: 10px;
+  }
+
+  @media(min-width: 1440px) {
+    justify-content: space-between;
   }
 `;
 
