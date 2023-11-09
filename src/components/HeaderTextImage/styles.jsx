@@ -66,6 +66,7 @@ export const TopHeader = styled.div`
   @media(min-width: 768px) {
     p {
       font-size: 44px;
+      margin-top: -14px;
     }
   }
 `;
@@ -85,7 +86,7 @@ export const BottomHeader = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 600px) {
     .logoFisk {
       margin-top: -20px;
       width: 250px;
@@ -128,6 +129,24 @@ export const Avatar = styled.div`
     p {
       width: 110px;
       height: 20px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    width: 30px;
+    height: 50px;
+    margin-right: 100px;
+
+    img {
+      width: 150px;
+      margin-top: -70px;
+    }
+
+    p {
+      width: 180px;
+      height: 52px;
+      font-size: 24px;
+      margin-top: -8px;
     }
   }
 

@@ -130,14 +130,6 @@ export const Form = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
 
-  @media(max-width: 600px) {
-    padding-block: 2rem;
-    width: 18.75rem;
-    padding-block: 1rem;
-    margin-bottom: 1.5rem;
-    gap: 0.875rem;
-  }
-
   @media(max-width: 376px) {
     padding-block: 2rem;
     width: 18.75rem;
@@ -157,6 +149,14 @@ export const Form = styled.div`
     width: 16rem;
     gap: 0.375rem;
     margin-bottom: 0rem;
+  }
+
+  @media(min-width: 600px) {
+    margin-top: 52px;
+    padding-block: 2rem;
+    width: 500px;
+    padding-block: 1rem;
+    margin-bottom: 1.5rem;
   }
 
   @media(min-width: 1024px) {
@@ -193,7 +193,7 @@ export const AreaInput = styled.div`
   .eye {
     position: absolute;
     top: 44px;
-    left: 270px;
+    left: 290px;
     color: ${props => props.theme["gray-400"]};
     /* @media(max-width: 1024px) {
       left: 270px !important;
@@ -219,7 +219,7 @@ export const AreaInput = styled.div`
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 600px) {
     label {
       padding-left: 28px;
       font-size: 24px;
@@ -231,6 +231,13 @@ export const AreaInput = styled.div`
       left: 18px;
     }
 
+    .eye {
+      top: 66px;
+      left: 460px;
+    }
+  }
+
+  @media(min-width: 1024px) {
     .eye {
       top: 62px;
       left: 430px;
@@ -278,6 +285,15 @@ export const Input = styled.input`
     }
   }
 
+  @media(min-width: 600px) {
+    height: 60px;
+    padding-left: 42px;
+
+    &::placeholder {
+      font-size: 24px;
+    }
+  }
+
   @media(min-width: 1024px) {
     height: 64px;
     padding-left: 54px;
@@ -315,13 +331,26 @@ export const SelectTitle = styled.div`
     font-size: 18px;
   }
 
+  @media(min-width: 600px) {
+    height: 60px;
+    gap: 18px;
+
+    p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    img {
+      width: 36px;
+    }
+  }
+
   @media(min-width: 1024px) {
     height: 64px;
     gap: 20px;
 
     p {
       font-size: 24px;
-      font-weight: 500;
     }
 
     img {
@@ -345,6 +374,12 @@ export const SelectUl = styled.ul`
   gap: 12px;
   background-color: ${props => props.theme["red-200"]};
 
+  @media(min-width: 600px) {
+    padding-inline: 36px;
+    gap: 18px;
+    bottom: -124px;
+  }
+
   @media(min-width: 1024px) {
     padding-inline: 44px;
     gap: 20px;
@@ -361,9 +396,13 @@ export const SelectLi = styled.li`
     background-color: ${props => props.theme["red-300"]};
   }
 
+  @media(min-width: 600px) {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
   @media(min-width: 1024px) {
     font-size: 24px;
-    font-weight: 500;
   }
 `;
 

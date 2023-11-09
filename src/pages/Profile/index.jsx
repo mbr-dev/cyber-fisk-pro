@@ -26,6 +26,7 @@ export const Profile = () => {
   const [isOpen, setIsOpen] = useState("");
   
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -136,11 +137,11 @@ export const Profile = () => {
         </Main>
 
         <FooterBtnHome 
-          fs={isDesktop && "32px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
           wl={isDesktop ? "48%" : "80%"}
           hasLS
-          w={isDesktop && "450px"}
-          h={isDesktop && "52px"}
+          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
         />
       </Content>
     </Container>

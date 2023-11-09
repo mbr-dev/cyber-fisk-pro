@@ -14,6 +14,7 @@ export const Help = () => {
   const [showW, setShowW] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   return (
     <Container>
@@ -202,12 +203,12 @@ export const Help = () => {
       </Main>
 
       <FooterBtnHome 
-          fs={isDesktop && "32px"}
-          wl={isDesktop ? "48%" : "80%"}
-          hasLS
-          w={isDesktop && "450px"}
-          h={isDesktop && "52px"}
-        />
+        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+        wl={isDesktop ? "48%" : "80%"}
+        hasLS
+        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+      />
     </Container>
   )
 }

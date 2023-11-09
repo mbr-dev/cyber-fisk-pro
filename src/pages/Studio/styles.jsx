@@ -2,9 +2,15 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+ 
+
+  @media(min-width: 1024px) {
+    justify-content: space-between;
+  }
 `;
 
 export const Main = styled.main`
@@ -17,6 +23,51 @@ export const Main = styled.main`
 
   @media(max-width: 320px) {
     gap: 0.75rem;
+  }
+
+  @media(min-width: 600px) {
+    padding-top: 28px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 80%;
+    gap: 64px;
+    flex-direction: row;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding-top: 36px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 70%;
+  }
+
+  @media(min-width: 1920px) {
+    width: 50%;
+    padding-top: 64px;
+  }
+`;
+
+export const Right = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @media(min-width: 600px) {
+    gap: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 36px;
+  }
+
+  @media(min-width: 1440px) {
+    gap: 44px;
+  }
+  @media(min-width: 1920px) {
+    gap: 52px;
   }
 `;
 
@@ -32,6 +83,11 @@ export const Info = styled.section`
   @media(max-width: 320px) {
     width: 16rem;
     gap: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 450px;
+    gap: 36px;
   }
 `;
 
@@ -51,6 +107,14 @@ export const User = styled.div`
 
     span {
       font-size: 0.875rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    margin-top: 24px;
+
+    span {
+      font-size: 20px;
     }
   }
 `;
@@ -95,6 +159,19 @@ export const UserImg = styled.div`
       width: 2.5rem;
     }
   }
+
+  @media(min-width: 600px) {
+    width: 84px;
+    height: 84px;
+
+    div {
+      height: 70px;
+    }
+
+    img {
+      width: 72px;
+    }
+  }
 `;
 
 export const UserInfo = styled.div`
@@ -104,6 +181,14 @@ export const UserInfo = styled.div`
 
   @media(max-width: 320px) {
     gap: 2rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 72px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 96px;
   }
 `;
 
@@ -143,6 +228,25 @@ export const From = styled.div`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 600px) {
+    gap: 16px;
+
+    img {
+      width: 52px;
+    }
+
+    p {
+      padding: 6px 10px;
+      font-size: 16px;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
 `;
 
 export const SocialMedia = styled.div`
@@ -166,6 +270,15 @@ export const SocialMedia = styled.div`
 
     img {
       width: 16px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    padding-block: 20px;
+    gap: 18px;
+
+    img {
+      width: 32px;
     }
   }
 `;
@@ -192,6 +305,33 @@ export const Text = styled.section`
     span {
       font-size: 0.875rem;
     }
+  }
+
+  @media(min-width: 600px) {
+    p {
+      font-size: 28px;
+    }
+
+    span {
+      font-size: 24px;
+    }
+  }
+`;
+
+export const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+
+  @media(min-width: 600px) {
+    gap: 32px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 32px;
+    height: 480px;
+    justify-content: center;
   }
 `;
 
@@ -232,6 +372,32 @@ export const ButtonArea = styled.section`
       }
     }
   }
+
+  @media(min-width: 600px) {
+    gap: 32px;
+
+    button {
+      width: 72px;
+      height: 72px;
+
+      img {
+        width: 32px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    gap: 52px;
+
+    button {
+      width: 100px;
+      height: 100px;
+
+      img {
+        width: 36px;
+      }
+    }
+  }
 `;
 
 export const ButtonRec = styled.button`
@@ -266,6 +432,36 @@ export const ButtonRec = styled.button`
 
     img {
       width: 18px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    width: 300px;
+    height: 72px;
+    gap: 16px;
+
+    img {
+      width: 54px;
+      height: 42px;
+    }
+
+    .ruido {
+      width: 160px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 420px;
+    height: 72px;
+    gap: 16px;
+
+    img {
+      width: 54px;
+      height: 42px;
+    }
+
+    .ruido {
+      width: 220px;
     }
   }
 `;

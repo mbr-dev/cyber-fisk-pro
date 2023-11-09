@@ -96,6 +96,7 @@ export const Home = () => {
       <Dialog.Root open={modal} onOpenChange={setModal}>
         <ModalReward funcao={fecharModal} valor={valor}/>
       </Dialog.Root>
+
       <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
 
       <Main>
@@ -137,6 +138,7 @@ export const Home = () => {
           </Right>
         }
       </Main>
+
       <Footer />
     </Container>
   )

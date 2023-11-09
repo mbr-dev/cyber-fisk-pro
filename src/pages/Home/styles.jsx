@@ -120,18 +120,24 @@ export const Cards = styled.div`
   justify-content: space-around;
   gap: 12px;
 
-  @media(min-width: 768px) {
-    grid-template-rows: repeat(2, auto);
-    grid-template-columns: repeat(3, auto);
-    gap: 3rem;
-  }
-
   @media(max-width: 376px) {
     gap: 10px;
   }
 
   @media(max-width: 320px) {
     gap: 6px;
+  }
+
+  @media(min-width: 600px) {
+    width: 520px;
+    grid-template-rows: repeat(2, auto);
+    grid-template-columns: repeat(3, auto);
+    gap: 3rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    gap: 3rem;
   }
 `;
 
@@ -198,7 +204,7 @@ export const Card = styled.a`
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 600px) {
     width: 150px;
     height: 156px;
 

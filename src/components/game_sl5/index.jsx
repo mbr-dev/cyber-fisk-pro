@@ -33,6 +33,7 @@ export const GameSL5 = () => {
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(async() => {
     try {
@@ -260,13 +261,13 @@ export const GameSL5 = () => {
       </Main>
 
       <FooterBtnHome 
-        fs={isDesktop && "32px"}
-        title="Tasks"
+        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+        wl={isDesktop ? "48%" : "80%"}
         hasLS
-        wl={isDesktop && "60%"}
+        title="Tasks" 
         rota="LessonSelection"
-        w={isDesktop && "450px"}
-        h={isDesktop && "52px"}
+        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
       />
     </Container>
   )

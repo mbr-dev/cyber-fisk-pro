@@ -10,7 +10,7 @@ import RoboWD from "../../assets/RoboWD.png";
 
 import { Container, TopHeader, BottomHeader, Avatar } from "./styles";
 
-export const HeaderTextImage = ({ hasAvatar, enabledClose }) => {
+export const HeaderTextImage = ({ hasAvatar, enabledClose, title }) => {
   const [name, setName] = useState("");
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
@@ -25,6 +25,7 @@ export const HeaderTextImage = ({ hasAvatar, enabledClose }) => {
       <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
       <TopHeader>
         <ButtonMenuHeader />
+        <p>{title}</p>
         {!enabledClose && <ButtonCloseHeader />}
         {isDesktop && <img src={LogoFisk} className="logoFiskD" alt="Logo Fisk"/>}
       </TopHeader>

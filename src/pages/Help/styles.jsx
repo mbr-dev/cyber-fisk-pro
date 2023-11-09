@@ -106,6 +106,15 @@ export const Items = styled.button`
     }
   }
 
+  @media(min-width: 600px) {
+    width: 100%;
+    padding: 18px 18px;
+
+    h2 {
+      font-size: 24px;
+    }
+  }
+
   @media(min-width: 1024px) {
     width: 100%;
     padding: 20px 20px;

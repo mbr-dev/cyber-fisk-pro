@@ -45,6 +45,7 @@ export const Login = () => {
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isDesktopUltra = window.matchMedia("(min-width: 2560px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -169,7 +170,7 @@ export const Login = () => {
           }
           <AreaInput>
           {selectLanguage === 0 ? <label>{translateLogin[0].name}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].name}:</label> : <label>{translateLogin[2].name}:</label>}
-            <User size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+            <User size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} />
             <Input
               type="text"
               placeholder={selectLanguage === 0 ? translateLogin[0].plName : selectLanguage === 1 ? translateLogin[1].plName : translateLogin[2].plName}
@@ -181,11 +182,11 @@ export const Login = () => {
 
           <AreaInput>
             {selectLanguage === 0 ? <label>{translateLogin[0].password}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].password}:</label> : <label>{translateLogin[2].password}:</label>}
-            <Lock size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+            <Lock size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} />
             {!viewPass ?
-              <EyeOff size={isDesktop ? 24 : 16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
+              <EyeOff size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
               :
-              <Eye size={isDesktop ? 24 : 16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
+              <Eye size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
             }
             
             <Input 
@@ -225,17 +226,17 @@ export const Login = () => {
         </Form>
 
         <AreaButton>
-          <LineSeparator w={isDesktopUltra ? "85%" :  isDesktop ? "100%" : "290px"} bg={defaultTheme["gray-200"]}  />
+          <LineSeparator wl={isDesktopUltra ? "85%" :  isDesktop ? "100%" : isTablet ? "500px" : "300px"} bg={defaultTheme["gray-200"]}  />
           <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"
             greenBtn
             type="submit"
-            w={isDesktop ? "300px" : "254px"}
-            h={isDesktop ? "56px" : "40px"}
+            w={isDesktop ? "450px" : isTablet ? "400px" : "250px"}
+            h={isDesktop ? "52px" : isTablet ? "48px" : "36px"}
             mb={isDesktop ? "28px" : "12px"}
             mt={isDesktop ? "28px" : "12px"}
-            fs={isDesktop ? "32px" : "24px"}
+            fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
             onPress={handleSignIn}
           />
         </AreaButton>
