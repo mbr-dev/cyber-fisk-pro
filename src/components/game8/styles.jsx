@@ -21,4 +21,13 @@ export const Main = styled.div`
     margin-top: 0.5rem;
     gap: 0.5rem;
   }
+
+  @media(min-width: 600px) {
+    margin-top: 32px;
+    gap: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    margin-top: 120px;
+  }
 `;

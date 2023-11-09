@@ -15,6 +15,19 @@ export const Main = styled.main`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
+
+  @media(min-width: 600px) {
+    width: 80%;
+    height: 450px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 60%;
+  }
+
+  @media(min-width: 1920px) {
+    width: 50%;
+  }
 `;
 
 export const Questions = styled.div`
@@ -60,5 +73,19 @@ export const Button = styled.button`
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  @media(min-width: 600px) {
+    width: 180px;
+    height: 64px;
+    
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 210px;
+    height: 72px;
   }
 `;

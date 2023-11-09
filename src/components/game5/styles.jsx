@@ -19,5 +19,10 @@ export const Main = styled.main`
   @media(max-width: 360px) {
     gap: 1rem;
     margin-top: 1rem;
-  }  
+  }
+
+  @media(min-width: 600px) {
+    margin-top: 54px;
+    gap: 44px;
+  }
 `;

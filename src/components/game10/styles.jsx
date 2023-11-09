@@ -54,4 +54,14 @@ export const Input = styled.input`
   @media(max-width: 320px) {
     width: 15rem;
   }
+
+  @media(min-width: 600px) {
+    padding: 16px;
+    width: 550px;
+    font-size: 28px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 750px;
+  }
 `;

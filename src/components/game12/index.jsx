@@ -8,7 +8,6 @@ import { TitleLesson } from "../titleLesson";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Input, Form, Words } from "./styles";
 
 export const Game12 = () => {
@@ -28,6 +27,9 @@ export const Game12 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -193,8 +195,9 @@ export const Game12 = () => {
           type="submit"
           disabledButton={blockButton}
           title="Check"
-          w="15.875rem"
-          h="2.5rem"
+          w={isDesktop ? "400px" : isTablet ? "300px" : "180px"}
+          h={isDesktop ? "64px" : isTablet ? "58px" : "32px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
           greenBtn
         />
       </Main>

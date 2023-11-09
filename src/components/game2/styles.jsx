@@ -20,4 +20,9 @@ export const Main = styled.div`
   @media(max-width: 320px) {
     margin-top: 2rem;
   }
+
+  @media(min-width: 600px) {
+    margin-top: 54px;
+    gap: 44px;
+  }
 `;

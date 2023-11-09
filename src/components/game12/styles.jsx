@@ -10,6 +10,11 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 1rem;
+
+  @media(min-width: 600px) {
+    margin-top: 32px;
+    gap: 32px;
+  }
 `;
 
 export const Words = styled.div`
@@ -29,6 +34,24 @@ export const Words = styled.div`
 
   @media(max-width: 320px) {
     width: 15rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 12px;
+
+    p {
+      padding: 14px;
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    gap: 14px;
+
+    p {
+      padding: 16px;
+      font-size: 20px;
+    }
   }
 `;
 
@@ -62,5 +85,15 @@ export const Input = styled.input`
   @media(max-width: 320px) {
     width: 14rem;
     font-size: 0.875rem;
+  }
+
+  @media(min-width: 600px) {
+    padding: 16px;
+    width: 550px;
+    font-size: 28px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 750px;
   }
 `;

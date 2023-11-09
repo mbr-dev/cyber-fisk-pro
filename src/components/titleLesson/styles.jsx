@@ -29,13 +29,15 @@ export const Container = styled.div`
   }
 
   @media(min-width: 600px) {
+    padding: 12px;
+
     span {
       font-size: 28px;
     }
   }
 
   @media(min-width: 1024px) {
-    padding: 0;
+    padding: 16px;
     
     span {
       font-size: 36px;

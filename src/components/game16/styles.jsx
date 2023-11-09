@@ -21,6 +21,14 @@ export const Main = styled.main`
   @media(max-width: 320px) {
     gap: 3rem;
   }
+
+  @media(min-width: 600px) {
+    gap: 120px;
+
+    p {
+      font-size: 32px;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -43,6 +51,22 @@ export const Form = styled.form`
 
     @media(max-width: 360px) {
       width: 16rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    height: 120px;
+
+    input {
+      padding: 16px;
+      width: 550px;
+      font-size: 28px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    input {
+      width: 750px;
     }
   }
 `;

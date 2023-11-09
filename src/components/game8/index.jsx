@@ -32,6 +32,9 @@ export const Game8 = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -237,11 +240,13 @@ export const Game8 = () => {
             return (
               <Draggable index={index} key={index}>
                 <ButtonAnswer
-                  w="5rem"
-                  h="3rem"
+                  w={isTablet? "200px" : "5rem"}
+                  h={isTablet ? "64px" : "3rem"}
                   disabledButton={blockButton}
                 >
-                  {answers.label}
+                  <p style={{
+                    fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+                  }}>{answers.label}</p>
                 </ButtonAnswer>
               </Draggable>
             )

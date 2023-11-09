@@ -20,6 +20,10 @@ export const Main = styled.main`
     padding-top: 0.75rem;
     gap: 0.75rem;
   }
+
+  @media(min-width: 1024px) {
+    display: flex;
+  }
 `;
 
 export const Button = styled.button`

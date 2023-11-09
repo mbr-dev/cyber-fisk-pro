@@ -38,6 +38,9 @@ export const Game26 = () => {
   const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -265,8 +268,9 @@ export const Game26 = () => {
           </SortableContext>
         </DndContext>
         <ButtonBg 
-          h="2rem"
-          w="10rem"
+          w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
+          h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
           disabledButton={blockButton}
           onPress={handleVerify}
           title="Check"

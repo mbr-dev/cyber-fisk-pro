@@ -31,6 +31,9 @@ export const Game22 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -195,13 +198,15 @@ export const Game22 = () => {
           return (
             <ButtonAnswer
               key={index}
-              w="10rem"
-              h="3rem"
+              w={isDesktop ? "400px" : isTablet ? "300px" : "10rem"}
+              h={isDesktop ? "82px" : isTablet ? "86px" : "3rem"}
               optionColor={selectedColor[index]}
               onPress={() => handleClick(index)}
               disabledButton={blockButton}
             >
-              {answer.label}
+              <p style={{
+                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+              }}>{answer.label}</p>
             </ButtonAnswer>
           )
         })}

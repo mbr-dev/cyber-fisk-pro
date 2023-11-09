@@ -27,9 +27,11 @@ export const Game15 = () => {
   const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
-  const [blockButton, setBlockButton] = useState(true);
   const [phraseFix, setPhraseFix] = useState("");
   const [data, setData] = useState([]);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -255,17 +257,17 @@ export const Game15 = () => {
         
         <AreaButton>
           <ButtonBg
-            w="100px"
-            h="28px"
-            fs="16px"
+            w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
+            h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
+            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
             title="Clear"
             onPress={handleClear}
           />
 
           <ButtonBg
-            w="100px"
-            h="28px"
-            fs="16px"
+            w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
+            h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
+            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
             title="Check"
             greenBtn
             onPress={verifyWord}

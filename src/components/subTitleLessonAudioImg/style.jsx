@@ -14,9 +14,27 @@ export const Container = styled.div`
     border-radius: 8px;
   }
 
-  @media(min-width: 320px) {
+  @media(max-width: 320px) {
     .img2 {
       width: 120px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    .img2 {
+      width: 250px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .img2 {
+      width: 200px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .img2 {
+      width: 280px;
     }
   }
 `
@@ -34,7 +52,7 @@ export const Button = styled.button`
   transition: all .2s ease-in-out;
 
   &:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
   }
 
   @media(max-width: 320px) {
@@ -49,5 +67,10 @@ export const Button = styled.button`
   @media(min-width: 360px) {
     width: 4.5rem;
     height: 4.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 100px;
+    height: 100px;
   }
 `;
