@@ -12,8 +12,8 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main } from "./styles";
 
 export const Game33 = () => {
   const {
@@ -249,6 +249,7 @@ export const Game33 = () => {
           onPress={handleVerify}
           title="Check"
         />
+        <p>dawd</p>
       </Main>
     </Container>
   )

@@ -49,7 +49,7 @@ export const Answers = styled.div`
 
 export const Button = styled.button`
   all: unset;
-  width: 9.125rem;
+  width: 136px;
   height: 3.5rem;
   display: flex;
   padding-inline: 0.5rem;

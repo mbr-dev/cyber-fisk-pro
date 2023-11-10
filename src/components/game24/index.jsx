@@ -40,6 +40,9 @@ export const Game24 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(async() => {
     setIsLoading(true);
 
@@ -201,7 +204,7 @@ export const Game24 = () => {
           <label>{question[0]}</label>
           <Input
             type="text"
-            style={{width: "7rem"}}
+            style={{width: isTablet ? "120px" : isDesktop ? "130px" : "7rem"}}
             value={text0}
             onChange={(e) => setText0(e.target.value)}
             required
@@ -210,7 +213,7 @@ export const Game24 = () => {
           <label>{question[1]}</label>
           <Input
             type="text"
-            style={{width: "5.5rem"}}
+            style={{width: isTablet ? "96px" : isDesktop ? "110px" : "5.5rem"}}
             value={text1}
             onChange={(e) => setText1(e.target.value)}
             required
@@ -219,7 +222,7 @@ export const Game24 = () => {
           <label>{question[2]}</label>
           <Input
             type="text"
-            style={{width: "10.75rem"}}
+            style={{width: isTablet ? "184px" : isDesktop ? "196px" : "10.75rem"}}
             value={text2}
             onChange={(e) => setText2(e.target.value)}
             required
@@ -228,7 +231,7 @@ export const Game24 = () => {
           <label>{question[3]}</label>
           <Input
             type="text"
-            style={{width: "7.25rem"}}
+            style={{width: isTablet ? "120px" : isDesktop ? "130px" : "7.25rem"}}
             value={text3}
             onChange={(e) => setText3(e.target.value)}
             required
@@ -237,7 +240,7 @@ export const Game24 = () => {
           <label>{question[4]}</label>
           <Input
             type="text"
-            style={{width: "8rem"}}
+            style={{width: isTablet ? "132px" : isDesktop ? "140px" : "8rem"}}
             value={text4}
             onChange={(e) => setText4(e.target.value)}
             required
@@ -245,13 +248,15 @@ export const Game24 = () => {
 
           <label>{question[5]}</label>
         </Form>
+
         <ButtonBg
           form="myForm"
           type="submit"
           disabledButton={blockButton || playAudio}
           title="Check"
-          w="15.875rem"
-          h="2.5rem"
+          w={isDesktop ? "450px" : isTablet ? "350px" : "200px"}
+          h={isDesktop ? "84px" : isTablet ? "64px" : "48px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : "20px"}
           greenBtn
         />
       </Main>

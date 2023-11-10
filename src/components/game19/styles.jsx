@@ -24,6 +24,10 @@ export const Main = styled.main`
     margin-top: 0.5rem;
     gap: 0.75rem;
   }
+
+  @media (min-width: 600px) {
+    margin-top: 24px;
+  }
 `;
 
 export const Form = styled.form`
@@ -52,6 +56,26 @@ export const Form = styled.form`
       font-size: 1rem;
     }
   }
+
+  @media (min-width: 600px) {
+    padding: 18px 92px;
+
+    label {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    padding: 18px 120px;
+
+    label {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    padding: 20px 500px;
+  }
 `;
 
 export const Select = styled.select`
@@ -62,14 +86,22 @@ export const Select = styled.select`
   margin-right: 0.5rem;
   box-shadow: 0px 4px 10px 0px #00000033;
 
+  option {
+    font-weight: 500;
+    border: 0;
+  }
+
   @media(max-width: 320px) {
     margin-left: 0.25rem;
     margin-right: 0.25rem;
     height: 1.375rem;
   }
 
-  option {
-    font-weight: 500;
-    border: 0;
+  @media(min-width: 600px) {
+    height: 32px;
+  }
+
+  @media(min-width: 1024px) {
+    height: 36px;
   }
 `;

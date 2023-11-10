@@ -260,7 +260,10 @@ export const Game26 = () => {
             {answers.map((answer, index) => {
               return (
               <SortableItem key={index} id={answer}>
-                <ButtonAnswer w="14rem" h="3rem">
+                <ButtonAnswer 
+                  w={isTablet ? "250px" : isDesktop ? "250px" : "14rem"}
+                  h={isTablet ? "52px" : isDesktop ? "32px" : "3rem"}
+                >
                   <p>{answer.label}</p>
                 </ButtonAnswer>
               </SortableItem>
@@ -268,9 +271,9 @@ export const Game26 = () => {
           </SortableContext>
         </DndContext>
         <ButtonBg 
-          w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
+          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
           disabledButton={blockButton}
           onPress={handleVerify}
           title="Check"

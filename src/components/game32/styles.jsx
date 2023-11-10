@@ -21,6 +21,7 @@ export const Answers = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
 `;
 

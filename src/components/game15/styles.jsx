@@ -91,11 +91,11 @@ export const Words = styled.span`
   }
 `;
 
-  export const AreaButton = styled.div`
-    width: 100%;
-    display: flex;
-    margin-top: 32px;
-    align-items: center;
-    justify-content: center;
-    gap: 32px;
-  `;
+export const AreaButton = styled.div`
+  width: 100%;
+  display: flex;
+  margin-top: 32px;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+`;

@@ -29,6 +29,9 @@ export const Game27 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -179,18 +182,12 @@ export const Game27 = () => {
       <TitleLesson title="Choose the correct alternative" />
       <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
-      <Main style={{
-        flexDirection: answers.length === 2 ? "column" : "row",
-      }}>
+      <Main>
         {answers.map((answer, index) => {
           return (
             <Photo
               key={index}
               onClick={() => handleClick(index)}
-              style={{
-                width: answers.length === 2 ? "16rem" : "10rem",
-                height: answers.length === 2 ? "10rem" : "7rem",
-              }}
               disabled={blockButton}
             >
               <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`} alt="" />

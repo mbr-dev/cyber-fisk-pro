@@ -1,6 +1,6 @@
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
@@ -10,7 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styles";
+import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop, Left, Right, AreaButton } from "./styles";
 
 export const Game29 = () => {
   const {
@@ -34,6 +34,9 @@ export const Game29 = () => {
   const [wordsIndex, setWordsIndex] = useState([]);
   const [wordsIndex1, setWordsIndex1] = useState([]);
   const [wordsDropped1, setWordsDropped1] = useState([]);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -167,6 +170,13 @@ export const Game29 = () => {
     }
   }
 
+  const handleClear = () => {
+    setWordsDropped([]);
+    setWordsIndex([]);
+    setWordsDropped1([]);
+    setWordsIndex1([]);
+  }
+
   const Draggable = ({ index, children }) => {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
       id: `draggable-${index}`,
@@ -259,71 +269,86 @@ export const Game29 = () => {
       <Loading />
     )
   }
-
+  
   return (
     <Container>
       <TitleLesson title="Drag and Drop the words to make sentences." />
 
-        <Main>
-          <DndContext onDragEnd={handleDragEnd}>
-            <AreaWord>
-                {words.map((word, index) => {
-                  const containIndex = wordsIndex.includes(index);
-
-                  return (
-                    <Draggable index={index} key={index}>
-                      <Words style={{
-                        display: containIndex ? "none" : ""
-                      }}>{word}</Words>
-                    </Draggable>
-                  )
-                })}
-            </AreaWord>
-            <Droppable>
-              <AreaAnswers>
-                {wordsDropped.map((word, index) => {
-                  return (
-                    <WordsDrop key={index}>{word}</WordsDrop>
-                  )
-                })}
-              </AreaAnswers>
-            </Droppable>
-          </DndContext>
-
-          <DndContext onDragEnd={handleDragEnd1}>
-            <AreaWord>                
-              {words1.map((word, index) => {
-                const containIndex = wordsIndex1.includes(index);
+      <Main>
+        <Left>
+        <DndContext onDragEnd={handleDragEnd}>
+          <AreaWord>
+              {words.map((word, index) => {
+                const containIndex = wordsIndex.includes(index);
 
                 return (
                   <Draggable index={index} key={index}>
                     <Words style={{
-                        display: containIndex ? "none" : ""
-                      }}>{word}</Words>
+                      display: containIndex ? "none" : ""
+                    }}>{word}</Words>
                   </Draggable>
                 )
               })}
-            </AreaWord>
-            <Droppable1>
-              <AreaAnswers>
-                {wordsDropped1.map((word, index) => {
-                  return (
-                    <WordsDrop key={index}>{word}</WordsDrop>
-                  )
-                })}
-              </AreaAnswers>
-            </Droppable1>
-          </DndContext>
+          </AreaWord>
+          <Droppable>
+            <AreaAnswers>
+              {wordsDropped.map((word, index) => {
+                return (
+                  <WordsDrop key={index}>{word}</WordsDrop>
+                )
+              })}
+            </AreaAnswers>
+          </Droppable>
+        </DndContext>
+        </Left>
 
-          <ButtonBg 
-            w="14rem"
-            h="2.5rem"
-            greenBtn
-            title="Check"
-            disabledButton={blockButton}
-            onPress={handleVerify}
-          />
-        </Main>
+        <Right>
+        <DndContext onDragEnd={handleDragEnd1}>
+          <AreaWord>                
+            {words1.map((word, index) => {
+              const containIndex = wordsIndex1.includes(index);
+
+              return (
+                <Draggable index={index} key={index}>
+                  <Words style={{
+                      display: containIndex ? "none" : ""
+                    }}>{word}</Words>
+                </Draggable>
+              )
+            })}
+          </AreaWord>
+          <Droppable1>
+            <AreaAnswers>
+              {wordsDropped1.map((word, index) => {
+                return (
+                  <WordsDrop key={index}>{word}</WordsDrop>
+                )
+              })}
+            </AreaAnswers>
+          </Droppable1>
+        </DndContext>
+        </Right>
+      </Main>
+
+      <AreaButton>
+        <ButtonBg
+          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
+          title="Clear"
+          onPress={handleClear}
+        />
+
+        <ButtonBg 
+          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
+          greenBtn
+          title="Check"
+          disabledButton={blockButton}
+          onPress={handleVerify}
+        />
+      </AreaButton>
     </Container>
   )
 }

@@ -14,6 +14,23 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   gap: 12px;
+
+  @media (min-width: 600px) {
+    margin-top: 32px;
+    gap: 36px;
+  }
+
+  @media (min-width: 1024px) {
+    margin-top: 0;
+    width: 80%;
+    justify-content: center;
+    flex-direction: row;
+    gap: 56px;
+  }
+
+  @media (min-width: 1440px) {
+    margin-top: 54px;
+  }
 `;
 
 export const Question = styled.section`
@@ -26,13 +43,38 @@ export const Question = styled.section`
   p {
     font-weight: bold;
   }
+
+  @media (min-width: 1024px) {
+    width: 350px;
+    height: 200px;
+    display: flex;
+    align-items: center;
+    margin-bottom: 120px;
+
+    p {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const Answers = styled.section`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 0.5rem;
+
+  @media (min-width: 600px) {
+    gap: 12px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 40%;
+  }
+
+  @media (min-width: 1920px) {
+    width: 500px;
+  }
 `;
 
 export const Options = styled.div`
@@ -65,6 +107,13 @@ export const AnswersRow = styled.section`
     border: 3px solid ${props => props.theme.black};
     border-radius: 8px;
   }
+
+  @media (min-width: 1440px) {
+    p {
+      height: 64px;
+      font-size: 16px;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -76,6 +125,10 @@ export const Form = styled.form`
 
   @media(max-width: 376px) {
     gap: 0.5rem;
+  }
+
+  @media (min-width: 600px) {
+    gap: 16px;
   }
 `;
 
@@ -105,5 +158,10 @@ export const Radio = styled(RadioGroup.Item)`
       border-radius: 8px;
       background-color: transparent;
     }
+  }
+
+  @media (min-width: 1024px) {
+    width: 64px;
+    height: 64px;
   }
 `;

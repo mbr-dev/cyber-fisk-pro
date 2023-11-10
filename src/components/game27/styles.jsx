@@ -15,21 +15,38 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
   margin-top: 2rem;
-  gap: 1rem;
+  gap: 14px;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
     margin-top: 1rem;
-  }  
+  }
+
+  @media(min-width: 600px) {
+    height: 450px;
+    align-items: center;
+  }
+
+  @media(min-width: 1024px) {
+    width: 850px;
+    height: 400px;
+    margin-top: 16px;
+  }
+
+  @media(min-width: 1440px) {
+    margin-top: 32px;
+  }
 `;
 
 export const Photo = styled.button`
   all: unset;
+  width: 150px;
+  height: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 4px solid transparent;
+  border: 3px solid transparent;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -50,7 +67,16 @@ export const Photo = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 13rem;
-    height: 8rem;
-  }  
+    width: 96px;
+    height: 64px;
+  }
+
+  @media(min-width: 600px) {
+    width: 280px;
+    height: 200px;
+  }
+
+  @media(min-width: 1024px) {
+    height: 180px;
+  }
 `;

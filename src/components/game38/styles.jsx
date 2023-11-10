@@ -8,43 +8,15 @@ export const Container = styled.div`
   align-items: center;
 `;
 
-export const Main = styled.main`
-  flex: 1;
+export const Main = styled.main`  
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 0.5rem;
+  padding-block: 16px;
   gap: 1rem;
   background-color: ${props => props.theme["gray-300"]};
-`;
-
-export const AreaAnswers = styled.div`
-  width: 23rem;
-  height: 8rem;
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-  padding: 0.5rem;
-  border: 3px solid ${props => props.theme["gray-700"]};
-  border-radius: 8px;
-
-  @media(max-width: 375px) {
-    width: 22rem;
-    height: 9rem;
-  }
-
-  @media(max-width: 360px) {
-    width: 21rem;
-    height: 8rem;
-  }
-  
-  @media(max-width: 320px) {
-    width: 19rem;
-    height: 8rem;
-  }
+  margin-bottom: 16px;
 `;
 
 export const AreaWord = styled.div`
@@ -84,6 +56,45 @@ export const Words = styled.span`
     font-size: 0.75rem;
     padding: 0.375rem;
   }
+
+  @media(min-width: 600px) {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+`;
+
+export const AreaAnswers = styled.div`
+  width: 23rem;
+  height: 8rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.5rem;
+  border: 3px solid ${props => props.theme["gray-700"]};
+  border-radius: 8px;
+
+  @media(max-width: 375px) {
+    width: 22rem;
+    height: 9rem;
+  }
+
+  @media(max-width: 360px) {
+    width: 21rem;
+    height: 8rem;
+  }
+  
+  @media(max-width: 320px) {
+    width: 19rem;
+    height: 8rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 500px;
+    height: 200px;
+    align-items: flex-start;
+  }
 `;
 
 export const WordsDrop = styled.span`
@@ -103,4 +114,17 @@ export const WordsDrop = styled.span`
     font-size: 0.75rem;
     padding: 0.375rem;
   }
+
+  @media(min-width: 600px) {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+`;
+
+export const AreaButton = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
 `;

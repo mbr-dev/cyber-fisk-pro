@@ -10,7 +10,6 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { defaultTheme } from "../../themes/defaultTheme";
 import { Main, Container, Input } from "./styles";
 
 export const Game20 = () => {
@@ -32,7 +31,10 @@ export const Game20 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  console.log("answer: ", answer.length)
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -188,13 +190,15 @@ export const Game20 = () => {
             onChange={(e) => setText(e.target.value)}
           />
         </form>
+
         <ButtonBg
           form="myForm"
           type="submit"
           disabledButton={blockButton}
           title="Check"
-          w="15.875rem"
-          h="2.5rem"
+          w={isDesktop ? "450px" : isTablet ? "350px" : "200px"}
+          h={isDesktop ? "84px" : isTablet ? "64px" : "48px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : "20px"}
           greenBtn
         />
       </Main>

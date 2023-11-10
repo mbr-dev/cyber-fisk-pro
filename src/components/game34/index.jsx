@@ -19,6 +19,7 @@ export const Game34 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -60,6 +61,7 @@ export const Game34 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -81,6 +83,7 @@ export const Game34 = () => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -103,13 +106,19 @@ export const Game34 = () => {
     setCountClick(tempCountClick);
 
     let tempRightPoints;
-
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       if (tempCountClick < (answers.length / 2)) {
+        tempSelectedColor[index] = 1;
+        setSelectedColor(tempSelectedColor);
+
         return;
       }
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -119,6 +128,9 @@ export const Game34 = () => {
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
     } else {
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
+
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
@@ -199,6 +211,7 @@ export const Game34 = () => {
               key={index}
               w="13rem"
               h="3.5rem"
+              optionColor={selectedColor[index]}
               onPress={() => handleClick(index)}
               disabledButton={blockButton}
             >

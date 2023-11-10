@@ -32,6 +32,9 @@ export const Game32 = () => {
   const [selectedRadio, setSelectedRadio] = useState([]);
   const [data, setData] = useState([]);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -221,15 +224,17 @@ export const Game32 = () => {
                 </AnswersRow>
               )
             })}
-            <ButtonBg
-              form="myForm"
-              type="submit"
-              disabledButton={blockButton}
-              title="Check"
-              w="15.875rem"
-              h="2.5rem"
-            />
           </Form>
+
+          <ButtonBg
+            form="myForm"
+            type="submit"
+            disabledButton={blockButton}
+            title="Check"
+            w={isDesktop ? "400px" : isTablet ? "300px" : "180px"}
+            h={isDesktop ? "64px" : isTablet ? "58px" : "32px"}
+            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
+          />
         </Answers>
       </Main>
     </Container>

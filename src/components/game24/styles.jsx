@@ -51,6 +51,26 @@ export const Form = styled.form`
       font-size: 1rem;
     }
   }
+
+  @media (min-width: 600px) {
+    padding: 18px 92px;
+
+    label {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    padding: 18px 120px;
+
+    label {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    padding: 20px 500px;
+  }
 `;
 
 export const Input = styled.input`
@@ -71,5 +91,13 @@ export const Input = styled.input`
   option {
     font-weight: 500;
     border: 0;
+  }
+
+  @media (min-width: 600px) {
+    font-size: 20px;
+  }
+
+  @media (min-width: 1024px) {
+      font-size: 24px;
   }
 `;
