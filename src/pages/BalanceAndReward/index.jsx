@@ -1,5 +1,5 @@
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
+import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 import { ButtonBg } from "../../components/ButtonBg";
 import { HeaderText } from "../../components/HeaderText";

@@ -35,6 +35,15 @@ export const Container = styled.header`
     }
   }
 
+  @media(min-width: 600px) {
+    height: 100px;
+    padding-inline: 32px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+
   @media(min-width: 1024px) {
     height: 120px;
     padding-inline: 32px;

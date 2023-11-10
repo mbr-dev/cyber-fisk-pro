@@ -6,6 +6,7 @@ import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
+import { Avatar } from "../pages/Avatar";
 import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
@@ -85,6 +86,7 @@ export const Router =() => {
       <Route path="/Help" element={<Help />}/>
       <Route path="/Books" element={<Books />}/>
       <Route path="/Login" element={<Login />}/>
+      <Route path="/Avatar" element={<Avatar />}/>
       <Route path="/Studio" element={<Studio />}/>
       <Route path="/Report" element={<Report />}/>
       <Route path="/qr-code" element={<QRCode />}/>
