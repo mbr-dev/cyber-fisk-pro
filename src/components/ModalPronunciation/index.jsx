@@ -10,6 +10,8 @@ import SpainImg from "../../assets/Spain.svg";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Content, Close, Overlay, Main, Header, Form, SelectLanguage, ButtonHear, ButtonFlag } from "./styles";
 
+/* aumentar tela */
+
 export const ModalPronunciation = () => {
   const languageToVoice = {
     "pt-BR": "Microsoft Maria - Portuguese (Brazil)",

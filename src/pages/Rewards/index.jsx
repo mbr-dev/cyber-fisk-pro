@@ -66,9 +66,7 @@ export const Rewards = () => {
 
         <Right>
           {isDesktop && 
-            <>
-              <Button>Rewards</Button>
-            </>}
+            <Button>Rewards</Button>}
 
           <Separator>
             <Card>

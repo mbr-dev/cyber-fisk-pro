@@ -1,6 +1,7 @@
 import { useKeenSlider } from "keen-slider/react"
 import "keen-slider/keen-slider.min.css"
 import { useEffect, useState } from "react";
+
 import { HeaderText } from "../../components/HeaderText";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
@@ -14,6 +15,8 @@ import p4 from "./images/p4.png";
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
 import RoboWD from "../../assets/RoboWD.png";
+
+/* dx maior o carrousel no desktop */
 
 import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, PositionImg } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -88,85 +91,6 @@ export const Ranking = () => {
             </TextArea>}
         </MainTop>
 
-        {!isDesktop && <LineSeparator wl="80%" bg={defaultTheme["gray-200"]} />}
-
-        {!isDesktop && 
-          <MainBottom>
-            <LevelPosition $selected>
-              <p>1</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>500 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>2</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>300 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>3</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>4</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>5</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>6</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>6</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-
-            <LevelPosition>
-              <p>6</p>
-              <AvatarArea>
-                <img src={RoboWD} alt="Avatar" />
-              </AvatarArea>
-              <span>Camila Eduarda</span>
-              <p>250 xp</p>
-            </LevelPosition>
-          </MainBottom>}
-
-        {!isDesktop && <LineSeparator wl="80%" bg={defaultTheme["gray-200"]} />}
-
         {isDesktop &&
           <Carrousel>
             <CarrouselInside ref={sliderRef} className="keen-slider">
@@ -238,89 +162,35 @@ export const Ranking = () => {
           <TextArea>
             <h2>Gold Division</h2>
             <p>You are awesome!</p>
-          </TextArea>
-        </MainTop>
+          </TextArea>}
 
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
-        <MainBottom>
-          {data !== null ? data.map((x, index) =>{
-            return(
-              rafUser === x.raf ?
-              <LevelPosition $selected>
-                <p>{(index+1)}</p>
-                <AvatarArea>
-                  <img src={RoboWD} alt="Avatar" />
-                </AvatarArea>
-                <span>{x.raf}</span>
-                <p>{x.xp} xp</p>
-              </LevelPosition>
-              :
-              <LevelPosition >
-                <p>{(index+1)}</p>
-                <AvatarArea>
-                  <img src={RoboWD} alt="Avatar" />
-                </AvatarArea>
-                <span>{x.raf}</span>
-                <p>{x.xp} xp</p>
-              </LevelPosition>
-            )
-          }) : null}
-          {/* <LevelPosition $selected>
-            <p>1</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>500 xp</p>
-          </LevelPosition>
-
-          <LevelPosition>
-            <p>2</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>300 xp</p>
-          </LevelPosition>
-
-          <LevelPosition>
-            <p>3</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>250 xp</p>
-          </LevelPosition>
-
-          <LevelPosition>
-            <p>4</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>250 xp</p>
-          </LevelPosition>
-
-          <LevelPosition>
-            <p>5</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>250 xp</p>
-          </LevelPosition>
-
-          <LevelPosition>
-            <p>6</p>
-            <AvatarArea>
-              <img src={RoboWD} alt="Avatar" />
-            </AvatarArea>
-            <span>Camila Eduarda</span>
-            <p>250 xp</p>
-          </LevelPosition> */}
-
-        </MainBottom>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
+        {!isDesktop &&<LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
+        {!isDesktop &&
+          <MainBottom>
+            {data !== null ? data.map((x, index) =>{
+              return(
+                rafUser === x.raf ?
+                <LevelPosition $selected>
+                  <p>{(index+1)}</p>
+                  <AvatarArea>
+                    <img src={RoboWD} alt="Avatar" />
+                  </AvatarArea>
+                  <span>{x.raf}</span>
+                  <p>{x.xp} xp</p>
+                </LevelPosition>
+                :
+                <LevelPosition >
+                  <p>{(index+1)}</p>
+                  <AvatarArea>
+                    <img src={RoboWD} alt="Avatar" />
+                  </AvatarArea>
+                  <span>{x.raf}</span>
+                  <p>{x.xp} xp</p>
+                </LevelPosition>
+              )
+            }) : null}
+          </MainBottom>}
+        {!isDesktop &&<LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
       </Main>
 
       <FooterBtnHome 

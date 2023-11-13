@@ -8,6 +8,8 @@ import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
 
+/* dx sombra no select */
+
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 import RoboPe from "../../assets/roboPe.png";

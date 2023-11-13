@@ -171,7 +171,7 @@ export const Separator = styled.div`
 
   @media(min-width: 1024px) {
     width: 100%;
-    padding: 16px 20px;
+    padding: 16px;
   }
 `;
 
@@ -185,9 +185,15 @@ export const Card = styled.div`
   border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   cursor: pointer;
+  transition: all ease 0.3s;
 
   img {
     width: 28px;
+  }
+
+  &:hover {
+    border-color: ${props => props.theme["gray-700"]};
+    background-color: ${props => props.theme["red-200"]};
   }
 
   @media(min-width: 768px) {
@@ -210,7 +216,7 @@ export const Card = styled.div`
 `;
 
 export const Title = styled.div`
-  width: 100%;
+  width: 90%;
   height: 32px;
   display: flex;
   align-items: center;
@@ -230,6 +236,7 @@ export const Title = styled.div`
 
   @media (min-width: 1024px) {
     width: 90%;
+    height: 72px;
   }
 `;
 

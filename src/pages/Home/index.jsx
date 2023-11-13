@@ -2,7 +2,6 @@ import Cookies from 'universal-cookie';
 import { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useContext, useEffect, useState } from "react";
 
 import { apiQAS } from "../../lib/api";
 import { Footer } from "../../components/Footer";
@@ -25,6 +24,8 @@ import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
 
 import { Container, Main, Card, Cards, ButtonDayCh, Right, Left } from "./styles";
+
+/* ajuntar botao no desktop 1440 */
 
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);

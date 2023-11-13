@@ -4,7 +4,7 @@ import { Delete } from "lucide-react";
 
 import { Modal } from "./components/Modal";
 import { Notifications } from "../Notifications";
-import { HeaderTextImage } from "../HeaderTextImage";
+import { HeaderText } from "../HeaderText";
 
 import { LessonContext } from "../../context/lesson";
 
@@ -18,7 +18,7 @@ export const GameWordle = () => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const correctWord = "RIGHRRT";
+  const correctWord = "RIGHT";
   const wordLength = correctWord.length;
   const numberOfRows = 6;
   const boardDefault = Array.from({ length: numberOfRows }, () => Array(wordLength).fill(""));
@@ -108,7 +108,7 @@ export const GameWordle = () => {
 
   return (
     <Container>
-      <HeaderTextImage title="Desafio Diário" />
+      <HeaderText title="Desafio Diário" />
 
       {wordLength > 7 &&
         <Notifications
