@@ -7,6 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+
+  @media(min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const Header = styled.header`
@@ -20,7 +24,7 @@ export const Header = styled.header`
   overflow: hidden;
   position: relative;
 
-  img {
+  .logoFisk {
     width: 200px;
   }
 
@@ -36,6 +40,74 @@ export const Header = styled.header`
     
     img {
       width: 150px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 600px;
+    height: 100vh;
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
+    flex-direction: column;
+    gap: 20px;
+
+    .logoFisk {
+      width: 300px;
+    }
+
+    .buddyImg {
+      width: 420px;
+    }
+  }
+
+  @media(min-width: 2560px) {
+    width: 40%;
+
+    .logoFisk {
+      width: 400px;
+    }
+
+    .buddyImg {
+      width: 500px;
+    }
+  }
+`;
+
+export const FooterBlue = styled.header`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: ${props => props.theme.white};
+
+  p {
+    font-size: 20px;
+    font-weight: normal;
+  }
+
+  div {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 32px;
+
+    img {
+      width: 56px;
+    }
+  }
+
+  @media(min-width: 2560px) {
+    p {
+      font-size: 28px;
+    }
+
+    div {
+      gap: 44px;
+
+      img {
+        width: 84px;
+      }
     }
   }
 `;
@@ -58,14 +130,6 @@ export const Form = styled.div`
   gap: 1rem;
   margin-bottom: 2rem;
 
-  @media(max-width: 600px) {
-    padding-block: 2rem;
-    width: 18.75rem;
-    padding-block: 1rem;
-    margin-bottom: 1.5rem;
-    gap: 0.875rem;
-  }
-
   @media(max-width: 376px) {
     padding-block: 2rem;
     width: 18.75rem;
@@ -85,6 +149,22 @@ export const Form = styled.div`
     width: 16rem;
     gap: 0.375rem;
     margin-bottom: 0rem;
+  }
+
+  @media(min-width: 600px) {
+    margin-top: 52px;
+    padding-block: 2rem;
+    width: 500px;
+    padding-block: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 70%;
+  }
+
+  @media(min-width: 2560px) {
+    width: 60%;
   }
 `;
 
@@ -113,11 +193,11 @@ export const AreaInput = styled.div`
   .eye {
     position: absolute;
     top: 44px;
-    left: 300px !important;
+    left: 290px;
     color: ${props => props.theme["gray-400"]};
-    @media(max-width: 1024px) {
+    /* @media(max-width: 1024px) {
       left: 270px !important;
-    }
+    } */
   }
 
   .selectState {
@@ -136,6 +216,43 @@ export const AreaInput = styled.div`
 
     svg {
       top: 38px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    label {
+      padding-left: 28px;
+      font-size: 24px;
+      margin-bottom: 16px;
+    }
+
+    svg {
+      top: 62px;
+      left: 18px;
+    }
+
+    .eye {
+      top: 66px;
+      left: 460px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .eye {
+      top: 62px;
+      left: 430px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    .eye {
+      left: 540px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    .eye {
+      left: 870px;
     }
   }
 `;
@@ -167,6 +284,25 @@ export const Input = styled.input`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 600px) {
+    height: 60px;
+    padding-left: 42px;
+
+    &::placeholder {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    height: 64px;
+    padding-left: 54px;
+    box-shadow: 0px 4px 10px 0px #00000040;
+
+    &::placeholder {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const SelectIdioma = styled.div`
@@ -194,6 +330,33 @@ export const SelectTitle = styled.div`
     flex: 1;
     font-size: 18px;
   }
+
+  @media(min-width: 600px) {
+    height: 60px;
+    gap: 18px;
+
+    p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    img {
+      width: 36px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    height: 64px;
+    gap: 20px;
+
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      width: 38px;
+    }
+  }
 `;
 
 export const SelectUl = styled.ul`
@@ -210,6 +373,18 @@ export const SelectUl = styled.ul`
   padding-inline: 16px;
   gap: 12px;
   background-color: ${props => props.theme["red-200"]};
+
+  @media(min-width: 600px) {
+    padding-inline: 36px;
+    gap: 18px;
+    bottom: -124px;
+  }
+
+  @media(min-width: 1024px) {
+    padding-inline: 44px;
+    gap: 20px;
+    bottom: -140px;
+  }
 `;
 
 export const SelectLi = styled.li`
@@ -220,4 +395,21 @@ export const SelectLi = styled.li`
   &:hover {
     background-color: ${props => props.theme["red-300"]};
   }
+
+  @media(min-width: 600px) {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  @media(min-width: 1024px) {
+    font-size: 24px;
+  }
+`;
+
+export const AreaButton = styled.div`
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 `;

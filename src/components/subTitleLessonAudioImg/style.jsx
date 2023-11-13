@@ -7,16 +7,34 @@ export const Container = styled.div`
   justify-content: space-around;
   gap: 1rem;
   background-color: ${props => props.theme["gray-100"]};
-  padding-top: 0.625rem;
+  padding-block: 0.625rem;
   
   .img2 {
-    width: 50%;
-    margin-right: 0.75rem;
+    width: 180px;
+    border-radius: 8px;
   }
 
   @media(max-width: 320px) {
     .img2 {
-      width: 40%;
+      width: 120px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    .img2 {
+      width: 250px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .img2 {
+      width: 200px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .img2 {
+      width: 280px;
     }
   }
 `
@@ -34,7 +52,7 @@ export const Button = styled.button`
   transition: all .2s ease-in-out;
 
   &:hover {
-    transform: scale(0.9);
+    transform: scale(1.1);
   }
 
   @media(max-width: 320px) {
@@ -49,5 +67,10 @@ export const Button = styled.button`
   @media(min-width: 360px) {
     width: 4.5rem;
     height: 4.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 100px;
+    height: 100px;
   }
 `;

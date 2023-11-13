@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
@@ -27,6 +28,22 @@ export const Main = styled.main`
   @media(min-width: 768px) {
     padding-block: 32px;
     gap: 32px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100vw;
+    gap: 84px;
+    justify-content: center;
+    flex-direction: row;
+    padding-block: 0;
+  }
+
+  @media(min-width: 1440px) {
+    gap: 72px;
+  }
+
+  @media(min-width: 1920px) {
+    gap: 96px;
   }
 `;
 
@@ -65,6 +82,20 @@ export const ButtonAreaTop = styled.div`
     p {
       font-size: 24px;
     }
+  }
+
+  @media(min-width: 1024px) {
+    width: 40%;
+    height: 350px;
+    gap: 0;
+  }
+
+  @media(min-width: 1440px) {
+    width: 520px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 530px;
   }
 `;
 
@@ -119,6 +150,18 @@ export const ButtonTask = styled.button`
   @media(min-width: 768px) {
     width: 154px;
     height: 138px;
+    gap: 10px;
+
+    img {
+      width: 54px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    border-radius: 16px;
+    border-width: 3px;
+    width: 220px;
+    height: 150px;
     gap: 10px;
 
     img {
@@ -184,6 +227,12 @@ export const ButtonSuperTask = styled.button`
       width: 92px;
     }
   }
+
+  @media(min-width: 1024px) {
+    border-radius: 16px;
+    border-width: 3px;
+    width: 250px;
+  }
 `;
 
 export const ButtonAreaBottom = styled.div`
@@ -198,6 +247,21 @@ export const ButtonAreaBottom = styled.div`
 
   @media(min-width: 768px) {
     width: 60%;
+  }
+
+  @media(min-width: 1024px) {
+    width: 40%;
+    height: 350px;
+    gap: 0;
+  }
+
+  
+  @media(min-width: 1440px) {
+    width: 580px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 700px;
   }
 `;
 
@@ -220,6 +284,20 @@ export const BottomRight = styled.div`
   @media(min-width: 768px) {
     width: 220px;
   }
+
+  @media(min-width: 1024px) {
+    width: 250px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  @media(min-width: 1440px) {
+    width: 290px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 350px;
+  }
 `;
 
 export const BottomLeft = styled.div`
@@ -240,6 +318,20 @@ export const BottomLeft = styled.div`
   @media(min-width: 768px) {
     width: 154px;
     gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 220px;
+    height: 100%;
+    justify-content: space-between;
+  }
+
+  @media(min-width: 1440px) {
+    width: 250px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 300px;
   }
 `;
 
@@ -306,6 +398,18 @@ export const ButtonBottom = styled.button`
 
     img {
       width: 44px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    border-radius: 16px;
+    border-width: 3px;
+    height: 150px;
+    justify-content: center;
+    gap: 20px;
+
+    img {
+      width: 56px;
     }
   }
 `;

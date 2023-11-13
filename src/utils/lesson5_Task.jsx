@@ -177,7 +177,7 @@ export const L5_T1_Dificil = [
       status: "lives"
     },
     option2: {
-      label: ["", "lives", "studies", "likes"],
+      label: ["", "lives", "works", "likes"],
       status: "likes"
     },
     option3: {
@@ -241,7 +241,7 @@ export const L5_T1_Dificil = [
       status: "lunch"
     },
     option3: {
-      label: ["", "get", "have", "make"],
+      label: ["", "get", "have", "do"],
       status: "have"
     },
     option4: {
@@ -482,14 +482,12 @@ export const L5_T2_Dificil = [
       "What are they baking?",
       "Are they baking a cake too?",
       "Does the son like baked potatoes?",
-      "Where is the son going?"
     ],
     resposta: [
-      "They are cooking.",
-      "They are baking potatoes.",
+      ["They are cooking.", "They are cooking dinner.", "Cooking dinner.", "Cooking."],
+      ["They are baking potatoes.", "Potatoes."],
       ["No, they aren’t.", "No, they aren’t baking a cake too.", "No. They are baking an apple pie."],
       ["Yes, he does.", "Yes, he likes baked potatoes."],
-      "He’s going to his parent’s house."
     ]
   },
   {
@@ -503,10 +501,10 @@ export const L5_T2_Dificil = [
     ],
     resposta: [
       ["They are in a store.", "In a store."],
-      "He wants a polo shirt in red.",
-      "He is a small.",
+      ["He wants a polo shirt in red.", "A red polo shirt.", "A polo shirt in red."],
+      ["He is a small.", "He’s a small.", "Small."],
       ["Yes, she does.", "Yes, she gives him the polo shirt."],
-      "In the fitting room."
+      ["In the fitting room.", "He tries on the shirt in the fitting room."]
     ]
   },
   {
@@ -520,10 +518,10 @@ export const L5_T2_Dificil = [
     ],
     resposta: [
       ["Yes, she is.", "Yes, she is fine."],
-      ["At a costume party.", "He is at a costume party."],
-      ["Yes, he is.", "Yes, he is wearing a costume."],
-      ["No, he isn’t.", "No, he isn’t eating."],
-      "She is watching TV."
+      ["At a costume party.", "He is at a costume party.", "He’s at a costume party."],
+      ["Yes, he is.", "Yes, he is wearing a costume.", "Yes, he’s wearing a costume."],
+      ["No, he isn’t.", "No, he isn’t eating.", "No, he’s not eating."],
+      ["She is watching TV.", "Watching TV."]
     ]
   }
 ]

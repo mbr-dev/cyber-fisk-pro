@@ -2,8 +2,9 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { FooterBtnHome } from "../FooterBtnHome";
+import { HeaderLessonSL6 } from "../HeaderLessonSL6";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -13,7 +14,7 @@ import LogoImg from "../../assets/logoIcon.png";
 import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL6 = () => {
-  const { setTimeElapsed, timeElapsed } = useContext(LessonContext);
+  const { setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
@@ -24,9 +25,13 @@ export const GameSL6 = () => {
   const [shownCount, setShownCount] = useState(0);
   const [points, setPoints] = useState(0);
   const [cards, setCards] = useState([]);
-  const [reset, setReset] = useState(false);
   const [finished, setFinished] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [intervalId, setIntervalId] = useState(null);
+  const [countTimer, setCountTimer] = useState(0);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(async() => {
     try {
@@ -86,7 +91,7 @@ export const GameSL6 = () => {
 
       setCards(tempGrid);
       setPlaying(true);
-
+      timePointer();
       setIsLoading(false);
     } catch(error) {
       console.log(error);
@@ -94,6 +99,9 @@ export const GameSL6 = () => {
   }, [setIsLoading, setData, setPlaying, setCards]);
 
   const newRound = (level) => {
+    setCountTimer(0);
+    timePointer();
+    console.log("level: ", level)
     const items = data.map(item => {
       const conteudo = JSON.parse(item.conteudo);
       return conteudo
@@ -142,7 +150,6 @@ export const GameSL6 = () => {
       tempGrid[a].item = tempGridFake[tempRandomGrid[a]]
     }
     setCards(tempGrid);
-
     setPlaying(true);
   }
 
@@ -160,24 +167,27 @@ export const GameSL6 = () => {
   }
 
   const generateScore = () => {
-    let tempPoints = points;
-
     if (timeElapsed < 60) {
-      tempPoints += 5;
-      setPoints(tempPoints);
+      setPoints(state => state + 5);
     } else if (timeElapsed >= 61 || timeElapsed <= 75) {
-      tempPoints += 4;
-      setPoints(tempPoints);
+      setPoints(state => state + 4);
     } else if (timeElapsed >= 76 || timeElapsed <= 90) {
-      tempPoints += 3;
-      setPoints(tempPoints);
+      setPoints(state => state + 3);
     } else if (timeElapsed >= 91 || timeElapsed <= 120) {
-      tempPoints += 2;
-      setPoints(tempPoints);
+      setPoints(state => state + 2);
     } else {
-      tempPoints++;
-      setPoints(tempPoints);
+      setPoints(state => state + 1);
     }
+  }
+
+  const timePointer = () => {
+    clearInterval(intervalId);
+
+    const newIntervalId = setInterval(() => {
+      setCountTimer(state => state + 1);
+    }, 1000);
+
+    setIntervalId(newIntervalId);
   }
 
   const handleChangeLevel = () => {
@@ -185,13 +195,23 @@ export const GameSL6 = () => {
     tempLevel++;
     setLevel(tempLevel);
 
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
+
+    const newStatus = [...statusColor];
+    newStatus[rodadaGeral] = 1;
+    setStatusColor(newStatus);
+    
+    if (countTimer > 121) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+    }
+
     generateScore();
     setPlaying(false);
-
-    setTimeout(() => {
-      setReset(false);
-      newRound(tempLevel);
-    }, 1500);
+    newRound(tempLevel);
   }
 
   const handleFinish = () => {
@@ -199,14 +219,38 @@ export const GameSL6 = () => {
     setPlaying(false);
     setFinished(false);
 
-    setTimeout(() => {
-      navigate("/WellDone")
-    }, 1500);
+    const newStatus = [...statusColor];
+    newStatus[rodadaGeral] = 1;
+    setStatusColor(newStatus);
+    
+    if (countTimer > 121) {
+      const newStatus = [...statusColor];
+      newStatus[rodadaGeral] = 2;
+      setStatusColor(newStatus);
+    }
+
+    if (timeElapsed > 242) {
+      setTimeout(() => {
+        navigate("/GameOver");
+      }, 1000);
+    } else {
+      setTimeout(() => {
+        navigate("/WellDone");
+      }, 1000);
+    }
   }
   
   useEffect(() => {
     loadLesson();
   }, []);
+
+  useEffect(() => {
+    return () => {
+      if (intervalId) {
+        clearInterval(intervalId);
+      }
+    };
+  }, [intervalId]);
 
   useEffect(() => {
     if (shownCount === 2) {
@@ -241,12 +285,16 @@ export const GameSL6 = () => {
   
     if (moveCount > 0 && allItemShown) {
       if (level < 2) {
-        setReset(true);
+        setTimeout(() => {
+          handleChangeLevel();
+        }, 1500);
       } else {
-        setFinished(true);
+        setTimeout(() => {
+          handleFinish();
+        }, 1500);
       }
     }
-  }, [cards, setReset, setFinished]);
+  }, [cards, setFinished]);
 
   useEffect(() => {
     const timer = setInterval(() => {
@@ -266,11 +314,13 @@ export const GameSL6 = () => {
 
   return (
     <Container>
+      <HeaderLessonSL6 trophyEnd superTaskStart numStart="Super task" numEnd="Finish" title="Super task 2" />
       <TitleLesson title="Memory Game." />
 
       <Main>
         <Grid style={{
-          gridTemplateColumns: cards.length <= 12 ? "repeat(3, auto)" : "repeat(4, auto)",
+          gridTemplateColumns: cards.length === 12 ? "repeat(3, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(4, auto)",
+          gridTemplateRows: cards.length === 12 ? "repeat(4, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(5, auto)",
           gap: cards.length <= 12 ? "1.125rem" : "0.75rem",
         }}>
           {cards.map((card, index) => {
@@ -293,24 +343,16 @@ export const GameSL6 = () => {
           })}
         </Grid>
       </Main>
-      {reset && 
-        <ButtonBg
-          w="10rem"
-          h="3"
-          title="Next Level"
-          mt="2rem"
-          onPress={handleChangeLevel}
-        />
-      }
-      {finished && 
-        <ButtonBg
-          w="10rem"
-          h="3"
-          title="Finished"
-          mt="2rem"
-          onPress={handleFinish}
-        />
-      }
+
+      <FooterBtnHome 
+        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+        wl={isDesktop ? "48%" : "80%"}
+        hasLS
+        title="Tasks" 
+        rota="LessonSelection"
+        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+      />
     </Container>
   )
 }

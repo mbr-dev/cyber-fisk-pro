@@ -24,6 +24,10 @@ export const Main = styled.div`
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+
+  @media(min-width: 1024px) {
+    gap: 20px;
+  }
 `;
 
 export const Image = styled.div`
@@ -41,6 +45,25 @@ export const Image = styled.div`
 
     img {
       width: 40%;
+    }
+  }
+
+  @media(min-width: 600px) {
+    img {
+      width: 380px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    margin-bottom: 0;
+    img {
+      width: 200px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    img {
+      width: 300px;
     }
   }
 `;

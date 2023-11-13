@@ -15,7 +15,6 @@ export const Container = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1.25rem;
     font-weight: bold;
   }
 
@@ -32,9 +31,5 @@ export const Container = styled.button`
     width: 11rem;
     height: 2rem;
     margin-top: 0;
-
-    p {
-      font-size: 1rem;
-    }
   }
 `;

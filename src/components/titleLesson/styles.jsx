@@ -27,4 +27,26 @@ export const Container = styled.div`
       font-size: 1.125rem;
     }
   }
+
+  @media(min-width: 600px) {
+    padding: 12px;
+
+    span {
+      font-size: 28px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    padding: 16px;
+    
+    span {
+      font-size: 36px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    span {
+      font-size: 42px;
+    }
+  }
 `

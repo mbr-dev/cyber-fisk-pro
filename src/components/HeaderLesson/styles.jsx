@@ -6,8 +6,8 @@ export const Container = styled.div`
 
 export const Main = styled.div`
   width: 100%;
-  display: flex;
   height: 72px;
+  display: flex;
   align-items: center;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
@@ -19,8 +19,14 @@ export const Main = styled.div`
     height: 100%;
     z-index: -1;
     position: absolute;
+    left: 0;
   }
-`
+
+  @media(min-width: 1024px) {
+    height: 120px;
+    justify-content: space-between;
+  }
+`;
 
 export const BarStep = styled.div`
   display: flex;
@@ -37,6 +43,10 @@ export const BarStep = styled.div`
 
   @media(min-width: 600px) {
     padding: 0.75rem 1rem;
+  }
+
+  @media(min-width: 1024px) {
+    padding-inline: 24px;
   }
 `;
 
@@ -67,6 +77,17 @@ export const Icons = styled.div`
   @media(min-width: 600px) {
     p {
       font-size: 1rem;
+    }
+  }
+
+  @media(min-width: 1024px) {
+
+    img {
+      width: 44px;
+    }
+
+    p {
+      font-size: 16px;
     }
   }
 `;

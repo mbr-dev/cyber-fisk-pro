@@ -7,6 +7,10 @@ export const Container = styled.div`
   align-items: center;
   background-color: ${props => props.theme["gray-100"]};
   padding-block: 0.625rem;
+
+  @media(min-width: 600px) {
+   padding-block: 16px;
+  }
 `
 
 export const Button = styled.button`
@@ -42,5 +46,10 @@ export const Button = styled.button`
   @media(min-width: 360px) {
     width: 4.5rem;
     height: 4.5rem;
+  }
+
+   @media(min-width: 600px) {
+    width: 96px;
+    height: 96px;
   }
 `;

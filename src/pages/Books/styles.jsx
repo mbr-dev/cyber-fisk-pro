@@ -26,6 +26,10 @@ export const Main = styled.main`
       font-size: 14px;
     }
   }
+
+  @media(min-width: 1024px) {
+    flex-direction: row;
+  }
 `;
 
 export const BooksArea = styled.div`
@@ -36,6 +40,14 @@ export const BooksArea = styled.div`
 
   @media(max-width: 320px) {
     gap: 8px;
+  }
+
+  @media(min-width: 600px) {
+    gap: 16px;
+
+    p {
+      font-size: 24px;
+    }
   }
 `;
 
@@ -49,6 +61,12 @@ export const BooksImage = styled.div`
   @media(max-width: 320px) {
     img {
       width: 25%;
+    }
+  }
+
+  @media(min-width: 600px) {
+    img {
+      width: 160px;
     }
   }
 `;

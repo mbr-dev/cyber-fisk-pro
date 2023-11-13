@@ -29,6 +29,9 @@ export const Game39 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -171,13 +174,15 @@ export const Game39 = () => {
             onChange={(e) => setText(e.target.value)}
           />
         </Form>
+
         <ButtonBg
           form="myForm"
           type="submit"
           disabledButton={blockButton}
           title="Check"
-          w="15.875rem"
-          h="2.5rem"
+          w={isDesktop ? "450px" : isTablet ? "350px" : "200px"}
+          h={isDesktop ? "84px" : isTablet ? "64px" : "48px"}
+          fs={isDesktop ? "32px" : isTablet ? "28px" : "20px"}
           greenBtn
         />
       </Main>

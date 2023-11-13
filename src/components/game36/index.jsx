@@ -11,6 +11,8 @@ import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
+
+import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
 
 export const Game36 = () => {
@@ -20,6 +22,7 @@ export const Game36 = () => {
 
   const navigate = useNavigate();
 
+  const [colorAnswer, setColorAnswer] = useState([0, 0]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -33,6 +36,9 @@ export const Game36 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -82,9 +88,9 @@ export const Game36 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+    setColorAnswer([0, 0]);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
 
     let tempAudios = [];
     for (let a = 0; a < items.pergunta.length; a++) {
@@ -133,16 +139,22 @@ export const Game36 = () => {
     setCountClick(clicks);
 
     let tempRightPoints;
+    let tempColorAnswer = colorAnswer;
     
     const answer =  answers[index];
 
     if (answer.status === selectAudio) {
       if (clicks < 2) {
+        tempColorAnswer[index] = 1;
+        setColorAnswer(tempColorAnswer);
         
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
+
+      tempColorAnswer[index] = 1;
+      setColorAnswer(tempColorAnswer);
 
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -231,6 +243,9 @@ export const Game36 = () => {
                 key={index}
                 onClick={() => handlePlayAudio(audio)}
                 disabled={disabledAud}
+                style={{
+                  borderColor: selectAudio === audio.status && defaultTheme["red-200"],
+                }}
               >
                 <img src={ImgBtn2} alt="" className="btn2" />
                 <img src={ImgBtn} alt="" />
@@ -246,12 +261,15 @@ export const Game36 = () => {
             return (
               <ButtonAnswer
                 key={index}
-                w="8rem"
-                h="2.625rem"
+                w={isDesktop ? "400px" : isTablet ? "200px" : "9rem"}
+                h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
                 onPress={() => handleGetAnswer(index)}
                 disabledButton={disabledRes || blockAnswer}
+                optionColor={colorAnswer[index]}
               >
-                <p>{answer.label}</p>
+                <p style={{
+                  fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+                }}>{answer.label}</p>
               </ButtonAnswer>
             )
           })}

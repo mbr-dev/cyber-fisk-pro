@@ -36,6 +36,26 @@ export const Main = styled.main`
     margin-top: 2rem;
     gap: 2rem;
   }
+
+  @media(min-width: 600px) {
+    form { 
+      gap: 12px; 
+    }
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    form { 
+      gap: 16px; 
+    }
+
+    p {
+      font-size: 28px;
+    }
+  } 
 `;
 
 export const Input = styled.input`
@@ -59,5 +79,19 @@ export const Input = styled.input`
 
   @media(max-width: 320px) {
     width: 15rem;
+  }
+
+  @media(min-width: 600px) {
+    padding: 16px; 
+    width: 550px;
+    font-size: 28px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 750px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 800px;
   }
 `;

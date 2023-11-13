@@ -10,7 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop } from "./styles";
+import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop, AreaButton } from "./styles";
 
 export const Game38 = () => {
   const {
@@ -30,6 +30,9 @@ export const Game38 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [wordsDropped, setWordsDropped] = useState([]);
   const [wordsIndex, setWordsIndex] = useState([]);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -151,6 +154,11 @@ export const Game38 = () => {
     }
   }
 
+  const handleClear = () => {
+    setWordsDropped([]);
+    setWordsIndex([]);
+  }
+
   const Draggable = ({ index, children }) => {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
       id: `draggable-${index}`,
@@ -160,7 +168,9 @@ export const Game38 = () => {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
       border: isDragging ? `2px solid ${defaultTheme['gray-400']}` : "",
       borderRadius: isDragging ? "8px" : "",
-    } : undefined;
+    } : {
+      touchAction: "none",
+    };
 
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -172,6 +182,7 @@ export const Game38 = () => {
   const Droppable = (props) => {
     const {isOver, setNodeRef} = useDroppable({
       id: "droppable",
+      touchAction: "none",
     });
 
     const style = {
@@ -233,6 +244,7 @@ export const Game38 = () => {
                   )
                 })}
             </AreaWord>
+
             <Droppable>
               <AreaAnswers>
                 {wordsDropped.map((word, index) => {
@@ -243,16 +255,27 @@ export const Game38 = () => {
               </AreaAnswers>
             </Droppable>
           </DndContext>
+        </Main>
 
+        <AreaButton>
           <ButtonBg
-            w="14rem"
-            h="2.5rem"
+            w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+            h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+            fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
+            title="Clear"
+           onPress={handleClear}
+          />
+
+          <ButtonBg 
+            w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+            h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+            fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
             greenBtn
             title="Check"
             disabledButton={blockButton}
             onPress={handleVerify}
           />
-        </Main>
+      </AreaButton>
     </Container>
   )
 }

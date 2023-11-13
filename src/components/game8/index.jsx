@@ -32,6 +32,9 @@ export const Game8 = () => {
   const [data, setData] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
@@ -167,12 +170,16 @@ export const Game8 = () => {
   const Draggable = ({ index, children }) => {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
       id: `draggable-${index}`,
+      touchAction: "none",
     });
 
     const style = transform ? {
       transform: `translate3d(${transform.x}px, ${transform.y}px, 0)`,
-      border: isDragging ? `1px solid ${defaultTheme['gray-400']}` : "",
-    } : undefined;
+      borderRadius: isDragging && "8px",
+      border: isDragging ? `2px solid ${defaultTheme["red-200"]}` : "",
+    } : {
+      touchAction: "none",
+    };
     
     return (
       <div ref={setNodeRef} style={style} {...listeners} {...attributes}>
@@ -221,7 +228,7 @@ export const Game8 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the best alternative." />
+      <TitleLesson title="Drag and drop / Choose the correct answers." />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>
@@ -233,11 +240,13 @@ export const Game8 = () => {
             return (
               <Draggable index={index} key={index}>
                 <ButtonAnswer
-                  w="5rem"
-                  h="3rem"
+                  w={isTablet? "200px" : "5rem"}
+                  h={isTablet ? "64px" : "3rem"}
                   disabledButton={blockButton}
                 >
-                  {answers.label}
+                  <p style={{
+                    fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+                  }}>{answers.label}</p>
                 </ButtonAnswer>
               </Draggable>
             )

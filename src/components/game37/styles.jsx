@@ -18,6 +18,12 @@ export const Main = styled.main`
 
   @media(max-width: 360px) {
     margin-top: 1rem;
+  }
+  
+  @media(min-width: 600px) {
+    p {
+      font-size: 20px;
+    }
   }  
 `;
 
@@ -52,6 +58,12 @@ export const Form = styled.form`
       font-size: 1rem;
     }
   }
+
+  @media(min-width: 600px) {
+    label {
+      font-size: 20px;
+    }
+  }  
 `;
 
 export const Select = styled.select`

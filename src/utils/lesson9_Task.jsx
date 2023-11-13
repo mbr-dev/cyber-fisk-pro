@@ -461,6 +461,7 @@ export const L9_T2_Dificil = [
 export const L9_SUPER_LESSON = [
   {
     pergunta: "Do you ever go to music festivals",
+    tipo: 0,
     resposta: [
       "Yes, I do.",
       "Yes, I go to music festivals.",
@@ -470,6 +471,7 @@ export const L9_SUPER_LESSON = [
   },
   {
     pergunta: "Did you watch a horror movie yesterday",
+    tipo: 0,
     resposta: [
       "Yes, I did.",
       "Yes, I watched a horror movie yesterday.",
@@ -479,6 +481,7 @@ export const L9_SUPER_LESSON = [
   },
   {
     pergunta: "Did you listen to music this morning",
+    tipo: 0,
     resposta: [
       "Yes, I did.",
       "Yes, I listened to music this morning.",
@@ -488,6 +491,7 @@ export const L9_SUPER_LESSON = [
   },
   {
     pergunta: "Did you talk to your friend today",
+    tipo: 0,
     resposta: [
       "Yes, I did.",
       "Yes, I talked to my friend today.",
@@ -497,14 +501,17 @@ export const L9_SUPER_LESSON = [
   },
   {
     pergunta: "When did you shop for new clothes",
+    tipo: 1,
     resposta: ["I shopped for new clothes"]
   },
   {
     pergunta: "What kind of music do you like",
+    tipo: 1,
     resposta: ["I like"]
   },
   {
     pergunta: "What time did you work out yesterday",
+    tipo: 1,
     resposta: [
       "At",
       "I worked out at",
@@ -513,14 +520,17 @@ export const L9_SUPER_LESSON = [
   },
   {
     pergunta: "What kind of food do you like",
+    tipo: 1,
     resposta: ["I like"]
   },
   {
     pergunta: "What is your favorite TV show",
+    tipo: 1,
     resposta: ["My favorite TV show is"]
   },
   {
     pergunta: "When did you visit a small city",
+    tipo: 1,
     resposta: ["I visited a small city"]
   }
 ]

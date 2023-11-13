@@ -2,9 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
@@ -35,7 +37,7 @@ export const Card = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: bold;
     text-align: center;
   }
@@ -66,6 +68,38 @@ export const Card = styled.button`
 
     p {
       font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    width: 102px;
+    height: 102px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 96px;
+    height: 96px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    width: 102px;
+    height: 102px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 120px;
+    height: 120px;
+
+    p {
+      font-size: 24px;
     }
   }
 `;

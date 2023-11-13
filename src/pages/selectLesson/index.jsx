@@ -23,6 +23,9 @@ export const SelectLesson = () => {
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const fetchLessons = async() => {
     try {
       setIsLoading(true);
@@ -80,7 +83,13 @@ export const SelectLesson = () => {
         </SelectLessonArea>
       </Main>
       
-      <FooterBtnHome hasLS />
+      <FooterBtnHome 
+        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+        wl={isDesktop ? "48%" : "80%"}
+        hasLS
+        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+      />
     </Container>
   )
 }

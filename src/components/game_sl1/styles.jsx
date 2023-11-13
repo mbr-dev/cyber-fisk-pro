@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
 `;
 
 export const Main = styled.div`
@@ -13,7 +14,6 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
-  margin-bottom: 52px;
   
   @media(max-width: 320px) {
     gap: 8px;
@@ -28,6 +28,23 @@ export const LettersArea = styled.div`
   align-items: center;
   gap: 0.375rem;
   background-color: ${props=> props.theme["gray-200"]};
+
+  @media(min-width: 1024px) {
+    padding-block: 12px;
+    gap: 12px;
+  }
+
+  @media(min-width: 600px) {
+   gap: 14px;
+  }
+
+  @media(min-width: 1440px) {
+    padding-block: 16px;
+  }
+
+  @media(min-width: 1920px) {
+    gap: 20px;
+  }
 `;
 
 export const Letter = styled.div`
@@ -44,6 +61,24 @@ export const Letter = styled.div`
     width: 1.5rem;
     height: 2rem;
   }
+
+  @media(min-width: 600px) {
+    width: 46px;
+    height: 58px;
+    font-size: 28px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 54px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 72px;
+    height: 84px;
+    font-size: 40px;
+  }
 `;
 
 export const ButtonArea = styled.div`
@@ -57,6 +92,14 @@ export const ButtonArea = styled.div`
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+
+  @media(min-width: 1024px) {
+    gap: 10px;
+  }
+
+  @media(min-width: 1440px) {
+    gap: 20px;
+  }
 `;
 
 export const AreaButtons = styled.div`
@@ -64,5 +107,5 @@ export const AreaButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;  
+  gap: 16px;
 `;

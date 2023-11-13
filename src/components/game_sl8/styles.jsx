@@ -2,9 +2,11 @@ import { styled } from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
+  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
@@ -12,7 +14,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 8px;
 
   @media(max-width: 360px) {
     width: 20rem;
@@ -20,6 +22,42 @@ export const Main = styled.main`
 
   @media(max-width: 320px) {
     width: 19rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 80%;
+    height: 400px;
+    flex-direction: row-reverse;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 0;
+  }
+
+  @media(min-width: 1440px) {
+    width: 70%;
+  }
+
+  @media(min-width: 2560px) {
+    width: 50%;
+  }
+`;
+
+export const Left = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media(min-width: 1024px) {
+    width: 45%;
+    height: 100%;
+    align-items: flex-start;
+    justify-content: flex-start;
   }
 `;
 
@@ -36,13 +74,19 @@ export const Answers = styled.div`
   @media(max-width: 360px) {
     gap: 0.25rem;
   }
-  `;
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    height: 100%;
+    justify-content: space-between;
+  }
+`;
 
 export const Div = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media(max-width: 360px) {
     gap: 0.5rem;
@@ -57,15 +101,17 @@ export const DivQ = styled.div`
   @media(max-width: 320px) {
     gap: 0.25rem;
   }
+
+  
 `;
 
 export const DivQuestion = styled.div`
   width: 11rem;
-  height: 3.5rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid ${props => props.theme["gray-700"]};
+  border: 2px solid ${props => props.theme["gray-700"]};
   border-radius: 6px;
   align-items: center;
   padding-inline: 0.5rem;
@@ -73,10 +119,23 @@ export const DivQuestion = styled.div`
 
   @media(max-width: 360px) {
     width: 10rem;
-    height: 3rem;
+    height: 2.75rem;
 
     span {
-      font-size: 0.75rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    height: 64px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 200px;
+    height: 68px;
+
+    span {
+      font-size: 16px;
     }
   }
 `;
@@ -99,14 +158,22 @@ export const DivA = styled.div`
   @media(max-width: 360px) {
     gap: 0.25rem;
   }
+
+  @media(min-width: 1024px) {
+    gap: 16px;
+
+    span {
+      font-size: 26px;
+    }
+  }
 `;
 
 export const Answer = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 3rem;
+  height: 3rem;
   border-radius: 6px;
   background-color: ${props => props.theme["gray-700"]};
   color: ${props => props.theme.white};
@@ -114,6 +181,35 @@ export const Answer = styled.div`
   @media(max-width: 360px) {
     width: 2.75rem;
     height: 2.75rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const Right = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  @media(min-width: 600px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 45%;
+    height: 100%;
+    justify-content: flex-start;
+    gap: 42px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 480px;
   }
 `;
 
@@ -123,8 +219,12 @@ export const WordSelected = styled.div`
   display: flex;
   justify-content: space-between;
   overflow: hidden;
-  border: 3px solid ${props => props.theme["gray-700"]};
-  border-radius: 8px;
+  border: 2px solid ${props => props.theme["gray-700"]};
+
+  @media(min-width: 1024px) {
+    height: 54px;
+    border-radius: 8px;
+  }
 `;
 
 export const Words = styled.div`
@@ -132,7 +232,6 @@ export const Words = styled.div`
   display: flex;
   align-items: center;
   padding-left: 0.5rem;
-  gap: 0.5rem;
 
   @media(max-width: 360px) {
     width: 17rem;
@@ -140,6 +239,16 @@ export const Words = styled.div`
 
   @media(max-width: 320px) {
     width: 16rem;
+  }
+
+  @media(min-width: 1024px) {
+    height: 54px;
+    border-radius: 8px;
+    padding-left: 16px;
+
+    span {
+      font-size: 28px;
+    }
   }
 `;
 
@@ -159,6 +268,11 @@ export const Delete = styled.div`
   &:hover {
     scale: 1.05;
   }
+
+  @media(min-width: 1024px) {
+    width: 54px;
+    height: 54px;
+  }
 `;
 
 export const WordsArea = styled.div`
@@ -175,6 +289,15 @@ export const WordsArea = styled.div`
 
   @media(max-width: 320px) {
     width: 19rem;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    gap: 10px;
+  }
+
+  @media(min-width: 1440px) {
+    justify-content: space-between;
   }
 `;
 

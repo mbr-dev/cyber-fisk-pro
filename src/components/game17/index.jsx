@@ -18,6 +18,7 @@ export const Game17 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [image, setImage] = useState("");
@@ -28,6 +29,9 @@ export const Game17 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(async() => {
     setIsLoading(true);
@@ -58,6 +62,7 @@ export const Game17 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setImage(items.img);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -72,12 +77,13 @@ export const Game17 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, setImage, round, setIdClick, setAnswers, setBlockButton, setOptionColor]);
+  }, [setIsLoading, setData, setRandomNumber, setImage, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
+    
     setImage(items.img);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempIdClick = [...Array(items.resposta.length).keys()];
     tempIdClick = tempIdClick.sort(() => Math.random() - 0.5);
@@ -99,12 +105,16 @@ export const Game17 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
@@ -113,6 +123,9 @@ export const Game17 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -174,7 +187,7 @@ export const Game17 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative"/>
+      <TitleLesson title="Choose the correct alternative."/>
 
       <Main>
         <Image>
@@ -184,12 +197,15 @@ export const Game17 = () => {
           return (
             <ButtonAnswer 
               key={index}
-              w="9rem"
-              h="3rem"
+              w={isDesktop ? "450px" : isTablet ? "350px" : "14.5rem"}
+              h={isDesktop ? "84px" : isTablet ? "64px" : "3.5rem"}
               onPress={() => handleClick(index)}
+              optionColor={selectedColor[index]}
               disabledButton={blockButton}
             >
-              <p>{answer.label}</p>
+              <p style={{
+                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+              }}>{answer.label}</p>
             </ButtonAnswer>
           )
         })}

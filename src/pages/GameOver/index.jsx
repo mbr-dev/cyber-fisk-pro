@@ -3,12 +3,12 @@ import Cookies from 'universal-cookie';
 import { useNavigate } from "react-router-dom";
 import { apiQAS } from "../../lib/api";
 
+import { Loading } from "../../components/Loading";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { Notifications } from "../../components/Notifications";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { Loading } from "../../components/Loading";
-import { Notifications } from "../../components/Notifications";
 
 import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
@@ -19,11 +19,14 @@ import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2 } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const phrase = [
     "We know you can do better.",
@@ -44,7 +47,7 @@ export const GameOver = () => {
 
   const navigate = useNavigate();
 
-  const salvar = async(tempoCronometro) =>{
+  const salvar = async(tempoCronometro) => {
     if(salvou) return;
     setSalvou(true);
     const cookies = new Cookies();
@@ -116,7 +119,7 @@ export const GameOver = () => {
     let hours = Math.floor(timeElapsed / 3600);
     hours = hours < 10 ? `0${hours}` : hours.toString;
     setTime(`${hours}:${minutes}:${seconds}`);
-    salvar(`${hours}:${minutes}:${seconds}`);
+    //salvar(`${hours}:${minutes}:${seconds}`);
   },[]);
 
   const handleTryAgain = () => {
@@ -136,6 +139,7 @@ export const GameOver = () => {
           <ButtonMenuHeader />
           <ButtonCloseHeader />
         </Top>
+
         <Middle>
           <AvatarArea>
             <img src={Robo} alt="" />
@@ -143,37 +147,76 @@ export const GameOver = () => {
           </AvatarArea>
           <h2>Game Over</h2>
         </Middle>
-        <Bottom>
-          <AreaItem>
-            <img src={Dollars} alt="" />
+
+        {!isDesktop &&
+          <Bottom>
+            <AreaItem>
+              <img src={Dollars} alt="" />
+              <span>0</span>
+              <p>Fisk Dollars</p>
+            </AreaItem>
+            <LineSeparator w="80%" bg={defaultTheme.white} />
+            <AreaItem style={{marginRight: "64px"}}>
+            <img src={Xp} alt="" />
             <span>0</span>
-            <p>Fisk Dollars</p>
-          </AreaItem>
-          <LineSeparator w="80%" bg={defaultTheme.white} />
-          <AreaItem style={{marginRight: "64px"}}>
-          <img src={Xp} alt="" />
-          <span>0</span>
-          <p>Xp</p>
-          </AreaItem>
-        </Bottom>
+            <p>Xp</p>
+            </AreaItem>
+          </Bottom>}
+        
+        {isDesktop &&
+          <ButtonRed onClick={handleTryAgain}>
+            <p>Try Again</p>
+          </ButtonRed>}
       </Header>
 
-      <Main>
-        <ButtonRed
-          onClick={handleTryAgain}
-          title="Try Again"
-          w="260px"
-          h="56px"
-        ><p>Try Again</p></ButtonRed>
-        <p>Activities done in</p>
-        <span>00:00</span>
+      <Content>
+        <Main>
+          {isDesktop && 
+            <ButtonClose>
+              <ButtonCloseHeader />
+            </ButtonClose>}
 
-        <Text>
-          <p>{phrase[randomPhrase]}</p>
-        </Text>
-      </Main>
+          {!isDesktop &&
+          <ButtonRed onClick={handleTryAgain}>
+            <p>Try Again</p>
+          </ButtonRed>}
 
-      <FooterBtnHome hasLS title="Lesson Menu" />
+          {isDesktop &&
+            <Bottom2>
+              <img src={Fundo} alt="" className="fundoBg" />
+              <AreaItem2 style={{ marginLeft: "42px"}}>
+                <img src={Dollars} alt="" />
+                <span>0</span>
+                <p>Fisk Dollars</p>
+              </AreaItem2>
+              <LineSeparator w="80%" bg={defaultTheme.white} />
+              <AreaItem2 style={{marginRight: "64px"}}>
+              <img src={Xp} alt="" />
+              <span>0</span>
+              <p>Xp</p>
+              </AreaItem2>
+            </Bottom2>}
+
+          <Div>
+            <div>
+              <p>Activities done in</p>
+              <span>{time}</span>
+            </div>
+
+            <Text>
+              <p>{phrase[randomPhrase]}</p>
+            </Text>
+          </Div>
+        </Main>
+
+        <FooterBtnHome 
+          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+          wl={isDesktop ? "48%" : "80%"}
+          hasLS
+          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+        />
+      </Content>
     </Container>
   )
 }

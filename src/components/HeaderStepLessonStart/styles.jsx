@@ -16,7 +16,25 @@ export const Main = styled.div`
   }
 
   @media(min-width: 600px) {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 48px;
+    height: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100px;
+    height: 32px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 110px;
+    height: 36px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 150px;
+  }
+
+  @media(min-width: 2560px) {
+    width: 200px;
   }
 `;

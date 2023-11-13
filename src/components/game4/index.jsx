@@ -230,7 +230,6 @@ export const Game4 = () => {
               style={{
                 width: type === 3 ? "4.5rem" : "8.5rem",
                 height: type === 3 ? "4.5rem" : "3rem",
-                opacity: blockButton ? "0.5" : "1",
                 borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
               disabled={blockButton}

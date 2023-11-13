@@ -18,9 +18,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Report = () => {
   ChartJS.register(ArcElement, Tooltip, Legend);
 
-  const [progressL, setProgressL] = useState(60);
+  const [progressL, setProgressL] = useState(20);
   const [progressR, setProgressR] = useState(10);
-  const [progressW, setProgressW] = useState(45);
+  const [progressW, setProgressW] = useState(85);
   const [progressS, setProgressS] = useState(80);
 
   const data = {
@@ -61,7 +61,7 @@ export const Report = () => {
 
       <Main>
         <XP>
-          <LineSeparator w="18.5rem" bg={defaultTheme["gray-200"]} mt="0" mb="0" />
+          <LineSeparator wl="18.5rem" bg={defaultTheme["gray-200"]} mt="0" mb="0" />
           <XPDiv>
             <XPLeft>
               <XPInside>
@@ -83,7 +83,7 @@ export const Report = () => {
               </Dialog.Root>
             </XPRight>
           </XPDiv>
-          <LineSeparator w="18.5rem" bg={defaultTheme["gray-200"]} mt="0" mb="0" />
+          <LineSeparator wl="18.5rem" bg={defaultTheme["gray-200"]} mt="0" mb="0" />
         </XP>
 
         <Stage>

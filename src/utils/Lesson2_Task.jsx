@@ -1,94 +1,138 @@
 export const L2_T1_Facil = [
   {
-    "pergunta": {"audio": "L2_Task1_F_0", "status": 0},
-    "resposta": {"label": "chicken", "status": 0}
+    pergunta: [
+      {audio: "L2_Task1_F_0", status: 0},
+      {audio: "L2_Task1_F_1", status: 1},
+      {audio: "L2_Task1_F_2", status: 2},
+    ],
+    resposta: [
+      {label: "chicken", status: 0},
+      {label: "an iced tea", status: 1},
+      {label: "an orange juice", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_F_1", "status": 1},
-    "resposta": {"label": "an iced tea", "status": 1}
+    pergunta: [
+      {audio: "L2_Task1_F_3", status: 0},
+      {audio: "L2_Task1_F_4", status: 1},
+      {audio: "L2_Task1_F_5", status: 2},
+    ],
+    resposta: [
+      {label: "steak", status: 0},
+      {label: "crackers", status: 1},
+      {label: "potato chips", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_F_2", "status": 2},
-    "resposta": {"label": "an orange juice", "status": 2}
+    pergunta: [
+      {audio: "L2_Task1_F_6", status: 0},
+      {audio: "L2_Task1_F_7", status: 1},
+      {audio: "L2_Task1_F_8", status: 2},
+    ],
+    resposta: [
+      {label: "protein bar", status: 0},
+      {label: "chocolate cake", status: 1},
+      {label: "frozen yogurt", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_F_3", "status": 3},
-    "resposta": {"label": "steak", "status": 3}
+    pergunta: [
+      {audio: "L2_Task1_F_9", status: 0},
+      {audio: "L2_Task1_F_10", status: 1},
+      {audio: "L2_Task1_F_11", status: 2},
+    ],
+    resposta: [
+      {label: "rice", status: 0},
+      {label: "lasagna", status: 1},
+      {label: "salad", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_F_4", "status": 4},
-    "resposta": {"label": "crackers", "status": 4}
+    pergunta: [
+      {audio: "L2_Task1_F_12", status: 0},
+      {audio: "L2_Task1_F_13", status: 1},
+      {audio: "L2_Task1_F_14", status: 2},
+    ],
+    resposta: [
+      {label: "spaghetti", status: 0},
+      {label: "sushi", status: 1},
+      {label: "cookies", status: 2},
+    ],
   },
-  {
-    "pergunta": {"audio": "L2_Task1_F_5", "status": 5},
-    "resposta": {"label": "potato chips", "status": 5}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_F_6", "status": 6},
-    "resposta": {"label": "protein bar", "status": 6}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_F_7", "status": 7},
-    "resposta": { "label": "chocolate cake", "status": 7}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_F_8", "status": 8},
-    "resposta": { "label": "frozen yogurt", "status": 8}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_F_9", "status": 9},
-    "resposta": { "label": "rice", "status": 9}
-  }
 ]
 
 export const L2_T1_Medio = [
   {
-    "pergunta": {"audio": "L2_Task1_M_0", "status": 0},
-    "resposta": {"label": "Yes, they do.", "status": 0}
+    pergunta: [
+      {audio: "L2_Task1_M_0", status: 0},
+      {audio: "L2_Task1_M_1", status: 1},
+      {audio: "L2_Task1_M_2", status: 2},
+    ],
+    resposta: [
+      {label: "Yes, they do.", status: 0},
+      {label: "No, he doesn’t.", status: 1},
+      {label: "Yes, I do.", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_M_1", "status": 1},
-    "resposta": {"label": "No, he doesn’t.", "status": 1}
+    pergunta: [
+      {audio: "L2_Task1_M_3", status: 0},
+      {audio: "L2_Task1_M_4", status: 1},
+      {audio: "L2_Task1_M_5", status: 2},
+    ],
+    resposta: [
+      {label: "Yes, she does.", status: 0},
+      {label: "Yes, he does.", status: 1},
+      {label: "No, it doesn’t.", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_M_2", "status": 2},
-    "resposta":  {"label": "Yes, I do.", "status": 2}
+    pergunta: [
+      {audio: "L2_Task1_M_6", status: 0},
+      {audio: "L2_Task1_M_7", status: 1},
+      {audio: "L2_Task1_M_8", status: 2},
+    ],
+    resposta: [
+      {label: "No, we don’t.", status: 0},
+      {label: "Yes, they do.", status: 1},
+      {label: "No, he doesn’t.", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_M_3", "status": 3},
-    "resposta": {"label": "Yes, she does.", "status": 3}
+    pergunta: [
+      {audio: "L2_Task1_M_9", status: 0},
+      {audio: "L2_Task1_M_10", status: 1},
+      {audio: "L2_Task1_M_11", status: 2},
+    ],
+    resposta: [
+      {label: "Yes, we do.", status: 0},
+      {label: "No, they don’t.", status: 1},
+      {label: "Yes, she does.", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1_M_4", "status": 4},
-    "resposta": {"label": "Yes, he does.", "status": 4}
+    pergunta: [
+      {audio: "L2_Task1_M_12", status: 0},
+      {audio: "L2_Task1_M_13", status: 1},
+      {audio: "L2_Task1_M_14", status: 2},
+    ],
+    resposta: [
+      {label: "Yes, he does.", status: 0},
+      {label: "No, she doesn’t.", status: 1},
+      {label: "Yes, it does.", status: 2},
+    ],
   },
   {
-    "pergunta": {"audio": "L2_Task1M_5", "status": 5},
-    "resposta": {"label": "No, it doesn’t.", "status": 5}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_M_6", "status": 6},
-    "resposta": {"label": "No, we don’t.", "status": 6}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_M_7", "status": 7},
-    "resposta": {"label": "Yes, they do.", "status": 7}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_M_8", "status": 8},
-    "resposta": {"label": "Yes, we do.", "status": 8}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_M_9", "status": 9},
-    "resposta": {"label": "No, they don’t.", "status": 9}
-  },
-  {
-    "pergunta": { "audio": "L2_Task1_M_10", "status": 10},
-    "resposta": { "label": "No, he doesn’t.", "status": 10}
-  },
-  {
-    "pergunta": {"audio": "L2_Task1_M_11", "status": 11},
-    "resposta": {"label": "Yes, she does.", "status": 11}
+    pergunta: [
+      {audio: "L2_Task1_M_15", status: 0},
+      {audio: "L2_Task1_M_16", status: 1},
+      {audio: "L2_Task1_M_17", status: 2},
+    ],
+    resposta: [
+      {label: "No, he doesn’t.", status: 0},
+      {label: "Yes, it does.", status: 1},
+      {label: "Yes, I do.", status: 2},
+    ],
   }
 ]
 
@@ -117,7 +161,7 @@ export const L2_T1_Dificil = [
       { label: "Bread, eggs and coffee", status: 0},
       { label: "Bread, cereal and milk", status: 0},
       { label: "Bread, butter and chocolate", status: 0},
-      { label: "bread, butter and coffee", status: 1}
+      { label: "Bread, butter and coffee", status: 1}
     ]
   },
   {
@@ -153,7 +197,7 @@ export const L2_T1_Dificil = [
       { label: "Cereal and milk", status: 0},
       { label: "Milk, cereal and eggs", status: 0},
       { label: "Bread, milk and coffee", status: 0},
-      { label: "bread, cereal and milk", status: 1}
+      { label: "Bread, cereal and milk", status: 1}
     ]
   },
   {
@@ -169,43 +213,43 @@ export const L2_T1_Dificil = [
 
 export const L2_T2_Facil = [
   {
-    pergunta: ["order", "can ", "take ", "I ", "your ", "?"],
+    pergunta: ["order", "can", "take", "I", "your", "?"],
     resposta: "Can I take your order?",
   },
   {
-    pergunta: ["all", "will ", "be ", "that ", "?"],
+    pergunta: ["all", "will", "be", "that", "?"],
     resposta: "Will that be all?",
   },
   {
-    pergunta: ["some ", "would ", "like ", "water", "you ", "?"],
+    pergunta: ["some", "would", "like", "water", "you", "?"],
     resposta: "Would you like some water?",
   },
   {
-    pergunta: ["name", "’s ", "what", "your ", "?"],
+    pergunta: ["name", "’s", "what", "your", "?"],
     resposta: "What’s your name?",
   },
   {
-    pergunta: ["spell ", "please", "name ", "your ", "last ", "."],
+    pergunta: ["spell", "please", "name", "your", "last", "."],
     resposta: "Spell your last name please.",
   },
   {
-    pergunta: ["dessert", "like ", "would ", "you ", "a ", "?"],
+    pergunta: ["dessert", "like", "would", "you", "a", "?"],
     resposta: "Would you like a dessert?",
   },
   {
-    pergunta: ["1 to 10", "please ", "count ", "from ", "."],
+    pergunta: ["1 to 10", "please", "count", "from", "."],
     resposta: "Please count from 1 to 10.",
   },
   {
-    pergunta: ["I’d ", "thanks ", "no ", "like ", "tea", "some ", "."],
-    resposta: "No thanks I’d like some tea.",
+    pergunta: ["I’d", "like", "tea", "some", "."],
+    resposta: "I’d like some tea.",
   },
   {
-    pergunta: ["cookies", "would ", "like ", "you ", "some ", "?"],
+    pergunta: ["cookies", "would", "like", "you", "some", "?"],
     resposta: "Would you like some cookies?",
   },
   {
-    pergunta: ["salad", "do ", "you ", "eat ", "?"],
+    pergunta: ["salad", "do", "you", "eat", "?"],
     resposta: "Do you eat salad?",
   },
 ]
@@ -224,7 +268,7 @@ export const L2_T2_Medio = [
     resposta: [
       {label: "has", status: 0},
       {label: "have", status: 1},
-      {label: "everyday", status: 0},
+      {label: "every day", status: 0},
     ],
   },
   {
@@ -279,7 +323,7 @@ export const L2_T2_Medio = [
     pergunta: "Do you drink water_____?	",
     resposta: [
       {label: "hot", status: 0},
-      {label: "everyday", status: 1},
+      {label: "every day", status: 1},
       {label: "like", status: 0},
     ],
   },

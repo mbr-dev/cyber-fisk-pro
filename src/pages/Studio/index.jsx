@@ -22,10 +22,12 @@ import volumeIcon from "../../assets/btnAudio.svg";
 import australia from "../../assets/Australia.png";
 import eua from "../../assets/Eua.svg";
 
-import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec } from "./styles";
+import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec, Right, Left } from "./styles";
 
 export const Studio = () => {
   const { selectLanguage } = useContext(CyberContext);
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   return (
     <Container>
@@ -33,74 +35,82 @@ export const Studio = () => {
         selectLanguage === 0 ? translateStudio[0].title : selectLanguage === 1 ? translateStudio[1].title : translateStudio[2].title
       } />
       <TitleLesson title={
-        selectLanguage === 0 ? translateStudio[0].subTitle : selectLanguage === 1 ? translateStudio[1].subTitle : translateStudio[2].subTitle
-      } />
+          selectLanguage === 0 ? translateStudio[0].subTitle : selectLanguage === 1 ? translateStudio[1].subTitle : translateStudio[2].subTitle
+        }
+        mt={isDesktop && "20px"}
+      />
 
       <Main>
-        <Info>
-          <User>
-            <UserImg>
-              <div></div>
-              <img src="https://github.com/guanabara.png" alt="" />
-            </UserImg>
-            <span>Mike Ross</span>
-          </User>
+        <Right>
+          <Info>
+            <User>
+              <UserImg>
+                <div></div>
+                <img src="https://github.com/guanabara.png" alt="" />
+              </UserImg>
+              <span>Mike Ross</span>
+            </User>
 
-          <UserInfo>
-            <From>
-              <img src={eua} alt="" />
-              <div>
-                <p>{selectLanguage === 0 ? translateStudio[0].from : selectLanguage === 1 ? translateStudio[1].from : translateStudio[2].from}</p>
-                <span>The USA</span>
-              </div>
-            </From>
-            <From>
-              <img src={australia} alt="" />
-              <div>
-                <p>{selectLanguage === 0 ? translateStudio[0].live : selectLanguage === 1 ? translateStudio[1].live : translateStudio[2].live}</p>
-                <span>Australia</span>
-              </div>
-            </From>
-          </UserInfo>
+            <UserInfo>
+              <From>
+                <img src={eua} alt="" />
+                <div>
+                  <p>{selectLanguage === 0 ? translateStudio[0].from : selectLanguage === 1 ? translateStudio[1].from : translateStudio[2].from}</p>
+                  <span>The USA</span>
+                </div>
+              </From>
 
-          <SocialMedia>
-            <img src={twitterIcon} alt="" />
-            <img src={instagramIcon} alt="" />
-            <img src={dribbbleIcon} alt="" />
-            <img src={linkedInIcon} alt="" />
-            <img src={gitHubIcon} alt="" />
-            <img src={devIcon} alt="" />
-          </SocialMedia>
-        </Info>
-        <Text>
-          <p>{selectLanguage === 0 ? translateStudio[0].you : selectLanguage === 1 ? translateStudio[1].you : translateStudio[2].you} Mike Ross.</p>
-          <span>{selectLanguage === 0 ? translateStudio[0].text : selectLanguage === 1 ? translateStudio[1].text : translateStudio[2].text}</span>
-          <span>{selectLanguage === 0 ? translateStudio[0].text1 : selectLanguage === 1 ? translateStudio[1].text1 : translateStudio[2].text1}</span>
-        </Text>
-        <ButtonArea>
-          <button>
-            <img src={volumeIcon} alt="" />
-          </button>
-          <button>
-            <img src={microIcon} alt="" />
-          </button>
+              <From>
+                <img src={australia} alt="" />
+                <div>
+                  <p>{selectLanguage === 0 ? translateStudio[0].live : selectLanguage === 1 ? translateStudio[1].live : translateStudio[2].live}</p>
+                  <span>Australia</span>
+                </div>
+              </From>
+            </UserInfo>
 
-          <Dialog.Root>
-            <Dialog.Trigger>
-              <button>
-                <img src={keyIcon} alt="" />
-              </button>
-            </Dialog.Trigger>
+            <SocialMedia>
+              <img src={twitterIcon} alt="" />
+              <img src={instagramIcon} alt="" />
+              <img src={dribbbleIcon} alt="" />
+              <img src={linkedInIcon} alt="" />
+              <img src={gitHubIcon} alt="" />
+              <img src={devIcon} alt="" />
+            </SocialMedia>
+          </Info>
 
-            <Modal />
-          </Dialog.Root>
-          
-        </ButtonArea>
+          <Text>
+            <p>{selectLanguage === 0 ? translateStudio[0].you : selectLanguage === 1 ? translateStudio[1].you : translateStudio[2].you} Mike Ross.</p>
+            <span>{selectLanguage === 0 ? translateStudio[0].text : selectLanguage === 1 ? translateStudio[1].text : translateStudio[2].text}</span>
+            <span>{selectLanguage === 0 ? translateStudio[0].text1 : selectLanguage === 1 ? translateStudio[1].text1 : translateStudio[2].text1}</span>
+          </Text>
+        </Right>
 
-        <ButtonRec>
-          <img src={micro2Icon} alt="" />
-          <img src={ruidoIcon} className="ruido" alt="" />
-        </ButtonRec>
+        <Left>
+          <ButtonArea>
+            <button>
+              <img src={volumeIcon} alt="" />
+            </button>
+            <button>
+              <img src={microIcon} alt="" />
+            </button>
+
+            <Dialog.Root>
+              <Dialog.Trigger>
+                <button>
+                  <img src={keyIcon} alt="" />
+                </button>
+              </Dialog.Trigger>
+
+              <Modal />
+            </Dialog.Root>
+          </ButtonArea>
+
+          <ButtonRec>
+            <img src={micro2Icon} alt="" />
+            <img src={ruidoIcon} className="ruido" alt="" />
+          </ButtonRec>
+        </Left>
       </Main>
     </Container>
   )

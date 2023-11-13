@@ -8,14 +8,18 @@ import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
 import Robo from "../../assets/RoboWD.png";
+import RoboPe from "../../assets/roboPe.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Container, Main, Header, Avatar } from "./styles";
+import { Container, Main, Header, Avatar, Content, HeaderButton, BtnC } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Menu = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const alterPage = (page) => {
     navigate(`/${page}`);
@@ -44,27 +48,51 @@ export const Menu = () => {
     <Container>
       <Header>
         <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
-        <ButtonMenuHeader />
-        <Avatar>
-          <img src={Robo} alt="" />
-          <p>{name}</p>
-        </Avatar>
-        <ButtonCloseHeader />
+
+        <HeaderButton>
+          <ButtonMenuHeader />
+          {!isDesktop && 
+            <Avatar>
+              <img src={Robo} alt="" />
+              <p>{name}</p>
+            </Avatar>}
+          {!isDesktop && <ButtonCloseHeader />}
+        </HeaderButton>
+
+        {isDesktop &&
+          <Avatar>
+            <img src={RoboPe} alt="" />
+            <p>{name}</p>
+          </Avatar>}
       </Header>
 
-      <Main>
-        <p>Avatar</p>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]}/>
-        <p onClick={() => {alterPage("Profile")}}>Profile</p>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]}/>
-        <p onClick={() => {alterPage("BalanceAndReward")}}>XP Balance and Rewards</p>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]}/>
-        <p onClick={() => {alterPage("Ranking")}}>Ranking</p>
-        <LineSeparator w="80%" bg={defaultTheme["gray-200"]}/>
-        <p onClick={() => {alterPage("Help")}}>Help</p>
-      </Main>
+      <Content>
+        {isDesktop &&
+          <BtnC>
+            <ButtonCloseHeader />
+          </BtnC>
+        }
 
-      <FooterBtnHome hasLS />
+        <Main>
+          <p>Avatar</p>
+          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <p onClick={() => {alterPage("Profile")}}>Profile</p>
+          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <p onClick={() => {alterPage("BalanceAndReward")}}>XP Balance and Rewards</p>
+          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <p onClick={() => {alterPage("Ranking")}}>Ranking</p>
+          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <p onClick={() => {alterPage("Help")}}>Help</p>
+        </Main>
+
+        <FooterBtnHome 
+          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+          wl={isDesktop ? "48%" : "80%"}
+          hasLS
+          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+        />
+      </Content>
     </Container>
   )
 }

@@ -8,10 +8,12 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
+import { L2_T1_Facil } from "../../utils/lesson2_Task";
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
 import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game7 = () => {
   const {
@@ -20,6 +22,7 @@ export const Game7 = () => {
 
   const navigate = useNavigate();
 
+  const [colorAnswer, setColorAnswer] = useState([0, 0, 0]);
   const [data, setData] = useState([]);
   const [audios, setAudios] = useState([]);
   const [answers, setAnswers] = useState([]);
@@ -34,10 +37,13 @@ export const Game7 = () => {
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
-    let dataLength = 0;
+   let dataLength = 0;
     let tempData;
     if (nivel === 0) {
       setData(conteudoFacil);
@@ -60,20 +66,13 @@ export const Game7 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
-    tempRandom = shuffleArray(tempRandom);
-    setRandomNumber(tempRandom);
-
-    const items = tempData.map(item => item.conteudo);
-    const dataItem = items.map(item => JSON.parse(item));
-
+    const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    
     let tempAudios = [];
     let tempAnswers = [];
-
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
-
-    for (let a = 0; a < randomIndices.length; a++) {
-      tempAudios.push(dataItem[randomIndices[a]].pergunta);
-      tempAnswers.push(dataItem[randomIndices[a]].resposta);
+    for (let a = 0; a < items.pergunta.length; a++) {
+      tempAudios.push(items.pergunta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
@@ -83,42 +82,25 @@ export const Game7 = () => {
     setIsLoading(false);
   }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
 
-  function shuffleArray(array) {
-    for (let i = array.length - 1; i > 0; i--) {
-      const j = Math.floor(Math.random() * (i + 1));
-      [array[i], array[j]] = [array[j], array[i]];
-    }
-    return array;
-  }
-
-  const newRound = () => {
+  const newRound = (number) => {
+    setRightAudios([]);
+    setRightAnswers([]);
     setCountClick(0);
+    setColorAnswer([0, 0, 0]);
 
-    let tempRandom = [];
-    for (let a = 0; a < data.length; a++) {
-      tempRandom.push(a);
-    }
-    tempRandom = shuffleArray(randomNumber);
-
-    const items = data.map(item => item.conteudo);
-    const dataItem = items.map(item => JSON.parse(item));
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempAudios = [];
     let tempAnswers = [];
-
-    const randomIndices = shuffleArray(tempRandom).slice(0, 4);
-
-    for (let a = 0; a < randomIndices.length; a++) {
-      tempAudios.push(dataItem[randomIndices[a]].pergunta);
-      tempAnswers.push(dataItem[randomIndices[a]].resposta);
+    for (let a = 0; a < items.pergunta.length; a++) {
+      tempAudios.push(items.pergunta[a]);
+      tempAnswers.push(items.resposta[a]);
     }
     tempAudios = tempAudios.sort(() => Math.random() - 0.5);
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
     setAnswers(tempAnswers);
 
-    setRightAudios([]);
-    setRightAnswers([]);
     setSelectAudio(null);
     setBlockAnswer(true);
   }
@@ -128,7 +110,7 @@ export const Game7 = () => {
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
-    setBlockAnswer(false);    
+    setBlockAnswer(false);
 
     const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
 
@@ -140,7 +122,7 @@ export const Game7 = () => {
     });
   }
 
-  const handleGetAnswer = (index) => {
+  const handleGetAnswer = (answer, index) => {
     if (blockAnswer || playAudio) return;
 
     setBlockAnswer(true);
@@ -150,15 +132,20 @@ export const Game7 = () => {
     setCountClick(clicks);
 
     let tempRightPoints;
-
-    const answer =  answers[index];
+    let tempColorAnswer = colorAnswer;
 
     if (answer.status === selectAudio) {
-      if (clicks < 4) {
+      if (clicks < 3) {
+        tempColorAnswer[index] = 1;
+        setColorAnswer(tempColorAnswer);
+
         setRightAudios(state => [...state, selectAudio]);
         setRightAnswers(state => [...state, answers[index]]);
         return;
       }
+
+      tempColorAnswer[index] = 1;
+      setColorAnswer(tempColorAnswer);
 
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
@@ -189,7 +176,7 @@ export const Game7 = () => {
 
     if (rule === "Continua") {
       setTimeout(() =>{
-        newRound();
+        newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
       setNewPontos(0,0);
@@ -233,7 +220,7 @@ export const Game7 = () => {
       <Loading />
     )
   }
-
+  console.log("righaudio: ", rightAudios);
   return (
     <Container>
       <TitleLesson title="Make pairs." />
@@ -246,6 +233,9 @@ export const Game7 = () => {
               <ButtonAudio 
                 key={index}
                 onClick={() => handlePlayAudio(audio)}
+                style={{
+                  borderColor: selectAudio === audio.status && defaultTheme["red-200"],
+                }}
                 disabled={disabledAud}
               >
                 <img src={ImgBtn2} alt="" className="btn2" />
@@ -262,12 +252,15 @@ export const Game7 = () => {
             return (
               <ButtonAnswer 
                 key={index}
-                w="8rem"
-                h="2.625rem"
-                onPress={() => handleGetAnswer(index)}
+                w={isDesktop ? "400px" : isTablet ? "200px" : "9rem"}
+                h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
+                onPress={() => handleGetAnswer(answer, index)}
                 disabledButton={disabledRes || blockAnswer}
+                optionColor={colorAnswer[index]}
               >
-                <p>{answer.label}</p>
+                <p style={{
+                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+              }}>{answer.label}</p>
               </ButtonAnswer>
             )
           })}

@@ -15,6 +15,19 @@ export const Main = styled.main`
   display: flex;
   align-items: flex-start;
   justify-content: space-around;
+
+  @media(min-width: 600px) {
+    width: 80%;
+    height: 450px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 60%;
+  }
+
+  @media(min-width: 1920px) {
+    width: 50%;
+  }
 `;
 
 export const Questions = styled.div`
@@ -36,7 +49,7 @@ export const Answers = styled.div`
 
 export const Button = styled.button`
   all: unset;
-  width: 9.125rem;
+  width: 136px;
   height: 3.5rem;
   display: flex;
   padding-inline: 0.5rem;
@@ -60,6 +73,19 @@ export const Button = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+  }
+
+  @media(min-width: 600px) {
+    width: 180px;
+    height: 64px;
+    
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 210px;
+    height: 72px;
   }
 `;

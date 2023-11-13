@@ -4,28 +4,33 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
+import { HeaderLesson } from "../HeaderLesson";
+import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonClean } from "./styles";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2 } from "./styles";
 
 export const GameSL3 = () => {
-  const { rodadaGeral, setNewRodada, setTimeElapsed } = useContext(LessonContext);
+  const {
+    rodadaGeral, setNewRodada, setTimeElapsed, statusColor, setStatusColor
+  } = useContext(LessonContext);
 
   const keyboardLetters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"];
 
   const navigate = useNavigate();
 
-  const [optionColorQ, setOptionColorQ] = useState(0);
   const [round, setRound] = useState(0);
   const [question, setQuestion] = useState("");
   const [data, setData] = useState([]);
+  const [type, setType] = useState(0);
   const [divLetter, setDivLetter] = useState([]);
+  const [randomNumber, setRandomNumber] = useState([]);
   const [divLetterRight, setDivLetterRight] = useState([]);
   const [answersOfQuestion, setAnswersOfQuestion] = useState([]);
   const [correctPoints, setCorrectPoints] = useState(0);
+  const [points, setPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
   const [block, setBlock] = useState(true);
   const [changed, setChanged] = useState(false);
@@ -35,6 +40,9 @@ export const GameSL3 = () => {
   const [selectedIndexes, setSelectedIndexes] = useState([]);
   const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
@@ -42,9 +50,19 @@ export const GameSL3 = () => {
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
 
-      let items = JSON.parse(res.dados[0].dados_conteudo[round].conteudo);
+      let tempRandom = [];
+      for (let a = 0; a < 10; a++) {
+        tempRandom.push(a);
+      }
+      tempRandom = tempRandom.sort(() => Math.random() - 0.5);
+      setRandomNumber(tempRandom);
+
+      let items = JSON.parse(res.dados[0].dados_conteudo[tempRandom[round]].conteudo);
+
       let tempQuestion = items.pergunta.toUpperCase();
       setQuestion(tempQuestion);
+
+      setType(items.tipo);
 
       let letterQuestion = tempQuestion.split(" ");
       const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
@@ -65,18 +83,19 @@ export const GameSL3 = () => {
     } catch(error) {
       console.log(error);
     }
-  }, [round, keyboardLetters, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
+  }, [round, keyboardLetters, setRandomNumber, setQuestion, setDivLetter, setDivLetterRight, setBlock, setAnswersOfQuestion])
 
   const newRound = (number) => {
     setText("");
-    setOptionColorQ(0);
     setSelectedIndexes([]);
     setSelectedWrongIndexes([]);
 
-    const items = JSON.parse(data[number].conteudo);
+    const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempQuestion = items.pergunta.toUpperCase();
+
     setQuestion(tempQuestion);
+    setType(items.tipo);
 
     let letterQuestion = tempQuestion.split(" ");
     const lettersIndex = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
@@ -114,36 +133,30 @@ export const GameSL3 = () => {
     }
   }
 
-  // const handleCleanLetterQuestion = () => {
-  //   let tempQuestion = L3_SPT[round].pergunta.toUpperCase();
-  //   setQuestion(tempQuestion);
+  const getPoints = () => {
+    let tempP = correctPoints;
 
-  //   let letterQuestion = tempQuestion.split(" ");
-  //   const letter = letterQuestion.map(word => word.split("").map(letter => keyboardLetters.indexOf(letter)));
-  //   setDivLetter(letter);
-  // }
+    if (countTimer <= 60) {
+      tempP += 5;
+    } else if (countTimer >= 61 && countTimer <= 75) {
+      tempP += 4;
+    } else if (countTimer >= 76 && countTimer <= 90) {
+      tempP += 3;
+    } else if (countTimer >= 91 && countTimer <= 120) {
+      tempP += 2;
+    } else {
+      tempP += 1;
+    }
+
+    setCorrectPoints(tempP);
+  }
+
   const handleVerifyAnswers = (event) => {
     event.preventDefault();
 
-    let tempP = correctPoints;
+    const userText = text;
 
-    if (countTimer <= 30) {
-      tempP += 5;
-    } else if (countTimer >= 31 && countTimer <= 45) {
-      tempP += 4;
-    } else if (countTimer >= 46 && countTimer <= 75) {
-      tempP += 3;
-    } else if (countTimer >= 76 && countTimer <= 105) {
-      tempP += 2;
-    } else if (countTimer >= 106 && countTimer <= 120) {
-      tempP += 1;
-    } else {
-      tempP = 0;
-    }
-
-    const userText = text.replace(/'/g, "’");
-
-    if (round >= 6 && round <= 9) {
+    if (type === 1) {
       const correctStarts = [
         "I have dinner at",
         "I need to buy",
@@ -154,11 +167,19 @@ export const GameSL3 = () => {
       const isStartCorrect = correctStarts.some((start) => userText.startsWith(start));
 
       if (isStartCorrect) {
-        setOptionColorQ(1);
+        getPoints();
 
-        setCorrectPoints(tempP);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
+
+        let tempP = points;
+        tempP++;
+        setPoints(tempP);
       } else {
-        setOptionColorQ(2);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -168,11 +189,19 @@ export const GameSL3 = () => {
       const isAnswerCorrect = answersOfQuestion.some((answer) => answer === userText);
 
       if (isAnswerCorrect) {
-        setOptionColorQ(1);
+        getPoints();
 
-        setCorrectPoints(tempP);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 1;
+        setStatusColor(newStatus);
+
+        let tempP = points;
+        tempP++;
+        setPoints(tempP); 
       } else {
-        setOptionColorQ(2);
+        const newStatus = [...statusColor];
+        newStatus[rodadaGeral] = 2;
+        setStatusColor(newStatus);
 
         let tempE = wrongPoints;
         tempE++;
@@ -188,14 +217,20 @@ export const GameSL3 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    if (tempRound === 10) {
-      setTimeout(() => {
-        navigate("/WellDone")
-      }, 2000);
+    if (round === 9) {
+      if (correctPoints >= 2) {
+        setTimeout(() => {
+          navigate("/WellDone");
+        }, 1500);
+      } else {
+        setTimeout(() => {
+          navigate("/GameOver");
+        }, 1500);
+      }
     } else {
       setTimeout(() => {
         newRound(tempRound);
-      }, 2000);
+      }, 1500);
     }
   }
 
@@ -230,7 +265,7 @@ export const GameSL3 = () => {
   }, [countTimer]);
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    let timer = setInterval(() => {
       setTimeElapsed(state => state + 1)
     }, 1000);
 
@@ -251,11 +286,13 @@ export const GameSL3 = () => {
 
   return (
     <Container>
+      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
       {changed ? 
         <TitleLesson title="Now answer the question." />
         :
         <TitleLesson title="Solve the code to answer the question." />
       }
+
       <Main>
         {!changed ? 
           <Phrase>
@@ -276,6 +313,7 @@ export const GameSL3 = () => {
                 )
               })}
             </Letters>
+
             <TypeLetters>
               {divLetter.map((letters, letterIndex) => {
                 return (
@@ -299,10 +337,6 @@ export const GameSL3 = () => {
                 ?
               </DivLetter>
             </TypeLetters>
-
-            {/* <ButtonClean onClick={handleCleanLetterQuestion}>
-              <p>Clean</p>
-            </ButtonClean> */}
           </Phrase>
         :
           <Answer>
@@ -324,21 +358,18 @@ export const GameSL3 = () => {
             </TypeLetters2>
 
             <form id="myForm" onSubmit={handleVerifyAnswers} >
-              <Input 
+              <Input
+                type="text"
                 placeholder="Type here"
                 required
                 value={text}
                 onChange={(e) => setText(e.target.value)}
-                style={{
-                  backgroundColor: optionColorQ === 0 ? "" : optionColorQ === 1 ? defaultTheme["green-200"] : defaultTheme["red-200"],
-                  color: optionColorQ === 0 ? "" : defaultTheme.white
-                }}
               />
             </form>
             <ButtonBg
-              mt="1.5rem"
-              w="13rem"
-              h="3rem"
+              w="250px"
+              h="44px"
+              fs={isDesktop ? "32px" : "20px"}
               form="myForm"
               type="submit"
               title="Check"
@@ -348,6 +379,16 @@ export const GameSL3 = () => {
           </Answer>
         }
       </Main>
+
+      <FooterBtnHome 
+        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
+        wl={isDesktop ? "48%" : "80%"}
+        hasLS
+        title="Tasks" 
+        rota="LessonSelection"
+        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
+        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
+      />
     </Container>
   )
 }

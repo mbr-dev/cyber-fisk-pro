@@ -336,7 +336,7 @@ export const L3_T2_Medio = [
     resposta: [
       {label: "No, I do stay home on weekends. ", status: 0},
       {label: "Yes, I stay home on weekends.", status: 1},
-      {label: "No, I don’t stay home on weekends", status: 1}
+      {label: "No, I don’t stay home on weekends.", status: 1}
     ]
   },
   {  
@@ -435,78 +435,88 @@ export const L3_T2_Dificil = [
 export const L3_SUPER_LESSON = [
   {
     pergunta: "Do you go to the gym",
+    tipo: 0,
     resposta: [
-      "Yes, I do",
-      "Yes, I go to the gym",
-      "No, I don’t",
-      "No, I don’t go to the gym"
+      "Yes, I do.",
+      "Yes, I go to the gym.",
+      "No, I don’t.",
+      "No, I don’t go to the gym."
     ]
   },
   {
     pergunta: "Do your friends like to dance",
+    tipo: 0,
     resposta: [
-      "Yes, they do",
-      "Yes, they like to dance",
-      "No, they don’t",
-      "No, they don’t like to dance"
+      "Yes, they do.",
+      "Yes, they like to dance.",
+      "No, they don’t.",
+      "No, they don’t like to dance."
     ]
   },
   {
     pergunta: "Does your mom work out",
+    tipo: 0,
     resposta: [
-      "Yes, she does",
-      "Yes, she works out",
-      "No, she doesn’t",
-      "No, she doesn’t work out"
+      "Yes, she does.",
+      "Yes, she works out.",
+      "No, she doesn’t.",
+      "No, she doesn’t work out."
     ]
   },
   {
     pergunta: "Do you have lunch at home",
+    tipo: 0,
     resposta: [
-      "Yes, I do",
-      "Yes, I have lunch at home",
-      "No, I don’t",
-      "No, I don’t have lunch at home"
+      "Yes, I do.",
+      "Yes, I have lunch at home.",
+      "No, I don’t.",
+      "No, I don’t have lunch at home."
     ]
   },
   {
     pergunta: "Do your cousins get up early on weekends",
+    tipo: 0,
     resposta: [
-      "Yes, they do",
-      "Yes, they get up early on weekends",
-      "No, they don’t",
-      "No, they don’t get up early on weekends"
+      "Yes, they do.",
+      "Yes, they get up early on weekends.",
+      "No, they don’t.",
+      "No, they don’t get up early on weekends."
     ]
   },
   {
     pergunta: "Do you go out on weekdays",
+    tipo: 0,
     resposta: [
-      "Yes, I do",
-      "Yes, I go out on weekdays",
-      "No, I don’t",
-      "No, I don’t go out on weekdays"
+      "Yes, I do.",
+      "Yes, I go out on weekdays.",
+      "No, I don’t.",
+      "No, I don’t go out on weekdays."
     ]
   },
   {
     pergunta: "What time do you have dinner",
+    tipo: 1,
     resposta: [
       "I have dinner at"
     ]
   },
   {
     pergunta: "What do you need to buy",
+    tipo: 1,
     resposta: [
       "I need to buy"
     ]
   },
   {
     pergunta: "What do your friends do on Sunday nights",
+    tipo: 1,
     resposta: [
       "They"
     ]
   },
   {
     pergunta: "What do you have for breakfast every day",
+    tipo: 1,
     resposta: [
       "I have"
     ]

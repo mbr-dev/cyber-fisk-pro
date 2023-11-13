@@ -1,5 +1,5 @@
-import { useCallback, useContext, useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCallback, useContext, useState, useEffect } from "react";
 
 import { Loading } from "../Loading";
 import { ButtonBg } from "../ButtonBg";
@@ -8,7 +8,6 @@ import { TitleLesson } from "../titleLesson";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Form, Main, Select } from "./styles";
 
 export const Game28 = () => {

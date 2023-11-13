@@ -24,6 +24,12 @@ export const Main = styled.main`
   @media(min-width: 600px) {
     flex-direction: row;
     justify-content: center;
-    gap: 2rem;
+    margin-top: 36px;
+    gap: 54px;
+  }
+
+  @media(min-width: 1024px) {
+    gap: 64px;
+    margin-top: 44px;
   }
 `;

@@ -18,20 +18,39 @@ export const Main = styled.main`
   @media(max-width: 320px) {
     margin-top: 2rem;
   }
+
+  @media(min-width: 600px) {
+    width: 80%;
+  }
+
+  @media(min-width: 1440px) {
+    width: 70%;
+    margin-top: 2rem;
+  }
+
+  @media(min-width: 1920px) {
+    width: 60%;
+    margin-top: 2rem;
+  }
+
+  @media(min-width: 2560px) {
+    width: 50%;
+    margin-top: 2rem;
+  }
 `;
 
 export const ButtonRow = styled.div`
   display: flex;
   flex-direction: column;
   gap: 2rem;
-
-  @media(max-width: 320px) {
-    gap: 1.5rem;
-  }
+  cursor: pointer;
 
   button:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+  }
+
+  @media(max-width: 320px) {
+    gap: 1.5rem;
   }
 `;
 
@@ -62,10 +81,29 @@ export const ButtonAudio = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    border: 2px solid ${props => props.theme["red-200"]};
   }
 
   @media(max-width: 320px) {
     width: 7rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 200px;
+    height: 64px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 400px;
+    height: 84px;
+    gap: 32px;
+
+    img {
+      width: 130px;
+    }
+
+    .btn2 {
+      width: 44px;
+    }
   }
 `;

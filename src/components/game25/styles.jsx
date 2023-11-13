@@ -23,6 +23,26 @@ export const Main = styled.main`
     gap: 3rem;
     margin-top: 2rem;
   }
+
+  @media(min-width: 600px) {
+    form { 
+      gap: 12px; 
+    }
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    form { 
+      gap: 16px; 
+    }
+
+    p {
+      font-size: 28px;
+    }
+  }
 `;
 
 export const Form = styled.form`
@@ -45,6 +65,27 @@ export const Form = styled.form`
 
     @media(max-width: 360px) {
       width: 16rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    padding: 16px;
+
+    input { 
+      width: 550px;
+      font-size: 28px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    input { 
+      width: 750px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    input { 
+      width: 800px;
     }
   }
 `;

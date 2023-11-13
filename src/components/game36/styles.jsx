@@ -18,6 +18,25 @@ export const Main = styled.main`
   @media(max-width: 320px) {
     margin-top: 2rem;
   }
+
+  @media(min-width: 600px) {
+    width: 80%;
+  }
+
+  @media(min-width: 1440px) {
+    width: 70%;
+    margin-top: 2rem;
+  }
+
+  @media(min-width: 1920px) {
+    width: 60%;
+    margin-top: 2rem;
+  }
+
+  @media(min-width: 2560px) {
+    width: 50%;
+    margin-top: 2rem;
+  }
 `;
 
 export const ButtonRow = styled.div`
@@ -47,6 +66,7 @@ export const ButtonAudio = styled.button`
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
+  cursor: pointer;
 
   &:hover {
     scale: 1.05;
@@ -62,10 +82,29 @@ export const ButtonAudio = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
+    border: 2px solid ${props => props.theme["red-200"]};
   }
 
   @media(max-width: 320px) {
     width: 7rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 200px;
+    height: 64px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 400px;
+    height: 84px;
+    gap: 32px;
+
+    img {
+      width: 130px;
+    }
+
+    .btn2 {
+      width: 44px;
+    }
   }
 `;

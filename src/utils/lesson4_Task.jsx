@@ -141,7 +141,7 @@ export const L4_T1_Medio = [
     pergunta: "L4_Task1_M_5",
     resposta: [
       {label: "She is my half sister.", status: 0},
-      {label: "ex-He is my brother.", status: 0},
+      {label: "He is my brother.", status: 0},
       {label: "They are brothers.", status: 0},
       {label: "He is my half brother.", status: 1}
     ]
@@ -244,7 +244,7 @@ export const L4_T1_Dificil = [
     resposta: [
       {label: "They are my cousins.", status: 1},
       {label: "They are my sisters.", status: 0},
-      {label: "They’re my friends.", status: 0},
+      {label: "He’s my friends.", status: 0},
       {label: "He’s my dad.", status: 0}
     ]
   },
@@ -345,7 +345,7 @@ export const L4_T2_Facil = [
       {label: "She is blonde.", status: -1},
       {label: "She is the teacher.", status: 2},
       {label: "My family is from Italy.", status: -1},
-      {label: "Yes, he is", status: 0}
+      {label: "Yes, he is.", status: 0}
     ]
   },
 ]
@@ -385,7 +385,7 @@ export const L4_T2_Medio = [
 
 export const L4_T2_Dificil = [
   {
-    pergunta: "Mrs. Peterson is my English teacher. She is from New York. Her classes are great.",
+    pergunta: "Mrs. Peterson is my English teacher. She is from New York, but she doesn’t live there. Her classes are great.",
     resposta: [
       { label: "Mr. Peterson is a math teacher.", status: 0 },
       { label: "She’s my English teacher.", status: 1 },

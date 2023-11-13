@@ -453,6 +453,7 @@ export const L1_T2_Medio = [
 export const L1_T2_Dificil = [
   {
     pergunta: "L1_Task2_D_0",
+    image: "L1_T2_D_0",
     resposta: [
       {label: "Good morning.", status: 0},
       {label: "Good afternoon", status: 1},
@@ -464,6 +465,7 @@ export const L1_T2_Dificil = [
   },
   {
     pergunta: "L1_Task2_D_1",
+    image: "L1_T2_D_1",
     resposta: [
       {label: "I’m not from the USA.", status: 1},
       {label: "I’m from Australia.", status: 1},
@@ -475,6 +477,7 @@ export const L1_T2_Dificil = [
   },
   {
     pergunta: "L1_Task2_D_2",
+    image: "L1_T2_D_2",
     resposta: [
       {label: "His name is Adam Brooker.", status: 1},
       {label: "His name is Adam Brooks.", status: 0},

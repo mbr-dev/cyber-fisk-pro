@@ -21,4 +21,10 @@ export const Main = styled.div`
     gap: 0.5rem;
     padding-inline: 0.5rem;
   }
+
+  @media(min-width: 600px) {
+    margin-top: 20px;
+    gap: 28px;
+    padding-inline: 16px;
+  }
 `

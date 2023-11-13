@@ -38,6 +38,9 @@ export const Game26 = () => {
   const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
   const sensors = useSensors(
     useSensor(PointerSensor),
     useSensor(KeyboardSensor, {
@@ -88,7 +91,7 @@ export const Game26 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, round, setOptionColor, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
+  }, [setIsLoading, setRandomNumber, round, setData, setSound, setRightAnswers, setIdClick, setAnswers, setBlockButton])
 
   const newRound = (number) => {
     setCountClick(0);
@@ -195,6 +198,7 @@ export const Game26 = () => {
       backgroundColor: isDragging && defaultTheme["gray-300"],
       border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
       borderRadius: isDragging && "8px",
+      touchAction: "none"
     };
 
     return (
@@ -256,7 +260,10 @@ export const Game26 = () => {
             {answers.map((answer, index) => {
               return (
               <SortableItem key={index} id={answer}>
-                <ButtonAnswer w="14rem" h="3rem">
+                <ButtonAnswer 
+                  w={isTablet ? "250px" : isDesktop ? "250px" : "14rem"}
+                  h={isTablet ? "52px" : isDesktop ? "32px" : "3rem"}
+                >
                   <p>{answer.label}</p>
                 </ButtonAnswer>
               </SortableItem>
@@ -264,8 +271,9 @@ export const Game26 = () => {
           </SortableContext>
         </DndContext>
         <ButtonBg 
-          h="2rem"
-          w="10rem"
+          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
+          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
+          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
           disabledButton={blockButton}
           onPress={handleVerify}
           title="Check"

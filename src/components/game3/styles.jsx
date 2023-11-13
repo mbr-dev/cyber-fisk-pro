@@ -21,4 +21,9 @@ export const Main = styled.div`
     margin-top: 1rem;
     gap: 1rem;
   }
+
+  @media(min-width: 600px) {
+    margin-top: 54px;
+    gap: 44px;
+  }
 `;

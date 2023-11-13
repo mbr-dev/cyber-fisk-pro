@@ -2,7 +2,6 @@ import { useState, useContext, useEffect } from "react";
 import { Container } from "./styles";
 import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
-import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
 //Games
 import { GameSL1 } from "../game_sl1";
@@ -17,10 +16,8 @@ import { GameSL9 } from "../game_sl9";
 import { GameSL10 } from "../game_sl10";
 
 export const SuperTaskLesson = () => {
-  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewConteudoSuperTask} = useContext(LessonContext);
+  const { setNewRodada, numSelLesson, setNewConteudoSuperTask} = useContext(LessonContext);
   const { book } = useContext(CyberContext);
-  const [strStart, setStrStart] = useState('');
-  const [strEnd, setStrEnd] = useState('');
   const [num, setNum] = useState(0);
 
   const loadContent = async () => {
@@ -57,24 +54,16 @@ export const SuperTaskLesson = () => {
       case 9 :
         return(<GameSL9 />);
       case 10 :
-        return(<GameSL9 />);
+        return(<GameSL10 />);
     }
   }
 
   useEffect(()=>{
-    if(numTask === 1){
-      setStrStart("Task 1");
-      setStrEnd("Task 2");
-    }else if(numTask === 2){
-      setStrStart("Task 2");
-      setStrEnd("Super Task");
-    }
     loadContent();
   },[])
 
   return(
     <Container>
-      <HeaderLesson superTaskStart trophyEnd numStart="Super task" numEnd="Finish" />
       {content()}
     </Container>
   )

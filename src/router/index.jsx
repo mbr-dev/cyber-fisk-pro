@@ -6,6 +6,7 @@ import { Menu } from "../pages/Menu";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
+import { Avatar } from "../pages/Avatar";
 import { Studio } from "../pages/Studio";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
@@ -61,6 +62,7 @@ import { Game36 } from "../components/game36";
 import { Game37 } from "../components/game37";
 import { Game38 } from "../components/game38";
 import { Game39 } from "../components/game39";
+import { Game40 } from "../components/game40";
 
 import { GameSL1 } from "../components/game_sl1";
 import { GameSL2 } from "../components/game_sl2";
@@ -84,6 +86,7 @@ export const Router =() => {
       <Route path="/Help" element={<Help />}/>
       <Route path="/Books" element={<Books />}/>
       <Route path="/Login" element={<Login />}/>
+      <Route path="/Avatar" element={<Avatar />}/>
       <Route path="/Studio" element={<Studio />}/>
       <Route path="/Report" element={<Report />}/>
       <Route path="/qr-code" element={<QRCode />}/>
@@ -140,6 +143,7 @@ export const Router =() => {
       <Route path = "/Game37" element={<Game37 />}/>
       <Route path = "/Game38" element={<Game38 />}/>
       <Route path = "/Game39" element={<Game39 />}/>
+      <Route path = "/Game40" element={<Game40 />}/>
       <Route path = "/GameSL1" element={<GameSL1 />}/>
       <Route path = "/GameSL2" element={<GameSL2 />}/>
       <Route path = "/GameSL3" element={<GameSL3 />}/>
