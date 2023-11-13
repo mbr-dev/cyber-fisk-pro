@@ -83,6 +83,8 @@ export const Login = () => {
             const cookies = new Cookies();
             cookies.set("token", resp.data[0].cd_professor, { path: '/' });
             cookies.set("raf", raf, { path: '/' });
+            localStorage.setItem("cyberPro_raf", raf);
+            localStorage.setItem("cyberPro_idioma", selectLanguage);
             await salvarAcesso(raf);
             //navigate("/home");
           }else{
@@ -95,6 +97,8 @@ export const Login = () => {
               const cookies = new Cookies();
               cookies.set("token", 'A123', { path: '/' });
               cookies.set("raf", raf, { path: '/' });
+              localStorage.setItem("cyberPro_raf", raf);
+              localStorage.setItem("cyberPro_idioma", selectLanguage);
               await salvarAcesso(raf);
               //navigate("/home");
             }

@@ -140,7 +140,7 @@ export const WellDone = () => {
     let hours = Math.floor(timeElapsed / 3600);
     hours = hours < 10 ? `0${hours}` : hours.toString;
     setTime(`${hours}:${minutes}:${seconds}`);
-    //salvar(`${hours}:${minutes}:${seconds}`);
+    salvar(`${hours}:${minutes}:${seconds}`);
   },[]);
 
   if (isLoading) {
