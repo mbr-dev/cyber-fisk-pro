@@ -34,6 +34,16 @@ export const Header = styled.header`
     z-index: -1;
   }
 
+  @media(max-width: 320px) {
+    height: 100px;
+    padding: 12px 12px 0 12px;
+  }
+
+  @media(max-width: 360px) {
+    height: 132px;
+    padding: 14px 14px 0 14px;
+  }
+
   @media(min-width: 1024px) {
     width: 40%;
     height: 100vh;
@@ -55,18 +65,44 @@ export const TopHeader = styled.div`
     font-weight: 500;
     color: ${props => props.theme["white"]};
   }
+
+  @media(max-width: 320px) {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    p {
+      font-size: 20px;
+    }
+  }
 `;
 
 export const BottomHeader = styled.div`
+  width: 100%;
   display: flex;
   align-items: center;
-  gap: 8px;
+  justify-content: center;
+  gap: 32px;
   
   .logoFisk {
     width: 196px;
   }
 
   @media(max-width: 320px) {
+    
+    gap: 54px;
+    padding-bottom: 8px;
+
+    .logoFisk {
+      width: 100px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    gap: 36px;
+
     .logoFisk {
       width: 150px;
     }
@@ -80,7 +116,6 @@ export const BottomHeader = styled.div`
 `;
 
 export const Avatar = styled.div`
-  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -103,18 +138,35 @@ export const Avatar = styled.div`
     align-items: center;
     justify-content: center;
     border-radius: 6px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
   }
 
   @media(max-width: 320px) {
     img {
-      width: 80px;
+      margin-top: 0;
+      width: 50px;
     }
 
     p {
-      width: 110px;
+      width: 80px;
       height: 20px;
+      font-size: 12px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    img {
+      width: 64px;
+    }
+
+    p {
+      width: 96px;
+      height: 24px;
+      font-size: 14px;
     }
   }
 
@@ -208,14 +260,20 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
+  padding-top: 16px;
   gap: 10px;
 
   @media(max-width: 320px) {
+    padding-top: 0;
     gap: 2px;
   }
 
-  @media(min-width: 1920) {
+  @media(min-width: 768px) {
+    gap: 20px;
+  }
+
+  @media(min-width: 1920px) {
     gap: 16px;
   }
 
@@ -225,7 +283,7 @@ export const Main = styled.main`
 `;
 
 export const AreaInput = styled.div`
-  width: 80%;
+  width: 300px;
   text-align: left;
   display: flex;
   flex-direction: column;
@@ -239,11 +297,11 @@ export const AreaInput = styled.div`
     margin-bottom: 8px;
   }
 
-  svg {
+  .iconImg {
+    width: 28px;
     position: absolute;
-    top: 41px;
+    top: 38px;
     left: 10px;
-    color: ${props => props.theme["gray-400"]};
   }
 
   .selectState {
@@ -255,6 +313,13 @@ export const AreaInput = styled.div`
   }
 
   @media(max-width: 320px) {
+    width: 250px;
+
+    .iconImg {
+      top: -38px;
+      background-color: red;
+    }
+
     .selectState {
       font-size: 12px;
     }
@@ -264,13 +329,26 @@ export const AreaInput = styled.div`
       padding-left: 12px;
       margin-bottom: 6px;
     }
+  }
 
-    svg {
-      top: 26px;
+  @media(max-width: 360px) {
+    .iconImg {
+      width: 24px;
+      top: 36px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+
+    label {
+      font-size: 24px;
     }
   }
 
   @media(min-width: 1024px) {
+    width: 680px;
+
     label {
       padding-left: 28px;
       font-size: 24px;
@@ -313,6 +391,10 @@ export const Div = styled.div`
     }
   }
 
+  @media(min-width: 768px) {
+    gap: 20px;
+  }
+
   @media(min-width: 1024px) {
     width: 80%;
     flex-direction: row;
@@ -337,7 +419,7 @@ export const Div = styled.div`
 export const Input = styled.input`
   width: 100%;
   height: 42px;
-  padding-left: 32px;
+  padding-left: 42px;
   border-radius: 8px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
@@ -349,10 +431,6 @@ export const Input = styled.input`
     color: ${props => props.theme["gray-600"]};
   }
 
-  @media(max-width: 360px) {
-    height: 40px;
-  }
-
   @media(max-width: 320px) {
     height: 30px;
     padding-left: 30px;
@@ -362,9 +440,21 @@ export const Input = styled.input`
     }
   }
 
+  @media(max-width: 360px) {
+    height: 36px;
+  }
+
+  @media(min-width: 768px) {
+    height: 62px;
+    padding-left: 54px;
+
+    &::placeholder {
+      font-size: 24px;
+    }
+  }
+
   @media(min-width: 1024px) {
     height: 64px;
-    padding-left: 54px;
     box-shadow: 0px 4px 10px 0px #00000040;
 
     &::placeholder {
@@ -374,17 +464,27 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.select`
+  width: 100%;
   height: 42px;
-  padding-left: 32px;
+  padding-left: 42px;
   border-radius: 8px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
   font-weight: normal;
   font-family: "Ubuntu", sans-serif;
 
-  @media(max-width: 360px) {
-    padding-left: 30px;
+  @media(max-width: 320px) {
     height: 30px;
+  }
+
+  @media(max-width: 360px) {
+    height: 36px;
+  }
+
+  @media(min-width: 768px) {
+    height: 62px;
+    font-size: 24px;
+    padding-left: 54px;
   }
 
   @media(min-width: 1024px) {
@@ -401,6 +501,7 @@ export const SelectIdioma = styled.div`
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
+  box-shadow: 0px 4px 10px 0px #00000033;
 `;
 
 export const SelectTitle = styled.div`
@@ -420,6 +521,37 @@ export const SelectTitle = styled.div`
   p {
     flex: 1;
     font-size: 18px;
+    font-weight: 500;
+  }
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 30px;
+
+    p {
+      font-size: 12px;
+    }
+
+    img {
+      width: 18px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    height: 36px;
+  }
+
+  @media(min-width: 768px) {
+    height: 62px;
+    padding-inline: 16px;
+
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      width: 32px;
+    }
   }
 
   @media(min-width: 1024px) {
@@ -428,7 +560,6 @@ export const SelectTitle = styled.div`
 
     p {
       font-size: 24px;
-      font-weight: 500;
     }
 
     img {
@@ -452,6 +583,15 @@ export const SelectUl = styled.ul`
   gap: 12px;
   background-color: ${props => props.theme["red-200"]};
 
+  @media(max-width: 320px) {
+    bottom: -78px;
+  }
+
+  @media(min-width: 768px) {
+    padding: 16px;
+    bottom: -140px;
+  }
+
   @media(min-width: 1024px) {
     padding-inline: 44px;
     gap: 20px;
@@ -461,6 +601,7 @@ export const SelectUl = styled.ul`
 
 export const SelectLi = styled.li`
   width: 100%;
+  font-weight: 500;
   list-style: none;
   color: ${props => props.theme.white};
 
@@ -468,8 +609,15 @@ export const SelectLi = styled.li`
     background-color: ${props => props.theme["red-300"]};
   }
 
-  @media(min-width: 1024px) {
+  @media(max-width: 320px) {
+    font-size: 12px;
+  }
+
+  @media(min-width: 768px) {
     font-size: 24px;
-    font-weight: 500;
+  }
+
+  @media(min-width: 1024px) {
+    font-size: 28px;
   }
 `;

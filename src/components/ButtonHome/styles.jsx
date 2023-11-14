@@ -2,6 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
+  width: 250px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -14,6 +16,7 @@ export const Container = styled.button`
   cursor: pointer;
 
   p {
+    font-size: 24px;
     font-weight: bold;
   }
 
@@ -31,11 +34,20 @@ export const Container = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 400px;
+    width: 500px;
     height: 56px;
 
     p {
       font-size: 32px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 560px;
+    height: 64px;
+
+    p {
+      font-size: 36px;
     }
   }
 `;

@@ -2,6 +2,7 @@ import "keen-slider/keen-slider.min.css";
 import { useKeenSlider } from "keen-slider/react";
 
 import { HeaderText } from "../../components/HeaderText";
+import { AvatarCustom } from "../../components/AvatarCustom";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 
 import bgImg from "./images/bgNatal.png";
@@ -50,7 +51,8 @@ export const Avatar = () => {
       <Main>
         <Top>
           <img src={bgImg} alt="" className="bgImg" />
-          <img src={roboPe} alt="" className="avatarImg" />
+          
+          <AvatarCustom />
         </Top>
 
         <DivBottom>

@@ -1,21 +1,35 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100vw;
-  height: 78px;
+  width: 300px;
+  height: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 14px;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    height: 54px;
-    padding-bottom: 6px;
+    width: 250px;
+    height: 52px;
   }
 
   @media(min-width: 768px) {
+    width: 620px;
+    height: 104px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 680px;
     height: 120px;
-    padding-bottom: 32px;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 750px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1000px;
   }
 `;
