@@ -5,10 +5,12 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Main = styled.main`
   flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -16,34 +18,30 @@ export const Main = styled.main`
 `;
 
 export const SelectLessonArea = styled.div`
-  width: 200px;
-  display: grid;
-  grid-template-columns: repeat(2, 5rem);
+  width: 230px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 20px;
 
   @media(max-width: 360px) {
     gap: 12px;
   }
 
   @media(max-width: 320px) {
-    width: 140px;
+    width: 180px;
     gap: 8px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    grid-template-rows: (2, 5rem);
-    grid-template-columns: repeat(5, 5rem);
-    align-items: center;
-    padding-block: 16px;
+  @media(min-width: 768px) {
+    width: 330px;
+    gap: 24px;
   }
   
   @media(min-width: 1024px) {
-    display: flex;
-    flex-wrap: wrap;
+    width: 1000px;
     gap: 36px;
-    width: 800px;
   }
 `;
 
@@ -59,7 +57,7 @@ export const ButtonLesson = styled.button`
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
-  transition: 0.3s;
+  transition: all ease 0.3s;
 
   p {
     font-weight: bold;
@@ -78,7 +76,7 @@ export const ButtonLesson = styled.button`
 
   &:disabled{
     background-color: ${props => props.theme["gray-500"]};
-  }
+  }  
 
   @media(max-width: 360px) {
     width: 68px;
@@ -90,8 +88,8 @@ export const ButtonLesson = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 48px;
-    height: 52px;
+    width: 58px;
+    height: 54px;
 
     p {
       font-size: 18px;
@@ -102,14 +100,22 @@ export const ButtonLesson = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 96px;
-    height: 96px;
+  @media(min-width: 768px) {
+    width: 116px;
+    height: 116px;
+
+    p {
+      font-size: 42px;
+    }
+
+    span {
+      font-size: 24px;
+    }
   }
 
   @media(min-width: 1024px) {
-    width: 124px;
-    height: 120px;
+    width: 150px;
+    height: 150px;
 
     p {
       font-size: 48px;
@@ -118,5 +124,39 @@ export const ButtonLesson = styled.button`
     span {
       font-size: 20px;
     }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+    height: 104px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 1000px;
+    height: 120px;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 1200px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1600px;
   }
 `;

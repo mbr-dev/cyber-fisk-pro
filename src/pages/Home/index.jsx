@@ -25,7 +25,6 @@ import dayChImgDt from "./images/dayChallengeDt.gif";
 
 import { Container, Main, Card, Cards, ButtonDayCh, Right, Left } from "./styles";
 
-/* ajuntar botao no desktop 1440 */
 
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
@@ -128,6 +127,7 @@ export const Home = () => {
               )
             })}
           </Cards>
+
           <ButtonDayCh onClick={handleDayChallenge}>
             {!isDesktop ? <img src={dayChImg} alt="" /> : <img src={dayChImgDt} alt="" />}
           </ButtonDayCh>

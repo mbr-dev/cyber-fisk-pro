@@ -19,7 +19,6 @@ export const Menu = () => {
   const navigate = useNavigate();
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const alterPage = (page) => {
     navigate(`/${page}`);
@@ -75,23 +74,17 @@ export const Menu = () => {
 
         <Main>
           <p>Avatar</p>
-          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Profile")}}>Profile</p>
-          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Rewards")}}>XP Balance and Rewards</p>
-          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Ranking")}}>Ranking</p>
-          <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
+          <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Help")}}>Help</p>
         </Main>
 
-        <FooterBtnHome 
-          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-          wl={isDesktop ? "48%" : "80%"}
-          hasLS
-          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />
+        <FooterBtnHome />
       </Content>
     </Container>
   )

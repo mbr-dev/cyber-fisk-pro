@@ -24,7 +24,7 @@ export const Container = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 126px;
+    height: 110px;
     gap: 8px;
     padding: 12px 12px 0 12px;
   }
@@ -87,7 +87,7 @@ export const BottomHeader = styled.div`
 
   @media(max-width: 320px) {
     .logoFisk {
-      width: 150px;
+      width: 120px;
     }
   }
 

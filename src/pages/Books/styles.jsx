@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 80%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,9 +22,15 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
+    width: 250px;
+
     p {
       font-size: 14px;
     }
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
   }
 
   @media(min-width: 1024px) {
@@ -42,7 +48,7 @@ export const BooksArea = styled.div`
     gap: 8px;
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 768px) {
     gap: 16px;
 
     p {
@@ -68,5 +74,39 @@ export const BooksImage = styled.div`
     img {
       width: 160px;
     }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+    height: 104px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 1000px;
+    height: 120px;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 1200px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1600px;
   }
 `;

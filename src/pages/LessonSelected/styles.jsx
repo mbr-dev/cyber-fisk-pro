@@ -5,19 +5,20 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  align-items: center;
 `;
 
 export const Main = styled.main`
   flex: 1;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding-block: 20px;
+  justify-content: center;
+  gap: 24px;
 
   @media(max-width: 360px) {
-    gap: 16px
+    gap: 14px
   }
 
   @media(max-width: 320px) {
@@ -26,66 +27,49 @@ export const Main = styled.main`
   }
 
   @media(min-width: 768px) {
-    padding-block: 32px;
+    width: 580px;
     gap: 32px;
   }
 
   @media(min-width: 1024px) {
-    width: 100vw;
-    gap: 84px;
-    justify-content: center;
+    width: 1000px;
+    gap: 0;
     flex-direction: row;
+    justify-content: space-between;
     padding-block: 0;
   }
 
   @media(min-width: 1440px) {
-    gap: 72px;
+    width: 1200px;
   }
 
   @media(min-width: 1920px) {
-    gap: 96px;
+    width: 1400px;
   }
 `;
 
 export const ButtonAreaTop = styled.div`
-  width: 80%;
+  width: 100%;
   height: 208px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
-  p {
-    font-size: 16px;
-    font-weight: 500;
-  }
-
   @media(max-width: 360px) {
-    p {
-      font-size: 14px;
-    }
+    height: 196px;
   }
 
   @media(max-width: 320px) {
-    width: 70%;
+    width: 250px;
     height: 128px;
-
-    p {
-      font-size: 12px;
-    }
   }
 
   @media(min-width: 768px) {
-    width: 60%;
-    height: 300px;
-    gap: 64px;
-
-    p {
-      font-size: 24px;
-    }
+    height: 330px;
   }
 
   @media(min-width: 1024px) {
-    width: 40%;
+    width: 460px;
     height: 350px;
     gap: 0;
   }
@@ -109,13 +93,13 @@ export const DivRight = styled.div`
 
 export const ButtonTask = styled.button`
   all: unset;
-  width: 120px;
+  width: 110px;
   height: 96px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 6px;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -123,7 +107,12 @@ export const ButtonTask = styled.button`
   cursor: pointer;
 
   img {
-    width: 36px;
+    width: 42px;
+  }
+
+  p {
+    font-size: 18px;
+    font-weight: 500;
   }
 
   &:hover {
@@ -133,34 +122,48 @@ export const ButtonTask = styled.button`
   }
 
   @media(max-width: 360px) {
-    width: 116px;
-    gap: 6px;
+    height: 86px;
+
+    img {
+      width: 36px;
+    }
+
+    p {
+      font-size: 16px;
+    }
   }
 
   @media(max-width: 320px) {
-    width: 74px;
-    height: 58px;
-    gap: 4px;
+    width: 96px;
+    height: 56px;
 
     img {
       width: 24px;
     }
+
+    p {
+      font-size: 14px;
+    }
   }
 
   @media(min-width: 768px) {
-    width: 154px;
-    height: 138px;
+    width: 172px;
+    height: 152px;
     gap: 10px;
 
     img {
       width: 54px;
     }
+
+    p {
+      font-size: 24px;
+    }
   }
 
   @media(min-width: 1024px) {
+    width: 180px;
     border-radius: 16px;
     border-width: 3px;
-    width: 220px;
     height: 150px;
     gap: 10px;
 
@@ -168,11 +171,15 @@ export const ButtonTask = styled.button`
       width: 54px;
     }
   }
+
+  @media(min-width: 1440px) {
+    width: 200px;
+  }
 `;
 
 export const ButtonSuperTask = styled.button`
   all: unset;
-  width: 164px;
+  width: 150px;
   height: 100%;
   display: flex;
   flex-direction: column;
@@ -187,20 +194,17 @@ export const ButtonSuperTask = styled.button`
 
   p {
     font-size: 20px;
+    font-weight: 500;
   }
 
   img {
-    width: 64px;
+    width: 68px;
   }
 
   &:hover {
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
     border-color: ${props => props.theme.black};
-  }
-
-  @media(max-width: 360px) {
-    width: 148px;
   }
 
   @media(max-width: 320px) {
@@ -217,47 +221,50 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 220px;
+    width: 280px;
 
     p {
-      font-size: 28px;
+      font-size: 32px;
     }
 
     img {
-      width: 92px;
+      width: 96px;
     }
   }
 
   @media(min-width: 1024px) {
+    width: 220px;
     border-radius: 16px;
     border-width: 3px;
+  }
+
+  @media(min-width: 1440px) {
     width: 250px;
   }
 `;
 
 export const ButtonAreaBottom = styled.div`
-  width: 80%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
   @media(max-width: 320px) {
-    width: 70%;
+    width: 250px;
   }
 
   @media(min-width: 768px) {
-    width: 60%;
+    width: 100%;
   }
 
   @media(min-width: 1024px) {
-    width: 40%;
+    width: 460px;
     height: 350px;
     gap: 0;
   }
-
   
   @media(min-width: 1440px) {
-    width: 580px;
+    width: 600px;
   }
 
   @media(min-width: 1920px) {
@@ -266,15 +273,10 @@ export const ButtonAreaBottom = styled.div`
 `;
 
 export const BottomRight = styled.div`
-  width: 164px;
+  width: 150px;
   display: flex;
   flex-direction: column;
   gap: 16px;
-
-   @media(max-width: 360px) {
-    width: 148px;
-    gap: 12px;
-  }
 
   @media(max-width: 320px) {
     width: 108px;
@@ -282,11 +284,11 @@ export const BottomRight = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 220px;
+    width: 280px;
   }
 
   @media(min-width: 1024px) {
-    width: 250px;
+    width: 200px;
     height: 100%;
     justify-content: space-between;
   }
@@ -301,27 +303,22 @@ export const BottomRight = styled.div`
 `;
 
 export const BottomLeft = styled.div`
-  width: 120px;
+  width: 110px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 
-  @media(max-width: 360px) {
-    width: 116px;
-  }
-
   @media(max-width: 320px) {
-    width: 74px;
+    width: 96px;
     gap: 8px;
   }
   
   @media(min-width: 768px) {
-    width: 154px;
-    gap: 16px;
+    width: 172px;
   }
 
   @media(min-width: 1024px) {
-    width: 220px;
+    width: 200px;
     height: 100%;
     justify-content: space-between;
   }
@@ -342,7 +339,7 @@ export const ButtonBottom = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 10px;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -350,12 +347,12 @@ export const ButtonBottom = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 16px;
+    font-size: 14px;
     font-weight: 500;
   }
 
   img {
-    width: 36px;
+    width: 42px;
   }
   
   &:hover {
@@ -365,9 +362,7 @@ export const ButtonBottom = styled.button`
   }
 
   @media(max-width: 360px) {
-    p {
-      font-size: 14px;
-    }
+    height: 62px;
 
     img {
       width: 32px;
@@ -375,7 +370,7 @@ export const ButtonBottom = styled.button`
   }
 
   @media(max-width: 320px) {
-    height: 54px;
+    height: 48px;
     gap: 8px;
 
     p { 
@@ -389,15 +384,14 @@ export const ButtonBottom = styled.button`
 
   @media(min-width: 768px) {
     height: 108px;
-    justify-content: space-around;
-    gap: 0;
+    gap: 24px;
 
     p {
       font-size: 24px;
     }
 
     img {
-      width: 44px;
+      width: 52px;
     }
   }
 
@@ -406,10 +400,48 @@ export const ButtonBottom = styled.button`
     border-width: 3px;
     height: 150px;
     justify-content: center;
-    gap: 20px;
+    gap: 12px;
 
     img {
-      width: 56px;
+      width: 52px;
     }
+
+    p {
+      font-size: 20px;
+    }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+    height: 104px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 1000px;
+    height: 120px;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 1200px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1600px;
   }
 `;

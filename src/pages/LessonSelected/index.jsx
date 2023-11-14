@@ -7,21 +7,21 @@ import Cookies from 'universal-cookie';
 import { Loading } from "../../components/Loading";
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { ButtonHome } from "../../components/ButtonHome";
 import { Notifications } from "../../components/Notifications";
 import { HeaderTextImage } from "./components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
-import TaskImg from "./images/Vector.svg";
-import SuperImg from "./images/Super.svg";
-import FoneImg from "./images/Fone.svg";
-import MicroImg from "./images/Micro.svg";
-import QrCodeImg from "./images/QrCode.png";
-import ListaImg from "./images/Lista.png";
+import taskImg from "./images/task.png";
+import studioImg from "./images/studio.png";
+import foneImg from "./images/fone.png";
+import microImg from "./images/micro.png";
+import qrImg from "./images/qrcode.png";
+import superImg from "./images/super.png";
 
-import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
+import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft, AreaFooter } from "./styles"
 
-export const LessonSelection = () => {
+export const LessonSelected = () => {
   const navigate = useNavigate();
   const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
@@ -31,9 +31,6 @@ export const LessonSelection = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const click = (page) => {
     if(page === 'qr-code'){
@@ -104,18 +101,18 @@ export const LessonSelection = () => {
         <ButtonAreaTop>
           <DivRight>
             <ButtonTask onClick={() => {clickTask(1)}} disabled={!task1} style={{backgroundColor: !task1 ? '#d3d3d3' : ''}}>
-              <img src={TaskImg}  alt="" />
+              <img src={taskImg}  alt="" />
               <p>Task 1</p>
             </ButtonTask>
 
             <ButtonTask onClick={() => {clickTask(2)}} disabled={!task2} style={{backgroundColor: !task2 ? '#d3d3d3' : ''}}>
-              <img src={TaskImg}  alt="" />
+              <img src={taskImg}  alt="" />
               <p>Task 2</p>
             </ButtonTask>
           </DivRight>
 
           <ButtonSuperTask onClick={() => {clickTask(0)}} disabled={!superTask} style={{backgroundColor: !superTask ? '#d3d3d3' : ''}}>
-            <img src={SuperImg}  alt="" />
+            <img src={superImg}  alt="" />
             <p>Super Task</p>
           </ButtonSuperTask>
         </ButtonAreaTop>
@@ -123,26 +120,26 @@ export const LessonSelection = () => {
         <ButtonAreaBottom>
           <BottomLeft>
             <ButtonBottom>
-              <img src={FoneImg} alt="" />
+              <img src={foneImg} alt="" />
               <p>Audio</p>
             </ButtonBottom>
 
             <ButtonBottom onClick={() => {click('qr-code')}}>
-              <img src={QrCodeImg} alt="" />
+              <img src={qrImg} alt="" />
               <p>QR</p>
             </ButtonBottom>
           </BottomLeft>
 
           <BottomRight>
             <ButtonBottom>
-              <img src={ListaImg} alt="" />
+              <img src={studioImg} alt="" />
               <p>Studio</p>
             </ButtonBottom>
 
              <Dialog.Root>
                 <Dialog.Trigger style={{border: 'none', backgroundColor: 'white', width: '100%'}}>
                   <ButtonBottom>
-                    <img src={MicroImg} alt="" />
+                    <img src={microImg} alt="" />
                     <p>Pronunciation</p>
                   </ButtonBottom>
                 </Dialog.Trigger>
@@ -152,13 +149,9 @@ export const LessonSelection = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonHome />
+      </AreaFooter>
     </Container>
   )
 }

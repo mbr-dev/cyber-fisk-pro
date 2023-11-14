@@ -1,17 +1,19 @@
 import { useState } from "react";
-import { Plus, Minus } from "lucide-react";
+import { Minus } from "lucide-react";
 
 import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { ButtonHome } from "../../components/ButtonHome";
 
-import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight } from "./styles";
+import maisImg from "./images/mais.png";
+import menosImg from "./images/menos.png";
+
+import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight, AreaFooter } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {
   const [openModal, setOpenModal] = useState(null);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleItemClick = (modalName) => {
     setOpenModal((modal) => (modal === modalName ? null : modalName));
@@ -25,17 +27,18 @@ export const Help = () => {
         <Left>
           <Items onClick={() => handleItemClick("XPRanking")} style={{
             borderColor: openModal === "XPRanking" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "XPRanking" && !isDesktop ? "250px" : "",
+            height: openModal === "XPRanking" && !isDesktop ? "220px" : "",
             overflowY: openModal === "XPRanking" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>XP For Ranking</h2>
 
               {openModal !== "XPRanking" ? 
-                <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
+                <img src={maisImg} alt="ícone mais" />
                 :
-                <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
+                <img src={menosImg} alt="ícone menos" />}
             </Top>
+
             {openModal === "XPRanking" && !isDesktop &&
               <Inside>
                 <p>You score points for the ranking by completing each of the Tasks and Super Task of the lessons.</p>
@@ -50,17 +53,18 @@ export const Help = () => {
 
           <Items onClick={() => handleItemClick("FiskDollars")} style={{
             borderColor: openModal === "FiskDollars" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "FiskDollars" && !isDesktop ? "250px" : "",
+            height: openModal === "FiskDollars" && !isDesktop ? "220px" : "",
             overflowY: openModal === "FiskDollars" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Fisk Dollars</h2>
 
               {openModal !== "FiskDollars" ? 
-                <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
+                <img src={maisImg} alt="ícone mais" />
                 :
-                <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
+                <img src={menosImg} alt="ícone menos" />}
             </Top>
+
             {openModal === "FiskDollars" && !isDesktop &&
               <Inside>
                 <p>With Fisk Dollars you have the opportunity to personify your Avatar by purchasing accessories.</p>
@@ -89,17 +93,18 @@ export const Help = () => {
 
           <Items onClick={() => handleItemClick("DailyGame")} style={{
             borderColor: openModal === "DailyGame" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "DailyGame" && !isDesktop ? "250px" : "",
+            height: openModal === "DailyGame" && !isDesktop ? "220px" : "",
             overflowY: openModal === "DailyGame" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Daily Game</h2>
 
               {openModal !== "DailyGame" ? 
-                <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
+                <img src={maisImg} alt="ícone mais" />
                 :
-                <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
+                <img src={menosImg} alt="ícone menos" />}
             </Top>
+
             {openModal === "DailyGame" && !isDesktop &&
               <Inside>
                 <p>When completing a daily game, you earn 50 Fisk Dollars.</p>
@@ -109,17 +114,18 @@ export const Help = () => {
 
           <Items onClick={() => handleItemClick("SpinWheel")} style={{
             borderColor: openModal === "SpinWheel" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "SpinWheel" && !isDesktop ? "250px" : "",
+            height: openModal === "SpinWheel" && !isDesktop ? "220px" : "",
             overflowY: openModal === "SpinWheel" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Spin The Wheel</h2>
 
               {openModal !== "SpinWheel" ? 
-                <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
+                <img src={maisImg} alt="ícone mais" />
                 :
-                <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
+                <img src={menosImg} alt="ícone menos" />}
             </Top>
+
             {openModal === "SpinWheel" && !isDesktop &&
               <Inside>
                 <p>You will have the chance to spin
@@ -148,8 +154,9 @@ export const Help = () => {
                 <h2>Daily Game</h2> : openModal === "SpinWheel" ?
                 <h2>Spin The Wheel</h2> : ""
               }
-              {(openModal === "XPRanking" || openModal === "FiskDollars" || openModal === "DailyGame" || openModal === "SpinWheel") && <Minus size={32} color={defaultTheme["red-200"]} strokeWidth={3} />}
+              {(openModal === "XPRanking" || openModal === "FiskDollars" || openModal === "DailyGame" || openModal === "SpinWheel") && <img src={menosImg} alt="ícone menos" />}
             </TopRight>
+
             <MainRight>
               {openModal === "XPRanking" && 
                 <Inside>
@@ -208,13 +215,9 @@ export const Help = () => {
         }
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonHome />
+      </AreaFooter>
     </Container>
   )
 }

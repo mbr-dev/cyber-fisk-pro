@@ -10,62 +10,85 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 100%;
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   gap: 24px;
-  margin-top: 24px;
+  padding-top: 24px;
   
   @media(max-width: 320px) {
+    width: 250px;
     gap: 12px;
-    margin-top: 12px;
+    padding-top: 12px;
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+    padding-top: 56px;
   }
 
   @media(min-width: 1024px) {
-    width: 80%;
+    width: 1000px;
     flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 64px;
-    margin-top: 0;
+    justify-content: space-between;
+    padding-top: 0;
   }
 
   @media(min-width: 1440px) {
-    gap: 72px;
+    width: 1200px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1600px;
   }
 `;
 
 export const Left = styled.main`
-  width: 80%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   gap: 24px;
+
+  @media(min-width: 768px) {
+    gap: 32px;
+  }
   
   @media(min-width: 1024px) {
-    width: 45%;
-    height: 450px;
+    width: 450px;
+    height: 420px;
+    gap: 0;
     align-items: center;
     justify-content: space-between;
   }
 
   @media(min-width: 1440px) {
+    width: 550px;
     height: 500px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 750px;
   }
 `;
 
 export const Right = styled.main`
-  width: 45%;
-  height: 450px;
+  width: 450px;
+  height: 420px;
   border: 3px solid transparent;
   border-radius: 8px;
-  margin-right: -20px;
+  overflow-y: scroll;
 
   @media(min-width: 1440px) {
+    width: 550px;
     height: 500px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 750px;
   }
 `;
 
@@ -75,21 +98,31 @@ export const TopRight = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  img {
+    width: 30px;
+  }
+
+  @media(min-width: 1440px) {
+    h2 {
+      font-size: 24px;
+    }
+  }
 `;
 
-export const MainRight = styled.main`
-  padding-inline: 24px;
-`;
+export const MainRight = styled.main``;
 
 export const Items = styled.button`
   all: unset;
-  width: 90%;
+  width: 300px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  padding-block: 14px;
+  gap: 16px;
   justify-content: flex-start;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
-  padding: 8px 16px;
   border: 2px solid transparent;
   color: ${props => props.theme["gray-700"]};
   cursor: pointer;
@@ -99,25 +132,26 @@ export const Items = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 70%;
+    width: 250px;
+    padding-block: 8px;
+    gap: 12px;
 
     h2 {
       font-size: 16px;
     }
   }
 
-  @media(min-width: 600px) {
-    width: 100%;
-    padding: 18px 18px;
+  @media(min-width: 768px) {
+    width: 620px;
+    padding-block: 24px;
 
     h2 {
-      font-size: 24px;
+      font-size: 26px;
     }
   }
 
   @media(min-width: 1024px) {
     width: 100%;
-    padding: 20px 20px;
 
     h2 {
       font-size: 24px;
@@ -125,7 +159,7 @@ export const Items = styled.button`
   }
 
   @media(min-width: 1440px) {
-    padding: 28px;
+    padding-block: 24px;
 
     h2 {
       font-size: 24px;
@@ -133,11 +167,38 @@ export const Items = styled.button`
   }
 `;
 
+export const Top = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding-inline: 14px;
+
+  img {
+    width: 24px;
+  }
+
+  @media(max-width: 320px) {
+    padding-inline: 8px;
+
+    img {
+      width: 16px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    padding-inline: 24px;
+
+    img {
+      width: 30px;
+    }
+  }
+`;
+
 export const Inside = styled.div`
   display: flex;
   flex-direction: column;
+  padding-inline: 14px;
   gap: 4px;
-  padding-block: 16px;
 
   p {
     font-size: 14px;
@@ -151,26 +212,63 @@ export const Inside = styled.div`
 
   @media(max-width: 320px) {
     gap: 2px;
-    padding-block: 10px;
+    padding-inline: 8px;
     
     p {
       font-size: 12px;
     }
   }
 
+  @media(min-width: 768px) {
+    padding-inline: 24px;
+
+    p {
+      font-size: 18px;
+      
+    }
+  }
+
   @media(min-width: 1024px) {
-    gap: 12px;
+    gap: 8px;
     padding-block: 10px;
     
     p {
-      font-size: 18px;
+      font-size: 20px;
       font-weight: normal;
     }
   }
 `;
 
-export const Top = styled.div`
-  width: 100%;
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
   display: flex;
-  justify-content: space-between
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 768px) {
+    width: 620px;
+    height: 104px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 1000px;
+    height: 120px;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 1200px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1600px;
+  }
 `;
