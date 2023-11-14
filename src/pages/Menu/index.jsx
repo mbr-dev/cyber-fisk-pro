@@ -78,7 +78,7 @@ export const Menu = () => {
           <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Profile")}}>Profile</p>
           <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
-          <p onClick={() => {alterPage("BalanceAndReward")}}>XP Balance and Rewards</p>
+          <p onClick={() => {alterPage("Rewards")}}>XP Balance and Rewards</p>
           <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Ranking")}}>Ranking</p>
           <LineSeparator wl="80%" bg={defaultTheme["gray-200"]}/>

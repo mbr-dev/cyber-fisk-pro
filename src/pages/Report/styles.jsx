@@ -7,11 +7,20 @@ export const Container = styled.div`
   flex-direction: column;
 `;
 
+export const Main = styled.main`
+  flex: 1;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+`;
+
 export const AvatarArea = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   padding: 16px 32px;
 `;
 
@@ -23,6 +32,43 @@ export const AvatarInfo = styled.div`
   p {
     font-weight: bold;
     font-size: 1.25rem;
+  }
+
+  @media(min-width: 768px) {
+    gap: 20px;
+
+    p {
+      font-size: 24px;
+    }
+  }
+`;
+
+export const AvatarInfo2 = styled.div`
+  width: 600px;
+  height: 86px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px 0px #00000033;
+
+  p {
+    font-weight: bold;
+    font-size: 32px;
+  }
+`;
+
+export const Avatar2 = styled.div`
+  width: 58px;
+  height:58px;
+  border: 1px solid ${props => props.theme.white};
+  border-radius: 6px;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+
+  img {
+    width: 50px;
   }
 `;
 
@@ -37,40 +83,16 @@ export const Avatar = styled.div`
   img {
     width: 100%;
   }
-`;
 
-export const Print = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 0.125rem;
-  width: 3rem;
-  height: 3rem;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  border-radius: 6px;
-  cursor: pointer;
-
-  p {
-    font-size: 0.675rem;
-    text-align: center;
+  @media(min-width: 768px) {
+    width: 84px;
+    height: 84px;
   }
-
-  img {
-    width: 50%;
-  }
-`;
-
-export const Main = styled.main`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-around;
 `;
 
 export const XP = styled.div`
   width: 100%;
+  height: 58px;
   padding-inline: 32px;
   display: flex;
   flex-direction: column;
@@ -78,171 +100,138 @@ export const XP = styled.div`
   justify-content: space-around;
   gap: 0.5rem;
   background-color: ${props => props.theme["gray-100"]};
-`;
 
-export const XPDiv = styled.div`
-  width: 18.5rem;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-`;
-
-export const XPLeft = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  justify-content: center;
-  gap: 0.25rem;
-`;
-
-export const XPInside = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.5rem;
-
-  span {
-    color: ${props => props.theme["red-200"]};
+  .compose {
+    font-size: 20px;
+    font-weight: 700;
   }
 
-  p {
-    color: ${props => props.theme["gray-700"]};
-    font-weight: 500;
-  }
-`;
+  @media(min-width: 768px) {
+    height: 72px;
 
-export const XPRight = styled.div`
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  transition: all ease 0.3s;
-
-  p {
-    color: ${props => props.theme["blue-100"]};
-    font-size: 1.25rem;
-    font-weight: 500;
-    text-decoration: underline;
-    cursor: pointer;
-  }
-
-  &:hover {
-    p {
-      color: ${props => props.theme["blue-600"]};
+    .compose {
+      font-size: 24px;
     }
   }
 `;
 
-export const Stage = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  padding: 0 32px;
-`;
-
-export const SLeft = styled.div`
-  width: 8rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  
-  h2 {
-    font-size: 1rem;
-    z-index: 100;
-  }
-`;
-
-export const SRight = styled.div`
+export const AreaSelect = styled.div`
   flex: 1;
-  text-align: center;
-  transition: all ease 0.3s;
-  cursor: pointer;
-
-  span {
-    color: ${props => props.theme["red-200"]};
-  }
-
-  p {
-    color: ${props => props.theme["gray-700"]};
-    font-weight: 500;
-  }
-
-  &:hover {
-    transform: scale(1.05);
-  }
-`;
-
-export const Details = styled.div`
   width: 100%;
-  height: 220px;
-  padding-inline: 2rem;
-  padding-top: 0.5rem;
+  padding-top: 24px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  background-color: ${props => props.theme["gray-100"]};
-  overflow-y: scroll;
+  gap: 32px;
 `;
 
-export const DDiv = styled.div`
+export const SelectIdioma = styled.div`
+  width: 300px;
+  border-top-right-radius: 8px;
+  border-top-left-radius: 8px;
+  overflow: hidden;
+
+  @media(min-width: 768px) {
+    width: 500px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 800px;
+  }
+`;
+
+export const SelectTitle = styled.div`
   width: 100%;
+  height: 42px;
   display: flex;
+  position: relative;
   align-items: center;
   justify-content: space-between;
-  border-bottom: 2px solid ${props => props.theme["gray-200"]};
-  padding-bottom: 0.25rem;
-`;
-
-export const DivBar = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+  padding-inline: 16px;
+  border: 2px solid ${props => props.theme["gray-700"]};
+  border-radius: 8px;
+  gap: 10px;
+  background-color: ${props => props.theme["gray-200"]};
+  color: ${props => props.theme["gray-700"]};
 
   p {
-    padding: 0.135rem;
-    font-size: 0.75rem;
-    border-radius: 6px;
-    border: 2px solid ${props => props.theme["red-300"]};
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
+    flex: 1;
+    font-size: 18px;
+  }
+
+  img {
+    width: 18px;
+  }
+
+  @media(min-width: 600px) {
+    height: 60px;
+    gap: 18px;
+
+    p {
+      font-size: 22px;
+      font-weight: 500;
+    }
+
+    img {
+      width: 36px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    height: 64px;
+    gap: 20px;
+
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      width: 28px;
+    }
   }
 `;
 
-export const Bar = styled.div`
-  width: 2rem;
-  height: 4rem;
-  background-color: ${props => props.theme.white};
-  position: relative;
-`;
-
-export const BarColor = styled.div`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["yellow-500"]};
-  border: 1px solid ${props => props.theme["yellow-600"]};
+export const SelectUl = styled.ul`
+  width: 300px;
   position: absolute;
-  bottom: 0;
+  z-index: 100;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  border-bottom-right-radius: 8px;
+  border-bottom-left-radius: 8px;
+  padding-inline: 18px;
+  gap: 12px;
+  background-color: ${props => props.theme["gray-200"]};
 
-  span {
-    text-align: center;
-    font-size: 0.75rem;
-    color: ${props => props.theme.white};
+  @media(min-width: 768px) {
+    width: 500px;
+    padding: 16px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 800px;
+    padding-inline: 44px;
+    gap: 20px;  
   }
 `;
 
-export const ViewDetails = styled.div`
-  width: 12rem;
-  
-  h2 {
-    font-size: 1rem;
-    margin-bottom: 0.5rem;
+export const SelectLi = styled.li`
+  width: 100%;
+  list-style: none;
+  color: ${props => props.theme["gray-700"]};
+  font-weight: 500;
+
+  &:hover {
+    background-color: ${props => props.theme["gray-400"]};
   }
 
-  li {
-    font-size: 0.875rem;
-    font-weight: 500;
+  @media(min-width: 768px) {
+    font-size: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    font-size: 28px;
   }
 `;

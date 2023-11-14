@@ -15,12 +15,12 @@ export const Main = styled.main`
   align-items: center;
   justify-content: center;
   padding-block: 16px;
-  gap: 20px;
+  gap: 12px;
 
   @media(min-width: 600px) {
     padding-block: 0;
     padding-top: 20px;
-    gap: 52px;
+    gap: 16px;
     justify-content: flex-start;
   }
 
@@ -38,7 +38,7 @@ export const Left = styled.div`
   
   @media(min-width: 1024px) {
     width: 500px;
-    height: 400px;
+    height: 500px;
   }
 `;
 
@@ -142,6 +142,7 @@ export const Right = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  
   gap: 8px;
 
   @media(min-width: 600px) {
@@ -149,42 +150,100 @@ export const Right = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 600px;
-    height: 400px;
+    width: 700px;
+    height: 500px;
+    padding-inline: 0;
     border-left: 3px solid ${props => props.theme["gray-200"]};
   }
 `;
 
 export const Separator = styled.div`
-  width: 100%;
-  height: 86px;
-  padding: 12px;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
   background-color: ${props => props.theme["gray-200"]};
+  padding: 10px;
+  
+  @media(min-width: 768px) {
+    padding: 16px 32px;
+  }
 
-  div {
+  @media(min-width: 1024px) {
     width: 100%;
-    height: 100%;
+    padding: 16px;
   }
 `;
 
 export const Card = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 42px;
+  height: 42px;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
+  border: 2px solid transparent;
   background-color: ${props => props.theme.white};
+  cursor: pointer;
+  transition: all ease 0.3s;
 
   img {
-    width: 60%;
+    width: 28px;
+  }
+
+  &:hover {
+    border-color: ${props => props.theme["gray-700"]};
+    background-color: ${props => props.theme["red-200"]};
+  }
+
+  @media(min-width: 768px) {
+    width: 64px;
+    height: 64px;
+
+    img {
+      width: 36px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 72px;
+    height: 72px;
+
+    img {
+      width: 44px;
+    }
+  }
+`;
+
+export const Title = styled.div`
+  width: 90%;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  border: 2px solid ${props => props.theme["blue-600"]};
+  background-color: ${props => props.theme["blue-900"]};
+  color: white;
+
+  @media (min-width: 768px) {
+    height: 54px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 90%;
+    height: 72px;
   }
 `;
 
 export const Bottom = styled.div`
   width: 100%;
-  height: 154px;
-  padding: 12px 16px;
+  height: 182px;
+  padding: 12px 10px;
   
   div {
     width: 100%;
@@ -195,6 +254,10 @@ export const Bottom = styled.div`
 
   @media(min-width: 600px) {
     height: 236px;
+  }
+
+  @media(min-width: 1024px) {
+    height: 290px;
   }
 `;
 

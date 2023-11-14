@@ -8,6 +8,10 @@ import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { translateProfile } from "../../utils/Translate";
 import { CyberContext } from "../../context/cyber";
 
+import data from "./images/data.png";
+import escola from "./images/escola.png";
+import mail from "./images/mail.png";
+import user from "./images/user.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 import RoboPe from "../../assets/roboPe.png";
@@ -101,7 +105,7 @@ export const Profile = () => {
             {selectLanguage === 1 && <label>{translateProfile[1].name}</label>}
             {selectLanguage === 2 && <label>{translateProfile[2].name}</label>}
 
-            <User size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+            <img src={user} alt="icon user" className="iconImg" />
             <Input type="text" placeholder="Camila Eduarda Campos" readOnly />
           </AreaInput>
 
@@ -111,7 +115,7 @@ export const Profile = () => {
               {selectLanguage === 1 && <label>{translateProfile[1].date}</label>}
               {selectLanguage === 2 && <label>{translateProfile[2].date}</label>}
               
-              <CalendarDays size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+              <img src={data} alt="icon data" className="iconImg" />
               <Input type="text" className="dataInput" placeholder="07/08/1995" readOnly />
             </AreaInput>
 
@@ -120,7 +124,7 @@ export const Profile = () => {
               {selectLanguage === 1 && <label>{translateProfile[1].local}</label>}
               {selectLanguage === 2 && <label>{translateProfile[2].local}</label>}
 
-              <School size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+              <img src={escola} alt="icon school" className="iconImg" />
               <Select readOnly className="selectState">
                 <option value="portugues">São Paulo</option>
               </Select>
@@ -131,18 +135,13 @@ export const Profile = () => {
             {selectLanguage === 0 && <label>{translateProfile[0].email}</label>}
             {selectLanguage === 1 && <label>{translateProfile[1].email}</label>}
             {selectLanguage === 2 && <label>{translateProfile[2].email}</label>}
-            <Mail size={isDesktop ? 24 : 16} strokeWidth={2.5} />
+
+            <img src={mail} alt="icon e-mail" className="iconImg" />
             <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
           </AreaInput>
         </Main>
 
-        <FooterBtnHome 
-          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-          wl={isDesktop ? "48%" : "80%"}
-          hasLS
-          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />
+        <FooterBtnHome />
       </Content>
     </Container>
   )

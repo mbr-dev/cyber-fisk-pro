@@ -8,13 +8,14 @@ import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight }
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {
-  const [showR, setShowR] = useState(false);
-  const [showD, setShowD] = useState(false);
-  const [showG, setShowG] = useState(false);
-  const [showW, setShowW] = useState(false);
+  const [openModal, setOpenModal] = useState(null);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
+
+  const handleItemClick = (modalName) => {
+    setOpenModal((modal) => (modal === modalName ? null : modalName));
+  };
 
   return (
     <Container>
@@ -22,20 +23,20 @@ export const Help = () => {
 
       <Main>
         <Left>
-          <Items onClick={() => setShowR(!showR)} style={{
-            borderColor: showR && !isDesktop ? defaultTheme["red-200"] : "",
-            height: showR && !isDesktop ? "250px" : "",
-            overflowY: showR && !isDesktop ? "scroll" : "",
+          <Items onClick={() => handleItemClick("XPRanking")} style={{
+            borderColor: openModal === "XPRanking" && !isDesktop ? defaultTheme["red-200"] : "",
+            height: openModal === "XPRanking" && !isDesktop ? "250px" : "",
+            overflowY: openModal === "XPRanking" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>XP For Ranking</h2>
 
-              {!showR ? 
+              {openModal !== "XPRanking" ? 
                 <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
                 :
                 <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
             </Top>
-            {showR && !isDesktop &&
+            {openModal === "XPRanking" && !isDesktop &&
               <Inside>
                 <p>You score points for the ranking by completing each of the Tasks and Super Task of the lessons.</p>
                 <p>In Tasks 1 and 2 you have three chances to achieve a success rate of 100%.</p>
@@ -47,20 +48,20 @@ export const Help = () => {
             }
           </Items>
 
-          <Items onClick={() => setShowD(!showD)} style={{
-            borderColor: showD && !isDesktop ? defaultTheme["red-200"] : "",
-            height: showD && !isDesktop ? "250px" : "",
-            overflowY: showD && !isDesktop ? "scroll" : "",
+          <Items onClick={() => handleItemClick("FiskDollars")} style={{
+            borderColor: openModal === "FiskDollars" && !isDesktop ? defaultTheme["red-200"] : "",
+            height: openModal === "FiskDollars" && !isDesktop ? "250px" : "",
+            overflowY: openModal === "FiskDollars" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Fisk Dollars</h2>
 
-              {!showD ? 
+              {openModal !== "FiskDollars" ? 
                 <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
                 :
                 <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
             </Top>
-            {showD && !isDesktop &&
+            {openModal === "FiskDollars" && !isDesktop &&
               <Inside>
                 <p>With Fisk Dollars you have the opportunity to personify your Avatar by purchasing accessories.</p>
                 <p>Here's how to earn Fisk Dollars.</p>
@@ -86,40 +87,40 @@ export const Help = () => {
             }
           </Items>
 
-          <Items onClick={() => setShowG(!showG)} style={{
-            borderColor: showG && !isDesktop ? defaultTheme["red-200"] : "",
-            height: showG && !isDesktop ? "250px" : "",
-            overflowY: showG && !isDesktop ? "scroll" : "",
+          <Items onClick={() => handleItemClick("DailyGame")} style={{
+            borderColor: openModal === "DailyGame" && !isDesktop ? defaultTheme["red-200"] : "",
+            height: openModal === "DailyGame" && !isDesktop ? "250px" : "",
+            overflowY: openModal === "DailyGame" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Daily Game</h2>
 
-              {!showG ? 
+              {openModal !== "DailyGame" ? 
                 <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
                 :
                 <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
             </Top>
-            {showG && !isDesktop &&
+            {openModal === "DailyGame" && !isDesktop &&
               <Inside>
                 <p>When completing a daily game, you earn 50 Fisk Dollars.</p>
               </Inside>
             }
           </Items>
 
-          <Items onClick={() => setShowW(!showW)} style={{
-            borderColor: showW && !isDesktop ? defaultTheme["red-200"] : "",
-            height: showW && !isDesktop ? "250px" : "",
-            overflowY: showW && !isDesktop ? "scroll" : "",
+          <Items onClick={() => handleItemClick("SpinWheel")} style={{
+            borderColor: openModal === "SpinWheel" && !isDesktop ? defaultTheme["red-200"] : "",
+            height: openModal === "SpinWheel" && !isDesktop ? "250px" : "",
+            overflowY: openModal === "SpinWheel" && !isDesktop ? "scroll" : "",
           }}>
             <Top>
               <h2>Spin The Wheel</h2>
 
-              {!showW ? 
+              {openModal !== "SpinWheel" ? 
                 <Plus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />
                 :
                 <Minus size={isDesktop ? 32 : 24} color={defaultTheme["red-200"]} strokeWidth={3} />}
             </Top>
-            {showW && !isDesktop &&
+            {openModal === "SpinWheel" && !isDesktop &&
               <Inside>
                 <p>You will have the chance to spin
                 the wheel 2x to get Fisk dollars.</p>
@@ -137,15 +138,20 @@ export const Help = () => {
 
         {isDesktop &&
           <Right style={{
-            borderColor: (showR || showD || showG || showW) && defaultTheme["red-200"],
-            overflowY: showD ? "scroll" : "",
+            borderColor: (openModal === "XPRanking" || openModal === "FiskDollars" || openModal === "DailyGame" || openModal === "SpinWheel") && defaultTheme["red-200"],
+            overflowY: openModal === "FiskDollars" ? "scroll" : "",
           }}>
             <TopRight>
-              {showR ? <h2>XP For Ranking</h2> : showD ? <h2>Fisk Dollars</h2> : showG ? <h2>Daily Game</h2> : showW ? <h2>Spin The Wheel</h2> : ""}
-              {(showR || showD || showG || showW) && <Minus size={32} color={defaultTheme["red-200"]} strokeWidth={3} />}
+              {openModal === "XPRanking" ?
+                <h2>XP For Ranking</h2> : openModal === "FiskDollars" ?
+                <h2>Fisk Dollars</h2> : openModal === "DailyGame" ?
+                <h2>Daily Game</h2> : openModal === "SpinWheel" ?
+                <h2>Spin The Wheel</h2> : ""
+              }
+              {(openModal === "XPRanking" || openModal === "FiskDollars" || openModal === "DailyGame" || openModal === "SpinWheel") && <Minus size={32} color={defaultTheme["red-200"]} strokeWidth={3} />}
             </TopRight>
             <MainRight>
-              {showR && 
+              {openModal === "XPRanking" && 
                 <Inside>
                   <p>You score points for the ranking by completing each of the Tasks and Super Task of the lessons.</p>
                   <p>In Tasks 1 and 2 you have three chances to achieve a success rate of 100%.</p>
@@ -155,7 +161,7 @@ export const Help = () => {
                   <p>However, from the 4th attempt onwards, the achievement no longer counts as XP, only as rewards.</p>
                 </Inside>
               }
-              {showD && 
+              {openModal === "FiskDollars" && 
                 <Inside>
                 <p>With Fisk Dollars you have the opportunity to personify your Avatar by purchasing accessories.</p>
                 <p>Here's how to earn Fisk Dollars.</p>
@@ -179,12 +185,12 @@ export const Help = () => {
                 <p>4) Every time the Spin the Wheel appears, you have the chance to win more Fisk Dollars.</p>
               </Inside>
               }
-              {showG && 
+              {openModal === "DailyGame" && 
                 <Inside>
                   <p>When completing a daily game, you earn 50 Fisk Dollars.</p>
                 </Inside>
               }
-              {showW && 
+              {openModal === "SpinWheel" && 
                 <Inside>
                   <p>You will have the chance to spin
                   the wheel 2x to get Fisk dollars.</p>

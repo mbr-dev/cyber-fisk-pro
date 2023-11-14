@@ -175,7 +175,7 @@ export const WellDone = () => {
               <span>{dollar}</span>
               <p>Fisk Dollars</p>
             </AreaItem>
-            <LineSeparator w="80%" bg={defaultTheme.white} />
+            <LineSeparator wl="80%" bg={defaultTheme.white} />
             <AreaItem style={{marginRight: "64px"}}>
             <img src={Xp} alt="" />
             <span>{xpAtividade}</span>
@@ -215,7 +215,7 @@ export const WellDone = () => {
                 <span>{dollar}</span>
                 <p>Fisk Dollars</p>
               </AreaItem2>
-              <LineSeparator w="80%" bg={defaultTheme.white} />
+              <LineSeparator wl="80%" bg={defaultTheme.white} />
               <AreaItem2 style={{marginRight: "64px"}}>
               <img src={Xp} alt="" />
               <span>{xpAtividade}</span>

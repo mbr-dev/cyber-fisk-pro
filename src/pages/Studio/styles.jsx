@@ -349,6 +349,7 @@ export const ButtonArea = styled.section`
     border: 2px solid transparent;
     border-radius: 6px;
     background-color: ${props => props.theme["red-200"]};
+    box-shadow: 0px 4px 4px 0px #00000040;
     transition: all ease 0.3s;
 
     img {

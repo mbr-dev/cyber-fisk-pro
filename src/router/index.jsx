@@ -8,17 +8,20 @@ import { Login } from "../pages/Login";
 import { Report } from "../pages/Report";
 import { Avatar } from "../pages/Avatar";
 import { Studio } from "../pages/Studio";
+import { Rewards } from "../pages/Rewards";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
+import { ReportInfo } from "../pages/ReportInfo";
+import { ReportStudio } from "../pages/ReportStudio";
+import { ReportStudioL } from "../pages/ReportStudioL";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
 import { QRCode } from "../features/qrCode/pages/Home";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { LessonSelection } from "../pages/LessonSelection";
-import { BalanceAndReward } from "../pages/BalanceAndReward";
 import { QRReader } from "../features/qrCode/pages/qrReader";
 import { SuperTaskLesson } from "../components/supertaskLesson";
 import { GamesTemplate } from "../features/qrCode/games/gamesTemplate";
@@ -91,18 +94,21 @@ export const Router =() => {
       <Route path="/Report" element={<Report />}/>
       <Route path="/qr-code" element={<QRCode />}/>
       <Route path="/Profile" element={<Profile/>}/>
+      <Route path="/Rewards" element={<Rewards />}/>
       <Route path="/Ranking" element={<Ranking />}/>
       <Route path="/GameOver" element={<GameOver />}/>
       <Route path="/Lesson" element={<TaskLesson />}/>
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
+      <Route path="/ReportInfo" element={<ReportInfo />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
+      <Route path="/ReportStudio" element={<ReportStudio />}/>
+      <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/SelectLesson" element={<SelectLesson />}/>
       <Route path="/SuperTask" element={<SuperTaskLesson />}/>
       <Route path="/qr-code/:code" element={<GamesTemplate />}/>
       <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>
       <Route path="/LessonSelection" element={<LessonSelection />}/>
-      <Route path="/BalanceAndReward" element={<BalanceAndReward />}/>
 
       <Route path = "/Game1" element={<Game1 />}/>
       <Route path = "/Game2" element={<Game2 />}/>

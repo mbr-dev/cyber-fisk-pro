@@ -14,6 +14,8 @@ import { AppError } from "../../utils/AppError";
 
 import { ButtonLesson, Container, Main, SelectLessonArea } from "./styles";
 
+/* dx de pé no tablet */
+
 export const SelectLesson = () => {
   const navigate = useNavigate();
   const [activities, setActivities] = useState([]);

@@ -38,7 +38,7 @@ export const Login = () => {
   const [raf, setRaf] = useState("");
   const [userPassword, setUserPassword] = useState("");
   const [msgError, setMsgError] = useState("");
-  const [isOpen, setIsOpen] = useState("");
+  const [isOpen, setIsOpen] = useState(false);
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState(false);

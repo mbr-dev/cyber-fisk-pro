@@ -6,18 +6,19 @@ import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
 
 import Robo from "./images/Robo.png";
-import Cabelo from "./images/Cabelo.png";
-import Camisa from "./images/Camisa.png";
-import Naris from "./images/Naris.png";
-import Oculos from "./images/Oculos.png";
-import Colors from "./images/Colors.png";
-import Person from "./images/Person.png";
+import cabeca from "../../assets/cabeca.png";
+import bracos from "../../assets/bracos.png";
+import corpo from "../../assets/corpo.png";
+import face from "../../assets/face.png";
+import oculos from "../../assets/oculos.png";
+import pets from "../../assets/pets.png";
+import pernas from "../../assets/pernas.png";
 import Dollar from "../../assets/Dollar.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Bottom, Main, Separator, Top, Footer, Button, Money, Card, CardReward, Right, Left } from "./styles";
+import { Container, Bottom, Main, Separator, Top, Footer, Button, Money, Card, CardReward, Right, Left, Title } from "./styles";
 
-export const BalanceAndReward = () => {
+export const Rewards = () => {
   const [sliderRef] = useKeenSlider({
     slides: {
       perView: 2.5,
@@ -36,21 +37,6 @@ export const BalanceAndReward = () => {
           spacing: 28,
         },
       },
-    },
-  });
-
-  const [sliderRef2] = useKeenSlider({
-    slides: {
-      perView: 5,
-      spacing: 12,
-    },
-    breakpoints: {
-      "(min-width: 600px)": {
-        slides: {
-          perView: 7,
-          spacing: 24,
-        },
-      }
     },
   });
 
@@ -80,38 +66,33 @@ export const BalanceAndReward = () => {
 
         <Right>
           {isDesktop && 
-            <>
-              <Button>Rewards</Button>
-            </>}
+            <Button>Rewards</Button>}
 
           <Separator>
-            <div ref={sliderRef2} className="keen-slider">
-              <Card className="keen-slider__slide">
-                <img src={Camisa} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Cabelo} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Naris} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Camisa} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Oculos} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Oculos} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Oculos} alt="" />
-              </Card>
-              <Card className="keen-slider__slide">
-                <img src={Oculos} alt="" />
-              </Card>
-            </div>
+            <Card>
+              <img src={cabeca} alt="" />
+            </Card>
+            <Card>
+              <img src={corpo} alt="" />
+            </Card>
+            <Card>
+              <img src={bracos} alt="" />
+            </Card>
+            <Card>
+              <img src={pernas} alt="" />
+            </Card>
+            <Card>
+              <img src={face} alt="" />
+            </Card>
+            <Card>
+              <img src={oculos} alt="" />
+            </Card>
+            <Card>
+              <img src={pets} alt="" />
+            </Card>
           </Separator>
+
+          <Title><p>Head</p></Title>
 
           <Bottom>
             <div ref={sliderRef} className="keen-slider">
