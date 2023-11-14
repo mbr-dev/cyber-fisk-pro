@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
 import { Button, TextField } from "@mui/material";
-import { isMobile, useMobileOrientation } from "react-device-detect";
+import { isMobile } from "react-device-detect";
 
 const fade = keyframes`
   from {opacity: 0 }
