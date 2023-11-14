@@ -3,12 +3,14 @@ import { colors } from "../../../../config/colors";
 import { BaseButton } from "../components/BaseButton";
 
 const fadeIn = keyframes`
-  from {opacity: 0; height: 0}
-  to {opacity: 1; height: 100% }
+  0% {opacity: 0; height: 0; border-radius: 24px;}
+  80% {opacity: 0; height: 0; border-radius: 24px;}
+  100% {opacity: 1; height: 100%; border-radius: 0 0 24px 24px; }
 `;
 const fadeOut = keyframes`
-  from {opacity: 1; height: 100% }
-  to {opacity: 0; height: 0 }
+  0% {opacity: 1; height: 100%; border-radius: 0 0 24px 24px; }
+  80% {opacity: 1; height: 100%; border-radius: 0 0 24px 24px; }
+  100% {opacity: 0; height: 0; border-radius: 24px; }
 `;
 export const ContainerQuestion = styled.div`
   width: 100%;
@@ -19,6 +21,7 @@ export const ContainerQuestion = styled.div`
   padding: 12px;
   margin-bottom: 20px;
   font-size: 24px;
+  text-align: center;
 `;
 export const ContainerSelect = styled.div`
   flex: 1;
@@ -44,8 +47,8 @@ export const ContainerOptions = styled.div`
 export const ContainerCheckButton = styled.div`
   margin-block: 20px;
   display: flex;
-    flex-direction: column;
-    align-items: center;
+  flex-direction: column;
+  align-items: center;
 `;
 export const CheckButton = styled(BaseButton)`
   width: min(600px, 100%);

@@ -13,7 +13,7 @@ const fadeBottom = keyframes`
   to {transform: translate(0)}
 `;
 export const Container = styled.main`
-  position: ${isMobile ? "fixed" : "static"};
+  position: ${(props) => (isMobile && props?.$isPortrait ? "fixed" : "static")};
   width: 100%;
   height: 100vh;
   height: 100dvh;
@@ -65,6 +65,7 @@ export const Logo = styled.img`
 export const Info = styled.p`
   color: ${colors.white};
   font-size: 18px;
+  text-align: center;
 `;
 export const ContainerCenter = styled.div`
   width: 90%;
@@ -104,7 +105,7 @@ export const ContainerQRReader = styled.div`
   background: ${colors.black};
   display: flex;
   align-items: center;
-  padding-inline: ${(props) => props.denied === 'denied' ? "10px" : 0};
+  padding-inline: ${(props) => (props.denied === "denied" ? "10px" : 0)};
 `;
 export const Permission = styled.p`
   color: ${colors.white};

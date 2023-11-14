@@ -11,9 +11,13 @@ export const ContainerOptions = styled.div`
   flex: 1;
   display: grid;
   margin-block: 40px;
+  grid-auto-rows: auto;
+  grid-template-rows: 1fr 1fr 1fr;
   gap: 8px;
 `;
 export const ContainerAudioButton = styled.div`
+  display: flex;
+  justify-content: center;
   margin-top: 20px;
 `;
 export const AudioButton = styled(BaseButton)`

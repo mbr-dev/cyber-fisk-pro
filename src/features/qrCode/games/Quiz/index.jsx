@@ -24,11 +24,11 @@ export const Quiz = (props) => {
   const [answer, setAnswer] = useState("");
 
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1)
+    onend: () => setPoints((oldState) => oldState + 1),
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1)
+    onend: () => setError((oldState) => oldState + 1),
   });
 
   const ramdomizeOrder = () => {
@@ -89,7 +89,7 @@ export const Quiz = (props) => {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`
+        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
     setQuestions(shuffleArray(newQuestions));

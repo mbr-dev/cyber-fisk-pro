@@ -11,4 +11,5 @@ export const Container = styled.div`
   margin-top: 12px;
   padding: 20px;
   white-space: break-spaces;
+  text-align: center;
 `;

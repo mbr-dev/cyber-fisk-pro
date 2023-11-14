@@ -12,12 +12,13 @@ export const ContainerOptions = styled.div`
 `;
 export const ContainerQuestion = styled.p`
   width: 100%;
-  height: 100px;
+  min-height: 120px;
   display: flex;
   justify-content: center;
-  align-items: flex-end;
-  padding: 12px;
-  margin-bottom: 20px;
+  align-items: center;
+  /* padding: 12px; */
+  /* margin-bottom: 20px; */
   font-size: 24px;
   white-space: break-spaces;
+  text-align: center;
 `;

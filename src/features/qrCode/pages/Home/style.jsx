@@ -1,7 +1,7 @@
 import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../config/colors";
 import { Button, TextField } from "@mui/material";
-import { isMobile } from "react-device-detect";
+import { isMobile, useMobileOrientation } from "react-device-detect";
 
 const fade = keyframes`
   from {opacity: 0 }
@@ -12,7 +12,7 @@ const fadeBottom = keyframes`
   to {transform: translate(0);}
 `;
 export const Container = styled.main`
-  position: ${isMobile ? "fixed" : "static"};
+  position: ${(props) => (isMobile && props?.$isPortrait ? "fixed" : "static")};
   width: 100%;
   height: 100vh;
   height: 100dvh;

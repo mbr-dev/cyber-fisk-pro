@@ -1,6 +1,17 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import { colors } from "../../../../../../config/colors";
 import { Button } from "@mui/material";
+
+const fadeIn = keyframes`
+  0% {background: transparent}
+  50% {background: transparent}
+  100% {background: ${colors["gray-300"]} }
+`;
+const fadeOut = keyframes`
+  0% {background: ${colors["gray-300"]}}
+  10% {background: ${colors["gray-300"]}}
+  100% {background: transparent }
+`;
 
 export const ContainerSelectButton = styled.div`
   flex: 1;
@@ -10,8 +21,12 @@ export const ContainerSelectButton = styled.div`
   justify-content: center;
   align-items: center;
   max-height: 65px;
-  background: ${(props) => (props.$show ? colors["gray-300"] : "transparent")};
   border-radius: 20px 20px 0 0;
+  animation-name: ${(props) =>
+    props.$show === null ? "none" : props.$show ? fadeIn : fadeOut};
+  animation-duration: 0.2s;
+  animation-fill-mode: forwards;
+  animation-timing-function: step-end;
 `;
 export const StyledSelectButton = styled(Button)`
   width: 100%;

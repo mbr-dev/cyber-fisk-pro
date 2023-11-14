@@ -4,7 +4,7 @@ import { Container } from "./style";
 
 export const Droppable = (props) => {
   const { isOver, setNodeRef } = useDroppable({
-    id: "droppable"
+    id: "droppable",
   });
 
   return (

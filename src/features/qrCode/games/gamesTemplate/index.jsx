@@ -6,7 +6,7 @@ import {
   Title,
   ContainerMain,
   BackgroundGame,
-  ContainerGame
+  ContainerGame,
 } from "./style";
 import { GamesFooter } from "./components/Footer";
 import { GamesHeader } from "./components/Header";
@@ -34,6 +34,11 @@ export const GamesTemplate = () => {
   const [showScore, setShowScore] = useState(false);
   const [answeredQuestions, setAnsweredQuestions] = useState([]);
   const [infoToast, setInfoToast] = useState({ show: false, error: false });
+  const [isPortrait, setIsPortrait] = useState(false);
+
+  const handleResize = () => {
+    setIsPortrait(window.innerWidth < window.innerHeight);
+  };
 
   const getGameType = useMemo(() => {
     if (!questions?.[0]?.num_licao) return null;
@@ -128,6 +133,11 @@ export const GamesTemplate = () => {
       }
     };
     getGameData();
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
   }, []);
 
   console.log("sc", showScore);
@@ -139,7 +149,7 @@ export const GamesTemplate = () => {
       ) : errorFetch || getGameType === "Não encontrado" ? (
         <NotFound hasError={errorFetch} />
       ) : (
-        <Container>
+        <Container $isPortrait={isPortrait}>
           <BackgroundHeader>
             <GamesHeader
               questions={questions}

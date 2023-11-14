@@ -25,18 +25,18 @@ export const DragAndDropGame = (props) => {
   const [grade, setGrade] = useState(60);
   const [answer, setAnswer] = useState("");
   const [playCorrect] = useSound(correct, {
-    onend: () => setPoints((oldState) => oldState + 1)
+    onend: () => setPoints((oldState) => oldState + 1),
   });
 
   const [playWrong] = useSound(wrong, {
-    onend: () => setError((oldState) => oldState + 1)
+    onend: () => setError((oldState) => oldState + 1),
   });
 
   const ramdomizeOrder = () => {
     setOrders(shuffleArray(questions.map((_, index) => index)));
   };
 
-  const handleAnswer = (isError, contError) => {
+  const handleAnswer = (isError) => {
     setQuestions((oldState) => {
       const newArray = [...oldState];
       newArray[roundCount].correct = !isError;
@@ -80,7 +80,7 @@ export const DragAndDropGame = (props) => {
       return {
         ...question,
         correct: null,
-        soundUrl: `${props.urlSounds}${index + 1}.mp3`
+        soundUrl: `${props.urlSounds}${index + 1}.mp3`,
       };
     });
     setQuestions(shuffleArray(newQuestions));
