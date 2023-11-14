@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
 import {
   Container,
@@ -14,40 +14,59 @@ import {
   ContainerInput,
   InputCode,
   InputButton,
-  ImageInputButton
+  ImageInputButton,
 } from "./style";
 
 import LogoImg from "../../assets/images/Logo.png";
 import TurnOffIcon from "../../assets/icons/Icon_logoff.png";
 import InfoImg from "../../assets/images/CardLerQR.png";
 import SendImg from "../../assets/icons/Icon_enviar.png";
+import { useMobileOrientation } from "react-device-detect";
 
 export const QRCode = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const [code, setCode] = useState("");
+  const [isPortrait, setIsPortrait] = useState(false);
 
   const language = 0;
 
   const traduction = {
-    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"]
+    typeCode: ["Digite o código", "Type code", "Digite lo codiguito"],
   };
+
+  const handleResize = () => {
+    setIsPortrait(window.innerWidth < window.innerHeight);
+  };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+    window.addEventListener("resize", handleResize);
+
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
 
   const handleSubmit = () => {
     navigate(`${location.pathname.replace("/reader", "")}/${code.trim()}`);
   };
 
   const back = () => {
-    localStorage.setItem("lastAccess","LessonSelection");
+    localStorage.setItem("lastAccess", "LessonSelection");
     navigate("/LessonSelection");
-  }
+  };
 
   return (
-    <Container>
+    <Container $isPortrait={isPortrait}>
       <RedBox>
         <Header>
           <Logo src={LogoImg} />
-          <Back onClick={() => {back()}}>
+          <Back
+            onClick={() => {
+              back();
+            }}
+          >
             <BackIcon src={TurnOffIcon} />
           </Back>
         </Header>

@@ -20,7 +20,7 @@ const fill = keyframes`
   100% {background-position: left}
 `;
 export const Container = styled.main`
-  position: ${isMobile ? "fixed" : "static"};
+  position: ${(props) => (isMobile && props?.$isPortrait ? "fixed" : "static")};
   width: 100%;
   height: 100vh;
   height: 100dvh;
@@ -31,7 +31,9 @@ export const Container = styled.main`
   min-height: 650px;
   background: ${colors["gray-100"]};
   position: relative;
-  overflow-y: hidden;
+  overflow: hidden;
+  overflow-y: ${(props) =>
+    isMobile && props?.$isPortrait ? "hidden" : "visible"};
 `;
 export const BackgroundHeader = styled.header`
   width: 100%;
@@ -135,8 +137,8 @@ export const BookTitle = styled.h2`
 export const Title = styled.h2`
   margin-top: 28px;
   margin-bottom: 8px;
-	padding-inline: 8px;
-	text-align: center;
+  padding-inline: 8px;
+  text-align: center;
 `;
 export const ContainerMain = styled.div`
   width: 100%;
