@@ -93,7 +93,7 @@ export const WellDone = () => {
         .then((res) =>{
           if(res.data.erro !== null){
             chooseNotification(3);
-            setMsgError(res.data.erro);
+            setMsgError(res.data.erro.toString());
             setError(true);
             setIsLoading(false);
             return;
