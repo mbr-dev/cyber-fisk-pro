@@ -228,14 +228,14 @@ export const Game4 = () => {
             <Button key={index}
               onClick={() => {handleClick(index)}} 
               style={{
-                width: type === 3 ? "4.5rem" : "8.5rem",
-                height: type === 3 ? "4.5rem" : "3rem",
+                width: type === 3 ? "64px" : "8.5rem",
+                height: type === 3 ? "64px" : "3rem",
                 borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
               disabled={blockButton}
             >
               <p style={{
-                fontSize: type === 3 ? "2rem" : ""
+                fontSize: type === 3 ? "2rem" : "20px"
               }}>
                 {answer.label}
               </p>

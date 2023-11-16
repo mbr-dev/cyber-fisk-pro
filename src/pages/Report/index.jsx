@@ -8,7 +8,7 @@ import { HeaderText } from "../../components/HeaderText";
 import Robo from "../../assets/avatarRobo.png";
 import arrowBottom from "./img/arrowBottom.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, SelectIdioma, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2 } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2 } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Report = () => {
@@ -17,7 +17,6 @@ export const Report = () => {
   const navigate = useNavigate();
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleRI = () => {
     navigate("/ReportInfo");
@@ -46,15 +45,11 @@ export const Report = () => {
         </AvatarArea>
 
         <XP>
-          <LineSeparator wl={isDesktop ? "800px" : "18.5rem"} bg={defaultTheme["gray-200"]} mt="0" mb="0" />
-
           <p className="compose">Compose</p>
-
-          <LineSeparator wl={isDesktop ? "800px" : "18.5rem"} bg={defaultTheme["gray-200"]} mt="0" mb="0" />
         </XP>
 
         <AreaSelect>
-          <SelectIdioma
+          <Select
             onClick={() => setIsOpen(!isOpen)}
             style={{
               backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
@@ -69,16 +64,10 @@ export const Report = () => {
                 <SelectLi onClick={handleRI}>1</SelectLi>
               </SelectUl>
             }
-          </SelectIdioma>
+          </Select>
         </AreaSelect>
 
-        <FooterBtnHome 
-          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-          wl={isDesktop ? "48%" : "80%"}
-          hasLS
-          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />
+        <FooterBtnHome />
       </Main>
     </Container>
   )

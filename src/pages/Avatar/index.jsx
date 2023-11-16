@@ -144,12 +144,7 @@ export const Avatar = () => {
       </Main>
 
       {!isDesktop &&
-        <FooterBtnHome 
-          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-          wl={isDesktop ? "48%" : "80%"}
-          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />}
+        <FooterBtnHome />}
     </Container>
   )
 }

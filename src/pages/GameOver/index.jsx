@@ -137,7 +137,7 @@ export const GameOver = () => {
         <img src={Fundo} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
-          <ButtonCloseHeader />
+          {!isDesktop && <ButtonCloseHeader />}
         </Top>
 
         <Middle>
@@ -209,13 +209,7 @@ export const GameOver = () => {
           </Div>
         </Main>
 
-        <FooterBtnHome 
-          fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-          wl={isDesktop ? "48%" : "80%"}
-          hasLS
-          w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-          h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />
+        <FooterBtnHome />
       </Content>
     </Container>
   )

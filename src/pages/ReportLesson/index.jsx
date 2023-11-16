@@ -1,24 +1,16 @@
-import { useNavigate } from "react-router-dom";
-
 import { HeaderText } from "../../components/HeaderText";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
 
 import { Container, Div, DivInside, Main } from "./styles";
 
-export const ReportStudio = () => {
-  const navigate = useNavigate();
-
-  const handleGoToRSL = () => {
-    navigate("/ReportStudioL");
-  }
-
+export const ReportLesson = () => {
   return (
     <Container>
-      <HeaderText title="Report Studio" />
+      <HeaderText title="Reports" />
 
       <Main>
         <Div>
-          <DivInside onClick={handleGoToRSL}>
+          <DivInside>
             <span>1</span>
             <p>Lesson</p>
           </DivInside>
@@ -26,7 +18,7 @@ export const ReportStudio = () => {
         </Div>
 
         <Div>
-          <DivInside onClick={handleGoToRSL}>
+          <DivInside>
             <span>2</span>
             <p>Lesson</p>
           </DivInside>
@@ -34,7 +26,7 @@ export const ReportStudio = () => {
         </Div>
 
         <Div>
-          <DivInside onClick={handleGoToRSL}>
+          <DivInside>
             <span>3</span>
             <p>Lesson</p>
           </DivInside>
@@ -42,7 +34,7 @@ export const ReportStudio = () => {
         </Div>
 
         <Div>
-          <DivInside onClick={handleGoToRSL}>
+          <DivInside>
             <span>4</span>
             <p>Lesson</p>
           </DivInside>

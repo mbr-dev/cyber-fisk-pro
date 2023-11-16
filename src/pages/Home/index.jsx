@@ -5,6 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { apiQAS } from "../../lib/api";
 import { Footer } from "../../components/Footer";
+import { AvatarCustom } from "../../components/AvatarCustom";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
@@ -19,7 +20,6 @@ import Medalha from "../../assets/medalhaImage.png";
 import Reporte from "../../assets/reporteImage.png";
 import { ModalReward } from "../../components/ModalReward";
 
-import RoboPe from "../../assets/roboPe.png";
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
 
@@ -135,7 +135,8 @@ export const Home = () => {
 
         {isDesktop &&
           <Right>
-            <img src={RoboPe} alt="" />
+            {/* <img src={roboImg} alt="" /> */}
+            <AvatarCustom />
             <p>Camila Eduarda</p>
           </Right>
         }

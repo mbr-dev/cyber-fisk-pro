@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Main = styled.main`
@@ -14,6 +15,11 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+
+  @media(max-width: 320px) {
+    justify-content: space-between;
+    padding-bottom: 6px;
+  }
 
   @media(min-width: 1024px) {
     flex-direction: row;
@@ -44,6 +50,10 @@ export const AvatarArea = styled.div`
   justify-content: space-between;
   padding: 16px 32px;
 
+  @media(max-width: 320px) {
+    padding: 8px 20px;
+  }
+
   @media(min-width: 768px) {
     width: 80%;
   }
@@ -57,6 +67,12 @@ export const AvatarInfo = styled.div`
   p {
     font-weight: bold;
     font-size: 1.25rem;
+  }
+
+  @media(max-width: 320px) {
+    p {
+      font-size: 14px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -80,6 +96,11 @@ export const Avatar = styled.div`
     width: 100%;
   }
 
+  @media(max-width: 320px) {
+    width: 36px;
+    height: 36px;
+  }
+
   @media(min-width: 768px) {
     width: 84px;
     height: 84px;
@@ -87,13 +108,14 @@ export const Avatar = styled.div`
 `;
 
 export const Print = styled.div`
+  width: 3rem;
+  height: 3rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
   gap: 0.125rem;
-  width: 3rem;
-  height: 3rem;
+ 
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 6px;
   cursor: pointer;
@@ -105,6 +127,19 @@ export const Print = styled.div`
 
   img {
     width: 50%;
+  }
+
+  @media(max-width: 320px) {
+    width: 36px;
+    height: 36px;
+
+    p {
+      font-size: 8px;
+    }
+
+    img {
+      width: 16px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -129,6 +164,10 @@ export const XP = styled.div`
     font-weight: 700;
   }
 
+  @media(max-width: 320px) {
+    height: 42px;
+  }
+
   @media(min-width: 768px) {
     height: 72px;
 
@@ -143,6 +182,10 @@ export const XPDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+
+  @media(max-width: 320px) {
+    width: 250px;
+  }
 
   @media(min-width: 768px) {
     width: 80%;
@@ -170,6 +213,16 @@ export const XPInside = styled.div`
   p {
     color: ${props => props.theme["gray-700"]};
     font-weight: 500;
+  }
+
+  @media(max-width: 320px) {
+    span {
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -203,6 +256,12 @@ export const XPRight = styled.div`
     }
   }
 
+  @media(max-width: 320px) {
+    p {
+      font-size: 16px;
+    }
+  }
+
   @media(min-width: 768px) {
     p {
       font-size: 24px;
@@ -216,6 +275,10 @@ export const Stage = styled.div`
   align-items: center;
   justify-content: center;
   padding: 0 32px;
+
+  @media(max-width: 320px) {
+    padding: 4px 10px;
+  }
 
   @media(min-width: 768px) {
     width: 80%;
@@ -237,6 +300,15 @@ export const SLeft = styled.div`
   h2 {
     font-size: 1rem;
     z-index: 100;
+  }
+
+  @media(max-width: 320px) {
+    width: 150px;
+    height: 60px;
+
+      h2 {
+      font-size: 10px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -275,6 +347,16 @@ export const SRight = styled.div`
     transform: scale(1.05);
   }
 
+  @media(max-width: 320px) {
+    span {
+      font-size: 16px;
+    }
+    
+    p {
+      font-size: 12px;
+    }
+  }
+
   @media(min-width: 768px) {
     span {
       font-size: 24px;
@@ -297,6 +379,12 @@ export const Details = styled.div`
   gap: 0.5rem;
   background-color: ${props => props.theme["gray-100"]};
   overflow-y: scroll;
+
+  @media(max-width: 320px) {
+    height: 160px;
+    padding-inline: 16px;
+    padding-top: 6px;
+  }
 
   @media(min-width: 768px) {
     height: 320px;
@@ -337,6 +425,13 @@ export const DivBar = styled.div`
     background-color: ${props => props.theme["red-200"]};
   }
 
+  @media(max-width: 320px) {
+    p {
+      padding: 3px 4px;
+      font-size: 10px;
+    }
+  }
+
   @media(min-width: 768px) {
     p {
       padding: 8px 12px;
@@ -350,6 +445,11 @@ export const Bar = styled.div`
   height: 4rem;
   background-color: ${props => props.theme.white};
   position: relative;
+
+  @media(max-width: 320px) {
+    width: 36px;
+    height: 52px;
+  }
 
   @media(min-width: 768px) {
     width: 64px;
@@ -373,6 +473,12 @@ export const BarColor = styled.div`
     color: ${props => props.theme.white};
   }
 
+  @media(max-width: 320px) {
+    span {
+      font-size: 12px;
+    }
+  }
+
   @media(min-width: 768px) {
     span {
       font-size: 16px;
@@ -391,6 +497,18 @@ export const ViewDetails = styled.div`
   li {
     font-size: 0.875rem;
     font-weight: 500;
+  }
+
+  @media(max-width: 320px) {
+    width: 180px;
+
+    h2 {
+      font-size: 14px;
+    }
+
+    li {
+      font-size: 12px;
+    }
   }
 
   @media(min-width: 768px) {

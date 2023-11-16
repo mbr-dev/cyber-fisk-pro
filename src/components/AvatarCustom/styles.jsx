@@ -4,11 +4,21 @@ export const Container = styled.div`
   width: 100px;
   height: 192px;
   position: relative;
+  z-index: 10;
+
+  @media (max-width: 320px) {
+    width: 54px;
+    height: 96px;
+  }
 
   @media (min-width: 1024px) {
-    background-color: red;
     width: 180px;
-    height: 420px;
+    height: 380px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 180px;
+    height: 400px;
   }
 `;
 

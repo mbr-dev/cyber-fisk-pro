@@ -11,7 +11,6 @@ export const Container = styled.div`
 export const Main = styled.main`
   flex: 1;
   width: 100%;
-  height: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -64,15 +63,8 @@ export const DivInside = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 3px solid transparent;
-  box-shadow: 0px 4px 10px 0px #00000033;
+  border: 3px solid ${props => props.theme["red-200"]};
   transition: all ease 0.3s;
-
-  &:hover {
-    background-color: ${props => props.theme["red-200"]};
-    border-color: ${props => props.theme["gray-700"]};
-    color: ${props => props.theme.white};
-  }
 
   span {
     font-size: 28px;

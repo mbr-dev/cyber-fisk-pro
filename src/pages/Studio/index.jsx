@@ -87,7 +87,7 @@ export const Studio = () => {
         </Right>
 
         <Left>
-          <ButtonArea>{/* aumentar os botao */}
+          <ButtonArea>
             <button>
               <img src={volumeIcon} alt="" />
             </button>

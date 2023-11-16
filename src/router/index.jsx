@@ -15,6 +15,7 @@ import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
 import { ReportInfo } from "../pages/ReportInfo";
+import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
 import { ReportStudioL } from "../pages/ReportStudioL";
 import { SelectLesson } from "../pages/selectLesson";
@@ -101,6 +102,7 @@ export const Router =() => {
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
+      <Route path="/ReportLesson" element={<ReportLesson />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
       <Route path="/ReportStudio" element={<ReportStudio />}/>
       <Route path="/ReportStudioL" element={<ReportStudioL />}/>

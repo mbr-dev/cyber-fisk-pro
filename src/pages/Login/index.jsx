@@ -46,6 +46,7 @@ export const Login = () => {
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isDesktopUltra = window.matchMedia("(min-width: 2560px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const isPhoneMini = window.matchMedia("(max-width: 320px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -230,14 +231,14 @@ export const Login = () => {
         </Form>
 
         <AreaButton>
-          <LineSeparator wl={isDesktopUltra ? "85%" :  isDesktop ? "100%" : isTablet ? "500px" : "300px"} bg={defaultTheme["gray-200"]}  />
+          <LineSeparator wl={isDesktopUltra ? "85%" :  isDesktop ? "100%" : isTablet ? "500px" : isPhoneMini ? "250px" : "300px"} bg={defaultTheme["gray-200"]}  />
           <ButtonBg
             title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
             form="myForm"
             greenBtn
             type="submit"
             w={isDesktop ? "450px" : isTablet ? "400px" : "250px"}
-            h={isDesktop ? "52px" : isTablet ? "48px" : "36px"}
+            h={isDesktop ? "52px" : isTablet ? "48px" : isPhoneMini ? "32px" : "36px"}
             mb={isDesktop ? "28px" : "12px"}
             mt={isDesktop ? "28px" : "12px"}
             fs={isDesktop ? "32px" : isTablet ? "28px" : ""}

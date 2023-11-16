@@ -27,6 +27,11 @@ export const Main = styled.div`
     width: 90%;
     align-items: flex-start;
   }
+
+  @media(min-width: 1440px) {
+    width: 100%;
+    align-items: center;
+  }
 `;
 
 export const Left = styled.div`
@@ -59,10 +64,19 @@ export const Left = styled.div`
   }
 
   @media(min-width: 1024px) {
-    padding-inline: 20px;
+    width: 600px;
+    padding-top: 0;
+    justify-content: space-around;
+  }
+
+  @media(min-width: 1440px) {
+    height: 450px;
+    justify-content: space-between;
   }
 
   @media(min-width: 1920px) {
+    height: 550px;
+    justify-content: space-between;
   }
 `;
 
@@ -88,7 +102,7 @@ export const Cards = styled.div`
 
   @media(min-width: 1024px) {
     width: 100%;
-    gap: 3rem;
+    gap: 24px;
   }
 `;
 
@@ -168,6 +182,19 @@ export const Card = styled.a`
     }
   }
 
+  @media(min-width: 1024px) {
+    width: 140px;
+    height: 140px;
+
+    p {
+      font-size: 18px
+    }
+    
+    img {
+      height: 64px;
+    }
+  }
+
   @media(min-width: 1920px) {
     width: 180px;
     height: 186px;
@@ -178,71 +205,6 @@ export const Card = styled.a`
     
     img {
       height: 84px;
-    }
-  }
-`;
-
-export const Right = styled.div`
-  width: 30%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 190px;
-    margin-bottom: -24px;
-  }
-
-  p {
-    width: 200px;
-    height: 36px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 8px;
-    margin-top: -18px;
-    font-size: 20px;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-  }
-
-  @media(min-width: 1440px) {
-    img {
-      width: 210px;
-    }
-
-    p {
-      width: 220px;
-      height: 38px;
-      font-size: 24px;
-      margin-top: -20px;
-    }
-  }
-
-  @media(min-width: 1920px) {
-    img {
-      width: 250px;
-    }
-
-    p {
-      width: 300px;
-      height: 56px;
-      font-size: 28px;
-      margin-top: -28px;
-    }
-  }
-
-  @media(min-width: 2560px) {
-    img {
-      width: 270px;
-    }
-
-    p {
-      width: 300px;
-      height: 56px;
-      font-size: 28px;
-      margin-top: -28px;
     }
   }
 `;
@@ -304,10 +266,56 @@ export const ButtonDayCh = styled.button`
   }
 
   @media(min-width: 1920px) {
-    height: 74px;
+    height: 92px;
+  }
+`;
+
+export const Right = styled.div`
+  width: 30%;
+  height: 490px;
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  img {
+    width: 190px;
+    margin-bottom: -24px;
+  }
+
+  p {
+    width: 220px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin-top: -18px;
+    font-size: 24px;
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["red-200"]};
+  }
+
+  @media(min-width: 1440px) {
+    height: 450px;
+
+    img {
+      width: 154px;
+      margin-bottom: 0;
+    }
+
+    p {
+      width: 220px;
+      height: 52px;
+      font-size: 24px;
+      margin-top: 0px;
+    }
+  }
+
+  @media(min-width: 1920px) {
   }
 
   @media(min-width: 2560px) {
-    height: 84px;
   }
 `;

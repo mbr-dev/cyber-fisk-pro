@@ -34,6 +34,14 @@ export const AvatarInfo = styled.div`
     font-size: 1.25rem;
   }
 
+  @media(max-width: 320px) {
+    gap: 10px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
   @media(min-width: 768px) {
     gap: 20px;
 
@@ -84,6 +92,11 @@ export const Avatar = styled.div`
     width: 100%;
   }
 
+  @media(max-width: 320px) {
+    width: 38px;
+    height: 38px;
+  }
+
   @media(min-width: 768px) {
     width: 84px;
     height: 84px;
@@ -106,6 +119,14 @@ export const XP = styled.div`
     font-weight: 700;
   }
 
+  @media(max-width: 320px) {
+    height: 36px;
+
+    .compose {
+      font-size: 16px;
+    }
+  }
+
   @media(min-width: 768px) {
     height: 72px;
 
@@ -125,11 +146,15 @@ export const AreaSelect = styled.div`
   gap: 32px;
 `;
 
-export const SelectIdioma = styled.div`
+export const Select = styled.div`
   width: 300px;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
+
+  @media(max-width: 320px) {
+    width: 250px;
+  }
 
   @media(min-width: 768px) {
     width: 500px;
@@ -161,6 +186,10 @@ export const SelectTitle = styled.div`
 
   img {
     width: 18px;
+  }
+
+  @media(max-width: 320px) {
+    height: 36px;
   }
 
   @media(min-width: 600px) {
@@ -204,6 +233,11 @@ export const SelectUl = styled.ul`
   padding-inline: 18px;
   gap: 12px;
   background-color: ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    padding: 10px;
+  }
 
   @media(min-width: 768px) {
     width: 500px;

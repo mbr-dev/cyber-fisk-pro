@@ -1,4 +1,4 @@
-import { styled } from "styled-components";
+  import { styled } from "styled-components";
 
 export const Container = styled.div`
   width: 100vw;
@@ -36,10 +36,10 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    padding-block: 1rem;
+    padding-block: 12px;
     
-    img {
-      width: 150px;
+    .logoFisk {
+      width: 130px;
     }
   }
 
