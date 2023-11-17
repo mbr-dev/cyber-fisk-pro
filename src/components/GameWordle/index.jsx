@@ -1,18 +1,19 @@
-import { useState, createContext, useContext, useEffect, useCallback } from "react";
+import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { Delete } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 import { Modal } from "./components/Modal";
-import { Notifications } from "../Notifications";
 import { HeaderText } from "../HeaderText";
+import { Notifications } from "../Notifications";
+import { ModalEnd } from "./components/ModalEnd";
+import { ModalReveal } from "./components/ModalReveal";
 
-import { LessonContext } from "../../context/lesson";
-
-import CoinImg from "./image/coin.svg";
 import IImg from "./image/iSVG.svg";
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Line1, Line2, Line3, KeyBoard, Key, Button, ButtonArea, Board, BoardRow, Letters, Coin, Info, InfoArea } from "./styles";
+import DeleteImg from "./image/DeleteImg.png";
+import DollarFiskImg from "./image/DollarFisk.png";
 
+import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Main, Line1, Line2, Line3, KeyBoard, Key, Button, ButtonArea, Board, BoardRow, Letters, Coin, Info, InfoArea, MainInside, Left, Right } from "./styles";
 
 export const GameWordle = () => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
@@ -29,6 +30,11 @@ export const GameWordle = () => {
   const [disabledLetters, setDisabledLetters] = useState([]);
   const [rightLetters, setRightLetters] = useState([]);
   const [almostLetters, setAlmostLetters] = useState([]);
+  const [gameEnd, setGameEnd] = useState(false);
+
+  const navigate = useNavigate();
+
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const handleSelectLetter = (word) => {
     if (word === "ENTER") {
@@ -59,7 +65,7 @@ export const GameWordle = () => {
     setBoard(newBoard);
     setCurrentAttempt({ ...currentAttempt, letter: currentAttempt.letter - 1 });
   }
-
+  console.log("gameend: ", gameEnd)
   const verifyWord = () => {
     if (currentAttempt.letter !== wordLength) {
       return;
@@ -74,7 +80,7 @@ export const GameWordle = () => {
     setCurrentAttempt({ attempt: currentAttempt.attempt + 1, letter: 0 });
 
     if (currentWord === correctWord) {
-      alert("Acertou a palavra");
+      setGameEnd(true);
       return;
     } else {
       for (let a = 0; a < wordLength; a++) {
@@ -106,6 +112,10 @@ export const GameWordle = () => {
     }
   }
 
+  const handleHome = () => {
+    navigate("/Home")
+  }
+
   return (
     <Container>
       <HeaderText title="Desafio Diário" />
@@ -117,124 +127,184 @@ export const GameWordle = () => {
       }
       
       <Main>
-        <InfoArea>
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <Info><img src={IImg} alt="" /></Info>
-            </Dialog.Trigger>
+        {!isDesktop &&
+          <InfoArea>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <Info><img src={IImg} alt="" /></Info>
+              </Dialog.Trigger>
 
-            <Modal />
-          </Dialog.Root>
-          
-          <Coin>
-            <img src={CoinImg} /> <span>10</span>
-          </Coin>
-        </InfoArea>
+              <Modal />
+            </Dialog.Root>
+            
+            <Coin>
+              <img src={DollarFiskImg} /> <span>10</span>
+            </Coin>
+          </InfoArea>}
+        
+        <MainInside>
+          <Left>
+            {gameEnd && <ModalEnd wordRight={correctWord} />}
 
-        <Board>
-          {[...Array(numberOfRows).keys()].map((rowIndex) => {
-            return (
-              <BoardRow key={rowIndex}>
-                {[...Array(maxColumn).keys()].map((columnIndex) => {
-                  const letter = board[rowIndex][columnIndex];
-                  const correct = correctWord[columnIndex] === letter;
-                  const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
-                  const letterState = currentAttempt.attempt > rowIndex && (correct ? "correct" : almost ? "almost" : "error");
-                  
-                  return (
-                    <Letters
-                      key={columnIndex}
-                      className={letterState}
-                      style={{
-                        borderColor: (currentAttempt.attempt === rowIndex) && (currentAttempt.letter === columnIndex) ? defaultTheme["yellow-100"] : "",
-                        WebkitTextStrokeColor: correct ? defaultTheme["green-400"] : almost ? defaultTheme["yellow-400"] : "",
-                      }}
-                    >
-                      {/* {board[rowIndex][columnIndex]} */}
-                      {board[rowIndex][columnIndex]}
-                    </Letters>
-                  )
-                })}
-              </BoardRow>
-            )
-          })}
-        </Board>
+            <Board>
+              {[...Array(numberOfRows).keys()].map((rowIndex) => {
+                return (
+                  <BoardRow key={rowIndex}>
+                    {[...Array(maxColumn).keys()].map((columnIndex) => {
+                      const letter = board[rowIndex][columnIndex];
+                      const correct = correctWord[columnIndex] === letter;
+                      const almost = !correct && letter !== "" && correctWord.toUpperCase().includes(letter);
+                      const letterState = currentAttempt.attempt > rowIndex && (correct ? "correct" : almost ? "almost" : "error");
 
-        <ButtonArea>
-          <Button $variant="green" onClick={handleShowLetter}>
-            <img src={CoinImg} alt="coin" />Revelar Letra
-          </Button>
-          <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
-        </ButtonArea>
-
-        <KeyBoard>
-          <Line1>
-            {keys1.map((key, index) => {
-              return (
-                <Key
-                  key={index}
-                  onClick={() => handleSelectLetter(key)}
-                  style={{
-                    backgroundColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
-                    color: 
-                      rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
-                    borderColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
-                  }}
-                >
-                  {key}
-                </Key>
-              )
-            })}
-          </Line1>
-
-          <Line2>
-            {keys2.map((key, index) => {
-              return (
-                <Key
-                  key={index}
-                  onClick={() => handleSelectLetter(key)}
-                  style={{
-                    backgroundColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
-                    color: 
-                      rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
-                    borderColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
-                  }}
-                >
-                  {key}
-                </Key>
-              )
-            })}
-          </Line2>
-
-          <Line3>
-            {keys3.map((key, index) => {
-              return (
-                <Key
-                  key={index}
-                  onClick={() => handleSelectLetter(key)}
-                  style={{
-                    backgroundColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
-                    color: 
-                      rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
-                    borderColor: 
-                      rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
-                  }}
-                >
-                  {key}
-                </Key>
+                      return (
+                        <Letters
+                          key={columnIndex}
+                          className={letterState}
+                          style={{
+                            borderColor: (currentAttempt.attempt === rowIndex) && (currentAttempt.letter === columnIndex) ? defaultTheme["yellow-100"] : "",
+                            WebkitTextStrokeColor: correct ? defaultTheme["green-400"] : almost ? defaultTheme["yellow-400"] : "",
+                            opacity: gameEnd && "0.1",
+                          }}
+                        >
+                          {/* {board[rowIndex][columnIndex]} */}
+                          {board[rowIndex][columnIndex]}
+                        </Letters>
+                      )
+                    })}
+                  </BoardRow>
                 )
               })}
-            <Key
-              onClick={() => handleSelectLetter("DELETE")}
-              className="keyDelete"
-            ><Delete color="white" /></Key>
-          </Line3>
-        </KeyBoard>
+            </Board>
+          </Left>
+
+          <Right>
+            {!isDesktop &&
+              <ButtonArea>
+              <Dialog.Root>
+                <Dialog.Trigger asChild>
+                  <Button $variant="green" disabled={gameEnd}>
+                    <img src={DollarFiskImg} alt="coin" />Revelar Letra
+                  </Button>
+                </Dialog.Trigger>
+
+                  <ModalReveal onPress={handleShowLetter} />
+                </Dialog.Root>
+
+                {gameEnd ?
+                  <Button $variant="red" onClick={handleHome}>Home</Button>
+                  :
+                  <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
+                }
+              </ButtonArea>}
+
+            {isDesktop &&
+              <InfoArea>
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Info><img src={IImg} alt="" /></Info>
+                  </Dialog.Trigger>
+
+                  <Modal />
+                </Dialog.Root>
+                
+                <Coin>
+                  <img src={DollarFiskImg} /> <span>10</span>
+                </Coin>
+              </InfoArea>}
+
+            <KeyBoard style={{
+              opacity: gameEnd && "0.2"
+            }}>
+              <Line1>
+                {keys1.map((key, index) => {
+                  return (
+                    <Key
+                      key={index}
+                      onClick={() => handleSelectLetter(key)}
+                      disabled={gameEnd}
+                      style={{
+                        backgroundColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
+                        color: 
+                          rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
+                        borderColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
+                      }}
+                    >
+                      {key}
+                    </Key>
+                  )
+                })}
+              </Line1>
+
+              <Line2>
+                {keys2.map((key, index) => {
+                  return (
+                    <Key
+                      key={index}
+                      onClick={() => handleSelectLetter(key)}
+                      disabled={gameEnd}
+                      style={{
+                        backgroundColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
+                        color: 
+                          rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
+                        borderColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
+                      }}
+                    >
+                      {key}
+                    </Key>
+                  )
+                })}
+              </Line2>
+
+              <Line3>
+                {keys3.map((key, index) => {
+                  return (
+                    <Key
+                      key={index}
+                      onClick={() => handleSelectLetter(key)}
+                      disabled={gameEnd}
+                      style={{
+                        backgroundColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-500"] : almostLetters.includes(key) ? defaultTheme["yellow-300"] : disabledLetters.includes(key) ? defaultTheme["gray-600"] : "",
+                        color: 
+                          rightLetters.includes(key) || almostLetters.includes(key) || disabledLetters.includes(key) ? defaultTheme.white : "",
+                        borderColor: 
+                          rightLetters.includes(key) ? defaultTheme["green-400"] : almostLetters.includes(key) ? defaultTheme["yellow-400"] : disabledLetters.includes(key) ? defaultTheme["gray-700"] : "",
+                      }}
+                    >
+                      {key}
+                    </Key>
+                    )
+                  })}
+                <Key onClick={() => handleSelectLetter("DELETE")} className="keyDelete">
+                  <img src={DeleteImg} alt="Button Delete" />
+                </Key>
+              </Line3>
+            </KeyBoard>
+
+            {isDesktop &&
+              <ButtonArea>
+              <Dialog.Root>
+                <Dialog.Trigger asChild>
+                  <Button $variant="green" disabled={gameEnd}>
+                    <img src={DollarFiskImg} alt="coin" />Revelar Letra
+                  </Button>
+                </Dialog.Trigger>
+
+                  <ModalReveal onPress={handleShowLetter} />
+                </Dialog.Root>
+
+                {gameEnd ?
+                  <Button $variant="red" onClick={handleHome}>Home</Button>
+                  :
+                  <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
+                }
+              </ButtonArea>}
+          </Right>
+        </MainInside>
       </Main>
     </Container>
   )

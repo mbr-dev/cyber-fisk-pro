@@ -16,8 +16,71 @@ export const Main = styled.main`
   gap: 0.75rem;
   margin-top: 0.5rem;
 
+  @media(max-width: 376px) {
+    margin-top: 6px;
+    gap: 6px;
+  }
+
   @media(max-width: 360px) {
     gap: 0.5rem;
+  }
+
+  @media(max-width: 320px) {
+    margin-top: 4px;
+    gap: 4px;
+  }
+
+  @media(min-width: 768px) {
+    margin-top: 24px;
+  }
+
+  @media(min-width: 1024px) {
+    margin-top: 16px;
+    height: 500px;
+    justify-content: center;
+  }
+`;
+
+export const MainInside = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (max-width: 320px) {
+    gap: 4px;
+  }
+
+  @media (min-width: 1024px) {
+    width: 1050px;
+    flex-direction: row-reverse;
+    align-items: center;
+    justify-content: space-between;
+  }
+`;
+
+export const Right = styled.div`
+  height: 100%;
+  display: flex;
+  gap: 16px;
+  flex-direction: column;
+  
+  @media(max-width: 320px) {
+    gap: 4px;
+  }
+  
+  @media(min-width: 1024px) {
+    gap: 0;
+    justify-content: space-between;
+    align-items: center;
+    gap: 4px;
+  }
+`;
+
+export const Left = styled.div`
+  height: 100%;
+  
+  @media (min-width: 1024px) {
+    width: 380px;
   }
 `;
 
@@ -25,11 +88,20 @@ export const InfoArea = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  justify-content: space-between;
+  padding-inline: 16px;
+
+  @media(min-width: 768px) {
+    padding-inline: 32px;
+  }
+
+  @media(min-width: 1024px) {
+    padding-inline: 0;
+  }
 `;
 
 export const Info = styled.div`
-  width: 2.75rem;
+  width: 52px;
   height: 2.75rem;
   border-radius: 8px;
   display: flex;
@@ -51,13 +123,23 @@ export const Info = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 36px;
+    height: 32px;
+  }
+
+  @media(min-width: 768px) {
+    width: 72px;
+    height: 72px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 300px;
   }
 `;
 
 export const Coin = styled.div`
-  padding: 0.375rem 0.5rem;
+  width: 94px;
+  height: 2.75rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -76,7 +158,8 @@ export const Coin = styled.div`
   }
 
   @media(max-width: 360px) {
-    padding: 0.25rem;
+    width: 84px;
+    height: 38px;
 
     img {
       width: 1.5rem;
@@ -88,8 +171,8 @@ export const Coin = styled.div`
   }
 
   @media(max-width: 320px) {
-    padding: 0.25rem;
-    gap: 0.125rem;
+    width: 72px;
+    height: 32px;
 
     img {
       width: 1rem;
@@ -99,6 +182,25 @@ export const Coin = styled.div`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 768px) {
+    width: 180px;
+    height: 72px;
+    gap: 32px;
+    border-width: 3px;
+
+    img {
+      width: 54px;
+    }
+
+    span {
+      font-size: 32px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 300px;
+  }
 `;
 
 export const Board = styled.div`
@@ -107,12 +209,17 @@ export const Board = styled.div`
   align-items: center;
   gap: 0.75rem;
 
-  @media(max-width: 360px) {
-    gap: 0.5rem;
+  @media(max-width: 375px) {
+    gap: 8px;
   }
 
   @media(max-width: 320px) {
-    gap: 0.375rem;
+    gap: 4px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    height: 100%;
   }
 `;
 
@@ -143,6 +250,11 @@ export const BoardRow = styled.div`
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${props => props.theme["gray-500"]};
   }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    justify-content: space-between;
+  }
 `;
 
 export const Letters = styled.div`
@@ -169,6 +281,18 @@ export const Letters = styled.div`
     height: 1.75rem;
     font-size: 1rem;
   }
+
+  @media(min-width: 768px) {
+    width: 58px;
+    height: 58px;
+    font-size: 32px;
+    border-width: 3px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 64px;
+    height: 64px;
+  }
 `;
 
 export const ButtonArea = styled.div`
@@ -176,7 +300,7 @@ export const ButtonArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 16px;
 
   @media(max-width: 360px) {
     gap: 1rem;
@@ -189,7 +313,7 @@ export const ButtonArea = styled.div`
 
 export const Button = styled.button`
   all: unset;
-  width: 10rem;
+  width: 172px;
   height: 3rem;
   border-radius: 8px;
   display: flex;
@@ -197,23 +321,50 @@ export const Button = styled.button`
   justify-content: center;
   gap: 0.25rem;
   font-size: 1.125rem;
-  background-color: ${props => props.$variant === "green" ? props.theme["green-500"] : props.theme["blue-300"]};
+  background-color: ${props => props.$variant === "green" ? props.theme["green-500"] : props.$variant === "red" ? props.theme["red-200"] : props.theme["blue-300"]};
   color: ${props => props.theme.white};
-  border: 1px solid ${props => props.$variant === "green" ? props.theme["green-400"] : props.theme["blue-200"]};
+  border: 1px solid ${props => props.$variant === "green" ? props.theme["green-400"] : props.$variant === "red" ? props.theme["red-300"] : props.theme["blue-200"]};
   border-bottom-width: 3px;
+  border-left-width: 3px;
   cursor: pointer;
 
   img {
     width: 1.5rem;
   }
 
-  @media(max-width: 320px) {
-    width: 7rem;
-    height: 2rem;
-    font-size: 0.75rem;
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+
+  @media(max-width: 360px) {
+    width: 150px;
+    height: 42px;
+    font-size: 16px;
 
     img {
-      width: 1rem;
+      width: 24px;
+    }
+  }
+
+  @media(max-width: 320px) {
+    width: 130px;
+    height: 2rem;
+    font-size: 14px;
+
+    img {
+      width: 16px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 300px;
+    height: 64px;
+    gap: 16px;
+    font-size: 28px;
+
+    img {
+      width: 54px;
     }
   }
 `;
@@ -238,6 +389,15 @@ export const KeyBoard = styled.div`
 
   @media(max-width: 320px) {
     width: 18rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 550px;
+  }
+
+  @media(min-width: 1204px) {
+    width: 100%;
+    gap: 20px;
   }
 `;
 
@@ -277,12 +437,24 @@ export const Line3 = styled.div`
       width: 2.25rem;
     }
   }
+
+  @media(min-width: 768px) {
+    .keyDelete {
+      width: 64px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .keyDelete {
+      width: 84px;
+    }
+  }
 `;
 
 export const Key = styled.button`
   all: unset;
-  width: 1.875rem;
-  height: 2.875rem;
+  width: 28px;
+  height: 40px;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -293,21 +465,50 @@ export const Key = styled.button`
   border-radius: 3px;
   color: ${props => props.theme["gray-600"]};
   transition: all ease 0.3s;
+  font-size: 24px;
   cursor: pointer;
+
+  img {
+    width: 36px;
+  }
 
   &:hover {
     border-color: ${props => props.theme["gray-700"]};
   }
 
-  @media(max-width: 376px) {
-    width: 1.75rem;
-    height: 2.5rem;
-    font-size: 1.5rem;
+  &:disabled {
+    cursor: not-allowed;
+  }
+
+  @media(max-width: 360px) {
+    width: 24px;
+    height: 38px;
+    font-size: 22px;
   }
 
   @media(max-width: 320px) {
-    width: 1.5rem;
-    height: 2rem;
-    font-size: 1rem;
+    width: 20px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  @media(min-width: 768px) {
+    width: 36px;
+    height: 54px;
+    font-size: 24px;
+
+    img {
+      width: 44px;
+    }
+  }
+
+  @media(min-width: 1204px) {
+    width: 44px;
+    height: 64px;
+    font-size: 28px;
+
+    img {
+      width: 64px;
+    }
   }
 `;

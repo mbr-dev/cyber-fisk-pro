@@ -3,23 +3,31 @@ import {Routes, Route} from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Help } from "../pages/Help";
 import { Menu } from "../pages/Menu";
+import { Read } from "../pages/Read";
+import { Sent } from "../pages/Sent";
+import { News } from "../pages/News";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
-import { Report } from "../pages/Report";
+import { Audio } from "../pages/Audio";
 import { Avatar } from "../pages/Avatar";
+import { Report } from "../pages/Report";
 import { Studio } from "../pages/Studio";
+import { Unread } from "../pages/Unread";
+import { Archive } from "../pages/Archive";
 import { Rewards } from "../pages/Rewards";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
+import { Messages } from "../pages/Messages";
 import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
+import { Billboard } from "../pages/Billboard";
 import { ReportInfo } from "../pages/ReportInfo";
 import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
-import { ReportStudioL } from "../pages/ReportStudioL";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
+import { ReportStudioL } from "../pages/ReportStudioL";
 import { QRCode } from "../features/qrCode/pages/Home";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { LessonSelected } from "../pages/LessonSelected";
@@ -87,27 +95,35 @@ export const Router =() => {
 
       <Route path="/Home" element={<Home/>}/>
       <Route path="/Menu" element={<Menu/>}/>
+      <Route path="/News" element={<News/>}/>
       <Route path="/Help" element={<Help />}/>
+      <Route path="/Sent" element={<Sent />}/>
+      <Route path="/Read" element={<Read />}/>
+      <Route path="/Audio" element={<Audio />}/>
       <Route path="/Books" element={<Books />}/>
       <Route path="/Login" element={<Login />}/>
+      <Route path="/Unread" element={<Unread />}/>
       <Route path="/Avatar" element={<Avatar />}/>
       <Route path="/Studio" element={<Studio />}/>
       <Route path="/Report" element={<Report />}/>
       <Route path="/qr-code" element={<QRCode />}/>
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/Rewards" element={<Rewards />}/>
+      <Route path="/Archive" element={<Archive />}/>
       <Route path="/Ranking" element={<Ranking />}/>
+      <Route path="/Messages" element={<Messages/>}/>
       <Route path="/GameOver" element={<GameOver />}/>
       <Route path="/Lesson" element={<TaskLesson />}/>
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
+      <Route path="/Billboard" element={<Billboard />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
-      <Route path="/ReportLesson" element={<ReportLesson />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
+      <Route path="/ReportLesson" element={<ReportLesson />}/>
       <Route path="/ReportStudio" element={<ReportStudio />}/>
-      <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/SelectLesson" element={<SelectLesson />}/>
       <Route path="/SuperTask" element={<SuperTaskLesson />}/>
+      <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/qr-code/:code" element={<GamesTemplate />}/>
       <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>
       <Route path="/LessonSelected" element={<LessonSelected />}/>

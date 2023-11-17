@@ -2,7 +2,6 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { FooterBtnHome } from "../../components/FooterBtnHome";
-import { LineSeparator } from "../../components/LineSeparator";
 import { HeaderText } from "../../components/HeaderText";
 
 import Robo from "../../assets/avatarRobo.png";
