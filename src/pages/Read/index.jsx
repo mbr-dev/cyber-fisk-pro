@@ -15,12 +15,16 @@ export const Read = () => {
     navigate("/Messages");
   }
 
+  const handleMessageOpen = () => {
+    navigate("/MessageOpen");
+  }
+
   return (
     <Container>
       <HeaderText title="Read" />
 
       <Main>
-        <Div>
+        <Div onClick={handleMessageOpen}>
           <span className="spanDay">06/06/2023</span>
           <Text>
             <p>João Carlos Albuquerque</p>

@@ -181,7 +181,7 @@ export const DivImg = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${props => props.theme["blue-500"]};
+  border: 2px solid ${props => props.theme["orange-300"]};
   border-radius: 8px;
 
   img {

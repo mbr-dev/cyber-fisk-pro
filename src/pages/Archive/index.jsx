@@ -4,7 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { Modal } from "./components/Modal";
 import { HeaderText } from "../../components/HeaderText";
 
-import EmailImg from "./images/email.png";
+import FolderImg from "./images/folder.png";
 
 import { Container, Main, Div, AreaButton, Button, Text, DivImg } from "./styles";
 
@@ -27,7 +27,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -37,7 +37,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -47,7 +47,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -57,7 +57,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -67,7 +67,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -77,7 +77,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
         <Div>
@@ -87,7 +87,7 @@ export const Archive = () => {
             <span>REG/ES1 - Seg/Qua – 08:00/09:00</span>
           </Text>
           <DivImg>
-            <img src={EmailImg} alt="" />
+            <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
       </Main>

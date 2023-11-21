@@ -26,6 +26,14 @@ export const Main = styled.main`
     padding-block: 10px;
   }
 
+  @media(min-width: 600px) {
+    width: 700px;
+    gap: 0;
+    flex-direction: row;
+    justify-content: space-between;
+    padding-block: 0;
+  }
+
   @media(min-width: 768px) {
     width: 580px;
     gap: 32px;

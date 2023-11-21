@@ -151,7 +151,7 @@ export const WellDone = () => {
 
   return (
     <Container>
-      <Confetti numberOfPieces={120} />
+      <Confetti numberOfPieces={90} />
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
       <Header>

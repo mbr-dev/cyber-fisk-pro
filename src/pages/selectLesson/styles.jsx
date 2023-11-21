@@ -34,6 +34,11 @@ export const SelectLessonArea = styled.div`
     gap: 8px;
   }
 
+  @media(min-width: 600px) {
+    width: 500px;
+    gap: 20px;
+  }
+
   @media(min-width: 768px) {
     width: 330px;
     gap: 24px;
@@ -100,6 +105,19 @@ export const ButtonLesson = styled.button`
     }
   }
 
+  @media(min-width: 600px) {
+    width: 64px;
+    height: 64px;
+
+    p {
+      font-size: 22px;
+    }
+
+    span {
+      font-size: 16px;
+    }
+  }
+
   @media(min-width: 768px) {
     width: 116px;
     height: 116px;
@@ -139,6 +157,11 @@ export const AreaFooter = styled.div`
   @media(max-width: 320px) {
     width: 250px;
     height: 52px;
+  }
+
+  @media(min-width: 600px) {
+    width: 620px;
+    height: 64px;
   }
 
   @media(min-width: 768px) {

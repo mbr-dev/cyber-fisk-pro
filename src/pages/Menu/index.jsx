@@ -84,7 +84,7 @@ export const Menu = () => {
           <p onClick={() => {alterPage("Help")}}>Help</p>
         </Main>
 
-        <FooterBtnHome />
+        <FooterBtnHome title="Logout" />
       </Content>
     </Container>
   )

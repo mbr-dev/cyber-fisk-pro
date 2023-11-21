@@ -13,6 +13,7 @@ import { Avatar } from "../pages/Avatar";
 import { Report } from "../pages/Report";
 import { Studio } from "../pages/Studio";
 import { Unread } from "../pages/Unread";
+import { Compose } from "../pages/Compose";
 import { Archive } from "../pages/Archive";
 import { Rewards } from "../pages/Rewards";
 import { Profile } from "../pages/Profile";
@@ -23,10 +24,12 @@ import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
 import { Billboard } from "../pages/Billboard";
 import { ReportInfo } from "../pages/ReportInfo";
+import { MessageOpen } from "../pages/MessageOpen";
 import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
+import { MessageAnswer } from "../pages/MessageAnswer";
 import { ReportStudioL } from "../pages/ReportStudioL";
 import { QRCode } from "../features/qrCode/pages/Home";
 import { GravaAudioTest } from "../pages/GravaAudioTest";
@@ -93,9 +96,9 @@ export const Router =() => {
     <Routes>
       <Route path = "/" element={<Login />}/>
 
-      <Route path="/Home" element={<Home/>}/>
-      <Route path="/Menu" element={<Menu/>}/>
-      <Route path="/News" element={<News/>}/>
+      <Route path="/Home" element={<Home />}/>
+      <Route path="/Menu" element={<Menu />}/>
+      <Route path="/News" element={<News />}/>
       <Route path="/Help" element={<Help />}/>
       <Route path="/Sent" element={<Sent />}/>
       <Route path="/Read" element={<Read />}/>
@@ -109,20 +112,23 @@ export const Router =() => {
       <Route path="/qr-code" element={<QRCode />}/>
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/Rewards" element={<Rewards />}/>
+      <Route path="/Compose" element={<Compose />}/>
       <Route path="/Archive" element={<Archive />}/>
       <Route path="/Ranking" element={<Ranking />}/>
-      <Route path="/Messages" element={<Messages/>}/>
+      <Route path="/Messages" element={<Messages />}/>
       <Route path="/GameOver" element={<GameOver />}/>
       <Route path="/Lesson" element={<TaskLesson />}/>
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
       <Route path="/Billboard" element={<Billboard />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
+      <Route path="/MessageOpen" element={<MessageOpen />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
       <Route path="/ReportLesson" element={<ReportLesson />}/>
       <Route path="/ReportStudio" element={<ReportStudio />}/>
       <Route path="/SelectLesson" element={<SelectLesson />}/>
       <Route path="/SuperTask" element={<SuperTaskLesson />}/>
+      <Route path="/MessageAnswer" element={<MessageAnswer />}/>
       <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/qr-code/:code" element={<GamesTemplate />}/>
       <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>

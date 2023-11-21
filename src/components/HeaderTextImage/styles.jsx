@@ -29,6 +29,10 @@ export const Container = styled.header`
     padding: 12px 12px 0 12px;
   }
 
+  @media(min-width: 600px) {
+    height: 72px;
+  }
+
   @media(min-width: 768px) {
     height: 184px;
   }

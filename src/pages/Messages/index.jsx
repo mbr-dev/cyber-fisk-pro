@@ -54,7 +54,7 @@ export const Messages = () => {
         </Div>
         <Div onClick={handleSend}>
           <p>Sent</p>
-          <DivImg style={{ borderColor: defaultTheme["green-800"] }}>
+          <DivImg style={{ borderColor: defaultTheme["green-600"] }}>
             <img src={Email3Img} alt="" />
           </DivImg>
         </Div>

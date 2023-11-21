@@ -19,7 +19,7 @@ export const GameWordle = () => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
   const keys2 = ["A", "S", "D", "F", "G", "H", "J", "K", "L"];
   const keys3 = ["Z", "X", "C", "V", "B", "N", "M"];
-  const correctWord = "RIGHT";
+  const correctWord = "HOUSE";
   const wordLength = correctWord.length;
   const numberOfRows = 6;
   const boardDefault = Array.from({ length: numberOfRows }, () => Array(wordLength).fill(""));

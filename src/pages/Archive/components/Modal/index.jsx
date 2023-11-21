@@ -4,7 +4,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { LineSeparator } from "../../../../components/LineSeparator";
 
 import xImg from "../../../../assets/xImg.png";
-import arrowBottom from "../../../Report/img/arrowBottom.png";
+import arrowBottom from "./images/arrowBottom.png";
 
 import { Content, Overlay, Close, CloseEnter, Main, Header, Div, DivRow, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck } from "./styles";
 import { defaultTheme } from "../../../../themes/defaultTheme";

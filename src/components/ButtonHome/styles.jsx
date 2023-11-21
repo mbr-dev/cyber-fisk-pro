@@ -33,6 +33,15 @@ export const Container = styled.button`
     }
   }
 
+  @media(min-width: 600px) {
+    width: 250px;
+    height: 36px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
   @media(min-width: 768px) {
     width: 500px;
     height: 56px;

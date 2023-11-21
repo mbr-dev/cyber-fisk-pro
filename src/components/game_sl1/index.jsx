@@ -38,6 +38,8 @@ export const GameSL1 = () => {
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
+  console.log(answers)
+
   const navigate = useNavigate();
 
   const loadLesson = useCallback(async() => {

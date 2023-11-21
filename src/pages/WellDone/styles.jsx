@@ -416,7 +416,7 @@ export const Bottom2 = styled.section`
   gap: 10px;
   position: relative;
   margin-top: 64px;
-  margin-right: -110px;
+  margin-right: -112px;
 
   .fundoBg {
     width: 100%;

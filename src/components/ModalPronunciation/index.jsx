@@ -1,41 +1,27 @@
 import { useState, useCallback } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X, Volume2 } from "lucide-react";
+import { X } from "lucide-react";
 import { useSpeechSynthesis } from "react-speech-kit";
 
-import BrazilImg from "../../assets/Brazil.svg";
+import SomImg from "./images/Som.png";
+import PauseImg from "./images/Pause.png";
 import EUAImg from "../../assets/Eua.svg";
 import SpainImg from "../../assets/Spain.svg";
+import BrazilImg from "../../assets/Brazil.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Content, Close, Overlay, Main, Header, Form, SelectLanguage, ButtonHear, ButtonFlag } from "./styles";
 
-/* aumentar tela */
 
 export const ModalPronunciation = () => {
-  const languageToVoice = {
-    "pt-BR": "Microsoft Maria - Portuguese (Brazil)",
-    "en-US": "Google UK English Female",
-    "es": "Google español",
-  };
-
-  const { speak, voices } = useSpeechSynthesis();
+  const { speak, voices, speaking, cancel } = useSpeechSynthesis();
   const [valueTxt, setValueTxt] = useState("");
-  const [selectLanguage, setSelectLanguage] = useState("pt-BR");
+  const [selectLanguage, setSelectLanguage] = useState(null);
 
-  const handleGetText = useCallback(() => {
-    if (selectLanguage) {
-      const mappedVoice = voices.find((voice) => voice.name === languageToVoice[selectLanguage]);
-
-      if (mappedVoice) {
-        speak({ text: valueTxt, voice: mappedVoice });
-      }
-    }
-  }, [speak, voices, selectLanguage, valueTxt])
-
-  const handleLanguageChange = (language) => {
-    setSelectLanguage(language);
-  };
+  const handleGetText = () => {
+    const voice = voices[selectLanguage] || null;
+    speak({ text: valueTxt, voice });
+  }
 
   return (
     <Dialog.Portal>
@@ -50,32 +36,28 @@ export const ModalPronunciation = () => {
         
         <Main>
           <SelectLanguage >
-            <ButtonHear form="myForm" onClick={handleGetText}>
-              <Volume2 size={18} color="white" strokeWidth={3} />
-            </ButtonHear>
-
             <ButtonFlag 
-              onClick={() => handleLanguageChange("pt-BR")}
+              onClick={() => setSelectLanguage(4)}
               style={{
-                borderColor: selectLanguage === "pt-BR" ? defaultTheme["red-200"] : ""
+                borderColor: selectLanguage === 4 ? defaultTheme["red-200"] : ""
               }}
             >
               <img src={BrazilImg} alt="" />
             </ButtonFlag>
 
             <ButtonFlag 
-              onClick={() => handleLanguageChange("es")}
+              onClick={() => setSelectLanguage(9)}
               style={{
-                borderColor: selectLanguage === "es" ? defaultTheme["red-200"] : ""
+                borderColor: selectLanguage === 9 ? defaultTheme["red-200"] : ""
               }}
             >
               <img src={SpainImg} alt="" />
             </ButtonFlag>
 
             <ButtonFlag 
-              onClick={() => handleLanguageChange("en-US")}
+              onClick={() => setSelectLanguage(7)}
               style={{
-                borderColor: selectLanguage === "en-US" ? defaultTheme["red-200"] : ""
+                borderColor: selectLanguage === 7 ? defaultTheme["red-200"] : ""
               }}
             >
               <img src={EUAImg} alt="" />
@@ -91,12 +73,16 @@ export const ModalPronunciation = () => {
               value={valueTxt}
               onChange={(e) => setValueTxt(e.target.value)}
             />
-
-            <button 
-              title="Play"
-              hasIcon 
-              onPress={handleGetText}
-            ></button>
+            {speaking ?
+              <ButtonHear form="myForm" onClick={cancel}>
+                <img src={PauseImg} alt="" />
+              </ButtonHear>
+              :
+              <ButtonHear form="myForm" onClick={handleGetText}>
+                <img src={SomImg} alt="" />
+              </ButtonHear>
+            }
+            
           </Form>
         </Main>
       </Content>
