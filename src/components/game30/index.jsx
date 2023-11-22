@@ -30,6 +30,7 @@ export const Game30 = () => {
   const [selected, setSelected] = useState("");
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -70,6 +71,7 @@ export const Game30 = () => {
   }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
@@ -107,6 +109,8 @@ export const Game30 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -168,7 +172,7 @@ export const Game30 = () => {
   return (
     <Container>
       <TitleLesson title="Listen and choose the correct alternative." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <Form 

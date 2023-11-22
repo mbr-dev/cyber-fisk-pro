@@ -5,10 +5,12 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
+  overflow: hidden;
 `;
 
 export const Main = styled.div`
-  width: 100%;
+  width: 150px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;

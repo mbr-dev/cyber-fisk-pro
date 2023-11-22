@@ -61,8 +61,10 @@ export const MainInside = styled.div`
 export const Right = styled.div`
   height: 100%;
   display: flex;
-  gap: 16px;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
   
   @media(max-width: 320px) {
     gap: 4px;
@@ -405,21 +407,25 @@ export const Line1 = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 6px;
 `;
 
 export const Line2= styled.div`
   width: 100%;
   padding-inline: 0.5rem;
   display: flex;
-  justify-content: space-around;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
 `;
 
 export const Line3 = styled.div`
   width: 100%;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
+  gap: 6px;
 
   .keyDelete {
     width: 3rem;

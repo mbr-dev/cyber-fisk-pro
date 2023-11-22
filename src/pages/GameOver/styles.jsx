@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: hidden;
 
   @media(min-width: 1024px) {
     flex-direction: row;
@@ -23,9 +24,11 @@ export const Header = styled.header`
   position: relative;
   
   .fundoBg {
-    width: 100%;
+    width: 110%;
     height: 100%;
     position: absolute;
+    top: -1px;
+    left: -1px;
     z-index: -1;
   }
 

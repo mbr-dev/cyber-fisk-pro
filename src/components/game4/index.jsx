@@ -33,6 +33,7 @@ export const Game4 = () => {
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -85,6 +86,7 @@ export const Game4 = () => {
   }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setType(items.tipo);
@@ -109,7 +111,7 @@ export const Game4 = () => {
   }
 
   const handleClick = (index) => {
-    if(blockButton || playAudio) return;
+    if(blockButton || playAudio || (selectedColor[index] === 1)) return;
 
     setBlockButton(false);
 
@@ -118,8 +120,6 @@ export const Game4 = () => {
     setCountClick(clicks);
 
     let tempRightPoints;
-    let tempRound = round;
-    let tempGeneralRound = rodadaGeral;
     let tempSelectedColor = selectedColor;
 
     const answer = answers[index];
@@ -131,6 +131,8 @@ export const Game4 = () => {
         return;
       }
 
+      setBlockButton(true);
+
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
       
@@ -141,11 +143,6 @@ export const Game4 = () => {
       tempRightPoints = PointRule(nivel, rightPoints);
       setRightPoints(tempRightPoints);
       setNewPontos(nivel, tempRightPoints);
-
-      tempRound++;
-      setRound(tempRound);
-      tempGeneralRound++;
-      setNewRodada(tempGeneralRound);
     } else {
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
@@ -157,24 +154,29 @@ export const Game4 = () => {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
-
-      tempRound++;
-      setRound(tempRound);
-      tempGeneralRound++;
-      setNewRodada(tempGeneralRound);
     }
 
+    setCancelAudio(true);
     setBlockButton(true);
+
     clicks = 0;
     setCountClick(clicks);
+
+    let tempRound = round;
+    tempRound++;
+    setRound(tempRound);
+
+    let tempGeneralRound = rodadaGeral;
+    tempGeneralRound++;
+    setNewRodada(tempGeneralRound);
 
     const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
-      setTimeout(() =>{
-        newRound(tempRound);
-      }, 1500);
-    } else if (rule === "Game over"){
+        setTimeout(() => {
+          newRound(tempRound);
+        }, 1500);
+    } else if (rule === "Game over") {
       setNewPontos(0,0);
       setTimeout(() =>{
         navigate("/GameOver");
@@ -220,7 +222,7 @@ export const Game4 = () => {
   return(
     <Container>
       <TitleLesson title="Choose the 3 correct alternatives." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {

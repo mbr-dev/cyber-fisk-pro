@@ -20,6 +20,7 @@ export const Container = styled.button`
   }
 
   p {
+    font-size: 14px;
     line-height: 1.1;
   }
 

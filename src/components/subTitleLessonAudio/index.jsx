@@ -10,7 +10,7 @@ export const SubTitleLessonAudio = (props) => {
   const { countC, setCountC } = props;
 
   const handleClick = () => {
-    if (playAudio) return;
+    if (playAudio || props.stopAudio) return;
 
     let tempClick = countC;
     tempClick++;

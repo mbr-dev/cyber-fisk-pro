@@ -6,15 +6,20 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 `;
 
 export const Main = styled.div`
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  justify-content: flex-start;
+  gap: 32px;
+
+  @media(max-width: 360px) {
+    gap: 24px;
+  }
   
   @media(max-width: 320px) {
     gap: 8px;

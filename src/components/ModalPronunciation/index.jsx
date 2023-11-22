@@ -23,6 +23,8 @@ export const ModalPronunciation = () => {
     speak({ text: valueTxt, voice });
   }
 
+  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+
   return (
     <Dialog.Portal>
       <Overlay />
@@ -35,7 +37,7 @@ export const ModalPronunciation = () => {
         </Header>
         
         <Main>
-          <SelectLanguage >
+          {isDesktop &&<SelectLanguage >
             <ButtonFlag 
               onClick={() => setSelectLanguage(4)}
               style={{
@@ -62,7 +64,7 @@ export const ModalPronunciation = () => {
             >
               <img src={EUAImg} alt="" />
             </ButtonFlag>
-          </SelectLanguage>
+          </SelectLanguage>}
 
           <Form id="myForm">
             <textarea 

@@ -37,6 +37,7 @@ export const Game26 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -95,6 +96,7 @@ export const Game26 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -143,6 +145,8 @@ export const Game26 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -244,6 +248,7 @@ export const Game26 = () => {
     <Container>
       <TitleLesson title="Listen and put the sentences in order." />
       <SubTitleLessonAudio
+        stopAudio={cancelAudio}
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
         setCountC={setCountClick}

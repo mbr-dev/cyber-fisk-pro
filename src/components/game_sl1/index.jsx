@@ -38,8 +38,6 @@ export const GameSL1 = () => {
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
-  console.log(answers)
-
   const navigate = useNavigate();
 
   const loadLesson = useCallback(async() => {
@@ -77,7 +75,6 @@ export const GameSL1 = () => {
   }, [setIsLoading, setRandomNumber, setData, round, setLettersAnswer, setLetters, setAnswers]);
 
   const newRound = (number) => {
-    setNumberClick(0);
     setCountTimer(0);
     timePointer();
 
@@ -90,7 +87,6 @@ export const GameSL1 = () => {
     setLetters(items.letras);
 
     setBlockLetters(false);
-    setBlockButton(true);
   }
 
   const handleClearField = () => {
@@ -163,6 +159,9 @@ export const GameSL1 = () => {
 
       resetField();
     }
+
+    setNumberClick(0);
+    setBlockButton(true);
 
     let tempRound = round;
     tempRound++;
@@ -278,27 +277,27 @@ export const GameSL1 = () => {
             )
           })}
         </ButtonArea>
+
+        <AreaButtons>
+          <ButtonBg
+            fs={isDesktop && "28px"}
+            h={isDesktop ? "44px" : "2.5rem"}
+            w={isDesktop ? "200px" : "9rem"}
+            onPress={handleClearField}
+            title="Clear"
+          />
+
+          <ButtonBg
+            fs={isDesktop && "28px"}
+            h={isDesktop ? "44px" : "2.5rem"}
+            w={isDesktop ? "200px" : "9rem"}
+            greenBtn
+            onPress={handleVerify}
+            disabledButton={blockButton}
+            title="Check"
+          />
+        </AreaButtons>
       </Main>
-
-      <AreaButtons>
-        <ButtonBg
-          fs={isDesktop && "28px"}
-          h={isDesktop ? "44px" : "2.5rem"}
-          w={isDesktop ? "200px" : "9rem"}
-          onPress={handleClearField}
-          title="Clear"
-        />
-
-        <ButtonBg
-          fs={isDesktop && "28px"}
-          h={isDesktop ? "44px" : "2.5rem"}
-          w={isDesktop ? "200px" : "9rem"}
-          greenBtn
-          onPress={handleVerify}
-          disabledButton={blockButton}
-          title="Check"
-        />
-      </AreaButtons>
 
       <FooterBtnHome 
         fs={isDesktop ? "32px" : isTablet ? "28px" : ""}

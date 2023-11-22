@@ -151,6 +151,7 @@ export const DivRight = styled.div`
 `;
 
 export const DivA = styled.div`
+  width: 160px;
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -159,7 +160,8 @@ export const DivA = styled.div`
     gap: 0.25rem;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
+    width: 224px;
     gap: 16px;
 
     span {

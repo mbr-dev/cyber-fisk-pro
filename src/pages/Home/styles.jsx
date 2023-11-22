@@ -40,9 +40,8 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 14px;
   gap: 14px;
-  justify-content: flex-start;
+  justify-content: center;
 
   @media(max-width: 375px) {
     padding-top: 4px;
@@ -50,7 +49,6 @@ export const Left = styled.div`
   }
 
   @media(max-width: 360px) {
-    padding-top: 14px;
     gap: 12px;
   }
 
@@ -128,7 +126,7 @@ export const Card = styled.a`
   p {
     font-weight: 500;
     text-align: center;
-    font-size: 14px;
+    font-size: 12px;
     color: ${props => props.theme.black};
   }
   

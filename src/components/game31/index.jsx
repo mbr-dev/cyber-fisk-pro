@@ -32,6 +32,7 @@ export const Game31 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -75,6 +76,7 @@ export const Game31 = () => {
   const newRound = (number) => {
     setText("");
     setCountClick(0);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -117,6 +119,8 @@ export const Game31 = () => {
       tempEr++;
       setWrongPoints(tempEr);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -185,6 +189,7 @@ export const Game31 = () => {
     <Container>
       <SubTitleLesson title="Listen and write a question." />
       <SubTitleLessonAudio
+        stopAudio={cancelAudio}
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
         setCountC={setCountClick}

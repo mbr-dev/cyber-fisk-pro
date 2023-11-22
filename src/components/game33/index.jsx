@@ -249,7 +249,6 @@ export const Game33 = () => {
           onPress={handleVerify}
           title="Check"
         />
-        <p>dawd</p>
       </Main>
     </Container>
   )

@@ -38,6 +38,7 @@ export const Game21 = () => {
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -91,6 +92,7 @@ export const Game21 = () => {
     setSelected0("");
     setSelected1("");
     setSelected2("");
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
     
@@ -160,6 +162,8 @@ export const Game21 = () => {
       setWrongPoints(tempE);
     }
 
+    setCancelAudio(true);
+
     let tempRound = round;
     tempRound++;
     setRound(tempRound);
@@ -220,7 +224,7 @@ export const Game21 = () => {
   return (
     <Container>
       <TitleLesson title="Complete." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>

@@ -114,7 +114,7 @@ export const Home = () => {
                 </Card>
                 :
                 <Dialog.Root>
-                  <Dialog.Trigger style={{border: "none"}}>
+                  <Dialog.Trigger asChild>
                     <Card key={index}>
                       <img src={images[index]} alt="" />
                       {selectLanguage === 0 && <p>{text.name[0]}</p>}

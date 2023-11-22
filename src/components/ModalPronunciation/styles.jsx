@@ -79,7 +79,7 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 8px;
-  margin-block: 6px;
+  margin-block: 10px;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
