@@ -321,39 +321,12 @@ export const AreaInput = styled.div`
     margin-bottom: 8px;
   }
 
-  .iconImg {
-    width: 28px;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-  }
-
-  .selectState {
-    color: ${props => props.theme["gray-600"]};
-  }
-
   .inputDate::-webkit-calendar-picker-indicator {
     display: none;
   }
 
-  @media(max-width: 360px) {
-    .iconImg {
-      width: 24px;
-      top: 36px;
-    }
-  }
-
   @media(max-width: 320px) {
     width: 250px;
-
-    .iconImg {
-      width: 20px;
-      top: 28px;
-    }
-
-    .selectState {
-      font-size: 12px;
-    }
 
     label {
       font-size: 12px;
@@ -368,11 +341,6 @@ export const AreaInput = styled.div`
     label {
       font-size: 24px;
     }
-
-    .iconImg {
-      width: 32px;
-      top: 54px;
-    }
   }
 
   @media(min-width: 1024px) {
@@ -382,12 +350,6 @@ export const AreaInput = styled.div`
       padding-left: 28px;
       font-size: 24px;
       margin-bottom: 16px;
-    }
-
-    .iconImg {
-      width: 36px;
-      top: 58px;
-      left: 18px;
     }
   }
 
@@ -421,10 +383,6 @@ export const Div = styled.div`
 
   @media(max-width: 320px) {
     gap: 4px;
-
-    .selectState {
-      font-size: 12px;
-    }
 
     svg {
       top: 26px;
@@ -460,85 +418,54 @@ export const Div = styled.div`
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.div`
   width: 100%;
   height: 42px;
-  padding-left: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border-radius: 8px;
+  padding-left: 10px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
 
-  &::placeholder {
+  p {
     font-weight: normal;
     font-family: "Ubuntu", sans-serif;
     font-size: 16px;
     color: ${props => props.theme["gray-600"]};
   }
 
+  img {
+    width: 20px;
+  }
+
   @media(max-width: 360px) {
     height: 36px;
   }
 
   @media(max-width: 320px) {
     height: 32px;
-    padding-left: 32px;
+    gap: 6px;
+    padding-left: 6px;
 
-    &::placeholder {
+    p {
       font-size: 12px;
     }
   }
 
-  @media(min-width: 768px) {
-    height: 62px;
-    padding-left: 54px;
+  @media(min-width: 1280px) {
+    height: 64px;
+    padding-left: 14px;
 
-    &::placeholder {
+    p {
       font-size: 24px;
     }
+
+  img {
+    width: 32px;
   }
-
-  @media(min-width: 1024px) {
-    height: 64px;
-    box-shadow: 0px 4px 10px 0px #00000040;
-
-    &::placeholder {
-      font-size: 20px;
-    }
   }
-`;
-
-export const Select = styled.select`
-  width: 100%;
-  height: 42px;
-  padding-left: 42px;
-  border-radius: 8px;
-  border: 2px solid ${props => props.theme["gray-400"]};
-  background-color: transparent;
-  font-weight: normal;
-  font-family: "Ubuntu", sans-serif;
-
-  @media(max-width: 360px) {
-    height: 36px;
-  }
-
-  @media(max-width: 320px) {
-    height: 32px;
-    padding-left: 32px;
-  }
-
-  @media(min-width: 768px) {
-    height: 62px;
-    font-size: 24px;
-    padding-left: 54px;
-  }
-
-  @media(min-width: 1024px) {
-    height: 64px;
-    padding-left: 54px;
-    font-size: 24px;
-    box-shadow: 0px 4px 10px 0px #00000040;
-  }
-
 `;
 
 export const SelectIdioma = styled.div`

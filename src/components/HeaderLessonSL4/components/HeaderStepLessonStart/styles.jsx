@@ -18,9 +18,9 @@ export const Main = styled.div`
     width: 32px;
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     width: 100px;
-    height: 32px;
+    height: 28px;
   }
 
   @media(min-width: 1024px) {

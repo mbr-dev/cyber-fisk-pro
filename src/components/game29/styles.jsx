@@ -15,17 +15,18 @@ export const Main = styled.main`
   align-items: center;
   padding-top: 0.5rem;
   gap: 10px;
+  margin-bottom: 10px;
   background-color: ${props => props.theme["gray-300"]};
-  margin-bottom: 16px;
 
-  @media(min-width: 600px) {
-    padding-block: 16px;
-    gap: 0px;
-  }
-
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     flex-direction: row;
     align-items: flex-start;
+    justify-content: center;
+    margin-bottom: 32px;
+  }
+
+  @media(min-width: 1440px) {
+    margin-bottom: 52px;
   }
 `;
 
@@ -176,4 +177,32 @@ export const AreaButton = styled.div`
   align-items: center;
   justify-content: center;
   gap: 32px;
+`;
+
+export const Button = styled.button`
+  all: unset;
+  width: 150px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: ${props => props.$variant === "red" ? props.theme["red-200"] : props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 250px;
+    height: 48px;
+    font-size: 24px;
+  }
 `;

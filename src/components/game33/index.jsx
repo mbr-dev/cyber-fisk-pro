@@ -5,15 +5,13 @@ import { useSortable, arrayMove, SortableContext,   sortableKeyboardCoordinates,
 import {CSS} from '@dnd-kit/utilities';
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main } from "./styles";
+import { Container, Main, Button, ButtonAnswer } from "./styles";
 
 export const Game33 = () => {
   const {
@@ -185,7 +183,7 @@ export const Game33 = () => {
       transform: CSS.Transform.toString(transform),
       transition,
       backgroundColor: isDragging && defaultTheme["gray-300"],
-      border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
+      border: isDragging && `2px solid ${defaultTheme["red-200"]}`,
       borderRadius: isDragging && "8px",
     };
 
@@ -232,23 +230,16 @@ export const Game33 = () => {
             {questions.map((question, index) => {
               return (
               <SortableItem key={index} id={question}>
-                <ButtonAnswer
-                  w="14rem"
-                  h="3rem"
-                >
+                <ButtonAnswer>
                   <p>{question.label}</p>
                 </ButtonAnswer>
               </SortableItem>
             )})}
           </SortableContext>
         </DndContext>
-        <ButtonBg
-          h="2rem"
-          w="10rem"
-          disabledButton={blockButton}
-          onPress={handleVerify}
-          title="Check"
-        />
+        <Button onClick={handleVerify} disabled={blockButton}>
+          <p>Check</p>
+        </Button>
       </Main>
     </Container>
   )

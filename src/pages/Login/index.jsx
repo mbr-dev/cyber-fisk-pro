@@ -5,8 +5,6 @@ import { useNavigate } from "react-router-dom";
 import Cookies from "universal-cookie";
 
 import { Footer } from "../../components/Footer";
-import { ButtonBg } from "../../components/ButtonBg";
-import { LineSeparator } from "../../components/LineSeparator";
 
 import { CyberContext } from "../../context/cyber";
 import { translateLogin } from "../../utils/Translate";
@@ -26,7 +24,7 @@ import { Notifications } from "../../components/Notifications";
 import { Loading } from "../../components/Loading";
 import { Mensagens } from "../../utils/Mensagens";
 
-import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton } from "./styles";
+import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton, Button } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { apiQAS } from "../../lib/api";
 
@@ -44,9 +42,7 @@ export const Login = () => {
   const [viewPass, setViewPass] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isDesktopUltra = window.matchMedia("(min-width: 2560px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
-  const isPhoneMini = window.matchMedia("(max-width: 320px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -160,9 +156,9 @@ export const Login = () => {
             }
             
             <div>
-              <img src={Youtube} alt="Youtube" />
-              <img src={Instagram} alt="Instagram" />
-              <img src={Facebook} alt="Facebook" />
+              <a href="https://www.youtube.com/@fiskoficial" target="_blank"><img src={Youtube} alt="Youtube" /></a>
+              <a href="https://www.instagram.com/fiskoficial/" target="_blank"><img src={Instagram} alt="Instagram" /></a>
+              <a href="https://www.facebook.com/fiskcentrodeensino/" target="_blank"><img src={Facebook} alt="Facebook" /></a>
             </div>
           </FooterBlue>
         }
@@ -231,19 +227,9 @@ export const Login = () => {
         </Form>
 
         <AreaButton>
-          <LineSeparator wl={isDesktopUltra ? "85%" :  isDesktop ? "100%" : isTablet ? "500px" : isPhoneMini ? "250px" : "300px"} bg={defaultTheme["gray-200"]}  />
-          <ButtonBg
-            title={selectLanguage === 0 ? translateLogin[0].labelButton : selectLanguage === 1 ? translateLogin[1].labelButton : translateLogin[2].labelButton}
-            form="myForm"
-            greenBtn
-            type="submit"
-            w={isDesktop ? "450px" : isTablet ? "400px" : "250px"}
-            h={isDesktop ? "52px" : isTablet ? "48px" : isPhoneMini ? "32px" : "36px"}
-            mb={isDesktop ? "28px" : "12px"}
-            mt={isDesktop ? "28px" : "12px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-            onPress={handleSignIn}
-          />
+          <Button form="myForm" type="submit">
+            {selectLanguage === 0 ? <p>Entrar</p> : selectLanguage === 1 ? <p>Login</p> : <p>Acceso</p>}
+          </Button>
         </AreaButton>
       </Main>
 

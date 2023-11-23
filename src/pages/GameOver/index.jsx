@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import { apiQAS } from "../../lib/api";
 
 import { Loading } from "../../components/Loading";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { Notifications } from "../../components/Notifications";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
@@ -19,14 +18,13 @@ import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2 } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2, AreaButton, ButtonHome } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const phrase = [
     "We know you can do better.",
@@ -104,8 +102,12 @@ export const GameOver = () => {
     }
   }
 
-  function clickAlert(){
+  function clickAlert() {
     setError(false);
+  }
+
+  const handleGoHome = () => {
+    navigate("/Home");
   }
 
   useEffect(() => {
@@ -209,7 +211,11 @@ export const GameOver = () => {
           </Div>
         </Main>
 
-        <FooterBtnHome />
+        <AreaButton>
+          <ButtonHome onClick={handleGoHome}>
+            <p>Home</p>
+          </ButtonHome>
+        </AreaButton>
       </Content>
     </Container>
   )

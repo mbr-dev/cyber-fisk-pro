@@ -208,6 +208,12 @@ export const AreaInput = styled.div`
     display: none;
   }
 
+  @media(max-width: 360px) {
+    .eye {
+      left: 270px;
+    }
+  }
+
   @media(max-width: 320px) {
     label {
       font-size: 1rem;
@@ -407,9 +413,61 @@ export const SelectLi = styled.li`
 `;
 
 export const AreaButton = styled.div`
-  width: 70%;
+  width: 320px;
+  height: 72px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  border-top: 1px solid ${props => props.theme["gray-200"]};
+
+  @media (max-width: 320px) {
+    width: 250px;
+    height: 56px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 480px;
+    height: 96px;
+  }
+`;
+
+export const Button = styled.button`
+  all: unset;
+  width: 250px;
+  height: 32px;
+  padding-inline: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  background-color: ${props => props.theme["green-600"]};
+  border: 2px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  text-align: center;
+  cursor: pointer;
+  transition: all ease 0.3s;
+
+  p {
+    color: ${props => props.theme.white};
+    font-size: 20px;
+  }
+
+  @media (max-width: 320px) {
+    width: 150px;
+    height: 30px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 350px;
+    height: 48px;
+
+    p {
+      font-size: 24px;
+    }
+  }
 `;

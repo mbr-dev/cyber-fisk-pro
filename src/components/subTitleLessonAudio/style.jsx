@@ -25,6 +25,10 @@ export const Button = styled.button`
   border-radius: 10px;
   transition: all .2s ease-in-out;
 
+  img {
+    width: 32px;
+  }
+
   &:hover {
     transform: scale(0.9);
   }
@@ -34,18 +38,14 @@ export const Button = styled.button`
     opacity: 0.5;
   }
 
-  @media(max-width: 320px) {
-    width: 3rem;
-    height: 3rem;
+  @media(max-width: 360px) {
+    width: 46px;
+    height: 46px;
+    border-radius: 6px;
 
-    svg {
-      width: 28px;
+    img {
+      width: 20px;
     }
-  }
-
-  @media(min-width: 360px) {
-    width: 4.5rem;
-    height: 4.5rem;
   }
 
    @media(min-width: 600px) {

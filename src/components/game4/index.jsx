@@ -237,7 +237,7 @@ export const Game4 = () => {
               disabled={blockButton}
             >
               <p style={{
-                fontSize: type === 3 ? "2rem" : "20px"
+                fontSize: type === 3 ? "2rem" : "16px"
               }}>
                 {answer.label}
               </p>

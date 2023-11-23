@@ -45,7 +45,7 @@ export const Header = styled.header`
     height: 560px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 40%;
     height: 100vh;
     gap: 20px;
@@ -629,5 +629,72 @@ export const Text = styled.div`
   @media(min-width: 1440px) {
     width: 400px;
     height: 180px;
+  }
+`;
+
+export const AreaButton = styled.div`
+  width: 300px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid ${props => props.theme["gray-200"]};
+
+  @media (max-width: 360px) {
+    height: 64px;
+  }
+
+  @media (max-width: 320px) {
+    width: 250px;
+    height: 54px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 600px;
+    height: 96px;
+    border-width: 3px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom: 4px solid ${props => props.theme["red-300"]};
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 56px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

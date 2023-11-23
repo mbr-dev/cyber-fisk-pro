@@ -40,6 +40,7 @@ export const ButtonAnswer = styled.button`
   align-items: center;
   justify-content: center;
   border: 2px solid transparent;
+  padding-inline: 8px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
@@ -48,7 +49,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     line-height: 1.1;
-    font-size: 16px;
+    font-size: 14px;
   }
 
   &:hover {
@@ -62,22 +63,9 @@ export const ButtonAnswer = styled.button`
   @media(max-width: 320px) {
     width: 210px;
     height: 56px;
-
-    p {
-      font-size: 14px;
-    }
   }
 
-  @media(min-width: 768px) {
-    width: 400px;
-    height: 92px;
-
-    p {
-      font-size: 24px;
-    }
-  }
-
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 500px;
     height: 86px;
   }

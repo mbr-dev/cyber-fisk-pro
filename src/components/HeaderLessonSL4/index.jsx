@@ -6,17 +6,17 @@ import { HeaderStepLessonStart } from "./components/HeaderStepLessonStart";
 
 import { LessonContext } from "../../context/lesson";
 
-import iconStart from "./images/iconStart.png";
-import iconFinish from "./images/iconFinish.png";
-import iconSuper from "./images/iconSuper.png";
-import iconTrophy from "./images/iconTrophy.png";
+import iconStart from "../../assets/iconStart.png";
+import iconFinish from "../../assets/iconFinish.png";
+import iconSuper from "../../assets/iconSuper.png";
+import iconTrophy from "../../assets/iconTrophy.png";
 import bgHeader from "../../assets/bgHeaderText.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
 export function HeaderLessonSL4({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) {
-  const { rodadaGeral, statusColor } = useContext(LessonContext);
+  const { statusColor } = useContext(LessonContext);
 
   return(
     <Container>

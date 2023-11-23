@@ -51,12 +51,12 @@ export const Container = styled.button`
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 560px;
-    height: 64px;
+  @media(min-width: 1280px) {
+    width: 450px;
+    height: 54px;
 
     p {
-      font-size: 36px;
+      font-size: 32px;
     }
   }
 `;

@@ -2,14 +2,12 @@ import { useState, useEffect, useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Form } from "./styles";
+import { Container, Main, Form, ButtonCheck } from "./styles";
 
 export const Game16 = () => {
   const {
@@ -28,9 +26,6 @@ export const Game16 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -76,6 +71,10 @@ export const Game16 = () => {
   }
 
   const handleVerify = (event) => {
+    if (blockButton) return;
+
+    setBlockButton(true);
+
     event.preventDefault();
 
     let tempWord = text;
@@ -172,18 +171,10 @@ export const Game16 = () => {
             onChange={(e) => setText(e.target.value)}
           />
         </Form>
-
         <p>{question}</p>
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "400px" : isTablet ? "300px" : "100px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

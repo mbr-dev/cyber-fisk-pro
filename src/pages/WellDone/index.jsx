@@ -5,7 +5,6 @@ import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 
 import { Loading } from "../../components/Loading";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { LineSeparator } from "../../components/LineSeparator";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
@@ -21,7 +20,7 @@ import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div, AreaButton, ButtonHome } from "./styles";
 
 export const WellDone = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
@@ -29,8 +28,9 @@ export const WellDone = () => {
 
   const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
+  const [showConfetti, setShowConfetti] = useState(true);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
 
   const phrase = [
     "Good job!",
@@ -130,6 +130,10 @@ export const WellDone = () => {
     setError(false);
   }
 
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
+
   useEffect(() => {
     const cookies = new Cookies();
     setName(cookies.get('raf'));
@@ -145,13 +149,21 @@ export const WellDone = () => {
     salvar(`${hours}:${minutes}:${seconds}`);
   },[]);
 
+  useEffect(() => {
+    const confettiTimer = setTimeout(() => {
+      setShowConfetti(false);
+    }, 10000);
+
+    return () => clearTimeout(confettiTimer);
+  }, []);
+
   if (isLoading) {
     return <Loading />
   }
 
   return (
     <Container>
-      <Confetti numberOfPieces={90} />
+      {showConfetti && <Confetti numberOfPieces={100} tweenDuration={10000} />}
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
       <Header>
@@ -237,7 +249,11 @@ export const WellDone = () => {
           </Div>
         </Main>
 
-        <FooterBtnHome />
+        <AreaButton>
+          <ButtonHome onClick={handleGoHome}>
+            <p>Home</p>
+          </ButtonHome>
+        </AreaButton>
       </Content>
     </Container>
   )

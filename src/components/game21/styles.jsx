@@ -9,16 +9,12 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   width: 100%;
-  margin-top: 3rem;
+  margin-top: 16px;
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 2rem;
-
-  @media(max-width: 360px) {
-    margin-top: 2rem;
-  }
+  gap: 16px;
 
   @media(max-width: 320px) {
     margin-top: 0.5rem;
@@ -97,7 +93,39 @@ export const Select = styled.select`
     height: 32px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
+    font-size: 32px;
     height: 36px;
+  }
+`;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 150px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 350px;
+    height: 52px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

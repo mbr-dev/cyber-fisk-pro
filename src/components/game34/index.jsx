@@ -101,7 +101,7 @@ export const Game34 = () => {
   }
 
   const handleClick = (index) => {
-    if (blockButton || playAudio) return;
+    if (blockButton || playAudio || (selectedColor[index] === 1)) return;
 
     let tempCountClick = countClick;
     tempCountClick++;

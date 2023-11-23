@@ -3,14 +3,13 @@ import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop, Left, Right, AreaButton } from "./styles";
+import { Container, Main, AreaAnswers, Words, AreaWord, WordsDrop, Left, Right, AreaButton, Button } from "./styles";
 
 export const Game29 = () => {
   const {
@@ -34,9 +33,6 @@ export const Game29 = () => {
   const [wordsIndex, setWordsIndex] = useState([]);
   const [wordsIndex1, setWordsIndex1] = useState([]);
   const [wordsDropped1, setWordsDropped1] = useState([]);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -331,24 +327,9 @@ export const Game29 = () => {
       </Main>
 
       <AreaButton>
-        <ButtonBg
-          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
-          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
-          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
-          title="Clear"
-          onPress={handleClear}
-        />
-
-        <ButtonBg 
-          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
-          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
-          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
-          greenBtn
-          title="Check"
-          disabledButton={blockButton}
-          onPress={handleVerify}
-        />
-      </AreaButton>
+          <Button onClick={handleClear} $variant="red">Clear</Button>
+          <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
+        </AreaButton>
     </Container>
   )
 }

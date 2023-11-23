@@ -269,7 +269,6 @@ export const Game15 = () => {
           <Button onClick={handleClear} $variant="red">Clear</Button>
           <Button onClick={verifyWord} disabled={blockButton}>Check</Button>
         </AreaButton>
-      
     </Container>
   )
 }

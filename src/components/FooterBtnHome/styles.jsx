@@ -19,9 +19,9 @@ export const Container = styled.div`
     height: 104px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 680px;
-    height: 120px;
+    height: 100px;
     border-width: 4px;
   }
 

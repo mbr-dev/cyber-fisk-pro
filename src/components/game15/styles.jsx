@@ -66,13 +66,18 @@ export const AreaAnswers = styled.div`
 `;
 
 export const AreaWord = styled.div`
-  width: 17rem;
-  height: 120px;
+  width: 300px;
+  height: 130px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 10px;
+
+  @media (min-width: 1280px) {
+    width: 300px;
+    height: 200px;
+  }
 `;
 
 export const Words = styled.span`
@@ -121,5 +126,11 @@ export const Button = styled.button`
   &:disabled {
     cursor: not-allowed;
     opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 250px;
+    height: 48px;
+    font-size: 24px;
   }
 `;

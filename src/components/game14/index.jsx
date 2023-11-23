@@ -3,14 +3,14 @@ import { useContext, useState, useCallback, useEffect } from "react";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../subTitleLesson";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Image, ButtonArea, Div } from "./styles";
+import { Container, Main, Image, ButtonArea, ButtonAnswer } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game14 = () => {
   const {
@@ -31,9 +31,6 @@ export const Game14 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -192,38 +189,28 @@ export const Game14 = () => {
       <TitleLesson title="Choose the correct alternative." /> 
 
       <Main>
-        {!isDesktop &&
-          <Image>
-            <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
-          </Image>}
+        <Image>
+          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
+        </Image>
 
         <SubTitleLesson title={question} />
 
-        <Div>
-          {isDesktop &&
-            <Image>
-              <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
-            </Image>}
-
-          <ButtonArea>
-            {answers.map((answer, index) => {
-              return (
-                <ButtonAnswer
-                  w={isDesktop ? "380px" : isTablet ? "320px" : "9rem"}
-                  h={isDesktop ? "72px" : isTablet ? "64px" : "3rem"}
-                  key={index}
-                  optionColor={selectedColor[index]}
-                  onPress={() => handleClick(index)}
-                  disabledButton={blockButton}
-                >
-                  <p style={{
-                    fontSize: isTablet ? "22px" : isDesktop ? "26px" : "",
-                  }}>{answer.label}</p>
-                </ButtonAnswer>
-              )
-            })}
-          </ButtonArea>
-        </Div>
+        <ButtonArea>
+          {answers.map((answer, index) => {
+            return (
+              <ButtonAnswer
+                key={index}
+                onClick={() => handleClick(index)}
+                disabled={blockButton}
+                style={{
+                  borderColor: selectedColor[index] ? defaultTheme["red-200"] : ""
+                }}
+              >
+                <p>{answer.label}</p>
+              </ButtonAnswer>
+            )
+          })}
+        </ButtonArea>
       </Main>
     </Container>
   )

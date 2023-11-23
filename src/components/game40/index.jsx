@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 
-import { Container, Main } from "./styles";
+import { Container, Main, ButtonAnswer } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game40 = () => {
   const {
@@ -215,11 +215,11 @@ export const Game40 = () => {
           return (
             <ButtonAnswer
               key={index}
-              w={isDesktop ? "400px" : isTablet ? "320px" : "9rem"}
-              h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
-              onPress={() => handleClick(index)}
-              optionColor={selectedColor[index]}
-              disabledButton={blockButton}
+              onClick={() => handleClick(index)}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
               <p style={{
                 fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
