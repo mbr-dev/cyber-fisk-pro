@@ -11,7 +11,7 @@ export const Container = styled.div`
   flex: 1;
   display: flex;
   flex-direction: column;
-  justify-content: flex-end;
+  justify-content: space-around;
   gap: 44px;
 `;
 export const Image = styled.img`
@@ -52,13 +52,15 @@ export const Input = styled(TextField)`
   }
 `;
 export const ContainerCheckButton = styled.div`
-  margin-block: 20px;
+  display: flex;
+  justify-content: center;
+  margin-block: 40px;
 `;
 export const CheckButton = styled(BaseButton)`
   width: 90%;
   height: 60px;
   padding: 0 !important;
-  margin-top: 12px;
+  /* margin-top: 12px; */
   animation-name: ${fadeIn};
   animation-duration: 1s;
   color: ${colors.white} !important;

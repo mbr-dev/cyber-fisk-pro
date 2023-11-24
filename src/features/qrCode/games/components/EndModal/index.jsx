@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Dialog, Slide } from "@mui/material";
 import { useNavigate } from "react-router-dom";
-import Cookies from 'universal-cookie';
+import Cookies from "universal-cookie";
 
 import trofeuExcellentImg from "./../../../assets/images/Trofeu_excelente.png";
 import trofeuGoodImg from "./../../../assets/images/Trofeu_bom.png";
@@ -23,7 +23,7 @@ import {
   QuestionsContainer,
   Question,
   ButtonsContainer,
-  ButtonFooter
+  ButtonFooter,
 } from "./style";
 import { formatQuestionServer } from "../../../../../utils";
 import { URL_HMLG_PRO } from "../../../../../config/infos";
@@ -78,7 +78,7 @@ export const EndModal = (props) => {
               {props?.grade > 79 ? "Good!" : "Try Again!"}
             </HeaderText>
           ) : (
-            <HeaderImg src={props?.grade > 79 ? IconSad : IconHappy} />
+            <HeaderImg src={props?.grade > 79 ? IconHappy : IconSad} />
           )}
         </Header>
         <MainContainer>
@@ -110,7 +110,7 @@ export const EndModal = (props) => {
                   if (question?.correct === false) {
                     return (
                       <Question key={index}>
-                        {formatQuestionServer(question?.pergunta) ||
+                        {formatQuestionServer(question?.titulo_refazer) ||
                           `Question ${index}`}
                       </Question>
                     );

@@ -13,8 +13,8 @@ export const SelectButton = (props) => {
           fill={colors["gray-800"]}
           stroke={colors["gray-800"]}
           style={{
-            transform: `rotate(${props?.$show ? "0" : "180deg"})`,
-            transition: "transform 0.5s"
+            transform: `rotate(${props?.$show ? "180deg" : "0"})`,
+            transition: "transform 0.5s",
           }}
         />
       </StyledSelectButton>
