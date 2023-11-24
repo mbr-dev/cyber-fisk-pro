@@ -26,3 +26,42 @@ export const Main = styled.main`
     gap: 44px;
   }
 `;
+
+export const ButtonAnswer = styled.button`
+  all: unset;
+  width: 280px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  padding-inline: 8px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+
+  p {
+    line-height: 1.1;
+    font-size: 14px;
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }  
+
+  @media(max-width: 320px) {
+    width: 210px;
+    height: 56px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 500px;
+    height: 86px;
+  }
+`;

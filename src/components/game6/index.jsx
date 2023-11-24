@@ -3,15 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudioImg } from "../subTitleLessonAudioImg";
 
 import { URL_FISKPRO } from "../../config/infos";
-import { L1_T2_Medio } from "../../utils/lesson1_Task";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main } from "./styles";
+import { Container, Main, ButtonAnswer } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game6 = () => {
   const {
@@ -33,9 +32,7 @@ export const Game6 = () => {
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -82,8 +79,9 @@ export const Game6 = () => {
     setBlockButton(false);
     setIsLoading(false);
   }, [setIsLoading, setImage, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
-  console.log("images: ", image);
+
   const newRound = (number) => {
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
@@ -99,12 +97,11 @@ export const Game6 = () => {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
-
     setBlockButton(false);
   }
 
   const handleClick = (index) => {
-    if (blockButton || playAudio) return;
+    if (blockButton || playAudio || (selectedColor[index] === 1)) return;
 
     setBlockButton(false);
 
@@ -125,6 +122,8 @@ export const Game6 = () => {
         setSelectedColor(tempSelectedColor);
         return;
       }
+
+      setBlockButton(true);
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
@@ -148,6 +147,8 @@ export const Game6 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     tempRound++;
     setRound(tempRound);
@@ -211,22 +212,20 @@ export const Game6 = () => {
   return (
     <Container>
       <TitleLesson title="Choose the 3 correct alternatives." />
-      <SubTitleLessonAudioImg img={image} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudioImg stopAudio={cancelAudio}  img={image} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {
           return (
             <ButtonAnswer
               key={index}
-              w={isDesktop ? "400px" : isTablet ? "200px" : "9rem"}
-              h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
-              onPress={() => handleClick(index)}
-              optionColor={selectedColor[index]}
-              disabledButton={blockButton}
+              onClick={() => handleClick(index)}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
-              <p style={{
-                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
-              }}>{answer.label}</p>
+              <p>{answer.label}</p>
             </ButtonAnswer>
           )
         })}

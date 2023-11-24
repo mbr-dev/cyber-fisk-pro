@@ -116,7 +116,7 @@ export const Rewards = () => {
         </Right>
       </Main>
 
-      <LineSeparator wl="80%" bg={defaultTheme["gray-200"]} />
+      <LineSeparator wl="90%" bg={defaultTheme["gray-200"]} />
       <Footer>
         <div>
           <ButtonBg

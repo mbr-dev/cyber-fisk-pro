@@ -48,6 +48,10 @@ export const BarStep = styled.div`
   @media(min-width: 1024px) {
     padding-inline: 24px;
   }
+
+  @media(min-width: 1440px) {
+    padding-inline: 24px;
+  }
 `;
 
 export const Icons = styled.div`

@@ -16,8 +16,6 @@ import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
 import RoboWD from "../../assets/RoboWD.png";
 
-/* dx maior o carrousel no desktop */
-
 import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, PositionImg } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
@@ -28,18 +26,18 @@ export const Ranking = () => {
       spacing: 16,
     },
     breakpoints: {
-      "(min-width: 1440px)": {
+      "(min-width: 1124px)": {
         slides: {
-          perView: 2.8,
-          spacing: 32,
+          perView: 3,
+          spacing: 28,
         },
       },
-      "(min-width: 1920px)": {
+      "(min-width: 1440px)": {
         slides: {
           perView: 3.5,
           spacing: 32,
         },
-      },
+      }
     },
   });
 
@@ -193,13 +191,7 @@ export const Ranking = () => {
         {!isDesktop &&<LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS={!isDesktop ? false : true}
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <FooterBtnHome />
     </Container>
   )
 }

@@ -15,7 +15,16 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  justify-content: center;
+  gap: 24px;
+
+  @media (max-width: 320px)  {
+    gap: 10px;
+  }
+
+  @media (min-width: 1280px)  {
+    flex-direction: row;
+  }
 `;
 
 export const Photos = styled.div`
@@ -30,21 +39,9 @@ export const Photos = styled.div`
     gap: 8px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    gap: 16px;
-  }
-
-  @media(min-width: 1024px) {
-   gap: 12px;
-  }
-
-  @media(min-width: 1440px) {
-   gap: 28px;
-  }
-
-  @media(min-width: 1920px) {
-   gap: 32px;
+  @media (min-width: 1280px)  {
+    width: 450px;
+    height: 300px;
   }
 `;
 
@@ -62,18 +59,26 @@ export const Photo = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 140px;
-    height: 70px;
+    width: 120px;
+    height: 60px;
     border-radius: 6px;
   }
 
-  @media(min-width: 600px) {
-    width: 250px;
-    height: 154px;
+  @media(min-width: 1280px) {
+    width: 200px;
+    height: 130px;
   }
+`;
 
-  @media(min-width: 1024px) {
-    width: 270px;
+export const Div = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @media (min-width: 1280px) {
+    width: 530px;
+    height: 300px;
+    justify-content: space-between;
   }
 `;
 
@@ -85,12 +90,8 @@ export const Types = styled.div`
   flex-wrap: wrap;
   gap: 4px;
 
-  @media(min-width: 600px) {
-    gap: 12px;
-  }
-
-  @media(min-width: 1024px) {
-    gap: 18px;
+  @media(min-width: 1280px) {
+    gap: 6px;
   }
 `;
 
@@ -104,30 +105,18 @@ export const Type = styled.div`
   border: 2px solid ${props => props.theme.black};
 
   @media(max-width: 360px) {
-    width: 28px;
-    height: 28px;
+    width: 30px;
+    height: 36px;
   }
 
   @media(max-width: 320px) {
-    width: 24px;
-    height: 24px;
+    width: 28px;
+    height: 32px;
   }
 
-   @media(min-width: 600px) {
-    width: 52px;
-    height: 64px;
-    font-size: 32px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 48px;
-    height: 58px;
-  }
-
-  @media(min-width: 1440px) {
-    width: 64px;
-    height: 72px;
-    font-size: 36px;
+  @media(min-width: 1280px) {
+    width: 42px;
+    height: 56px;
   }
 `;
 
@@ -141,20 +130,14 @@ export const Keyboard = styled.div`
   gap: 0.75rem;
   background-color: ${props => props.theme["gray-300"]};
 
-  @media(max-width: 320px) {
-    gap: 8px;
+  @media(max-width: 360px) {
+    padding: 14px;
+    gap: 8px
   }
 
-  @media(min-width: 600px) {
-    padding: 18px;
-  }
-
-  @media(min-width: 1024px) {
-    gap: 16px;
-  }
-
-  @media(min-width: 1920px) {
-    gap: 20px;
+  @media(min-width: 1280px) {
+    gap: 14px;
+    padding: 12px 42px;
   }
 `;
 
@@ -192,14 +175,8 @@ export const Keys = styled.button`
     font-size: 24px;
   }
 
-  @media(min-width: 1024px) {
-    width: 52px;
-    height: 52px;
-  }
-
-  @media(min-width: 1440px) {
-    width: 64px;
-    height: 64px;
-    font-size: 32px;
+  @media(min-width: 1280px) {
+    width: 48px;
+    height: 48px;
   }
 `;

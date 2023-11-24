@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../subTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main } from "./styles";
+import { Container, Main, ButtonAnswer } from "./styles";
 
 export const Game8 = () => {
   const {
@@ -30,6 +29,7 @@ export const Game8 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [changeText, setChangeText] = useState("______");
   const [data, setData] = useState([]);
+  const [buttonVisibility, setButtonVisibility] = useState([0, 0, 0]);
   const [isLoading, setIsLoading] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
@@ -81,6 +81,7 @@ export const Game8 = () => {
 
   const newRound = (number) => {
     setChangeText("______");
+    setButtonVisibility([0, 0, 0]);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -213,6 +214,7 @@ export const Game8 = () => {
       const changeTxt = over ? answers[droppedIndex].label : "______";
       setChangeText(changeTxt);
       verifyAnswer(droppedIndex);
+      setButtonVisibility(state => state.map((_, index) => index === droppedIndex ? 1 : 0))
     }
   }
 
@@ -236,17 +238,13 @@ export const Game8 = () => {
         </Droppable>
 
         <Main>
-          {answers.map((answers, index) => {
+          {answers.map((answer, index) => {
             return (
               <Draggable index={index} key={index}>
-                <ButtonAnswer
-                  w={isTablet? "200px" : "5rem"}
-                  h={isTablet ? "64px" : "3rem"}
-                  disabledButton={blockButton}
-                >
-                  <p style={{
-                    fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
-                  }}>{answers.label}</p>
+                <ButtonAnswer style={{
+                    display: buttonVisibility[index] === 1 ? "none" : ""
+                }}>
+                  <p>{answer.label}</p>
                 </ButtonAnswer>
               </Draggable>
             )

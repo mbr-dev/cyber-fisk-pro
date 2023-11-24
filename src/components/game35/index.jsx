@@ -2,7 +2,6 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -10,7 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Main, Container, Input } from "./styles";
+import { Main, Container, Input, ButtonCheck } from "./styles";
 
 export const Game35 = () => {
   const {
@@ -30,9 +29,7 @@ export const Game35 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -71,7 +68,7 @@ export const Game35 = () => {
 
   const newRound = (number) => {
     setText("");
-
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.audio);
@@ -104,6 +101,7 @@ export const Game35 = () => {
       tempEr++;
       setWrongPoints(tempEr);
     }
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -165,7 +163,7 @@ export const Game35 = () => {
   return (
     <Container>
       <SubTitleLesson title="write what you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
@@ -177,16 +175,9 @@ export const Game35 = () => {
           />
         </form>
         <p>{question}</p>
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

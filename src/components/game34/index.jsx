@@ -31,6 +31,7 @@ export const Game34 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -79,6 +80,7 @@ export const Game34 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -99,7 +101,7 @@ export const Game34 = () => {
   }
 
   const handleClick = (index) => {
-    if (blockButton || playAudio) return;
+    if (blockButton || playAudio || (selectedColor[index] === 1)) return;
 
     let tempCountClick = countClick;
     tempCountClick++;
@@ -139,7 +141,7 @@ export const Game34 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
-
+    setCancelAudio(true);
     setBlockButton(true);
 
     let tempRound = round;
@@ -202,7 +204,7 @@ export const Game34 = () => {
   return (
     <Container>
       <TitleLesson title="Listen and choose the correct past tense." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {

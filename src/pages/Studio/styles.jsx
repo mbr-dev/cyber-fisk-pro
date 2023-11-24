@@ -22,7 +22,7 @@ export const Main = styled.main`
   gap: 2rem;
 
   @media(max-width: 320px) {
-    gap: 0.75rem;
+    gap: 4px;
   }
 
   @media(min-width: 600px) {
@@ -55,6 +55,10 @@ export const Right = styled.div`
   align-items: center;
   gap: 16px;
 
+  @media(max-width: 320px) {
+    gap: 4px;
+  }
+
   @media(min-width: 600px) {
     gap: 24px;
   }
@@ -81,8 +85,8 @@ export const Info = styled.section`
   background-color: ${props => props.theme["gray-700"]};
 
   @media(max-width: 320px) {
-    width: 16rem;
-    gap: 0.5rem;
+    width: 250px;
+    gap: 4px;
   }
 
   @media(min-width: 600px) {
@@ -103,10 +107,10 @@ export const User = styled.div`
   }
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
+    margin-top: 6px;
 
     span {
-      font-size: 0.875rem;
+      font-size: 12px;
     }
   }
 
@@ -218,14 +222,18 @@ export const From = styled.div`
   }
 
   @media(max-width: 320px) {
-    gap: 0.125rem;
+    gap: 8px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 12px;
     }
 
     span {
-      font-size: 0.875rem;
+      font-size: 12px;
+    }
+
+    img {
+      width: 32px;
     }
   }
 
@@ -365,8 +373,8 @@ export const ButtonArea = styled.section`
     gap: 1.5rem;
 
     button {
-      width: 2.5rem;
-      height: 2.5rem;
+      width: 36px;
+      height: 36px;
 
       img {
         width: 18px;
@@ -403,7 +411,7 @@ export const ButtonArea = styled.section`
 
 export const ButtonRec = styled.button`
   all: unset;
-  width: 13rem;
+  width: 220px;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -428,7 +436,7 @@ export const ButtonRec = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 13rem;
+    width: 172px;
     height: 3rem;
 
     img {

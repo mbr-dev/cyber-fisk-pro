@@ -17,12 +17,69 @@ export const Main = styled.div`
   gap: 2rem;
   margin-top: 3rem;
 
-  @media(max-width: 320px) {
-    margin-top: 2rem;
+  @media(max-width: 360px) {
+    margin-top: 24px;
+    gap: 24px;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 54px;
-    gap: 44px;
+  @media(max-width: 320px) {
+    margin-top: 16px;
+    gap: 16px;
+  }
+
+  @media(min-width: 768px) {
+    margin-top: 32px;
+    gap: 32px;
+  }
+`;
+
+export const ButtonAnswer = styled.button`
+  all: unset;
+  width: 250px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+
+  p {
+    line-height: 1.1;
+    font-size: 16px;
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }  
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 54px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 380px;
+    height: 84px;
+
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 350px;
+    height: 84px;
   }
 `;

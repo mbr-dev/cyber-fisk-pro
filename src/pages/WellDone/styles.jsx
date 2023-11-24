@@ -6,10 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  overflow-x: hidden;
 
   @media(min-width: 1024px) {
     flex-direction: row;
-    overflow: hidden;
   }
 `;
 
@@ -27,6 +27,8 @@ export const Header = styled.header`
     width: 100%;
     height: 100%;
     position: absolute;
+    top: -1px;
+    left: -1px;
     z-index: -1;
   }
 
@@ -34,11 +36,16 @@ export const Header = styled.header`
     gap: 8px;
   }
 
+  @media(max-width: 320px) {
+    height: 250px;
+    gap: 4px;
+  }
+
   @media(min-width: 600px) {
     height: 560px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 40%;
     height: 100vh;
     gap: 20px;
@@ -50,6 +57,10 @@ export const Top = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 0 16px;
+
+  @media(max-width: 320px) {
+    padding: 12px 12px 0 12px;
+  }
 
   @media(min-width: 1024px) {
     padding: 24px 24px 0 24px;
@@ -67,6 +78,14 @@ export const Middle = styled.section`
   h2 {
     color: ${props => props.theme.white};
     font-size: 42px;
+  }
+
+  @media(max-width: 320px) {
+    margin-top: -32px;
+
+    h2 {
+      font-size: 24px;
+    }
   }
 
   @media(min-width: 600px) {
@@ -122,6 +141,23 @@ export const AvatarArea = styled.div`
     text-overflow: ellipsis;
   }
 
+  @media(max-width: 320px) {
+    img {
+      width: 100px;
+    }
+
+    .bgConfetes {
+      width: 80%;
+    }
+
+    p {
+      border-radius: 8px;
+      width: 120px;
+      height: 28px;
+      font-size: 14px;
+    }
+  }
+
   @media(min-width: 600px) {
     img {
       width: 280px;
@@ -141,7 +177,8 @@ export const AvatarArea = styled.div`
 
   @media(min-width: 1024px) {
     .bgConfetes {
-      width: 90%;
+      width: 450px;
+      height: 400px;
     }
 
     p {
@@ -172,7 +209,13 @@ export const Bottom = styled.section`
     gap: 6px;
   }
 
-  @media(min-width: 600px) {
+  @media(max-width: 320px) {
+    width: 90%;
+    gap: 4px;
+  }
+
+  @media(min-width: 768px) {
+    width: 90%;
     gap: 6px;
   }
 `;
@@ -206,6 +249,23 @@ export const AreaItem = styled.section`
     font-weight: 500;
   }
 
+  @media(max-width: 320px) {
+    img {
+      width: 20px;
+    }
+
+    span {
+      width: 24px;
+      height: 24px;
+      font-size: 14px;
+      border-radius: 6px;
+    }
+
+    p {
+      font-size: 14px;
+    }
+  }
+
   @media(min-width: 600px) {
     gap: 20px;
 
@@ -234,7 +294,6 @@ export const Content = styled.div`
   justify-content: space-between;
 
   @media(min-width: 1024px) {
-    flex: 0;
     width: 60%;
     height: 100vh;
   }
@@ -259,6 +318,10 @@ export const Main = styled.main`
     border-radius: 6px;
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
+  }
+
+  @media(max-width: 320px) {
+    margin-top: -20px;
   }
 
   @media(min-width: 600px) {
@@ -316,6 +379,16 @@ export const ButtonRed = styled.button`
     background-color: ${props => props.theme["red-300"]};
   }
 
+  @media(max-width: 320px) {
+    width: 220px;
+    height: 38px;
+    gap: 16px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
   @media(min-width: 600px) {
     width: 500px;
     height: 84px;
@@ -345,8 +418,8 @@ export const Bottom2 = styled.section`
   justify-content: center;
   gap: 10px;
   position: relative;
-  margin-left: 200px;
   margin-top: 64px;
+  margin-right: -112px;
 
   .fundoBg {
     width: 100%;
@@ -357,8 +430,16 @@ export const Bottom2 = styled.section`
     border-bottom-left-radius: 20px;
   }
 
-  @media(min-width: 2560px) {
-    margin-left: 350px;
+  @media(min-width: 1440px) {
+    margin-right: -130px;
+  }
+
+  @media(min-width: 1920px) {
+    margin-right: -140px;
+  }
+
+  @media(min-width: 1920px) {
+    margin-right: -188px;
   }
 `;
 
@@ -440,6 +521,12 @@ export const IconAvatar = styled.div`
     width: 100%;
   }
 
+  @media(max-width: 320px) {
+    width: 36px;
+    height: 36px;
+    margin-left: -0px
+  }
+
   @media(min-width: 600px) {
     width: 72px;
     height: 72px;
@@ -459,6 +546,21 @@ export const Div = styled.div`
   justify-content: center;
   gap: 8px;
 
+  @media(max-width: 320px) {
+    gap: 6px;
+
+    div {
+      p {
+        font-size: 14px;
+        margin-bottom: 6px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
   @media(min-width: 600px) {
     gap: 14px;
   }
@@ -475,6 +577,14 @@ export const Div = styled.div`
       gap: 20px;
     }
   }
+
+  @media(min-width: 1440px) {
+    margin-top: 100px;
+  }
+
+  @media(min-width: 1920px) {
+    margin-top: 50px;
+  }
 `;
 
 export const Text = styled.div`
@@ -488,9 +598,18 @@ export const Text = styled.div`
   border-radius: 6px;
   opacity: 0.5;
 
-  @media(min-width: 600px) {
-    width: 350px;
-    height: 82px;
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+    
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 380px;
+    height: 100px;
     
     p {
       font-size: 22px;
@@ -504,6 +623,78 @@ export const Text = styled.div`
     
     p {
       font-size: 22px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    width: 400px;
+    height: 180px;
+  }
+`;
+
+export const AreaButton = styled.div`
+  width: 300px;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-top: 1px solid ${props => props.theme["gray-200"]};
+
+  @media (max-width: 360px) {
+    height: 64px;
+  }
+
+  @media (max-width: 320px) {
+    width: 250px;
+    height: 54px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 600px;
+    height: 96px;
+    border-width: 3px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom: 4px solid ${props => props.theme["red-300"]};
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 56px;
+
+    p {
+      font-size: 32px;
     }
   }
 `;

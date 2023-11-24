@@ -28,6 +28,16 @@ export const Content = styled(Dialog.Content)`
   @media(max-width: 320px) {
     width: 18rem;
   }
+
+  @media(min-width: 768px) {
+    width: 500px;
+    height: 700px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 1000px;
+    height: 550px;
+  }
 `;
 
 export const Close = styled(Dialog.Close)`
@@ -43,11 +53,30 @@ export const Close = styled(Dialog.Close)`
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
+  img {
+    width: 20px;
+  }
+
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
     top: -0.5rem;
     right: -0.5rem;
+
+    img {
+      width: 16px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 64px;
+    height: 64px;
+    top: -30px;
+    right: -30px;
+
+    img {
+      width: 32px;
+    }
   }
 `;
 
@@ -68,12 +97,23 @@ export const CloseEnter = styled(Dialog.Close)`
   @media(max-width: 320px) {
     height: 1.75rem;
   }
+
+  @media(min-width: 768px) {
+    width: 250px;
+    height: 56px;
+    font-size:32px;
+    position: absolute;
+    bottom: -32px;
+    margin-bottom: 0;
+  }
 `;
 
 export const Header = styled.header`
   width: 100%;
-  text-align: center;
-  padding-block: 0.75rem;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${props => props.theme["blue-300"]};
   border: 2px solid ${props => props.theme["blue-200"]};
   border-end-end-radius: 8px;
@@ -92,6 +132,14 @@ export const Header = styled.header`
 
   @media(max-width: 320px) {
     font-size: 1rem;
+  }
+
+  @media(min-width: 768px) {
+    height: 86px;
+
+    p {
+      font-size: 32px
+    }
   }
 `;
 
@@ -124,6 +172,11 @@ export const Main = styled.main`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 1024px) {
+    flex-direction: row;
+    justify-content: space-around;
+  }
 `;
 
 export const Text = styled.section`
@@ -133,6 +186,21 @@ export const Text = styled.section`
 
   @media(max-width: 360px) {
     gap: 0.5rem;
+  }
+
+  @media(min-width: 768px) {
+    gap: 16px;
+
+    p {
+      font-size: 24px;
+      font-weight: normal;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 350px;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -144,12 +212,26 @@ export const Info = styled.section`
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+
+  @media(min-width: 768px) {
+    gap: 20px;
+  }
+
+  @media(min-width: 1024px) {
+    width: 400px;
+    align-items: center;
+    justify-content: center;
+  }
 `;
 
 export const Line = styled.div`
   width: 13rem;
   height: 2px;
   background-color: ${props=> props.theme["blue-400"]};
+
+  @media(min-width: 768px) {
+    width: 400px;
+  }
 `;
 
 export const Row = styled.section`
@@ -160,6 +242,13 @@ export const Row = styled.section`
 
   @media(max-width: 320px) {
     gap: 0.365rem;
+  }
+
+  @media(min-width: 768px) {
+    p {
+      font-size: 24px;
+      font-weight: normal;
+    }
   }
 `;
 
@@ -192,5 +281,12 @@ export const Letters = styled.div`
     width: 2rem;
     height: 2rem;
     font-size: 1.25rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 48px;
+    height: 48px;
+    border-width: 3px;
+    font-size: 32px;
   }
 `;

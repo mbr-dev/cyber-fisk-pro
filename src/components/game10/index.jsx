@@ -2,7 +2,6 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -10,8 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Main, Container, Input } from "./styles";
+import { Main, Container, Input, ButtonCheck } from "./styles";
 
 export const Game10 = () => {
   const {
@@ -30,9 +28,7 @@ export const Game10 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -70,6 +66,7 @@ export const Game10 = () => {
 
   const newRound = (number) => {
     setText("");
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -103,6 +100,9 @@ export const Game10 = () => {
       tempEr++;
       setWrongPoints(tempEr);
     }
+
+    setCancelAudio(true);
+    setBlockButton(true);
 
     let tempRound = round;
     tempRound++;
@@ -164,7 +164,7 @@ export const Game10 = () => {
   return (
     <Container>
       <SubTitleLesson title="Write what you hear." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
         <form id="myForm" onSubmit={handleVerifyWord}>
@@ -175,16 +175,10 @@ export const Game10 = () => {
             onChange={(e) => setText(e.target.value)}
           />
         </form>
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "400px" : isTablet ? "300px" : "180px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "32px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          greenBtn
-        />
+
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

@@ -5,10 +5,12 @@ export const Container  = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Main  = styled.main`
   flex: 1;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,10 +90,30 @@ export const CoinArea  = styled.div`
   .gold {
     width: 52px;
   }
+
+  @media(max-width: 360px) {
+    img {
+      width: 36px;
+    }
+
+    .gold {
+      width: 42px;
+    }
+  }
+
+  @media(max-width: 360px) {
+    img {
+      width: 28px;
+    }
+
+    .gold {
+      width: 32px;
+    }
+  }
 `;
 
 export const Carrousel  = styled.div`
-  width: 70%;
+  width: 96%;
   height: 250px;
 
   @media(min-width: 1920px) {
@@ -120,8 +142,8 @@ export const Position  = styled.div`
   .pNumber {
     width: 50px;
     position: absolute;
-    top: 0px;
-    left:   0px;
+    top: 8px;
+    left: 16px;
     z-index: 1000;
   }
 `;
@@ -179,6 +201,16 @@ export const TextArea  = styled.div`
     font-weight: 500;
   }
 
+  @media(max-width: 320px) {
+    h2 {
+      font-size: 22px;
+    }
+
+    p {
+      font-size: 16px;
+    }
+  }
+
   @media(min-width: 600px) {
     h2 {
       font-size: 42px;
@@ -196,9 +228,16 @@ export const MainBottom  = styled.section`
   height: 330px;
   display: flex;
   flex-direction: column;
-  padding-top: 16px;
   overflow-y: scroll;
   background-color: ${props => props.theme["gray-100"]};
+
+  @media(max-width: 360px) {
+    height: 300px;
+  }
+
+  @media(max-width: 320px) {
+    height: 200px;
+  }
 
   @media(min-width: 600px) {
     height: 500px;

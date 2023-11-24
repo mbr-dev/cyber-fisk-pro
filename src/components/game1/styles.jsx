@@ -20,16 +20,60 @@ export const Main = styled.main`
     flex-wrap: wrap;
     justify-content: center;
   }
-
-  @media(min-width: 600px) {
+  
+  @media(min-width: 768px) {
     flex-direction: row;
     justify-content: center;
     margin-top: 36px;
     gap: 54px;
   }
-
+  
   @media(min-width: 1024px) {
     gap: 64px;
     margin-top: 44px;
+  }
+`;
+
+export const ButtonAnswer = styled.button`
+  all: unset;
+  width: 90px;
+  height: 100px;
+  display: flex;
+  align-items: center;
+  padding-inline: 1rem;
+  justify-content: center;
+  border: 2px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
+  transition: all 0.3s;
+  text-align: center;
+
+  img {
+    width: 100%;
+    height: 80%;
+    object-fit: contain;
+  }
+
+  p {
+    line-height: 1.1;
+  }
+
+  &:hover {
+    scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+  }  
+
+  @media(max-width: 320px) {
+    width: 74px;
+    height: 96px;
+  }
+
+  @media(min-width: 768px) {
+    width: 120px;
+    height: 150px;
   }
 `;

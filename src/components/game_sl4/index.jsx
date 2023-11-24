@@ -11,7 +11,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme"; 
-import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys } from "./styles";
+import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys, Div } from "./styles";
 
 export const GameSL4 = () => {
   const { 
@@ -268,43 +268,36 @@ export const GameSL4 = () => {
           })}
         </Photos>
 
-        <Types>
-          {divAnswer.map((letter, index) => {
-            return (
-              <Type key={index}>{letter}</Type>
-            )
-          })}
-        </Types>
-
-        <Keyboard>
-          {lettersQ.map((letter, index) => {
-            const dontHasLetter = optionColor.includes(index);
-            const hasLetter = rightLetter.includes(letter);
-            return (
-              <Keys 
-                key={index}
-                onClick={() => handleClick(index)}
-                style={{
-                  borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? defaultTheme["gray-700"] : "",
-                }}
-                disabled={hasLetter}
-              >
-                {letter}
-              </Keys>
-            )
-          })}
-        </Keyboard>
+        <Div>
+          <Types>
+            {divAnswer.map((letter, index) => {
+              return (
+                <Type key={index}>{letter}</Type>
+                )
+            })}
+          </Types>
+          <Keyboard>
+            {lettersQ.map((letter, index) => {
+              const dontHasLetter = optionColor.includes(index);
+              const hasLetter = rightLetter.includes(letter);
+              return (
+                <Keys 
+                  key={index}
+                  onClick={() => handleClick(index)}
+                  style={{
+                    borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? defaultTheme["gray-700"] : "",
+                  }}
+                  disabled={hasLetter}
+                  >
+                  {letter}
+                </Keys>
+              )
+            })}
+          </Keyboard>
+        </Div>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        title="Tasks" 
-        rota="LessonSelection"
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <FooterBtnHome title="Tasks" rota="LessonSelection"/>
     </Container>
   )
 }

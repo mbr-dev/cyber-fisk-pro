@@ -18,8 +18,8 @@ export const Header = styled.header`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding: 12px 16px 0 16px;
+  justify-content: flex-start;
+  padding: 16px;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
   overflow: hidden;
@@ -34,14 +34,19 @@ export const Header = styled.header`
     z-index: -1;
   }
 
-  @media(max-width: 320px) {
-    height: 100px;
-    padding: 12px 12px 0 12px;
-  }
-
   @media(max-width: 360px) {
     height: 132px;
-    padding: 14px 14px 0 14px;
+    padding: 14px;
+  }
+
+  @media(max-width: 320px) {
+    height: 110px;
+    padding: 12px;
+  }
+
+  @media(min-width: 768px) {
+    height: 180px;
+    padding: 16px 16px 0 16px;
   }
 
   @media(min-width: 1024px) {
@@ -55,7 +60,7 @@ export const Header = styled.header`
   }
 `;
 
-export const TopHeader = styled.div`
+export const TopHeader = styled.div`  
   width: 100%;
   display: flex;
   justify-content: space-between;
@@ -66,15 +71,21 @@ export const TopHeader = styled.div`
     color: ${props => props.theme["white"]};
   }
 
+  @media(max-width: 360px) {
+    p {
+      font-size: 20px;
+    }
+  }
+
   @media(max-width: 320px) {
     p {
       font-size: 16px;
     }
   }
 
-  @media(max-width: 360px) {
+  @media(min-width: 768px) {
     p {
-      font-size: 20px;
+      font-size: 32px;
     }
   }
 `;
@@ -84,20 +95,10 @@ export const BottomHeader = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
   
   .logoFisk {
-    width: 196px;
-  }
-
-  @media(max-width: 320px) {
-    
-    gap: 54px;
-    padding-bottom: 8px;
-
-    .logoFisk {
-      width: 100px;
-    }
+    width: 172px;
   }
 
   @media(max-width: 360px) {
@@ -106,6 +107,18 @@ export const BottomHeader = styled.div`
     .logoFisk {
       width: 150px;
     }
+  }
+
+  @media(max-width: 320px) {
+    gap: 32px;
+
+    .logoFisk {
+      width: 120px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    gap: 200px;
   }
 
   @media(min-width: 768px) {
@@ -123,7 +136,7 @@ export const Avatar = styled.div`
 
   img {
     width: 100px;
-    margin-top: -24px;
+    margin-top: -20px;
   }
 
   .roboPe {
@@ -145,9 +158,22 @@ export const Avatar = styled.div`
     background-color: ${props => props.theme["red-200"]};
   }
 
+  @media(max-width: 360px) {
+    img {
+      margin-top: -8px;
+      width: 64px;
+    }
+
+    p {
+      width: 96px;
+      height: 24px;
+      font-size: 14px;
+    }
+  }
+
   @media(max-width: 320px) {
     img {
-      margin-top: 0;
+      margin-top: -6px;
       width: 50px;
     }
 
@@ -158,15 +184,15 @@ export const Avatar = styled.div`
     }
   }
 
-  @media(max-width: 360px) {
+  @media(min-width: 768px) {
     img {
-      width: 64px;
+      width: 92px;
     }
 
     p {
-      width: 96px;
-      height: 24px;
-      font-size: 14px;
+      width: 130px;
+      height: 32px;
+      font-size: 18px;
     }
   }
 
@@ -219,17 +245,9 @@ export const Content = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  
- /*  @media(min-width: 800px) {
-    width: calc(100vw - 480px);
-  } */
 
   @media(min-width: 1024px) {
     width: 60%;
-  }
-
-  @media(min-width: 2560px) {
-    width: 50%;
   }
 `;
 
@@ -265,20 +283,26 @@ export const Main = styled.main`
   gap: 10px;
 
   @media(max-width: 320px) {
-    padding-top: 0;
-    gap: 2px;
+    padding-top: 6px;
+    gap: 4px;
   }
 
   @media(min-width: 768px) {
     gap: 20px;
   }
 
-  @media(min-width: 1920px) {
-    gap: 16px;
+  @media(min-width: 1024px) {
+    padding-top: 0px;
+    gap: 22px;
+    justify-content: center;
   }
 
-  @media(min-width: 2560px) {
-    gap: 20px;
+  @media(min-width: 1440px) {
+    gap: 28px;
+  }
+
+  @media(min-width: 1920px) {
+    gap: 32px;
   }
 `;
 
@@ -297,17 +321,6 @@ export const AreaInput = styled.div`
     margin-bottom: 8px;
   }
 
-  .iconImg {
-    width: 28px;
-    position: absolute;
-    top: 38px;
-    left: 10px;
-  }
-
-  .selectState {
-    color: ${props => props.theme["gray-600"]};
-  }
-
   .inputDate::-webkit-calendar-picker-indicator {
     display: none;
   }
@@ -315,26 +328,10 @@ export const AreaInput = styled.div`
   @media(max-width: 320px) {
     width: 250px;
 
-    .iconImg {
-      top: -38px;
-      background-color: red;
-    }
-
-    .selectState {
-      font-size: 12px;
-    }
-
     label {
       font-size: 12px;
       padding-left: 12px;
       margin-bottom: 6px;
-    }
-  }
-
-  @media(max-width: 360px) {
-    .iconImg {
-      width: 24px;
-      top: 36px;
     }
   }
 
@@ -354,11 +351,14 @@ export const AreaInput = styled.div`
       font-size: 24px;
       margin-bottom: 16px;
     }
+  }
 
-    svg {
-      top: 62px;
-      left: 18px;
-    }
+  @media(min-width: 1440px) {
+    width: 750px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1000px;
   }
 
   @media(min-width: 2560px) {
@@ -382,9 +382,7 @@ export const Div = styled.div`
   }
 
   @media(max-width: 320px) {
-    .selectState {
-      font-size: 12px;
-    }
+    gap: 4px;
 
     svg {
       top: 26px;
@@ -396,7 +394,7 @@ export const Div = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 80%;
+    width: 680px;
     flex-direction: row;
     align-items: center;
     justify-content: center;
@@ -411,89 +409,63 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 2560px) {
-    width: 70%;
+  @media(min-width: 1440px) {
+    width: 750px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1000px;
   }
 `;
 
-export const Input = styled.input`
+export const Input = styled.div`
   width: 100%;
   height: 42px;
-  padding-left: 42px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   border-radius: 8px;
+  padding-left: 10px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
 
-  &::placeholder {
+  p {
     font-weight: normal;
     font-family: "Ubuntu", sans-serif;
     font-size: 16px;
     color: ${props => props.theme["gray-600"]};
   }
 
-  @media(max-width: 320px) {
-    height: 30px;
-    padding-left: 30px;
+  img {
+    width: 20px;
+  }
 
-    &::placeholder {
+  @media(max-width: 360px) {
+    height: 36px;
+  }
+
+  @media(max-width: 320px) {
+    height: 32px;
+    gap: 6px;
+    padding-left: 6px;
+
+    p {
       font-size: 12px;
     }
   }
 
-  @media(max-width: 360px) {
-    height: 36px;
-  }
+  @media(min-width: 1280px) {
+    height: 64px;
+    padding-left: 14px;
 
-  @media(min-width: 768px) {
-    height: 62px;
-    padding-left: 54px;
-
-    &::placeholder {
+    p {
       font-size: 24px;
     }
+
+  img {
+    width: 32px;
   }
-
-  @media(min-width: 1024px) {
-    height: 64px;
-    box-shadow: 0px 4px 10px 0px #00000040;
-
-    &::placeholder {
-      font-size: 20px;
-    }
   }
-`;
-
-export const Select = styled.select`
-  width: 100%;
-  height: 42px;
-  padding-left: 42px;
-  border-radius: 8px;
-  border: 2px solid ${props => props.theme["gray-400"]};
-  background-color: transparent;
-  font-weight: normal;
-  font-family: "Ubuntu", sans-serif;
-
-  @media(max-width: 320px) {
-    height: 30px;
-  }
-
-  @media(max-width: 360px) {
-    height: 36px;
-  }
-
-  @media(min-width: 768px) {
-    height: 62px;
-    font-size: 24px;
-    padding-left: 54px;
-  }
-
-  @media(min-width: 1024px) {
-    height: 64px;
-    padding-left: 54px;
-    font-size: 24px;
-    box-shadow: 0px 4px 10px 0px #00000040;
-  }
-
 `;
 
 export const SelectIdioma = styled.div`
@@ -526,7 +498,7 @@ export const SelectTitle = styled.div`
 
   @media(max-width: 320px) {
     width: 250px;
-    height: 30px;
+    height: 10px;
 
     p {
       font-size: 12px;
@@ -595,7 +567,7 @@ export const SelectUl = styled.ul`
   @media(min-width: 1024px) {
     padding-inline: 44px;
     gap: 20px;
-    bottom: -140px;
+    bottom: -168px;
   }
 `;
 

@@ -7,7 +7,7 @@ export const ButtonHome = ({ title, rota }) => {
 
   const handleGoHome = (rota) => {
     if (rota) {
-      navigate(`/${rota}`)
+      navigate(rota);
     } else {
       navigate("/Home");
     }

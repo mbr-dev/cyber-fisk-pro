@@ -8,9 +8,6 @@ import { Container, Div, DivInside, Main } from "./styles";
 export const ReportStudio = () => {
   const navigate = useNavigate();
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
-
   const handleGoToRSL = () => {
     navigate("/ReportStudioL");
   }
@@ -101,13 +98,7 @@ export const ReportStudio = () => {
         </Div>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "90%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <FooterBtnHome />
     </Container>
   )
 }

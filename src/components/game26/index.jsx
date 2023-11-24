@@ -6,15 +6,13 @@ import {CSS} from '@dnd-kit/utilities';
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
-import { ButtonBg } from "../ButtonBg";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main } from "./styles";
+import { Container, Main, Button, ButtonAnswer } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game26 = () => {
@@ -37,9 +35,7 @@ export const Game26 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [blockAudio, setBlockAudio] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const sensors = useSensors(
     useSensor(PointerSensor),
@@ -95,6 +91,7 @@ export const Game26 = () => {
 
   const newRound = (number) => {
     setCountClick(0);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -143,6 +140,8 @@ export const Game26 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -196,7 +195,7 @@ export const Game26 = () => {
       transform: CSS.Transform.toString(transform),
       transition,
       backgroundColor: isDragging && defaultTheme["gray-300"],
-      border: isDragging && `2px solid ${defaultTheme["gray-400"]}`,
+      border: isDragging && `2px solid ${defaultTheme["red-200"]}`,
       borderRadius: isDragging && "8px",
       touchAction: "none"
     };
@@ -244,6 +243,7 @@ export const Game26 = () => {
     <Container>
       <TitleLesson title="Listen and put the sentences in order." />
       <SubTitleLessonAudio
+        stopAudio={cancelAudio}
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}
         countC={countClick}
         setCountC={setCountClick}
@@ -260,24 +260,16 @@ export const Game26 = () => {
             {answers.map((answer, index) => {
               return (
               <SortableItem key={index} id={answer}>
-                <ButtonAnswer 
-                  w={isTablet ? "250px" : isDesktop ? "250px" : "14rem"}
-                  h={isTablet ? "52px" : isDesktop ? "32px" : "3rem"}
-                >
+                <ButtonAnswer>
                   <p>{answer.label}</p>
                 </ButtonAnswer>
               </SortableItem>
             )})}
           </SortableContext>
         </DndContext>
-        <ButtonBg 
-          w={isDesktop ? "250px" : isTablet ? "200px" : "150px"}
-          h={isDesktop ? "48px" : isTablet ? "48px" : "28px"}
-          fs={isDesktop ? "30px" : isTablet ? "28px" : "16px"}
-          disabledButton={blockButton}
-          onPress={handleVerify}
-          title="Check"
-        />
+        <Button onClick={handleVerify} disabled={blockButton}>
+          <p>Check</p>
+        </Button>
       </Main>
     </Container>
   )

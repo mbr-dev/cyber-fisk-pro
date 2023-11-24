@@ -1,23 +1,24 @@
 import { useContext } from "react"; 
 import { useNavigate } from "react-router-dom";
+import * as Dialog from "@radix-ui/react-dialog";
 
+import { ModalBooks } from "./components/ModalBooks";
 import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { ButtonHome } from "../../components/ButtonHome";
 import { LineSeparator } from "../../components/LineSeparator";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 
 import { CyberContext } from "../../context/cyber";
 import { translateBooks } from "../../utils/Translate";
 
-import bookEss1 from './images/capa53.jpg';
+import bookEss1 from "./images/capa53.jpg";
 
-import { Container, Main, BooksArea, BooksImage } from "./styles";
+import { Container, Main, BooksArea, BooksImage, AreaFooter } from "./styles";
 
 export const Books = () => {
   const navigate = useNavigate();
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const { selectLanguage } = useContext(CyberContext);
   function clickLesson(){
@@ -37,9 +38,15 @@ export const Books = () => {
         <BooksArea>
           <p>{selectLanguage === 0 ? translateBooks[0].current : selectLanguage === 1 ? translateBooks[1].current : translateBooks[2].current}:</p>
 
-          <BooksImage>
-            <img src={bookEss1} alt="" onClick={() => {clickLesson()}} />
-          </BooksImage>
+          <Dialog.Root>
+            <Dialog.Trigger asChild>
+              <BooksImage>
+                <img src={bookEss1} alt="" />
+              </BooksImage>
+            </Dialog.Trigger>
+
+            <ModalBooks onPress={() => clickLesson()} />
+          </Dialog.Root>
         </BooksArea>
 
         {!isDesktop && <LineSeparator wl="100%" bg="#E6E6E6" />}
@@ -53,13 +60,9 @@ export const Books = () => {
         </BooksArea>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-        />
+      <AreaFooter>
+        <ButtonHome />
+      </AreaFooter>
     </Container>
   )
 }

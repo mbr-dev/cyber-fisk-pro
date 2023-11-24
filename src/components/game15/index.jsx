@@ -4,13 +4,12 @@ import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonBg } from "../ButtonBg";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaAnswers, Words, AreaWord, AreaButton } from "./styles";
+import { Container, Main, AreaAnswers, Words, AreaWord, AreaButton, Button } from "./styles";
 
 export const Game15 = () => {
   const {
@@ -28,10 +27,8 @@ export const Game15 = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
   const [phraseFix, setPhraseFix] = useState("");
+  const [blockButton, setBlockButton] = useState(true);
   const [data, setData] = useState([]);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -82,6 +79,7 @@ export const Game15 = () => {
 
     let tempAnswer = items.resposta;
     setAnswer(tempAnswer);
+    setBlockButton(true);
   }
 
   const handleClear = () => {
@@ -89,11 +87,12 @@ export const Game15 = () => {
   }
 
   const verifyWord = () => {
+    if (blockButton) return;
+
+    setBlockButton(true);
+
     const word = phrase.join("").toLowerCase();
     const answerRight = answer.split(" ").join("").toLowerCase();
-    console.log("word2: ", word);
-    //fazer aqui
-    console.log("answerRight: ", answerRight);
 
     let tempRightPoints;
 
@@ -221,6 +220,16 @@ export const Game15 = () => {
     setPhraseFix(textUp);
   }, [phrase, setPhraseFix]);
 
+  useEffect(() => {
+    if (words.length > 1) {
+      if (words.length === phrase.length) {
+        setBlockButton(false);
+      } else {
+        setBlockButton(true);
+      }
+    }
+  } ,[words, phrase])
+
   if (isLoading) {
     return (
       <Loading />
@@ -231,49 +240,35 @@ export const Game15 = () => {
     <Container>
       <TitleLesson title="Unscramble the words to form sentences." />
 
-      <DndContext onDragEnd={handleDragEnd}>
         <Main>
-          <Droppable>
-            <AreaAnswers>
-              <p>{phraseFix}</p>
-            </AreaAnswers>
-          </Droppable>
+          <DndContext onDragEnd={handleDragEnd}>
+            <Droppable>
+              <AreaAnswers>
+                <p>{phraseFix}</p>
+              </AreaAnswers>
+            </Droppable>
 
-          <AreaWord>
-            {words.map((word, index) => {
-              const containWord = phrase.includes(word)
-              return (
-                <Draggable index={index} key={index}>
-                  <Words style={{
-                    display: containWord ? "none" : "",
-                  }}>
-                    {word}
-                  </Words>
-                </Draggable>
-              )
-            })}
-          </AreaWord>
+            <AreaWord>
+              {words.map((word, index) => {
+                const containWord = phrase.includes(word)
+                return (
+                  <Draggable index={index} key={index}>
+                    <Words style={{
+                      display: containWord ? "none" : "",
+                    }}>
+                      {word}
+                    </Words>
+                  </Draggable>
+                )
+              })}
+            </AreaWord>
+          </DndContext>
         </Main>
         
         <AreaButton>
-          <ButtonBg
-            w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
-            h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-            title="Clear"
-            onPress={handleClear}
-          />
-
-          <ButtonBg
-            w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
-            h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-            title="Check"
-            greenBtn
-            onPress={verifyWord}
-          />
+          <Button onClick={handleClear} $variant="red">Clear</Button>
+          <Button onClick={verifyWord} disabled={blockButton}>Check</Button>
         </AreaButton>
-      </DndContext>
     </Container>
   )
 }

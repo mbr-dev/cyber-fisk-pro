@@ -10,7 +10,7 @@ export const SubTitleLessonAudioImg = (props) => {
   const { newStatusPlay, playAudio, numSelLesson } = useContext(LessonContext);
 
   const handleClick = () => {
-    if (playAudio) return;
+    if (playAudio || props.stopAudio) return;
 
     const audio = new Audio(props.audio);
     audio.play();

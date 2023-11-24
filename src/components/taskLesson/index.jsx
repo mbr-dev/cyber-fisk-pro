@@ -50,12 +50,15 @@ import { Game39 } from "../game39";
 import { Game40 } from "../game40";
 
 export const TaskLesson = () => {
-  const { setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed, setNewDataInicio } = useContext(LessonContext);
+  const { 
+    setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed, setNewDataInicio, setStatusColor 
+  } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
   const [strStart, setStrStart] = useState('');
   const [strEnd, setStrEnd] = useState('');
 
   const loadContent = async () => {
+    setStatusColor([0,0,0,0,0,0,0,0,0,0]);
     const cookies = new Cookies();
     const raf = cookies.get("raf");
     //gravar a frequencia com que o usuario jogou a atividade
@@ -161,11 +164,11 @@ export const TaskLesson = () => {
       case 26 :
         return(<Game26 />);
       case 27 :
-      return(<Game27 />);
+        return(<Game27 />);
       case 28 :
         return(<Game28 />);
       case 29 :
-      return(<Game29 />);
+        return(<Game29 />);
       case 30 :
         return(<Game30 />);
       case 31 :

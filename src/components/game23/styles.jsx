@@ -69,3 +69,34 @@ export const Input = styled.input`
     width: 800px;
   }
 `;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 150px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 350px;
+    height: 52px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+`;

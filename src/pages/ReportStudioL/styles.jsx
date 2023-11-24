@@ -17,6 +17,10 @@ export const Main = styled.main`
   gap: 120px;
   padding-top: 100px;
 
+  @media (max-width: 320px) {
+    gap: 32px;
+  }
+
   @media (min-width: 1024px) {
     width: 80%;
   }
@@ -32,12 +36,6 @@ export const DivInside = styled.div`
   border-radius: 8px;
   border: 3px solid ${props => props.theme["red-200"]};
   transition: all ease 0.3s;
-
-  &:hover {
-    background-color: ${props => props.theme["red-200"]};
-    border-color: ${props => props.theme["gray-700"]};
-    color: ${props => props.theme.white};
-  }
 
   span {
     font-size: 28px;

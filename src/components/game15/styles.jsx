@@ -12,8 +12,9 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 5rem;
+  gap: 54px;
   margin-top: 2rem;
+  overflow: hidden;
 
   @media(max-width: 320px) {
     gap: 3rem;
@@ -65,12 +66,18 @@ export const AreaAnswers = styled.div`
 `;
 
 export const AreaWord = styled.div`
-  width: 17rem;
+  width: 300px;
+  height: 130px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
+  gap: 10px;
+
+  @media (min-width: 1280px) {
+    width: 300px;
+    height: 200px;
+  }
 `;
 
 export const Words = styled.span`
@@ -98,4 +105,32 @@ export const AreaButton = styled.div`
   align-items: center;
   justify-content: center;
   gap: 32px;
+`;
+
+export const Button = styled.button`
+  all: unset;
+  width: 150px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: ${props => props.$variant === "red" ? props.theme["red-200"] : props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 250px;
+    height: 48px;
+    font-size: 24px;
+  }
 `;

@@ -11,6 +11,7 @@ export const Container = styled.div`
 export const Main = styled.main`
   flex: 1;
   width: 100%;
+  height: 100%;
   display: grid;
   align-items: center;
   justify-content: center;
@@ -18,8 +19,12 @@ export const Main = styled.main`
   grid-template-columns: repeat(2, 1fr);
 
   @media (min-width: 1024px) {
-    width: 80%;
+    width: 750px;
     grid-template-columns: repeat(5, 1fr);
+  }
+
+  @media (min-width: 1920px) {
+    width: 1100px;
   }
 `;
 
@@ -32,6 +37,12 @@ export const Div = styled.div`
   p {
     font-size: 24px;
     font-weight: normal;
+  }
+
+  @media (max-width: 320px) {
+    p {
+      font-size: 18px;
+    }
   }
 
   @media (min-width: 768px) {
@@ -53,7 +64,8 @@ export const DivInside = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 3px solid ${props => props.theme["red-200"]};
+  border: 3px solid transparent;
+  box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
 
   &:hover {
@@ -69,6 +81,21 @@ export const DivInside = styled.div`
   p {
     font-size: 16px;
     font-weight: 500;
+  }
+
+  @media (max-width: 320px) {
+    width: 52px;
+    height: 52px;
+    border-radius: 6px;
+    border-width: 2px;
+
+    span {
+      font-size: 18px;
+    }
+
+    p {
+      font-size: 12px;
+    }
   }
 
   @media (min-width: 768px) {

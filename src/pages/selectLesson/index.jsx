@@ -6,15 +6,13 @@ import { LessonContext } from "../../context/lesson";
 
 import { Loading } from "../../components/Loading";
 import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { ButtonHome } from "../../components/ButtonHome";
 import { Notifications } from "../../components/Notifications";
 
 import { apiQAS } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
 
-import { ButtonLesson, Container, Main, SelectLessonArea } from "./styles";
-
-/* dx de pé no tablet */
+import { ButtonLesson, Container, Main, SelectLessonArea, AreaFooter } from "./styles";
 
 export const SelectLesson = () => {
   const navigate = useNavigate();
@@ -24,9 +22,6 @@ export const SelectLesson = () => {
   const { setNewSelLesson } = useContext(LessonContext);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const fetchLessons = async() => {
     try {
@@ -52,7 +47,7 @@ export const SelectLesson = () => {
 
   const clickLesson = (id) => {
     setNewSelLesson(id);
-    navigate("/LessonSelection");
+    navigate("/LessonSelected");
   }
 
   useEffect(() => {
@@ -85,13 +80,9 @@ export const SelectLesson = () => {
         </SelectLessonArea>
       </Main>
       
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonHome />
+      </AreaFooter>
     </Container>
   )
 }

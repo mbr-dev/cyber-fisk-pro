@@ -256,43 +256,43 @@ export const L6_T2_Facil = [
 
 export const L6_T2_Medio = [
   {
-    pergunta: ["swim ", "can ", "Tral ", "well", "very "],
+    pergunta: ["swim", "can", "Tral", "well", "very"],
     resposta: "Tral can swim very well"
   },
   {
-    pergunta: ["can’t ", "Nami ", "tennis", "play "],
+    pergunta: ["can’t", "Nami", "tennis", "play"],
     resposta: "Nami can’t play tennis"
   },
   {
-    pergunta: ["things", "do ", "can ", "Karen ", "a lot of "],
+    pergunta: ["things", "do", "can", "Karen", "a", "lot", "of"],
     resposta: "Karen can do a lot of things"
   },
   {
-    pergunta: ["Tim and Barbara ", "dance", "can "],
+    pergunta: ["Tim", "and", "Barbara", "dance", "can"],
     resposta: "Tim and Barbara can dance"
   },
   {
-    pergunta: ["teach ", "to ", "chopsticks", "how ", "can ", "use ", "Tina "],
+    pergunta: ["teach", "to", "chopsticks", "how", "can", "use", "Tina"],
     resposta: "Tina can teach how to use chopsticks"
   },
   {
-    pergunta: ["can ", "Jorge ", "treadmill ", "use ", "at the gym"],
+    pergunta: ["can", "Jorge", "treadmill", "use", "at" ,"the", "gym"],
     resposta: "Jorge can use the treadmill at the gym"
   },
   {
-    pergunta: ["can’t ", "drums", "Michael ", "play "],
+    pergunta: ["can’t", "drums", "Michael", "play"],
     resposta: "Michael can’t play drums"
   },
   {
-    pergunta: ["skateboard", "Mia ", "can’t "],
+    pergunta: ["skateboard", "Mia", "can’t"],
     resposta: "Mia can’t skateboard"
   },
   {
-    pergunta: ["lift ", "weights", "Jenny ", "can "],
+    pergunta: ["lift", "weights", "Jenny", "can"],
     resposta: "Jenny can lift weights"
   },
   {
-    pergunta: ["write ", "books", "can ", "Julia "],
+    pergunta: ["write", "books", "can", "Julia"],
     resposta: "Julia can write books"
   },
 ]

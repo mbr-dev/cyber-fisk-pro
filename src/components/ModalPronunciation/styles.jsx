@@ -78,8 +78,8 @@ export const Main = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
+  gap: 8px;
+  margin-block: 10px;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
@@ -158,8 +158,8 @@ export const Form = styled.div`
 
 export const ButtonHear = styled.button`
   all: unset;
-  width: 2rem;
-  height: 2rem;
+  width: 264px;
+  height: 38px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -169,7 +169,20 @@ export const ButtonHear = styled.button`
   transition: all ease 0.3s;
   z-index: 1;
 
+  img {
+    width: 24px;
+  }
+
   &:hover {
     scale: 1.1;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    img {
+      width: 18px;
+    }
   }
 `;

@@ -21,7 +21,7 @@ import LogoFisk from "../../assets/logoFisk2.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import arrowBottom from "../../assets/arrowBottom.svg";
 
-import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, Select, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Avatar, Div } from "./styles";
+import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Avatar, Div } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Profile = () => {
@@ -30,7 +30,6 @@ export const Profile = () => {
   const [isOpen, setIsOpen] = useState("");
   
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -105,8 +104,10 @@ export const Profile = () => {
             {selectLanguage === 1 && <label>{translateProfile[1].name}</label>}
             {selectLanguage === 2 && <label>{translateProfile[2].name}</label>}
 
-            <img src={user} alt="icon user" className="iconImg" />
-            <Input type="text" placeholder="Camila Eduarda Campos" readOnly />
+            <Input>
+              <img src={user} alt="icon user" className="iconImg" />
+              <p>Camila Eduarda Campos</p>
+            </Input>
           </AreaInput>
 
           <Div>
@@ -115,8 +116,10 @@ export const Profile = () => {
               {selectLanguage === 1 && <label>{translateProfile[1].date}</label>}
               {selectLanguage === 2 && <label>{translateProfile[2].date}</label>}
               
-              <img src={data} alt="icon data" className="iconImg" />
-              <Input type="text" className="dataInput" placeholder="07/08/1995" readOnly />
+              <Input>
+                <img src={data} alt="icon data" className="iconImg" />
+                <p>07/08/1995</p>
+              </Input>
             </AreaInput>
 
             <AreaInput>
@@ -124,10 +127,10 @@ export const Profile = () => {
               {selectLanguage === 1 && <label>{translateProfile[1].local}</label>}
               {selectLanguage === 2 && <label>{translateProfile[2].local}</label>}
 
-              <img src={escola} alt="icon school" className="iconImg" />
-              <Select readOnly className="selectState">
-                <option value="portugues">São Paulo</option>
-              </Select>
+              <Input >
+                <img src={escola} alt="icon school" className="iconImg" />  
+                <p>São Paulo</p>
+              </Input>
             </AreaInput>
           </Div>
 
@@ -136,8 +139,10 @@ export const Profile = () => {
             {selectLanguage === 1 && <label>{translateProfile[1].email}</label>}
             {selectLanguage === 2 && <label>{translateProfile[2].email}</label>}
 
-            <img src={mail} alt="icon e-mail" className="iconImg" />
-            <Input type="email" placeholder="camilaeduarda@gmail.com" readOnly />
+            <Input>
+              <img src={mail} alt="icon e-mail" className="iconImg" />
+              <p>camila@email.com</p>
+            </Input>
           </AreaInput>
         </Main>
 

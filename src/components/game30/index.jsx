@@ -2,7 +2,6 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -10,7 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
-import { Container, Main, Form, Select } from "./styles";
+import { Container, Main, Form, Select, ButtonCheck } from "./styles";
 
 export const Game30 = () => {
   const {
@@ -30,9 +29,7 @@ export const Game30 = () => {
   const [selected, setSelected] = useState("");
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -70,6 +67,7 @@ export const Game30 = () => {
   }, [setIsLoading, setRandomNumber, setOption, setData, setSound, round, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
@@ -107,6 +105,8 @@ export const Game30 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -168,7 +168,7 @@ export const Game30 = () => {
   return (
     <Container>
       <TitleLesson title="Listen and choose the correct alternative." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         <Form 
@@ -184,16 +184,9 @@ export const Game30 = () => {
           </Select>
         </Form>
 
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "300px" : isTablet ? "200px" : "100px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "28px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

@@ -30,6 +30,7 @@ export const Game22 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -80,6 +81,7 @@ export const Game22 = () => {
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
+    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
@@ -130,6 +132,8 @@ export const Game22 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -191,7 +195,7 @@ export const Game22 = () => {
   return (
     <Container>
       <TitleLesson title="Choose the correct word or sentences." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {
@@ -205,7 +209,7 @@ export const Game22 = () => {
               disabledButton={blockButton}
             >
               <p style={{
-                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
+                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "14px",
               }}>{answer.label}</p>
             </ButtonAnswer>
           )

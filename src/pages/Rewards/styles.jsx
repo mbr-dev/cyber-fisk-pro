@@ -17,6 +17,12 @@ export const Main = styled.main`
   padding-block: 16px;
   gap: 12px;
 
+  @media(max-width: 320px) {
+    justify-content: space-around;
+    padding-block: 0px;
+    gap: 0px;
+  }
+
   @media(min-width: 600px) {
     padding-block: 0;
     padding-top: 20px;
@@ -48,6 +54,10 @@ export const Top = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 16px;
+
+  @media(max-width: 320px) {
+    gap: 6px;
+  }
 `;
 
 export const Button = styled.button`
@@ -66,6 +76,12 @@ export const Button = styled.button`
 
   &:hover {
     opacity: 0.9;
+  }
+  
+  @media(max-width: 320px) {
+    width: 120px;
+    height: 28px;
+    font-size: 14px;
   }
 
   @media(min-width: 600px) {
@@ -99,6 +115,22 @@ export const Money = styled.div`
   p {
     font-size: 20px;
     font-weight: 500;
+  }
+
+  @media(max-width: 320px) {
+    img {
+      width: 32px;
+    }
+
+    span {
+      width: 28px;
+      height: 28px;
+      font-size: 14px;
+    }
+
+    p {
+      font-size: 14px;
+    }
   }
 
   @media(min-width: 600px) {
@@ -164,6 +196,10 @@ export const Separator = styled.div`
   justify-content: space-between;
   background-color: ${props => props.theme["gray-200"]};
   padding: 10px;
+
+  @media(max-width: 320px) {
+    padding: 8px;
+  }
   
   @media(min-width: 768px) {
     padding: 16px 32px;
@@ -196,6 +232,15 @@ export const Card = styled.div`
     background-color: ${props => props.theme["red-200"]};
   }
 
+  @media(max-width: 320px) {
+    width: 38px;
+    height: 38px;
+
+    img {
+      width: 24px;
+    }
+  }
+
   @media(min-width: 768px) {
     width: 64px;
     height: 64px;
@@ -226,6 +271,14 @@ export const Title = styled.div`
   background-color: ${props => props.theme["blue-900"]};
   color: white;
 
+  @media (max-width: 320px) {
+    height: 28px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
   @media (min-width: 768px) {
     height: 54px;
 
@@ -252,6 +305,28 @@ export const Bottom = styled.div`
     padding-left: 12px;
   }
 
+  @media(max-width: 360px) {
+    height: 160px;
+
+    div {
+      width: 100%;
+      height: 100%;
+      padding-block: 0;
+      padding-left: 0;
+    }
+  }
+
+  @media(max-width: 320px) {
+    height: 110px;
+
+    div {
+      width: 100%;
+      height: 100%;
+      padding-block: 0;
+      padding-left: 0;
+    }
+  }
+
   @media(min-width: 600px) {
     height: 236px;
   }
@@ -266,10 +341,14 @@ export const CardReward = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px 0px #00000033;
+  border: 2px solid ${props => props.theme["gray-200"]};
 
   .RoboCard {
     width: 70%;
+  }
+
+  @media(max-width: 320px) {
+    border-radius: 6px;
   }
 `;
 
@@ -287,8 +366,17 @@ export const Footer = styled.div`
     gap: 16px;
   }
 
+  @media(max-width: 320px) {
+    height: 56px;
+    padding-bottom: 0;
+    margin-bottom: 0;
+
+    div {
+      gap: 10px;
+    }
+  }
+
   @media(min-width: 600px) {
-    gap: 32px;
     padding-bottom: 0;
     margin-bottom: 32px;
   }

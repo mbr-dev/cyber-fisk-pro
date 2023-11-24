@@ -21,7 +21,7 @@ export const Main = styled.div`
     position: absolute;
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 1280px) {
     height: 100px;
   }
 
@@ -51,8 +51,8 @@ export const BarStep = styled.div`
     padding: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    padding: 0.75rem 1rem;
+  @media(min-width: 480px) {
+    padding: 12px;
   }
 
   @media(min-width: 1024px) {
@@ -84,13 +84,13 @@ export const Icons = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     p {
-      font-size: 18px;
+      font-size: 12px;
     }
 
     img {
-      width: 48px;
+      width: 32px;
     }
   }
 

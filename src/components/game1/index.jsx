@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLesson } from "../subTitleLesson";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, ScoreFinal, Score, PointRule } from "../../utils/regras";
 
-import { Container, Main } from "./styles";
+import { Container, Main, ButtonAnswer } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game1 = () => {
   const {
@@ -30,9 +30,6 @@ export const Game1 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -193,11 +190,11 @@ export const Game1 = () => {
           return (
             <ButtonAnswer 
               key={index}
-              w={isDesktop ? "150px" : isTablet ? "130px" : "6rem"}
-              h={isDesktop ? "160px" : isTablet ? "150px" : "7rem"}
-              optionColor={selectedColor[index]}
-              onPress={() => handleClick(index)}
-              disabledButton={blockButton}
+              onClick={() => handleClick(index)}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
               <img src={`${URL_FISKPRO}/images/essentials1/lesson${numSelLesson}/${answer.img}.png`} alt="" />
             </ButtonAnswer>

@@ -5,6 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { apiQAS } from "../../lib/api";
 import { Footer } from "../../components/Footer";
+import { AvatarCustom } from "../../components/AvatarCustom";
 import { HeaderTextImage } from "../../components/HeaderTextImage";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
@@ -19,13 +20,11 @@ import Medalha from "../../assets/medalhaImage.png";
 import Reporte from "../../assets/reporteImage.png";
 import { ModalReward } from "../../components/ModalReward";
 
-import RoboPe from "../../assets/roboPe.png";
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
 
 import { Container, Main, Card, Cards, ButtonDayCh, Right, Left } from "./styles";
 
-/* ajuntar botao no desktop 1440 */
 
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
@@ -115,7 +114,7 @@ export const Home = () => {
                 </Card>
                 :
                 <Dialog.Root>
-                  <Dialog.Trigger style={{border: "none"}}>
+                  <Dialog.Trigger asChild>
                     <Card key={index}>
                       <img src={images[index]} alt="" />
                       {selectLanguage === 0 && <p>{text.name[0]}</p>}
@@ -128,6 +127,7 @@ export const Home = () => {
               )
             })}
           </Cards>
+
           <ButtonDayCh onClick={handleDayChallenge}>
             {!isDesktop ? <img src={dayChImg} alt="" /> : <img src={dayChImgDt} alt="" />}
           </ButtonDayCh>
@@ -135,7 +135,8 @@ export const Home = () => {
 
         {isDesktop &&
           <Right>
-            <img src={RoboPe} alt="" />
+            {/* <img src={roboImg} alt="" /> */}
+            <AvatarCustom />
             <p>Camila Eduarda</p>
           </Right>
         }

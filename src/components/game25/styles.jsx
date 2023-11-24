@@ -12,16 +12,16 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 3rem;
-  gap: 4rem;
+  margin-top: 16px;
+  gap: 32px;
 
   p {
     padding-inline: 1rem;
   }
 
   @media(max-width: 320px) {
-    gap: 3rem;
-    margin-top: 2rem;
+    gap: 24px;
+    margin-top: 14px;
   }
 
   @media(min-width: 600px) {
@@ -86,6 +86,37 @@ export const Form = styled.form`
   @media(min-width: 1440px) {
     input { 
       width: 800px;
+    }
+  }
+`;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 150px;
+  height: 36px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.25rem;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (min-width: 1280px) {
+    width: 350px;
+    height: 52px;
+
+    p {
+      font-size: 32px;
     }
   }
 `;

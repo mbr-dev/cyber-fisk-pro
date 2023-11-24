@@ -12,27 +12,6 @@ export const Container = styled.div`
   }
 `;
 
-export const Content = styled.div`
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  position: relative;
-
-  @media(min-width: 1024px) {
-    width: 60%;
-    height: 100vh;
-  }
-`;
-
-export const BtnC = styled.div`
-  position: absolute;
-  top: 32px;
-  right: 32px;
-`;
-
 export const Header = styled.header`
   width: 100vw;
   height: 118px;
@@ -56,6 +35,11 @@ export const Header = styled.header`
 
   @media(max-width: 320px) {
     height: 98px;
+  }
+
+  @media(min-width: 768px) {
+    height: 180px;
+    padding: 16px 16px 0 16px;
   }
 
   @media(min-width: 1024px) {
@@ -121,6 +105,18 @@ export const Avatar = styled.div`
     }
   }
 
+  @media(min-width: 768px) {
+    img {
+      width: 150px;
+    }
+
+    p {
+      width: 220px;
+      height: 56px;
+      bottom: -94px;
+    }
+  }
+
   @media(min-width: 1024px) {
     width: 400px;
     height: 500px;
@@ -170,16 +166,36 @@ export const Avatar = styled.div`
   }
 `;
 
-export const Main = styled.main`
+export const Content = styled.div`
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
   gap: 16px;
-  margin-top: 64px;
+  position: relative;
+
+  @media(min-width: 1024px) {
+    width: 60%;
+    height: 100vh;
+  }
+`;
+
+export const BtnC = styled.div`
+  position: absolute;
+  top: 32px;
+  right: 32px;
+`;
+
+export const Main = styled.main`
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  padding-top: 64px;
+  gap: 16px;
   
   p {
-    width: 80%;
     display: flex;
     align-items: flex-start;
     font-size: 24px;
@@ -187,26 +203,50 @@ export const Main = styled.main`
     cursor: pointer;
   }
 
-  @media(max-width: 320px) {
-    gap: 12px;
-    margin-top: 32px;
-
-    p {
-      font-size: 16px;
-    }
+  @media(max-width: 360px) {
+    padding-top: 42px;
   }
 
-  @media(min-width: 1024px) {
-    margin-top: 120px;
+  @media(min-width: 768px) {
+    width: 620px;
+    gap: 28px;
 
     p {
       font-size: 32px;
     }
   }
 
-  @media(min-width: 2560px) {
+  @media(max-width: 320px) {
+    width: 250px;
+    gap: 12px;
+
     p {
-      font-size: 44px;
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 680px;
+    justify-content: center;
+    padding-top: 130px;
+
+    p {
+      padding-left: 32px;
+      font-size: 32px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    width: 750px;
+    padding-top: 180px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1000px;
+    padding-top: 220px;
+
+    p {
+      font-size: 36px;
     }
   }
 `;

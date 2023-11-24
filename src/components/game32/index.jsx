@@ -31,6 +31,7 @@ export const Game32 = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState([]);
   const [data, setData] = useState([]);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
   const isTablet = window.matchMedia("(min-width: 600px)").matches;
@@ -82,6 +83,7 @@ export const Game32 = () => {
 
   const newRound = (number) => {
     setSelectedRadio([]);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -138,6 +140,8 @@ export const Game32 = () => {
       tempE++;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -199,7 +203,7 @@ export const Game32 = () => {
   return (
     <Container>
       <TitleLesson title="Read and choose TRUE or FALSE." />
-      <SubTitleLessonAudio audio={`${URL_FISKPRO}sounds/essentials1/lesson8/${sound}.mp3`} />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson8/${sound}.mp3`} />
 
       <Main>
         <Answers>

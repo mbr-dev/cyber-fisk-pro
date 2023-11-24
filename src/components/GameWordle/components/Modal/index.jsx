@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+
+import xImg from "../../../../assets/xImg.png";
 
 import { defaultTheme } from "../../../../themes/defaultTheme";
 import { Content, Overlay, Close, CloseEnter, Main, Header, Text, Info, Row, Letter, Letters, Line } from "./styles";
@@ -11,7 +12,7 @@ export const Modal = () => {
 
       <Content>
         <Close>
-          <X size={18} color="white" />
+        <img src={xImg} alt="x" />
         </Close>
         <Header>
           <p>How to play</p>

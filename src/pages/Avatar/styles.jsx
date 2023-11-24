@@ -5,15 +5,18 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
-  overflow: hidden;
+  align-items: center;
 `;
 
 export const Main = styled.main`
   flex: 1;
   width: 100%;
+  height: 100%;
+  background-color: ${props => props.theme["gray-200"]};
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
   @media (min-width: 1024px) {
     flex-direction: row;
@@ -21,6 +24,7 @@ export const Main = styled.main`
 `;
 
 export const Top = styled.div`
+  width: 100%;
   height: 250px;
   display: flex;
   align-items: center;
@@ -32,11 +36,11 @@ export const Top = styled.div`
     height: 100%;
     object-fit: fill;
     position: absolute;
-    z-index: -100;
+    z-index: 1;
   }
 
   .avatarImg {
-    z-index: 3;
+    z-index: 100;
     width: 80px;
     margin-top: 24px;
   }
@@ -91,6 +95,10 @@ export const DivBottom = styled.div`
   align-items: center;
   justify-content: center;
 
+  @media (max-width: 320px) {
+    height: 180px;
+  }
+
   @media (min-width: 768px) {
     height: 380px;
   }
@@ -118,6 +126,7 @@ export const Bottom = styled.div`
 
   @media (max-width: 320px) {
     height: 170px;
+    padding-inline: 16px;
   }
 
   @media (min-width: 768px) {
@@ -145,6 +154,10 @@ export const Separator = styled.div`
   align-items: center;
   justify-content: space-between;
   padding-top: 10px;
+
+  @media(max-width: 320px) {
+    padding-top: 0;
+  }
   
   @media(min-width: 768px) {
     padding-top: 16px;
@@ -164,6 +177,15 @@ export const Card = styled.div`
 
   img {
     width: 28px;
+  }
+
+  @media(max-width: 320px) {
+    width: 32px;
+    height: 32px;
+
+    img {
+      width: 18px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -196,6 +218,14 @@ export const Title = styled.div`
   background-color: ${props => props.theme["blue-900"]};
   color: white;
 
+  @media (max-width: 360px) {
+    height: 28px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
   @media (min-width: 768px) {
     height: 54px;
 
@@ -211,6 +241,11 @@ export const AvatarCard = styled.div`
   padding-block: 6px;
   display: flex;
   justify-content: space-between;
+
+  @media (max-width: 320px) {
+    height: 150px;
+    padding-block: 0;
+  }
 
   @media(min-width: 600px) {
     height: 220px;
@@ -240,6 +275,14 @@ export const CardReward = styled.div`
 
   .RoboCard {
     width: 64px;
+  }
+
+  @media (max-width: 320px) {
+    width: 86px;
+
+    .RoboCard {
+      width: 40px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -283,6 +326,15 @@ export const DivBlock = styled.div`
   .cadeadoImg {
     width: 32px;
   }
+
+  @media(max-width: 320px) {
+    border-radius: 12px;
+    gap: 20px;
+
+    .cadeadoImg {
+      width: 23px;
+    }
+  }
   
   @media(min-width: 768px) {
     border-radius: 12px;
@@ -318,6 +370,20 @@ export const DivMoney = styled.div`
 
   img {
     width: 20px;
+  }
+
+  @media(max-width: 320px) {
+    width: 64px;
+    height: 24px;
+    margin-top: -10px;
+
+    p {
+      font-size: 10px;
+    }
+
+    img {
+      width: 14px;
+    }
   }
 
   @media(min-width: 768px) {

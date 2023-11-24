@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
 import { FooterBtnHome } from "../../components/FooterBtnHome";
-import { LineSeparator } from "../../components/LineSeparator";
 import { HeaderText } from "../../components/HeaderText";
 
 import Robo from "../../assets/avatarRobo.png";
@@ -24,9 +23,6 @@ export const ReportInfo = () => {
   const [progressS, setProgressS] = useState(80);
 
   const navigate = useNavigate();
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const data = {
     labels: [],
@@ -47,7 +43,11 @@ export const ReportInfo = () => {
     ],
   };
 
-  const handleGoToRS = () => {
+  const handleReportLesson = () => {
+    navigate("/ReportLesson");
+  }
+
+  const handleReportStudio = () => {
     navigate("/ReportStudio");
   }
 
@@ -71,8 +71,6 @@ export const ReportInfo = () => {
           </AvatarArea>
 
             <XP>
-              <LineSeparator wl={isDesktop ? "800px" : "18.5rem"} bg={defaultTheme["gray-200"]} mt="0" mb="0" />
-              
               <XPDiv>
                 <XPLeft>
                   <XPInside>
@@ -94,8 +92,6 @@ export const ReportInfo = () => {
                   </Dialog.Root>
                 </XPRight>
               </XPDiv>
-
-              <LineSeparator wl={isDesktop ? "800px" : "18.5rem"} bg={defaultTheme["gray-200"]} mt="0" mb="0" />
             </XP>
 
             <Stage>
@@ -113,8 +109,8 @@ export const ReportInfo = () => {
           </Div>
 
           <Details>
-            <DDiv onClick={handleGoToRS}>
-              <DivBar>
+            <DDiv>
+              <DivBar onClick={handleReportLesson}>
                 <Bar>
                   <BarColor style={{
                     height: `${progressL}%`
@@ -124,7 +120,7 @@ export const ReportInfo = () => {
                 </Bar>
                 <p>view details</p>
               </DivBar>
-              <ViewDetails>
+              <ViewDetails onClick={handleReportStudio}>
                 <h2>Listening</h2>
 
                 <ul>
@@ -207,13 +203,7 @@ export const ReportInfo = () => {
           </Details> 
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "90%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <FooterBtnHome />
     </Container>
   )
 }

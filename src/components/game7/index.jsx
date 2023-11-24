@@ -219,7 +219,7 @@ export const Game7 = () => {
       <Loading />
     )
   }
-  console.log("righaudio: ", rightAudios);
+
   return (
     <Container>
       <TitleLesson title="Make pairs." />
