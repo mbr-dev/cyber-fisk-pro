@@ -33,8 +33,8 @@ export const Container = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 250px;
+  @media (min-width: 480px) and (max-width: 798px) {
+    width: 300px;
     height: 36px;
 
     p {
@@ -42,18 +42,18 @@ export const Container = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 500px;
-    height: 56px;
+  @media(min-width: 800px) {
+    width: 350px;
+    height: 52px;
 
     p {
-      font-size: 32px;
+      font-size: 24px;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 450px;
-    height: 54px;
+    width: 400px;
+    height: 56px;
 
     p {
       font-size: 32px;

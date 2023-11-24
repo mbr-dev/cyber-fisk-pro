@@ -42,7 +42,6 @@ export const SelectLesson = () => {
     } finally {
       setIsLoading(false);
     }
-
   }
 
   const clickLesson = (id) => {
@@ -79,7 +78,7 @@ export const SelectLesson = () => {
           })}
         </SelectLessonArea>
       </Main>
-      
+
       <AreaFooter>
         <ButtonHome />
       </AreaFooter>

@@ -1,12 +1,12 @@
-import { useKeenSlider } from "keen-slider/react"
-import "keen-slider/keen-slider.min.css"
+import Cookies from "universal-cookie";
+import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
+import { useKeenSlider } from "keen-slider/react";
+import { useNavigate } from "react-router-dom";
 
-import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
-import { LineSeparator } from "../../components/LineSeparator";
 import { apiQAS } from "../../lib/api";
-import Cookies from 'universal-cookie';
+import { HeaderText } from "../../components/HeaderText";
+import { LineSeparator } from "../../components/LineSeparator";
 
 import p1 from "./images/p1.png";
 import p2 from "./images/p2.png";
@@ -16,36 +16,30 @@ import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
 import RoboWD from "../../assets/RoboWD.png";
 
-import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, PositionImg } from "./styles";
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, PositionImg, AreaFooter, ButtonHome, DivMobile, DivDesk } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Ranking = () => {
-  const [sliderRef] = useKeenSlider({
-    slides: {
-      perView: 2.5,
-      spacing: 16,
-    },
-    breakpoints: {
-      "(min-width: 1124px)": {
-        slides: {
-          perView: 3,
-          spacing: 28,
-        },
-      },
-      "(min-width: 1440px)": {
-        slides: {
-          perView: 3.5,
-          spacing: 32,
-        },
-      }
-    },
-  });
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
-
   const [data, setData] = useState(null);
   const [rafUser, setRafUser] = useState(null);
+  const [buttonSelected, setButtonSelected] = useState("National");
+
+  const navigate = useNavigate();
+
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
+
+  const handleItemClick = (item) => {
+    setButtonSelected((modal) => (modal === item ? null : item));
+  };
+
+  const [sliderRef] = useKeenSlider({
+    slides: {
+      perView: 4,
+      spacing: 16,
+    }
+  });
 
   const loadRank = async () =>{
     const cookies = new Cookies();
@@ -69,27 +63,39 @@ export const Ranking = () => {
       <Main>
         <MainTop>
           <ButtonRakingArea>
-            <ButtonNational $selected >National</ButtonNational>
-            <ButtonUnit >Unit</ButtonUnit>
+            <ButtonNational 
+              onClick={() => handleItemClick("National")}
+              style={{
+                color: buttonSelected === "National" ? defaultTheme.white : "",
+                backgroundColor: buttonSelected === "National" ? defaultTheme["red-200"] : "",
+              }}>National
+            </ButtonNational>
+            <ButtonUnit
+              onClick={() => handleItemClick("Unit")}
+              style={{
+                color: buttonSelected === "Unit" ? defaultTheme.white : "",
+                backgroundColor: buttonSelected === "Unit" ? defaultTheme["red-200"] : "",
+              }}>Unit
+            </ButtonUnit>
           </ButtonRakingArea>
 
-          {!isDesktop &&
+          <DivMobile>
             <CoinArea>
               <img src={GoldImg} className="gold" alt="" />
               <img src={SilverImg} alt="" />
               <img src={SilverImg} alt="" />
               <img src={SilverImg} alt="" />
               <img src={SilverImg} alt="" />
-            </CoinArea>}
+            </CoinArea>
 
-          {!isDesktop &&
             <TextArea>
               <h2>Gold Division</h2>
               <p>You are awesome!</p>
-            </TextArea>}
+            </TextArea>
+          </DivMobile>
         </MainTop>
 
-        {isDesktop &&
+        <DivDesk>
           <Carrousel>
             <CarrouselInside ref={sliderRef} className="keen-slider">
               <Position className="keen-slider__slide">
@@ -154,16 +160,18 @@ export const Ranking = () => {
                 </PositionInside>
               </Position>
             </CarrouselInside>
-          </Carrousel>}
+          </Carrousel>
+        </DivDesk>
 
-        {isDesktop &&
+        <DivDesk>
           <TextArea>
             <h2>Gold Division</h2>
             <p>You are awesome!</p>
-          </TextArea>}
+          </TextArea>
+        </DivDesk>
 
-        {!isDesktop &&<LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
-        {!isDesktop &&
+        <DivMobile>
+          <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
           <MainBottom>
             {data !== null ? data.map((x, index) =>{
               return(
@@ -187,11 +195,16 @@ export const Ranking = () => {
                 </LevelPosition>
               )
             }) : null}
-          </MainBottom>}
-        {!isDesktop &&<LineSeparator w="80%" bg={defaultTheme["gray-200"]} />}
+          </MainBottom>
+          <LineSeparator w="80%" bg={defaultTheme["gray-200"]} />
+        </DivMobile>
       </Main>
 
-      <FooterBtnHome />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

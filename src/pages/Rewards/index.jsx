@@ -1,9 +1,8 @@
-import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { useNavigate } from "react-router-dom";
+import { useKeenSlider } from "keen-slider/react";
 
-import { ButtonBg } from "../../components/ButtonBg";
 import { HeaderText } from "../../components/HeaderText";
-import { LineSeparator } from "../../components/LineSeparator";
 
 import Robo from "./images/Robo.png";
 import cabeca from "../../assets/cabeca.png";
@@ -15,23 +14,18 @@ import pets from "../../assets/pets.png";
 import pernas from "../../assets/pernas.png";
 import Dollar from "../../assets/Dollar.svg";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Bottom, Main, Separator, Top, Footer, Button, Money, Card, CardReward, Right, Left, Title } from "./styles";
+import { Container, Bottom, Main, Separator, Top, Footer, Button, Money, Card, CardReward, Right, Left, Title, BottomFooter, DivDesk, DivMobile } from "./styles";
 
 export const Rewards = () => {
+  const navigate = useNavigate();
+
   const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 2.5,
+      perView: 3,
       spacing: 16,
     },
     breakpoints: {
-      "(min-width: 600px)": {
-        slides: {
-          perView: 3.5,
-          spacing: 24,
-        },
-      },
-      "(min-width: 1024px)": {
+      "(min-width: 1280px)": {
         slides: {
           perView: 3,
           spacing: 28,
@@ -40,8 +34,9 @@ export const Rewards = () => {
     },
   });
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
   
   return (
     <Container>
@@ -56,17 +51,16 @@ export const Rewards = () => {
               <span>10</span>
               <p>Fisk Dollars</p>
             </Money>
-            {!isDesktop && 
-              <>
-                <LineSeparator wl="80%" bg={defaultTheme["gray-200"]} />
-                <Button>Rewards</Button>
-              </>}
+            <DivMobile>
+              <Button>Rewards</Button>
+            </DivMobile>
           </Top>
         </Left>
 
         <Right>
-          {isDesktop && 
-            <Button>Rewards</Button>}
+          <DivDesk>
+            <Button>Rewards</Button>
+          </DivDesk>
 
           <Separator>
             <Card>
@@ -116,27 +110,13 @@ export const Rewards = () => {
         </Right>
       </Main>
 
-      <LineSeparator wl="90%" bg={defaultTheme["gray-200"]} />
       <Footer>
-        <div>
-          <ButtonBg
-            title="Home"
-            w={isDesktop ? "400px" : isTablet ? "250px" : "9rem"}
-            h={isDesktop ? "58px" : isTablet ? "44px" : "2rem"}
-            mt={isTablet ? "20px" : "10px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-            onPress={() => navigate("/home")}
-          />
-          <ButtonBg
-            title="Shop"
-            w={isDesktop ? "400px" : isTablet ? "250px" : "9rem"}
-            h={isDesktop ? "58px" : isTablet ? "44px" : "2rem"}
-            mt={isTablet ? "20px" : "10px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-            greenBtn
-            onPress={() => navigate("/home")}
-          />
-        </div>
+        <BottomFooter onClick={handleGoHome}>
+          <p>Home</p>
+        </BottomFooter>
+        <BottomFooter $green="green">
+          <p>Shop</p>
+        </BottomFooter>
       </Footer>
     </Container>
   )

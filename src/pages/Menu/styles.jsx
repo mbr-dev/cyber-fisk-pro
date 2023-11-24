@@ -7,7 +7,7 @@ export const Container = styled.div`
   flex-direction: column;
   overflow: hidden;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
   }
 `;
@@ -37,22 +37,21 @@ export const Header = styled.header`
     height: 98px;
   }
 
-  @media(min-width: 768px) {
-    height: 180px;
-    padding: 16px 16px 0 16px;
-  }
-
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     width: 40%;
     height: 100vh;
     flex-direction: column;
     align-items: center;
-    padding: 32px 32px 100px 32px;
+    padding: 16px 16px 0px 16px;
 
     .bgHeaderImg {
       border-end-end-radius: 0;
       border-end-start-radius: 0;
     }
+  }
+
+  @media(min-width: 1280px) {
+    padding: 32px 32px 0px 32px;
   }
 `;
 
@@ -60,6 +59,12 @@ export const HeaderButton = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+`;
+
+export const DivBtnCH = styled.div`
+  @media (min-width: 480px) {
+    display: none;
+  }
 `;
 
 export const Avatar = styled.div`
@@ -105,65 +110,60 @@ export const Avatar = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const AvatarPe = styled.div`
+  display: none;
+  
+  @media (min-width: 480px) {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding-bottom: 10px;
+    z-index: 20;
+    
     img {
-      width: 150px;
+      width: 80px;
+      height: 220px;
     }
 
     p {
-      width: 220px;
-      height: 56px;
-      bottom: -94px;
+      width: 174px;
+      height: 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      border-radius: 6px;
+      color: ${props => props.theme.white};
+      background-color: ${props => props.theme["red-200"]};
+      font-size: 18px;
+      font-weight: 500;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 400px;
-    height: 500px;
-
+  @media (min-width: 1280px) {
+    padding-bottom: 24px;
+    
     img {
-      width: 200px;
+      width: 80px;
+      height: 220px;
     }
 
     p {
-      bottom: 0;
       width: 300px;
       height: 52px;
-      font-size: 32px;
+      font-size: 24px;
     }
   }
-
-  @media(min-width: 1920px) {
-    width: 500px;
-    height: 750px;
-
-    img {
-      width: 250px;
-      margin-top: 90px;
-    }
-
-    p {
-      width: 450px;
-      height: 74px;
-      font-size: 44px;
-    }
-  }
-
-  @media(min-width: 2560px) {
-    width: 600px;
-    height: 800px;
-
-    img {
-      width: 300px;
-      margin-top: 0px;
-    }
-
-    p {
-      width: 500px;
-      height: 82px;
-      font-size: 44px;
-    }
-  }
+  
 `;
 
 export const Content = styled.div`
@@ -176,16 +176,26 @@ export const Content = styled.div`
   gap: 16px;
   position: relative;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     width: 60%;
     height: 100vh;
   }
 `;
 
 export const BtnC = styled.div`
-  position: absolute;
-  top: 32px;
-  right: 32px;
+  display: none;
+
+  @media (min-width: 480px) {
+    display: block;
+    position: absolute;
+    top: 16px;
+    right: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    top: 32px;
+    right: 32px;
+  }
 `;
 
 export const Main = styled.main`
@@ -207,15 +217,6 @@ export const Main = styled.main`
     padding-top: 42px;
   }
 
-  @media(min-width: 768px) {
-    width: 620px;
-    gap: 28px;
-
-    p {
-      font-size: 32px;
-    }
-  }
-
   @media(max-width: 320px) {
     width: 250px;
     gap: 12px;
@@ -225,28 +226,102 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 680px;
-    justify-content: center;
-    padding-top: 130px;
+  @media(min-width: 480px) {
+    width: 300px;
+    padding-top: 32px;
+    gap: 12px;
 
     p {
-      padding-left: 32px;
-      font-size: 32px;
+      font-size: 20px;
     }
   }
 
-  @media(min-width: 1440px) {
-    width: 750px;
-    padding-top: 180px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 1000px;
-    padding-top: 220px;
+  @media(min-width: 1280px) {
+    width: 600px;
+    justify-content: center;
+    padding-top: 100px;
+    gap: 24px;
 
     p {
-      font-size: 36px;
+      font-size: 32px;
+      padding-left: 32px;
+    }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media (min-width: 480px) {
+    height: 54px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 600px;
+    height: 120px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonLogout = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 56px;
+
+    p {
+      font-size: 32px;
     }
   }
 `;

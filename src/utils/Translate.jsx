@@ -1,21 +1,3 @@
-export const translateBooks = [
-  { 
-    title: "Livros",
-    current: "Atual",
-    previous: "Anterior"
-  },
-  { 
-    title: "Books",
-    current: "Current",
-    previous: "Previous"
-  },
-  { 
-    title: "Libros",
-    current: "Actual",
-    previous: "Anterior"
-  }
-]
-
 export const translateHome = [
   {name: ["Livros", "Books", "Libros"]},
   {name: ["Último Acesso", "Last Access", "Ultimo acceso"]},
@@ -27,36 +9,6 @@ export const translateHome = [
 
 export const translateFooter = [
   "Para dicas e informações", "For advice and information", "Para consejos e información"
-]
-
-export const translateProfile = [
-  {
-    title: "Perfil",
-    language: "Português",
-    selectLanguage: "Escolha o idioma",
-    name: "Nome:",
-    date: "Data de nascimento:",
-    local: "Unidade:",
-    email: "E-mail:"
-  },
-  {
-    title: "Profile",
-    language: "Inglês",
-    selectLanguage: "Choose Language",
-    name: "Name:",
-    date: "Date of birth:",
-    local: "Local:",
-    email: "E-mail:"
-  },
-  {
-    title: "Perfil",
-    language: "Espanhol",
-    selectLanguage: "Elige lengua",
-    name: "Nombre:",
-    date: "Fecha de nacimiento:",
-    local: "Local:",
-    email: "E-mail:"
-  },
 ]
 
 export const translateStudio = [

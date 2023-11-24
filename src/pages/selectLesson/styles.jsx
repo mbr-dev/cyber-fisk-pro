@@ -34,19 +34,22 @@ export const SelectLessonArea = styled.div`
     gap: 8px;
   }
 
-  @media(min-width: 600px) {
-    width: 500px;
-    gap: 20px;
+  @media (min-width: 480px) and (max-width: 798px) {
+    width: 400px;
+    height: 150px;
+    justify-content: center;
+    align-items: center;
   }
 
-  @media(min-width: 768px) {
-    width: 330px;
+  @media(min-width: 800px) {
+    width: 600px;
+    height: 250px;
     gap: 24px;
   }
-  
-  @media(min-width: 1024px) {
-    width: 1000px;
-    gap: 36px;
+
+  @media(min-width: 1280px) {
+    width: 800px;
+    height: 250px;
   }
 `;
 
@@ -105,35 +108,35 @@ export const ButtonLesson = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 64px;
-    height: 64px;
+  @media (min-width: 480px) and (max-width: 798px) {
+    width: 56px;
+    height: 56px;
 
     p {
-      font-size: 22px;
+      font-size: 18px;
     }
 
     span {
-      font-size: 16px;
+      font-size: 14px
     }
   }
 
-  @media(min-width: 768px) {
-    width: 116px;
-    height: 116px;
+  @media(min-width: 800px) {
+    width: 86px;
+    height: 86px;
 
     p {
-      font-size: 42px;
+      font-size: 28px;
     }
 
     span {
-      font-size: 24px;
+      font-size: 20px
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 150px;
-    height: 150px;
+  @media(min-width: 1280px) {
+    width: 110px;
+    height: 110px;
 
     p {
       font-size: 48px;
@@ -159,27 +162,19 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 600px) {
-    width: 620px;
+  @media (min-width: 480px) and (max-width: 798px) {
+    width: 400px;
     height: 64px;
   }
 
-  @media(min-width: 768px) {
-    width: 620px;
-    height: 104px;
+  @media(min-width: 800px) {
+    width: 600px;
+    height: 100px;
   }
 
-  @media(min-width: 1024px) {
-    width: 1000px;
+  @media(min-width: 1280px) {
+    width: 800px;
     height: 120px;
     border-width: 4px;
-  }
-
-  @media(min-width: 1440px) {
-    width: 1200px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 1600px;
   }
 `;

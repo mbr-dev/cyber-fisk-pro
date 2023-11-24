@@ -10,7 +10,6 @@ export const Container = styled.div`
   background-color: ${props => props.theme["red-200"]};
   border-radius: 3px;
   color: ${props => props.theme.white};
-  box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
 
   img {
@@ -22,13 +21,21 @@ export const Container = styled.div`
     height: 1.5rem;
   }
 
-  @media(min-width: 768px) {
-    width: 54px;
-    height: 54px;
-    border-radius: 8px;
+  @media (min-width: 480px) and (max-width: 798px) {
+    width: 36px;
+    height: 36px;
 
     img {
-      width: 28px;
+      width: 18px;
+    }
+  }
+
+  @media(min-width: 800px) {
+    width: 48px;
+    height: 48px;
+
+    img {
+      width: 24px;
     }
   }
 `;

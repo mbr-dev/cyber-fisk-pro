@@ -2,23 +2,20 @@ import Cookies from "universal-cookie";
 import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { AvatarCustom } from "../../components/AvatarCustom";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
 import Robo from "../../assets/RoboWD.png";
-import RoboPe from "../../assets/roboPe.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Container, Main, Header, Avatar, Content, HeaderButton, BtnC } from "./styles";
+import { Container, Main, Header, Avatar, Content, HeaderButton, BtnC, AreaFooter, ButtonLogout, AvatarPe, DivBtnCH } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Menu = () => {
   const [name, setName] = useState("");
   const navigate = useNavigate();
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const alterPage = (page) => {
     navigate(`/${page}`);
@@ -50,27 +47,25 @@ export const Menu = () => {
 
         <HeaderButton>
           <ButtonMenuHeader />
-          {!isDesktop && 
-            <Avatar>
-              <img src={Robo} alt="" />
-              <p>{name}</p>
-            </Avatar>}
-          {!isDesktop && <ButtonCloseHeader />}
+          <Avatar>
+            <img src={Robo} alt="" />
+            <p>{name}</p>
+          </Avatar>
+          <DivBtnCH>
+            <ButtonCloseHeader />
+          </DivBtnCH>
         </HeaderButton>
 
-        {isDesktop &&
-          <Avatar>
-            <img src={RoboPe} alt="" />
-            <p>{name}</p>
-          </Avatar>}
+        <AvatarPe>
+          <AvatarCustom />
+          <p>{name}</p>
+        </AvatarPe>
       </Header>
 
       <Content>
-        {isDesktop &&
-          <BtnC>
-            <ButtonCloseHeader />
-          </BtnC>
-        }
+        <BtnC>
+          <ButtonCloseHeader />
+        </BtnC>
 
         <Main>
           <p>Avatar</p>
@@ -84,7 +79,11 @@ export const Menu = () => {
           <p onClick={() => {alterPage("Help")}}>Help</p>
         </Main>
 
-        <FooterBtnHome title="Logout" />
+        <AreaFooter>
+          <ButtonLogout onClick={logout}>
+            <p>Logout</p>
+          </ButtonLogout>
+        </AreaFooter>
       </Content>
     </Container>
   )
