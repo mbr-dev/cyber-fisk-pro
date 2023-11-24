@@ -21,12 +21,18 @@ export const ContainerMap = styled.div`
   display: flex;
   justify-content: center;
   padding-block: 20px;
+  width: 100%;
+  max-width: 520px;
 `;
 export const Map = styled.div`
   background-image: url(${mapImg});
   background-size: cover;
-  width: ${isMobile ? "320px" : "500px"};
-  height: ${isMobile ? "190px" : "298px"};
+  /* width: ${isMobile ? "calc(320px + 5%)" : "500px"};
+  min-width: 320px;
+  height: ${isMobile ? "calc(190px + 5%)" : "298px"};
+  min-height: 190px; */
+  width: 100%;
+  aspect-ratio: 100/66;
 `;
 export const GridMap = styled.div`
   display: grid;
@@ -37,6 +43,7 @@ export const GridMap = styled.div`
   width: 62%;
   height: 100%;
   gap: 6%;
+  overflow: hidden;
 `;
 export const Place = styled.div`
   display: flex;

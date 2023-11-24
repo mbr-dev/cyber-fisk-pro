@@ -8,7 +8,6 @@ import { ButtonAnswer } from "../ButtonAnswer";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
-import { L2_T1_Facil } from "../../utils/lesson2_Task";
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
