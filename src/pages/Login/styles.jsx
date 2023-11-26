@@ -8,7 +8,7 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
   }
 `;
@@ -35,6 +35,10 @@ export const Header = styled.header`
     z-index: -1;
   }
 
+  .buddyImg {
+    display: none;
+  }
+
   @media(max-width: 320px) {
     padding-block: 12px;
     
@@ -43,12 +47,25 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 600px;
+  @media(min-width: 480px) {
+    width: 40%;
     height: 100vh;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
     flex-direction: column;
+    gap: 16px;
+
+    .logoFisk {
+      width: 150px;
+    }
+
+    .buddyImg {
+      display: block;
+      width: 150px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     gap: 20px;
 
     .logoFisk {
@@ -59,54 +76,48 @@ export const Header = styled.header`
       width: 420px;
     }
   }
-
-  @media(min-width: 2560px) {
-    width: 40%;
-
-    .logoFisk {
-      width: 400px;
-    }
-
-    .buddyImg {
-      width: 500px;
-    }
-  }
 `;
 
 export const FooterBlue = styled.header`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-  color: ${props => props.theme.white};
+  display: none;
 
-  p {
-    font-size: 20px;
-    font-weight: normal;
-  }
-
-  div {
+  @media(min-width: 480px) {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
-    gap: 32px;
-
-    img {
-      width: 56px;
-    }
-  }
-
-  @media(min-width: 2560px) {
+    gap: 10px;
+    
     p {
-      font-size: 28px;
+      color: ${props => props.theme.white};
+      font-size: 14px;
+      font-weight: normal;
     }
 
     div {
-      gap: 44px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 16px;
 
       img {
-        width: 84px;
+        width: 32px;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 20px;
+
+    p {
+      font-size: 20px;
+    }
+
+    div {
+      gap: 32px;
+
+      img {
+        width: 56px;
       }
     }
   }
@@ -118,6 +129,15 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
+
+  @media (min-width: 480px) {
+    width: 60%;
+    gap: 16px;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 32px;
+  }
 `;
 
 export const Form = styled.div`
@@ -126,45 +146,23 @@ export const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 1rem;
-  gap: 1rem;
-  margin-bottom: 2rem;
-
-  @media(max-width: 376px) {
-    padding-block: 2rem;
-    width: 18.75rem;
-    padding-block: 1rem;
-    margin-bottom: 1.5rem;
-    gap: 0.875rem;
-  }
-
-  @media(max-width: 360px) {
-    padding-block: 2rem;
-    gap: 0.5rem;
-  }
+  padding-top: 16px;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    padding-block: 2rem;
-    padding-block: 0.5rem;
-    width: 16rem;
-    gap: 0.375rem;
-    margin-bottom: 0rem;
+    padding-top: 8px;
+    width: 250px;
+    gap: 8px;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 52px;
-    padding-block: 2rem;
-    width: 500px;
-    padding-block: 1rem;
-    margin-bottom: 1.5rem;
+  @media (min-width: 480px) {
+    width: 350px;
+    gap: 8px;
   }
 
-  @media(min-width: 1024px) {
-    width: 70%;
-  }
-
-  @media(min-width: 2560px) {
-    width: 60%;
+  @media(min-width: 1280px) {
+    width: 600px;
+    gap: 16px;
   }
 `;
 
@@ -183,89 +181,95 @@ export const AreaInput = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  svg {
-    position: absolute;
-    top: 44px;
-    left: 10px;
-    color: ${props => props.theme["gray-400"]};
-  }
-  
-  .eye {
-    position: absolute;
-    top: 44px;
-    left: 290px;
-    color: ${props => props.theme["gray-400"]};
-    /* @media(max-width: 1024px) {
-      left: 270px !important;
-    } */
-  }
-
-  .selectState {
-    color: ${props => props.theme["gray-600"]};
-  }
-
-  .inputDate::-webkit-calendar-picker-indicator {
-    display: none;
-  }
-
-  @media(max-width: 360px) {
-    .eye {
-      left: 270px;
-    }
-  }
-
   @media(max-width: 320px) {
     label {
       font-size: 1rem;
       padding-left: 0.75rem;
     }
+  }
 
-    svg {
-      top: 38px;
+  @media(min-width: 480px) {
+    label {
+      padding-left: 12px;
+      font-size: 16px;
+      margin-bottom: 6px;
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 1280px) {
     label {
-      padding-left: 28px;
+      padding-left: 24px;
       font-size: 24px;
       margin-bottom: 16px;
     }
+  }
+`;
 
-    svg {
-      top: 62px;
-      left: 18px;
+export const DivInput = styled.div`
+  position: relative;
+
+  img {
+    width: 14px;
+    position: absolute;
+    top: 12px;
+    left: 8px;
+    color: ${props => props.theme["gray-400"]};
+  }
+
+  .userImg {
+    width: 20px;
+  }
+
+  .eye {
+    position: absolute;
+    top: 10px;
+    right: 16px;
+    color: ${props => props.theme["gray-400"]};
+  }
+
+  @media (max-width: 320px) {
+    img {
+      top: 8px;
     }
 
-    .eye {
-      top: 66px;
-      left: 460px;
+    .userImg {
+      width: 24px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media (min-width: 480px) {
+    img {
+      top: 8px;
+      left: 12px;
+    }
+
     .eye {
-      top: 62px;
-      left: 430px;
+      top: 8px;
+      right: 20px;
     }
   }
 
-  @media(min-width: 1440px) {
-    .eye {
-      left: 540px;
+  @media (min-width: 1280px) {
+    img {
+      width: 20px;
+      top: 18px;
+      left: 16px;
     }
-  }
 
-  @media(min-width: 1920px) {
+    .userImg {
+      width: 28px;
+    }
+
     .eye {
-      left: 870px;
+      top: 16px;
+      right: 24px;
     }
   }
 `;
 
 export const Input = styled.input`
   width: 100%;
-  height: 2.625rem;
+  height: 42px;
   padding-left: 2rem;
   border-radius: 8px;
   border: 2px solid ${props => props.theme["gray-400"]};
@@ -279,19 +283,19 @@ export const Input = styled.input`
     color: ${props => props.theme["gray-500"]};
   }
 
-  @media(max-width: 360px) {
-    height: 2.5rem;
-  }
-
   @media(max-width: 320px) {
-    height: 2.25rem;
+    height: 36px;
 
     &::placeholder {
       font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 600px) {
+  @media (min-width: 480px) {
+    height: 36px;
+  }
+
+  @media(min-width: 1280px) {
     height: 60px;
     padding-left: 42px;
 
@@ -337,30 +341,30 @@ export const SelectTitle = styled.div`
     font-size: 18px;
   }
 
-  @media(min-width: 600px) {
-    height: 60px;
-    gap: 18px;
+  @media(min-width: 480px) {
+    height: 36px;
+    gap: 8px;
 
     p {
-      font-size: 22px;
+      font-size: 14px;
       font-weight: 500;
     }
 
     img {
-      width: 36px;
+      width: 20px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     height: 64px;
-    gap: 20px;
+    gap: 16px;
 
     p {
       font-size: 24px;
     }
 
     img {
-      width: 38px;
+      width: 32px;
     }
   }
 `;
@@ -381,12 +385,12 @@ export const SelectUl = styled.ul`
   background-color: ${props => props.theme["red-200"]};
 
   @media(min-width: 600px) {
-    padding-inline: 36px;
-    gap: 18px;
-    bottom: -124px;
+    padding-inline: 24px;
+    gap: 16px;
+    bottom: -94px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     padding-inline: 44px;
     gap: 20px;
     bottom: -140px;
@@ -402,12 +406,12 @@ export const SelectLi = styled.li`
     background-color: ${props => props.theme["red-300"]};
   }
 
-  @media(min-width: 600px) {
-    font-size: 20px;
-    font-weight: 500;
+  @media(min-width: 480px) {
+    font-size: 14px;
+    font-weight: 500px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     font-size: 24px;
   }
 `;
@@ -419,7 +423,7 @@ export const AreaButton = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border-top: 1px solid ${props => props.theme["gray-200"]};
+  border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media (max-width: 320px) {
     width: 250px;
@@ -427,47 +431,66 @@ export const AreaButton = styled.div`
   }
 
   @media (min-width: 1280px) {
-    width: 480px;
+    width: 600px;
     height: 96px;
+    border-top-width: 4px;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
   width: 250px;
-  height: 32px;
-  padding-inline: 8px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
   background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
   border: 2px solid ${props => props.theme["green-700"]};
-  border-bottom-width: 3px;
-  text-align: center;
+  border-bottom-width: 4px;
+  border-radius: 10px;
+  transition: all 0.2s;
   cursor: pointer;
-  transition: all ease 0.3s;
 
   p {
-    color: ${props => props.theme.white};
-    font-size: 20px;
+    font-size: 24px;
+    font-weight: bold;
   }
 
-  @media (max-width: 320px) {
-    width: 150px;
-    height: 30px;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 350px;
-    height: 48px;
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
 
     p {
-      font-size: 24px;
+      font-size: 18px;
     }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+`;
+
+export const FooterArea = styled.div`
+  @media (min-width: 480px) {
+    display: none;
   }
 `;

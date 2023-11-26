@@ -6,13 +6,12 @@ import { LessonContext } from "../../context/lesson";
 
 import { Loading } from "../../components/Loading";
 import { HeaderText } from "../../components/HeaderText";
-import { ButtonHome } from "../../components/ButtonHome";
 import { Notifications } from "../../components/Notifications";
 
 import { apiQAS } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
 
-import { ButtonLesson, Container, Main, SelectLessonArea, AreaFooter } from "./styles";
+import { ButtonLesson, Container, Main, SelectLessonArea, AreaFooter, ButtonHome } from "./styles";
 
 export const SelectLesson = () => {
   const navigate = useNavigate();
@@ -49,6 +48,10 @@ export const SelectLesson = () => {
     navigate("/LessonSelected");
   }
 
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
+
   useEffect(() => {
     fetchLessons();
   }, []);
@@ -80,7 +83,9 @@ export const SelectLesson = () => {
       </Main>
 
       <AreaFooter>
-        <ButtonHome />
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
       </AreaFooter>
     </Container>
   )

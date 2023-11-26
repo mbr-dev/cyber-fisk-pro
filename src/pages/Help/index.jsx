@@ -2,12 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
-import { ButtonHome } from "../../components/ButtonHome";
 
 import maisImg from "./images/mais.png";
 import menosImg from "./images/menos.png";
 
-import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight, AreaFooter } from "./styles";
+import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {

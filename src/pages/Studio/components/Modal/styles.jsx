@@ -30,6 +30,16 @@ export const Content = styled(Dialog.Content)`
   @media(max-width: 320px) {
     width: 18rem;
   }
+
+  @media(min-width: 480px) {
+    width: 500px;
+    height: 250px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1000px;
+    height: 500px;
+  }
 `;
 
 export const Close = styled(Dialog.Close)`
@@ -45,11 +55,30 @@ export const Close = styled(Dialog.Close)`
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
+  img {
+    width: 18px;
+  }
+
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
     top: -0.5rem;
     right: -0.5rem;
+
+    img {
+      width: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 52px;
+    height: 52px;
+    top: -28px;
+    right: -24px;
+
+    img {
+      width: 28px;
+    }
   }
 `;
 
@@ -69,6 +98,13 @@ export const CloseEnter = styled(Dialog.Close)`
 
   @media(max-width: 320px) {
     height: 1.75rem;
+  }
+
+  @media(min-width: 1280px) {
+    width: 300px;
+    height: 44px;
+    font-size: 32px;
+    margin-bottom: -20px;
   }
 `;
 
@@ -95,12 +131,24 @@ export const Header = styled.header`
   @media(max-width: 320px) {
     font-size: 1rem;
   }
+
+  @media(min-width: 480px) {
+    font-size: 24px;
+    padding-block: 8px;
+  }
+
+  @media(min-width: 1280px) {
+    font-size: 32px;
+    padding-block: 16px;
+  }
 `;
 
 export const Main = styled.main`
   width: 100%;
   padding: 1.5rem;
   padding-right: 3rem;
+  display: flex;
+  flex-direction: column;
   color: ${props => props.theme["gray-700"]};
   
   p {
@@ -116,12 +164,44 @@ export const Main = styled.main`
   @media(max-width: 320px) {
     padding: 1rem;
     padding-right: 2rem;
+
     p {
       font-size: 0.875rem;
     }
 
     span {
       font-size: 0.875rem;
+    }
+  }
+
+  @media(min-width: 480px) {
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    padding: 0;
+    padding-right: 0;
+    height: 182px;
+
+    p {
+      font-size: 16px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 24px;
+    height: 500px;
+
+    p {
+      font-size: 32px;
+    }
+
+    span {
+      font-size: 24px;
     }
   }
 `;

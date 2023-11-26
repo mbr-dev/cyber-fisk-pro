@@ -72,7 +72,6 @@ export const Right = styled.main`
   height: 420px;
   border: 2px solid transparent;
   border-radius: 8px;
-  overflow-y: scroll;
 
   @media(min-width: 480px) {
     display: block;
@@ -279,8 +278,8 @@ export const AreaFooter = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    height: 120px;
+    width: 1200px;
+    height: 100px;
     border-width: 4px;
   }
 `;
@@ -329,7 +328,7 @@ export const ButtonHome = styled.button`
 
   @media(min-width: 1280px) {
     width: 400px;
-    height: 56px;
+    height: 44px;
 
     p {
       font-size: 32px;

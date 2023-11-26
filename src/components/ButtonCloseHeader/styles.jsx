@@ -21,16 +21,16 @@ export const Container = styled.button`
     height: 24px;
   }
 
-  @media (min-width: 480px) and (max-width: 798px) {
+  @media (min-width: 480px) {
     width: 36px;
     height: 36px;
 
     img {
-      width: 18px;
+      width: 20px;
     }
   }
 
-  @media(min-width: 800px) {
+  @media(min-width: 1280px) {
     width: 48px;
     height: 48px;
 

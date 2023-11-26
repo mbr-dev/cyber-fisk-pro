@@ -34,21 +34,15 @@ export const SelectLessonArea = styled.div`
     gap: 8px;
   }
 
-  @media (min-width: 480px) and (max-width: 798px) {
+  @media (min-width: 480px) {
     width: 400px;
     height: 150px;
     justify-content: center;
     align-items: center;
   }
 
-  @media(min-width: 800px) {
-    width: 600px;
-    height: 250px;
-    gap: 24px;
-  }
-
   @media(min-width: 1280px) {
-    width: 800px;
+    width: 700px;
     height: 250px;
   }
 `;
@@ -108,7 +102,7 @@ export const ButtonLesson = styled.button`
     }
   }
 
-  @media (min-width: 480px) and (max-width: 798px) {
+  @media (min-width: 480px) {
     width: 56px;
     height: 56px;
 
@@ -118,19 +112,6 @@ export const ButtonLesson = styled.button`
 
     span {
       font-size: 14px
-    }
-  }
-
-  @media(min-width: 800px) {
-    width: 86px;
-    height: 86px;
-
-    p {
-      font-size: 28px;
-    }
-
-    span {
-      font-size: 20px
     }
   }
 
@@ -162,19 +143,66 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media (min-width: 480px) and (max-width: 798px) {
-    width: 400px;
-    height: 64px;
-  }
-
-  @media(min-width: 800px) {
+  @media(min-width: 480px) {
     width: 600px;
-    height: 100px;
+    height: 52px;
   }
 
   @media(min-width: 1280px) {
-    width: 800px;
-    height: 120px;
+    width: 1200px;
+    height: 100px;
     border-width: 4px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

@@ -108,7 +108,7 @@ export const Audio = () => {
             </TimeAudio>
 
             <ButtonsArea>
-              <button onClick={mixAudio}>{/* aqui misturar */}
+              <button onClick={mixAudio}>
                 <img src={MixImg} alt="" className="redBtn" />
               </button>
               <button onClick={previousAudio}>

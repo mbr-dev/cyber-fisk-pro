@@ -263,13 +263,14 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media (min-width: 480px) {
-    height: 54px;
+  @media(min-width: 480px) {
+    width: 300px;
+    height: 52px;
   }
 
   @media(min-width: 1280px) {
     width: 600px;
-    height: 120px;
+    height: 100px;
     border-width: 4px;
   }
 `;
@@ -318,7 +319,7 @@ export const ButtonLogout = styled.button`
 
   @media(min-width: 1280px) {
     width: 400px;
-    height: 56px;
+    height: 44px;
 
     p {
       font-size: 32px;

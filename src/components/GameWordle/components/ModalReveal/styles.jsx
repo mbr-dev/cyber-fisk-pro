@@ -29,12 +29,12 @@ export const Content = styled(Dialog.Content)`
     width: 18rem;
   }
 
-  @media(min-width: 768px) {
-    width: 500px;
-    height: 700px;
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 250px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 800px;
     height: 500px;
   }
@@ -68,7 +68,18 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 42px;
+    height: 42px;
+    top: -20px;
+    right: -20px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 64px;
     height: 64px;
     top: -30px;
@@ -98,7 +109,16 @@ export const CloseEnter = styled(Dialog.Close)`
     height: 1.75rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 200px;
+    height: 32px;
+    font-size: 24px;
+    position: absolute;
+    bottom: -16px;
+    margin-bottom: 0;
+  }
+
+  @media(min-width: 1280px) {
     width: 250px;
     height: 56px;
     font-size:32px;
@@ -134,7 +154,15 @@ export const Header = styled.header`
     font-size: 1rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    height: 64px;
+
+    p {
+      font-size: 24px
+    }
+  }
+
+  @media(min-width: 1280px) {
     height: 86px;
 
     p {
@@ -161,11 +189,17 @@ export const Main = styled.main`
     padding-block: 36px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     height: 100%;
     justify-content: center;
-    padding-block: 0;
+    padding-block: 0px;
 
+    p {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     p {
       font-size: 52px;
     }
@@ -181,17 +215,19 @@ export const MainInside = styled.main`
     padding-block: 30px;
   }
 
-  @media(min-width: 768px) {
-    padding-block: 64px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 400px;
+  @media(min-width: 480px) {
+    width: 200px;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
-    gap: 16px;
+    gap: 0px;
     flex-direction: row;
+    padding-block: 24px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    gap: 16px;
     padding-block: 36px;
   }
 `;

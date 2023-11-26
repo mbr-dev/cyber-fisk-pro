@@ -10,13 +10,11 @@ export const Container = styled.div`
 
 export const HeaderMobile = styled.div`
   width: 100vw;
-  height: 132px;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 10px;
-  justify-content: flex-start;
-  padding: 14px 14px 0 14px;
+  padding: 16px 16px 0 16px;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
   overflow: hidden;
@@ -32,15 +30,14 @@ export const HeaderMobile = styled.div`
   }
 
   .logoFisk {
-    width: 150px;
+    width: 132px;
   }
 
   @media (max-width: 320px) {
-    height: 110px;
-    gap: 6px;
+    height: 100px;
 
     .logoFisk {
-      width: 120px;
+      width: 110px;
     }
   }
 
@@ -57,13 +54,13 @@ export const HeaderMobileDiv = styled.div`
 
   p {
     color: ${props => props.theme.white};
-    font-size: 20px;
+    font-size: 24px;
     font-weight: 500;
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 18px;
+      font-size: 20 px;
     }
   }
 `;
@@ -82,7 +79,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  padding-top: 32px;
+  gap: 32px;
 
   p {
     font-size: 20px;
@@ -90,20 +88,25 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
+    padding-top: 10px;
+    gap: 10px;
     width: 250px;
 
     p {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
   @media(min-width: 480px) {
-    width: 600px;
+    width: 700px;
     flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 0px;
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
+    width: 1200px;
   }
 `;
 
@@ -118,14 +121,15 @@ export const BooksArea = styled.div`
   }
 
   @media(min-width: 480px) {
+    width: 320px;
 
     p {
-      font-size: 16px;
+      font-size: 18px;
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 16px;
+    width: 550px;
 
     p {
       font-size: 32px;
@@ -133,23 +137,27 @@ export const BooksArea = styled.div`
   }
 `;
 
+export const BooksInside = styled.div`
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 320px) {
+    height: 100px;
+  }
+
+  @media (min-width: 1280px) {
+    height: 200px;
+  }
+`;
+
 export const BooksImage = styled.div`
   cursor: pointer;
   
   img {
-    width: 30%;
-  }
-
-  @media(max-width: 320px) {
-    img {
-      width: 25%;
-    }
-  }
-
-  @media(min-width: 480px) {
-    img {
-      width: 80px;
-    }
+    width: 100%;
+    height: 100%;
   }
 
   @media(min-width: 1280px) {
@@ -187,8 +195,8 @@ export const AreaFooter = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    height: 120px;
+    width: 1200px;
+    height: 100px;
     border-width: 4px;
   }
 `;
@@ -237,7 +245,7 @@ export const ButtonHome = styled.button`
 
   @media(min-width: 1280px) {
     width: 400px;
-    height: 56px;
+    height: 44px;
 
     p {
       font-size: 32px;

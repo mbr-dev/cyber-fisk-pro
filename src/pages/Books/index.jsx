@@ -14,7 +14,7 @@ import bookEss1 from "./images/capa53.jpg";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 import BgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Container, Main, BooksArea, BooksImage, AreaFooter, HeaderMobile, DivDesk, HeaderMobileDiv, DivLine, ButtonHome } from "./styles";
+import { Container, Main, BooksArea, BooksImage, AreaFooter, HeaderMobile, DivDesk, HeaderMobileDiv, DivLine, ButtonHome, BooksInside } from "./styles";
 
 export const Books = () => {
   const navigate = useNavigate();
@@ -49,15 +49,17 @@ export const Books = () => {
       <Main>
         <BooksArea>
           <p>{selectLanguage === 0 ? "Atual" : selectLanguage === 1 ? "Current" : "Actual"}:</p>
-          <Dialog.Root>
-            <Dialog.Trigger asChild>
-              <BooksImage>
-                <img src={bookEss1} alt="" />
-              </BooksImage>
-            </Dialog.Trigger>
+          <BooksInside>
+            <Dialog.Root>
+              <Dialog.Trigger asChild>
+                <BooksImage>
+                  <img src={bookEss1} alt="" />
+                </BooksImage>
+              </Dialog.Trigger>
 
-            <ModalBooks onPress={() => clickLesson()} />
-          </Dialog.Root>
+              <ModalBooks onPress={() => clickLesson()} />
+            </Dialog.Root>
+          </BooksInside>
         </BooksArea>
 
         <DivLine>
@@ -66,9 +68,17 @@ export const Books = () => {
 
         <BooksArea>
           <p>{selectLanguage === 0 ? "Anterior" : selectLanguage === 1 ? "Previous" : "Anterior"}:</p>
-          <BooksImage style={{ opacity: 0.2 }}>
-            <img src={bookEss1} alt=""/>
-          </BooksImage>
+          <BooksInside>
+            <BooksImage style={{ opacity: 0.2 }}>
+              <img src={bookEss1} alt=""/>
+            </BooksImage>
+            <BooksImage style={{ opacity: 0.2 }}>
+              <img src={bookEss1} alt=""/>
+            </BooksImage>
+            <BooksImage style={{ opacity: 0.2 }}>
+              <img src={bookEss1} alt=""/>
+            </BooksImage>
+          </BooksInside>
         </BooksArea>
       </Main>
 

@@ -10,7 +10,7 @@ import { CyberContext } from "../../context/cyber";
 import data from "./images/data.png";
 import escola from "./images/escola.png";
 import mail from "./images/mail.png";
-import user from "./images/user.png";
+import userImg from "../../assets/user.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
 import RoboWD from "../../assets/RoboWD.png";
@@ -99,7 +99,7 @@ export const Profile = () => {
           <AreaInput>
             <label>{selectLanguage === 0 ? "Nome" : selectLanguage === 1 ? "Name" : "Nombre"}:</label>
             <Input>
-              <img src={user} alt="icon user" />
+              <img src={userImg} alt="icon user" />
               <p>Camila Eduarda Campos</p>
             </Input>
           </AreaInput>
