@@ -1,15 +1,15 @@
-import { useContext, useState, useEffect } from "react";
+import Cookies from "universal-cookie";
+import { apiQAS } from "../../lib/api";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
-import { apiQAS } from "../../lib/api";
-import Cookies from 'universal-cookie';
+import { useContext, useState, useEffect } from "react";
 
 import { Loading } from "../../components/Loading";
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
-import { ButtonHome } from "../../components/ButtonHome";
 import { Notifications } from "../../components/Notifications";
-import { HeaderTextImage } from "./components/HeaderTextImage";
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 import taskImg from "./images/task.png";
@@ -18,19 +18,23 @@ import foneImg from "./images/fone.png";
 import microImg from "./images/micro.png";
 import qrImg from "./images/qrcode.png";
 import superImg from "./images/super.png";
+import bgHeaderImg from "../../assets/bgHeaderImg.png";
+import LogoFiskImg from "../../assets/logoFisk2.png";
 
-import { Container, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft, AreaFooter } from "./styles"
+import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft, AreaFooter, ButtonHome } from "./styles"
 
 export const LessonSelected = () => {
-  const navigate = useNavigate();
   const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
+
   const [task1, setTask1] = useState(false);
   const [task2, setTask2] = useState(false);
   const [superTask, setSuperTask] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
+  
+  const navigate = useNavigate();
 
   const click = (page) => {
     if(page === 'qr-code'){
@@ -52,8 +56,8 @@ export const LessonSelected = () => {
     
   }
 
-  const home = () => {
-    navigate(`/Home`);
+  const handleGoHome = () => {
+    navigate("/Home");
   }
   
   const verificaTask = async () => {
@@ -94,7 +98,19 @@ export const LessonSelected = () => {
 
   return (
     <Container>
-      <HeaderTextImage title={`Lesson ${numSelLesson}`} />
+      <Header>
+        <img src={bgHeaderImg} className="bgHeaderImg" alt=""/>
+        <HeaderTop>
+          <ButtonMenuHeader />
+          <img src={LogoFiskImg} className="logoFiskD" alt="Logo Fisk"/>
+          <p>Lesson {numSelLesson}</p>
+          <ButtonCloseHeader />
+        </HeaderTop>
+
+        <HeaderBottom>
+          <img src={LogoFiskImg} className="logoFisk" alt="Logo Fisk"/>
+        </HeaderBottom>
+      </Header>
 
       <Main>
         {error ? <Notifications description={msgError} event={clickAlert}/> : null}
@@ -150,7 +166,9 @@ export const LessonSelected = () => {
       </Main>
 
       <AreaFooter>
-        <ButtonHome />
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
       </AreaFooter>
     </Container>
   )

@@ -8,6 +8,112 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const Header = styled.header`
+  width: 100vw;
+  height: 150px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 10px;
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  overflow: hidden;
+  position: relative;
+
+  .bgHeaderImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  @media(max-width: 320px) {
+    height: 120px;
+    gap: 6px;
+  }
+
+  @media(min-width: 480px) {
+    height: 64px;
+    justify-content: center;
+    gap: 0px;
+  }
+
+  @media(min-width: 1280px) {
+    height: 100px;
+    gap: 0px;
+  }
+`;
+
+export const HeaderTop = styled.header`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-inline: 16px;
+  padding-top: 16px;
+
+  .logoFiskD {
+    display: none;
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
+    color: ${props => props.theme.white};
+  }
+
+  @media(max-width: 320px) {
+    font-size: 18px;
+    padding-inline: 12px;
+    padding-top: 12px;
+  }
+
+  @media(min-width: 480px) {
+    padding-top: 0px;
+
+    .logoFiskD {
+      display: block;
+      width: 80px;
+      margin-left: -250px;
+    }
+
+    p {
+      font-size: 28px;
+      margin-left: -100px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    .logoFiskD {
+      width: 100px;
+      margin-left: -600px;
+    }
+
+    p {
+      font-size: 32px;
+      margin-left: -100px;
+    }
+  }
+`;
+
+export const HeaderBottom = styled.header`
+  display: flex;
+  align-items: center;
+  
+  .logoFisk {
+    width: 164px;
+  }
+
+  @media (min-width: 480px) {
+    .logoFisk {
+      display: none;
+    }
+  }
+`;
+
 export const Main = styled.main`
   flex: 1;
   width: 300px;
@@ -26,33 +132,18 @@ export const Main = styled.main`
     padding-block: 10px;
   }
 
-  @media(min-width: 600px) {
-    width: 700px;
+  @media(min-width: 480px) {
+    width: 580px;
     gap: 0;
     flex-direction: row;
     justify-content: space-between;
-    padding-block: 0;
   }
 
-  @media(min-width: 768px) {
-    width: 580px;
-    gap: 32px;
-  }
-
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 1000px;
     gap: 0;
-    flex-direction: row;
-    justify-content: space-between;
+    
     padding-block: 0;
-  }
-
-  @media(min-width: 1440px) {
-    width: 1200px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 1400px;
   }
 `;
 
@@ -72,22 +163,15 @@ export const ButtonAreaTop = styled.div`
     height: 128px;
   }
 
-  @media(min-width: 768px) {
-    height: 330px;
+  @media(min-width: 480px) {
+    width: 250px;
+    height: 200px;
   }
 
-  @media(min-width: 1024px) {
-    width: 460px;
+  @media(min-width: 1280px) {
+    width: 450px;
     height: 350px;
     gap: 0;
-  }
-
-  @media(min-width: 1440px) {
-    width: 520px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 530px;
   }
 `;
 
@@ -154,21 +238,21 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 172px;
-    height: 152px;
-    gap: 10px;
+  @media(min-width: 480px) {
+    width: 86px;
+    height: 92px;
+    gap: 4px;
 
     img {
-      width: 54px;
+      width: 32px;
     }
 
     p {
-      font-size: 24px;
+      font-size: 14px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 180px;
     border-radius: 16px;
     border-width: 3px;
@@ -178,10 +262,10 @@ export const ButtonTask = styled.button`
     img {
       width: 54px;
     }
-  }
 
-  @media(min-width: 1440px) {
-    width: 200px;
+    p {
+      font-size: 20px;
+    }
   }
 `;
 
@@ -228,26 +312,30 @@ export const ButtonSuperTask = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 280px;
+  @media(min-width: 480px) {
+    width: 120px;
 
     p {
-      font-size: 32px;
+      font-size: 16px;
     }
 
     img {
-      width: 96px;
+      width: 52px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 220px;
     border-radius: 16px;
     border-width: 3px;
-  }
 
-  @media(min-width: 1440px) {
-    width: 250px;
+    p {
+      font-size: 24px;
+    }
+
+    img {
+      width: 84px;
+    }
   }
 `;
 
@@ -261,22 +349,15 @@ export const ButtonAreaBottom = styled.div`
     width: 250px;
   }
 
-  @media(min-width: 768px) {
-    width: 100%;
+  @media(min-width: 480px) {
+    width: 300px;
+    height: 200px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 460px;
     height: 350px;
     gap: 0;
-  }
-  
-  @media(min-width: 1440px) {
-    width: 600px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 700px;
   }
 `;
 
@@ -291,22 +372,16 @@ export const BottomRight = styled.div`
     gap: 8px;
   }
 
-  @media(min-width: 768px) {
-    width: 280px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 200px;
+  @media(min-width: 480px) {
+    width: 150px;
     height: 100%;
     justify-content: space-between;
   }
 
-  @media(min-width: 1440px) {
-    width: 290px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 350px;
+  @media(min-width: 1280px) {
+    width: 230px;
+    height: 100%;
+    justify-content: space-between;
   }
 `;
 
@@ -321,22 +396,16 @@ export const BottomLeft = styled.div`
     gap: 8px;
   }
   
-  @media(min-width: 768px) {
-    width: 172px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 200px;
+  @media(min-width: 480px) {
+    width: 130px;
     height: 100%;
     justify-content: space-between;
   }
 
-  @media(min-width: 1440px) {
-    width: 250px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 300px;
+  @media(min-width: 1280px) {
+    width: 200px;
+    height: 100%;
+    justify-content: space-between;
   }
 `;
 
@@ -390,20 +459,20 @@ export const ButtonBottom = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
-    height: 108px;
-    gap: 24px;
+  @media(min-width: 480px) {
+    height: 94px;
+    gap: 6px;
 
     p {
-      font-size: 24px;
+      font-size: 16px;
     }
 
     img {
-      width: 52px;
+      width: 42px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     border-radius: 16px;
     border-width: 3px;
     height: 150px;
@@ -434,22 +503,66 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 768px) {
-    width: 620px;
-    height: 104px;
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
   }
 
-  @media(min-width: 1024px) {
-    width: 1000px;
-    height: 120px;
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
     border-width: 4px;
   }
+`;
 
-  @media(min-width: 1440px) {
-    width: 1200px;
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
   }
 
-  @media(min-width: 1920px) {
-    width: 1600px;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

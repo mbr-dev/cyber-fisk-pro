@@ -24,11 +24,13 @@ export const Main = styled.main`
 
   @media(min-width: 480px) {
     flex-direction: row;
-    padding-top: 0px;
+    align-items: flex-start;
+    padding-top: 8px;
   }
 
   @media(min-width: 1280px) {
     justify-content: center;
+    padding-top: 16px;
   }
 `;
 
@@ -185,7 +187,7 @@ export const Right = styled.div`
   @media(min-width: 480px) {
     width: 300px;
     height: 200px;
-    gap: 6px;
+    gap: 4px;
     border-left: 1px solid ${props => props.theme["gray-200"]};
   }
 
@@ -305,7 +307,8 @@ export const Title = styled.div`
   }
 
   @media (min-width: 480px) {
-    height: 24px;
+    height: 32px;
+    border-radius: 3px;
 
     p {
       font-size: 14px;
@@ -315,6 +318,7 @@ export const Title = styled.div`
   @media (min-width: 1280px) {
     width: 90%;
     height: 64px;
+    border-radius: 6px;
 
     p {
       font-size: 32px;
@@ -326,7 +330,7 @@ export const Bottom = styled.div`
   width: 100%;
   height: 182px;
   padding: 12px 10px;
-  
+
   div {
     width: 100%;
     height: 100%;
@@ -340,34 +344,36 @@ export const Bottom = styled.div`
     div {
       width: 100%;
       height: 100%;
-      padding-block: 0;
-      padding-left: 0;
+      padding-block: 10px;
+      padding-left: 10px;
     }
   }
 
   @media(max-width: 320px) {
-    height: 110px;
+    height: 120px;
 
     div {
-      padding-block: 0;
-      padding-left: 0;
+      padding-block: 6px;
+      padding-left: 8px;
     }
   }
 
   @media(min-width: 480px) {
     height: 100px;
-    padding: 0;
+    padding: 8px 6px;
 
     div {
-      padding-block: 0px;
+      padding-block: 6px;
       padding-left: 4px;
     }
   }
 
   @media(min-width: 1280px) {
     height: 220px;
+    padding: 14px;
 
     div {
+      padding-block: 12px;
       padding-left: 8px;
     }
   }
@@ -378,18 +384,40 @@ export const CardReward = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["gray-200"]};
+  box-shadow: 0px 4px 10px 0px #00000033;
 
   .RoboCard {
-    width: 70%;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
   }
 
   @media(max-width: 320px) {
     border-radius: 6px;
+
+    .RoboCard {
+      width: 64px;
+      height: 64px;
+      margin-right: 10px;
+    }
+  }
+
+  @media(min-width: 480px) {
+
+    .RoboCard {
+      width: 64px;
+      height: 64px;
+      margin-right: 4px;
+    }
   }
 
   @media(min-width: 1280px) {
-    border-width: 3px;
+
+    .RoboCard {
+      width: 150px;
+      height: 150px;
+      margin-right: 0px;
+    }
   }
 `;
 

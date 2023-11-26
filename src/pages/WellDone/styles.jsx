@@ -8,7 +8,7 @@ export const Container = styled.div`
   justify-content: space-between;
   overflow-x: hidden;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
   }
 `;
@@ -38,14 +38,10 @@ export const Header = styled.header`
 
   @media(max-width: 320px) {
     height: 250px;
-    gap: 4px;
+    gap: 0px;
   }
 
-  @media(min-width: 600px) {
-    height: 560px;
-  }
-
-  @media(min-width: 1280px) {
+  @media(min-width: 480px) {
     width: 40%;
     height: 100vh;
     gap: 20px;
@@ -62,8 +58,22 @@ export const Top = styled.section`
     padding: 12px 12px 0 12px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     padding: 24px 24px 0 24px;
+  }
+`;
+
+export const DivMobile = styled.div`
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const DivDesk = styled.div`
+  display: none;
+
+  @media (min-width: 480px) {
+    display: block;
   }
 `;
 
@@ -88,22 +98,22 @@ export const Middle = styled.section`
     }
   }
 
-  @media(min-width: 600px) {
-    margin-top: -74px;
-    gap: 5px;
+  @media(min-width: 480px) {
+    margin-top: 30px;
+    gap: 10px;
+
+    h2 {
+      font-size: 24px;
+    }
   }
 
-  @media(min-width: 1024px) {
-    margin-top: 80px;
-    gap: 20px;
-  }
+  @media(min-width: 1280px) {
+    margin-top: 50px;
+    gap: 24px;
 
-  @media(min-width: 1440px) {
-    margin-top: 120px;
-  }
-
-  @media(min-width: 1920px) {
-    margin-top: 150px;
+    h2 {
+      font-size: 52px;
+    }
   }
 `;
 
@@ -158,40 +168,35 @@ export const AvatarArea = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     img {
-      width: 280px;
+      width: 100px;
     }
 
     .bgConfetes {
-      width: 80%;
+      width: 60%;
     }
 
     p {
-      border-radius: 12px;
-      width: 300px;
-      height: 48px;
-      font-size: 28px;
+      width: 180px;
+      border-radius: 6px;
+      height: 32px;
+      font-size: 16px;
     }
   }
 
-  @media(min-width: 1024px) {
-    .bgConfetes {
-      width: 450px;
-      height: 400px;
-    }
-
-    p {
-      font-size: 32px;
-    }
-  }
-
-  @media(min-width: 1920px) {
+  @media(min-width: 1280px) {
     img {
       width: 300px;
     }
 
+    .bgConfetes {
+      width: 90%;
+    }
+
     p {
+      width: 250px;
+      height: 52px;
       font-size: 32px;
     }
   }
@@ -212,11 +217,6 @@ export const Bottom = styled.section`
   @media(max-width: 320px) {
     width: 90%;
     gap: 4px;
-  }
-
-  @media(min-width: 768px) {
-    width: 90%;
-    gap: 6px;
   }
 `;
 
@@ -293,7 +293,7 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     width: 60%;
     height: 100vh;
   }
@@ -307,6 +307,10 @@ export const Main = styled.main`
   gap: 8px;
   margin-top: -32px;
   position: relative;
+
+  p {
+    text-align: center;
+  }
   
   span {
     width: 120px;
@@ -324,35 +328,49 @@ export const Main = styled.main`
     margin-top: -20px;
   }
 
-  @media(min-width: 600px) {
-    margin-top: -50px;
-    gap: 14px;
+  @media(min-width: 480px) {
+    margin-top: 0px;
+    align-items: flex-end;
+    gap: 20px;
+
+    p {
+      font-size: 16px;
+      margin-bottom: 8px;
+    }
+
+    span {
+      width: 150px;
+      height: 32px;
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 100px;
 
     p {
       font-size: 24px;
+      margin-bottom: 8px;
+      
     }
 
     span {
       width: 250px;
       height: 52px;
-      font-size: 24px;
+      font-size: 32px;
     }
-  }
-
-  @media(min-width: 1024px) {
-    margin-top: 0px;
-    gap: 100px;
-  }
-
-  @media(min-width: 1920px) {
-    gap: 200px;
   }
 `;
 
 export const ButtonClose = styled.section`
-  position: absolute;
-  top: 32px;
-  right: 32px;
+  display: none;
+
+  @media (min-width: 480px) {
+    display: block;
+    position: absolute;
+    top: 12px;
+    right: 12px;
+  }
 `;
 
 export const ButtonRed = styled.button`
@@ -389,122 +407,24 @@ export const ButtonRed = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 500px;
-    height: 84px;
-    gap: 72px;
+  @media(min-width: 480px) {
+    width: 200px;
+    height: 36px;
+    border-radius: 6px;
+    gap: 10px;
 
     p {
-      font-size: 32px;
+      font-size: 14px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 350px;
+    height: 72px;
     gap: 32px;
 
     p {
       font-size: 24px;
-    }
-  }
-`;
-
-export const Bottom2 = styled.section`
-  width: 80%;
-  height: 180px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  position: relative;
-  margin-top: 64px;
-  margin-right: -112px;
-
-  .fundoBg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    z-index: -1;
-    border-top-left-radius: 20px;
-    border-bottom-left-radius: 20px;
-  }
-
-  @media(min-width: 1440px) {
-    margin-right: -130px;
-  }
-
-  @media(min-width: 1920px) {
-    margin-right: -140px;
-  }
-
-  @media(min-width: 1920px) {
-    margin-right: -188px;
-  }
-`;
-
-export const AreaItem2 = styled.section`
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  color: ${props => props.theme.white};
-  justify-content: center;
-
-  img {
-    width: 36px;
-    margin-right: 20px;
-  }
-
-  span {
-    display: block;
-    width: 28px;
-    height: 28px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    background-color: ${props => props.theme["red-200"]};
-  }
-
-  p {
-    font-weight: 500;
-  }
-
-  @media(min-width: 600px) {
-    gap: 20px;
-
-    img {
-      width: 44px;
-    }
-
-    span {
-      width: 36px;
-      height: 36px;
-      font-size: 24px;
-    }
-
-    p {
-      font-size: 24px;
-    }
-  }
-
-  @media(min-width: 1440px) {
-    gap: 40px;
-
-    img {
-      width: 56px;
-    }
-
-    span {
-      width: 56px;
-      height: 56px;
-      font-size: 32px;
-    }
-
-    p {
-      font-size: 28px;
     }
   }
 `;
@@ -527,14 +447,111 @@ export const IconAvatar = styled.div`
     margin-left: -0px
   }
 
-  @media(min-width: 600px) {
-    width: 72px;
-    height: 72px;
-    margin-left: -64px;
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
+    margin-left: 0px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
+    width: 64px;
+    height: 64px;
     margin-left: -20px
+  }
+`;
+
+export const Bottom2 = styled.section`
+  display: none;
+
+  @media(min-width: 480px) {
+    display: flex;
+    width: 400px;
+    height: 100px;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 4px;
+    position: relative;
+    margin-top: 24px;
+
+    .fundoBg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      z-index: -1;
+      border-top-left-radius: 10px;
+      border-bottom-left-radius: 10px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 700px;
+    height: 180px;
+    gap: 12px;
+    margin-top: 36px;
+
+    .fundoBg {
+      border-top-left-radius: 20px;
+      border-bottom-left-radius: 20px;
+    }
+  }
+`;
+
+export const LineSeparator = styled.div`
+  width: 250px;
+  height: 1px;
+  background-color: ${props => props.theme.white};
+
+  @media (min-width: 1280px) {
+    width: 500px;
+    height: 2px;
+  }
+`;
+
+export const AreaItem2 = styled.section`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+  color: ${props => props.theme.white};
+
+  img {
+    width: 32px;
+  }
+
+  span {
+    display: block;
+    font-size: 14px;
+    width: 32px;
+    height: 28px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    background-color: ${props => props.theme["red-200"]};
+  }
+
+  p {
+    font-size: 20px;
+    font-weight: 500;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 52px;
+
+    img {
+      width: 56px;
+    }
+
+    span {
+      width: 56px;
+      height: 56px;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 28px;
+    }
   }
 `;
 
@@ -548,42 +565,15 @@ export const Div = styled.div`
 
   @media(max-width: 320px) {
     gap: 6px;
-
-    div {
-      p {
-        font-size: 14px;
-        margin-bottom: 6px;
-      }
-
-      span {
-        font-size: 14px;
-      }
-    }
   }
 
-  @media(min-width: 600px) {
-    gap: 14px;
-  }
-
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
+    gap: 16px;
+  }
+
+  @media(min-width: 1280px) {
     gap: 50px;
-
-    div {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 20px;
-    }
-  }
-
-  @media(min-width: 1440px) {
-    margin-top: 100px;
-  }
-
-  @media(min-width: 1920px) {
-    margin-top: 50px;
   }
 `;
 
@@ -607,52 +597,50 @@ export const Text = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 380px;
+  @media(min-width: 480px) {
+    width: 250px;
     height: 100px;
+    padding-inline: 6px;
     
     p {
-      font-size: 22px;
+      font-size: 16px;
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 300px;
-    height: 150px;
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 180px;
     border-width: 3px;
     
     p {
-      font-size: 22px;
+      font-size: 24px;
     }
-  }
-
-  @media(min-width: 1440px) {
-    width: 400px;
-    height: 180px;
   }
 `;
 
 export const AreaButton = styled.div`
   width: 300px;
-  height: 72px;
+  height: 64px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  border-top: 1px solid ${props => props.theme["gray-200"]};
+  border-top: 2px solid ${props => props.theme["gray-200"]};
 
-  @media (max-width: 360px) {
-    height: 64px;
-  }
-
-  @media (max-width: 320px) {
+  @media(max-width: 320px) {
     width: 250px;
-    height: 54px;
+    height: 52px;
   }
 
-  @media (min-width: 1280px) {
+  @media(min-width: 480px) {
+    width: 300px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
     width: 600px;
-    height: 96px;
-    border-width: 3px;
+    height: 100px;
+    border-width: 4px;
   }
 `;
 
@@ -666,7 +654,7 @@ export const ButtonHome = styled.button`
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom: 4px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
   border-radius: 10px;
   transition: all 0.2s;
   cursor: pointer;
@@ -689,9 +677,18 @@ export const ButtonHome = styled.button`
     }
   }
 
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
   @media(min-width: 1280px) {
     width: 400px;
-    height: 56px;
+    height: 44px;
 
     p {
       font-size: 32px;
