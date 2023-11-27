@@ -2,6 +2,7 @@ import { useContext, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { AvatarCustom } from "../../components/AvatarCustom";
+import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
@@ -13,7 +14,6 @@ import mail from "./images/mail.png";
 import userImg from "../../assets/user.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
-import RoboWD from "../../assets/RoboWD.png";
 import Brazil from "../../assets/Brazil.svg";
 import LogoFisk from "../../assets/logoFisk2.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
@@ -51,8 +51,8 @@ export const Profile = () => {
 
         <BottomHeader>
           <Avatar>
-            <img src={RoboWD} alt="" />
-            <p>Maria Santos</p>
+            <AvatarCustomMetade />
+            {/* <p>Maria Santos</p> */}
           </Avatar>
           <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
         </BottomHeader>

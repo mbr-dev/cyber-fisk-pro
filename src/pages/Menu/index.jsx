@@ -68,7 +68,7 @@ export const Menu = () => {
         </BtnC>
 
         <Main>
-          <p>Avatar</p>
+          <p onClick={() => {alterPage("Avatar")}}>Avatar</p>
           <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Profile")}}>Profile</p>
           <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>

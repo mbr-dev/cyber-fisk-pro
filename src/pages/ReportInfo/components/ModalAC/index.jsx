@@ -1,5 +1,6 @@
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
+
+import xImg from "../../../../assets/xImg.png";
 
 import { Content, Overlay, Close, CloseEnter, Main, Header, Separator, Text } from "./styles";
 
@@ -10,7 +11,7 @@ export const ModalAC = () => {
 
       <Content>
         <Close>
-          <X size={18} color="white" strokeWidth={3} />
+          <img src={xImg} alt="X" />
         </Close>
         <Header>
           <p>Access</p>

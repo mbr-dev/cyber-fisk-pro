@@ -35,6 +35,10 @@ export const Main = styled.main`
   @media(min-width: 1280px) {
     width: 1000px;
   }
+
+  @media(min-width: 1920px) {
+    width: 1200px;
+  }
 `;
 
 export const Left = styled.main`
@@ -60,7 +64,7 @@ export const Left = styled.main`
     justify-content: space-between;
   }
 
-  @media(min-width: 1440px) {
+  @media(min-width: 1920px) {
     width: 550px;
     height: 500px;
   }
@@ -77,6 +81,7 @@ export const Right = styled.main`
     display: block;
     width: 280px;
     height: 200px;
+    overflow-y: scroll;
   }
 
   @media(min-width: 1280px) {
@@ -85,8 +90,8 @@ export const Right = styled.main`
   }
 
   @media(min-width: 1920px) {
-    width: 750px;
-    border-width: 3px;
+    width: 550px;
+    height: 500px;
   }
 `;
 

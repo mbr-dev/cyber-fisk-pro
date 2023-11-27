@@ -21,8 +21,15 @@ export const Main = styled.main`
     gap: 32px;
   }
 
-  @media (min-width: 1024px) {
-    width: 80%;
+  @media (min-width: 480px) {
+    padding-top: 10px;
+    gap: 32px;
+  }
+
+  @media (min-width: 1280px) {
+    padding-top: 0px;
+    gap: 54px;
+    justify-content: center;
   }
 `;
 
@@ -34,7 +41,7 @@ export const DivInside = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 3px solid ${props => props.theme["red-200"]};
+  border: 1px solid ${props => props.theme["red-200"]};
   transition: all ease 0.3s;
 
   span {
@@ -46,22 +53,23 @@ export const DivInside = styled.div`
     font-weight: 500;
   }
 
-  @media (min-width: 768px) {
-    width: 96px;
-    height: 96px;
+  @media (min-width: 480px) {
+    width: 64px;
+    height: 64px;
 
     span {
-      font-size: 28px;
+      font-size: 20px;
     }
 
     p {
-      font-size: 20px;
+      font-size: 16px;
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     width: 110px;
     height: 110px;
+    border-width: 3px;
 
     span {
       font-size: 32px;
@@ -108,22 +116,22 @@ export const ButtonRec = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 300px;
-    height: 72px;
-    gap: 16px;
+  @media(min-width: 480px) {
+    width: 200px;
+    height: 64px;
+    gap: 10px;
 
     img {
-      width: 54px;
-      height: 42px;
+      width: 32px;
+      height: 32px;
     }
 
     .ruido {
-      width: 160px;
+      width: 120px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 420px;
     height: 72px;
     gap: 16px;
@@ -135,6 +143,84 @@ export const ButtonRec = styled.button`
 
     .ruido {
       width: 220px;
+    }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
     }
   }
 `;

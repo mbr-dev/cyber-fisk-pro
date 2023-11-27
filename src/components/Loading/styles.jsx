@@ -20,7 +20,6 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-  padding-top: 150px;
   z-index: 200;
 
   .bgImg {
@@ -28,6 +27,7 @@ export const Container = styled.div`
     width: 100vw;
     height: 100vh;
     top: 0;
+    left: -1px;
   }
 
   img {
@@ -58,8 +58,6 @@ export const Container = styled.div`
   }
 
   @media(min-width: 480px) {
-    padding-top: 32px;
-
     img {
       width: 200px;
     }
@@ -70,8 +68,6 @@ export const Container = styled.div`
   }
 
   @media(min-width: 1280px) {
-    padding-top: 120px;
-
     img {
       width: 400px;
     }

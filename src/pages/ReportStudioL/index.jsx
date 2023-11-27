@@ -1,15 +1,18 @@
+import { useNavigate } from "react-router-dom";
+
 import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 
 import ruido2 from "../../assets/ruido2.svg";
 import micro1 from "../../assets/micro1.svg";
 
-import { Container, DivInside, Main, ButtonRec } from "./styles";
+import { Container, DivInside, Main, ButtonRec, AreaFooter, ButtonHome } from "./styles";
 
 export const ReportStudioL = () => {
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const navigate = useNavigate();
 
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
   return (
     <Container>
       <HeaderText title="Report Studio" />
@@ -26,13 +29,11 @@ export const ReportStudioL = () => {
         </ButtonRec>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "90%" : "80%"}
-        hasLS
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

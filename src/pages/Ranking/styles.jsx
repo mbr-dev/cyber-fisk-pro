@@ -6,14 +6,6 @@ export const Container  = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  /* @media (min-width: 480px) {
-    height: 100%;
-  }
-
-  @media (min-width: 1280px) {
-    height: 100vh;
-  } */
 `;
 
 export const Main = styled.main`
@@ -38,6 +30,11 @@ export const Main = styled.main`
   @media(min-width: 1280px) {
     padding-top: 32px;
     gap: 52px;
+  }
+
+  @media(min-width: 1920px) {
+    padding-top: 32px;
+    gap: 120px;
   }
 `;
 

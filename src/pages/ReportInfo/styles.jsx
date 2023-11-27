@@ -21,7 +21,7 @@ export const Main = styled.main`
     padding-bottom: 6px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
   }
 `;
@@ -32,10 +32,14 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     width: 50%;
-    height: 500px;
+    height: 200px;
     justify-content: flex-start;
+  }
+
+  @media(min-width: 1280px) {
+    height: 500px;
   }
 
   @media(min-width: 1440px) {
@@ -54,8 +58,17 @@ export const AvatarArea = styled.div`
     padding: 8px 20px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 100%;
+    padding: 8px;
+    justify-content: center;
+    gap: 54px;
+  }
+  
+  @media(min-width: 1280px) {
     width: 80%;
+    padding: 16px 32px;
+    justify-content: space-between;
   }
 `;
 
@@ -75,7 +88,15 @@ export const AvatarInfo = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    gap: 10px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     gap: 20px;
 
     p {
@@ -101,7 +122,12 @@ export const Avatar = styled.div`
     height: 36px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
+  }
+
+  @media(min-width: 1280px) {
     width: 84px;
     height: 84px;
   }
@@ -142,9 +168,32 @@ export const Print = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
+    gap: 0;
+
+    p {
+      font-size: 6px;
+    }
+
+    img {
+      width: 12px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 84px;
     height: 84px;
+    gap: 6px;
+
+    p {
+      font-size: 12px;
+    }
+
+    img {
+      width: 36px;
+    }
   }
 `;
 
@@ -159,21 +208,16 @@ export const XP = styled.div`
   gap: 0.5rem;
   background-color: ${props => props.theme["gray-100"]};
 
-  .compose {
-    font-size: 20px;
-    font-weight: 700;
-  }
-
   @media(max-width: 320px) {
     height: 42px;
   }
 
-  @media(min-width: 768px) {
-    height: 72px;
+  @media(min-width: 480px) {
+    height: 36px;
+  }
 
-    .compose {
-      font-size: 24px;
-    }
+  @media(min-width: 1280px) {
+    height: 72px;
   }
 `;
 
@@ -187,7 +231,7 @@ export const XPDiv = styled.div`
     width: 250px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     width: 80%;
   }
 `;
@@ -225,7 +269,17 @@ export const XPInside = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    span {
+      font-size: 12px;
+    }
+    
+    p {
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     span {
       font-size: 24px;
     }
@@ -262,7 +316,13 @@ export const XPRight = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     p {
       font-size: 24px;
     }
@@ -280,13 +340,13 @@ export const Stage = styled.div`
     padding: 4px 10px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     width: 80%;
     padding: 0;
-    padding-block: 10px;
+    padding-block: 6px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 1280px) {
     padding-block: 32px;
   }
 `;
@@ -311,20 +371,22 @@ export const SLeft = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 150px;
+  @media(min-width: 480px) {
+    width: 120px;
+    height: 86px;
+
+    h2 {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 300px;
+    height: 250px;
 
     h2 {
       font-size: 24px;
     }
-  }
-
-  @media(min-width: 1024px) {
-    width: 200px;
-  }
-
-  @media(min-width: 1440px) {
-    width: 300px;
   }
 `;
 
@@ -357,13 +419,23 @@ export const SRight = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     span {
-      font-size: 24px;
+      font-size: 16px;
     }
     
     p {
-      font-size: 24px;
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    span {
+      font-size: 28px;
+    }
+    
+    p {
+      font-size: 28px;
     }
   }
 `;
@@ -386,12 +458,13 @@ export const Details = styled.div`
     padding-top: 6px;
   }
 
-  @media(min-width: 768px) {
-    height: 320px;
-    padding-inline: 100px;
+  @media(min-width: 480px) {
+    width: 50%;
+    height: 200px;
+    padding-inline: 36px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 50%;
     height: 500px;
     padding-inline: 52px;
@@ -409,6 +482,7 @@ export const DDiv = styled.div`
   justify-content: space-between;
   border-bottom: 2px solid ${props => props.theme["gray-200"]};
   padding-bottom: 0.25rem;
+  cursor: pointer;
 `;
 
 export const DivBar = styled.div`
@@ -432,7 +506,14 @@ export const DivBar = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    p {
+      padding: 4px 10px;
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     p {
       padding: 8px 12px;
       font-size: 16px;
@@ -451,7 +532,12 @@ export const Bar = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 52px;
+    height: 80px;
+  }
+
+  @media(min-width: 1280px) {
     width: 64px;
     height: 100px;
   }
@@ -479,7 +565,13 @@ export const BarColor = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    span {
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     span {
       font-size: 16px;
     }
@@ -511,7 +603,20 @@ export const ViewDetails = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 200px;
+
+    h2 {
+      font-size: 16px;
+      margin-bottom: 6px;
+    }
+
+    li {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 280px;
 
     h2 {
@@ -521,7 +626,84 @@ export const ViewDetails = styled.div`
 
     li {
       font-size: 18px;
-      font-weight: 500;
+    }
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
     }
   }
 `;

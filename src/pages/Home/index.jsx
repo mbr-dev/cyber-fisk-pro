@@ -1,12 +1,12 @@
-import Cookies from 'universal-cookie';
-import { useContext, useEffect, useState } from "react";
+import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
+import { useContext, useEffect, useState } from "react";
 
 import { apiQAS } from "../../lib/api";
 import { Footer } from "../../components/Footer";
 import { AvatarCustom } from "../../components/AvatarCustom";
-import { HeaderTextImage } from "../../components/HeaderTextImage";
+import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
 import { CyberContext } from "../../context/cyber";
@@ -19,11 +19,14 @@ import Cursor from "../../assets/iconeImage.png";
 import Medalha from "../../assets/medalhaImage.png";
 import Reporte from "../../assets/reporteImage.png";
 import { ModalReward } from "../../components/ModalReward";
+import bgHeaderImg from "../../assets/bgHeaderImg.png";
+import LogoFiskImg from "../../assets/logoFisk2.png";
+import RoboWDImg from "../../assets/RoboWD.png";
 
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
 
-import { Container, Main, Card, Cards, ButtonDayCh, Right, Left } from "./styles";
+import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderBottom, Avatar, HeaderTop } from "./styles";
 
 
 export const Home = () => {
@@ -34,8 +37,6 @@ export const Home = () => {
   const [salvou, setSalvou] = useState();
 
   const navigate = useNavigate();
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   function alterPage(index){
     console.log("==> ", index);
@@ -98,7 +99,21 @@ export const Home = () => {
         <ModalReward funcao={fecharModal} valor={valor}/>
       </Dialog.Root>
 
-      <HeaderTextImage hasAvatar hasLogo enabledClose={true}/>
+      <Header>
+        <img src={bgHeaderImg} className="bgHeaderImg" alt=""/>
+        <HeaderTop>
+          <ButtonMenuHeader />
+          <img src={LogoFiskImg} className="logoFiskD" alt="Logo Fisk"/>
+        </HeaderTop>
+
+        <HeaderBottom>
+          <Avatar>
+            <img src={RoboWDImg} alt="" />
+            <p>Maria Santos</p>
+          </Avatar>
+          <img src={LogoFiskImg} className="logoFisk" alt="Logo Fisk"/>
+        </HeaderBottom>
+      </Header>
 
       <Main>
         <Left>
@@ -129,17 +144,16 @@ export const Home = () => {
           </Cards>
 
           <ButtonDayCh onClick={handleDayChallenge}>
-            {!isDesktop ? <img src={dayChImg} alt="" /> : <img src={dayChImgDt} alt="" />}
+            <img src={dayChImg} alt="" className="btnChMobile" /> 
+            <img src={dayChImgDt} alt="" className="btnChDesk" />
           </ButtonDayCh>
         </Left>
 
-        {isDesktop &&
-          <Right>
-            {/* <img src={roboImg} alt="" /> */}
-            <AvatarCustom />
-            <p>Camila Eduarda</p>
-          </Right>
-        }
+        <Right>
+          {/* <img src={roboImg} alt="" /> */}
+          <AvatarCustom />
+          <p>Camila Eduarda</p>
+        </Right>
       </Main>
 
       <Footer />

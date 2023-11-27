@@ -89,12 +89,19 @@ export const HeaderTop = styled.header`
   @media(min-width: 1280px) {
     .logoFiskD {
       width: 100px;
-      margin-left: -600px;
+      margin-left: -480px;
     }
 
     p {
       font-size: 32px;
       margin-left: -100px;
+    }
+  }
+
+  @media(min-width: 1920px) {
+    .logoFiskD {
+      width: 100px;
+      margin-left: -800px;
     }
   }
 `;

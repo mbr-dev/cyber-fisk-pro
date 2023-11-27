@@ -49,7 +49,7 @@ export const Header = styled.header`
     height: 100vh;
     align-items: center;
     justify-content: space-between;
-    padding: 16px 16px 0px 16px;
+    padding: 16px ;
     border-end-end-radius: 0;
     border-end-start-radius: 0;
 
@@ -137,16 +137,6 @@ export const Avatar = styled.div`
   align-items: center;
   justify-content: center;
 
-  img {
-    width: 100px;
-    margin-top: -20px;
-  }
-
-  .roboPe {
-    width: 200px;
-    margin-bottom: -50px;
-  }
-
   p {
     width: 120px;
     height: 24px;
@@ -155,6 +145,7 @@ export const Avatar = styled.div`
     justify-content: center;
     border-radius: 6px;
     white-space: nowrap;
+    margin-top: -60px;
     overflow: hidden;
     text-overflow: ellipsis;
     color: ${props => props.theme.white};
@@ -162,11 +153,6 @@ export const Avatar = styled.div`
   }
 
   @media(max-width: 360px) {
-    img {
-      margin-top: -8px;
-      width: 64px;
-    }
-
     p {
       width: 96px;
       height: 24px;
@@ -175,70 +161,10 @@ export const Avatar = styled.div`
   }
 
   @media(max-width: 320px) {
-    img {
-      margin-top: -6px;
-      width: 50px;
-    }
-
     p {
       width: 80px;
       height: 20px;
       font-size: 12px;
-    }
-  }
-
-  @media(min-width: 768px) {
-    img {
-      width: 92px;
-    }
-
-    p {
-      width: 130px;
-      height: 32px;
-      font-size: 18px;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    width: 400px;
-    height: 500px;
-
-    p {
-      width: 300px;
-      height: 52px;
-      font-size: 32px;
-    }
-  }
-
-  @media(min-width: 1920px) {
-    width: 500px;
-    height: 750px;
-
-    .roboPe {
-      width: 250px;
-      margin-bottom: -64px;
-    }
-
-    p {
-      width: 450px;
-      height: 74px;
-      font-size: 44px;
-    }
-  }
-
-  @media(min-width: 2560px) {
-    width: 600px;
-    height: 800px;
-
-    .roboPe {
-      width: 300px;
-      margin-bottom: -64px;
-    }
-
-    p {
-      width: 500px;
-      height: 82px;
-      font-size: 44px;
     }
   }
 `;
@@ -251,7 +177,6 @@ export const AvatarPe = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding-bottom: 10px;
     z-index: 20;
 
     p {
@@ -261,6 +186,7 @@ export const AvatarPe = styled.div`
       align-items: center;
       justify-content: center;
       text-align: center;
+      margin-top: -32px;
       border-radius: 6px;
       color: ${props => props.theme.white};
       background-color: ${props => props.theme["red-200"]};
@@ -273,15 +199,25 @@ export const AvatarPe = styled.div`
   }
 
   @media (min-width: 1280px) {
-    padding-bottom: 0px;
-
     p {
-      width: 300px;
+      width: 250px;
       height: 52px;
       font-size: 24px;
+      margin-top: -90px;
     }
   }
   
+  @media (min-width: 1440px) {
+    p {
+      margin-top: -100px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    p {
+      margin-top: -110px;
+    }
+  }
 `;
 
 export const Content = styled.div`
@@ -432,6 +368,8 @@ export const Input = styled.div`
   padding-left: 10px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
+  box-shadow: 0px 1px 10px 0px #00000040;
+
 
   p {
     font-weight: normal;

@@ -32,6 +32,10 @@ export const Main = styled.main`
     justify-content: center;
     padding-top: 16px;
   }
+
+  @media(min-width: 1920px) {
+    padding-top: 100px;
+  }
 `;
 
 export const Left = styled.div`

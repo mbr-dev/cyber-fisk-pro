@@ -224,7 +224,7 @@ export const WellDone = () => {
             <img src={Fundo} alt="" className="fundoBg" />
             <AreaItem2>
               <img src={Dollars} alt="" />
-              <span>{dollar}120</span>
+              <span>{dollar}</span>
               <p>Fisk Dollars</p>
             </AreaItem2>
             <LineSeparator />
