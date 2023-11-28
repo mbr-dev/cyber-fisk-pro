@@ -2,18 +2,14 @@ import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { HeaderLessonSL1 } from "../HeaderLessonSL1";
-import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
-import { L1_SUPER_LESSON } from "../../utils/lesson1_Task";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons, AreaFooter, Button, ButtonAnswer, ButtonHome, Div, DivAnswer, DivRow } from "./styles";
 
 export const GameSL10 = () => {
   const { 
@@ -33,14 +29,16 @@ export const GameSL10 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [intervalId, setIntervalId] = useState(null);
   const [blockLetters, setBlockLetters] = useState(false);
+  const [showWord, setShowWord] = useState(false);
+  const [wordsRight, setWordsRight] = useState([]);
   const [countTimer, setCountTimer] = useState(0);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const navigate = useNavigate();
 
-  console.log(answers);
+  const handleGoTasks = () => {
+    navigate("/lessonSelected");
+  }
+
 
   const loadLesson = useCallback(async() => {
     try {
@@ -49,7 +47,7 @@ export const GameSL10 = () => {
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=10&num_task=1");
       const res = response.data;
       setData(res.dados[0].dados_conteudo);
-      console.log(res.dados[0].dados_conteudo)
+
       let dataLength = res.dados[0].dados_conteudo.length;
       
       let tempRandom = [];
@@ -70,11 +68,13 @@ export const GameSL10 = () => {
       tempLetters = tempLetters.sort(() => Math.random() - 0.5);
       setLetters(items.letras);
       timePointer();
+      setShowWord(false);
+      setStatusColor([0, 0, 0, 0, 0, 0]);
       setIsLoading(false);
     } catch(error) {
       console.log(error);
     }
-  }, [setIsLoading, setRandomNumber, setData, round, setLettersAnswer, setLetters, setAnswers]);
+  }, [setIsLoading, setRandomNumber, setStatusColor, setShowWord, setData, round, setLettersAnswer, setLetters, setAnswers]);
 
   const newRound = (number) => {
     setNumberClick(0);
@@ -88,7 +88,7 @@ export const GameSL10 = () => {
 
     setAnswers(items.resposta);
     setLetters(items.letras);
-
+    setShowWord(true);
     setBlockLetters(false);
     setBlockButton(true);
   }
@@ -107,11 +107,6 @@ export const GameSL10 = () => {
     setNumberClick(tempNumber);
   }
 
-  const resetField = () => {
-    setNumberClick(0);
-    setLettersAnswer(Array(L1_SUPER_LESSON[randomNumber[round]].resposta.length).fill(""));
-  }
-
   const handleClick = (letter) => {
     let temp = lettersAnswer;
     let tempNumber = numberClick;
@@ -127,6 +122,8 @@ export const GameSL10 = () => {
     const word = lettersAnswer.join("");
 
     if (word.toLowerCase() === answers.toLowerCase()) {
+      setWordsRight(state => [...state, answers]);
+
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
@@ -160,8 +157,6 @@ export const GameSL10 = () => {
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
-
-      resetField();
     }
 
     let tempRound = round;
@@ -267,48 +262,43 @@ export const GameSL10 = () => {
             return (
               <ButtonAnswer 
                 key={index}
-                fs={isDesktop ? "32px" : ""}
-                w={isDesktop ? "42px" : "1rem"}
-                h={isDesktop ? "64px" : "2.75rem"}
-                onPress={() => handleClick(letter)}
-                disabledButton={blockLetters}
+                onClick={() => handleClick(letter)}
+                disabled={blockLetters}
               >
                 <p className="pBold">{letter}</p>
               </ButtonAnswer>
             )
           })}
         </ButtonArea>
+
+        <AreaButtons>
+          <Button onClick={handleClearField} $variant="red">Clear</Button>
+          <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
+        </AreaButtons>
+
+        {showWord &&
+          <DivAnswer>
+            {wordsRight.map((row, index) => {
+              return (
+                <DivRow key={index}>
+                  <p>{index + 1} -</p>
+                  {row.split("").map((letter, index) => {
+                    return (
+                      <Div key={index}>{letter}</Div>
+                      )
+                  })}
+                </DivRow>
+              )
+            })}
+          </DivAnswer>
+        }
       </Main>
 
-      <AreaButtons>
-        <ButtonBg
-          fs={isDesktop && "28px"}
-          h={isDesktop ? "44px" : "2.5rem"}
-          w={isDesktop ? "200px" : "9rem"}
-          onPress={handleClearField}
-          title="Clear"
-        />
-
-        <ButtonBg
-          fs={isDesktop && "28px"}
-          h={isDesktop ? "44px" : "2.5rem"}
-          w={isDesktop ? "200px" : "9rem"}
-          greenBtn
-          onPress={handleVerify}
-          disabledButton={blockButton}
-          title="Check"
-        />
-      </AreaButtons>
-
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        title="Tasks" 
-        rota="LessonSelection"
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoTasks}>
+          <p>Tasks</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

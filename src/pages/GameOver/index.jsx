@@ -7,12 +7,12 @@ import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
 
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 
-import Robo from "../../assets/RoboGO.png";
-import Fundo from "../../assets/Fundo.png";
+import FundoGoImg from "./images/FundoGO.png";
 import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
@@ -22,7 +22,6 @@ export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
-  const [name, setName] = useState('---');
   const [time, setTime] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
@@ -110,7 +109,6 @@ export const GameOver = () => {
 
   useEffect(() => {
     const cookies = new Cookies();
-    setName(cookies.get("raf"));
     //time
     let minutes = Math.floor(timeElapsed / 60);
     minutes = minutes < 10 ? `0${minutes}` : minutes.toString();
@@ -134,7 +132,7 @@ export const GameOver = () => {
     <Container>
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
       <Header>
-        <img src={Fundo} alt="" className="fundoBg" />
+        <img src={FundoGoImg} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
           <DivMobile>
@@ -144,8 +142,7 @@ export const GameOver = () => {
 
         <Middle>
           <AvatarArea>
-            <img src={Robo} alt="" />
-            <p>{name}</p>
+            <AvatarCustomMetadeWG hasName />
           </AvatarArea>
           <h2>Game Over</h2>
         </Middle>
@@ -186,7 +183,7 @@ export const GameOver = () => {
           </DivMobile>
 
           <Bottom2>
-            <img src={Fundo} alt="" className="fundoBg" />
+            <img src={FundoGoImg} alt="" className="fundoBg" />
             <AreaItem2>
               <img src={Dollars} alt="" />
               <span>0</span>

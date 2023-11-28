@@ -5,9 +5,11 @@ import { useContext, useEffect, useState } from "react";
 
 import { apiQAS } from "../../lib/api";
 import { Footer } from "../../components/Footer";
+import { ModalReward } from "../../components/ModalReward";
 import { AvatarCustom } from "../../components/AvatarCustom";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
+import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 
 import { CyberContext } from "../../context/cyber";
 import { translateHome } from "../../utils/Translate";
@@ -18,15 +20,12 @@ import Micro from "../../assets/microImage.png";
 import Cursor from "../../assets/iconeImage.png";
 import Medalha from "../../assets/medalhaImage.png";
 import Reporte from "../../assets/reporteImage.png";
-import { ModalReward } from "../../components/ModalReward";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import LogoFiskImg from "../../assets/logoFisk2.png";
-import RoboWDImg from "../../assets/RoboWD.png";
-
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
 
-import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderBottom, Avatar, HeaderTop } from "./styles";
+import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderBottom, HeaderTop } from "./styles";
 
 
 export const Home = () => {
@@ -107,10 +106,7 @@ export const Home = () => {
         </HeaderTop>
 
         <HeaderBottom>
-          <Avatar>
-            <img src={RoboWDImg} alt="" />
-            <p>Maria Santos</p>
-          </Avatar>
+          <AvatarCustomMetade hasName />
           <img src={LogoFiskImg} className="logoFisk" alt="Logo Fisk"/>
         </HeaderBottom>
       </Header>
@@ -150,9 +146,8 @@ export const Home = () => {
         </Left>
 
         <Right>
-          {/* <img src={roboImg} alt="" /> */}
-          <AvatarCustom />
-          <p>Camila Eduarda</p>
+          {/* <img src={bgAvatarImg} alt="" className="bgAvatarImg" /> */}
+          <AvatarCustom hasName />
         </Right>
       </Main>
 

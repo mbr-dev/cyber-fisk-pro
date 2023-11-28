@@ -21,14 +21,14 @@ export const SubtitleLessonContainer = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     span {
-      padding: 10px;
-      font-size: 28px;
+      padding: 0px;
+      font-size: 20px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     span {
       font-size: 32px;
     }

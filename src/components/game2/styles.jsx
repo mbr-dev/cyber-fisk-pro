@@ -27,7 +27,12 @@ export const Main = styled.div`
     gap: 16px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    flex-direction: row;
+    margin-top: 24px;
+    gap: 24px;
+  }
+  @media(min-width: 1280px) {
     margin-top: 32px;
     gap: 32px;
   }
@@ -69,17 +74,21 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 380px;
+  @media(min-width: 480px) {
+    width: 200px;
+    height: 52px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 350px;
     height: 84px;
 
     p {
       font-size: 24px;
     }
-  }
-
-  @media(min-width: 1024px) {
-    width: 350px;
-    height: 84px;
   }
 `;

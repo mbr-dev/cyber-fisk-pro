@@ -8,6 +8,7 @@ import arrowBottom from "./img/arrowBottom.png";
 
 import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 export const Report = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -30,14 +31,14 @@ export const Report = () => {
         <AvatarArea>
           <AvatarInfo2>
             <Avatar2>
-              <img src={Robo} alt="" />
+              <AvatarCustomMetadeIcon />
             </Avatar2>
             <p>Carlos Alberto</p>
           </AvatarInfo2>
 
           <AvatarInfo>
             <Avatar>
-              <img src={Robo} alt="" />
+              <AvatarCustomMetadeIcon />
             </Avatar>
             <p>Carlos Alberto</p>
           </AvatarInfo>

@@ -15,7 +15,6 @@ import oculos from "../../assets/oculos.png";
 import pets from "../../assets/pets.png";
 import pernas from "../../assets/pernas.png";
 import cadeado from "../../assets/cadeado.png";
-import roboPe from "../../assets/roboPe.png";
 import dollar from "../../assets/Dollar.svg";
 
 import { Container, Main, Top, Bottom, Separator, Card, AvatarCard, CardReward, Title, DivMoney, DivBlock, DivMobile, AreaFooter, ButtonHome, DivBottom } from "./styles";

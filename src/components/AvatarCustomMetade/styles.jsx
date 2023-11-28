@@ -1,30 +1,16 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100px;
-  height: 150px;
+  width: 120px;
+  height: 200px;
   position: relative;
-  top: -20px;
+  margin-top: -42px;
   z-index: 10;
 
-  p {
-    width: 120px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-    background-color: red;
-  }
-
   @media (max-width: 320px) {
-    width: 54px;
-    height: 96px;
+    width: 100px;
+    height: 150px;
+    margin-top: -36px;
   }
 `;
 
@@ -76,18 +62,6 @@ export const Oculos = styled.div`
   }
 `;
 
-export const Headset = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 16;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 export const Tronco = styled.div`
   width: 100%;
   height: 100%;
@@ -109,5 +83,36 @@ export const Bracos = styled.div`
   img {
     width: 100%;
     height: 100%;
+  }
+`;
+
+export const Name = styled.div`
+  width: 120px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding-inline: 6px;
+  background-color: ${props => props.theme["red-200"]};
+  position: absolute;
+  z-index: 20;
+  bottom: 60px;
+  
+  p {
+    overflow: hidden;
+    font-weight: 500;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: ${props => props.theme.white};
+  }
+
+  @media (max-width: 320px) {
+    width: 100px;
+    bottom: 42px;
+
+    p {
+      font-size: 14px;
+    }
   }
 `;

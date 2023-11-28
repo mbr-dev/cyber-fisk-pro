@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 150px;
+  height: 156px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,7 +30,7 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 100px;
+    height: 110px;
   }
 
   @media(min-width: 480px) {
@@ -85,6 +85,8 @@ export const HeaderTop = styled.header`
   }
 
   @media(min-width: 1280px) {
+    padding-inline: 32px;
+
     .logoFiskD {
       width: 100px;
       margin-left: -480px;
@@ -98,14 +100,20 @@ export const HeaderTop = styled.header`
 `;
 
 export const HeaderBottom = styled.header`
+  width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  justify-content: center;
+  gap: 16px;
   
   .logoFisk {
-    width: 150px;
+    width: 172px;
+    padding-top: 6px;
   }
 
   @media (max-width: 320px) {
+    gap: 10px;
+
     .logoFisk {
       width: 120px;
     }
@@ -116,67 +124,6 @@ export const HeaderBottom = styled.header`
 
     .logoFisk {
       display: none;
-    }
-  }
-`;
-
-export const Avatar = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  img {
-    width: 90px;
-    margin-top: -20px;
-  }
-
-  p {
-    width: 120px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-  }
-
-  @media(max-width: 320px) {
-    img {
-      width: 60px;
-    }
-
-    p {
-      width: 80px;
-      height: 20px;
-      font-size: 12px;
-    }
-  }
-
-  @media(min-width: 480px) {
-    img {
-      width: 92px;
-    }
-
-    p {
-      width: 130px;
-      height: 32px;
-      font-size: 18px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 400px;
-    height: 500px;
-
-    p {
-      width: 300px;
-      height: 52px;
-      font-size: 32px;
     }
   }
 `;
@@ -195,8 +142,19 @@ export const Main = styled.div`
   @media(min-width: 480px) {
     width: 700px;
     align-items: center;
+    justify-content: flex-start;
+    position: relative;
   }
 
+  /* exemplo do error de tablet */
+
+/*   @media(min-width: 768px) {
+    background-color: blue;
+  }
+  @media(min-width: 800px) {
+    background-color: red;
+  }
+ */
   @media(min-width: 1280px) {
     width: 1100px;
   }
@@ -429,42 +387,36 @@ export const Right = styled.div`
 
   @media(min-width: 480px) {
     display: flex;
-    width: 150px;
-    height: 200px;
+    width: 40%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    scale: 0.8;
+    position: absolute;
+    right: 0;
+    bottom: -18px;
 
-    img {
-      width: 100px;
-    }
-
-    p {
-      width: 150px;
-      height: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 6px;
-      font-size: 16px;
-      color: ${props => props.theme.white};
-      background-color: ${props => props.theme["red-200"]};
+    .bgAvatarImg {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: -1;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 30%;
-    height: 420px;
+    scale: 0.8;
+    bottom: -48px;
+  }
 
-    img {
-      width: 190px;
-    }
+  @media(min-width: 1440px) {
+    scale: 0.9;
+    bottom: 0px;
+  }
 
-    p {
-      width: 220px;
-      height: 48px;
-      border-radius: 8px;
-      font-size: 24px;
-    }
+  @media(min-width: 1920px) {
+    bottom: 64px;
   }
 `;

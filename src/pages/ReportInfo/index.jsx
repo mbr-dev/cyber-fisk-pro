@@ -6,8 +6,8 @@ import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
 import { HeaderText } from "../../components/HeaderText";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
-import Robo from "../../assets/avatarRobo.png";
 import PrintImg from "../../assets/print.png";
 
 import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div, AreaFooter, ButtonHome } from "./styles";
@@ -63,7 +63,7 @@ export const ReportInfo = () => {
           <AvatarArea>
             <AvatarInfo>
               <Avatar>
-                <img src={Robo} alt="" />
+                <AvatarCustomMetadeIcon />
               </Avatar>
               <p>Carlos Alberto</p>
             </AvatarInfo>

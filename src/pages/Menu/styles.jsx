@@ -14,19 +14,18 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 118px;
+  height: 104px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 12px;
-  padding: 12px 16px 0 16px;
+  padding: 16px 16px 0 16px;
   position: relative;
 
   .bgHeaderImg {
     width: 100%;
     height: 100%;
     position: absolute;
-    top: 0;
+    top: -1px;
     left: 0;
     z-index: -1;
     border-end-end-radius: 18px;
@@ -34,7 +33,7 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 98px;
+    height: 78px;
   }
 
   @media(min-width: 480px) {
@@ -42,7 +41,7 @@ export const Header = styled.header`
     height: 100vh;
     flex-direction: column;
     align-items: center;
-    padding: 16px 16px 0px 16px;
+    padding: 16px;
 
     .bgHeaderImg {
       border-end-end-radius: 0;
@@ -51,7 +50,7 @@ export const Header = styled.header`
   }
 
   @media(min-width: 1280px) {
-    padding: 32px 32px 0px 32px;
+    padding: 32px;
   }
 `;
 
@@ -62,108 +61,25 @@ export const HeaderButton = styled.div`
 `;
 
 export const DivBtnCH = styled.div`
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 320px) {
+    width: 200px;
+  }
+
   @media (min-width: 480px) {
     display: none;
   }
-`;
-
-export const Avatar = styled.div`
-  width: 100px;
-  height: 100px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  position: relative;
-  z-index: 20;
-
-  img {
-    width: 100px;
-    margin-top: -12px;
-  }
-
-  p {
-    width: 174px;
-    height: 32px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: absolute;
-    bottom: -20px;
-    text-align: center;
-    border-radius: 6px;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-    font-size: 24px;
-    font-weight: 500;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  @media(max-width: 320px) {
-    img {
-      width: 80%;
-    }
-
-    p {
-      bottom: 2px;
-    }
-  }
-
-  @media(min-width: 480px) {
-    display: none;
-  }
-`;
+`; 
 
 export const AvatarPe = styled.div`
   display: none;
   
   @media (min-width: 480px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding-bottom: 10px;
-    z-index: 20;
-    
-    img {
-      width: 80px;
-      height: 220px;
-    }
-
-    p {
-      width: 174px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      border-radius: 6px;
-      color: ${props => props.theme.white};
-      background-color: ${props => props.theme["red-200"]};
-      font-size: 18px;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
+    display: block;
   }
-
-  @media (min-width: 1280px) {
-    padding-bottom: 24px;
-    
-    img {
-      width: 80px;
-      height: 220px;
-    }
-
-    p {
-      width: 300px;
-      height: 52px;
-      font-size: 24px;
-    }
-  }
-  
 `;
 
 export const Content = styled.div`

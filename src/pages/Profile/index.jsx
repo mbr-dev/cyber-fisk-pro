@@ -19,7 +19,7 @@ import LogoFisk from "../../assets/logoFisk2.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import arrowBottom from "../../assets/arrowBottom.svg";
 
-import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Avatar, Div, DivBtnCH, AvatarPe, AreaFooter, ButtonHome } from "./styles";
+import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Div, DivBtnCH, AvatarPe, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Profile = () => {
@@ -50,16 +50,12 @@ export const Profile = () => {
         </TopHeader>
 
         <BottomHeader>
-          <Avatar>
-            <AvatarCustomMetade />
-            {/* <p>Maria Santos</p> */}
-          </Avatar>
+          <AvatarCustomMetade hasName />
           <img src={LogoFisk} className="logoFisk" alt="Logo Fisk"/>
         </BottomHeader>
         
         <AvatarPe>
-          <AvatarCustom />
-          <p>Maria Santos</p>
+          <AvatarCustom hasName />
         </AvatarPe>
       </Header>
 

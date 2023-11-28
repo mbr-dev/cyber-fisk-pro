@@ -20,7 +20,6 @@ export const Header = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   position: relative;
   
   .fundoBg {
@@ -32,19 +31,13 @@ export const Header = styled.header`
     z-index: -1;
   }
 
-  @media(max-width: 360px) {
-    gap: 8px;
-  }
-
   @media(max-width: 320px) {
     height: 250px;
-    gap: 0px;
   }
 
   @media(min-width: 480px) {
     width: 40%;
     height: 100vh;
-    gap: 20px;
   }
 `;
 
@@ -53,6 +46,7 @@ export const Top = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 0 16px;
+  z-index: 2;
 
   @media(max-width: 320px) {
     padding: 12px 12px 0 12px;
@@ -83,36 +77,47 @@ export const Middle = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -56px;
+  margin-top: -38px;
 
   h2 {
     color: ${props => props.theme.white};
     font-size: 42px;
+    margin-top: -110px;
   }
 
   @media(max-width: 320px) {
-    margin-top: -32px;
+    margin-top: -54px;
 
     h2 {
       font-size: 24px;
+      margin-top: -60px;
     }
   }
 
   @media(min-width: 480px) {
-    margin-top: 30px;
-    gap: 10px;
+    margin-top: 0px;
 
     h2 {
       font-size: 24px;
+      margin-top: -80px;
+      margin-bottom: 8px;
     }
   }
 
   @media(min-width: 1280px) {
     margin-top: 50px;
-    gap: 24px;
 
     h2 {
       font-size: 52px;
+      margin-top: -250px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    margin-top: 80px;
+
+    h2 {
+      margin-top: -270px;
     }
   }
 `;
@@ -125,79 +130,29 @@ export const AvatarArea = styled.div`
   justify-content: center;
   position: relative;
 
-  img {
-    width: 50%;
-    z-index: 2;
-  }
-
   .bgConfetes {
-    width: 90%;
+    width: 350px;
     position: absolute;
+    top: 0;
     z-index: 1;
   }
 
-  p {
-    width: 150px;
-    height: 28px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-    border-radius: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
   @media(max-width: 320px) {
-    img {
-      width: 100px;
-    }
-
     .bgConfetes {
-      width: 80%;
-    }
-
-    p {
-      border-radius: 8px;
-      width: 120px;
-      height: 28px;
-      font-size: 14px;
+      width: 250px;
     }
   }
 
   @media(min-width: 480px) {
-    img {
-      width: 100px;
-    }
-
     .bgConfetes {
-      width: 60%;
-    }
-
-    p {
-      width: 180px;
-      border-radius: 6px;
-      height: 32px;
-      font-size: 16px;
+      width: 280px;
     }
   }
 
   @media(min-width: 1280px) {
-    img {
-      width: 300px;
-    }
 
     .bgConfetes {
       width: 90%;
-    }
-
-    p {
-      width: 250px;
-      height: 52px;
-      font-size: 32px;
     }
   }
 `;
@@ -407,56 +362,45 @@ export const ButtonRed = styled.button`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
-    height: 36px;
-    border-radius: 6px;
-    gap: 10px;
-
-    p {
-      font-size: 14px;
-    }
-  }
-
   @media(min-width: 1280px) {
     width: 350px;
-    height: 72px;
+    height: 84px;
     gap: 32px;
 
     p {
       font-size: 24px;
     }
   }
+
+  @media(min-width: 1440px) {
+    width: 400px;
+    height: 120px;
+    gap: 16px;
+
+    p {
+      font-size: 28px;
+    }
+  }
 `;
 
 export const IconAvatar = styled.div`
-  width: 50px;
-  height: 50px;
-  margin-left: -24px;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   background-color: ${props => props.theme.white};
-  border-radius: 6px;
-  border: 2px solid ${props => props.theme["red-200"]};
+  overflow: hidden;
 
-  img {
-    width: 100%;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
   }
 
-  @media(max-width: 320px) {
-    width: 36px;
-    height: 36px;
-    margin-left: -0px
-  }
-
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    margin-left: 0px;
-  }
-
-  @media(min-width: 1280px) {
-    width: 64px;
-    height: 64px;
-    margin-left: -20px
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 

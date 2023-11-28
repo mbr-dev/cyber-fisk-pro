@@ -22,6 +22,10 @@ export const AvatarArea = styled.div`
   align-items: center;
   justify-content: center;
   padding: 16px 32px;
+
+  @media(min-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 export const AvatarInfo = styled.div`
@@ -48,20 +52,24 @@ export const AvatarInfo = styled.div`
 `;
 
 export const Avatar = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  cursor: pointer;
+  overflow: hidden;
 
-  img {
-    width: 100%;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
   }
 
-  @media(max-width: 320px) {
-    width: 38px;
-    height: 38px;
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -70,7 +78,7 @@ export const AvatarInfo2 = styled.div`
 
   @media (min-width: 480px) {
     width: 200px;
-    height: 42px;
+    height: 58px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -94,18 +102,32 @@ export const AvatarInfo2 = styled.div`
       font-size: 32px;
     }
   }
+
+  @media (min-width: 1440px) {
+    height: 110px;
+    gap: 52px;
+  }
 `;
 
 export const Avatar2 = styled.div`
-  width: 32px;
-  height: 32px;
-  border: 1px solid ${props => props.theme.white};
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  cursor: pointer;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["red-200"]};
+  overflow: hidden;
 
-  img {
-    width: 28px;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 

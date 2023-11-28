@@ -15,18 +15,12 @@ export const Container = styled.div`
   @media (min-width: 1280px) {
     width: 300px;
     height: 800px;
-    margin-top: -160px;
+    margin-top: -120px;
   }
 
   @media (min-width: 1440px) {
-    height: 900px;
-    margin-top: -950px;
-  }
-
-  @media (min-width: 1920px) {
-    width: 300px;
-    height: 1000px;
-    margin-top: -1000px;
+    height: 850px;
+    margin-top: -50px;
   }
 `;
 
@@ -78,18 +72,6 @@ export const Oculos = styled.div`
   }
 `;
 
-export const Headset = styled.div`
-  width: 100%;
-  height: 100%;
-  position: absolute;
-  z-index: 16;
-
-  img {
-    width: 100%;
-    height: 100%;
-  }
-`;
-
 export const Tronco = styled.div`
   width: 100%;
   height: 100%;
@@ -123,5 +105,43 @@ export const Pernas = styled.div`
   img {
     width: 100%;
     height: 100%;
+  }
+`;
+
+export const Name = styled.div`
+  width: 150px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 6px;
+  padding-inline: 6px;
+  background-color: ${props => props.theme["red-200"]};
+  position: absolute;
+  z-index: 20;
+  bottom: 6px;
+  
+  span {
+    font-size: 20px;
+    font-weight: 500;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    color: ${props => props.theme.white};
+  }
+
+  @media (min-width: 1280px) {
+    width: 300px;
+    height: 72px;
+    bottom: 28px;
+    padding-inline: 16px;
+
+    span {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    bottom: 36px;
   }
 `;

@@ -1,4 +1,4 @@
-import Confetti from "react-confetti"
+import Confetti from "react-confetti";
 import Cookies from "universal-cookie";
 import { apiQAS } from "../../lib/api";
 import { useNavigate } from "react-router-dom";
@@ -8,13 +8,14 @@ import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 
 import Xp from "../../assets/Xp.svg";
-import Robo from "../../assets/RoboWD.png";
-import Fundo from "../../assets/Fundo.png";
+import FundoWDImg from "./images/FundoWD.png";
 import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
@@ -24,7 +25,6 @@ export const WellDone = () => {
   const { timeElapsed, dataInicio, numTask, numSelLesson } = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
-  const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
   const [showConfetti, setShowConfetti] = useState(true);
   const [time, setTime] = useState("");
@@ -131,7 +131,6 @@ export const WellDone = () => {
 
   useEffect(() => {
     const cookies = new Cookies();
-    setName(cookies.get('raf'));
     setDollar(cookies.get('dolar'));
     //time
     let minutes = Math.floor(timeElapsed / 60);
@@ -162,7 +161,7 @@ export const WellDone = () => {
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
       <Header>
-        <img src={Fundo} alt="" className="fundoBg" />
+        <img src={FundoWDImg} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
           <DivMobile>
@@ -173,8 +172,7 @@ export const WellDone = () => {
         <Middle>
           <AvatarArea>
             <img src={Confetes} alt="" className="bgConfetes" />
-            <img src={Robo} alt="" />
-            <p>{name}</p>
+            <AvatarCustomMetadeWG hasName />
           </AvatarArea>
           <h2>WELL DONE!</h2>
         </Middle>
@@ -198,7 +196,7 @@ export const WellDone = () => {
         <DivDesk>
           <ButtonRed>
             <IconAvatar>
-              <img src={Robo} alt="" />
+              <AvatarCustomMetadeIcon />
             </IconAvatar>
             <p>Boost your avatar</p>
           </ButtonRed>
@@ -214,14 +212,14 @@ export const WellDone = () => {
           <DivMobile>
             <ButtonRed>
               <IconAvatar>
-                <img src={Robo} alt="" />
+                <AvatarCustomMetadeIcon />
               </IconAvatar>
               <p>Boost your avatar</p>
             </ButtonRed>
           </DivMobile>
 
           <Bottom2>
-            <img src={Fundo} alt="" className="fundoBg" />
+            <img src={FundoWDImg} alt="" className="fundoBg" />
             <AreaItem2>
               <img src={Dollars} alt="" />
               <span>{dollar}</span>

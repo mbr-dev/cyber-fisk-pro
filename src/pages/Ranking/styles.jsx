@@ -205,26 +205,6 @@ export const PositionInside = styled.div`
   }
 `;
 
-export const PositionImg = styled.div`
-  width: 54px;
-  height: 54px;
-  display: flex;
-  align-items: center;
-  justify-content: flex-end;
-  border-radius: 8px;
-  border: 1px solid ${props => props.theme["red-200"]};
-  background-color: ${props => props.theme.white};
-
-  img {
-    width: 100%;
-  }
-
-  @media (min-width: 1280px) {
-    width: 86px;
-    height: 86px;
-  }
-`;
-
 export const DivName = styled.div`
   width: 90px;
 
@@ -328,8 +308,8 @@ export const LevelPosition = styled.section`
   width: 100%;
   display: flex;
   align-items: center;
-  gap: 16px;
-  padding: 1rem 1.5rem;
+  justify-content: space-between;
+  padding: 16px 32px;
   background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme["gray-100"]};
 
   p {
@@ -347,56 +327,30 @@ export const LevelPosition = styled.section`
     text-overflow: ellipsis;
   }
 
-  @media(max-width: 360px) {
-    padding: 8px;
-    padding-left: 36px;
-  }
-
   @media(max-width: 320px) {
-    gap: 10px;
-    padding: 8px;
-    padding-left: 32px;
-  }
-
-  @media(min-width: 600px) {
-    height: 100px;
-    padding: 16px 32px;
-    padding-left: 180px;
-    justify-content: flex-start;
-    gap: 20px;
-
-    p {
-      font-size: 28px;
-    }
-
-    span {
-      width: 200px;
-      font-size: 28px;
-    }
+    padding: 8px 24px;
   }
 `;
 
 export const AvatarArea = styled.section`
-  width: 3rem;
-  height: 3rem;
-  border: 1px solid ${props => props.theme["red-200"]};
-  background-color: ${props => props.theme.white};
+  width: 48px;
+  height: 48px;
   border-radius: 8px;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  background-color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["red-200"]};
+  overflow: hidden;
 
-  img {
-    width: 46px;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
   }
 
-  @media(min-width: 600px) {
-    width: 68px;
-    height: 64px;
-
-    img {
-      width: 56px;
-    }
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 

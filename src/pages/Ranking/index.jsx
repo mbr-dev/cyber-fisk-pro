@@ -1,12 +1,13 @@
 import Cookies from "universal-cookie";
 import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
-import { useKeenSlider } from "keen-slider/react";
 import { useNavigate } from "react-router-dom";
+import { useKeenSlider } from "keen-slider/react";
 
 import { apiQAS } from "../../lib/api";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import p1 from "./images/p1.png";
 import p2 from "./images/p2.png";
@@ -14,9 +15,8 @@ import p3 from "./images/p3.png";
 import p4 from "./images/p4.png";
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
-import RoboWD from "../../assets/RoboWD.png";
 
-import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, PositionImg, AreaFooter, ButtonHome, DivMobile, DivDesk } from "./styles";
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, AreaFooter, ButtonHome, DivMobile, DivDesk } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Ranking = () => {
@@ -101,9 +101,9 @@ export const Ranking = () => {
               <Position className="keen-slider__slide">
                 <img src={p1} alt="" className="pNumber" />
                 <PositionInside>
-                  <PositionImg>
-                    <img src={RoboWD} alt="" />
-                  </PositionImg>
+                  <AvatarArea>
+                    <AvatarCustomMetadeIcon />
+                  </AvatarArea>
                   <DivName>
                     <p>Camila Eduarda</p>
                     <span>500 xp</span>
@@ -114,9 +114,9 @@ export const Ranking = () => {
               <Position className="keen-slider__slide">
                 <img src={p2} alt="" className="pNumber" />
                 <PositionInside>
-                  <PositionImg>
-                    <img src={RoboWD} alt="" />
-                  </PositionImg>
+                  <AvatarArea>
+                    <AvatarCustomMetadeIcon />
+                  </AvatarArea>
                   <DivName>
                     <p>Camila Eduarda</p>
                     <span>400 xp</span>
@@ -126,9 +126,9 @@ export const Ranking = () => {
               <Position className="keen-slider__slide">
                 <img src={p3} alt="" className="pNumber" />
                 <PositionInside>
-                  <PositionImg>
-                    <img src={RoboWD} alt="" />
-                  </PositionImg>
+                  <AvatarArea>
+                    <AvatarCustomMetadeIcon />
+                  </AvatarArea>
                   <DivName>
                     <p>Camila Eduarda</p>
                     <span>340 xp</span>
@@ -138,9 +138,9 @@ export const Ranking = () => {
               <Position className="keen-slider__slide">
                 <img src={p4} alt="" className="pNumber" />
                 <PositionInside>
-                  <PositionImg>
-                    <img src={RoboWD} alt="" />
-                  </PositionImg>
+                  <AvatarArea>
+                    <AvatarCustomMetadeIcon />
+                  </AvatarArea>
                   <DivName>
                     <p>Camila Eduarda</p>
                     <span>200 xp</span>
@@ -150,9 +150,9 @@ export const Ranking = () => {
               <Position className="keen-slider__slide">
                 <img src={p4} alt="" className="pNumber" />
                 <PositionInside>
-                  <PositionImg>
-                    <img src={RoboWD} alt="" />
-                  </PositionImg>
+                  <AvatarArea>
+                    <AvatarCustomMetadeIcon />
+                  </AvatarArea>
                   <DivName>
                     <p>Camila Eduarda</p>
                     <span>500 xp</span>
@@ -179,7 +179,7 @@ export const Ranking = () => {
                 <LevelPosition $selected>
                   <p>{(index+1)}</p>
                   <AvatarArea>
-                    <img src={RoboWD} alt="Avatar" />
+                    <AvatarCustomMetadeIcon />
                   </AvatarArea>
                   <span>{x.raf}</span>
                   <p>{x.xp} xp</p>
@@ -188,7 +188,7 @@ export const Ranking = () => {
                 <LevelPosition >
                   <p>{(index+1)}</p>
                   <AvatarArea>
-                    <img src={RoboWD} alt="Avatar" />
+                    <AvatarCustomMetadeIcon />
                   </AvatarArea>
                   <span>{x.raf}</span>
                   <p>{x.xp} xp</p>

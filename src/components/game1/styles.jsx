@@ -21,14 +21,14 @@ export const Main = styled.main`
     justify-content: center;
   }
   
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     flex-direction: row;
     justify-content: center;
-    margin-top: 36px;
+    margin-top: 24px;
     gap: 54px;
   }
   
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 64px;
     margin-top: 44px;
   }
@@ -72,7 +72,12 @@ export const ButtonAnswer = styled.button`
     height: 96px;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 72px;
+    height: 94px;
+  }
+
+  @media(min-width: 1280px) {
     width: 120px;
     height: 150px;
   }

@@ -14,7 +14,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 164px;
+  height: 156px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,11 +32,6 @@ export const Header = styled.header`
     top: 0;
     left: 0;
     z-index: -1;
-  }
-
-  @media(max-width: 360px) {
-    height: 132px;
-    padding: 14px;
   }
 
   @media(max-width: 320px) {
@@ -96,24 +91,17 @@ export const TopHeader = styled.div`
 export const BottomHeader = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  gap: 24px;
+  gap: 16px;
   
   .logoFisk {
     width: 172px;
-  }
-
-  @media(max-width: 360px) {
-    gap: 36px;
-
-    .logoFisk {
-      width: 150px;
-    }
+    padding-top: 6px;
   }
 
   @media(max-width: 320px) {
-    gap: 32px;
+    gap: 10px;
 
     .logoFisk {
       width: 120px;
@@ -131,92 +119,11 @@ export const DivBtnCH = styled.div`
   }
 `;
 
-export const Avatar = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  p {
-    width: 120px;
-    height: 24px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 6px;
-    white-space: nowrap;
-    margin-top: -60px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-  }
-
-  @media(max-width: 360px) {
-    p {
-      width: 96px;
-      height: 24px;
-      font-size: 14px;
-    }
-  }
-
-  @media(max-width: 320px) {
-    p {
-      width: 80px;
-      height: 20px;
-      font-size: 12px;
-    }
-  }
-`;
-
 export const AvatarPe = styled.div`
   display: none;
   
   @media (min-width: 480px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    z-index: 20;
-
-    p {
-      width: 174px;
-      height: 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-align: center;
-      margin-top: -32px;
-      border-radius: 6px;
-      color: ${props => props.theme.white};
-      background-color: ${props => props.theme["red-200"]};
-      font-size: 18px;
-      font-weight: 500;
-      white-space: nowrap;
-      overflow: hidden;
-      text-overflow: ellipsis;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    p {
-      width: 250px;
-      height: 52px;
-      font-size: 24px;
-      margin-top: -90px;
-    }
-  }
-  
-  @media (min-width: 1440px) {
-    p {
-      margin-top: -100px;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    p {
-      margin-top: -110px;
-    }
+    display: block;
   }
 `;
 

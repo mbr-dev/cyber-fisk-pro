@@ -20,7 +20,6 @@ export const Header = styled.header`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
   position: relative;
   
   .fundoBg {
@@ -32,19 +31,13 @@ export const Header = styled.header`
     z-index: -1;
   }
 
-  @media(max-width: 360px) {
-    gap: 8px;
-  }
-
   @media(max-width: 320px) {
     height: 250px;
-    gap: 0px;
   }
 
   @media(min-width: 480px) {
     width: 40%;
     height: 100vh;
-    gap: 20px;
   }
 `;
 
@@ -53,6 +46,7 @@ export const Top = styled.section`
   display: flex;
   justify-content: space-between;
   padding: 16px 16px 0 16px;
+  z-index: 1000;
 
   @media(max-width: 320px) {
     padding: 12px 12px 0 12px;
@@ -83,36 +77,47 @@ export const Middle = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -56px;
+  margin-top: -60px;
 
   h2 {
     color: ${props => props.theme.white};
     font-size: 42px;
+    margin-top: -110px;
   }
 
   @media(max-width: 320px) {
-    margin-top: -32px;
+    margin-top: -54px;
 
     h2 {
       font-size: 24px;
+      margin-top: -60px;
     }
   }
 
   @media(min-width: 480px) {
-    margin-top: 30px;
-    gap: 10px;
+    margin-top: 0px;
 
     h2 {
       font-size: 24px;
+      margin-top: -80px;
+      margin-bottom: 8px;
     }
   }
 
   @media(min-width: 1280px) {
     margin-top: 50px;
-    gap: 24px;
 
     h2 {
       font-size: 52px;
+      margin-top: -250px;
+    }
+  }
+
+  @media(min-width: 1440px) {
+    margin-top: 80px;
+
+    h2 {
+      margin-top: -270px;
     }
   }
 `;
@@ -124,82 +129,6 @@ export const AvatarArea = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
-
-  img {
-    width: 50%;
-    z-index: 2;
-  }
-
-  .bgConfetes {
-    width: 90%;
-    position: absolute;
-    z-index: 1;
-  }
-
-  p {
-    width: 150px;
-    height: 28px;
-    font-weight: 500;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: ${props => props.theme.white};
-    background-color: ${props => props.theme["red-200"]};
-    border-radius: 6px;
-    white-space: nowrap;
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  @media(max-width: 320px) {
-    img {
-      width: 100px;
-    }
-
-    .bgConfetes {
-      width: 80%;
-    }
-
-    p {
-      border-radius: 8px;
-      width: 120px;
-      height: 28px;
-      font-size: 14px;
-    }
-  }
-
-  @media(min-width: 480px) {
-    img {
-      width: 100px;
-    }
-
-    .bgConfetes {
-      width: 60%;
-    }
-
-    p {
-      width: 180px;
-      border-radius: 6px;
-      height: 32px;
-      font-size: 16px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    img {
-      width: 300px;
-    }
-
-    .bgConfetes {
-      width: 90%;
-    }
-
-    p {
-      width: 250px;
-      height: 52px;
-      font-size: 32px;
-    }
-  }
 `;
 
 export const Bottom = styled.section`
@@ -210,12 +139,7 @@ export const Bottom = styled.section`
   justify-content: center;
   gap: 10px;
 
-  @media(max-width: 360px) {
-    gap: 6px;
-  }
-
   @media(max-width: 320px) {
-    width: 90%;
     gap: 4px;
   }
 `;

@@ -106,30 +106,24 @@ export const AvatarInfo = styled.div`
 `;
 
 export const Avatar = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  cursor: pointer;
+  overflow: hidden;
 
-  img {
-    width: 100%;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
   }
 
-  @media(max-width: 320px) {
-    width: 36px;
-    height: 36px;
-  }
-
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-  }
-
-  @media(min-width: 1280px) {
-    width: 84px;
-    height: 84px;
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 
