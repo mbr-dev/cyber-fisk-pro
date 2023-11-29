@@ -1,32 +1,32 @@
-import { useState, useEffect } from "react";
 import { useContext } from "react";
-import { User, Lock, Eye, EyeOff } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 import { Footer } from "../../components/Footer";
+import { Loading } from "../../components/Loading";
+import { Notifications } from "../../components/Notifications";
 
+import { apiQAS } from "../../lib/api";
+import { Mensagens } from "../../utils/Mensagens";
 import { CyberContext } from "../../context/cyber";
-import { translateLogin } from "../../utils/Translate";
 
 import logoImg from "./image/logo.png";
-import Eua from "../../assets/Eua.svg";
-import Spain from "../../assets/Spain.svg";
-import Brazil from "../../assets/Brazil.svg";
-import arrowBottom from "../../assets/arrowBottom.svg";
-import bgHeaderImg from "../../assets/bgHeaderImg.png";
+import EuaImg from "../../assets/Eua.svg";
 import Buddy from "../../assets/Buddy.png";
+import SpainImg from "../../assets/Spain.svg";
 import Youtube from "../../assets/Youtube.png";
-import Instagram from "../../assets/Instagram.png";
+import BrazilImg from "../../assets/Brazil.svg";
+import UserImg from "./image/user.png";
+import CadeadoImg from "./image/cadeado.png";
 import Facebook from "../../assets/Facebook.png";
+import Instagram from "../../assets/Instagram.png";
+import arrowBottomImg from "../../assets/arrowBottom.svg";
+import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Notifications } from "../../components/Notifications";
-import { Loading } from "../../components/Loading";
-import { Mensagens } from "../../utils/Mensagens";
-
-import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton, Button } from "./styles";
+import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton, Button, FooterArea, DivInput } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
-import { apiQAS } from "../../lib/api";
 
 export const Login = () => {
   const { selectLanguage, chooseLanguage, signIn, chooseNotification } = useContext(CyberContext);
@@ -42,17 +42,16 @@ export const Login = () => {
   const [viewPass, setViewPass] = useState(false);
 
   const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
   }
 
-  function clickAlert(){
+  function clickAlert () {
     setError(false);
   }
 
-  function passView(){
+  function passView () {
     setViewPass(!viewPass);
   }
 
@@ -147,21 +146,17 @@ export const Login = () => {
       <Header>
         <img src={bgHeaderImg} alt="" className="bgImg" />
         <img src={logoImg} alt="Logo do Fisk Pro" className="logoFisk" />
-
-        {isDesktop && <img src={Buddy} alt="" className="buddyImg" />}
-        {isDesktop && 
-          <FooterBlue>
-            {
-              selectLanguage === 0 ? <p>Para dicas e informações</p> : selectLanguage === 1 ?  <p>For tips and information</p> : <p>Para consejos e información</p>
-            }
-            
-            <div>
-              <a href="https://www.youtube.com/@fiskoficial" target="_blank"><img src={Youtube} alt="Youtube" /></a>
-              <a href="https://www.instagram.com/fiskoficial/" target="_blank"><img src={Instagram} alt="Instagram" /></a>
-              <a href="https://www.facebook.com/fiskcentrodeensino/" target="_blank"><img src={Facebook} alt="Facebook" /></a>
-            </div>
-          </FooterBlue>
-        }
+        <img src={Buddy} alt="" className="buddyImg" />
+        
+        <FooterBlue>
+          <p>{selectLanguage === 0 ? "Para dicas e informações" : selectLanguage === 1 ? "For tips and information" : "Para consejos e información"}</p>
+          
+          <div>
+            <a href="https://www.youtube.com/@fiskoficial" target="_blank"><img src={Youtube} alt="Youtube" /></a>
+            <a href="https://www.instagram.com/fiskoficial/" target="_blank"><img src={Instagram} alt="Instagram" /></a>
+            <a href="https://www.facebook.com/fiskcentrodeensino/" target="_blank"><img src={Facebook} alt="Facebook" /></a>
+          </div>
+        </FooterBlue>
       </Header>
 
       <Main>
@@ -170,50 +165,49 @@ export const Login = () => {
             <Notifications description={msgError} event={clickAlert}/> : null
           }
           <AreaInput>
-          {selectLanguage === 0 ? <label>{translateLogin[0].name}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].name}:</label> : <label>{translateLogin[2].name}:</label>}
-            <User size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} />
-            <Input
-              type="text"
-              placeholder={selectLanguage === 0 ? translateLogin[0].plName : selectLanguage === 1 ? translateLogin[1].plName : translateLogin[2].plName}
-              value={raf}
-              onChange={(event) => setRaf(event.target.value)}
-              required
-            />
+            <label>{selectLanguage === 0 ? "Usuário" : selectLanguage === 1 ? "User" : "Usuario"} RAF:</label>
+            <DivInput>
+              <img src={UserImg} alt="Icon user" className="userImg" />
+              <Input
+                type="text"
+                placeholder="RAF"
+                value={raf}
+                onChange={(event) => setRaf(event.target.value)}
+                required
+                />
+            </DivInput>
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 ? <label>{translateLogin[0].password}:</label> : selectLanguage === 1 ? <label>{translateLogin[1].password}:</label> : <label>{translateLogin[2].password}:</label>}
-            <Lock size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} />
-            {!viewPass ?
-              <EyeOff size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
-              :
-              <Eye size={isDesktop ? 24 : isTablet ? 20 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
-            }
-            
-            <Input 
-              type={viewPass ? "text" : "password"}
-              placeholder={selectLanguage === 0 ? translateLogin[0].plPassword : selectLanguage === 1 ? translateLogin[1].plPassword : translateLogin[2].plPassword}
-              value={userPassword}
-              onChange={(event) => setUserPassword(event.target.value)}
-              required
-            />
+            <label>{selectLanguage === 0 ? "Senha" : selectLanguage === 1 ? "Password" : "Contraseña"}:</label>
+            <DivInput>
+              <img src={CadeadoImg} alt="Icon locker"  />
+              {!viewPass ?
+                <EyeOff size={isDesktop ? 24 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
+                :
+                <Eye size={isDesktop ? 24 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
+              }
+              <Input 
+                type={viewPass ? "text" : "password"}
+                placeholder={selectLanguage === 0 ? "Senha" : selectLanguage === 1 ? "Password" : "Contraseña"}
+                value={userPassword}
+                onChange={(event) => setUserPassword(event.target.value)}
+                required
+              />
+            </DivInput>
           </AreaInput>
 
           <AreaInput>
-            {selectLanguage === 0 ? <label>{translateLogin[0].language}</label> : selectLanguage === 1 ? <label>{translateLogin[1].language}</label> : <label>{translateLogin[2].language}</label>}
-
-            <SelectIdioma
-              onClick={() => setIsOpen(!isOpen)}
-              style={{
-                backgroundColor: isOpen ? defaultTheme["red-200"] : "",
-              }}
-            >
+            <label>{selectLanguage === 0 ? "Escolha o idioma" : selectLanguage === 1 ? "Choose language" : "Elige lengua"}:</label>
+            <SelectIdioma onClick={() => setIsOpen(!isOpen)} style={{
+              backgroundColor: isOpen ? defaultTheme["red-200"] : "",
+            }}>
               <SelectTitle style={{
                 borderColor: isOpen && defaultTheme["gray-700"],
               }}>
-                {selectLanguage === 0 ? <img src={Brazil} alt="" /> : selectLanguage === 1 ? <img src={Eua} alt="" /> : <img src={Spain} alt="" />}
-                {selectLanguage === 0 ? <p>Português</p> : selectLanguage === 1 ? <p>English</p> : <p>Spanish</p>}
-                <img src={arrowBottom} alt="" />
+                <img src={selectLanguage === 0 ? BrazilImg : selectLanguage === 1 ? EuaImg : SpainImg} alt="" />
+                <p>{selectLanguage === 0 ? "Português" : selectLanguage === 1 ? "English" : "Spanish"}</p>
+                <img src={arrowBottomImg} alt="" />
               </SelectTitle>
               {isOpen && 
                 <SelectUl>
@@ -228,12 +222,14 @@ export const Login = () => {
 
         <AreaButton>
           <Button form="myForm" type="submit">
-            {selectLanguage === 0 ? <p>Entrar</p> : selectLanguage === 1 ? <p>Login</p> : <p>Acceso</p>}
+            <p>{selectLanguage === 0 ? "Entrar" : selectLanguage === 1 ? "Login" : "Acceso"}</p>
           </Button>
         </AreaButton>
       </Main>
 
-      {!isDesktop && <Footer />}
+      <FooterArea>
+        <Footer />
+      </FooterArea>
     </Container>
   )
 }

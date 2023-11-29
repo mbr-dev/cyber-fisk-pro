@@ -4810,27 +4810,27 @@
   ],
   "L10_SUPER_LESSON": [
     { 
-      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "letras": ["A", "C", "D", "E", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
       "resposta": "Classical"
     },
     { 
-      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "letras": ["A", "C", "D", "E", "G", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
       "resposta": "Dance"
     },
     { 
-      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "letras": ["C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
       "resposta": "Country"
     },
     { 
-      "letras": ["A", "C", "D", "E", "G", "I", "J", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "letras": ["A", "C", "D", "E", "G", "I", "J", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
       "resposta": "Reggae"
     },
     { 
-      "letras": ["B", "C", "D", "E", "G", "I", "F", "K", "L", "N", "O", "R", "S", "T", "U", "Y", "Z"],
+      "letras": ["B", "C", "D", "E", "G", "I", "F", "K", "L", "O", "R", "S", "T", "U", "Y", "Z"],
       "resposta": "Rock"
     },
     { 
-      "letras": ["A", "B", "D", "E", "G", "I", "J", "W", "L", "N", "M", "P", "S", "T", "U", "Y", "Z"],
+      "letras": ["A", "B", "D", "E", "I", "J", "W", "L", "N", "M", "P", "S", "T", "U", "Y", "Z"],
       "resposta": "Jazz"
     }
   ]

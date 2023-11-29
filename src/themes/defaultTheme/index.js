@@ -5,6 +5,7 @@ export const defaultTheme = {
   "gradient-blue": "radial-gradient(78.01% 55.16% at 50% 46.55%, #2648B1 0%, #001453 100%);",
 
   "gray-050": "#F4F4F4",
+  "gray-060": "#EBEBEB",
   "gray-100": "#EFEFEF",
   "gray-200": "#E6E6E6",
   "gray-300": "#D9D9D926",
@@ -14,6 +15,7 @@ export const defaultTheme = {
   "gray-700": "#373737",
   "gray-800": "#D1D3D4",
   "gray-900": "#C1C1C1",
+  "gray-950": "#D9D9D9",
 
 
   "green-050": "#BCDCA5",

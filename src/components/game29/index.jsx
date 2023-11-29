@@ -103,6 +103,8 @@ export const Game29 = () => {
 
     const word = wordsDropped.join("").toLowerCase();
     const word1 = wordsDropped1.join("").toLowerCase();
+    console.log("word: ", word);
+    console.log("word1: ", word1);
 
     let tempRightPoints;
 

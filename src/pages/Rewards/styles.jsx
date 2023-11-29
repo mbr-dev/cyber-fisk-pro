@@ -13,36 +13,42 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  padding-block: 16px;
+  padding-top: 16px;
   gap: 12px;
 
   @media(max-width: 320px) {
+    padding-top: 10px;
     justify-content: space-around;
-    padding-block: 0px;
     gap: 0px;
   }
 
-  @media(min-width: 600px) {
-    padding-block: 0;
-    padding-top: 20px;
-    gap: 16px;
-    justify-content: flex-start;
+  @media(min-width: 480px) {
+    flex-direction: row;
+    align-items: flex-start;
+    padding-top: 8px;
   }
 
-  @media(min-width: 1024px) {
-    flex-direction: row;
-    align-items: center;
+  @media(min-width: 1280px) {
     justify-content: center;
-    gap: 32px;
+    padding-top: 16px;
+  }
+
+  @media(min-width: 1920px) {
+    padding-top: 100px;
   }
 `;
 
 export const Left = styled.div`
   width: 100%;
   display: flex;
+
+  @media(min-width: 480px) {
+    width: 300px;
+    height: 200px;
+    justify-content: flex-start;
+  }
   
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 500px;
     height: 500px;
   }
@@ -58,10 +64,17 @@ export const Top = styled.div`
   @media(max-width: 320px) {
     gap: 6px;
   }
+
+  @media(min-width: 480px) {
+    gap: 50px;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 120px;
+  }
 `;
 
-export const Button = styled.button`
-  all: unset;
+export const Button = styled.div`
   width: 198px;
   height: 32px;
   display: flex;
@@ -71,12 +84,6 @@ export const Button = styled.button`
   font-weight: normal;
   background-color: ${props => props.theme["gray-700"]};
   color: ${props => props.theme.white};
-  cursor: pointer;
-  transition: all ease 0.3s;
-
-  &:hover {
-    opacity: 0.9;
-  }
   
   @media(max-width: 320px) {
     width: 120px;
@@ -84,10 +91,16 @@ export const Button = styled.button`
     font-size: 14px;
   }
 
-  @media(min-width: 600px) {
-    width: 250px;
-    height: 54px;
-    font-size: 28px;
+  @media(min-width: 480px) {
+    width: 150px;
+    height: 32px;
+    font-size: 16px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 300px;
+    height: 52px;
+    font-size: 32px;
   }
 `;
 
@@ -133,19 +146,19 @@ export const Money = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     img {
-      width: 84px;
+      width: 42px;
     }
 
     span {
-      width: 64px;
-      height: 64px;
-      font-size: 28px;
+      width: 38px;
+      height: 38px;
+      font-size: 18px;
     }
 
     p {
-      font-size: 32px;
+      font-size: 22px;
     }
   }
 
@@ -173,19 +186,36 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  
   gap: 8px;
 
-  @media(min-width: 600px) {
-    gap: 28px;
+  @media(min-width: 480px) {
+    width: 300px;
+    height: 200px;
+    gap: 4px;
+    border-left: 1px solid ${props => props.theme["gray-200"]};
   }
 
   @media(min-width: 1024px) {
     width: 700px;
     height: 500px;
-    padding-inline: 0;
-    border-left: 3px solid ${props => props.theme["gray-200"]};
+    border-left-width: 3px;
+    gap: 0;
+    justify-content: space-between;
+  }
+`;
+
+export const DivMobile = styled.div`
+
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const DivDesk = styled.div`
+  display: none;
+
+  @media (min-width: 480px) {
+    display: block;
   }
 `;
 
@@ -201,8 +231,9 @@ export const Separator = styled.div`
     padding: 8px;
   }
   
-  @media(min-width: 768px) {
-    padding: 16px 32px;
+  @media(min-width: 480px) {
+    width: 100%;
+    padding: 6px;
   }
 
   @media(min-width: 1024px) {
@@ -241,16 +272,16 @@ export const Card = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 64px;
-    height: 64px;
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
 
     img {
-      width: 36px;
+      width: 18px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 72px;
     height: 72px;
 
@@ -279,17 +310,23 @@ export const Title = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
-    height: 54px;
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 3px;
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 90%;
+    height: 64px;
+    border-radius: 6px;
 
     p {
       font-size: 32px;
     }
-  }
-
-  @media (min-width: 1024px) {
-    width: 90%;
-    height: 72px;
   }
 `;
 
@@ -297,7 +334,7 @@ export const Bottom = styled.div`
   width: 100%;
   height: 182px;
   padding: 12px 10px;
-  
+
   div {
     width: 100%;
     height: 100%;
@@ -311,28 +348,38 @@ export const Bottom = styled.div`
     div {
       width: 100%;
       height: 100%;
-      padding-block: 0;
-      padding-left: 0;
+      padding-block: 10px;
+      padding-left: 10px;
     }
   }
 
   @media(max-width: 320px) {
-    height: 110px;
+    height: 120px;
 
     div {
-      width: 100%;
-      height: 100%;
-      padding-block: 0;
-      padding-left: 0;
+      padding-block: 6px;
+      padding-left: 8px;
     }
   }
 
-  @media(min-width: 600px) {
-    height: 236px;
+  @media(min-width: 480px) {
+    height: 100px;
+    padding: 8px 6px;
+
+    div {
+      padding-block: 6px;
+      padding-left: 4px;
+    }
   }
 
-  @media(min-width: 1024px) {
-    height: 290px;
+  @media(min-width: 1280px) {
+    height: 220px;
+    padding: 14px;
+
+    div {
+      padding-block: 12px;
+      padding-left: 8px;
+    }
   }
 `;
 
@@ -341,43 +388,119 @@ export const CardReward = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 2px solid ${props => props.theme["gray-200"]};
+  box-shadow: 0px 4px 10px 0px #00000033;
 
   .RoboCard {
-    width: 70%;
+    width: 90px;
+    height: 90px;
+    margin-right: 10px;
   }
 
   @media(max-width: 320px) {
     border-radius: 6px;
+
+    .RoboCard {
+      width: 64px;
+      height: 64px;
+      margin-right: 10px;
+    }
+  }
+
+  @media(min-width: 480px) {
+
+    .RoboCard {
+      width: 64px;
+      height: 64px;
+      margin-right: 4px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+
+    .RoboCard {
+      width: 150px;
+      height: 150px;
+      margin-right: 0px;
+    }
   }
 `;
 
 export const Footer = styled.div`
-  width: 100vw;
+  width: 320px;
   height: 78px;
   display: flex;
-  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-bottom: 18px;
+  justify-content: center;
+  border-top: 1px solid ${props => props.theme["gray-200"]};
+  gap: 24px;
 
-  div {
-    display: flex;
-    gap: 16px;
+  @media(max-width: 320px) {
+    width: 280px;
+    height: 56px;
+    gap: 10px;
+  }
+
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1000px;
+    height: 100px;
+    border-top-width: 3px;
+  }
+`;
+
+export const BottomFooter = styled.button`
+  all: unset;
+  width: 160px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.$green === "green" ? props.theme["green-600"] : props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.$green === "green" ? props.theme["green-700"] : props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 18px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
   }
 
   @media(max-width: 320px) {
-    height: 56px;
-    padding-bottom: 0;
-    margin-bottom: 0;
+    width: 200px;
+    height: 32px;
 
-    div {
-      gap: 10px;
+    p {
+      font-size: 16px;
     }
   }
 
-  @media(min-width: 600px) {
-    padding-bottom: 0;
-    margin-bottom: 32px;
+  @media (min-width: 480px) {
+    width: 200px;
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 56px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

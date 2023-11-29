@@ -6,11 +6,6 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
- 
-
-  @media(min-width: 1024px) {
-    justify-content: space-between;
-  }
 `;
 
 export const Main = styled.main`
@@ -25,27 +20,18 @@ export const Main = styled.main`
     gap: 4px;
   }
 
-  @media(min-width: 600px) {
-    padding-top: 28px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 80%;
-    gap: 64px;
-    flex-direction: row;
+  @media(min-width: 480px) {
+    width: 500px;
     height: 100%;
+    flex-direction: row;
     align-items: flex-start;
-    justify-content: space-between;
-    padding-top: 36px;
+    gap: 24px;
   }
 
-  @media(min-width: 1024px) {
-    width: 70%;
-  }
-
-  @media(min-width: 1920px) {
-    width: 50%;
-    padding-top: 64px;
+  @media(min-width: 1280px) {
+    width: 1000px;
+    gap: 64px;
+    padding-top: 32px;
   }
 `;
 
@@ -59,19 +45,12 @@ export const Right = styled.div`
     gap: 4px;
   }
 
-  @media(min-width: 600px) {
-    gap: 24px;
+  @media(min-width: 480px) {
+    gap: 6px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 36px;
-  }
-
-  @media(min-width: 1440px) {
-    gap: 44px;
-  }
-  @media(min-width: 1920px) {
-    gap: 52px;
   }
 `;
 
@@ -89,7 +68,12 @@ export const Info = styled.section`
     gap: 4px;
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    width: 250px;
+    gap: 4px;
+  }
+
+  @media(min-width: 1280px) {
     width: 450px;
     gap: 36px;
   }
@@ -114,7 +98,15 @@ export const User = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    margin-top: 6px;
+
+    span {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     margin-top: 24px;
 
     span {
@@ -164,7 +156,20 @@ export const UserImg = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    width: 58px;
+    height: 58px;
+
+    div {
+      height: 20px;
+    }
+
+    img {
+      width: 24px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 84px;
     height: 84px;
 
@@ -187,11 +192,11 @@ export const UserInfo = styled.div`
     gap: 2rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 72px;
+  @media(min-width: 480px) {
+    gap: 32px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 96px;
   }
 `;
@@ -237,7 +242,26 @@ export const From = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    gap: 6px;
+
+    img {
+      width: 32px;
+    }
+
+    p {
+      padding: 3px 6px;
+      font-size: 14px;
+      margin-bottom: 4px;
+      border-radius: 4px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     gap: 16px;
 
     img {
@@ -281,7 +305,16 @@ export const SocialMedia = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    padding-block: 6px;
+    gap: 12px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     padding-block: 20px;
     gap: 18px;
 
@@ -315,7 +348,22 @@ export const Text = styled.section`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
+    width: 280px;
+
+    p {
+      font-size: 16px;
+      margin-bottom: 0px;
+    }
+
+    span {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 480px;
+
     p {
       font-size: 28px;
     }
@@ -332,14 +380,15 @@ export const Left = styled.div`
   align-items: center;
   gap: 16px;
 
-  @media(min-width: 600px) {
-    gap: 32px;
+  @media(min-width: 480px) {
+    gap: 16px;
+    height: 220px;
+    justify-content: center;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 32px;
     height: 480px;
-    justify-content: center;
   }
 `;
 
@@ -382,20 +431,20 @@ export const ButtonArea = styled.section`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 480px) {
     gap: 32px;
 
     button {
-      width: 72px;
-      height: 72px;
+      width: 52px;
+      height: 52px;
 
       img {
-        width: 32px;
+        width: 20px;
       }
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 52px;
 
     button {
@@ -444,22 +493,24 @@ export const ButtonRec = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 300px;
-    height: 72px;
-    gap: 16px;
+  @media(min-width: 480px) {
+    width: 223px;
+    height: 52px;
+    border-radius: 6px;
+    gap: 10px;
 
     img {
-      width: 54px;
-      height: 42px;
+      width: 28px;
+      height: 32px;
     }
 
     .ruido {
-      width: 160px;
+      width: 130px;
+      height: 52px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 420px;
     height: 72px;
     gap: 16px;

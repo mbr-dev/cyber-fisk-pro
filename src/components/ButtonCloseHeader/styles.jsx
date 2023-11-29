@@ -9,7 +9,6 @@ export const Container = styled.button`
   justify-content: center;
   background-color: ${props => props.theme['red-200']};
   border-radius: 9999px;
-  box-shadow: 0px 4px 10px 0px #00000040;
   color: ${props => props.theme.white};
   cursor: pointer;
 
@@ -22,9 +21,18 @@ export const Container = styled.button`
     height: 24px;
   }
 
-  @media(min-width: 768px) {
-    width: 54px;
-    height: 54px;
+  @media (min-width: 480px) {
+    width: 36px;
+    height: 36px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 48px;
+    height: 48px;
 
     img {
       width: 24px;

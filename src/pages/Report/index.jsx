@@ -1,24 +1,26 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderText } from "../../components/HeaderText";
 
 import Robo from "../../assets/avatarRobo.png";
 import arrowBottom from "./img/arrowBottom.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2 } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 export const Report = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const navigate = useNavigate();
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
   const handleRI = () => {
     navigate("/ReportInfo");
+  }
+
+  const handleGoHome = () => {
+    navigate("/Home");
   }
 
   return (
@@ -27,20 +29,19 @@ export const Report = () => {
 
       <Main>
         <AvatarArea>
-          {isDesktop ?
-            <AvatarInfo2>
-              <Avatar2>
-                <img src={Robo} alt="" />
-              </Avatar2>
-              <p>Carlos Alberto</p>
-            </AvatarInfo2>
-            :
-            <AvatarInfo>
-              <Avatar>
-                <img src={Robo} alt="" />
-              </Avatar>
-              <p>Carlos Alberto</p>
-            </AvatarInfo>}
+          <AvatarInfo2>
+            <Avatar2>
+              <AvatarCustomMetadeIcon />
+            </Avatar2>
+            <p>Carlos Alberto</p>
+          </AvatarInfo2>
+
+          <AvatarInfo>
+            <Avatar>
+              <AvatarCustomMetadeIcon />
+            </Avatar>
+            <p>Carlos Alberto</p>
+          </AvatarInfo>
         </AvatarArea>
 
         <XP>
@@ -66,7 +67,11 @@ export const Report = () => {
           </Select>
         </AreaSelect>
 
-        <FooterBtnHome />
+        <AreaFooter>
+          <ButtonHome onClick={handleGoHome}>
+            <p>Home</p>
+          </ButtonHome>
+        </AreaFooter>
       </Main>
     </Container>
   )

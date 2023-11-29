@@ -37,7 +37,15 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    gap: 16px;
+
+    img {
+      width: 150px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     img {
       width: 280px;
     }
@@ -66,11 +74,11 @@ export const Close = styled(Dialog.Close)`
     height: 1.5rem;
   }
 
-  @media(min-width: 768px) {
-    width: 42px;
-    height: 42px;
-    top: -20px;
-    right: -18px;
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
+    top: -18px;
+    right: -10px;
   }
 `;
 
@@ -102,7 +110,17 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 150px;
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 280px;
     height: 56px;
 

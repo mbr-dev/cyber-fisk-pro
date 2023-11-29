@@ -22,6 +22,10 @@ export const AvatarArea = styled.div`
   align-items: center;
   justify-content: center;
   padding: 16px 32px;
+
+  @media(min-width: 480px) {
+    padding: 10px;
+  }
 `;
 
 export const AvatarInfo = styled.div`
@@ -42,64 +46,88 @@ export const AvatarInfo = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    gap: 20px;
-
-    p {
-      font-size: 24px;
-    }
-  }
-`;
-
-export const AvatarInfo2 = styled.div`
-  width: 600px;
-  height: 86px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-  border-radius: 12px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-
-  p {
-    font-weight: bold;
-    font-size: 32px;
-  }
-`;
-
-export const Avatar2 = styled.div`
-  width: 58px;
-  height:58px;
-  border: 1px solid ${props => props.theme.white};
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  cursor: pointer;
-
-  img {
-    width: 50px;
+  @media(min-width: 480px) {
+    display: none;
   }
 `;
 
 export const Avatar = styled.div`
-  width: 3rem;
-  height: 3rem;
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
-  border-radius: 6px;
-  box-shadow: 0px 4px 10px 0px #00000033;
-  cursor: pointer;
+  overflow: hidden;
 
-  img {
-    width: 100%;
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
   }
 
-  @media(max-width: 320px) {
-    width: 38px;
-    height: 38px;
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
+  }
+`;
+
+export const AvatarInfo2 = styled.div`
+  display: none;
+
+  @media (min-width: 480px) {
+    width: 200px;
+    height: 58px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1.5rem;
+    border-radius: 8px;
+    box-shadow: 0px 4px 10px 0px #00000033;
+
+    p {
+      font-weight: bold;
+      font-size: 14px;
+    }
   }
 
-  @media(min-width: 768px) {
-    width: 84px;
-    height: 84px;
+  @media (min-width: 1280px) {
+    width: 600px;
+    height: 86px;
+    gap: 1.5rem;
+    border-radius: 12px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    height: 110px;
+    gap: 52px;
+  }
+`;
+
+export const Avatar2 = styled.div`
+  width: 48px;
+  height: 48px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["red-200"]};
+  overflow: hidden;
+
+  @media (min-width: 1280px) {
+    width: 72px;
+    height: 72px;
+  }
+
+  @media (min-width: 1440px) {
+    width: 100px;
+    height: 100px;
   }
 `;
 
@@ -127,7 +155,15 @@ export const XP = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    height: 32px;
+
+    .compose {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     height: 72px;
 
     .compose {
@@ -144,6 +180,11 @@ export const AreaSelect = styled.div`
   flex-direction: column;
   align-items: center;
   gap: 32px;
+
+  @media(min-width: 480px) {
+    padding-top: 16px;
+    gap: 10px;
+  }
 `;
 
 export const Select = styled.div`
@@ -156,11 +197,11 @@ export const Select = styled.div`
     width: 250px;
   }
 
-  @media(min-width: 768px) {
-    width: 500px;
+  @media(min-width: 480px) {
+    width: 300px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 800px;
   }
 `;
@@ -192,21 +233,20 @@ export const SelectTitle = styled.div`
     height: 36px;
   }
 
-  @media(min-width: 600px) {
-    height: 60px;
+  @media(min-width: 480px) {
+    height: 32px;
     gap: 18px;
 
     p {
-      font-size: 22px;
       font-weight: 500;
     }
 
     img {
-      width: 36px;
+      width: 16px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     height: 64px;
     gap: 20px;
 
@@ -239,12 +279,12 @@ export const SelectUl = styled.ul`
     padding: 10px;
   }
 
-  @media(min-width: 768px) {
-    width: 500px;
-    padding: 16px;
+  @media(min-width: 480px) {
+    width: 300px;
+    padding: 12px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 800px;
     padding-inline: 44px;
     gap: 20px;  
@@ -261,11 +301,89 @@ export const SelectLi = styled.li`
     background-color: ${props => props.theme["gray-400"]};
   }
 
-  @media(min-width: 768px) {
-    font-size: 24px;
+  @media(min-width: 480px) {
+    font-size: 16px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     font-size: 28px;
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

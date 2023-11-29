@@ -8,13 +8,79 @@ export const Container = styled.div`
   align-items: center;
 `;
 
+export const HeaderMobile = styled.div`
+  width: 100vw;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 16px 16px 0 16px;
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  overflow: hidden;
+  position: relative;
+
+  .bgHeaderImg {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+  }
+
+  .logoFisk {
+    width: 132px;
+  }
+
+  @media (max-width: 320px) {
+    height: 100px;
+
+    .logoFisk {
+      width: 110px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    display: none;
+  }
+`;
+
+export const HeaderMobileDiv = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  p {
+    color: ${props => props.theme.white};
+    font-size: 24px;
+    font-weight: 500;
+  }
+
+  @media (max-width: 320px) {
+    p {
+      font-size: 20 px;
+    }
+  }
+`;
+
+export const DivDesk= styled.div`
+  display: none;
+
+  @media (min-width: 480px) {
+    display: block;
+  }
+`;
+
 export const Main = styled.main`
   flex: 1;
   width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  padding-top: 32px;
+  gap: 32px;
 
   p {
     font-size: 20px;
@@ -22,19 +88,25 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
+    padding-top: 10px;
+    gap: 10px;
     width: 250px;
 
     p {
-      font-size: 14px;
+      font-size: 16px;
     }
   }
 
-  @media(min-width: 768px) {
-    width: 620px;
+  @media(min-width: 480px) {
+    width: 700px;
+    flex-direction: row;
+    justify-content: space-between;
+    gap: 0;
+    padding-top: 0px;
   }
 
-  @media(min-width: 1024px) {
-    flex-direction: row;
+  @media(min-width: 1280px) {
+    width: 1200px;
   }
 `;
 
@@ -48,12 +120,35 @@ export const BooksArea = styled.div`
     gap: 8px;
   }
 
-  @media(min-width: 768px) {
-    gap: 16px;
+  @media(min-width: 480px) {
+    width: 320px;
 
     p {
-      font-size: 24px;
+      font-size: 18px;
     }
+  }
+
+  @media(min-width: 1280px) {
+    width: 550px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+`;
+
+export const BooksInside = styled.div`
+  width: 100%;
+  height: 120px;
+  display: flex;
+  justify-content: space-between;
+
+  @media (max-width: 320px) {
+    height: 100px;
+  }
+
+  @media (min-width: 1280px) {
+    height: 200px;
   }
 `;
 
@@ -61,19 +156,22 @@ export const BooksImage = styled.div`
   cursor: pointer;
   
   img {
-    width: 30%;
+    width: 100%;
+    height: 100%;
   }
 
-  @media(max-width: 320px) {
+  @media(min-width: 1280px) {
     img {
-      width: 25%;
+      width: 150px;
     }
   }
+`;
 
-  @media(min-width: 600px) {
-    img {
-      width: 160px;
-    }
+export const DivLine = styled.div`
+  width: 100%;
+
+  @media (min-width: 480px) {
+    display: none;
   }
 `;
 
@@ -91,22 +189,66 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 768px) {
-    width: 620px;
-    height: 104px;
+  @media(min-width: 480px) {
+    width: 600px;
+    height: 52px;
   }
 
-  @media(min-width: 1024px) {
-    width: 1000px;
-    height: 120px;
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
     border-width: 4px;
   }
+`;
 
-  @media(min-width: 1440px) {
-    width: 1200px;
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
   }
 
-  @media(min-width: 1920px) {
-    width: 1600px;
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

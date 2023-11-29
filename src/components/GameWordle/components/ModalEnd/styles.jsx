@@ -37,26 +37,16 @@ export const Container = styled.div`
     left: 56px;
   }
 
-  @media(min-width: 768px) {
-    top: 380px;
-    left: 206px;
+  @media(min-width: 480px) {
+    top: 150px;
+    left: 520px;
     gap: 10px;
   }
 
-  @media(min-width: 1024px) {
-    top: 390px;
-    left: 750px;
+  @media(min-width: 1280px) {
+    top: 320px;
+    left: 950px;
     gap: 16px;
-  }
-
-  @media(min-width: 1440px) {
-    top: 480px;
-    left: 828px;
-  }
-
-  @media(min-width: 1920px) {
-    top: 500px;
-    left: 1076px;
   }
 `;
 
@@ -79,13 +69,13 @@ export const Letter = styled.div`
     font-size: 24px;
   }
 
-  @media(min-width: 768px) {
-    width: 64px;
-    height: 64px;
-    font-size: 36px;
+  @media(min-width: 480px) {
+    width: 42px;
+    height: 42px;
+    font-size: 20px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 76px;
     height: 76px;
     font-size: 36px;

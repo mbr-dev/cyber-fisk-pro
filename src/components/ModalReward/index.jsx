@@ -1,24 +1,36 @@
+import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
-import BgMoney from "./images/fundo.png";
+
+import { AvatarCustomMetadeWG } from "../AvatarCustomMetadeWG";
+import { AvatarCustomMetadeIcon } from "../AvatarCustomMetadeIcon";
+
+import BgMoneyImg from "./images/fundo.png";
+import BgModalRewardImg from "./images/fundoModalReward.png";
 import Money from "./images/fiskDollar.png";
-import Robo from "../../assets/avatarRobo.png";
+import xImg from "../../assets/xImg.png";
 
 import { Content, Close, Overlay, Main, Avatar, Position, Receive, Boost, Reward, MiniAvatar } from "./styles";
 
 export const ModalReward = (props) => {
+  const navigate = useNavigate();
+
+  const handleUpdateAvatar = () => {
+    navigate("/Rewards");
+  }
+
   return (
     <Dialog.Portal>
       <Overlay />
       <Content>
+        <img src={BgModalRewardImg} alt="" className="bgModal" />
         <Close>
-          <X size={18} color="white" strokeWidth={3}/>
+          <img src={xImg} alt="X" />
         </Close>
         
         <Main>
           <Avatar>
-            <img src={BgMoney} alt="" className="bgMoney" />
-            <img src={Robo} alt="" className="avatarImg" />
+            <img src={BgMoneyImg} alt="" className="bgMoney" />
+            <AvatarCustomMetadeWG />
           </Avatar>
           <Position>
             <p>1º Login</p>
@@ -28,9 +40,9 @@ export const ModalReward = (props) => {
               <img src={Money} alt="" />
               <p>Your received: <span>${props.valor}</span></p>
             </Receive>
-            <Boost>
+            <Boost onClick={handleUpdateAvatar}>
               <MiniAvatar>
-                <img src={Robo} alt="" />
+                <AvatarCustomMetadeIcon />
               </MiniAvatar>
               <p>Boost your avatar</p>
             </Boost>

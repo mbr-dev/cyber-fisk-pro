@@ -1,36 +1,40 @@
-import Confetti from "react-confetti"
+import Confetti from "react-confetti";
 import Cookies from "universal-cookie";
 import { apiQAS } from "../../lib/api";
 import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 
 import { Loading } from "../../components/Loading";
-import { LineSeparator } from "../../components/LineSeparator";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 
 import Xp from "../../assets/Xp.svg";
-import Robo from "../../assets/RoboWD.png";
-import Fundo from "../../assets/Fundo.png";
+import FundoWDImg from "./images/FundoWD.png";
 import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div, AreaButton, ButtonHome } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div, AreaButton, ButtonHome, DivMobile, DivDesk, LineSeparator } from "./styles";
 
 export const WellDone = () => {
-  const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
+  const { timeElapsed, dataInicio, numTask, numSelLesson } = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
-  const [name, setName] = useState("---");
   const [dollar, setDollar] = useState(0);
   const [showConfetti, setShowConfetti] = useState(true);
+  const [time, setTime] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
+  const [msgError, setMsgError] = useState("");
+  const [error, setError] = useState(false);
+  const [xpAtividade, setXPAtividade] = useState(0);
+  const [salvou, setSalvou] = useState(false);
 
-  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+  const navigate = useNavigate();
 
   const phrase = [
     "Good job!",
@@ -42,14 +46,6 @@ export const WellDone = () => {
   ]
 
   const randomPhrase = Math.floor(Math.random() * phrase.length);
-  const [time, setTime] = useState("");
-  const [isLoading, setIsLoading] = useState(false);
-  const [msgError, setMsgError] = useState("");
-  const [error, setError] = useState(false);
-  const [xpAtividade, setXPAtividade] = useState(0);
-  const [salvou, setSalvou] = useState(false);
-
-  const navigate = useNavigate();
 
   const salvar = async(tempoCronometro) =>{
     if(salvou) return;
@@ -125,7 +121,7 @@ export const WellDone = () => {
     }
   }
 
-  function clickAlert(){
+  const clickAlert = () => {
     setError(false);
   }
 
@@ -135,7 +131,6 @@ export const WellDone = () => {
 
   useEffect(() => {
     const cookies = new Cookies();
-    setName(cookies.get('raf'));
     setDollar(cookies.get('dolar'));
     //time
     let minutes = Math.floor(timeElapsed / 60);
@@ -166,82 +161,83 @@ export const WellDone = () => {
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
       <Header>
-        <img src={Fundo} alt="" className="fundoBg" />
+        <img src={FundoWDImg} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
-          {!isDesktop && <ButtonCloseHeader />}
+          <DivMobile>
+            <ButtonCloseHeader />
+          </DivMobile>
         </Top>
 
         <Middle>
           <AvatarArea>
             <img src={Confetes} alt="" className="bgConfetes" />
-            <img src={Robo} alt="" />
-            <p>{name}</p>
+            <AvatarCustomMetadeWG hasName />
           </AvatarArea>
           <h2>WELL DONE!</h2>
         </Middle>
         
-        {!isDesktop &&
+        <DivMobile>
           <Bottom>
             <AreaItem>
               <img src={Dollars} alt="" />
               <span>{dollar}</span>
               <p>Fisk Dollars</p>
             </AreaItem>
-            <LineSeparator wl="80%" bg={defaultTheme.white} />
+            <LineSeparator />
             <AreaItem style={{marginRight: "64px"}}>
             <img src={Xp} alt="" />
             <span>{xpAtividade}</span>
             <p>Xp</p>
             </AreaItem>
-          </Bottom>}
+          </Bottom>
+        </DivMobile>
 
-        {isDesktop &&
+        <DivDesk>
           <ButtonRed>
             <IconAvatar>
-              <img src={Robo} alt="" />
+              <AvatarCustomMetadeIcon />
             </IconAvatar>
             <p>Boost your avatar</p>
-          </ButtonRed>}
+          </ButtonRed>
+        </DivDesk>
       </Header>
 
       <Content>
         <Main>
-          {isDesktop && 
-            <ButtonClose>
-              <ButtonCloseHeader />
-            </ButtonClose>}
+          <ButtonClose>
+            <ButtonCloseHeader />
+          </ButtonClose>
 
-          {!isDesktop &&
+          <DivMobile>
             <ButtonRed>
               <IconAvatar>
-                <img src={Robo} alt="" />
+                <AvatarCustomMetadeIcon />
               </IconAvatar>
               <p>Boost your avatar</p>
-            </ButtonRed>}
+            </ButtonRed>
+          </DivMobile>
 
-          {isDesktop &&
-            <Bottom2>
-              <img src={Fundo} alt="" className="fundoBg" />
-              <AreaItem2 style={{ marginLeft: "42px"}}>
-                <img src={Dollars} alt="" />
-                <span>{dollar}</span>
-                <p>Fisk Dollars</p>
-              </AreaItem2>
-              <LineSeparator wl="80%" bg={defaultTheme.white} />
-              <AreaItem2 style={{marginRight: "64px"}}>
-              <img src={Xp} alt="" />
-              <span>{xpAtividade}</span>
-              <p>Xp</p>
-              </AreaItem2>
-            </Bottom2>}
+          <Bottom2>
+            <img src={FundoWDImg} alt="" className="fundoBg" />
+            <AreaItem2>
+              <img src={Dollars} alt="" />
+              <span>{dollar}</span>
+              <p>Fisk Dollars</p>
+            </AreaItem2>
+            <LineSeparator />
+            <AreaItem2>
+            <img src={Xp} alt="" />
+            <span>{xpAtividade}</span>
+            <p>Xp</p>
+            </AreaItem2>
+          </Bottom2>
 
           <Div>
             <div>
               <p>Activities done in</p>
               <span>{time}</span>
             </div>
-
             <Text>
               <p>{phrase[randomPhrase]}</p>
             </Text>

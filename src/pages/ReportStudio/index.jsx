@@ -1,15 +1,18 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 
-import { Container, Div, DivInside, Main } from "./styles";
+import { Container, Div, DivInside, Main, AreaFooter, ButtonHome } from "./styles";
 
 export const ReportStudio = () => {
   const navigate = useNavigate();
 
   const handleGoToRSL = () => {
     navigate("/ReportStudioL");
+  }
+
+  const handleGoHome = () => {
+    navigate("/Home");
   }
 
   return (
@@ -98,7 +101,11 @@ export const ReportStudio = () => {
         </Div>
       </Main>
 
-      <FooterBtnHome />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

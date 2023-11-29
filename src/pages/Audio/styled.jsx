@@ -20,10 +20,14 @@ export const Main = styled.main`
     padding-top: 12px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 480px) {
     flex: 1;
     padding-top: 0;
     flex-direction: row;
+    gap: 24px;
+  }
+
+  @media (min-width: 1280px) {
     gap: 64px;
   }
 `;
@@ -43,7 +47,12 @@ export const Left = styled.div`
     height: 150px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
+    width: 210px;
+    height: 210px;
+  }
+
+  @media (min-width: 1280px) {
     width: 450px;
     height: 450px;
   }
@@ -59,6 +68,14 @@ export const Right = styled.div`
   @media(max-width: 320px) {
     gap: 18px;
   }
+
+  @media(min-width: 480px) {
+    gap: 4px;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 24px;
+  }
 `;
 
 export const Title = styled.section`
@@ -67,7 +84,13 @@ export const Title = styled.section`
     font-size: 20px;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media (min-width: 1280px) {
     p {
       font-size: 28px;
     }
@@ -85,12 +108,12 @@ export const AreaAudio = styled.div`
     gap: 18px;
   }
 
-  @media(min-width: 768px) {
-    width: 450px;
+  @media(min-width: 480px) {
+    width: 400px;
     gap: 24px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     width: 550px;
   }
 `;
@@ -101,7 +124,7 @@ export const TimeAudio = styled.div`
   flex-direction: column;
   gap: 4px;
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     gap: 8px;
   }
 `;
@@ -112,7 +135,11 @@ export const Bar = styled.div`
   border-radius: 6px;
   background-color: ${props => props.theme["gray-800"]};
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
+    width: 100%;
+  }
+
+  @media (min-width: 1280px) {
     height: 7px;
   }
 `;
@@ -132,7 +159,7 @@ export const Bolinha = styled.div`
   right: 0;
   background-color: ${props => props.theme["gray-700"]};
 
-  @media (min-width: 768px) {
+  @media (min-width: 1280px) {
     width: 14px;
     height: 14px;
     top: -3px;
@@ -150,7 +177,13 @@ export const TimeArea = styled.div`
     font-weight: 700;
   }
 
-  @media (min-width: 768px) {
+  @media (min-width: 480px) {
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1280px) {
     p {
       font-size: 24px;
     }
@@ -189,8 +222,25 @@ export const ButtonsArea = styled.div`
     height: 32px;
   }
 
-  @media(min-width: 768px) {
-      .playBtn {
+  @media(min-width: 480px) {
+    .playBtn {
+      width: 54px;
+      height: 54px;
+    }
+
+    .changeBtn {
+      width: 32px;
+      height: 32px;
+    }
+
+    .redBtn {
+      width: 32px;
+      height: 32px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    .playBtn {
       width: 84px;
       height: 84px;
     }
@@ -229,7 +279,16 @@ export const ButtonsVArea = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    button {
+      img {
+        width: 24px;
+        height: 24px;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
     button {
       img {
         width: 28px;
@@ -253,12 +312,12 @@ export const BarVolume = styled.div`
     width: 200px;
   }
 
-  @media(min-width: 768px) {
-    width: 350px;
-    height: 28px;
+  @media(min-width: 480px) {
+    width: 320px;
+    height: 24px;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     width: 450px;
     height: 32px;
   }
@@ -273,11 +332,7 @@ export const Div = styled.div`
     width: 8px;
   }
 
-  @media(min-width: 768px) {
-    width: 12px;
-  }
-
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     width: 18px;
   }
 `;

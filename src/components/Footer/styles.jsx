@@ -26,7 +26,17 @@ export const Container = styled.footer`
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
+    gap: 4;
+    padding-block: 6px;
+
+    p {
+      font-size: 14px;
+      padding-inline: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     p {
       font-size: 20px;
       padding-inline: 44px;
@@ -59,7 +69,19 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
+    gap: 12px;
+
+    img {
+      width: 32px;
+    }
+
+    .iconFooter {
+      width: 28px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     img {
       width: 86px;
     }

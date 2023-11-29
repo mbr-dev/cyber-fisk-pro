@@ -13,7 +13,7 @@ import DeleteImg from "./image/DeleteImg.png";
 import DollarFiskImg from "./image/DollarFisk.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Line1, Line2, Line3, KeyBoard, Key, Button, ButtonArea, Board, BoardRow, Letters, Coin, Info, InfoArea, MainInside, Left, Right } from "./styles";
+import { Container, Main, Line1, Line2, Line3, KeyBoard, Key, Button, ButtonArea, Board, BoardRow, Letters, Coin, Info, InfoArea, MainInside, Left, Right, DivDesk, DivMobile } from "./styles";
 
 export const GameWordle = () => {
   const keys1 = ["Q", "W", "E", "R", "T", "Y", "U", "I", "O", "P"];
@@ -127,20 +127,19 @@ export const GameWordle = () => {
       }
       
       <Main>
-        {!isDesktop &&
+        <DivMobile>
           <InfoArea>
             <Dialog.Root>
               <Dialog.Trigger asChild>
                 <Info><img src={IImg} alt="" /></Info>
               </Dialog.Trigger>
-
               <Modal />
             </Dialog.Root>
-            
             <Coin>
               <img src={DollarFiskImg} /> <span>10</span>
             </Coin>
-          </InfoArea>}
+          </InfoArea>
+        </DivMobile>
         
         <MainInside>
           <Left>
@@ -178,15 +177,15 @@ export const GameWordle = () => {
           </Left>
 
           <Right>
-            {!isDesktop &&
+            <DivMobile>
               <ButtonArea>
-              <Dialog.Root>
-                <Dialog.Trigger asChild>
-                  <Button $variant="green" disabled={gameEnd}>
-                    <img src={DollarFiskImg} alt="coin" />Revelar Letra
-                  </Button>
-                </Dialog.Trigger>
-
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Button $variant="green" disabled={gameEnd}>
+                      <img src={DollarFiskImg} alt="coin" />
+                      Revelar Letra
+                    </Button>
+                  </Dialog.Trigger>
                   <ModalReveal onPress={handleShowLetter} />
                 </Dialog.Root>
 
@@ -195,22 +194,23 @@ export const GameWordle = () => {
                   :
                   <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
                 }
-              </ButtonArea>}
+              </ButtonArea>
+            </DivMobile>
 
-            {isDesktop &&
+            <DivDesk>
               <InfoArea>
                 <Dialog.Root>
                   <Dialog.Trigger asChild>
                     <Info><img src={IImg} alt="" /></Info>
                   </Dialog.Trigger>
-
                   <Modal />
                 </Dialog.Root>
-                
+
                 <Coin>
                   <img src={DollarFiskImg} /> <span>10</span>
                 </Coin>
-              </InfoArea>}
+              </InfoArea>
+            </DivDesk>
 
             <KeyBoard style={{
               opacity: gameEnd && "0.2"
@@ -285,24 +285,25 @@ export const GameWordle = () => {
               </Line3>
             </KeyBoard>
 
-            {isDesktop &&
+            <DivDesk>
               <ButtonArea>
-              <Dialog.Root>
-                <Dialog.Trigger asChild>
-                  <Button $variant="green" disabled={gameEnd}>
-                    <img src={DollarFiskImg} alt="coin" />Revelar Letra
-                  </Button>
-                </Dialog.Trigger>
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <Button $variant="green" disabled={gameEnd}>
+                      <img src={DollarFiskImg} alt="coin" />Revelar Letra
+                    </Button>
+                  </Dialog.Trigger>
 
-                  <ModalReveal onPress={handleShowLetter} />
-                </Dialog.Root>
+                    <ModalReveal onPress={handleShowLetter} />
+                  </Dialog.Root>
 
                 {gameEnd ?
                   <Button $variant="red" onClick={handleHome}>Home</Button>
                   :
                   <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
                 }
-              </ButtonArea>}
+              </ButtonArea>
+            </DivDesk>
           </Right>
         </MainInside>
       </Main>

@@ -29,12 +29,12 @@ export const Content = styled(Dialog.Content)`
     width: 18rem;
   }
 
-  @media(min-width: 768px) {
-    width: 500px;
-    height: 700px;
+  @media(min-width: 480px) {
+    width: 650px;
+    height: 280px;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 1000px;
     height: 550px;
   }
@@ -68,7 +68,18 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 42px;
+    height: 42px;
+    top: -20px;
+    right: -20px;
+
+    img {
+      width: 20px;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 64px;
     height: 64px;
     top: -30px;
@@ -98,7 +109,16 @@ export const CloseEnter = styled(Dialog.Close)`
     height: 1.75rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 200px;
+    height: 32px;
+    font-size: 24px;
+    position: absolute;
+    bottom: -16px;
+    margin-bottom: 0;
+  }
+
+  @media(min-width: 1280px) {
     width: 250px;
     height: 56px;
     font-size:32px;
@@ -134,7 +154,15 @@ export const Header = styled.header`
     font-size: 1rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    height: 52px;
+
+    p {
+      font-size: 24px
+    }
+  }
+
+  @media(min-width: 1280px) {
     height: 86px;
 
     p {
@@ -173,7 +201,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 480px) {
     flex-direction: row;
     justify-content: space-around;
   }
@@ -188,19 +216,24 @@ export const Text = styled.section`
     gap: 0.5rem;
   }
 
-  @media(min-width: 768px) {
-    gap: 16px;
+  @media(min-width: 480px) {
+    gap: 6px;
 
     p {
-      font-size: 24px;
+      font-size: 16px;
       font-weight: normal;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 350px;
     align-items: center;
     justify-content: center;
+    gap: 16px;
+
+    p {
+      font-size: 24px;
+    }
   }
 `;
 
@@ -213,14 +246,16 @@ export const Info = styled.section`
     gap: 0.5rem;
   }
 
-  @media(min-width: 768px) {
-    gap: 20px;
-  }
-
-  @media(min-width: 1024px) {
-    width: 400px;
+  @media(min-width: 480px) {
+    gap: 4px;
     align-items: center;
     justify-content: center;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 10px;
+    width: 400px;
+    gap: 20px;
   }
 `;
 
@@ -229,7 +264,11 @@ export const Line = styled.div`
   height: 2px;
   background-color: ${props=> props.theme["blue-400"]};
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 300px;
+  }
+
+  @media(min-width: 1280px) {
     width: 400px;
   }
 `;
@@ -244,10 +283,20 @@ export const Row = styled.section`
     gap: 0.365rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    gap: 4px;
+
+    p {
+      font-size: 16px;
+      font-weight: normal;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 10px;
+
     p {
       font-size: 24px;
-      font-weight: normal;
     }
   }
 `;
@@ -283,7 +332,14 @@ export const Letters = styled.div`
     font-size: 1.25rem;
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
+    width: 28px;
+    height: 28px;
+    border-width: 2px;
+    font-size: 16px;
+  }
+
+  @media(min-width: 1280px) {
     width: 48px;
     height: 48px;
     border-width: 3px;

@@ -5,13 +5,12 @@ import { Pie } from "react-chartjs-2";
 import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderText } from "../../components/HeaderText";
+import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
-import Robo from "../../assets/avatarRobo.png";
 import PrintImg from "../../assets/print.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const ReportInfo = () => {
@@ -51,6 +50,10 @@ export const ReportInfo = () => {
     navigate("/ReportStudio");
   }
 
+  const handleGoHome = () => {
+    navigate("/Home");
+  }
+
   return (
     <Container>
       <HeaderText title="Report" />
@@ -60,7 +63,7 @@ export const ReportInfo = () => {
           <AvatarArea>
             <AvatarInfo>
               <Avatar>
-                <img src={Robo} alt="" />
+                <AvatarCustomMetadeIcon />
               </Avatar>
               <p>Carlos Alberto</p>
             </AvatarInfo>
@@ -70,140 +73,144 @@ export const ReportInfo = () => {
             </Print>
           </AvatarArea>
 
-            <XP>
-              <XPDiv>
-                <XPLeft>
-                  <XPInside>
-                    <span>XP:</span>
-                    <p>XXX</p>
-                  </XPInside>
-                  <XPInside>
-                    <span>FISK DOLLARS:</span>
-                    <p>XXX</p>
-                  </XPInside>
-                </XPLeft>
-                <XPRight>
-                  <Dialog.Root>
-                    <Dialog.Trigger asChild>
-                      <p>Access</p>
-                    </Dialog.Trigger>
+          <XP>
+            <XPDiv>
+              <XPLeft>
+                <XPInside>
+                  <span>XP:</span>
+                  <p>XXX</p>
+                </XPInside>
+                <XPInside>
+                  <span>FISK DOLLARS:</span>
+                  <p>XXX</p>
+                </XPInside>
+              </XPLeft>
+              <XPRight>
+                <Dialog.Root>
+                  <Dialog.Trigger asChild>
+                    <p>Access</p>
+                  </Dialog.Trigger>
 
-                    <ModalAC />
-                  </Dialog.Root>
-                </XPRight>
-              </XPDiv>
-            </XP>
+                  <ModalAC />
+                </Dialog.Root>
+              </XPRight>
+            </XPDiv>
+          </XP>
 
-            <Stage>
-              <SLeft>
-                <h2>Stage progress:</h2>
+          <Stage>
+            <SLeft>
+              <h2>Stage progress:</h2>
 
-                <Pie data={data} />
-              </SLeft>
+              <Pie data={data} />
+            </SLeft>
 
-              <SRight>
-                <span>80%</span>
-                <p>of lessons completed</p>
-              </SRight>
-            </Stage>
-          </Div>
+            <SRight>
+              <span>80%</span>
+              <p>of lessons completed</p>
+            </SRight>
+          </Stage>
+        </Div>
 
-          <Details>
-            <DDiv>
-              <DivBar onClick={handleReportLesson}>
-                <Bar>
-                  <BarColor style={{
-                    height: `${progressL}%`
-                  }}>
-                    {progressL >= 20 && <span>{progressL}%</span>}
-                  </BarColor>
-                </Bar>
-                <p>view details</p>
-              </DivBar>
-              <ViewDetails onClick={handleReportStudio}>
-                <h2>Listening</h2>
+        <Details>
+          <DDiv>
+            <DivBar onClick={handleReportLesson}>
+              <Bar>
+                <BarColor style={{
+                  height: `${progressL}%`
+                }}>
+                  {progressL >= 20 && <span>{progressL}%</span>}
+                </BarColor>
+              </Bar>
+              <p>view details</p>
+            </DivBar>
+            <ViewDetails onClick={handleReportStudio}>
+              <h2>Listening</h2>
 
-                <ul>
-                  <li>{progressL}% success rate</li>
-                  <li>100% of activities completed</li>
-                  <li>21 correct answers out of 30</li>
-                  <li>00:00 spent on this skill</li>
-                </ul>
-              </ViewDetails>
-            </DDiv>
+              <ul>
+                <li>{progressL}% success rate</li>
+                <li>100% of activities completed</li>
+                <li>21 correct answers out of 30</li>
+                <li>00:00 spent on this skill</li>
+              </ul>
+            </ViewDetails>
+          </DDiv>
 
-            <DDiv>
-              <DivBar>
-                <Bar>
-                  <BarColor style={{
-                    height: `${progressR}%`
-                  }}>
-                    {progressR >= 20 && <span>{progressR}%</span>}
-                  </BarColor>
-                </Bar>
-                <p>view details</p>
-              </DivBar>
-              <ViewDetails>
-                <h2>Reading</h2>
+          <DDiv>
+            <DivBar>
+              <Bar>
+                <BarColor style={{
+                  height: `${progressR}%`
+                }}>
+                  {progressR >= 20 && <span>{progressR}%</span>}
+                </BarColor>
+              </Bar>
+              <p>view details</p>
+            </DivBar>
+            <ViewDetails>
+              <h2>Reading</h2>
 
-                <ul>
-                  <li>{progressR}% success rate</li>
-                  <li>100% of activities completed</li>
-                  <li>21 correct answers out of 30</li>
-                  <li>00:00 spent on this skill</li>
-                </ul>
-              </ViewDetails>
-            </DDiv>
+              <ul>
+                <li>{progressR}% success rate</li>
+                <li>100% of activities completed</li>
+                <li>21 correct answers out of 30</li>
+                <li>00:00 spent on this skill</li>
+              </ul>
+            </ViewDetails>
+          </DDiv>
 
-            <DDiv>
-              <DivBar>
-                <Bar>
-                  <BarColor style={{
-                    height: `${progressW}%`
-                  }}>
-                    {progressW >= 20 && <span>{progressW}%</span>}
-                  </BarColor>
-                </Bar>
-                <p>view details</p>
-              </DivBar>
-              <ViewDetails>
-                <h2>Writing</h2>
+          <DDiv>
+            <DivBar>
+              <Bar>
+                <BarColor style={{
+                  height: `${progressW}%`
+                }}>
+                  {progressW >= 20 && <span>{progressW}%</span>}
+                </BarColor>
+              </Bar>
+              <p>view details</p>
+            </DivBar>
+            <ViewDetails>
+              <h2>Writing</h2>
 
-                <ul>
-                  <li>{progressW}% success rate</li>
-                  <li>100% of activities completed</li>
-                  <li>21 correct answers out of 30</li>
-                  <li>00:00 spent on this skill</li>
-                </ul>
-              </ViewDetails>
-            </DDiv>
+              <ul>
+                <li>{progressW}% success rate</li>
+                <li>100% of activities completed</li>
+                <li>21 correct answers out of 30</li>
+                <li>00:00 spent on this skill</li>
+              </ul>
+            </ViewDetails>
+          </DDiv>
 
-            <DDiv>
-              <DivBar>
-                <Bar>
-                  <BarColor style={{
-                    height: `${progressS}%`
-                  }}>
-                    {progressS >= 20 && <span>{progressS}%</span>}
-                  </BarColor>
-                </Bar>
-                <p>view details</p>
-              </DivBar>
-              <ViewDetails>
-                <h2>Speaking</h2>
+          <DDiv>
+            <DivBar>
+              <Bar>
+                <BarColor style={{
+                  height: `${progressS}%`
+                }}>
+                  {progressS >= 20 && <span>{progressS}%</span>}
+                </BarColor>
+              </Bar>
+              <p>view details</p>
+            </DivBar>
+            <ViewDetails>
+              <h2>Speaking</h2>
 
-                <ul>
-                  <li>{progressS}% success rate</li>
-                  <li>100% of activities completed</li>
-                  <li>21 correct answers out of 30</li>
-                  <li>00:00 spent on this skill</li>
-                </ul>
-              </ViewDetails>
-            </DDiv>
-          </Details> 
+              <ul>
+                <li>{progressS}% success rate</li>
+                <li>100% of activities completed</li>
+                <li>21 correct answers out of 30</li>
+                <li>00:00 spent on this skill</li>
+              </ul>
+            </ViewDetails>
+          </DDiv>
+        </Details> 
       </Main>
 
-      <FooterBtnHome />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoHome}>
+          <p>Home</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

@@ -1,24 +1,19 @@
 import Cookies from "universal-cookie";
-import { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-import { FooterBtnHome } from "../../components/FooterBtnHome";
+import { AvatarCustom } from "../../components/AvatarCustom";
 import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 
-import Robo from "../../assets/RoboWD.png";
-import RoboPe from "../../assets/roboPe.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Container, Main, Header, Avatar, Content, HeaderButton, BtnC } from "./styles";
+import { Container, Main, Header, Content, HeaderButton, BtnC, AreaFooter, ButtonLogout, AvatarPe, DivBtnCH } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Menu = () => {
-  const [name, setName] = useState("");
   const navigate = useNavigate();
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const alterPage = (page) => {
     navigate(`/${page}`);
@@ -35,14 +30,6 @@ export const Menu = () => {
     navigate(`/Login`);
   }
 
-  useEffect(()=>{
-    const cookies = new Cookies();
-    const raf = cookies.get("raf");
-    if(raf){
-      setName(raf);
-    }
-  },[])
-
   return (
     <Container>
       <Header>
@@ -50,30 +37,24 @@ export const Menu = () => {
 
         <HeaderButton>
           <ButtonMenuHeader />
-          {!isDesktop && 
-            <Avatar>
-              <img src={Robo} alt="" />
-              <p>{name}</p>
-            </Avatar>}
-          {!isDesktop && <ButtonCloseHeader />}
+          <DivBtnCH>
+            <AvatarCustomMetade hasName />
+            <ButtonCloseHeader />
+          </DivBtnCH>
         </HeaderButton>
 
-        {isDesktop &&
-          <Avatar>
-            <img src={RoboPe} alt="" />
-            <p>{name}</p>
-          </Avatar>}
+        <AvatarPe>
+          <AvatarCustom hasName />
+        </AvatarPe>
       </Header>
 
       <Content>
-        {isDesktop &&
-          <BtnC>
-            <ButtonCloseHeader />
-          </BtnC>
-        }
+        <BtnC>
+          <ButtonCloseHeader />
+        </BtnC>
 
         <Main>
-          <p>Avatar</p>
+          <p onClick={() => {alterPage("Avatar")}}>Avatar</p>
           <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
           <p onClick={() => {alterPage("Profile")}}>Profile</p>
           <LineSeparator wl="100%" bg={defaultTheme["gray-200"]}/>
@@ -84,7 +65,11 @@ export const Menu = () => {
           <p onClick={() => {alterPage("Help")}}>Help</p>
         </Main>
 
-        <FooterBtnHome title="Logout" />
+        <AreaFooter>
+          <ButtonLogout onClick={logout}>
+            <p>Logout</p>
+          </ButtonLogout>
+        </AreaFooter>
       </Content>
     </Container>
   )

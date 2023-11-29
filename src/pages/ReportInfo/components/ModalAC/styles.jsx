@@ -30,26 +30,54 @@ export const Content = styled(Dialog.Content)`
   @media(max-width: 320px) {
     width: 18rem;
   }
+
+  @media(min-width: 480px) {
+    width: 450px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1000px;
+  }
 `;
 
 export const Close = styled(Dialog.Close)`
   all: unset;
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.75rem;
-  right: -0.75rem;
+  top: -15px;
+  right: -10px;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
+
+  img {
+    width: 16px;
+  }
 
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
-    top: -0.5rem;
-    right: -0.5rem;
+  }
+
+  @media(min-width: 480px) {
+    width: 32px;
+    height: 32px;
+    top: -18px;
+    right: -16px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 64px;
+    height: 64px;
+    top: -32px;
+    right: -32px;
+
+    img {
+      width: 28px;
+    }
   }
 `;
 
@@ -69,6 +97,13 @@ export const CloseEnter = styled(Dialog.Close)`
 
   @media(max-width: 320px) {
     height: 1.75rem;
+  }
+
+  @media(min-width: 1280px) {
+    height: 52px;
+    width: 300px;
+    font-size: 32px;
+    margin-bottom: -28px;
   }
 `;
 
@@ -94,6 +129,22 @@ export const Header = styled.header`
 
   @media(max-width: 320px) {
     font-size: 1rem;
+  }
+
+  @media(min-width: 480px) {
+    padding-block: 8px;
+    
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-block: 12px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;
 
@@ -127,6 +178,37 @@ export const Main = styled.main`
       font-size: 0.875rem;
     }
   }
+
+  @media(min-width: 480px) {
+    padding-inline: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    gap: 0px;
+
+    p {
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    span {
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-inline: 0;
+    margin-top: 0;
+    padding-bottom: 0;
+    gap: 0px;
+
+    p {
+      font-size: 32px;
+    }
+
+    span {
+      font-size: 32px;
+    }
+  }
 `;
 
 export const Text = styled.div`
@@ -134,6 +216,12 @@ export const Text = styled.div`
 
   p {
     margin-bottom: 0.5rem;
+  }
+
+  @media (min-width: 1280px) {
+    p {
+      margin-bottom: 24px;
+    }
   }
 `;
 
@@ -146,5 +234,23 @@ export const Separator = styled.div`
 
   h2 {
     font-size: 1.5rem;
+  }
+
+  @media (min-width: 480px) {
+    padding-block: 6px;
+    margin-block: 6px;
+
+    h2 {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    padding-block: 16px;
+    margin-block: 16px;
+
+    h2 {
+      font-size: 32px;
+    }
   }
 `;

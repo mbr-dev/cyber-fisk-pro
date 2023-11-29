@@ -6,7 +6,6 @@ import { TitleLesson } from "../../components/titleLesson";
 import { HeaderText } from "../../components/HeaderText";
 
 import { CyberContext } from "../../context/cyber";
-import { translateStudio } from "../../utils/Translate";
 
 import devIcon from "./image/Dev.svg";
 import keyIcon from "../../assets/key.svg";
@@ -27,18 +26,10 @@ import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text
 export const Studio = () => {
   const { selectLanguage } = useContext(CyberContext);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
   return (
     <Container>
-      <HeaderText title={
-        selectLanguage === 0 ? translateStudio[0].title : selectLanguage === 1 ? translateStudio[1].title : translateStudio[2].title
-      } />
-      <TitleLesson title={
-          selectLanguage === 0 ? translateStudio[0].subTitle : selectLanguage === 1 ? translateStudio[1].subTitle : translateStudio[2].subTitle
-        }
-        mt={isDesktop && "20px"}
-      />
+      <HeaderText title={selectLanguage === 0 ? "Estudio" : selectLanguage === 1 ? "Studio" : "Estudio"} />
+      <TitleLesson title={selectLanguage === 0 ? "Olha esse perfil da internet." : selectLanguage === 1 ? "Look at this internet profile." : "Mira este perfil de internet."} />
 
       <Main>
         <Right>
@@ -50,25 +41,22 @@ export const Studio = () => {
               </UserImg>
               <span>Mike Ross</span>
             </User>
-
             <UserInfo>
               <From>
                 <img src={eua} alt="" />
                 <div>
-                  <p>{selectLanguage === 0 ? translateStudio[0].from : selectLanguage === 1 ? translateStudio[1].from : translateStudio[2].from}</p>
+                  <p>{selectLanguage === 0 ? "De" : selectLanguage === 1 ? "From" : "De"}</p>
                   <span>The USA</span>
                 </div>
               </From>
-
               <From>
                 <img src={australia} alt="" />
                 <div>
-                  <p>{selectLanguage === 0 ? translateStudio[0].live : selectLanguage === 1 ? translateStudio[1].live : translateStudio[2].live}</p>
+                  <p>{selectLanguage === 0 ? "Mora na" : selectLanguage === 1 ? "Lives in" : "Vive en"}</p>
                   <span>Australia</span>
                 </div>
               </From>
             </UserInfo>
-
             <SocialMedia>
               <img src={twitterIcon} alt="" />
               <img src={instagramIcon} alt="" />
@@ -78,11 +66,10 @@ export const Studio = () => {
               <img src={devIcon} alt="" />
             </SocialMedia>
           </Info>
-
           <Text>
-            <p>{selectLanguage === 0 ? translateStudio[0].you : selectLanguage === 1 ? translateStudio[1].you : translateStudio[2].you} Mike Ross.</p>
-            <span>{selectLanguage === 0 ? translateStudio[0].text : selectLanguage === 1 ? translateStudio[1].text : translateStudio[2].text}</span>
-            <span>{selectLanguage === 0 ? translateStudio[0].text1 : selectLanguage === 1 ? translateStudio[1].text1 : translateStudio[2].text1}</span>
+            <p>{selectLanguage === 0 ? "Você é" : selectLanguage === 1 ? "You are" : "Eres"} Mike Ross.</p>
+            <span>{selectLanguage === 0 ? "Fale com Anne e responda suas perguntas." : selectLanguage === 1 ? "Talk to Anne and answer her questions." : "Habla con Anne y responde sus preguntas."}</span>
+            <span>{selectLanguage === 0 ? "Use as informações acima. Preparar?" : selectLanguage === 1 ? "Use the information above. Ready?" : "Utilice la información anterior. ¿Listo?"}</span>
           </Text>
         </Right>
 

@@ -1,30 +1,34 @@
-import { useState, useEffect, useContext } from "react";
-import Cookies from 'universal-cookie';
-import { useNavigate } from "react-router-dom";
 import { apiQAS } from "../../lib/api";
+import Cookies from "universal-cookie";
+import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
 import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
-import { LineSeparator } from "../../components/LineSeparator";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
 
-import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
+import { LessonContext } from "../../context/lesson";
 
-import Robo from "../../assets/RoboGO.png";
-import Fundo from "../../assets/Fundo.png";
+import FundoGoImg from "./images/FundoGO.png";
 import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
-import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2, AreaButton, ButtonHome } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2, AreaButton, ButtonHome, DivDesk, DivMobile, LineSeparator } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  const [time, setTime] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
+  const [msgError, setMsgError] = useState("");
+  const [error, setError] = useState(false);
+  const [salvou, setSalvou] = useState(false);
+
+  const navigate = useNavigate();
 
   const phrase = [
     "We know you can do better.",
@@ -36,14 +40,7 @@ export const GameOver = () => {
   ]
 
   const randomPhrase = Math.floor(Math.random() * phrase.length);
-  const [name, setName] = useState('---');
-  const [time, setTime] = useState('');
-  const [isLoading, setIsLoading] = useState(false);
-  const [msgError, setMsgError] = useState("");
-  const [error, setError] = useState(false);
-  const [salvou, setSalvou] = useState(false);
 
-  const navigate = useNavigate();
 
   const salvar = async(tempoCronometro) => {
     if(salvou) return;
@@ -102,7 +99,7 @@ export const GameOver = () => {
     }
   }
 
-  function clickAlert() {
+  const clickAlert = () => {
     setError(false);
   }
 
@@ -112,7 +109,6 @@ export const GameOver = () => {
 
   useEffect(() => {
     const cookies = new Cookies();
-    setName(cookies.get("raf"));
     //time
     let minutes = Math.floor(timeElapsed / 60);
     minutes = minutes < 10 ? `0${minutes}` : minutes.toString();
@@ -136,75 +132,76 @@ export const GameOver = () => {
     <Container>
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
       <Header>
-        <img src={Fundo} alt="" className="fundoBg" />
+        <img src={FundoGoImg} alt="" className="fundoBg" />
         <Top>
           <ButtonMenuHeader />
-          {!isDesktop && <ButtonCloseHeader />}
+          <DivMobile>
+            <ButtonCloseHeader />
+          </DivMobile>
         </Top>
 
         <Middle>
           <AvatarArea>
-            <img src={Robo} alt="" />
-            <p>Camila Eduarda</p>
+            <AvatarCustomMetadeWG hasName />
           </AvatarArea>
           <h2>Game Over</h2>
         </Middle>
 
-        {!isDesktop &&
+        <DivMobile>
           <Bottom>
             <AreaItem>
               <img src={Dollars} alt="" />
               <span>0</span>
               <p>Fisk Dollars</p>
             </AreaItem>
-            <LineSeparator wl="80%" bg={defaultTheme.white} />
+            <LineSeparator />
             <AreaItem style={{marginRight: "64px"}}>
             <img src={Xp} alt="" />
             <span>0</span>
             <p>Xp</p>
             </AreaItem>
-          </Bottom>}
+          </Bottom>
+        </DivMobile>
         
-        {isDesktop &&
+        <DivDesk>
           <ButtonRed onClick={handleTryAgain}>
             <p>Try Again</p>
-          </ButtonRed>}
+          </ButtonRed>
+        </DivDesk>
       </Header>
 
       <Content>
         <Main>
-          {isDesktop && 
-            <ButtonClose>
-              <ButtonCloseHeader />
-            </ButtonClose>}
+          <ButtonClose>
+            <ButtonCloseHeader />
+          </ButtonClose>
 
-          {!isDesktop &&
-          <ButtonRed onClick={handleTryAgain}>
-            <p>Try Again</p>
-          </ButtonRed>}
+          <DivMobile>
+            <ButtonRed onClick={handleTryAgain}>
+              <p>Try Again</p>
+            </ButtonRed>
+          </DivMobile>
 
-          {isDesktop &&
-            <Bottom2>
-              <img src={Fundo} alt="" className="fundoBg" />
-              <AreaItem2 style={{ marginLeft: "42px"}}>
-                <img src={Dollars} alt="" />
-                <span>0</span>
-                <p>Fisk Dollars</p>
-              </AreaItem2>
-              <LineSeparator wl="80%" bg={defaultTheme.white} />
-              <AreaItem2 style={{marginRight: "64px"}}>
-              <img src={Xp} alt="" />
+          <Bottom2>
+            <img src={FundoGoImg} alt="" className="fundoBg" />
+            <AreaItem2>
+              <img src={Dollars} alt="" />
               <span>0</span>
-              <p>Xp</p>
-              </AreaItem2>
-            </Bottom2>}
+              <p>Fisk Dollars</p>
+            </AreaItem2>
+            <LineSeparator />
+            <AreaItem2>
+            <img src={Xp} alt="" />
+            <span>0</span>
+            <p>Xp</p>
+            </AreaItem2>
+          </Bottom2>
 
           <Div>
             <div>
               <p>Activities done in</p>
               <span>{time}</span>
             </div>
-
             <Text>
               <p>{phrase[randomPhrase]}</p>
             </Text>

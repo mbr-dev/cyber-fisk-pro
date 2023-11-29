@@ -15,9 +15,7 @@ export const ModalBooks = ({ onPress }) => {
           <Close>
             <img src={xImg} alt="X" />
           </Close>
-
           <img src={bookImg} alt="Book" />
-
           <Button onClick={onPress}><p>Essentials</p></Button>
         </Main>
       </Content>

@@ -19,16 +19,24 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  background: radial-gradient(78.01% 55.16% at 50% 46.55%, #2648B1 0%, #001453 100%);
-  position: absolute;
+  position: relative;
   z-index: 200;
+
+  .bgImg {
+    position: absolute;
+    width: 100vw;
+    height: 100vh;
+    top: 0;
+    left: -1px;
+  }
 
   img {
     width: 60%;
+    z-index: 200;
   }
 
-  p {
-    position: absolute;
+  p { 
+    z-index: 200;
     bottom: 4rem;
     color: ${props => props.theme.white};
     font-size: 1.75rem;
@@ -46,6 +54,26 @@ export const Container = styled.div`
     p {
       font-size: 1.5rem;
       bottom: 2rem;
+    }
+  }
+
+  @media(min-width: 480px) {
+    img {
+      width: 200px;
+    }
+
+    p {
+      font-size: 36px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    img {
+      width: 400px;
+    }
+
+    p {
+      font-size: 52px;
     }
   }
 `;

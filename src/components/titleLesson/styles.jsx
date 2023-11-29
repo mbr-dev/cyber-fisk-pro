@@ -28,25 +28,19 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    padding: 12px;
+  @media(min-width: 480px) {
+    padding: 4px;
 
     span {
-      font-size: 28px;
+      font-size: 18px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     padding: 16px;
     
     span {
       font-size: 36px;
-    }
-  }
-
-  @media(min-width: 1920px) {
-    span {
-      font-size: 42px;
     }
   }
 `

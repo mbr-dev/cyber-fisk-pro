@@ -35,30 +35,20 @@ export const Container = styled.header`
     }
   }
 
-  @media(min-width: 600px) {
-    height: 52px;
-    padding-inline: 16px;
-
-    p {
-      font-size: 24px;
-    }
-  }
-
-  @media(min-width: 768px) {
-    height: 100px;
-    padding-inline: 32px;
+  @media (min-width: 480px) {
+    height: 64px;
 
     p {
       font-size: 32px;
     }
   }
 
-  @media(min-width: 1024px) {
-    height: 120px;
+  @media(min-width: 1280px) {
+    height: 100px;
     padding-inline: 32px;
 
     p {
-      font-size: 44px;
+      font-size: 42px;
     }
   }
 `;

@@ -12,20 +12,30 @@ export const Main = styled.main`
   flex: 1;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme["gray-200"]};
+  background-color: ${props => props.theme["gray-060"]};
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
 
-  @media (min-width: 1024px) {
+  @media (min-width: 480px) {
     flex-direction: row;
+  }
+`;
+
+export const DivMobile = styled.div`
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  @media(min-width: 480px) {
+    display: none;
   }
 `;
 
 export const Top = styled.div`
   width: 100%;
-  height: 250px;
+  height: 40%;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,15 +56,14 @@ export const Top = styled.div`
   }
 
   @media (max-width: 320px) {
-    height: 150px;
-
     .avatarImg {
       width: 50px;
     }
   }
 
-  @media (min-width: 768px) {
-    height: 350px;
+  @media (min-width: 480px) {
+    height: 100%;
+    width: 40%;
 
     .avatarImg {
       width: 110px;
@@ -62,105 +71,90 @@ export const Top = styled.div`
     }
   }
 
-  @media (min-width: 1024px) {
-    height: 100%;
-    width: 40%;
+  @media (min-width: 1280px) {
 
     .avatarImg {
       margin-top: 100px;
       width: 200px;
     }
   }
-
-  @media (min-width: 1440px) {
-    .avatarImg {
-      margin-top: 170px;
-      width: 220px;
-    }
-  }
-
-  @media (min-width: 1920px) {
-    .avatarImg {
-      margin-top: 220px;
-      width: 230px;
-    }
-  }
 `;
 
 export const DivBottom = styled.div`
+  flex: 1;
   width: 100%;
-  height: 280px;
+  height: 50%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
 
-  @media (max-width: 320px) {
-    height: 180px;
-  }
-
-  @media (min-width: 768px) {
-    height: 380px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 60%;
+  @media (min-width: 480px) {
+    width: 100%;
     height: 100%;
-    align-items: center;
-  }
-
-  @media (min-width: 1440px) {
-    justify-content: flex-start;
   }
 `;
 
 export const Bottom = styled.div`
+  flex: 1;
   width: 100%;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-inline: 20px;
-  gap: 8px;
-  background-color: ${props => props.theme["gray-200"]};
+  justify-content: flex-start;
+  padding-top: 10px;
+  background-color: ${props => props.theme["gray-060"]};
+  gap: 10px;
 
-  @media (max-width: 320px) {
-    height: 170px;
-    padding-inline: 16px;
-  }
-
-  @media (min-width: 768px) {
-    height: 100%;
-    padding-inline: 54px;
-    gap: 16px;
-  }
-
-  @media (min-width: 1024px) {
-    width: 100%;
-    height: 90%;
-    justify-content: space-between;
-    padding-block: 24px;
-  }
-
+  .spDesk {
+      display: none;
+    }
   
-  @media(min-width: 1440px) {
-    height: 90%;
+  @media (max-width: 320px) {
+    gap: 6px;
+  }
+  
+  @media (min-width: 480px) {
+    height: 100px;
+    gap: 16px;
+
+    .spDesk {
+      display: flex;
+      width: 100%;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    height: 100%;
+    padding-top: 24px;
+    gap: 24px;
+  }
+
+  @media (min-width: 1920px) {
+    padding-top: 56px;
+    gap: 56px;
   }
 `;
 
 export const Separator = styled.div`
-  width: 100%;
+  width: 350px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-top: 10px;
+
+  @media(max-width: 360px) {
+    width: 320px;
+  }
 
   @media(max-width: 320px) {
-    padding-top: 0;
+    width: 280px;
   }
-  
-  @media(min-width: 768px) {
-    padding-top: 16px;
+
+  @media(min-width: 480px) {
+    justify-content: space-around;
+    background-color: ${props => props.theme["gray-950"]};
+    padding-block: 6px;
   }
 `;
 
@@ -188,16 +182,16 @@ export const Card = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 64px;
-    height: 64px;
+  @media(min-width: 480px) {
+    width: 52px;
+    height: 52px;
 
     img {
-      width: 36px;
+      width: 32px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 84px;
     height: 84px;
 
@@ -205,10 +199,19 @@ export const Card = styled.div`
       width: 52px;
     }
   }
+
+  @media(min-width: 1920px) {
+    width: 100px;
+    height: 100px;
+
+    img {
+      width: 64px;
+    }
+  }
 `;
 
 export const Title = styled.div`
-  width: 100%;
+  width: 350px;
   height: 32px;
   display: flex;
   align-items: center;
@@ -219,6 +222,7 @@ export const Title = styled.div`
   color: white;
 
   @media (max-width: 360px) {
+    width: 320px;
     height: 28px;
 
     p {
@@ -226,39 +230,53 @@ export const Title = styled.div`
     }
   }
 
-  @media (min-width: 768px) {
-    height: 54px;
+  @media (max-width: 320px) {
+    width: 280px;
+    height: 28px;
 
     p {
-      font-size: 32px;
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 28px;
+    border-radius: 4px;
+
+    p {
+      font-size: 16px;
     }
   }
 `;
 
 export const AvatarCard = styled.div`
-  width: 100%;
+  width: 350px;
   height: 180px;
-  padding-block: 6px;
   display: flex;
   justify-content: space-between;
 
-  @media (max-width: 320px) {
+  @media (max-width: 360px) {
+    width: 320px;
     height: 150px;
-    padding-block: 0;
   }
 
-  @media(min-width: 600px) {
-    height: 220px;
-    padding-block: 0;
-    padding-bottom: 16px;
+  @media (max-width: 320px) {
+    width: 280px;
+    height: 150px;
   }
 
-  @media(min-width: 1024px) {
-    height: 300px;
+  @media(min-width: 480px) {
+    height: 126px;
   }
 
-  @media(min-width: 1440px) {
-    height: 360px;
+  @media(min-width: 1280px) {
+    width: 700px;
+    height: 380px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 900px;
+    height: 450px;
   }
 `;
 
@@ -285,28 +303,28 @@ export const CardReward = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
-    width: 180px;
+  @media(min-width: 480px) {
+    width: 110px;
     border-radius: 12px;
 
     .RoboCard {
-      width: 80px;
+      width: 42px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 200px;
 
     .RoboCard {
-      width: 100px;
+      width: 150px;
     }
   }
 
-  @media(min-width: 1440px) {
-    width: 220px;
+  @media(min-width: 1920px) {
+    width: 250px;
 
     .RoboCard {
-      width: 110px;
+      width: 180px;
     }
   }
 `;
@@ -336,17 +354,21 @@ export const DivBlock = styled.div`
     }
   }
   
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     border-radius: 12px;
-    gap: 42px;
+    gap: 20px;
 
     .cadeadoImg {
-      width: 44px;
+      width: 24px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 92px;
+
+    .cadeadoImg {
+      width: 54px;
+    }
   }
 `;
 
@@ -386,25 +408,108 @@ export const DivMoney = styled.div`
     }
   }
 
-  @media(min-width: 768px) {
+  @media(min-width: 480px) {
     margin-top: -30px;
-    width: 110px;
-    height: 44px;
+    width: 84px;
+    height: 20px;
 
     p {
-      font-size: 20px;
+      font-size: 12px;
+    }
+
+    img {
+      width: 14px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 120px;
+    height: 36px;
+    margin-top: -100px;
+
+    p {
+      font-size: 18px;
     }
 
     img {
       width: 24px;
     }
   }
+`;
 
-  @media(min-width: 1024px) {
-    margin-top: -72px;
+export const AreaFooter = styled.div`
+  width: 100%;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+  background-color: ${props => props.theme.white};
+
+  @media(max-width: 320px) {
+    height: 52px;
   }
 
-  @media (min-width: 1440px) {
-    margin-top: -120px;
+  @media(min-width: 480px) {
+    height: 52px;
+    border-top: 0px;
+  }
+
+  @media(min-width: 1280px) {
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonHome = styled.button`
+  all: unset;
+  width: 250px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 480px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

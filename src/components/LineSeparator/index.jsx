@@ -1,3 +1,4 @@
+import { defaultTheme } from "../../themes/defaultTheme";
 import { Container } from "./styles";
 
 export const LineSeparator = ({ wl, bg }) => {
@@ -5,7 +6,7 @@ export const LineSeparator = ({ wl, bg }) => {
     <Container
       style={{
         width: wl,
-        backgroundColor: bg,
+        backgroundColor: bg ? bg : defaultTheme["gray-200"],
       }}
     >
     </Container>
