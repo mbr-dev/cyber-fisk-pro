@@ -13,23 +13,21 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 12px;
+  gap: 0.625rem;
 
-  @media (min-width: 600px) {
-    margin-top: 32px;
-    gap: 36px;
+  @media (max-width: 320px) {
+    gap: 0.5rem;
   }
 
-  @media (min-width: 1024px) {
-    margin-top: 0;
+  @media (min-width: 600px) {
     width: 80%;
     justify-content: center;
     flex-direction: row;
-    gap: 56px;
+    gap: 0.5rem;
   }
 
-  @media (min-width: 1440px) {
-    margin-top: 54px;
+  @media (min-width: 1280px) {    
+    gap: 3rem;
   }
 `;
 
@@ -41,18 +39,36 @@ export const Question = styled.section`
   text-align: center;
 
   p {
+    font-size: 1rem;
     font-weight: bold;
   }
 
-  @media (min-width: 1024px) {
-    width: 350px;
-    height: 200px;
-    display: flex;
-    align-items: center;
-    margin-bottom: 120px;
+  @media (max-width: 320px) {
+    width: 18.75rem;
 
     p {
-      font-size: 20px;
+      font-size: 0.875rem;
+      font-weight: 500;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 25rem;
+    height: 12rem;
+    display: flex;
+    align-items: center;
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 30rem;
+    height: 15rem;
+
+    p {
+      font-size: 1.125rem;
     }
   }
 `;
@@ -65,15 +81,12 @@ export const Answers = styled.section`
   gap: 0.5rem;
 
   @media (min-width: 600px) {
-    gap: 12px;
+    gap: 0.5rem;
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 1280px) {
     width: 40%;
-  }
-
-  @media (min-width: 1920px) {
-    width: 500px;
+    gap: 1rem;
   }
 `;
 
@@ -86,6 +99,43 @@ export const Options = styled.div`
 
   p {
     font-weight: bold;
+    font-size: 1rem;
+  }
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 600px) {
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 1rem;
   }
 `;
 
@@ -104,31 +154,40 @@ export const AnswersRow = styled.section`
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid ${props => props.theme.black};
+    border: 2px solid ${props => props.theme.black};
     border-radius: 8px;
   }
 
-  @media (min-width: 1440px) {
-    p {
-      height: 64px;
-      font-size: 16px;
-    }
-  }
-`;
-
-export const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-
-  @media(max-width: 376px) {
+  @media (max-width: 320px) {
+    padding-inline: 0.5rem;
     gap: 0.5rem;
+
+    p {
+      height: 2.5rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+    }
   }
 
   @media (min-width: 600px) {
-    gap: 16px;
+    gap: 0.5rem;
+    padding-inline: 0.75rem;
+
+    p {
+      height: 2.5rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    gap: 1rem;
+
+    p {
+      height: 4.5rem;
+      font-size: 0.875rem;
+      border-width: 3px;
+    }
   }
 `;
 
@@ -160,8 +219,68 @@ export const Radio = styled(RadioGroup.Item)`
     }
   }
 
-  @media (min-width: 1024px) {
+  @media (max-width: 320px) {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 600px) {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 1280px) {
     width: 64px;
     height: 64px;
+  }
+`;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  p {
+    font-size: 1rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (max-width: 320px) {
+    width: 9rem;
+    height: 2rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 13rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
   }
 `;

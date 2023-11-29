@@ -1,16 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import { useContext, useState, useEffect, useCallback } from "react";
 import { DndContext, useDraggable, useDroppable } from "@dnd-kit/core";
-import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLesson } from "../subTitleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonAnswer } from "./styles";
+import { Container, Main, ButtonAnswer, Title } from "./styles";
 
 export const Game8 = () => {
   const {
@@ -31,9 +30,6 @@ export const Game8 = () => {
   const [data, setData] = useState([]);
   const [buttonVisibility, setButtonVisibility] = useState([0, 0, 0]);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -234,7 +230,9 @@ export const Game8 = () => {
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>
-          <SubTitleLesson title={question.replace("______", changeText)} />
+          <Title>
+            <p>{question.replace("______", changeText)}</p>
+          </Title>
         </Droppable>
 
         <Main>

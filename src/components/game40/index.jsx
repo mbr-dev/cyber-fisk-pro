@@ -103,7 +103,7 @@ export const Game40 = () => {
   }
 
   const handleClick = (index) => {
-    if (blockButton || playAudio) return;
+    if (blockButton || playAudio || (selectedColor[index] === 1)) return;
 
     setBlockButton(false);
 
@@ -221,9 +221,7 @@ export const Game40 = () => {
                 borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
             >
-              <p style={{
-                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
-              }}>{answer.label}</p>
+              <p>{answer.label}</p>
             </ButtonAnswer>
           )
         })}

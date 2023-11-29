@@ -10,26 +10,48 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
+  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   
   p {
-    font-size: 1.25rem;
+    font-size: 1rem;
     font-weight: 500;
     color: ${props => props.theme["gray-700"]};
+  }
+
+  @media(min-width: 600px) {
+    width: 90%;
   }
 `;
 
 export const Grid = styled.div`
-  display: grid;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+
+  @media(max-width: 320px) {
+    padding-inline: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 50%;
+  }
+
+  @media(min-width: 1280px) {
+    width: 28rem;
+    gap: 1rem;
+  }
 `;
 
 export const Card = styled.button`
   all: unset;
-  width: 5.125rem;
-  height: 5.125rem;
+  width: 5rem;
+  height: 5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -37,73 +59,133 @@ export const Card = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 16px;
-    font-weight: bold;
+    font-size: 0.875rem;
+    font-weight: 500;
     text-align: center;
   }
 
   img {
-    width: 80%;
-  }
-
-  @media(max-width: 376px) {
-    width: 4.75rem;
-    height: 4.75rem;
-
-    p {
-      font-size: 0.875rem;
-      font-weight: bold;
-      text-align: center;
-    }
-  }
-
-  @media(max-width: 360px) {
-    width: 4.5rem;
-    height: 4.5rem;
+    width: 54px;
   }
 
   @media(max-width: 320px) {
-    width: 4rem;
-    height: 4rem;
+    width: 3.5rem;
+    height: 3.5rem;
 
     p {
-      font-size: 0.75rem;
+      font-size: 0.5rem;
+    }
+
+    img {
+      width: 36px;
     }
   }
 
   @media(min-width: 600px) {
-    width: 102px;
-    height: 102px;
+    width: 3.5rem;
+    height: 3.5rem;
 
     p {
-      font-size: 16px;
+      font-size: 0.75rem;
+    }
+
+    img {
+      width: 42px;
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 96px;
-    height: 96px;
+  @media(min-width: 1280px) {
+    width: 6rem;
+    height: 6rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
-  }
 
-  @media(min-width: 1440px) {
-    width: 102px;
-    height: 102px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 120px;
-    height: 120px;
-
-    p {
-      font-size: 24px;
+    img {
+      width: 54px;
     }
   }
 `;
 
 export const Icon = styled.img`
   width: 60%;
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 600px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonTask = styled.button`
+  all: unset;
+  width: 250px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 600px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
+  }
 `;

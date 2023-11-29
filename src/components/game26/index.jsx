@@ -1,8 +1,8 @@
+import {CSS} from '@dnd-kit/utilities';
+import { useSortable, arrayMove, SortableContext,   sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
 import { useState, useContext, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
-import { useSortable, arrayMove, SortableContext,   sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import {CSS} from '@dnd-kit/utilities';
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
@@ -12,7 +12,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Button, ButtonAnswer } from "./styles";
+import { Container, Main, ButtonCheck, ButtonAnswer } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game26 = () => {
@@ -267,9 +267,9 @@ export const Game26 = () => {
             )})}
           </SortableContext>
         </DndContext>
-        <Button onClick={handleVerify} disabled={blockButton}>
+        <ButtonCheck onClick={handleVerify} disabled={blockButton}>
           <p>Check</p>
-        </Button>
+        </ButtonCheck>
       </Main>
     </Container>
   )

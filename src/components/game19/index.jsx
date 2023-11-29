@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useCallback, useContext, useState, useEffect } from "react";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Form, Main, Select } from "./styles";
+import { Container, Form, Main, Select, ButtonCheck } from "./styles";
 
 export const Game19 = () => {
   const {
@@ -41,9 +40,6 @@ export const Game19 = () => {
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -296,17 +292,9 @@ export const Game19 = () => {
           </Select>
           <label>{question[5]}</label>
         </Form>
-
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "450px" : isTablet ? "350px" : "200px"}
-          h={isDesktop ? "84px" : isTablet ? "64px" : "52px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "20px"}
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

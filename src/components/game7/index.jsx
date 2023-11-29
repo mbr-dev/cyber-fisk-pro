@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -11,7 +10,8 @@ import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras
 
 import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
-import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
+
+import { Container, Main, ButtonRow, ButtonAudio, ButtonAnswer } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game7 = () => {
@@ -35,9 +35,6 @@ export const Game7 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -251,15 +248,13 @@ export const Game7 = () => {
             return (
               <ButtonAnswer 
                 key={index}
-                w={isDesktop ? "400px" : isTablet ? "200px" : "9rem"}
-                h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
-                onPress={() => handleGetAnswer(answer, index)}
+                onClick={() => handleGetAnswer(answer, index)}
                 disabledButton={disabledRes || blockAnswer}
-                optionColor={colorAnswer[index]}
+                style={{
+                  borderColor: colorAnswer[index] === 1 && defaultTheme["red-200"],
+                }}
               >
-                <p style={{
-                fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
-              }}>{answer.label}</p>
+                <p>{answer.label}</p>
               </ButtonAnswer>
             )
           })}

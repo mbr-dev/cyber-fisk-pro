@@ -15,35 +15,30 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 14px;
-  margin-top: 14px;
+  gap: 1rem;
+  margin-top: 1rem;
   overflow: hidden;
 
   @media(max-width: 320px) {
-    gap: 6px;
-    margin-top: 6px;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 
   @media(min-width: 600px) {
-    margin-top: 24px;
-    gap: 24px;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 
-  @media(min-width: 1024px) {
-    margin-top: 16px;
-    gap: 12px;
-  }
-
-  @media(min-width: 1440px) {
-    margin-top: 24px;
-    gap: 20px;
+  @media(min-width: 1280px) {
+    margin-top: 1rem;
+    gap: 1rem;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 16rem;
+  height: 2.5rem;
   padding-inline: 8px;
   display: flex;
   align-items: center;
@@ -58,7 +53,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     color: ${props => props.theme["gray-700"]};
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -67,36 +62,50 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 150px;
-    height: 36px;
+    width: 9.5rem;
+    height: 2.5rem;
 
     p {
-      font-size: 18px;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 9.5rem;
+    height: 2.5rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 18rem;
+    height: 3.25rem;
+
+    p {
+      font-size: 0.875rem;
     }
   }
 `;
 
-export const Button = styled.button`
+export const ButtonCheck = styled.button`
   all: unset;
-  width: 180px;
-  height: 42px;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 8px;
-  background-color: ${props => props.theme["green-300"]};
-  border: 2px solid ${props => props.theme["green-200"]};
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
   border-bottom-width: 3px;
+  border-left-width: 3px;
   cursor: pointer;
-  transition: all ease 0.3s;
 
   p {
-    color: ${props => props.theme.white};
-    font-size: 24px;
-  }
-
-  &:hover {
-    background-color: ${props => props.theme["green-400"]};
+    font-size: 1rem;
   }
 
   &:disabled {
@@ -105,11 +114,25 @@ export const Button = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 150px;
-    height: 36px;
+    width: 9rem;
+    height: 2rem;
 
     p {
-      font-size: 18px;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 13rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
     }
   }
 `;

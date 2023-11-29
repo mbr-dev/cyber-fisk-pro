@@ -17,29 +17,84 @@ export const Main = styled.main`
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 2rem;
+  }
+`;
+
+export const DivMobile = styled.div`
+  width: 100%;
+
+  @media(min-width: 600px) {
+    display: none;
+  }
+`;
+
+export const DivDesk = styled.div`
+  display: none;
+
+  @media(min-width: 600px) {
+    display: block;
+    width: 100%;
+  }
 `;
 
 export const Image = styled.div`
-  width: 200px;
-  height: 120px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  justify-content: center;
 
   img {
-    width: 100%;
-    height: 100%;
+    width: 250px;
+    height: 184px;
     object-fit: fill;
   }
 
   @media(max-width: 320px) {
-    width: 150px;
-    height: 90px;
+    img {
+      width: 200px;
+      height: 120px;
+    }
+  }
+
+  @media(min-width: 600px) {
+    width: 40%;
+
+    img {
+      width: 250px;
+      height: 184px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 250px;
-    height: 180px;
+    img {
+      width: 400px;
+      height: 250px;
+    }
+  }
+`;
+
+export const Div = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 80%;
+    gap: 0.5rem;
+    align-items: flex-start;
+    flex-direction: row;
   }
 `;
 
@@ -51,23 +106,22 @@ export const ButtonArea = styled.div`
   gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 10px;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 18px;
+  @media(min-width: 600px) {
+    gap: 0.5rem;
   }
 
   @media(min-width: 1280px) {
-    margin-top: 8px;
-    gap: 20px;
+    gap: 2rem;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 280px;
-  height: 48px;
+  width: 18rem;
+  height: 3.5rem;
   padding-inline: 8px;
   display: flex;
   align-items: center;
@@ -82,7 +136,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     color: ${props => props.theme["gray-700"]};
-    font-size: 14px;
+    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -90,19 +144,25 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 150px;
-    height: 36px;
+    width: 9rem;
+    height: 2.5rem;
 
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 15rem;
+    height: 3rem;
+
+    p {
+      font-size: 0.875rem;
     }
   }
 
   @media (min-width: 1280px) {
-    height: 56px;
-
-    p {
-      font-size: 18px;
-    }
+    width: 18rem;
+    height: 3.5rem;
   }
 `;

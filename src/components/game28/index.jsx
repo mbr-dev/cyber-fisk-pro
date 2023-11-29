@@ -2,13 +2,12 @@ import { useNavigate } from "react-router-dom";
 import { useCallback, useContext, useState, useEffect } from "react";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Form, Main, Select } from "./styles";
+import { Container, Form, Main, Select, ButtonCheck } from "./styles";
 
 export const Game28 = () => {
   const {
@@ -178,15 +177,9 @@ export const Game28 = () => {
           </Select>
           <label>{question[1]}</label>
         </Form>
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w="15.875rem"
-          h="2.5rem"
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

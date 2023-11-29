@@ -15,19 +15,47 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 8px;
+  gap: 0.5rem;
 
-  @media(max-width: 360px) {
-    gap: 24px;
+  @media(min-width: 600px) {
+    flex-direction: row;
   }
-  
-  @media(max-width: 320px) {
-    gap: 8px;
+`;
+
+export const Left = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media(min-width: 600px) {
+    width: 50%;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 1rem;
+  }
+`;
+
+export const Right = styled.div`
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+
+  @media(min-width: 600px) {
+    width: 50%;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 1rem;
   }
 `;
 
 export const LettersArea = styled.div`
-  width: 100%;
+  width: 100vw;
   padding-block: 0.5rem;
   display: flex;
   justify-content: center;
@@ -35,21 +63,12 @@ export const LettersArea = styled.div`
   gap: 0.375rem;
   background-color: ${props=> props.theme["gray-200"]};
 
-  @media(min-width: 1024px) {
-    padding-block: 12px;
-    gap: 12px;
-  }
-
   @media(min-width: 600px) {
-   gap: 14px;
+    width: 100%;
   }
 
-  @media(min-width: 1440px) {
-    padding-block: 16px;
-  }
-
-  @media(min-width: 1920px) {
-    gap: 20px;
+  @media(min-width: 1280px) {
+    gap: 1rem;
   }
 `;
 
@@ -63,21 +82,28 @@ export const Letter = styled.div`
   border: 2px solid ${props => props.theme.black};
   border-radius: 5px;
 
+  p {
+    font-size: 1rem;
+  }
+
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 2rem;
   }
 
   @media(min-width: 600px) {
-    width: 46px;
-    height: 58px;
+    width: 1.5rem;
+    height: 1.75rem;
     font-size: 28px;
   }
 
-  @media(min-width: 1024px) {
-    width: 54px;
-    height: 64px;
-    font-size: 32px;
+  @media(min-width: 1280px) {
+    width: 3rem;
+    height: 4rem;
+    
+    p {
+      font-size: 2rem;
+    }
   }
 
   @media(min-width: 1920px) {
@@ -93,25 +119,26 @@ export const ButtonArea = styled.div`
   grid-template-columns: repeat(4, auto);
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
 
-  @media(min-width: 1024px) {
-    gap: 10px;
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+    grid-template-columns: repeat(4, auto);
   }
 
-  @media(min-width: 1440px) {
-    gap: 20px;
+  @media(min-width: 1280px) {
+    gap: 1.5rem;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -123,7 +150,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 18px;
+    font-size: 1rem;
   }
 
   &:hover {
@@ -139,9 +166,18 @@ export const ButtonAnswer = styled.button`
     height: 96px;
   }
 
-  @media(min-width: 768px) {
-    width: 120px;
-    height: 150px;
+  @media(min-width: 600px) {
+    width: 1.5rem;
+    height: 1.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    width: 3rem;
+    height: 4rem;
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 
@@ -150,7 +186,15 @@ export const AreaButtons = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 0.5rem;
+
+  @media(min-width: 600px) {
+    gap: 1rem;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 2rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -174,10 +218,16 @@ export const Button = styled.button`
     opacity: 0.3;
   }
 
+  @media (min-width: 600px) {
+    width: 9rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
   @media (min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    font-size: 24px;
+    width: 12rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -186,7 +236,15 @@ export const DivAnswer = styled.div`
   flex-direction: column;
   gap: 3px;
   width: 100%;
-  padding-inline: 16px;
+  padding-inline: 1rem;
+
+  @media(min-width: 600px) {
+    overflow-y: scroll;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 0.75rem;
+  }
 `;
 
 export const DivRow = styled.div`
@@ -195,14 +253,22 @@ export const DivRow = styled.div`
   gap: 5px;
 
   p {
-    font-size: 16px;
+    font-size: 1rem;
     color: ${props => props.theme["red-200"]};
+  }
+
+  @media(min-width: 1280px) {
+    gap: 0.75rem;
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 
 export const Div = styled.div`
-  width: 24px;
-  height: 26px;
+  width: 1.5rem;
+  height: 1.625rem;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -210,6 +276,18 @@ export const Div = styled.div`
   border: 2px solid ${props => props.theme.black};
   border-radius: 5px;
   text-transform: uppercase;
+
+  @media(min-width: 600px) {
+    width: 1.25rem;
+    height: 1.5rem;
+    font-size: 0.875rem
+  }
+
+  @media(min-width: 1280px) {
+    width: 2.5rem;
+    height: 3rem;
+    font-size: 1.5rem
+  }
 `;
 
 export const AreaFooter = styled.div`
@@ -226,7 +304,7 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 600px) {
     width: 600px;
     height: 52px;
   }
@@ -238,7 +316,7 @@ export const AreaFooter = styled.div`
   }
 `;
 
-export const ButtonHome = styled.button`
+export const ButtonTask = styled.button`
   all: unset;
   width: 250px;
   height: 32px;
@@ -271,7 +349,7 @@ export const ButtonHome = styled.button`
     }
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 600px) {
     height: 32px;
     border-radius: 6px;
 

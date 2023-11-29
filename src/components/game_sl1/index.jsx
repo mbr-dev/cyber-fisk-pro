@@ -9,7 +9,7 @@ import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons, ButtonAnswer, Button, AreaFooter, ButtonHome, DivAnswer, Div, DivRow } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons, ButtonAnswer, Button, AreaFooter, ButtonTask, DivAnswer, Div, DivRow, Left, Right } from "./styles";
 
 export const GameSL1 = () => {
   const { 
@@ -38,7 +38,6 @@ export const GameSL1 = () => {
   const handleGoTasks = () => {
     navigate("/lessonSelected");
   }
-  console.log(answers)
 
   const loadLesson = useCallback(async() => {
     try {
@@ -243,62 +242,66 @@ export const GameSL1 = () => {
       <TitleLesson title="How many nationalities can you write with these letters?"/>
 
       <Main>
-        <LettersArea>
-          {lettersAnswer.map((letter, index) => {
-            return (
-              <Letter 
-                key={index}
-                style={{
-                  borderColor: numberClick === index ? defaultTheme["red-200"] : "",
-                }}
-              >
-                {letter}
-              </Letter>
-            )
-          })}
-        </LettersArea>
-
-        <ButtonArea>
-          {letters.map((letter, index) => {
-            return (
-              <ButtonAnswer 
-                key={index}
-                onClick={() => handleClick(letter)}
-                disabled={blockLetters}
-              >
-                <p className="pBold">{letter}</p>
-              </ButtonAnswer>
-            )
-          })}
-        </ButtonArea>
-
-        <AreaButtons>
-          <Button onClick={handleClearField} $variant="red">Clear</Button>
-          <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
-        </AreaButtons>
-
-        {showWord &&
-          <DivAnswer>
-            {wordsRight.map((row, index) => {
+        <Left>
+          <LettersArea>
+            {lettersAnswer.map((letter, index) => {
               return (
-                <DivRow key={index}>
-                  <p>{index + 1} -</p>
-                  {row.split("").map((letter, index) => {
-                    return (
-                      <Div key={index}>{letter}</Div>
-                      )
-                  })}
-                </DivRow>
+                <Letter 
+                  key={index}
+                  style={{
+                    borderColor: numberClick === index ? defaultTheme["red-200"] : "",
+                  }}
+                >
+                  <p>{letter}</p>
+                </Letter>
               )
             })}
-          </DivAnswer>
-        }
+          </LettersArea>
+
+          <ButtonArea>
+            {letters.map((letter, index) => {
+              return (
+                <ButtonAnswer 
+                  key={index}
+                  onClick={() => handleClick(letter)}
+                  disabled={blockLetters}
+                >
+                  <p className="pBold">{letter}</p>
+                </ButtonAnswer>
+              )
+            })}
+          </ButtonArea>
+        </Left>
+
+        <Right>
+          <AreaButtons>
+            <Button onClick={handleClearField} $variant="red">Clear</Button>
+            <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
+          </AreaButtons>
+
+          {showWord &&
+            <DivAnswer>
+              {wordsRight.map((row, index) => {
+                return (
+                  <DivRow key={index}>
+                    <p>{index + 1} -</p>
+                    {row.split("").map((letter, index) => {
+                      return (
+                        <Div key={index}>{letter}</Div>
+                        )
+                    })}
+                  </DivRow>
+                )
+              })}
+            </DivAnswer>
+          }
+        </Right>
       </Main>
 
       <AreaFooter>
-        <ButtonHome onClick={handleGoTasks}>
+        <ButtonTask onClick={handleGoTasks}>
           <p>Tasks</p>
-        </ButtonHome>
+        </ButtonTask>
       </AreaFooter>
     </Container>
   )

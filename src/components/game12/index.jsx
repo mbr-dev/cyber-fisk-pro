@@ -2,13 +2,12 @@ import { useEffect, useState, useCallback, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Input, Form, Words } from "./styles";
+import { Container, Main, Input, Form, Words, ButtonCheck } from "./styles";
 
 export const Game12 = () => {
   const {
@@ -27,9 +26,6 @@ export const Game12 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -89,7 +85,13 @@ export const Game12 = () => {
   }
 
   const handleVerify = (event) => {
+    if (event.key === "Enter") {
+      return
+    }
+
     event.preventDefault();
+
+    setBlockButton(true);
     
     let tempWord = text.toLowerCase();
     let tempRightPoints;
@@ -155,6 +157,12 @@ export const Game12 = () => {
     }
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   useEffect(() => {
     loadLesson();
   }, []);
@@ -188,18 +196,12 @@ export const Game12 = () => {
             placeholder="Type here"
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
         </Form>
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "400px" : isTablet ? "300px" : "180px"}
-          h={isDesktop ? "64px" : isTablet ? "58px" : "32px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          greenBtn
-        />
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

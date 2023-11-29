@@ -7,30 +7,26 @@ export const Container = styled.div`
   align-items: center;
   background-color: ${props => props.theme["gray-100"]};
   padding-block: 0.625rem;
-
-  @media(min-width: 600px) {
-   padding-block: 16px;
-  }
-`
+`;
 
 export const Button = styled.button`
   all: unset;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border-radius: 10px;
-  transition: all .2s ease-in-out;
+  transition: all ease 0.3s;
 
   img {
-    width: 32px;
+    width: 24px;
   }
 
   &:hover {
-    transform: scale(0.9);
+    transform: scale(1.05);
   }
 
   &:disabled {
@@ -38,9 +34,9 @@ export const Button = styled.button`
     opacity: 0.5;
   }
 
-  @media(max-width: 360px) {
-    width: 46px;
-    height: 46px;
+  @media(max-width: 320px) {
+    width: 2.5rem;
+    height: 2.5rem;
     border-radius: 6px;
 
     img {
@@ -48,8 +44,17 @@ export const Button = styled.button`
     }
   }
 
-   @media(min-width: 600px) {
-    width: 96px;
-    height: 96px;
+  @media(min-width: 600px) {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  @media(min-width: 1280px) {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    img {
+      width: 32px;
+    }
   }
 `;

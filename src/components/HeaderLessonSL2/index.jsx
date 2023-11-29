@@ -15,12 +15,12 @@ import { defaultTheme } from "../../themes/defaultTheme";
 import { Container, Main, Icons, BarStep } from "./styles";
 
 export const HeaderLessonSL2 = ({ numStart, numEnd, superTaskEnd, superTaskStart, trophyEnd }) => {
-  const { rodadaGeral, statusColor } = useContext(LessonContext);
+  const { statusColor } = useContext(LessonContext);
 
   return(
     <Container>
       <Main>
-      <img src={bgHeader} alt="" className="bgImg" />
+        <img src={bgHeader} alt="" className="bgImg" />
         <Icons>
           {superTaskStart ?
             <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />

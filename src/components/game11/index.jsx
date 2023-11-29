@@ -128,7 +128,7 @@ export const Game11 = () => {
       let clicks = countClick;
       clicks++;
       setCountClick(clicks);
-
+      
       let tempId = index;
       setSelectedQuestionIndex(tempId);
       setBlockQuestions(true);
