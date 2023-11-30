@@ -2,15 +2,13 @@ import { useEffect, useState, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2 } from "./styles";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, AreaFooter, ButtonCheck, ButtonTask } from "./styles";
 
 export const GameSL9 = () => {
   const {
@@ -40,8 +38,9 @@ export const GameSL9 = () => {
   const [selectedIndexes, setSelectedIndexes] = useState([]);
   const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const handleGoTasks = () => {
+    navigate("/lessonSelected");
+  }
  
   const loadLesson = useCallback(async() => {
     try {
@@ -77,7 +76,7 @@ export const GameSL9 = () => {
         tempAnswers.push(items.resposta[a]);
       }
       setAnswersOfQuestion(tempAnswers);
-
+      setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       setBlock(false);
       setIsLoading(false);
     } catch(error) {
@@ -152,6 +151,10 @@ export const GameSL9 = () => {
   }
 
   const handleVerifyAnswers = (event) => {
+    if (event.key === "Enter") {
+      return
+    }
+
     event.preventDefault();
 
     const userText = text;
@@ -238,6 +241,12 @@ export const GameSL9 = () => {
       }, 1500);
     }
   }
+
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
 
   useEffect(() => {
     loadLesson();
@@ -369,31 +378,21 @@ export const GameSL9 = () => {
                 required
                 value={text}
                 onChange={(e) => setText(e.target.value)}
+                onKeyPress={handleKeyPress}
               />
             </form>
-            <ButtonBg
-              w="250px"
-              h="44px"
-              fs={isDesktop ? "32px" : "20px"}
-              form="myForm"
-              type="submit"
-              title="Check"
-              greenBtn
-              disabledButton={block}
-            />
+            <ButtonCheck form="myForm" type="submit" disabled={block}>
+              <p>Check</p>
+            </ButtonCheck>
           </Answer>
         }
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        title="Tasks" 
-        rota="LessonSelection"
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonTask onClick={handleGoTasks}>
+          <p>Tasks</p>
+        </ButtonTask>
+      </AreaFooter>
     </Container>
   )
 }

@@ -3,14 +3,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 import { LessonContext } from "../../context/lesson";
 
-import { Container, Main } from "./styles";
+import { Container, Main, ButtonAnswer } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game34 = () => {
   const {
@@ -211,13 +211,13 @@ export const Game34 = () => {
           return (
             <ButtonAnswer
               key={index}
-              w="13rem"
-              h="3.5rem"
-              optionColor={selectedColor[index]}
-              onPress={() => handleClick(index)}
-              disabledButton={blockButton}
+              onClick={() => handleClick(index)}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
-              {answer.label}
+              <p>{answer.label}</p>
             </ButtonAnswer>
           )
         })}

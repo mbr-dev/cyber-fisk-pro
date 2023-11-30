@@ -9,7 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Main, Container, Input, ButtonCheck } from "./styles";
+import { Main, Container, Input, ButtonCheck, Form } from "./styles";
 
 export const Game31 = () => {
   const {
@@ -84,8 +84,11 @@ export const Game31 = () => {
   }
 
   const handleVerifyWord = (event) => {
+    if (event.key === "Enter" || playAudio) {
+      return
+    }
+
     event.preventDefault();
-    if (playAudio) return;
 
     let tempWord = text.trim().toLowerCase();
     let tempRightPoints;
@@ -161,6 +164,12 @@ export const Game31 = () => {
     }
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   useEffect(() => {
     loadLesson();
   }, []);
@@ -194,14 +203,15 @@ export const Game31 = () => {
       
       <Main>
         <p>{word}</p>
-        <form id="myForm" onSubmit={handleVerifyWord}>
+        <Form id="myForm" onSubmit={handleVerifyWord}>
           <Input
             placeholder="Type here"
             maxLength={100}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
-        </form>
+        </Form>
         <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
           <p>Check</p>
         </ButtonCheck>

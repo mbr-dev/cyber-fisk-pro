@@ -15,15 +15,16 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  gap: 24px;
+  gap: 1rem;
 
   @media (max-width: 320px)  {
-    gap: 10px;
+    gap: 0.5rem;
   }
 
-  @media (min-width: 1280px)  {
+  @media (min-width: 600px)  {
+    width: 90%;
     flex-direction: row;
+    justify-content: center;
   }
 `;
 
@@ -36,7 +37,12 @@ export const Photos = styled.div`
   gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 8px;
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    width: 26rem;
+    gap: 0.5rem;
   }
 
   @media (min-width: 1280px)  {
@@ -64,6 +70,12 @@ export const Photo = styled.div`
     border-radius: 6px;
   }
 
+  @media(min-width: 600px) {
+    width: 120px;
+    height: 60px;
+    border-radius: 6px;
+  }
+
   @media(min-width: 1280px) {
     width: 200px;
     height: 130px;
@@ -73,12 +85,22 @@ export const Photo = styled.div`
 export const Div = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 1rem;
+
+  @media (max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 600px) {
+    width: 30rem;
+    height: 11rem;
+    justify-content: space-between;
+    gap: 0.5rem;
+  }
 
   @media (min-width: 1280px) {
     width: 530px;
     height: 300px;
-    justify-content: space-between;
   }
 `;
 
@@ -88,10 +110,14 @@ export const Types = styled.div`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 0.25rem;
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+  }
 
   @media(min-width: 1280px) {
-    gap: 6px;
+    gap: 0.75rem;
   }
 `;
 
@@ -102,21 +128,22 @@ export const Type = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  border: 2px solid ${props => props.theme.black};
-
-  @media(max-width: 360px) {
-    width: 30px;
-    height: 36px;
-  }
+  border: 1px solid ${props => props.theme.black};
 
   @media(max-width: 320px) {
     width: 28px;
     height: 32px;
   }
 
+  @media(min-width: 600px) {
+    width: 2rem;
+    height: 2.5rem;
+  }
+
   @media(min-width: 1280px) {
     width: 42px;
     height: 56px;
+    border-width: 2px;
   }
 `;
 
@@ -170,13 +197,92 @@ export const Keys = styled.button`
   }
 
   @media(min-width: 600px) {
-    width: 42px;
-    height: 42px;
-    font-size: 24px;
+    width: 2rem;
+    height: 2rem;
+    font-size: 0.875rem;
   }
 
   @media(min-width: 1280px) {
-    width: 48px;
-    height: 48px;
+    width: 3.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
+  }
+
+  @media(min-width: 600px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
+    width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonTask = styled.button`
+  all: unset;
+  width: 250px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 600px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

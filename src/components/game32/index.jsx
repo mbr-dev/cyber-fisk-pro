@@ -2,7 +2,6 @@ import { useContext, useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
@@ -11,7 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answers, AnswersRow, RadioG, Radio, Options, Form } from "./styles";
+import { Container, Main, Answers, AnswersRow, RadioG, Radio, Options, Form, ButtonCheck, Div } from "./styles";
 
 export const Game32 = () => {
   const {
@@ -32,9 +31,6 @@ export const Game32 = () => {
   const [selectedRadio, setSelectedRadio] = useState([]);
   const [data, setData] = useState([]);
   const [cancelAudio, setCancelAudio] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -203,9 +199,12 @@ export const Game32 = () => {
   return (
     <Container>
       <TitleLesson title="Read and choose TRUE or FALSE." />
-      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson8/${sound}.mp3`} />
-
+      
       <Main>
+        <Div>
+          <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson8/${sound}.mp3`} />
+        </Div>
+
         <Answers>
           <Options>
             <p>TRUE</p>
@@ -230,15 +229,9 @@ export const Game32 = () => {
             })}
           </Form>
 
-          <ButtonBg
-            form="myForm"
-            type="submit"
-            disabledButton={blockButton}
-            title="Check"
-            w={isDesktop ? "400px" : isTablet ? "300px" : "180px"}
-            h={isDesktop ? "64px" : isTablet ? "58px" : "32px"}
-            fs={isDesktop ? "32px" : isTablet ? "28px" : "16px"}
-          />
+          <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+            <p>Check</p>
+          </ButtonCheck>
         </Answers>
       </Main>
     </Container>

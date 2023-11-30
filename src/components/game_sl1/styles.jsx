@@ -162,8 +162,8 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 74px;
-    height: 96px;
+    width: 1.25rem;
+    height: 1.5rem;
   }
 
   @media(min-width: 600px) {

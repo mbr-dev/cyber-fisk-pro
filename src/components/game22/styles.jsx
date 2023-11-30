@@ -24,6 +24,7 @@ export const Main = styled.main`
   @media(min-width: 600px) {
     flex-direction: row;
   }
+
   @media(min-width: 1280px) {
     margin-top: 2rem;
     gap: 1.5rem;

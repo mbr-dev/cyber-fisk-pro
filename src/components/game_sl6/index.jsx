@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { FooterBtnHome } from "../FooterBtnHome";
 import { HeaderLessonSL6 } from "../HeaderLessonSL6";
 
 import { api } from "../../lib/api";
@@ -11,12 +10,10 @@ import { LessonContext } from "../../context/lesson";
 
 import LogoImg from "../../assets/logoIcon.png";
 
-import { Container, Main, Grid, Card, Icon } from "./styles";
+import { Container, Main, Grid, Card, Icon, AreaFooter, ButtonTask } from "./styles";
 
 export const GameSL6 = () => {
   const { setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada } = useContext(LessonContext);
-
-  const navigate = useNavigate();
 
   const [playing, setPlaying] = useState(false);
   const [data, setData] = useState();
@@ -30,8 +27,11 @@ export const GameSL6 = () => {
   const [intervalId, setIntervalId] = useState(null);
   const [countTimer, setCountTimer] = useState(0);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const navigate = useNavigate();
+
+  const handleGoTasks = () => {
+    navigate("/lessonSelected");
+  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -318,11 +318,7 @@ export const GameSL6 = () => {
       <TitleLesson title="Memory Game." />
 
       <Main>
-        <Grid style={{
-          gridTemplateColumns: cards.length === 12 ? "repeat(3, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(4, auto)",
-          gridTemplateRows: cards.length === 12 ? "repeat(4, auto)" : cards.length === 16 ? "repeat(4, auto)" : "repeat(5, auto)",
-          gap: cards.length <= 12 ? "1.125rem" : "0.75rem",
-        }}>
+        <Grid>
           {cards.map((card, index) => {
             return (
               <Card key={index} onClick={() => handleShowCard(index)}>
@@ -344,15 +340,11 @@ export const GameSL6 = () => {
         </Grid>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        title="Tasks" 
-        rota="LessonSelection"
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonTask onClick={handleGoTasks}>
+          <p>Tasks</p>
+        </ButtonTask>
+      </AreaFooter>
     </Container>
   )
 }

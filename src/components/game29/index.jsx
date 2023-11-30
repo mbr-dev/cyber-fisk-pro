@@ -329,9 +329,9 @@ export const Game29 = () => {
       </Main>
 
       <AreaButton>
-          <Button onClick={handleClear} $variant="red">Clear</Button>
-          <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
-        </AreaButton>
+        <Button onClick={handleClear} $variant="red">Clear</Button>
+        <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
+      </AreaButton>
     </Container>
   )
 }
