@@ -8,6 +8,7 @@ import { AvatarCustom } from "../../components/AvatarCustom";
 
 import bgImg from "./images/bgNatal.png";
 import cabeca from "../../assets/cabeca.png";
+import roboPe from "../../assets/roboPe.png";
 import bracos from "../../assets/bracos.png";
 import corpo from "../../assets/corpo.png";
 import face from "../../assets/face.png";

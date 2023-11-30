@@ -24,6 +24,7 @@ import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
+import bgAvatarImg from "./images/bgAvatar.png";
 
 import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderBottom, HeaderTop } from "./styles";
 
@@ -146,7 +147,7 @@ export const Home = () => {
         </Left>
 
         <Right>
-          {/* <img src={bgAvatarImg} alt="" className="bgAvatarImg" /> */}
+          {/* <img src={bgAvatarImg} alt="" className="bgAvatarImg" />  */}
           <AvatarCustom hasName />
         </Right>
       </Main>

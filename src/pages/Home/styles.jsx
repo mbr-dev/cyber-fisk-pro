@@ -388,6 +388,7 @@ export const Right = styled.div`
   @media(min-width: 480px) {
     display: flex;
     width: 40%;
+    height: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;

@@ -8,8 +8,10 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
 
-  @media(min-width: 480px) {
-    flex-direction: row;
+  @media (orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
@@ -47,21 +49,29 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 40%;
-    height: 100vh;
-    border-end-end-radius: 0;
-    border-end-start-radius: 0;
-    flex-direction: column;
-    gap: 16px;
-
+  @media(min-width: 768px) {
     .logoFisk {
-      width: 150px;
+      width: 300px;
     }
+  }
 
-    .buddyImg {
-      display: block;
-      width: 150px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+      height: 100vh;
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
+      flex-direction: column;
+      gap: 16px;
+
+      .logoFisk {
+        width: 150px;
+      }
+
+      .buddyImg {
+        display: block;
+        width: 150px;
+      }
     }
   }
 
@@ -81,27 +91,29 @@ export const Header = styled.header`
 export const FooterBlue = styled.header`
   display: none;
 
-  @media(min-width: 480px) {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    
-    p {
-      color: ${props => props.theme.white};
-      font-size: 14px;
-      font-weight: normal;
-    }
-
-    div {
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
       display: flex;
+      flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: 16px;
+      gap: 10px;
+      
+      p {
+        color: ${props => props.theme.white};
+        font-size: 14px;
+        font-weight: normal;
+      }
 
-      img {
-        width: 32px;
+      div {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 16px;
+        
+        img {
+          width: 32px;
+        }
       }
     }
   }
@@ -130,13 +142,15 @@ export const Main = styled.main`
   align-items: center;
   justify-content: space-between;
 
-  @media (min-width: 480px) {
-    width: 60%;
-    gap: 16px;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 60%;
+      gap: 1rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    gap: 32px;
+    gap: 2rem;
   }
 `;
 
@@ -146,23 +160,31 @@ export const Form = styled.div`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  padding-top: 16px;
-  gap: 16px;
+  padding-top: 1rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    padding-top: 8px;
-    width: 250px;
-    gap: 8px;
+    padding-top: 0.5rem;
+    width: 15.625rem;
+    gap: 0.5rem;
   }
 
-  @media (min-width: 480px) {
-    width: 350px;
-    gap: 8px;
+  @media (min-width: 768px) {
+    width: 30rem;
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 21.875rem;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 600px;
-    gap: 16px;
+    width: 37.5rem;
+    gap: 1rem;
   }
 `;
 
@@ -188,19 +210,29 @@ export const AreaInput = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     label {
-      padding-left: 12px;
-      font-size: 16px;
-      margin-bottom: 6px;
+      padding-left: 1.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      label {
+        padding-left: 0.75rem;
+        font-size: 1rem;
+        margin-bottom: 0.375rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     label {
-      padding-left: 24px;
-      font-size: 24px;
-      margin-bottom: 16px;
+      padding-left: 1.5rem;
+      font-size: 1.5rem;
+      margin-bottom: 1rem
     }
   }
 `;
@@ -211,8 +243,8 @@ export const DivInput = styled.div`
   img {
     width: 14px;
     position: absolute;
-    top: 12px;
-    left: 8px;
+    top: 0.75rem;
+    left: 0.5rem;
     color: ${props => props.theme["gray-400"]};
   }
 
@@ -222,30 +254,49 @@ export const DivInput = styled.div`
 
   .eye {
     position: absolute;
-    top: 10px;
-    right: 16px;
+    top: 0.625rem;
+    right: 1rem;
     color: ${props => props.theme["gray-400"]};
   }
 
   @media (max-width: 320px) {
     img {
-      top: 8px;
+      top: 0.5rem;
     }
 
     .userImg {
       width: 24px;
     }
   }
-
-  @media (min-width: 480px) {
+  
+  @media (min-width: 768px) {
     img {
-      top: 8px;
-      left: 12px;
+      width: 20px;
+      top: 1.125rem;
+      left: 1rem;
+    }
+
+    .userImg {
+      width: 28px;
     }
 
     .eye {
-      top: 8px;
-      right: 20px;
+      top: 1rem;
+      right: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      img {
+        top: 0.25rem;
+        left: 0.75rem;
+      }
+
+      .eye {
+        top: 0.5rem;
+        right: 1.25rem;
+      }
     }
   }
 
@@ -261,8 +312,8 @@ export const DivInput = styled.div`
     }
 
     .eye {
-      top: 16px;
-      right: 24px;
+      top: 1rem;
+      right: 1.5rem;
     }
   }
 `;
@@ -291,26 +342,31 @@ export const Input = styled.input`
     }
   }
 
-  @media (min-width: 480px) {
-    height: 36px;
-  }
-
-  @media(min-width: 1280px) {
-    height: 60px;
-    padding-left: 42px;
+  @media(min-width: 768px) {
+    height: 3.75rem;
+    padding-left: 2.5rem;
 
     &::placeholder {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 
-  @media(min-width: 1024px) {
-    height: 64px;
-    padding-left: 54px;
-    box-shadow: 0px 4px 10px 0px #00000040;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 2.25rem;
+
+      &::placeholder {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 3.75rem;
+    padding-left: 2.625rem;
 
     &::placeholder {
-      font-size: 20px;
+      font-size: 1.5rem;
     }
   }
 `;

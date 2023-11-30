@@ -148,9 +148,6 @@ export const Main = styled.main`
 
   @media(min-width: 1280px) {
     width: 1000px;
-    gap: 0;
-    
-    padding-block: 0;
   }
 `;
 

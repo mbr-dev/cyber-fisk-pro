@@ -2,11 +2,11 @@ import styled from "styled-components";
 
 export const Container = styled.header`
   width: 100vw;
-  height: 74px;
+  height: 4.625rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 16px;
+  padding-inline: 1rem;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
   overflow: hidden;
@@ -22,33 +22,44 @@ export const Container = styled.header`
   }
   
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    height: 64px;
+    height: 4rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 64px;
+  @media(min-width: 768px) {
+    height: 6.25rem;
+    padding-inline: 2rem;
 
     p {
-      font-size: 32px;
+      font-size: 2.625rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 4rem;
+
+      p {
+        font-size: 2rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    height: 100px;
-    padding-inline: 32px;
+    height: 6.25rem;
+    padding-inline: 2rem;
 
     p {
-      font-size: 42px;
+      font-size: 2.625rem;
     }
   }
 `;
