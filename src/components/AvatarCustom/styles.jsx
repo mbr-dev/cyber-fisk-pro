@@ -12,10 +12,22 @@ export const Container = styled.div`
     height: 96px;
   }
 
+  @media screen and (max-width: 1280px) and (min-width: 1024px) {
+    width: 300px;
+    height: 800px;
+    /* margin-top: -120px; */
+  }
+
   @media (min-width: 1280px) {
     width: 300px;
     height: 800px;
-    margin-top: -120px;
+    margin-top: 120px;
+  }
+
+  @media (max-width: 1380px){
+    width: 300px;
+    height: 800px;
+    margin-top: -280px;
   }
 
   @media (min-width: 1440px) {
@@ -128,6 +140,28 @@ export const Name = styled.div`
     white-space: nowrap;
     text-overflow: ellipsis;
     color: ${props => props.theme.white};
+  }
+
+  @media screen and (min-width: 481px) and (max-width: 1023px) {
+    width: 300px;
+    height: 72px;
+    bottom: 28px;
+    padding-inline: 16px;
+
+    span {
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 72px;
+    bottom: 28px;
+    padding-inline: 16px;
+
+    span {
+      font-size: 32px;
+    }
   }
 
   @media (min-width: 1280px) {

@@ -84,12 +84,11 @@ export const Login = () => {
             await salvarAcesso(raf);
             //navigate("/home");
           }else{
-            console.log("login invalido ");
             setLoading(false);
             chooseNotification(3);
             setMsgError(resp.message);
             setError(true);
-            if(resp.message === "Network Error"){
+            if(resp.message === "Network Error" || resp.message === "Usuário bloqueado "){
               const cookies = new Cookies();
               cookies.set("token", 'A123', { path: '/' });
               cookies.set("raf", raf, { path: '/' });
