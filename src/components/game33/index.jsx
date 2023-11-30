@@ -11,7 +11,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Button, ButtonAnswer } from "./styles";
+import { Container, Main, ButtonCheck, ButtonAnswer } from "./styles";
 
 export const Game33 = () => {
   const {
@@ -65,6 +65,7 @@ export const Game33 = () => {
     setRandomNumber(tempRandom);
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    console.log("tempData: ", tempData)
 
     setAnswers(items.resposta);
 
@@ -237,9 +238,9 @@ export const Game33 = () => {
             )})}
           </SortableContext>
         </DndContext>
-        <Button onClick={handleVerify} disabled={blockButton}>
+        <ButtonCheck onClick={handleVerify} disabled={blockButton}>
           <p>Check</p>
-        </Button>
+        </ButtonCheck>
       </Main>
     </Container>
   )

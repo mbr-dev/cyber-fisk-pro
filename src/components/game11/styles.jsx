@@ -9,24 +9,22 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 100vw;
-  height: 21.875rem;
-  margin-top: 1rem;
+  width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: space-around;
+  margin-top: 1rem;
+
+  @media(max-width: 320px) {
+    margin-top: 0.5rem;
+  }
 
   @media(min-width: 600px) {
-    width: 80%;
-    height: 450px;
+    margin-top: 0.5rem;
   }
 
-  @media(min-width: 1024px) {
-    width: 60%;
-  }
-
-  @media(min-width: 1920px) {
-    width: 50%;
+  @media(min-width: 1280px) {
+    margin-top: 1rem;
   }
 `;
 
@@ -37,6 +35,18 @@ export const Questions = styled.div`
   align-items: center;
   justify-content: space-between;
   gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 1.5rem;
+  }
 `;
 
 export const Answers = styled.div`
@@ -44,18 +54,30 @@ export const Answers = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  gap: 1rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 1.5rem;
+  }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 136px;
+  width: 8.25rem;
   height: 3.5rem;
   display: flex;
   padding-inline: 0.5rem;
   align-items: center;
   justify-content: center;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
   transition: all ease 0.3s;
@@ -75,17 +97,31 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 
-  @media(min-width: 600px) {
-    width: 180px;
-    height: 64px;
+  @media(max-width: 320px) {
+    width: 7.5rem;
+    height: 3rem;
     
     p {
-      font-size: 20px;
+      font-size: 0.75rem;
     }
   }
 
-  @media(min-width: 1024px) {
-    width: 210px;
-    height: 72px;
+  @media(min-width: 600px) {
+    width: 180px;
+    height: 2.5rem;
+    
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 15rem;
+    height: 4rem;
+    border-width: 3px;
+
+    p {
+      font-size: 1.125rem;
+    }
   }
 `;

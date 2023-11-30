@@ -10,11 +10,11 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Main, Container, Input } from "./styles";
+import { Main, Container, Input, ButtonCheck, Form } from "./styles";
 
 export const Game20 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, playAudio, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -32,9 +32,6 @@ export const Game20 = () => {
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [cancelAudio, setCancelAudio] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -83,6 +80,10 @@ export const Game20 = () => {
   }
 
   const handleVerifyWord = (event) => {
+    if (event.key === "Enter") {
+      return
+    }
+
     event.preventDefault();
 
     let tempWord = text;
@@ -164,6 +165,12 @@ export const Game20 = () => {
     }
   }
 
+  const handleKeyPress = (event) => {
+    if (event.key === "Enter") {
+      event.preventDefault();
+    }
+  };
+
   useEffect(() => {
     loadLesson();
   }, []);
@@ -184,7 +191,7 @@ export const Game20 = () => {
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
-        <form id="myForm" onSubmit={handleVerifyWord}>
+        <Form id="myForm" onSubmit={handleVerifyWord}>
           <p>{question[countQ]}</p>
 
           <Input 
@@ -192,19 +199,12 @@ export const Game20 = () => {
             maxLength={100}
             value={text}
             onChange={(e) => setText(e.target.value)}
+            onKeyPress={handleKeyPress}
           />
-        </form>
-
-        <ButtonBg
-          form="myForm"
-          type="submit"
-          disabledButton={blockButton}
-          title="Check"
-          w={isDesktop ? "450px" : isTablet ? "350px" : "200px"}
-          h={isDesktop ? "84px" : isTablet ? "64px" : "48px"}
-          fs={isDesktop ? "32px" : isTablet ? "28px" : "20px"}
-          greenBtn
-        />
+        </Form>
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

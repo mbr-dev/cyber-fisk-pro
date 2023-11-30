@@ -21,16 +21,14 @@ export const Main = styled.main`
     justify-content: center;
   }
   
-  @media(min-width: 480px) {
+  @media(min-width: 600px) {
     flex-direction: row;
     justify-content: center;
-    margin-top: 24px;
-    gap: 54px;
   }
   
   @media(min-width: 1280px) {
-    gap: 64px;
-    margin-top: 44px;
+    margin-top: 2rem;
+    gap: 2rem;
   }
 `;
 
@@ -72,7 +70,7 @@ export const ButtonAnswer = styled.button`
     height: 96px;
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 600px) {
     width: 72px;
     height: 94px;
   }

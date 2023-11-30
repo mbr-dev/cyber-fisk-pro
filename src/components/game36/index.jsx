@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -13,7 +12,7 @@ import ImgBtn from "../../assets/ruido.svg";
 import ImgBtn2 from "../../assets/btnAudio2.svg";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonRow, ButtonAudio } from "./styles";
+import { Container, Main, ButtonRow, ButtonAudio, ButtonAnswer } from "./styles";
 
 export const Game36 = () => {
   const {
@@ -36,9 +35,6 @@ export const Game36 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -261,15 +257,13 @@ export const Game36 = () => {
             return (
               <ButtonAnswer
                 key={index}
-                w={isDesktop ? "400px" : isTablet ? "200px" : "9rem"}
-                h={isDesktop ? "84px" : isTablet ? "64px" : "3rem"}
-                onPress={() => handleGetAnswer(index)}
+                onClick={() => handleGetAnswer(index)}
                 disabledButton={disabledRes || blockAnswer}
-                optionColor={colorAnswer[index]}
+                style={{
+                  borderColor: colorAnswer[index] === 1 && defaultTheme["red-200"],
+                }}
               >
-                <p style={{
-                  fontSize: isTablet ? "24px" : isDesktop ? "28px" : "",
-                }}>{answer.label}</p>
+                <p>{answer.label}</p>
               </ButtonAnswer>
             )
           })}

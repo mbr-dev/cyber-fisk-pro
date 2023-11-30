@@ -9,12 +9,33 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 20rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 0.5rem;
+  justify-content: center;
   gap: 1rem;
+
+  @media (max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 600px) {
+    flex-direction: row;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 1280px) {    
+    gap: 2rem;
+  }
+`;
+
+export const Div = styled.div`
+  width: 100%;
+
+  @media(min-width: 600px) {
+    width: 7.5rem;
+  }
 `;
 
 export const Answers = styled.section`
@@ -22,7 +43,20 @@ export const Answers = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
+
+  @media (max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 600px) {
+    width: 30rem;
+    gap: 0.5rem;
+  }
+
+  @media (min-width: 1280px) {    
+    gap: 1rem;
+  }
 `;
 
 export const Options = styled.div`
@@ -34,6 +68,45 @@ export const Options = styled.div`
 
   p {
     font-weight: bold;
+    font-size: 1rem;
+  }
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+
+  @media(min-width: 600px) {
+    gap: 0.5rem;
+
+    p {
+      font-size: 0.75rem;
+    }
+  }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-inline: 0.75rem;
+  gap: 1rem;
+  
+  @media(max-width: 320px) {
+    padding-inline: 0.5rem;
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 600px) {
+    gap: 0.25rem;
+  }
+
+  @media (min-width: 1280px) {
+    gap: 1rem;
   }
 `;
 
@@ -45,43 +118,49 @@ export const AnswersRow = styled.section`
   gap: 1rem;
 
   p {
+    font-size: 0.875rem;
+    font-weight: 500;
     flex: 1;
     text-align: center;
-    height: 4rem;
+    height: 3.5rem;
     padding-inline: 0.5rem;
-    font-size: 0.875rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 3px solid ${props => props.theme.black};
+    border: 2px solid ${props => props.theme.black};
     border-radius: 8px;
   }
 
-  @media(max-width: 320px) {
-    gap: 0.5rem;
+  @media (max-width: 320px) {
     padding-inline: 0.5rem;
+    gap: 0.5rem;
 
     p {
-      padding-inline: 0.25rem;
-      height: 3rem;
+      height: 2.5rem;
       font-size: 0.75rem;
+      border-radius: 6px;
     }
   }
-`;
 
-export const Form = styled.form`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-
-  @media(max-width: 376px) {
+  @media (min-width: 600px) {
     gap: 0.5rem;
+    padding-inline: 0.75rem;
+
+    p {
+      height: 2.5rem;
+      font-size: 0.75rem;
+      border-radius: 6px;
+    }
   }
 
-  @media(max-width: 320px) {
-    gap: 0.375rem;
+  @media (min-width: 1280px) {
+    gap: 1rem;
+
+    p {
+      height: 4.5rem;
+      font-size: 0.875rem;
+      border-width: 3px;
+    }
   }
 `;
 
@@ -113,8 +192,68 @@ export const Radio = styled(RadioGroup.Item)`
     }
   }
 
-  @media(max-width: 320px) {
-    width: 3rem;
+  @media (max-width: 320px) {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 600px) {
+    width: 2rem;
+    height: 2rem;
+    border-radius: 2px;
+  }
+
+  @media (min-width: 1280px) {
+    width: 64px;
+    height: 64px;
+  }
+`;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  p {
+    font-size: 1rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (max-width: 320px) {
+    width: 9rem;
+    height: 2rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 13rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    width: 21rem;
     height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
   }
 `;

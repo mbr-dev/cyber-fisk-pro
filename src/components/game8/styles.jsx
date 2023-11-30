@@ -10,34 +10,63 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  width: 150px;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
   padding-inline: 0.5rem;
-  gap: 1.5rem;
-  margin-top: 2rem;
-
-  @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
-  }
+  gap: 1rem;
+  margin-top: 1rem;
 
   @media(min-width: 600px) {
-    margin-top: 32px;
-    gap: 24px;
+    flex-direction: row;
+    gap: 1.5rem;
   }
 
-  @media(min-width: 1024px) {
-    margin-top: 120px;
+  @media(min-width: 1280px) {
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+`;
+
+export const Title = styled.div`
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: ${props => props.theme["gray-100"]};
+  text-align: center;
+  padding-block: 0.5rem;
+  
+  p {
+    font-size: 1.5rem;
+    font-weight: 500;
+  }
+  
+  @media(max-width: 320px) {
+    padding-block: 0.375rem;
+    padding-inline: 0.5rem;
+
+    p {
+      font-size: 1rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-block: 1rem;
+    padding-inline: 1rem;
+
+    p {
+      font-size: 1.5rem;
+    }
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 150px;
-  height: 44px;
+  width: 12rem;
+  height: 4rem;
   padding-inline: 8px;
   display: flex;
   align-items: center;
@@ -52,7 +81,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     color: ${props => props.theme["gray-700"]};
-    font-size: 14px;
+    font-size: 1rem;
   }
 
   &:disabled {
@@ -61,11 +90,29 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 120px;
-    height: 36px;
+    width: 9rem;
+    height: 2.5rem;
 
     p {
-      font-size: 12px;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 9rem;
+    height: 3rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 15rem;
+    height: 4rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 `;

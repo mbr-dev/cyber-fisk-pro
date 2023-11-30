@@ -12,24 +12,22 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 54px;
-  margin-top: 2rem;
+  margin-top: 1rem;
+  gap: 1rem;
   overflow: hidden;
 
   @media(max-width: 320px) {
-    gap: 3rem;
-    margin-top: 1.5rem;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
   }
 
   @media(min-width: 600px) {
-    gap: 72px;
-    margin-top: 42px;
-    margin-bottom: 54px;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 1440px) {
+  @media(min-width: 1280px) {
     margin-top: 54px;
-    margin-bottom: 84px;
   }
 `;
 
@@ -51,32 +49,47 @@ export const AreaAnswers = styled.div`
   }
 
   
-  
   @media(max-width: 320px) {
     width: 15rem;
+
+    p {
+      font-size: 0.875rem;
+    }
   }
 
   @media(min-width: 600px) {
     width: 550px;
+  }
 
+  @media(min-width: 1280px) {
     p {
-      font-size: 28px;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const AreaWord = styled.div`
-  width: 300px;
-  height: 130px;
+  width: 18.75rem;
+  height: 8.25rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
+
+  @media (max-width: 320px) {
+    gap: 0.5rem;
+    height: 6rem;
+  }
+
+  @media (min-width: 600px) {
+    gap: 0.5rem;
+    height: 6.25rem;
+  }
 
   @media (min-width: 1280px) {
-    width: 300px;
-    height: 200px;
+    width: 36rem;
+    height: 12.5rem;
   }
 `;
 
@@ -92,9 +105,19 @@ export const Words = styled.span`
   transition: all 0.2s;
   text-align: center;
 
+  @media (max-width: 320px) {
+    padding: 0.375rem 0.875rem;
+    font-size: 0.875rem
+  }
+
   @media(min-width: 600px) {
-    padding: 12px 18px;
-    font-size: 24px;
+    padding: 0.375rem 0.75rem;
+    font-size: 0.875rem;
+  }
+
+  @media(min-width: 1280px) {
+    padding: 0.875rem 1.5rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -104,7 +127,11 @@ export const AreaButton = styled.div`
   margin-top: 32px;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 2rem;
+
+  @media(max-width: 320px) {
+    gap: 1rem;
+  }
 `;
 
 export const Button = styled.button`
@@ -126,6 +153,12 @@ export const Button = styled.button`
   &:disabled {
     cursor: not-allowed;
     opacity: 0.3;
+  }
+
+  @media (max-width: 320px) {
+    width: 7.5rem;
+    height: 2rem;
+    font-size: 0.875rem;
   }
 
   @media (min-width: 1280px) {

@@ -12,30 +12,19 @@ export const Main = styled.div`
   border-bottom-right-radius: 6px;
 
   @media(max-width: 320px) {
-    width: 1rem;
+    width: 4rem;
     height: 1rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
   }
 
   @media(min-width: 600px) {
-    width: 180px;
-    height: 24px;
+    width: 15rem;
+    height: 1.5rem;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 400px;
-    height: 32px;
-  }
-
-  @media(min-width: 1440px) {
-    width: 500px;
-    height: 36px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 700px;
-  }
-
-  @media(min-width: 2560px) {
-    width: 1000px;
+    height: 2rem;
   }
 `

@@ -98,10 +98,10 @@ export const Game24 = () => {
   }
 
   const handleVerify = (event) => {
-    event.preventDefault();
     if (blockButton || playAudio) return;
-
     setBlockButton(true);
+
+    event.preventDefault();
 
     let tempRightPoints;
 

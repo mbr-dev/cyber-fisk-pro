@@ -9,7 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Image, ButtonArea, ButtonAnswer } from "./styles";
+import { Container, Main, Image, ButtonArea, ButtonAnswer, DivDesk, DivMobile, Div } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game14 = () => {
@@ -189,28 +189,36 @@ export const Game14 = () => {
       <TitleLesson title="Choose the correct alternative." /> 
 
       <Main>
-        <Image>
-          <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
-        </Image>
+        <DivDesk>
+          <SubTitleLesson title={question} />
+        </DivDesk>
 
-        <SubTitleLesson title={question} />
+        <Div>
+          <Image>
+            <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
+          </Image>
 
-        <ButtonArea>
-          {answers.map((answer, index) => {
-            return (
-              <ButtonAnswer
-                key={index}
-                onClick={() => handleClick(index)}
-                disabled={blockButton}
-                style={{
-                  borderColor: selectedColor[index] ? defaultTheme["red-200"] : ""
-                }}
-              >
-                <p>{answer.label}</p>
-              </ButtonAnswer>
-            )
-          })}
-        </ButtonArea>
+          <DivMobile>
+            <SubTitleLesson title={question} />
+          </DivMobile>
+
+          <ButtonArea>
+            {answers.map((answer, index) => {
+              return (
+                <ButtonAnswer
+                  key={index}
+                  onClick={() => handleClick(index)}
+                  disabled={blockButton}
+                  style={{
+                    borderColor: selectedColor[index] ? defaultTheme["red-200"] : ""
+                  }}
+                >
+                  <p>{answer.label}</p>
+                </ButtonAnswer>
+              )
+            })}
+          </ButtonArea>
+        </Div>
       </Main>
     </Container>
   )

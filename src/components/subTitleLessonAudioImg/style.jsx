@@ -10,14 +10,8 @@ export const Container = styled.div`
   padding-block: 0.625rem;
   
   .img2 {
-    width: 180px;
+    width: 144px;
     border-radius: 8px;
-  }
-
-  @media(max-width: 360px) {
-    .img2 {
-      width: 150px;
-    }
   }
 
   @media(max-width: 320px) {
@@ -28,55 +22,69 @@ export const Container = styled.div`
 
   @media(min-width: 600px) {
     .img2 {
-      width: 250px;
+      width: 132px;
+      height: 64px;
+      object-fit: fill;
+      border-radius: 6px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     .img2 {
-      width: 200px;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    .img2 {
-      width: 280px;
+      width: 254px;
+      height: 126px;
+      object-fit: fill;
+      border-radius: 6px;
     }
   }
 `
 
 export const Button = styled.button`
   all: unset;
-  width: 4rem;
-  height: 4rem;
+  width: 3.5rem;
+  height: 3.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border-radius: 10px;
-  transition: all .2s ease-in-out;
+  transition: all ease 0.3s;
+
+  img {
+    width: 24px;
+  }
 
   &:hover {
-    transform: scale(1.1);
+    transform: scale(1.05);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
   }
 
   @media(max-width: 320px) {
-    width: 3rem;
-    height: 3rem;
+    width: 2.5rem;
+    height: 2.5rem;
+    border-radius: 6px;
 
-    svg {
-      width: 28px;
+    img {
+      width: 20px;
     }
   }
 
-  @media(min-width: 360px) {
-    width: 4.5rem;
-    height: 4.5rem;
+  @media(min-width: 600px) {
+    width: 3rem;
+    height: 3rem;
   }
 
-  @media(min-width: 600px) {
-    width: 100px;
-    height: 100px;
+  @media(min-width: 1280px) {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    img {
+      width: 32px;
+    }
   }
 `;

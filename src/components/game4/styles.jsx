@@ -9,20 +9,22 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   width: 100%;
-  padding-top: 2rem;
   display: grid;
   grid-template-columns: repeat(2, auto);
   justify-content: center;
   align-items: center;
-  gap: 1.5rem;
+  margin-top: 1rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    padding-top: 0.75rem;
+    margin-top: 0.75rem;
     gap: 0.75rem;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 600px) {
     display: flex;
+    flex-wrap: wrap;
+    width: 35rem;
   }
 `;
 
@@ -35,7 +37,7 @@ export const Button = styled.button`
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
-  transition: all 0.2s;
+  transition: all ease 0.3s;
   text-align: center;
 
   p {

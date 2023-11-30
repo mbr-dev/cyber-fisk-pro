@@ -13,40 +13,36 @@ export const Main = styled.main`
   flex-wrap: wrap;
   padding-inline: 0.5rem;
   justify-content: center;
-  align-items: center;
-  margin-top: 2rem;
-  gap: 14px;
+  margin-top: 1rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
-    margin-top: 1rem;
+    margin-top: 0.5rem;
   }
 
   @media(min-width: 600px) {
-    height: 450px;
-    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     width: 850px;
     height: 400px;
-    margin-top: 16px;
-  }
-
-  @media(min-width: 1440px) {
-    margin-top: 32px;
+    margin-top: 1rem;
+    gap: 1rem;
   }
 `;
 
 export const Photo = styled.button`
   all: unset;
-  width: 150px;
-  height: 100px;
+  width: 9.375rem;
+  height: 6.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
   overflow: hidden;
-  border: 3px solid transparent;
+  border: 2px solid transparent;
   border-radius: 8px;
   cursor: pointer;
   transition: all 0.2s;
@@ -67,16 +63,18 @@ export const Photo = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 96px;
-    height: 64px;
+    width: 6rem;
+    height: 4rem;
   }
 
   @media(min-width: 600px) {
-    width: 280px;
-    height: 200px;
+    width: 6rem;
+    height: 4rem;
   }
 
-  @media(min-width: 1024px) {
-    height: 180px;
+  @media(min-width: 1280px) {
+    width: 15.625rem;
+    height: 11.25rem;
+    border-width: 3px;
   }
 `;

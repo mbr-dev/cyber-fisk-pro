@@ -4,14 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL4 } from "../HeaderLessonSL4";
-import { FooterBtnHome } from "../FooterBtnHome";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme"; 
-import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys, Div } from "./styles";
+import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys, Div, AreaFooter, ButtonTask } from "./styles";
 
 export const GameSL4 = () => {
   const { 
@@ -38,8 +37,9 @@ export const GameSL4 = () => {
   const [countTimer, setCountTimer] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const handleGoTasks = () => {
+    navigate("/lessonSelected");
+  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -288,7 +288,7 @@ export const GameSL4 = () => {
                     borderColor: dontHasLetter ? defaultTheme["red-200"] : hasLetter ? defaultTheme["gray-700"] : "",
                   }}
                   disabled={hasLetter}
-                  >
+                >
                   {letter}
                 </Keys>
               )
@@ -297,7 +297,11 @@ export const GameSL4 = () => {
         </Div>
       </Main>
 
-      <FooterBtnHome title="Tasks" rota="LessonSelection"/>
+      <AreaFooter>
+        <ButtonTask onClick={handleGoTasks}>
+          <p>Tasks</p>
+        </ButtonTask>
+      </AreaFooter>
     </Container>
   )
 }

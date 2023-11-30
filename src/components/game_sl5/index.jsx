@@ -3,17 +3,14 @@ import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
-import { FooterBtnHome } from "../FooterBtnHome";
 import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right } from "./styles";
+import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right, AreaFooter, ButtonTask, Button, ButtonAnswer } from "./styles";
 
 export const GameSL5 = () => {
   const { setTimeElapsed } = useContext(LessonContext);
@@ -32,8 +29,9 @@ export const GameSL5 = () => {
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
+  const handleGoTasks = () => {
+    navigate("/lessonSelected");
+  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -225,13 +223,11 @@ export const GameSL5 = () => {
             {letters.map((letter, index) => {
               return (
                 <ButtonAnswer
-                  key={index}
-                  w={isDesktop ? "32px" : "1rem"}
-                  h={isDesktop ? "58px" : "2.5rem"}
-                  fs={isDesktop && "22px"}
-                  onPress={() => handleSelected(letter, index)}
-                  bgColor={clickedButtons[index]}
-                  disabledButton={clickedButtons[index]}
+                  onClick={() => handleSelected(letter, index)}
+                  disabled={clickedButtons[index]}
+                  style={{
+                    borderColor: clickedButtons[index] === 1 && defaultTheme["red-200"],
+                  }}
                 >
                   {letter}
                 </ButtonAnswer>
@@ -240,35 +236,21 @@ export const GameSL5 = () => {
           </WordsArea>
 
           <ButtonArea>
-            <ButtonBg
-              w={isDesktop ? "200px" : "9rem"}
-              h={isDesktop ? "52px" : "1.5rem"}
-              fs={isDesktop && "28px"}
-              title={`${hints} ${hints > 1 ? "hints" : "hint"}`}
-              onPress={handleShowHint}
-              disabledButton={hints === 0}
-            />
-            <ButtonBg
-              w={isDesktop ? "200px" : "9rem"}
-              h={isDesktop ? "52px" : "1.5rem"}
-              fs={isDesktop && "28px"}
-              title="Check"
-              disabledButton={letterSelected.length === 0}
-              onPress={handleVerify}
-            />
+            <Button onClick={handleShowHint} $variant="red" disabled={hints === 0}>
+              {`${hints} ${hints > 1 ? "hints" : "hint"}`}
+            </Button>
+            <Button onClick={handleVerify} disabled={letterSelected.length === 0}>
+              Check
+            </Button>
           </ButtonArea>
         </Right>
       </Main>
 
-      <FooterBtnHome 
-        fs={isDesktop ? "32px" : isTablet ? "28px" : ""}
-        wl={isDesktop ? "48%" : "80%"}
-        hasLS
-        title="Tasks" 
-        rota="LessonSelection"
-        w={isDesktop ? "450px" : isTablet ? "400px" : ""}
-        h={isDesktop ? "52px" : isTablet ? "48px" : ""}
-      />
+      <AreaFooter>
+        <ButtonTask onClick={handleGoTasks}>
+          <p>Tasks</p>
+        </ButtonTask>
+      </AreaFooter>
     </Container>
   )
 }

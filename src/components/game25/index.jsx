@@ -7,7 +7,7 @@ import { TitleLesson } from "../titleLesson";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Form, ButtonCheck } from "./styles";
+import { Container, Main, Form, ButtonCheck, Input } from "./styles";
 
 export const Game25 = () => {
   const {
@@ -163,7 +163,7 @@ export const Game25 = () => {
       <Main>
         <p>{question}</p>
         <Form id="myForm" onSubmit={handleVerify}>
-          <input
+          <Input
             type="text"
             placeholder="Type here"
             maxLength={50}

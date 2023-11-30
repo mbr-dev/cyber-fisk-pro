@@ -14,8 +14,6 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-between;
-  padding-top: 1rem;
 
   @media(max-width: 320px) {
     padding-top: 0rem;
@@ -29,26 +27,6 @@ export const Phrase = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  
-  @media(min-width: 600px) {
-    width: 70%;
-  }
-
-  @media(min-width: 1024px) {
-    width: 50%;
-  }
-
-  @media(min-width: 1440px) {
-    width: 40%;
-  }
-
-  @media(min-width: 1920px) {
-    width: 30%;
-  }
-
-  @media(min-width: 2560px) {
-    width: 20%;
-  }
 `;
 
 export const Letters = styled.div`
@@ -56,8 +34,6 @@ export const Letters = styled.div`
   align-items: center;
   flex-wrap: wrap;
   gap: 0.5rem;
-  padding-top: 0.5rem;
-  padding-bottom: 1rem;
   padding-inline: 2.5rem;
 
   button {
@@ -93,66 +69,57 @@ export const Letters = styled.div`
     border-color: ${props => props.theme["red-200"]};
   }
 
-  @media(max-width: 360px) {
-    padding-inline: 1.5rem;
-
-    button {
-      width: 2rem;
-      height: 3rem;
-    }
-  }
-
   @media(max-width: 320px) {
-    padding-inline: 0.5rem;
+    padding-inline: 0.25rem;
 
     button {
       width: 2rem;
-      height: 2.75rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      span {
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 600px) {
-    width: 80vw;
-    align-items: center;
+    width: 90%;
     justify-content: center;
-    padding-inline: 0;
-    padding: 0;
-    gap: 14px;
+    gap: 0.5rem;
 
     button {
-      width: 42px;
-      height: 54px;
+      width: 2rem;
+      height: 2.5rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      span {
+        font-size: 0.75rem;
+      }
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(min-width: 1280px) {
     gap: 16px;
 
     button {
       width: 56px;
       height: 64px;
+
+      p {
+        font-size: 1.5rem;
+      }
+
+      span {
+        font-size: 1.5rem;
+      }
     }
-
-    p {
-      font-size: 20px;
-    }
-
-    span {
-      font-size: 20px;
-    }
-  }
-
-  @media(min-width: 1440px) {
-    gap: 18px;
-
-    button {
-      width: 62px;
-      height: 72px;
-    }
-  }
-
-  @media(min-width: 1920px) {
-    gap: 20px;
   }
 `;
 
@@ -173,10 +140,20 @@ export const TypeLetters = styled.div`
     border: 2px solid ${props => props.theme["gray-700"]};
   }
 
+  @media(max-width: 320px) {
+    padding: 0.25rem;
+  }
+
   @media(min-width: 600px) {
+    width: 90%;
     align-items: center;
-    justify-content: center;
-    padding: 20px 16px;
+    padding: 0.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    width: 100%;
+    align-items: center;
+    padding: 1.5rem;
   }
 `;
 
@@ -186,9 +163,19 @@ export const DivWord = styled.div`
   margin-right: 1rem;
   margin-bottom: 0.375rem;
 
+  @media(max-width: 320px) {
+    margin-right: 2px;
+    margin-bottom: 0rem;
+  }
+
   @media(min-width: 600px) {
-    gap: 8px;
-    margin-right: 28px;
+    gap: 0.25rem;
+    margin-right: 0.5rem;
+  }
+
+  @media(min-width: 1280px) {
+    gap: 0.5rem;
+    margin-right: 1rem;
   }
 `;
 
@@ -203,8 +190,8 @@ export const DivLetter = styled.div`
   background-color: ${props => props.theme.white};
 
   @media(min-width: 600px) {
-    width: 44px;
-    height: 56px;
+    width: 2rem;
+    height: 2.5rem;
   }
 `;
 
@@ -214,7 +201,7 @@ export const Answer = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  gap: 1rem;
 
   form {
     width: 100%;
@@ -226,23 +213,32 @@ export const Answer = styled.div`
   }
 
   @media(max-width: 320px) {
-    margin-top: 1rem;
-    gap: 2rem;
+    gap: 0.5rem;
+
+    form {
+      padding-block: 0.5rem;
+    }
   }
 
   @media(min-width: 600px) {
-    padding-block: 24px;
+    gap: 0.25rem;
+
+    form {
+      padding-block: 0.5rem;
+    }
   }
 
-  @media(min-width: 1920px) {
-    padding-block: 32px;
+  @media(min-width: 1280px) {
+    gap: 2rem;
+    width: 100vw;
+
+    form {
+      padding-block: 1
+    }
   }
 `;
 
-export const TypeLetters2 = styled(TypeLetters)`
-  background-color: transparent;
-  padding: 0.5rem 1.5rem;
-`;
+export const TypeLetters2 = styled(TypeLetters)``;
 
 export const DivLetter2 = styled(DivLetter)`
   border-color: transparent;
@@ -253,35 +249,160 @@ export const DivLetter2 = styled(DivLetter)`
 export const Input = styled.input`
   all: unset;
   width: 18.75rem;
-  padding: 0.5rem 1rem;
+  height: 2.5rem;
+  padding-left: 0.5rem;
   border-radius: 6px;
-  border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   color: ${props => props.theme["gray-700"]};
-  font-weight: bold;
+  font-weight: 500;
+  font-size: 1rem;
 
   &:focus {
     border-color: ${props => props.theme["gray-500"]};
   }
 
-  @media(max-width: 375px) {
-    width: 17rem;
-  }
-
   @media(max-width: 320px) {
-    width: 15rem;
+    width: 17rem;
+    height: 2rem;
+    font-size: 0.875rem;
   }
 
   @media(min-width: 600px) {
-    width: 500px;
+    width: 40rem;
+    height: 2rem;
+    font-size: 0.875rem;
   }
 
-  @media(min-width: 1024px) {
-    width: 800px;
-    font-size: 24px;
+  @media(min-width: 1280px) {
+    width: 68rem;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+`;
+
+export const AreaFooter = styled.div`
+  width: 300px;
+  height: 64px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    height: 52px;
   }
 
-  @media(min-width: 2560px) {
+  @media(min-width: 600px) {
+    width: 600px;
+    height: 52px;
+  }
+
+  @media(min-width: 1280px) {
     width: 1200px;
+    height: 100px;
+    border-width: 4px;
+  }
+`;
+
+export const ButtonTask = styled.button`
+  all: unset;
+  width: 250px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["red-200"]};
+  color: ${props => props.theme.white};
+  border: 2px solid ${props => props.theme["red-300"]};
+  border-bottom-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
+  cursor: pointer;
+
+  p {
+    font-size: 24px;
+    font-weight: bold;
+  }
+
+  &:hover {
+    opacity: 0.8;
+  }
+
+  @media(max-width: 320px) {
+    width: 200px;
+    height: 32px;
+
+    p {
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 600px) {
+    height: 32px;
+    border-radius: 6px;
+
+    p {
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 400px;
+    height: 44px;
+
+    p {
+      font-size: 32px;
+    }
+  }
+`;
+
+export const ButtonCheck = styled.button`
+  all: unset;
+  width: 10rem;
+  height: 2.5rem;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${props => props.theme["green-600"]};
+  color: ${props => props.theme.white};
+  border: 1px solid ${props => props.theme["green-700"]};
+  border-bottom-width: 3px;
+  border-left-width: 3px;
+  cursor: pointer;
+
+  p {
+    font-size: 1rem;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
+  }
+
+  @media (max-width: 320px) {
+    width: 9rem;
+    height: 2rem;
+
+    p {
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 600px) {
+    width: 13rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 1280px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
   }
 `;

@@ -3,13 +3,13 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main, Image} from "./styles";
+import { Container, Main, Image, ButtonAnswer, Div } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game17 = () => {
   const {
@@ -29,9 +29,6 @@ export const Game17 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
 
   const loadLesson = useCallback(async() => {
     setIsLoading(true);
@@ -193,22 +190,22 @@ export const Game17 = () => {
         <Image>
           <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${image}.png`} alt="" />
         </Image>
-        {answers.map((answer, index) => {
-          return (
-            <ButtonAnswer 
+        <Div>
+          {answers.map((answer, index) => {
+            return (
+              <ButtonAnswer
               key={index}
-              w={isDesktop ? "450px" : isTablet ? "350px" : "14.5rem"}
-              h={isDesktop ? "84px" : isTablet ? "64px" : "3.5rem"}
-              onPress={() => handleClick(index)}
-              optionColor={selectedColor[index]}
-              disabledButton={blockButton}
-            >
-              <p style={{
-                fontSize: isTablet ? "20px" : isDesktop ? "24px" : "",
-              }}>{answer.label}</p>
-            </ButtonAnswer>
-          )
-        })}
+              onClick={() => {handleClick(index)}}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
+              >
+                <p>{answer.label}</p>
+              </ButtonAnswer>
+            )
+          })}
+        </Div>
       </Main>
     </Container>
   )

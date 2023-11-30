@@ -10,37 +10,27 @@ export const Container = styled.div`
   text-align: center;
 
   span {
-    font-size: 1.375rem;
+    font-size: 1rem;
     font-weight: 500;
   }
 
-  @media(max-width: 360px) {
-    span {
-      font-size: 1.25rem;
-    }
-  }
-
   @media(max-width: 320px) {
-    padding-inline: 0.375rem;
+    padding: 0.375rem;
 
     span {
-      font-size: 1.125rem;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
-    padding: 4px;
-
-    span {
-      font-size: 18px;
-    }
+  @media(min-width: 600px) {
+    padding: 0.5rem;
   }
 
   @media(min-width: 1280px) {
-    padding: 16px;
+    padding: 1rem;
     
     span {
-      font-size: 36px;
+      font-size: 2rem;
     }
   }
 `
