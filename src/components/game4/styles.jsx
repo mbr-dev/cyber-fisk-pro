@@ -17,14 +17,26 @@ export const Main = styled.main`
   gap: 1rem;
 
   @media(max-width: 320px) {
-    margin-top: 0.75rem;
-    gap: 0.75rem;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    display: flex;
-    flex-wrap: wrap;
-    width: 35rem;
+  @media(min-width: 768px) {
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: flex;
+      flex-wrap: wrap;
+      width: 90%;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    margin-top: 2rem;
+    gap: 2rem;
   }
 `;
 
@@ -41,6 +53,7 @@ export const Button = styled.button`
   text-align: center;
 
   p {
+    font-size: 1rem;
     font-weight: bold;
   }
 

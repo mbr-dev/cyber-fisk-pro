@@ -20,11 +20,18 @@ export const Main = styled.main`
     width: 19rem;
   }
 
-  @media(min-width: 600px) {
-    width: 90%;
+  @media(min-width: 768px) {
+    width: 80%;
     gap: 1rem;
-    flex-direction: row-reverse;
-    align-items: flex-start;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+      gap: 1rem;
+      flex-direction: row-reverse;
+      align-items: flex-start;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -39,8 +46,10 @@ export const Left = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media(min-width: 600px) {
-    width: 45%;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 45%;
+    }
   }
 `;
 
@@ -54,8 +63,15 @@ export const Answers = styled.div`
     gap: 0.25rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.25rem;
+  @media(min-width: 768px) {
+    width: 100%;
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -75,8 +91,16 @@ export const Div = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 1rem;
+    justify-content: center;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+      justify-content: space-between;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -116,16 +140,27 @@ export const DivQuestion = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 9rem;
-    height: 2.5rem;
+  @media(min-width: 768px) {
+    width: 200px;
+    height: 64px;
 
     span {
-      font-size: 0.75rem;
+      font-size: 18px;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 9rem;
+      height: 2.5rem;
+
+      span {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 200px;
     height: 64px;
 
@@ -155,16 +190,28 @@ export const DivA = styled.div`
     gap: 0.25rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.25rem;
+  @media(min-width: 768px) {
+    width: 14rem;
+    gap: 1rem;
+
+    span {
+      font-size: 1.625rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 10rem;
+      gap: 0.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 224px;
-    gap: 16px;
+    width: 14rem;
+    gap: 1rem;
 
     span {
-      font-size: 26px;
+      font-size: 1.625rem;
     }
   }
 `;
@@ -184,14 +231,21 @@ export const Answer = styled.div`
     height: 2.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 2.5rem;
-    height: 2.5rem;
+  @media(min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
   }
 `;
 
@@ -217,7 +271,19 @@ export const WordSelected = styled.div`
   overflow: hidden;
   border: 2px solid ${props => props.theme["gray-700"]};
 
-  @media(min-width: 1024px) {
+  @media(min-width: 768px) {
+    height: 54px;
+    border-radius: 8px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      height: 2.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
     height: 54px;
     border-radius: 8px;
   }
@@ -237,13 +303,36 @@ export const Words = styled.div`
     width: 16rem;
   }
 
-  @media(min-width: 1024px) {
-    height: 54px;
+  @media(min-width: 768px) {
+    width: 100%;
+    height: 3.375rem;
     border-radius: 8px;
-    padding-left: 16px;
+    padding-left: 1rem;
 
     span {
-      font-size: 28px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      border-radius: 8px;
+      height: 100%;
+      padding-left: 0.5rem;
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 3.375rem;
+    border-radius: 8px;
+    padding-left: 1rem;
+
+    span {
+      font-size: 1.75rem;
     }
   }
 `;
@@ -265,9 +354,21 @@ export const Delete = styled.div`
     scale: 1.05;
   }
 
-  @media(min-width: 1024px) {
-    width: 54px;
-    height: 54px;
+  @media(min-width: 768px) {
+    width: 3.375rem;
+    height: 3.375rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 3.375rem;
+    height: 3.375rem;
   }
 `;
 
@@ -283,7 +384,7 @@ export const WordsArea = styled.div`
     width: 19rem;
   }
 
-  @media(min-width: 600px) {
+  @media(max-width: 768px) {
     width: 100%;
   }
 `;
@@ -321,11 +422,21 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    padding: 0.375rem 0.5rem;
+  @media(min-width: 768px) {
+    padding: 0.75rem 1rem;
 
     p {
-      font-size: 0.75rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 0.375rem 0.5rem;
+
+      p {
+        font-size: 0.75rem;
+      }
     }
   }
 
@@ -333,7 +444,7 @@ export const ButtonAnswer = styled.button`
     padding: 0.75rem 1rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -372,10 +483,24 @@ export const Button = styled.button`
     font-size: 0.875rem;
   }
 
-  @media (min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    font-size: 24px;
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 150px;
+      height: 36px;
+      font-size: 1rem;
+    }
+  }
+
+  @media (min-width:1280px) {
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -393,14 +518,23 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 6.25rem;
+    border-width: 4px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 600px;
+      height: 52px;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
@@ -438,12 +572,23 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 400px;
+    height: 44px;
 
     p {
-      font-size: 18px;
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 32px;
+      border-radius: 6px;
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 

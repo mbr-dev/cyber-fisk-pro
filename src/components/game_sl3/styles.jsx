@@ -86,21 +86,40 @@ export const Letters = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 90%;
-    justify-content: center;
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 16px;
 
     button {
-      width: 2rem;
-      height: 2.5rem;
+      width: 56px;
+      height: 64px;
 
       p {
-        font-size: 0.75rem;
+        font-size: 1.5rem;
       }
 
       span {
-        font-size: 0.75rem;
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+      justify-content: center;
+      gap: 0.5rem;
+
+      button {
+        width: 2rem;
+        height: 2.5rem;
+
+        p {
+          font-size: 0.75rem;
+        }
+
+        span {
+          font-size: 0.75rem;
+        }
       }
     }
   }
@@ -144,15 +163,21 @@ export const TypeLetters = styled.div`
     padding: 0.25rem;
   }
 
-  @media(min-width: 600px) {
-    width: 90%;
+  @media(min-width: 768px) {
+    width: 100%;
     align-items: center;
-    padding: 0.5rem;
+    padding: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+      padding: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
     width: 100%;
-    align-items: center;
     padding: 1.5rem;
   }
 `;
@@ -168,9 +193,16 @@ export const DivWord = styled.div`
     margin-bottom: 0rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.25rem;
-    margin-right: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+    margin-right: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+      margin-right: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -189,9 +221,24 @@ export const DivLetter = styled.div`
   border: 2px solid ${props => props.theme["gray-200"]};
   background-color: ${props => props.theme.white};
 
-  @media(min-width: 600px) {
-    width: 2rem;
-    height: 2.5rem;
+  @media(min-width: 768px) {
+    width: 2.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
+  }
+  
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2.5rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 2.5rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
   }
 `;
 
@@ -220,11 +267,22 @@ export const Answer = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    gap: 0.25rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+    width: 100vw;
 
     form {
-      padding-block: 0.5rem;
+      padding-block: 1
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+
+      form {
+        padding-block: 0.5rem;
+      }
     }
   }
 
@@ -267,10 +325,20 @@ export const Input = styled.input`
     font-size: 0.875rem;
   }
 
-  @media(min-width: 600px) {
-    width: 40rem;
-    height: 2rem;
-    font-size: 0.875rem;
+  @media(min-width: 768px) {
+    width: 43rem;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40rem;
+      height: 2rem;
+      font-size: 0.875rem;
+      padding-left: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -295,14 +363,23 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 6.25rem;
+    border-width: 4px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 600px;
+      height: 52px;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
@@ -340,12 +417,23 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 400px;
+    height: 44px;
 
     p {
-      font-size: 18px;
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 32px;
+      border-radius: 6px;
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 
@@ -392,9 +480,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

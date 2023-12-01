@@ -20,9 +20,16 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media (min-width: 600px) {
-    flex-direction: row;
-    gap: 0.5rem;
+  @media (min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 80%;
+      flex-direction: row;
+      gap: 0.5rem;
+    }
   }
 
   @media (min-width: 1280px) {    
@@ -33,8 +40,10 @@ export const Main = styled.main`
 export const Div = styled.div`
   width: 100%;
 
-  @media(min-width: 600px) {
-    width: 7.5rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 7.5rem;
+    }
   }
 `;
 
@@ -49,9 +58,16 @@ export const Answers = styled.section`
     gap: 0.5rem;
   }
 
-  @media (min-width: 600px) {
-    width: 30rem;
-    gap: 0.5rem;
+  @media (min-width: 768px) {
+    width: 30rem;    
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 30rem;
+      gap: 0.5rem;
+    }
   }
 
   @media (min-width: 1280px) {    
@@ -79,11 +95,30 @@ export const Options = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 1rem;
 
     p {
-      font-size: 0.75rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 0.5rem;
+    padding-right: 1.25rem;
+
+    p {
+      font-size: 1.25rem;
     }
   }
 `;
@@ -101,8 +136,10 @@ export const Form = styled.form`
     gap: 0.25rem;
   }
 
-  @media (min-width: 600px) {
-    gap: 0.25rem;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      gap: 0.25rem;
+    }
   }
 
   @media (min-width: 1280px) {
@@ -118,8 +155,6 @@ export const AnswersRow = styled.section`
   gap: 1rem;
 
   p {
-    font-size: 0.875rem;
-    font-weight: 500;
     flex: 1;
     text-align: center;
     height: 3.5rem;
@@ -142,14 +177,27 @@ export const AnswersRow = styled.section`
     }
   }
 
-  @media (min-width: 600px) {
-    gap: 0.5rem;
-    padding-inline: 0.75rem;
+  @media (min-width: 768px) {
+    gap: 1rem;
+    padding-inline: 0rem;
 
     p {
-      height: 2.5rem;
-      font-size: 0.75rem;
-      border-radius: 6px;
+      height: 4.5rem;
+      font-size: 0.875rem;
+      border-width: 3px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      gap: 0.5rem;
+      padding-inline: 0.75rem;
+
+      p {
+        height: 2.5rem;
+        font-size: 0.75rem;
+        border-radius: 6px;
+      }
     }
   }
 
@@ -198,15 +246,22 @@ export const Radio = styled(RadioGroup.Item)`
     border-radius: 2px;
   }
 
-  @media (min-width: 600px) {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2px;
+  @media (min-width: 1280px) {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      border-radius: 2px;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
   }
 `;
 
@@ -243,9 +298,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

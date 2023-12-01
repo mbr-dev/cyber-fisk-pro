@@ -9,13 +9,13 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`  
-   width: 100%;
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block: 1rem;
-  gap: 1rem;
-  margin-bottom: 1rem;
+  padding-block: 0.5rem;
+  gap: 0.5rem;
+  margin-bottom: 0.5rem;
   background-color: ${props => props.theme["gray-300"]};
   overflow: hidden;
 
@@ -24,10 +24,18 @@ export const Main = styled.main`
     gap: 0.375rem;
   }
 
-  @media(min-width: 600px) {
-    padding-block: 0.375rem;
-    gap: 0.375rem;
-    margin-bottom: 0.5rem;
+  @media(min-width: 768px) {
+    padding-block: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0rem;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -48,12 +56,20 @@ export const AreaWord = styled.div`
     width: 19rem;
   }
 
-  @media(min-width: 600px) {
-    width: 23rem;
-    height: 5rem;
+  @media(min-width: 768px) {
+    width: 35rem;
+    height: 9rem;
     gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 23rem;
+      height: 5rem;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -80,14 +96,21 @@ export const Words = styled.span`
     padding: 0.25rem 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  @media(min-width: 768px) {
+    font-size: 1.25rem;
+    padding: 0.625rem 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 18px;
-    padding: 10px 16px;
+    font-size: 1.25rem;
+    padding: 0.625rem 1rem;
   }
 `;
 
@@ -108,9 +131,20 @@ export const AreaAnswers = styled.div`
     height: 8rem;
   }
 
-  @media(min-width: 600px) {
-    width: 23rem;
-    height: 6rem;
+  @media(min-width: 768px) {
+    width: 42rem;
+    height: 13rem;
+    border-width: 3px;
+    align-items: center;
+    justify-content: center;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 23rem;
+      height: 6rem;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -137,14 +171,21 @@ export const WordsDrop = styled.span`
     padding: 0.25rem 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  @media(min-width: 768px) {
+    font-size: 1.125rem;
+    padding: 0.625rem 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 18px;
-    padding: 10px 16px;
+    font-size: 1.125rem;
+    padding: 0.625rem 1rem;
   }
 `;
 
@@ -155,7 +196,7 @@ export const AreaButton = styled.div`
   justify-content: center;
   gap: 1rem;
 
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
     gap: 2rem;
   }
 `;
@@ -181,15 +222,23 @@ export const Button = styled.button`
     opacity: 0.3;
   }
 
-  @media (max-width: 320px) {
-    width: 7.5rem;
-    height: 2rem;
-    font-size: 0.875rem;
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (max-width: 320px) {
+      width: 7.5rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    font-size: 24px;
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
   }
 `;

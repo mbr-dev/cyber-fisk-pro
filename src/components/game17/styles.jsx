@@ -16,12 +16,18 @@ export const Main = styled.div`
   gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 0.75rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    flex-direction: row;
-    gap: 0;
+  @media(max-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      gap: 0;
+    }
   }
 `;
 
@@ -44,12 +50,21 @@ export const Image = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 40%;
-
+  @media(min-width: 768px) {
     img {
-      width: 250px;
-      height: 184px;
+      width: 400px;
+      height: 250px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+
+      img {
+        width: 250px;
+        height: 184px;
+      }
     }
   }
 
@@ -72,9 +87,15 @@ export const Div = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 40%;
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -97,7 +118,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 
   &:hover {
@@ -111,18 +132,25 @@ export const ButtonAnswer = styled.button`
   @media(max-width: 320px) {
     width: 13rem;
     height: 3rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 18.75rem;
+    height: 5rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.125rem;
     }
   }
 
-  @media(min-width: 600px) {
-    width: 12rem;
-    height: 3rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 3rem;
 
-    p {
-      font-size: 0.875rem;
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -131,7 +159,7 @@ export const ButtonAnswer = styled.button`
     height: 5rem;
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
     }
   }
 `;

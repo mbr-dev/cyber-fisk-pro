@@ -8,8 +8,19 @@ export const Container = styled.div`
   background-color: ${props => props.theme["gray-100"]};
   padding-block: 0.625rem;
 
-  @media(min-width: 600px) {
-    width: 100%;
+  @media(min-width: 768px) {
+    padding-block: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      padding-block: 0.625rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-block: 1rem;
   }
 `;
 
@@ -22,7 +33,7 @@ export const Button = styled.button`
   justify-content: center;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
-  border-radius: 10px;
+  border-radius: 8px;
   transition: all ease 0.3s;
 
   img {
@@ -48,9 +59,21 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 3rem;
-    height: 3rem;
+  @media(min-width: 768px) {
+    width: 4.5rem;
+    height: 4.5rem;
+
+    img {
+      width: 32px;
+    }
+  }
+    
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 3rem;
+      height: 3rem;
+    }
   }
 
   @media(min-width: 1280px) {

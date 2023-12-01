@@ -18,8 +18,14 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -63,12 +69,21 @@ export const Image = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 40%;
-
+  @media(min-width: 768px) {
     img {
-      width: 250px;
-      height: 184px;
+      width: 400px;
+      height: 250px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+
+      img {
+        width: 250px;
+        height: 184px;
+      }
     }
   }
 
@@ -90,11 +105,13 @@ export const Div = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 80%;
-    gap: 0.5rem;
-    align-items: flex-start;
-    flex-direction: row;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 80%;
+      gap: 0.5rem;
+      align-items: flex-start;
+      flex-direction: row;
+    }
   }
 `;
 
@@ -109,8 +126,14 @@ export const ButtonArea = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -152,12 +175,23 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 15rem;
-    height: 3rem;
-
+  @media (min-width: 768px) {
+    width: 20rem;
+    height: 4rem;
+    
     p {
-      font-size: 0.875rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15rem;
+      height: 3rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 

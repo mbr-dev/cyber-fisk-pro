@@ -8,7 +8,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answers, Questions, Button } from "./styles";
+import { Container, Main, Div, Button } from "./styles";
 
 export const Game11 = () => {
   const {
@@ -29,7 +29,6 @@ export const Game11 = () => {
   const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
   const [countClick, setCountClick] = useState(0);
-  const [blockQuestions, setBlockQuestions] = useState(true);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
   const [rightQuestions, setRightQuestions] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
@@ -84,11 +83,15 @@ export const Game11 = () => {
     }
     setAnswers(tempAnswers);
 
-    setBlockQuestions(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setIdClickQuestion, setQuestions, setIdClickAnswer, setAnswers, setBlockQuestions])
+  }, [setIsLoading, setData, setRandomNumber, round, setIdClickQuestion, setQuestions, setIdClickAnswer, setAnswers])
 
   const newRound = (number) => {
+    setRightQuestions([]);
+    setRightAnswers([]);
+    setColorAnswer([0, 0, 0, 0, 0]);
+    setColorQuestions([0, 0, 0]);
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempRandomQ = [...Array(items.pergunta.length).keys()];
@@ -111,29 +114,14 @@ export const Game11 = () => {
     }
     setAnswers(tempAnswers);
 
-    setRightQuestions([]);
-    setRightAnswers([]);
-    setColorAnswer([0, 0, 0, 0, 0]);
-    setColorQuestions([0, 0, 0]);
     setSelectedQuestionIndex(null);
-    setBlockQuestions(false);
     setBlockAnswers(true);
   }
 
   const handleGetQuestion = (index) => {
-    if (blockQuestions) {
-      setSelectedQuestionIndex(null);
-      setBlockQuestions(false);
-    } else {
-      let clicks = countClick;
-      clicks++;
-      setCountClick(clicks);
-      
-      let tempId = index;
-      setSelectedQuestionIndex(tempId);
-      setBlockQuestions(true);
-      setBlockAnswers(false);
-    }
+    let tempId = index;
+    setSelectedQuestionIndex(tempId);
+    setBlockAnswers(false);
   }
 
   const handleGetAnswer = (index) => {
@@ -146,8 +134,12 @@ export const Game11 = () => {
     const selectedQuestion = questions[selectedQuestionIndex];
     const selectedAnswer = answers[index];
 
+    let clicks = countClick;
+    clicks++;
+    setCountClick(clicks);
+
     if (selectedAnswer.status === selectedQuestion.status) {
-      if (countClick < 3) {
+      if (countClick < 2) {
         tempColorQ[index] = 1;
         setColorQuestions(tempColorQ);
         tempColorA[index] = 1;
@@ -155,7 +147,6 @@ export const Game11 = () => {
 
         setRightAnswers(state => [...state, index]);
         setRightQuestions(state => [...state, selectedQuestionIndex]);
-        setBlockQuestions(false);
         setBlockAnswers(true);
         return;
       }
@@ -260,7 +251,7 @@ export const Game11 = () => {
       <TitleLesson title="Match the questions to their answers." />
 
       <Main>
-        <Questions>
+        <Div>
           {questions.map((question, index) => {
             const disabledQ = rightQuestions.includes(index);
               return (
@@ -276,9 +267,9 @@ export const Game11 = () => {
                 </Button>
               )
           })}
-        </Questions>
+        </Div>
 
-        <Answers>
+        <Div>
           {answers.map((answer, index) => {
             const disabledA = rightAnswers.includes(index);
             return (
@@ -294,7 +285,7 @@ export const Game11 = () => {
               </Button>
             )
           })}
-        </Answers>
+        </Div>
       </Main>
     </Container>
   )

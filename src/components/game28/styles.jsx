@@ -19,12 +19,18 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 1rem;
+    gap: 2rem;
   }
 `;
 
@@ -50,9 +56,17 @@ export const Form = styled.form`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 768px) {
     label {
-      font-size: 0.875rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      label {
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -81,9 +95,17 @@ export const Select = styled.select`
     height: 2rem;
   }
 
-  @media(min-width: 600px) {
-    width: 12rem;
-    height: 2rem;
+  @media(min-width: 768px) {
+    width: 15rem;
+    height: 2.5rem;
+    font-size: 1.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 2rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -126,9 +148,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

@@ -35,6 +35,7 @@ export const Game7 = () => {
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
+  const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
     setIsLoading(true);
@@ -76,13 +77,14 @@ export const Game7 = () => {
     setAnswers(tempAnswers);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setAudios, setAnswers, setData]);
+  }, [setIsLoading, setRandomNumber, setAudios, round, setAnswers, setData]);
 
   const newRound = (number) => {
     setRightAudios([]);
     setRightAnswers([]);
     setCountClick(0);
     setColorAnswer([0, 0, 0]);
+    setCancelAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -102,7 +104,7 @@ export const Game7 = () => {
   }
 
   const handlePlayAudio = (sound) => {
-    if (playAudio) return;
+    if (playAudio || cancelAudio) return;
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
@@ -159,6 +161,8 @@ export const Game7 = () => {
       tempE += 1;
       setWrongPoints(tempE);
     }
+
+    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;

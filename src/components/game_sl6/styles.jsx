@@ -22,8 +22,10 @@ export const Main = styled.main`
     color: ${props => props.theme["gray-700"]};
   }
 
-  @media(min-width: 600px) {
-    width: 90%;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+    }
   }
 `;
 
@@ -38,14 +40,20 @@ export const Grid = styled.div`
     padding-inline: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 75%;
-    align-items: center;
+  @media(min-width: 768px) {
+    width: 30rem;
+    gap: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 28rem;
-    gap: 1rem;
+    width: 30rem;
+    gap: 1.5rem;
   }
 `;
 
@@ -82,16 +90,31 @@ export const Card = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 3.5rem;
-    height: 3.5rem;
+  @media(min-width: 768px) {
+    width: 6rem;
+    height: 6rem;
 
     p {
-      font-size: 0.75rem;
+      font-size: 1.125rem;
     }
 
     img {
-      width: 42px;
+      width: 64px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 3.5rem;
+      height: 3.5rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      img {
+        width: 42px;
+      }
     }
   }
 
@@ -127,14 +150,23 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 6.25rem;
+    border-width: 4px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 600px;
+      height: 52px;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
@@ -172,12 +204,23 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 400px;
+    height: 44px;
 
     p {
-      font-size: 18px;
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 32px;
+      border-radius: 6px;
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 

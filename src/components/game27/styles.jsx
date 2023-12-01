@@ -21,14 +21,22 @@ export const Main = styled.main`
     margin-top: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+  @media(min-width: 768px) {
+    height: 25rem;
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 850px;
-    height: 400px;
+    width: 53.125rem;
+    height: 25rem;
     margin-top: 1rem;
     gap: 1rem;
   }
@@ -59,7 +67,6 @@ export const Photo = styled.button`
 
   &:disabled {
     cursor: not-allowed;
-    opacity: 0.5;
   }
 
   @media(max-width: 320px) {
@@ -67,9 +74,18 @@ export const Photo = styled.button`
     height: 4rem;
   }
 
-  @media(min-width: 600px) {
-    width: 6rem;
-    height: 4rem;
+  @media(min-width: 768px) {
+    width: 15.625rem;
+    height: 11.25rem;
+    border-width: 3px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 6rem;
+      height: 4rem;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {

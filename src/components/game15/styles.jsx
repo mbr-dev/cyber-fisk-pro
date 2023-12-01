@@ -21,13 +21,21 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-top: 0.5rem;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    margin-top: 54px;
+    margin-top: 2rem;
+    gap: 2rem;
   }
 `;
 
@@ -57,8 +65,20 @@ export const AreaAnswers = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 550px;
+  @media(min-width: 768px) {
+    width: 32rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
@@ -82,9 +102,16 @@ export const AreaWord = styled.div`
     height: 6rem;
   }
 
-  @media (min-width: 600px) {
-    gap: 0.5rem;
-    height: 6.25rem;
+  @media (min-width: 768px) {
+    width: 36rem;
+    height: 12.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      gap: 0.5rem;
+      height: 6.25rem;
+    }
   }
 
   @media (min-width: 1280px) {
@@ -110,9 +137,16 @@ export const Words = styled.span`
     font-size: 0.875rem
   }
 
-  @media(min-width: 600px) {
-    padding: 0.375rem 0.75rem;
-    font-size: 0.875rem;
+  @media(min-width: 768px) {
+    padding: 0.875rem 1.5rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 0.375rem 0.75rem;
+      font-size: 0.875rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -136,8 +170,8 @@ export const AreaButton = styled.div`
 
 export const Button = styled.button`
   all: unset;
-  width: 150px;
-  height: 36px;
+  width: 9.375rem;
+  height: 2rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -148,6 +182,7 @@ export const Button = styled.button`
   border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["green-700"]};
   border-bottom-width: 3px;
   border-left-width: 3px;
+  font-size: 1rem;
   cursor: pointer;
 
   &:disabled {
@@ -156,14 +191,27 @@ export const Button = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 7.5rem;
-    height: 2rem;
+    width: 9rem;
     font-size: 0.875rem;
   }
 
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 9.375rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
+  }
+
   @media (min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    font-size: 24px;
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
   }
 `;

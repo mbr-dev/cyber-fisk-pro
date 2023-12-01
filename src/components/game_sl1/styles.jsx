@@ -17,8 +17,10 @@ export const Main = styled.div`
   justify-content: flex-start;
   gap: 0.5rem;
 
-  @media(min-width: 600px) {
-    flex-direction: row;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
@@ -29,8 +31,15 @@ export const Left = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  @media(min-width: 600px) {
-    width: 50%;
+  @media(min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -45,8 +54,15 @@ export const Right = styled.div`
   flex-direction: column;
   gap: 0.5rem;
 
-  @media(min-width: 600px) {
-    width: 50%;
+  @media(min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -63,8 +79,15 @@ export const LettersArea = styled.div`
   gap: 0.375rem;
   background-color: ${props=> props.theme["gray-200"]};
 
-  @media(min-width: 600px) {
-    width: 100%;
+  @media(min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      gap: 0.375rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -90,11 +113,24 @@ export const Letter = styled.div`
     width: 1.5rem;
     height: 2rem;
   }
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 4rem;
+    
+    p {
+      font-size: 2rem;
+    }
+  }
 
-  @media(min-width: 600px) {
-    width: 1.5rem;
-    height: 1.75rem;
-    font-size: 28px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 1.5rem;
+      height: 1.75rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
@@ -104,12 +140,6 @@ export const Letter = styled.div`
     p {
       font-size: 2rem;
     }
-  }
-
-  @media(min-width: 1920px) {
-    width: 72px;
-    height: 84px;
-    font-size: 40px;
   }
 `;
 
@@ -125,9 +155,15 @@ export const ButtonArea = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
-    grid-template-columns: repeat(4, auto);
+  @media(min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+      grid-template-columns: repeat(4, auto);
+    }
   }
 
   @media(min-width: 1280px) {
@@ -166,9 +202,24 @@ export const ButtonAnswer = styled.button`
     height: 1.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 1.5rem;
-    height: 1.5rem;
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3.5rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 1.5rem;
+      height: 1.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
@@ -188,8 +239,14 @@ export const AreaButtons = styled.div`
   justify-content: center;
   gap: 0.5rem;
 
-  @media(min-width: 600px) {
-    gap: 1rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -218,10 +275,18 @@ export const Button = styled.button`
     opacity: 0.3;
   }
 
-  @media (min-width: 600px) {
-    width: 9rem;
-    height: 2rem;
-    font-size: 1rem;
+  @media (min-width: 768px) {
+    width: 12rem;
+    height: 2.5rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 9rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
   }
 
   @media (min-width: 1280px) {
@@ -238,8 +303,15 @@ export const DivAnswer = styled.div`
   width: 100%;
   padding-inline: 1rem;
 
-  @media(min-width: 600px) {
-    overflow-y: scroll;
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      overflow-y: scroll;
+      gap: 3px;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -255,6 +327,25 @@ export const DivRow = styled.div`
   p {
     font-size: 1rem;
     color: ${props => props.theme["red-200"]};
+  }
+
+  @media(min-width: 768px) {
+    padding-left: 1rem;
+    gap: 0.75rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 5px;
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
@@ -277,10 +368,18 @@ export const Div = styled.div`
   border-radius: 5px;
   text-transform: uppercase;
 
-  @media(min-width: 600px) {
-    width: 1.25rem;
-    height: 1.5rem;
-    font-size: 0.875rem
+  @media(min-width: 768px) {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1.125rem
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 1.25rem;
+      height: 1.5rem;
+      font-size: 0.875rem
+    }
   }
 
   @media(min-width: 1280px) {
@@ -304,14 +403,23 @@ export const AreaFooter = styled.div`
     height: 52px;
   }
 
-  @media(min-width: 600px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 6.25rem;
+    border-width: 4px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 600px;
+      height: 52px;
+      border-width: 2px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
@@ -349,12 +457,23 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 400px;
+    height: 44px;
 
     p {
-      font-size: 18px;
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 32px;
+      border-radius: 6px;
+
+      p {
+        font-size: 18px;
+      }
     }
   }
 

@@ -9,7 +9,7 @@ import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Main, Container, Input, ButtonCheck } from "./styles";
+import { Main, Container, Input, ButtonCheck, Form } from "./styles";
 
 export const Game10 = () => {
   const {
@@ -167,14 +167,14 @@ export const Game10 = () => {
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>
-        <form id="myForm" onSubmit={handleVerifyWord}>
+        <Form id="myForm" onSubmit={handleVerifyWord}>
           <Input 
             placeholder="Type here"
             maxLength={100}
             value={text}
             onChange={(e) => setText(e.target.value)}
           />
-        </form>
+        </Form>
 
         <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
           <p>Check</p>

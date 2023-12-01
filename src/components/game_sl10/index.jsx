@@ -39,6 +39,8 @@ export const GameSL10 = () => {
     navigate("/lessonSelected");
   }
 
+  console.log(answers)
+
   const loadLesson = useCallback(async() => {
     try {
       setIsLoading(true);
@@ -251,7 +253,7 @@ export const GameSL10 = () => {
                     borderColor: numberClick === index ? defaultTheme["red-200"] : "",
                   }}
                 >
-                  {letter}
+                  <p>{letter}</p>
                 </Letter>
               )
             })}

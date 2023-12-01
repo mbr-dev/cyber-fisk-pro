@@ -16,6 +16,8 @@ export const Main = styled.main`
 
   p {
     font-size: 1rem;
+    padding-inline: 1rem;
+    text-align: center;
   }
 
   @media(min-width: 320px) {
@@ -23,15 +25,24 @@ export const Main = styled.main`
 
     p {
       font-size: 0.875rem;
-      text-align: center;
     }
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -52,23 +63,34 @@ export const Form = styled.form`
   justify-content: center;
   padding-block: 1rem;
   background-color: ${props => props.theme["gray-100"]};
+  gap: 1rem;
 
   @media(max-width: 320px) {
     padding-block: 0.5rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    padding-block: 0.5rem;
+  @media(min-width:768px) {
+    padding-block: 1rem;
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.5rem;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
     padding-block: 1rem;
+    gap: 1rem;
   }
 `;
 
 export const Input = styled.input`
   all: unset;
-  width: 18.75rem;
+  width: 21rem;
   height: 2.5rem;
   padding-left: 0.5rem;
   border-radius: 6px;
@@ -87,10 +109,19 @@ export const Input = styled.input`
     font-size: 0.875rem;
   }
 
-  @media(min-width: 600px) {
-    width: 40rem;
-    height: 2rem;
-    font-size: 0.875rem;
+  @media(min-width: 768px) {
+    width: 42rem;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -134,9 +165,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

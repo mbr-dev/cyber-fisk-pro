@@ -21,9 +21,16 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    margin-top: 1rem;
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-top: 0.5rem;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -52,12 +59,23 @@ export const Form = styled.form`
     }
   }
 
-  @media (min-width: 600px) {
-    padding: 0.5rem 4rem;
+  
+  @media (min-width: 768px) {
+    padding: 1rem 5rem;
 
     label {
-      font-size: 0.875rem;
-      line-height: 2;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      padding: 0.5rem 4rem;
+
+      label {
+        font-size: 0.875rem;
+        line-height: 2;
+      }
     }
   }
 
@@ -90,11 +108,19 @@ export const Input = styled.input`
     font-size: 0.75rem;
   }
 
-  @media(min-width: 600px) {
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    height: 1.375rem;
-    font-size: 0.75rem;
+  @media (min-width: 768px) {
+    width: 19rem;
+    font-size: 1.25rem;
+    height: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-left: 0.25rem;
+      margin-right: 0.25rem;
+      height: 1.375rem;
+      font-size: 0.75rem;
+    }
   }
 
   @media (min-width: 1280px) {
@@ -137,9 +163,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

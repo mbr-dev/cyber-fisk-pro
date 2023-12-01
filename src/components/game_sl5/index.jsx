@@ -229,7 +229,7 @@ export const GameSL5 = () => {
                     borderColor: clickedButtons[index] === 1 && defaultTheme["red-200"],
                   }}
                 >
-                  {letter}
+                  <p>{letter}</p>
                 </ButtonAnswer>
               )
             })}
