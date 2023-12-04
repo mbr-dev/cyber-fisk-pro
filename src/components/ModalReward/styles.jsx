@@ -43,18 +43,26 @@ export const Content = styled(Dialog.Content)`
     height: 21rem;
   }
 
-  @media(min-width: 480px) {
-    height: 300px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    height: 40.625rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 21rem;
+      height: 18.75rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 500px;
-    height: 650px;
+    width: 31.25rem;
+    height: 40.625rem;
   }
 
   @media(min-width: 1440px) {
-    width: 700px;
-    height: 732px;
+    width: 43.75rem;
+    height: 45.75rem;
   }
 `;
 
@@ -66,8 +74,8 @@ export const Close = styled(Dialog.Close)`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -15px;
-  right: -10px;
+  top: -0.9375;
+  right: -0.625rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
@@ -80,18 +88,35 @@ export const Close = styled(Dialog.Close)`
     height: 1.5rem;
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    top: -18px;
-    right: -10px;
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
+    
+    img {
+      width: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      top: -1.125rem;
+      right: -0.625rem;
+
+      img {
+        width: 16px;
+      }
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 64px;
-    height: 64px;
-    top: -30px;
-    right: -30px;
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
     
     img {
       width: 32px;
@@ -141,7 +166,8 @@ export const Position = styled.div`
   justify-content: center;
   border-radius: 8px;
   background-color: ${props => props.theme["blue-800"]};
-  margin-top: -146px;
+  margin-top: -9.125rem;
+  z-index: 100;
 
   p {
     font-size: 1.25rem;
@@ -149,25 +175,43 @@ export const Position = styled.div`
   }
 
   @media(max-width: 320px) {
-    margin-top: -21px;
+    margin-top: -1.3125rem;
   }
 
-  @media(min-width: 480px) {
-    margin-top: -120px;
+  @media(min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    margin-top: -18.5rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 10rem;
+      height: 2.5rem;
+      margin-top: -7.5rem;
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    margin-top: -290px;
+    width: 15.625rem;
+    height: 3rem;
+    margin-top: -18.125rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 
   @media(min-width: 1440px) {
-    margin-top: -334px;
+    margin-top: -20.875rem;
   }
 `;
 
@@ -179,12 +223,18 @@ export const Reward = styled.div`
   justify-content: center;
   gap: 1rem;
 
-  @media (min-width: 480px) {
-    gap: 10px;
+  @media (min-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      gap: 0.625rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    gap: 16px;
+    gap: 1rem;
   }
 `;
 
@@ -234,28 +284,9 @@ export const Receive = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 12rem;
-    height: 2rem;
-
-    img {
-      width: 25%;
-      left: -15px;
-    }
-
-    p {
-      font-size: 1rem;
-      padding-right: 20px;
-    }
-
-    span {
-      font-size: 1rem;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 300px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 18.75rem;
+    height: 3.25rem;
 
     img {
       width: 25%;
@@ -263,18 +294,56 @@ export const Receive = styled.div`
     }
 
     p {
-      font-size: 24px;
-      padding-right: 20px;
+      font-size: 1.5rem;
+      padding-right: 1.25rem;
     }
 
     span {
-      font-size: 24px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 2rem;
+
+      img {
+        width: 25%;
+        left: -15px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 18.75rem;
+    height: 3.25rem;
+
+    img {
+      width: 25%;
+      left: -4px;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    span {
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const Boost = styled.div`
-  width: 250px;
+  width: 15.625rem;
   height: 4rem;
   display: flex;
   gap: 0.5rem;
@@ -308,42 +377,56 @@ export const Boost = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 14rem;
-    height: 58px;
+  @media(min-width: 768px) {
+    width: 20rem;
+    height: 5.75rem;
+    gap: 1rem;
+    border-radius: 0.75rem;
     justify-content: center;
-
+    
     p {
-      font-size: 1rem;
+      font-size: 1.5rem;
     }
+  }
 
-    span {
-      font-size: 1rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 14rem;
+      height: 3.625rem;
+      justify-content: center;
+
+      p {
+        font-size: 1rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 320px;
-    height: 92px;
-    gap: 16px;
-    border-radius: 12px;
+    width: 20rem;
+    height: 5.75rem;
+    gap: 1rem;
+    border-radius: 0.75rem;
     justify-content: center;
     
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 
   @media(min-width: 1440px) {
-    width: 420px;
-    gap: 32px;
-    height: 132px;
+    width: 26.25rem;
+    gap: 2rem;
+    height: 8.25rem;
   }
 `;
 
 export const MiniAvatar = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -351,13 +434,25 @@ export const MiniAvatar = styled.div`
   background-color: ${props => props.theme.white};
   overflow: hidden;
 
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 768px) {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
   @media (min-width: 1280px) {
-    width: 72px;
-    height: 72px;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   @media (min-width: 1440px) {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 `;

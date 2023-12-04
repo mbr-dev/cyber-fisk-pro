@@ -34,8 +34,6 @@ export const GameWordle = () => {
 
   const navigate = useNavigate();
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
   const handleSelectLetter = (word) => {
     if (word === "ENTER") {
       verifyWord();

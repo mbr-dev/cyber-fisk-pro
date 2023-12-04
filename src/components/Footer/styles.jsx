@@ -26,20 +26,29 @@ export const Container = styled.footer`
     }
   }
 
-  @media(min-width: 480px) {
-    gap: 4;
-    padding-block: 6px;
-
+  @media(min-width: 768px) {
     p {
-      font-size: 14px;
-      padding-inline: 16px;
+      font-size: 1.25rem;
+      padding-inline: 2.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+      padding-block: 6px;
+
+      p {
+        font-size: 0.875rem;
+        padding-inline: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     p {
-      font-size: 20px;
-      padding-inline: 44px;
+      font-size: 1.25rem;
+      padding-inline: 2.75rem;
     }
   }
 `;
@@ -69,15 +78,27 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    gap: 12px;
-
+  @media(min-width: 768px) {
     img {
-      width: 32px;
+      width: 64px;
     }
 
     .iconFooter {
-      width: 28px;
+      width: 52px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.75rem;
+
+      img {
+        width: 32px;
+      }
+
+      .iconFooter {
+        width: 28px;
+      }
     }
   }
 

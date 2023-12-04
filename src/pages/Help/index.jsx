@@ -18,7 +18,7 @@ export const Help = () => {
 
   const navigate = useNavigate();
 
-  const isDesktop = window.matchMedia("(min-width: 480px)").matches;
+  const isDesktop = window.matchMedia("(min-width: 780px)").matches;
 
   const handleItemClick = (modalName) => {
     setOpenModal((modal) => (modal === modalName ? null : modalName));

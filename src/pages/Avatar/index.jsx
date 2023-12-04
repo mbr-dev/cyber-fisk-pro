@@ -56,8 +56,7 @@ export const Avatar = () => {
       <Main>
         <Top>
           <img src={bgImg} alt="" className="bgImg" />
-          
-          <AvatarCustom />
+          <AvatarCustom avatar />
         </Top>
 
         <DivBottom>

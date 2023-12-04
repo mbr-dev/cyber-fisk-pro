@@ -19,6 +19,7 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding-top: 10rem;
   position: relative;
   z-index: 200;
 
@@ -57,23 +58,41 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    img {
-      width: 200px;
-    }
+  @media(min-width: 768px) {
+    padding-top: 7rem;
 
-    p {
-      font-size: 36px;
-    }
-  }
-
-  @media(min-width: 1280px) {
     img {
       width: 400px;
     }
 
     p {
-      font-size: 52px;
+      font-size: 3.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-top: 3rem;
+
+      img {
+        width: 150px;
+      }
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-top: 5rem;
+
+    img {
+      width: 400px;
+    }
+
+    p {
+      font-size: 3.25rem;
     }
   }
 `;

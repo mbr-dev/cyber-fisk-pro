@@ -8,14 +8,16 @@ export const Container = styled.div`
   justify-content: space-between;
   overflow-x: hidden;
 
-  @media(min-width: 480px) {
-    flex-direction: row;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
 export const Header = styled.header`
   width: 100%;
-  height: 430px;
+  height: 26.875rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -32,12 +34,18 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 250px;
+    height: 15.625rem;
   }
 
-  @media(min-width: 480px) {
-    width: 40%;
-    height: 100vh;
+  @media(min-width: 768px) {
+    height: 33.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+      height: 100vh;
+    }
   }
 `;
 
@@ -45,29 +53,33 @@ export const Top = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 16px 16px 0 16px;
+  padding: 1rem 1rem 0 1rem;
   z-index: 2;
 
   @media(max-width: 320px) {
-    padding: 12px 12px 0 12px;
+    padding: 0.75rem 0.75rem 0 0.75rem;
   }
 
   @media(min-width: 1280px) {
-    padding: 24px 24px 0 24px;
+    padding: 1.5rem 1.5rem 0 1.5rem;
   }
 `;
 
 export const DivMobile = styled.div`
-  @media (min-width: 480px) {
-    display: none;
+   @media(orientation: landscape) {
+      @media(min-width: 600px) {
+        display: none;
+    }
   }
 `;
 
 export const DivDesk = styled.div`
   display: none;
 
-  @media (min-width: 480px) {
-    display: block;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: block;
+    }
   }
 `;
 
@@ -77,47 +89,58 @@ export const Middle = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -38px;
+  margin-top: -2.375rem;
 
   h2 {
     color: ${props => props.theme.white};
-    font-size: 42px;
-    margin-top: -110px;
+    font-size: 2.625rem;
+    margin-top: -6.875rem;
   }
 
   @media(max-width: 320px) {
-    margin-top: -54px;
+    margin-top: -3.375rem;
 
     h2 {
-      font-size: 24px;
-      margin-top: -60px;
+      font-size: 1.5rem;
+      margin-top: -3.75rem;
     }
   }
 
-  @media(min-width: 480px) {
-    margin-top: 0px;
+  @media(min-width: 768px) {
+    margin-top: -3.5rem;
 
     h2 {
-      font-size: 24px;
-      margin-top: -80px;
-      margin-bottom: 8px;
+      font-size: 3.25rem;
+      margin-top: -10.625rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-top: 0px;
+
+      h2 {
+        font-size: 1.5rem;
+        margin-top: -5rem;
+        margin-bottom: 0.5rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    margin-top: 50px;
+    margin-top: 3.125rem;
 
     h2 {
-      font-size: 52px;
-      margin-top: -250px;
+      font-size: 3.25rem;
+      margin-top: -15.625rem;
     }
   }
 
   @media(min-width: 1440px) {
-    margin-top: 80px;
+    margin-top: 5rem;
 
     h2 {
-      margin-top: -270px;
+      margin-top: -16.875rem;
     }
   }
 `;
@@ -143,14 +166,19 @@ export const AvatarArea = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     .bgConfetes {
+      width: 500px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
       width: 280px;
     }
   }
 
   @media(min-width: 1280px) {
-
     .bgConfetes {
       width: 90%;
     }
@@ -163,15 +191,10 @@ export const Bottom = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-
-  @media(max-width: 360px) {
-    gap: 6px;
-  }
+  gap: 0.625rem;
 
   @media(max-width: 320px) {
-    width: 90%;
-    gap: 4px;
+    gap: 0.25rem;
   }
 `;
 
@@ -180,19 +203,19 @@ export const AreaItem = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 1rem;
   color: ${props => props.theme.white};
   justify-content: center;
 
   img {
     width: 36px;
-    margin-right: 20px;
+    margin-right: 1.25rem;
   }
 
   span {
     display: block;
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -210,9 +233,9 @@ export const AreaItem = styled.section`
     }
 
     span {
-      width: 24px;
-      height: 24px;
-      font-size: 14px;
+      width: 1.5rem;
+      height: 1.5rem;
+      font-size: 0.875rem;
       border-radius: 6px;
     }
 
@@ -248,9 +271,11 @@ export const Content = styled.div`
   align-items: center;
   justify-content: space-between;
 
-  @media(min-width: 480px) {
-    width: 60%;
-    height: 100vh;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 60%;
+      height: 100vh;
+    }
   }
 `;
 
@@ -259,8 +284,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
-  margin-top: -32px;
+  gap: 0.5rem;
+  margin-top: -2rem;
   position: relative;
 
   p {
@@ -269,7 +294,7 @@ export const Main = styled.main`
   
   span {
     width: 120px;
-    height: 32px;
+    height: 2rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -280,39 +305,57 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
-    margin-top: -20px;
+    margin-top: -1.25rem;
   }
 
-  @media(min-width: 480px) {
-    margin-top: 0px;
-    align-items: flex-end;
-    gap: 20px;
+  @media(min-width: 768px) {
+    margin-top: -2.5rem;
 
     p {
-      font-size: 16px;
-      margin-bottom: 8px;
-    }
-
-    span {
-      width: 150px;
-      height: 32px;
-      font-size: 18px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    gap: 100px;
-
-    p {
-      font-size: 24px;
-      margin-bottom: 8px;
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
       
     }
 
     span {
-      width: 250px;
-      height: 52px;
-      font-size: 32px;
+      width: 15.625rem;
+      height: 3rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-top: 0px;
+      align-items: flex-end;
+      gap: 20px;
+
+      p {
+        font-size: 16px;
+        margin-bottom: 8px;
+      }
+
+      span {
+        width: 150px;
+        height: 2rem;
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 6.25rem;
+
+    p {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+      
+    }
+
+    span {
+      width: 15.625rem;
+      height: 3.25rem;
+      font-size: 2rem;
     }
   }
 `;
@@ -320,22 +363,24 @@ export const Main = styled.main`
 export const ButtonClose = styled.section`
   display: none;
 
-  @media (min-width: 480px) {
-    display: block;
-    position: absolute;
-    top: 12px;
-    right: 12px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: block;
+      position: absolute;
+      top: 0.75rem;
+      right: 0.75rem;
+    }
   }
 `;
 
 export const ButtonRed = styled.button`
   all: unset;
-  width: 280px;
-  height: 58px;
+  width: 17.5rem;
+  height: 3.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 28px;
+  gap: 1.75rem;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
   border: 2px solid ${props => props.theme["red-300"]};
@@ -353,39 +398,52 @@ export const ButtonRed = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 220px;
-    height: 38px;
-    gap: 16px;
+    width: 13.75rem;
+    height: 2.375rem;
+    gap: 1rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 21.875rem;
+    height: 4.5rem;
+    gap: 2rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12.5rem;
+      height: 3rem;
+      border-radius: 8px;
+      gap: 0.625rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 350px;
-    height: 84px;
-    gap: 32px;
+    width: 21.875rem;
+    height: 4.5rem;
+    gap: 2rem;
 
     p {
-      font-size: 24px;
-    }
-  }
-
-  @media(min-width: 1440px) {
-    width: 400px;
-    height: 120px;
-    gap: 16px;
-
-    p {
-      font-size: 28px;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const IconAvatar = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 2.5rem;
+  height: 2.5rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -393,46 +451,55 @@ export const IconAvatar = styled.div`
   background-color: ${props => props.theme.white};
   overflow: hidden;
 
-  @media (min-width: 1280px) {
-    width: 72px;
-    height: 72px;
+  @media (min-width: 768px) {
+    width: 3.75rem;
+    height: 3.75rem;
   }
 
-  @media (min-width: 1440px) {
-    width: 100px;
-    height: 100px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 4rem;
+    height: 4rem;
   }
 `;
 
 export const Bottom2 = styled.section`
   display: none;
 
-  @media(min-width: 480px) {
-    display: flex;
-    width: 400px;
-    height: 100px;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 4px;
-    position: relative;
-    margin-top: 24px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: flex;
+      width: 25rem;
+      height: 6.25rem;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 0.25rem;
+      position: relative;
+      margin-top: 1.5rem;
 
-    .fundoBg {
-      width: 100%;
-      height: 100%;
-      position: absolute;
-      z-index: -1;
-      border-top-left-radius: 10px;
-      border-bottom-left-radius: 10px;
+      .fundoBg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        z-index: -1;
+        border-top-left-radius: 10px;
+        border-bottom-left-radius: 10px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 700px;
-    height: 180px;
-    gap: 12px;
-    margin-top: 36px;
+    width: 43.75rem;
+    height: 11.25rem;
+    gap: 0.75rem;
+    margin-top: 1.25rem;
 
     .fundoBg {
       border-top-left-radius: 20px;
@@ -442,12 +509,12 @@ export const Bottom2 = styled.section`
 `;
 
 export const LineSeparator = styled.div`
-  width: 250px;
+  width: 15.625rem;
   height: 1px;
   background-color: ${props => props.theme.white};
 
   @media (min-width: 1280px) {
-    width: 500px;
+    width: 31.25rem;
     height: 2px;
   }
 `;
@@ -456,7 +523,7 @@ export const AreaItem2 = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
   color: ${props => props.theme.white};
 
   img {
@@ -465,9 +532,9 @@ export const AreaItem2 = styled.section`
 
   span {
     display: block;
-    font-size: 14px;
-    width: 32px;
-    height: 28px;
+    font-size: 0.875rem;
+    width: 2rem;
+    height: 1.75rem;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -476,25 +543,25 @@ export const AreaItem2 = styled.section`
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
   }
 
   @media(min-width: 1280px) {
-    gap: 52px;
+    gap: 3.25rem;
 
     img {
       width: 56px;
     }
 
     span {
-      width: 56px;
-      height: 56px;
-      font-size: 28px;
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 1.75rem;
     }
 
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
@@ -505,25 +572,31 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
 
   @media(max-width: 320px) {
-    gap: 6px;
+    gap: 0.375rem;
   }
 
-  @media(min-width: 480px) {
-    flex-direction: row;
-    gap: 16px;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      gap: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 50px;
+    gap: 3.125rem;
   }
 `;
 
 export const Text = styled.div`
-  width: 280px;
-  height: 48px;
+  width: 17.5rem;
+  height: 3rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -533,38 +606,50 @@ export const Text = styled.div`
   opacity: 0.5;
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
     
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 250px;
-    height: 100px;
-    padding-inline: 6px;
+  @media(min-width: 768px) {
+    width: 20rem;
+    height: 10rem;
+    border-width: 3px;
     
     p {
-      font-size: 16px;
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 15.625rem;
+      height: 6.25rem;
+      padding-inline: 6px;
+      
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 180px;
+    width: 25rem;
+    height: 11.25rem;
     border-width: 3px;
     
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const AreaButton = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -572,26 +657,33 @@ export const AreaButton = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 300px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    height: 4.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 600px;
-    height: 100px;
+    width: 37.5rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -604,7 +696,7 @@ export const ButtonHome = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
@@ -613,29 +705,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

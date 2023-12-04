@@ -13,28 +13,34 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 32px;
-  gap: 16px;
+  padding-top: 2rem;
+  gap: 1rem;
 
   @media (max-width: 320px) {
-    padding-top: 12px;
+    padding-top: 0.75rem;
   }
 
-  @media (min-width: 480px) {
-    flex: 1;
-    padding-top: 0;
-    flex-direction: row;
-    gap: 24px;
+  @media (min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      flex: 1;
+      padding-top: 0;
+      flex-direction: row;
+      gap: 1.5rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    gap: 64px;
+    gap: 4rem;
   }
 `;
 
 export const Left = styled.div`
-  width: 220px;
-  height: 220px;
+  width: 13.75rem;
+  height: 13.75rem;
   border-radius: 18px;
 
   img {
@@ -43,18 +49,25 @@ export const Left = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 150px;
-    height: 150px;
+    width: 9.375rem;
+    height: 9.375rem;
   }
 
-  @media (min-width: 480px) {
-    width: 210px;
-    height: 210px;
+  @media (min-width: 768px) {
+    width: 18rem;
+    height: 18rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13.125rem;
+      height: 13.125rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 450px;
-    height: 450px;
+    width: 28.125rem;
+    height: 28.125rem;
   }
 `;
 
@@ -63,58 +76,77 @@ export const Right = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 1.5rem;
 
   @media(max-width: 320px) {
-    gap: 18px;
+    gap: 1.125rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 4px;
+  @media(min-width: 768px) {
+    gap: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 24px;
+    gap: 1.5rem;
   }
 `;
 
 export const Title = styled.section`
   p {
     font-weight: normal;
-    font-size: 20px;
+    font-size: 1.25rem;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     p {
-      font-size: 18px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
 
 export const AreaAudio = styled.div`
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
-  gap: 24px;
+  gap: 1.5rem;
 
   @media(max-width: 320px) {
     width: 250px;
-    gap: 18px;
+    gap: 1.125rem;
   }
 
-  @media(min-width: 480px) {
-    width: 400px;
-    gap: 24px;
+  @media (min-width: 768px) {
+    width: 25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1.5rem
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 550px;
+    width: 34.375rem;
   }
 `;
 
@@ -122,25 +154,26 @@ export const TimeAudio = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 4px;
+  gap: 0.25rem;
 
   @media (min-width: 1280px) {
-    gap: 8px;
+    gap: 0.5rem;
   }
 `;
 
 export const Bar = styled.div`
-  width: 300px;
-  height: 5px;
+  width: 18.75rem;
+  height: 0.3125rem;
   border-radius: 6px;
   background-color: ${props => props.theme["gray-800"]};
 
-  @media (min-width: 480px) {
+ 
+  @media (min-width: 600px) {
     width: 100%;
   }
 
   @media (min-width: 1280px) {
-    height: 7px;
+    height: 0.4375rem;
   }
 `;
 
@@ -151,8 +184,8 @@ export const Carrega = styled.div`
 `;
 
 export const Bolinha = styled.div`
-  width: 10px;
-  height: 10px;
+  width: 0.625rem;
+  height: 0.625rem;
   border-radius: 9999px;
   position: absolute;
   top: -2px;
@@ -173,19 +206,27 @@ export const TimeArea = styled.div`
   justify-content: space-between;
 
   p {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 700;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     p {
-      font-size: 16px;
+      font-size: 1.5rem
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 480px) {
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
     p {
-      font-size: 24px;
+      font-size: 1.5rem
     }
   }
 `;
@@ -207,52 +248,71 @@ export const ButtonsArea = styled.div`
   }
 
   .playBtn {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
     
   }
 
   .changeBtn {
-    width: 36px;
-    height: 36px;
+    width: 2.25rem;
+    height: 2.25rem;
   }
 
   .redBtn {
-    width: 32px;
-    height: 32px;
+    width: 2rem;
+    height: 2rem;
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     .playBtn {
-      width: 54px;
-      height: 54px;
+      width: 5.25rem;
+      height: 5.25rem;
     }
 
     .changeBtn {
-      width: 32px;
-      height: 32px;
+      width: 3.5rem;
+      height: 3.5rem;
     }
 
     .redBtn {
-      width: 32px;
-      height: 32px;
+      width: 2.625rem;
+      height: 2.625rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      .playBtn {
+        width: 3.375rem;
+        height: 3.375rem;
+      }
+
+      .changeBtn {
+        width: 2rem;
+        height: 2rem;
+      }
+
+      .redBtn {
+        width: 2rem;
+        height: 2rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     .playBtn {
-      width: 84px;
-      height: 84px;
+      width: 5.25rem;
+      height: 5.25rem;
     }
 
     .changeBtn {
-      width: 56px;
-      height: 56px;
+      width: 3.5rem;
+      height: 3.5rem;
     }
 
     .redBtn {
-      width: 42px;
-      height: 42px;
+      width: 2.625rem;
+      height: 2.625rem;
     }
   }
 `;
@@ -269,8 +329,8 @@ export const ButtonsVArea = styled.div`
     cursor: pointer;
 
     img {
-      width: 16px;
-      height: 16px;
+      width: 1rem;
+      height: 1rem;
       transition: all ease 0.3s;
     } 
 
@@ -279,11 +339,22 @@ export const ButtonsVArea = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     button {
       img {
-        width: 24px;
-        height: 24px;
+        width: 1.75rem;
+        height: 1.75rem;
+      }
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      button {
+        img {
+          width: 1.5rem;
+          height: 1.5rem;
+        }
       }
     }
   }
@@ -291,16 +362,16 @@ export const ButtonsVArea = styled.div`
   @media(min-width: 1280px) {
     button {
       img {
-        width: 28px;
-        height: 28px;
+        width: 1.75rem;
+        height: 1.75rem;
       }
     }
   }
 `;
 
 export const BarVolume = styled.div`
-  width: 250px;
-  height: 24px;
+  width: 15.625rem;
+  height: 1.5rem;
   display: flex;
   justify-content: space-between;
 
@@ -309,30 +380,37 @@ export const BarVolume = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
+    width: 12.5;
   }
 
-  @media(min-width: 480px) {
-    width: 320px;
-    height: 24px;
+  @media (min-width: 768px) {
+    width: 20rem;
+    height: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 20rem;
+      height: 1.5rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 450px;
-    height: 32px;
+    width: 28.125rem;
+    height: 2rem;
   }
 `;
 
 export const Div = styled.div`
-  width: 10px;
+  width: 0.625rem;
   height: 100%;
   background-color: ${props => props.theme["gray-800"]};
 
   @media(max-width: 320px) {
-    width: 8px;
+    width: 0.5rem;
   }
 
   @media (min-width: 1280px) {
-    width: 18px;
+    width: 1.125rem;
   }
 `;

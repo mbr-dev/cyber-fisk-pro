@@ -31,14 +31,21 @@ export const Content = styled(Dialog.Content)`
     width: 18rem;
   }
 
-  @media(min-width: 480px) {
-    width: 500px;
-    height: 250px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    height: 500px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 31.25rem;
+      height: 15.625rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    height: 500px;
+    width: 40rem;
+    height: 31.25rem;
   }
 `;
 
@@ -70,11 +77,35 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+    top: -1.5rem;
+    right: -1.5rem;
+
+    img {
+      width: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      top: -0.5rem;
+      right: -0.5rem;
+
+      img {
+        width: 14px;
+      }
+    }
+  }
+
   @media(min-width: 1280px) {
-    width: 52px;
-    height: 52px;
-    top: -28px;
-    right: -24px;
+    width: 3.25rem;
+    height: 3.25rem;
+    top: -1.75rem;
+    right: -1.5rem;
 
     img {
       width: 28px;
@@ -100,11 +131,25 @@ export const CloseEnter = styled(Dialog.Close)`
     height: 1.75rem;
   }
 
+  @media(min-width: 768px) {
+    width: 18.75rem;
+    height: 2.75rem;
+    font-size: 1.5rem;
+    margin-bottom: -1.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
+}
+
   @media(min-width: 1280px) {
-    width: 300px;
-    height: 44px;
-    font-size: 32px;
-    margin-bottom: -20px;
+    width: 18.75rem;
+    height: 2.75rem;
+    font-size: 2rem;
   }
 `;
 
@@ -132,14 +177,29 @@ export const Header = styled.header`
     font-size: 1rem;
   }
 
-  @media(min-width: 480px) {
-    font-size: 24px;
-    padding-block: 8px;
+  @media(min-width: 768px) {
+    font-size: 2rem;
+    padding-block: 1rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 480px) {
+      font-size: 24px;
+      padding-block: 0.5rem;
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 32px;
-    padding-block: 16px;
+    font-size: 2rem;
+    padding-block: 1rem;
   }
 `;
 
@@ -174,34 +234,49 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 480px) {
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
-    gap: 24px;
-    padding: 0;
-    padding-right: 0;
-    height: 182px;
+  @media(min-width: 768px) {
+    gap: 1.5rem;
+    height: 31.25rem;
 
     p {
-      font-size: 16px;
+      font-size: 1.75rem;
     }
 
     span {
-      font-size: 14px;
+      font-size: 1.5rem
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      align-items: center;
+      justify-content: center;
+      gap: 1.5rem;
+      padding: 1rem;
+      padding-right: 0;
+      height: 11.375rem;
+
+      p {
+        font-size: 1.25rem;
+      }
+
+      span {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 24px;
-    height: 500px;
+    gap: 1.5rem;
+    height: 31.25rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
 
     span {
-      font-size: 24px;
+      font-size: 1.5rem
     }
   }
 `;

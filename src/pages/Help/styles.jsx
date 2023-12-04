@@ -10,34 +10,42 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 24px;
-  padding-top: 24px;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
   
   @media(max-width: 320px) {
     width: 250px;
-    gap: 12px;
-    padding-top: 12px;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    flex-direction: row;
-    justify-content: space-between;
-    padding-top: 0;
-    gap: 0px;
+  @media(min-width: 768px) {
+    width: 28rem;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      flex-direction: row;
+      justify-content: space-between;
+      padding-top: 0;
+      gap: 0px;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
+    width: 62.5rem;
   }
 
   @media(min-width: 1920px) {
-    width: 1200px;
+    width: 75rem;
   }
 `;
 
@@ -47,57 +55,65 @@ export const Left = styled.main`
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  gap: 24px;
+  gap: 1.5rem;
 
-  @media(min-width: 480px) {
-    width: 280px;
-    height: 200px;
-    gap: 0px;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 17.5rem;
+      height: 12.5rem;
+      gap: 0px;
+      justify-content: space-between;
+    }
   }
   
   @media(min-width: 1280px) {
-    width: 480px;
-    height: 400px;
+    width: 30rem;
+    height: 25rem;
     gap: 0;
     align-items: center;
     justify-content: space-between;
   }
 
   @media(min-width: 1920px) {
-    width: 550px;
-    height: 500px;
+    width: 34.375rem;
+    height: 32.25rem;
   }
 `;
 
 export const Right = styled.main`
   display: none;
-  width: 450px;
-  height: 420px;
+  width: 28.125rem;
+  height: 26.25rem;
   border: 2px solid transparent;
-  border-radius: 8px;
+  border-radius: 0.5rem;
 
-  @media(min-width: 480px) {
-    display: block;
-    width: 280px;
-    height: 200px;
-    overflow-y: scroll;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: block;
+      width: 17.5rem;
+      height: 12.5rem;
+      overflow-y: scroll;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 480px;
-    height: 400px;
+    width: 30rem;
+    height: 25rem;
   }
 
   @media(min-width: 1920px) {
-    width: 550px;
-    height: 500px;
+    width: 34.375rem;
+    height: 31.25rem;
   }
 `;
 
 export const TopRight = styled.main`
   width: 100%;
-  padding: 16px 24px;
+  padding: 1rem 1.5rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -106,23 +122,25 @@ export const TopRight = styled.main`
     width: 32px;
   }
 
-  @media(min-width: 480px) {
-    padding: 10px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 0.625rem;
 
-    h2 {
-      font-size: 16px;
-    }
+      h2 {
+        font-size: 1rem;
+      }
 
-    img {
-      width: 15px;
+      img {
+        width: 15px;
+      }
     }
-  }
+}
 
   @media(min-width: 1280px) {
-    padding: 16px;
+    padding: 1rem;
 
     h2 {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -131,12 +149,12 @@ export const MainRight = styled.main``;
 
 export const Items = styled.button`
   all: unset;
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block: 14px;
-  gap: 16px;
+  padding-block: 0.875rem;
+  gap: 1rem;
   justify-content: flex-start;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
@@ -144,43 +162,55 @@ export const Items = styled.button`
   color: ${props => props.theme["gray-700"]};
   cursor: pointer;
 
-  h2 {
-    font-size: 20px;
+  @media(max-width: 320px) {
+    width: 15.625rem;
+    padding-block: 0.5rem;
+    gap: 0.75rem;
   }
 
-  @media(max-width: 320px) {
-    width: 250px;
-    padding-block: 8px;
-    gap: 12px;
+  @media(min-width: 768px) {
+    width: 100%;
+    padding-block: 1rem;
 
     h2 {
-      font-size: 16px;
+      font-size: 1.5rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     width: 100%;
-    padding-block: 10px;
+    padding-block: 1rem;
 
     h2 {
-      font-size: 14px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      padding-block: 0.625rem;
+
+      h2 {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     width: 100%;
-    padding-block: 16px;
+    padding-block: 1rem;
 
     h2 {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 
   @media(min-width: 1440px) {
-    padding-block: 24px;
+    padding-block: 1.5rem;
 
     h2 {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -189,25 +219,35 @@ export const Top = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding-inline: 14px;
+  padding-inline: 0.875rem;
 
   img {
     width: 24px;
   }
 
   @media(max-width: 320px) {
-    padding-inline: 8px;
+    padding-inline: 0.5rem;
 
     img {
       width: 16px;
     }
   }
 
-  @media(min-width: 480px) {
-    padding-inline: 24px;
+  @media(min-width: 768px) {
+    padding-inline: 1rem;
 
     img {
-      width: 15px;
+      width: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-inline: 1.5rem;
+
+      img {
+        width: 15px;
+      }
     }
   }
 
@@ -221,11 +261,11 @@ export const Top = styled.div`
 export const Inside = styled.div`
   display: flex;
   flex-direction: column;
-  padding-inline: 14px;
+  padding-inline: 0.875rem;
   gap: 4px;
 
   p {
-    font-size: 14px;
+    font-size:  0.875rem;
     font-weight: 500;
   }
 
@@ -236,36 +276,46 @@ export const Inside = styled.div`
 
   @media(max-width: 320px) {
     gap: 2px;
-    padding-inline: 8px;
+    padding-inline: 0.5rem;
     
     p {
-      font-size: 12px;
+      font-size: 0.75rem
     }
   }
 
-  @media(min-width: 480px) {
-    padding-inline: 24px;
-
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+    padding-block: 0.625rem;
+    
     p {
-      font-size: 14px;
+      font-size: 1.25rem;
       font-weight: normal;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-inline: 1.5rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 8px;
-    padding-block: 10px;
+    gap: 0.5rem;
+    padding-block: 0.625rem;
     
     p {
-      font-size: 20px;
-      font-weight: normal;
+      font-size: 1.25rem;
     }
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -273,26 +323,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 782px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -314,29 +371,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

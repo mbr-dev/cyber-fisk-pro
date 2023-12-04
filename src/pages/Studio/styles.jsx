@@ -17,21 +17,23 @@ export const Main = styled.main`
   gap: 2rem;
 
   @media(max-width: 320px) {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 500px;
-    height: 100%;
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 24px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 32.25rem;
+      height: 100%;
+      flex-direction: row;
+      align-items: flex-start;
+      gap: 1.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    gap: 64px;
-    padding-top: 32px;
+    width: 62.5rem;
+    gap: 4rem;
+    padding-top: 2rem;
   }
 `;
 
@@ -39,18 +41,20 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 6px;
+  @media(orientation: landscape) {
+    @media(min-width: 480px) {
+      gap: 0.375rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 36px;
+    gap: 2.25rem;
   }
 `;
 
@@ -64,18 +68,25 @@ export const Info = styled.section`
   background-color: ${props => props.theme["gray-700"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    gap: 4px;
+    width: 15.625rem;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 250px;
-    gap: 4px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    gap: 0.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 15.625rem;
+      gap: 0.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 450px;
-    gap: 36px;
+    width: 28.125rem;
+    gap: 2.25rem;
   }
 `;
 
@@ -91,26 +102,36 @@ export const User = styled.div`
   }
 
   @media(max-width: 320px) {
-    margin-top: 6px;
+    margin-top: 0.375rem;
 
     span {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
-  @media(min-width: 480px) {
-    margin-top: 6px;
+  @media(min-width: 768px) {
+    margin-top: 1.5rem;
 
     span {
-      font-size: 16px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 480px) {
+      margin-top: 0.375rem;
+
+      span {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    margin-top: 24px;
+    margin-top: 1.5rem;
 
     span {
-      font-size: 20px;
+      font-size: 1.25rem;
     }
   }
 `;
@@ -156,25 +177,40 @@ export const UserImg = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 58px;
-    height: 58px;
+  @media(min-width: 768px) {
+    width: 5.25rem;
+    height: 5.25rem;
 
     div {
-      height: 20px;
+      height: 4.375rem;
     }
 
     img {
-      width: 24px;
+      width: 72px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 3.625rem;
+      height: 3.625rem;
+
+      div {
+        height: 1.25rem;
+      }
+
+      img {
+        width: 48px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 84px;
-    height: 84px;
+    width: 5.25rem;
+    height: 5.25rem;
 
     div {
-      height: 70px;
+      height: 4.375rem;
     }
 
     img {
@@ -192,12 +228,18 @@ export const UserInfo = styled.div`
     gap: 2rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 32px;
+  @media(min-width: 768px) {
+    gap: 4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 480px) {
+      gap: 2rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 96px;
+    gap: 6rem;
   }
 `;
 
@@ -227,14 +269,14 @@ export const From = styled.div`
   }
 
   @media(max-width: 320px) {
-    gap: 8px;
+    gap: 0.5rem;
 
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
 
     span {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
 
     img {
@@ -242,41 +284,62 @@ export const From = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    gap: 6px;
-
-    img {
-      width: 32px;
-    }
-
-    p {
-      padding: 3px 6px;
-      font-size: 14px;
-      margin-bottom: 4px;
-      border-radius: 4px;
-    }
-
-    span {
-      font-size: 14px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    gap: 16px;
+  @media(min-width: 768px) {
+    gap: 1rem;
 
     img {
       width: 52px;
     }
 
     p {
-      padding: 6px 10px;
-      font-size: 16px;
+      padding: 0.375rem 0.625rem;
+      font-size: 1.25rem;
       margin-bottom: 10px;
       border-radius: 6px;
     }
 
     span {
-      font-size: 16px;
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.375rem;
+
+      img {
+        width: 32px;
+      }
+
+      p {
+        padding: 0.1875rem 0.375rem;
+        font-size: 0.875rem;
+        margin-bottom: 4px;
+        border-radius: 4px;
+      }
+
+      span {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 1rem;
+
+    img {
+      width: 52px;
+    }
+
+    p {
+      padding: 0.375rem 0.625rem;
+      font-size: 1rem;
+      margin-bottom: 10px;
+      border-radius: 6px;
+    }
+
+    span {
+      font-size: 1rem;
     }
   }
 `;
@@ -305,18 +368,29 @@ export const SocialMedia = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    padding-block: 6px;
-    gap: 12px;
+  @media(min-width: 768px) {
+    padding-block: 1.25rem;
+    gap: 1.125rem;
 
     img {
-      width: 20px;
+      width: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.375rem;
+      gap: 0.75rem;
+
+      img {
+        width: 20px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    padding-block: 20px;
-    gap: 18px;
+    padding-block: 1.25rem;
+    gap: 1.125rem;
 
     img {
       width: 32px;
@@ -335,7 +409,7 @@ export const Text = styled.section`
 
   span {
     display: block;
-    font-weight: 400;
+    font-weight: normal;
   }
 
   @media(max-width: 320px) {
@@ -348,28 +422,42 @@ export const Text = styled.section`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 280px;
+  @media(min-width: 768px) {
+    width: 30rem;
 
     p {
-      font-size: 16px;
-      margin-bottom: 0px;
+      font-size: 1.75rem;
     }
 
     span {
-      font-size: 14px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 17.5rem;
+
+      p {
+        font-size: 1rem;
+        margin-bottom: 0px;
+      }
+
+      span {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 480px;
+    width: 30rem;
 
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
 
     span {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -378,16 +466,22 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 
-  @media(min-width: 480px) {
-    gap: 16px;
-    height: 220px;
-    justify-content: center;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1rem;
+      height: 220px;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 32px;
+    gap: 2rem;
     height: 480px;
   }
 `;
@@ -422,8 +516,8 @@ export const ButtonArea = styled.section`
     gap: 1.5rem;
 
     button {
-      width: 36px;
-      height: 36px;
+      width: 2.25rem;
+      height: 2.25rem;
 
       img {
         width: 18px;
@@ -431,25 +525,40 @@ export const ButtonArea = styled.section`
     }
   }
 
-  @media(min-width: 480px) {
-    gap: 32px;
+  @media(min-width: 768px) {
+    gap: 3.25rem;
 
     button {
-      width: 52px;
-      height: 52px;
+      width: 5rem;
+      height: 5rem;
 
       img {
-        width: 20px;
+        width: 32px;
+      }
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 2rem;
+
+      button {
+        width: 3.25rem;
+        height: 3.25rem;
+
+        img {
+          width: 20px;
+        }
       }
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 52px;
+    gap: 3.25rem;
 
     button {
-      width: 100px;
-      height: 100px;
+      width: 6.25rem;
+      height: 6.25rem;
 
       img {
         width: 36px;
@@ -460,7 +569,7 @@ export const ButtonArea = styled.section`
 
 export const ButtonRec = styled.button`
   all: unset;
-  width: 220px;
+  width: 13.75rem;
   height: 3rem;
   display: flex;
   align-items: center;
@@ -485,7 +594,7 @@ export const ButtonRec = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 172px;
+    width: 10.75rem;
     height: 3rem;
 
     img {
@@ -493,27 +602,10 @@ export const ButtonRec = styled.button`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 223px;
-    height: 52px;
-    border-radius: 6px;
-    gap: 10px;
-
-    img {
-      width: 28px;
-      height: 32px;
-    }
-
-    .ruido {
-      width: 130px;
-      height: 52px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 420px;
-    height: 72px;
-    gap: 16px;
+  @media(min-width: 768px) {
+    width: 26rem;
+    height: 3.5rem;
+    gap: 1rem;
 
     img {
       width: 54px;
@@ -521,7 +613,41 @@ export const ButtonRec = styled.button`
     }
 
     .ruido {
-      width: 220px;
+      width: 13rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 15rem;
+      height: 3.25rem;
+      border-radius: 6px;
+      gap: 10px;
+
+      img {
+        width: 28px;
+        height: 32px;
+      }
+
+      .ruido {
+        width: 8.125rem;
+        height: 3.25rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 26.25rem;
+    height: 3.5rem;
+    gap: 1rem;
+
+    img {
+      width: 54px;
+      height: 42px;
+    }
+
+    .ruido {
+      width: 13.75rem;
     }
   }
 `;

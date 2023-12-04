@@ -10,7 +10,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 156px;
+  height: 9.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -30,18 +30,22 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 110px;
+    height: 6.875rem;
   }
 
-  @media(min-width: 480px) {
-    height: 64px;
-    justify-content: center;
-    gap: 0px;
+  @media(min-width: 768px) {
+    height: 10.75rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 4rem;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
-    height: 100px;
-    gap: 0px;
+    height: 6.25rem;
   }
 `;
 
@@ -50,50 +54,52 @@ export const HeaderTop = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 16px;
-  padding-top: 16px;
+  padding-inline: 1rem;
+  padding-top: 1rem;
 
   .logoFiskD {
     display: none;
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    font-size: 18px;
-    padding-inline: 12px;
-    padding-top: 12px;
+    font-size: 1.125rem;
+    padding-inline: 0.75rem;
+    padding-top: 0.75rem;
   }
 
-  @media(min-width: 480px) {
-    padding-top: 0px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-top: 0px;
 
-    .logoFiskD {
-      display: block;
-      width: 80px;
-      margin-left: -250px;
-    }
+      .logoFiskD {
+        display: block;
+        width: 80px;
+        margin-left: -15.625rem;
+      }
 
-    p {
-      font-size: 28px;
-      margin-left: -100px;
+      p {
+        font-size: 1.75rem;
+        margin-left: -100px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    padding-inline: 32px;
+    padding-inline: 2rem;
 
     .logoFiskD {
-      width: 100px;
-      margin-left: -480px;
+      width: 6.25rem;
+      margin-left: -30rem;
     }
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
       margin-left: -100px;
     }
   }
@@ -104,59 +110,67 @@ export const HeaderBottom = styled.header`
   display: flex;
   align-items: flex-start;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
   
   .logoFisk {
     width: 172px;
-    padding-top: 6px;
+    padding-top: 0.375rem;
   }
 
   @media (max-width: 320px) {
-    gap: 10px;
+    gap: 0.625rem;
 
     .logoFisk {
       width: 120px;
     }
   }
 
-  @media (min-width: 480px) {
-    display: none;
+  @media (min-width: 768px) {
+    gap: 3rem;
+    margin-top: -1.5rem;
 
     .logoFisk {
+      width: 220px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
       display: none;
+
+      .logoFisk {
+        display: none;
+      }
     }
   }
 `;
 
 export const Main = styled.div`
   flex: 1;
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media(max-width: 320px) {
-    width: 250px;
+    width: 15.625rem;
   }
 
-  @media(min-width: 480px) {
-    width: 700px;
-    align-items: center;
-    justify-content: flex-start;
-    position: relative;
+  @media(min-width: 768px) {
+    width: 31.25rem;
   }
 
-  /* exemplo do error de tablet */
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 43.75rem;
+      align-items: center;
+      justify-content: flex-start;
+      position: relative;
+    }
+  }
 
-/*   @media(min-width: 768px) {
-    background-color: blue;
-  }
-  @media(min-width: 800px) {
-    background-color: red;
-  }
- */
   @media(min-width: 1280px) {
-    width: 1100px;
+    width: 68.75rem;
   }
 `;
 
@@ -166,31 +180,37 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 14px;
+  gap: 0.875rem;
   justify-content: center;
 
   @media(max-width: 375px) {
-    padding-top: 4px;
-    gap: 4px;
+    padding-top: 0.25rem;
+    gap: 0.25rem;
   }
 
   @media(max-width: 360px) {
-    gap: 12px;
+    gap: 0.625rem;
   }
 
   @media(max-width: 320px) {
-    padding-top: 8px;
-    gap: 8px;
+    padding-top: 0.5rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 480px) {
-    width: 500px;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 31.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 600px;
+    width: 37.5rem;
     padding-top: 0;
-    gap: 32px;
+    gap: 2rem;
   }
 `;
 
@@ -200,34 +220,41 @@ export const Cards = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 12px;
+  gap: 0.75rem;
 
   @media(max-width: 376px) {
-    gap: 10px;
+    gap: 0.625rem;
   }
 
   @media(max-width: 320px) {
-    gap: 8px;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 480px) {
-    width: 280px;
+  @media(min-width: 768px) {
+    gap: 2rem;
   }
 
-  @media(min-width: 1024px) {
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 17.5rem;
+      gap: 0.75rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 100%;
-    gap: 24px;
+    gap: 1.5rem;
   }
 `;
 
 export const Card = styled.a`
-  width: 110px;
-  height: 92px;
+  width: 6.875rem;
+  height: 5.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 4px;
+  gap: 0.5rem;
   border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -242,7 +269,7 @@ export const Card = styled.a`
   p {
     font-weight: 500;
     text-align: center;
-    font-size: 12px;
+    font-size: 0.75rem;
     color: ${props => props.theme.black};
   }
   
@@ -256,15 +283,15 @@ export const Card = styled.a`
   }
 
   @media(max-width: 360px) {
-    width: 100px;
-    height: 78px;
+    width: 6.25rem;
+    height: 4.875rem;
 
     img {
       height: 38px;
     }
 
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
   
@@ -272,10 +299,10 @@ export const Card = styled.a`
     width: 84px;
     height: 56px;
     border-radius: 8px;
-    gap: 2px;
+    gap: 0.125rem;
     
     p {
-      font-size: 10px
+      font-size: 0.625rem;
     }
     
     img {
@@ -283,26 +310,41 @@ export const Card = styled.a`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 72px;
-    height: 64px;
-    border-radius: 10px;
+  @media(min-width: 768px) {
+    width: 8.75rem;
+    height: 8.75rem;
 
     p {
-      font-size: 10px
+      font-size: 1.125rem;
     }
     
     img {
-      height: 24px;
+      height: 64px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 480px) {
+      width: 4.5rem;
+      height: 4rem;
+      border-radius: 10px;
+
+      p {
+        font-size: 0.625rem;
+      }
+      
+      img {
+        height: 24px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 140px;
-    height: 140px;
+    width: 8.75rem;
+    height: 8.75rem;
 
     p {
-      font-size: 18px
+      font-size: 1.125rem;
     }
     
     img {
@@ -314,7 +356,7 @@ export const Card = styled.a`
 export const ButtonDayCh = styled.button`
   all: unset;
   width: 100%;
-  height: 68px;
+  height: 4.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -340,7 +382,7 @@ export const ButtonDayCh = styled.button`
   }
 
   @media(max-width: 360px) {
-    height: 58px;
+    height: 3.625rem;
 
     img {
       width: 220px;
@@ -348,33 +390,43 @@ export const ButtonDayCh = styled.button`
   }
 
   @media(max-width: 320px) {
-    height: 52px;
+    height: 3.25rem;
     
     img {
       width: 190px;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 280px;
-    height: 32px;
+  @media(min-width: 768px) {
+    height: 6.25rem;
 
     img {
-      width: 200px;
+      width: 372px;
     }
+  }
 
-    .btnChMobile {
-      display: none;
-    }
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 17.5rem;
+      height: 2rem;
 
-    .btnChDesk {
-      display: block;
+      img {
+        width: 200px;
+      }
+
+      .btnChMobile {
+        display: none;
+      }
+
+      .btnChDesk {
+        display: block;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     width: 100%;
-    height: 100px;
+    height: 6.25rem;
 
     img {
       width: 500px;
@@ -385,31 +437,33 @@ export const ButtonDayCh = styled.button`
 export const Right = styled.div`
   display: none;
 
-  @media(min-width: 480px) {
-    display: flex;
-    width: 40%;
-    height: 100%;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    scale: 0.8;
-    position: absolute;
-    right: 0;
-    bottom: -18px;
-
-    .bgAvatarImg {
-      width: 100%;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      display: flex;
+      width: 40%;
       height: 100%;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      scale: 0.8;
       position: absolute;
-      top: 0;
-      left: 0;
-      z-index: -1;
+      right: 0;
+      bottom: -1.125rem;
+
+      .bgAvatarImg {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     scale: 0.8;
-    bottom: -48px;
+    bottom: -3rem;
   }
 
   @media(min-width: 1440px) {
@@ -418,6 +472,6 @@ export const Right = styled.div`
   }
 
   @media(min-width: 1920px) {
-    bottom: 64px;
+    bottom: 4rem;
   }
 `;

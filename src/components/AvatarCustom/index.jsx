@@ -11,7 +11,7 @@ import pernasImg from "./images/Pernas/Pernas_Branco_1_Azul.png";
 
 import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name } from "./styles";
 
-export const AvatarCustom = ({ hasName }) => {
+export const AvatarCustom = ({ hasName, avatar }) => {
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -23,7 +23,10 @@ export const AvatarCustom = ({ hasName }) => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{
+      marginTop: avatar && "0px",
+      position: "absolute"
+    }}>
       <Antena>
         <img src={antenaImg} alt="" />
       </Antena>

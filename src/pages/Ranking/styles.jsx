@@ -14,27 +14,29 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
-  gap: 8px;
+  padding-top: 1rem;
+  gap: 0.5rem;
 
   @media(max-width: 320px) {
-    padding-top: 6px;
-    gap: 6px;
+    padding-top: 0.625rem;
+    gap: 0.625rem;
   }
 
-  @media(min-width: 480px) {
-    padding-top: 6px;
-    gap: 8px;
+  @media(min-width: 768px) {
+    padding-top: 1rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-top: 0.625rem;
+      gap: 0.5rem
+    }
   }
 
   @media(min-width: 1280px) {
-    padding-top: 32px;
-    gap: 52px;
-  }
-
-  @media(min-width: 1920px) {
-    padding-top: 32px;
-    gap: 120px;
+    padding-top: 2rem;
+    gap: 3.25rem;
   }
 `;
 
@@ -44,7 +46,7 @@ export const MainTop = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 12px;
+  gap: 0.75rem;
   text-align: center;
 `;
 
@@ -57,62 +59,79 @@ export const ButtonRakingArea = styled.div`
 
 const ButtonRaking = styled.button`
   all: unset;
-  width: 100px;
-  height: 32px;
+  width: 6.25rem;
+  height: 2rem;
   color: ${props => props.theme["gray-700"]};
   background-color: ${props => props.theme.white};
   font-weight: 500;
 
-  @media(min-width: 480px) {
-    width: 100px;
-    height: 32px;
+  @media(min-width: 768px) {
+    width: 9.375rem;
+    height: 3.25rem;
     padding: 0;
-    font-size: 16px;
+    font-size: 1.75rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100px;
+      height: 2rem;
+      padding: 0;
+      font-size: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 150px;
-    height: 52px;
+    width: 9.375rem;
+    height: 3.25rem;
     padding: 0;
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 `;
 
 export const ButtonNational  = styled(ButtonRaking)`
-  border-top-left-radius: 8px;
-  border-bottom-left-radius: 8px;
+  border-top-left-radius: 0.5rem;
+  border-bottom-left-radius: 0.5rem;
 
-  @media(min-width: 480px) {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      border-top-left-radius: 0.375rem;
+      border-bottom-left-radius: 0.375rem;
+    }
   }
 `;
 
 export const ButtonUnit  = styled(ButtonRaking)`
-  border-top-right-radius: 8px;
-  border-bottom-right-radius: 8px;
+  border-top-right-radius: 0.5rem;
+  border-bottom-right-radius: 0.5rem;
 
-  @media(min-width: 480px) {
-    border-top-left-radius: 6px;
-    border-bottom-left-radius: 6px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      border-top-left-radius: 0.375rem;
+      border-bottom-left-radius: 0.375rem;
+    }
   }
 `;
 
 export const DivMobile = styled.div`
-  @media (min-width: 480px) {
-    display: none;
+ @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: none;
+    }
   }
 `;
 
 export const DivDesk = styled.div`
   width: 100%;
-  padding-inline: 16px;
+  padding-inline: 1rem;
   display: none;
 
-  @media (min-width: 480px) {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
   }
 `;
 
@@ -150,15 +169,25 @@ export const CoinArea = styled.div`
       width: 32px;
     }
   }
+
+  @media(min-width: 768px) {
+    img {
+      width: 48px;
+    }
+
+    .gold {
+      width: 64px;
+    }
+  }
 `;
 
 export const Carrousel = styled.div`
   width: 100%;
-  height: 120px;
+  height: 7.5rem;
 
   @media (min-width: 1280px) {
     width: 98%;
-    height: 180px;
+    height: 11.25rem;
   }
 `;
 
@@ -242,7 +271,7 @@ export const TextArea = styled.div`
   h2 {
     font-weight: bold;
     color: ${props => props.theme["red-200"]};
-    margin-bottom: 6px;
+    margin-bottom: 0.375rem;
   }
 
   p {
@@ -251,56 +280,73 @@ export const TextArea = styled.div`
 
   @media(max-width: 320px) {
     h2 {
-      font-size: 20px;
+      font-size: 1.25rem;
       margin-bottom: 0;
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     h2 {
-      font-size: 16px;
-      margin-bottom: 4px;
+      font-size: 2.5rem;
+      margin-bottom: 0.5rem;
     }
 
     p {
-      font-size: 12px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      h2 {
+        font-size: 1rem;
+        margin-bottom: 0.25rem;
+      }
+
+      p {
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     h2 {
-      font-size: 52px;
-      margin-bottom: 16px;
+      font-size: 3.25rem;
+      margin-bottom: 1rem;
     }
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 
   @media(min-width: 1440px) {
-    margin-top: 32px;
+    margin-top: 2rem;
   }
 `;
 
 export const MainBottom = styled.section`
   width: 100vw;
-  height: 330px;
+  height: 20.625rem;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   background-color: ${props => props.theme["gray-100"]};
 
   @media(max-width: 360px) {
-    height: 290px;
+    height: 18.125rem;
   }
 
   @media(max-width: 320px) {
-    height: 200px;
+    height: 12.5rem;
+  }
+
+  @media(min-width: 768px) {
+    height: 28rem;
   }
 `;
 
@@ -309,7 +355,7 @@ export const LevelPosition = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 1rem 2rem;
   background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme["gray-100"]};
 
   p {
@@ -328,13 +374,26 @@ export const LevelPosition = styled.section`
   }
 
   @media(max-width: 320px) {
-    padding: 8px 24px;
+    padding: 0.5rem 1.5rem;
+  }
+
+  @media(min-width: 768px) {
+    padding: 1.5rem 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+
+    span {
+      width: 12rem;
+      font-size: 1.5rem;
+    }
   }
 `;
 
 export const AvatarArea = styled.section`
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -343,20 +402,25 @@ export const AvatarArea = styled.section`
   border: 1px solid ${props => props.theme["red-200"]};
   overflow: hidden;
 
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+  }
+
   @media (min-width: 1280px) {
-    width: 72px;
-    height: 72px;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   @media (min-width: 1440px) {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -364,26 +428,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    height: 120px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -405,29 +476,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 56px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;
