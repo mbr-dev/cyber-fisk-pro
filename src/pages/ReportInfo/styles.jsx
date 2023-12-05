@@ -165,7 +165,8 @@ export const Avatar = styled.div`
   }
 `;
 
-export const Print = styled.div`
+export const Print = styled.button`
+  all: unset;
   width: 3rem;
   height: 3rem;
   display: flex;
@@ -175,11 +176,16 @@ export const Print = styled.div`
   gap: 0.125rem;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 6px;
+  transition: all ease 0.2s;
   cursor: pointer;
 
   p {
     font-size: 0.675rem;
     text-align: center;
+  }
+
+  &:hover {
+    scale: 1.05;
   }
 
   img {

@@ -54,6 +54,10 @@ export const ReportInfo = () => {
     navigate("/Home");
   }
 
+  const handlePrint = () => {
+    navigate("/PrintReport");
+  }
+
   return (
     <Container>
       <HeaderText title="Report" />
@@ -67,7 +71,7 @@ export const ReportInfo = () => {
               </Avatar>
               <p>Carlos Alberto</p>
             </AvatarInfo>
-            <Print>
+            <Print onClick={handlePrint}>
               <img src={PrintImg} alt="" />
               <p>Print Report</p>
             </Print>

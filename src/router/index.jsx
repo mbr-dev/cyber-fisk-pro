@@ -26,6 +26,7 @@ import { Billboard } from "../pages/Billboard";
 import { StudioList } from "../pages/StudioList";
 import { ReportInfo } from "../pages/ReportInfo";
 import { MessageOpen } from "../pages/MessageOpen";
+import { PrintReport } from "../pages/PrintReport";
 import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
 import { SelectLesson } from "../pages/selectLesson";
@@ -124,6 +125,7 @@ export const Router =() => {
       <Route path="/Billboard" element={<Billboard />}/>
       <Route path="/StudioList" element={<StudioList />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
+      <Route path="/PrintReport" element={<PrintReport />}/>
       <Route path="/MessageOpen" element={<MessageOpen />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
       <Route path="/ReportLesson" element={<ReportLesson />}/>
