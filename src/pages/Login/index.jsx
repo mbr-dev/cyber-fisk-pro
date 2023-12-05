@@ -42,8 +42,6 @@ export const Login = () => {
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState(false);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
   }
@@ -161,7 +159,7 @@ export const Login = () => {
       </Header>
 
       <Main>
-        <Form onKeyDown={(e) => {e.keyCode === 13 ? handleSignIn() : null}}>
+        <Form id="myForm" onKeyDown={(e) => {e.keyCode === 13 ? handleSignIn() : null}}>
           {error ? 
             <Notifications description={msgError} event={clickAlert}/> : null
           }

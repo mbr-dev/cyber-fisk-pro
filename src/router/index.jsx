@@ -23,6 +23,7 @@ import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
 import { Billboard } from "../pages/Billboard";
+import { StudioList } from "../pages/StudioList";
 import { ReportInfo } from "../pages/ReportInfo";
 import { MessageOpen } from "../pages/MessageOpen";
 import { ReportLesson } from "../pages/ReportLesson";
@@ -121,6 +122,7 @@ export const Router =() => {
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
       <Route path="/Billboard" element={<Billboard />}/>
+      <Route path="/StudioList" element={<StudioList />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
       <Route path="/MessageOpen" element={<MessageOpen />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>

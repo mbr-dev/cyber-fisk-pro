@@ -334,6 +334,8 @@ export const Input = styled.input`
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
   color: ${props => props.theme["gray-600"]};
+  font-weight: normal;
+  font-size: 1rem;
 
   &::placeholder {
     font-weight: normal;
@@ -353,6 +355,7 @@ export const Input = styled.input`
   @media(min-width: 768px) {
     height: 3.75rem;
     padding-left: 2.75rem;
+    font-size: 1.5rem;
 
     &::placeholder {
       font-size: 1.5rem;
@@ -362,6 +365,7 @@ export const Input = styled.input`
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       height: 2.25rem;
+      font-size: 1rem;
 
       &::placeholder {
         font-size: 1rem;
@@ -372,6 +376,7 @@ export const Input = styled.input`
   @media(min-width: 1280px) {
     height: 3.75rem;
     padding-left: 2.625rem;
+    font-size: 1.5rem;
 
     &::placeholder {
       font-size: 1.5rem;

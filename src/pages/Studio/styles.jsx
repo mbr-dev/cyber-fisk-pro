@@ -468,6 +468,10 @@ export const Left = styled.div`
   align-items: center;
   gap: 1rem;
 
+  .hasBorder {
+    border-color: ${props => props.theme["red-200"]};
+  }
+
   @media(min-width: 768px) {
     gap: 2rem;
   }
@@ -490,6 +494,10 @@ export const ButtonArea = styled.section`
   display: flex;
   gap: 2rem;
 
+  .hasBorder {
+    border-color: ${props => props.theme["gray-700"]};
+  }
+
   button {
     all: unset;
     width: 3rem;
@@ -507,8 +515,17 @@ export const ButtonArea = styled.section`
       width: 22px;
     }
 
+    .microImg {
+      width: 32px;
+    }
+
     &:hover {
       scale: 1.05;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.3;
     }
   }
 
@@ -522,6 +539,10 @@ export const ButtonArea = styled.section`
       img {
         width: 18px;
       }
+
+      .microImg {
+        width: 28px;
+      }
     }
   }
 
@@ -534,6 +555,10 @@ export const ButtonArea = styled.section`
 
       img {
         width: 32px;
+      }
+
+      .microImg {
+        width: 48px;
       }
     }
   }
@@ -549,6 +574,10 @@ export const ButtonArea = styled.section`
         img {
           width: 20px;
         }
+
+        .microImg {
+          width: 30px;
+        }
       }
     }
   }
@@ -563,8 +592,16 @@ export const ButtonArea = styled.section`
       img {
         width: 36px;
       }
+
+      .microImg {
+        width: 54px;
+      }
     }
   }
+`;
+
+export const Hide = styled.div`
+  display: none;
 `;
 
 export const ButtonRec = styled.button`
@@ -585,12 +622,21 @@ export const ButtonRec = styled.button`
     height: 24px;
   }
 
+  .hasBorder {
+    border-color: ${props => props.theme["red-200"]};
+  }
+
   .ruido {
     width: 70%;
   }
 
   &:hover {
     scale: 1.05;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.3;
   }
 
   @media(max-width: 320px) {

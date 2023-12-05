@@ -564,7 +564,7 @@ export const Footer = styled.div`
 
 export const BottomFooter = styled.button`
   all: unset;
-  width: 10rem;
+  width: 8.25rem;
   height: 2.25rem;
   display: flex;
   align-items: center;

@@ -41,6 +41,15 @@ export const Container = styled.button`
     }
   }
 
+  @media(min-width: 1024px) {
+    width: 2.625rem;
+    height: 2.625rem;
+
+    img {
+      width: 22px;
+    }
+  }
+
   @media(min-width: 1280px) {
     width: 3rem;
     height: 3rem;

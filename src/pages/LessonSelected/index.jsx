@@ -65,7 +65,7 @@ export const LessonSelected = () => {
   }
 
   const handleGoStudio = () => {
-    navigate("/Studio");
+    navigate("/StudioList");
   }
   
   const verificaTask = async () => {

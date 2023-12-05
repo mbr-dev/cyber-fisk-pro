@@ -47,9 +47,12 @@ export const Header = styled.header`
     }
   }
 
+  @media(min-width: 1024px) {
+    height: 5.375rem;
+  }
+
   @media(min-width: 1280px) {
     height: 6.25rem;
-    gap: 0px;
   }
 `;
 
@@ -58,8 +61,8 @@ export const HeaderTop = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 16px;
-  padding-top: 16px;
+  padding-inline: 1rem;
+  padding-top: 1rem;
 
   .logoFiskD {
     display: none;
@@ -104,22 +107,34 @@ export const HeaderTop = styled.header`
     }
   }
 
+  @media(min-width: 1024px) {
+    .logoFiskD {
+      width: 100px;
+      margin-left: -21.875rem;
+    }
+
+    p {
+      font-size: 1.75rem;
+      margin-left: -6.25rem;
+    }
+  }
+
   @media(min-width: 1280px) {
     .logoFiskD {
       width: 100px;
-      margin-left: -480px;
+      margin-left: -30rem;
     }
 
     p {
       font-size: 2rem;
-      margin-left: -100px;
+      margin-left: -6.25rem;
     }
   }
 
   @media(min-width: 1920px) {
     .logoFiskD {
       width: 100px;
-      margin-left: -800px;
+      margin-left: -50rem;
     }
   }
 `;
@@ -623,6 +638,11 @@ export const AreaFooter = styled.div`
     }
   }
 
+  @media(min-width: 1024px) {
+    width: 43.75rem;
+    height: 5rem;
+  }
+
   @media(min-width: 1280px) {
     width: 75rem;
     height: 6.25rem;
@@ -681,6 +701,15 @@ export const ButtonHome = styled.button`
       p {
         font-size: 1.125rem;
       }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 20rem;
+    height: 2.5rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 
