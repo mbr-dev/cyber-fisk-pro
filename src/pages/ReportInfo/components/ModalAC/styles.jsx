@@ -31,12 +31,18 @@ export const Content = styled(Dialog.Content)`
     width: 18rem;
   }
 
-  @media(min-width: 480px) {
-    width: 450px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 28.125rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
+    width: 62.5rem;
   }
 `;
 
@@ -48,8 +54,8 @@ export const Close = styled(Dialog.Close)`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -15px;
-  right: -10px;
+  top: -0.9375;
+  right: -0.625rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
@@ -62,21 +68,38 @@ export const Close = styled(Dialog.Close)`
     height: 1.5rem;
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    top: -18px;
-    right: -16px;
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
+    
+    img {
+      width: 32px;
+    }
   }
 
-  @media(min-width: 1280px) {
-    width: 64px;
-    height: 64px;
-    top: -32px;
-    right: -32px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      top: -1.125rem;
+      right: -0.625rem;
 
+      img {
+        width: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
+    
     img {
-      width: 28px;
+      width: 32px;
     }
   }
 `;
@@ -99,11 +122,27 @@ export const CloseEnter = styled(Dialog.Close)`
     height: 1.75rem;
   }
 
+  @media(min-width: 768px) {
+    height: 3.25rem;
+    width: 18.75rem;
+    font-size: 2rem;
+    margin-bottom: -1.75rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 8rem;
+      height: 2rem;
+      font-size: 1rem;
+      margin-bottom: -1rem;
+    }
+  }
+
   @media(min-width: 1280px) {
-    height: 52px;
-    width: 300px;
-    font-size: 32px;
-    margin-bottom: -28px;
+    height: 3.25rem;
+    width: 18.75rem;
+    font-size: 2rem;
+    margin-bottom: -1.75rem;
   }
 `;
 
@@ -131,19 +170,29 @@ export const Header = styled.header`
     font-size: 1rem;
   }
 
-  @media(min-width: 480px) {
-    padding-block: 8px;
-    
+  @media(min-width: 768px) {
+    padding-block: 0.75rem;
+
     p {
-      font-size: 16px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.5rem;
+      
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    padding-block: 12px;
+    padding-block: 0.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;
@@ -179,34 +228,41 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 480px) {
-    padding-inline: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    gap: 0px;
-
+  @media(min-width: 768px) {
     p {
-      font-size: 12px;
-      font-weight: 700;
+      font-size: 2rem;
     }
 
     span {
-      font-size: 12px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-inline: 0;
+      margin-top: 0;
+      padding-bottom: 0;
+      gap: 0px;
+
+      p {
+        font-size: 0.75rem;
+        font-weight: 700;
+      }
+
+      span {
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    padding-inline: 0;
-    margin-top: 0;
-    padding-bottom: 0;
-    gap: 0px;
-
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
 
     span {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;
@@ -220,7 +276,7 @@ export const Text = styled.div`
 
   @media (min-width: 1280px) {
     p {
-      margin-bottom: 24px;
+      margin-bottom: 1.5rem;
     }
   }
 `;
@@ -236,21 +292,32 @@ export const Separator = styled.div`
     font-size: 1.5rem;
   }
 
-  @media (min-width: 480px) {
-    padding-block: 6px;
-    margin-block: 6px;
+  @media (min-width: 768px) {
+    padding-block: 1rem;
+    margin-block: 1rem;
 
     h2 {
-      font-size: 20px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.375rem;
+      margin-block: 0.375rem;
+
+      h2 {
+        font-size: 1.25rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
-    padding-block: 16px;
-    margin-block: 16px;
+    padding-block: 1rem;
+    margin-block: 1rem;
 
     h2 {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

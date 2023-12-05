@@ -4,7 +4,7 @@ import { LineSeparator } from "../../../../components/LineSeparator";
 
 import xImg from "../../../../assets/xImg.png";
 
-import { Content, Overlay, Close, CloseEnter, Main, Header, Div, DivRow, Input, DivInside, DivCheck } from "./styles";
+import { Content, Overlay, Close, Enter, Main, Header, Div, DivRow, Input, DivInside, DivCheck } from "./styles";
 import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
@@ -46,7 +46,7 @@ export const Modal = () => {
               <p>Only from coordinators</p>
             </DivCheck>
           </DivRow>
-          <CloseEnter>Filter</CloseEnter>
+          <Enter>Filter</Enter>
         </Main>
       </Content>
     </Dialog.Portal>

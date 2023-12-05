@@ -59,6 +59,14 @@ export const LessonSelected = () => {
   const handleGoHome = () => {
     navigate("/Home");
   }
+
+  const handleGoAudio = () => {
+    navigate("/Audio");
+  }
+
+  const handleGoStudio = () => {
+    navigate("/Studio");
+  }
   
   const verificaTask = async () => {
     setIsLoading(true);
@@ -135,7 +143,7 @@ export const LessonSelected = () => {
 
         <ButtonAreaBottom>
           <BottomLeft>
-            <ButtonBottom>
+            <ButtonBottom onClick={handleGoAudio}>
               <img src={foneImg} alt="" />
               <p>Audio</p>
             </ButtonBottom>
@@ -147,7 +155,7 @@ export const LessonSelected = () => {
           </BottomLeft>
 
           <BottomRight>
-            <ButtonBottom>
+            <ButtonBottom onClick={handleGoStudio}>
               <img src={studioImg} alt="" />
               <p>Studio</p>
             </ButtonBottom>

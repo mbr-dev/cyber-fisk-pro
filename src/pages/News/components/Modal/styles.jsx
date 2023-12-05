@@ -11,7 +11,7 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
-  height: 300px;
+  height: 18.75rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -24,53 +24,76 @@ export const Content = styled(Dialog.Content)`
 
   @media(max-width: 320px) {
     width: 18rem;
-    height: 250px;
+    height: 15.625rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    height: 25rem;
   }
 `;
 
 export const Close = styled(Dialog.Close)`
-  all: unset;
+   all: unset;
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 1.75rem;
+  height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.75rem;
-  right: -0.75rem;
+  top: -0.9375;
+  right: -0.625rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
   img {
-    width: 20px;
+    width: 16px;
   }
 
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
-    top: -0.5rem;
-    right: -0.5rem;
+  }
 
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
+    
     img {
-      width: 16px;
+      width: 32px;
     }
   }
 
-  @media(min-width: 768px) {
-    width: 64px;
-    height: 64px;
-    top: -30px;
-    right: -30px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      top: -1.125rem;
+      right: -0.625rem;
 
+      img {
+        width: 16px;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 4rem;
+    height: 4rem;
+    top: -1.875rem;
+    right: -1.875rem;
+    
     img {
       width: 32px;
     }
   }
 `;
 
-export const CloseEnter = styled(Dialog.Close)`
+export const Enter = styled.button`
   all: unset;
-  width: 200px;
+  width: 12.5rem;
   height: 2rem;
   display: flex;
   align-items: center;
@@ -84,11 +107,17 @@ export const CloseEnter = styled(Dialog.Close)`
   @media(max-width: 320px) {
     height: 1.75rem;
   }
+
+  @media(min-width: 768px) {
+    height: 3rem;
+    width: 18.75rem;
+    font-size: 2rem;
+  }
 `;
 
 export const Header = styled.header`
   width: 100%;
-  height: 58px;
+  height: 3.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -98,19 +127,27 @@ export const Header = styled.header`
   border-end-start-radius: 8px;
 
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
     p {
-     font-size: 18px;
+     font-size: 1.125rem;
+    }
+  }
+
+  @media(min-width: 768px) {
+    height: 4.5rem;
+
+    p {
+      font-size: 2rem;
     }
   }
 `;
 
 export const Main = styled.main`
-  width: 280px;
+  width: 17.5rem;
   height: 100%;
   text-align: center;
   display: flex;
@@ -119,7 +156,11 @@ export const Main = styled.main`
   justify-content: space-around;
 
   @media(max-width: 320px) {
-    width: 250px;
+    width: 15.625rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 22.5rem;
   }
 `;
 
@@ -127,19 +168,23 @@ export const DivRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 
   @media(max-width: 320px) {
-    gap: 8px;
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 768px) {
+    gap: 1.5rem;
   }
 `;
 
 export const DivInside = styled.div`
   display: flex;
-  gap: 24px;
+  gap: 1.5rem;
 
   @media(max-width: 320px) {
-    gap: 20px;
+    gap: 1.25rem;
   }
 `;
 
@@ -147,17 +192,24 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 4px;
+  gap: 0.25rem;
 
   p {
     font-weight: 500;
-    font-size: 14px;
-    padding-left: 16px;
+    font-size: 0.875rem;
+    padding-left: 1rem;
   }
 
   @media(max-width: 320px) {
     p {
-      padding-left: 12px;
+      padding-left: 0.75rem;
+    }
+  }
+
+  @media(min-width: 768px) {
+    p {
+      font-size: 1.5rem;
+      padding-left: 1rem;
     }
   }
 `;
@@ -165,7 +217,7 @@ export const Div = styled.div`
 export const Input = styled.input`
   all: unset;
   width: 100%;
-  height: 36px;
+  height: 2.25rem;
   border-radius: 8px;
   border: 2px solid ${props => props.theme["gray-200"]};
 
@@ -174,24 +226,40 @@ export const Input = styled.input`
   }
 
   @media(max-width: 320px) {
-    height: 32px;
-    font-size: 14px;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+
+  @media(min-width: 768px) {
+    height: 3rem;
+    font-size: 1.25rem;
   }
 `;
 
 export const DivCheck = styled.div`
   display: flex;
-  gap: 10px;
+  gap: 0.625rem;
 
   p {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 700;
     color: ${props => props.theme["gray-700"]};
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.5rem;
+    }
+
+    input[type="checkbox"] {
+      width: 1.75rem;
+      height: 1.75rem;
     }
   }
 `;

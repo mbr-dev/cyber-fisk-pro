@@ -21,8 +21,14 @@ export const Main = styled.main`
     padding-bottom: 6px;
   }
 
-  @media(min-width: 480px) {
-    flex-direction: row;
+  @media(min-width: 768px) {
+    justify-content: flex-start;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
@@ -32,18 +38,20 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media(min-width: 480px) {
-    width: 50%;
-    height: 200px;
-    justify-content: flex-start;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+      height: 12.5rem;
+      justify-content: flex-start;
+    }
   }
 
   @media(min-width: 1280px) {
-    height: 500px;
+    height: 31.25rem;
   }
 
   @media(min-width: 1440px) {
-    height: 650px;
+    height: 40.625rem;
   }
 `;
 
@@ -52,22 +60,30 @@ export const AvatarArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 16px 32px;
+  padding: 1rem 2rem;
 
   @media(max-width: 320px) {
-    padding: 8px 20px;
+    padding: 0.5rem 1.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 100%;
-    padding: 8px;
-    justify-content: center;
-    gap: 54px;
+  @media(min-width: 768px) {
+    width: 80%;
+    padding: 1rem 2rem;
+    justify-content: space-between;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      padding: 0.5rem;
+      justify-content: center;
+      gap: 3.375rem;
+    }
   }
   
   @media(min-width: 1280px) {
     width: 80%;
-    padding: 16px 32px;
+    padding: 1rem 2rem;
     justify-content: space-between;
   }
 `;
@@ -84,30 +100,40 @@ export const AvatarInfo = styled.div`
 
   @media(max-width: 320px) {
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
-    gap: 10px;
+  @media(min-width: 768px) {
+    gap: 1.25rem;
 
     p {
-      font-size: 14px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.625rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 20px;
+    gap: 1.25rem;
 
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const Avatar = styled.div`
-  width: 48px;
-  height: 48px;
+  width: 3rem;
+  height: 3rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -116,14 +142,26 @@ export const Avatar = styled.div`
   border: 1px solid ${props => props.theme["red-200"]};
   overflow: hidden;
 
+  @media (min-width: 768px) {
+    width: 4.5rem;
+    height: 4.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 3rem;
+      height: 3rem;
+    }
+  }
+
   @media (min-width: 1280px) {
-    width: 72px;
-    height: 72px;
+    width: 4.5rem;
+    height: 4.5rem;
   }
 
   @media (min-width: 1440px) {
-    width: 100px;
-    height: 100px;
+    width: 6.25rem;
+    height: 6.25rem;
   }
 `;
 
@@ -135,7 +173,6 @@ export const Print = styled.div`
   align-items: center;
   justify-content: center;
   gap: 0.125rem;
- 
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 6px;
   cursor: pointer;
@@ -150,11 +187,11 @@ export const Print = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 36px;
-    height: 36px;
+    width: 1.25rem;
+    height: 1.25rem;
 
     p {
-      font-size: 8px;
+      font-size: 0.5rem;
     }
 
     img {
@@ -162,27 +199,43 @@ export const Print = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    gap: 0;
+  @media(min-width: 768px) {
+    width: 5.25rem;
+    height: 5.25rem;
+    gap: 0.375rem;
 
     p {
-      font-size: 6px;
+      font-size: 0.75rem;
     }
 
     img {
-      width: 12px;
+      width: 36px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      gap: 0;
+
+      p {
+        font-size: 0.375rem;
+      }
+
+      img {
+        width: 12px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 84px;
-    height: 84px;
-    gap: 6px;
+    width: 5.25rem;
+    height: 5.25rem;
+    gap: 0.375rem;
 
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
 
     img {
@@ -193,8 +246,8 @@ export const Print = styled.div`
 
 export const XP = styled.div`
   width: 100%;
-  height: 60px;
-  padding-inline: 32px;
+  height: 3.75rem;
+  padding-inline: 2rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -203,15 +256,21 @@ export const XP = styled.div`
   background-color: ${props => props.theme["gray-100"]};
 
   @media(max-width: 320px) {
-    height: 42px;
+    height: 2.625rem;
   }
 
-  @media(min-width: 480px) {
-    height: 36px;
+  @media(min-width: 768px) {
+    height: 4.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 3.75rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    height: 72px;
+    height: 4.5rem;
   }
 `;
 
@@ -222,10 +281,10 @@ export const XPDiv = styled.div`
   justify-content: space-between;
 
   @media(max-width: 320px) {
-    width: 250px;
+    width: 15.625rem;
   }
 
-  @media(min-width: 480px) {
+  @media (min-width: 768px) {
     width: 80%;
   }
 `;
@@ -245,41 +304,55 @@ export const XPInside = styled.div`
   gap: 0.5rem;
 
   span {
+    font-size: 1rem;
     color: ${props => props.theme["red-200"]};
   }
 
   p {
+    font-size: 1rem;
     color: ${props => props.theme["gray-700"]};
     font-weight: 500;
   }
 
   @media(max-width: 320px) {
     span {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     span {
-      font-size: 12px;
+      font-size: 1.5rem;
     }
     
     p {
-      font-size: 12px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      span {
+        font-size: 0.75rem;
+      }
+      
+      p {
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     span {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
     
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -306,19 +379,27 @@ export const XPRight = styled.div`
 
   @media(max-width: 320px) {
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     p {
-      font-size: 16px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -328,20 +409,26 @@ export const Stage = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0 32px;
+  padding: 0 2rem;
 
   @media(max-width: 320px) {
-    padding: 4px 10px;
+    padding: 0.25rem 0.625rem;
   }
 
-  @media(min-width: 480px) {
-    width: 80%;
-    padding: 0;
-    padding-block: 6px;
+  @media(min-width: 768px) {
+    padding: 0 4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 80%;
+      padding: 0;
+      padding-block: 0.375rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    padding-block: 32px;
+    padding-block: 2rem;
   }
 `;
 
@@ -361,25 +448,36 @@ export const SLeft = styled.div`
     height: 60px;
 
       h2 {
-      font-size: 10px;
+      font-size: 0.625rem;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 120px;
-    height: 86px;
+  @media(min-width: 768px) {
+    width: 15.625rem;
+    height: 11.25rem;
 
     h2 {
-      font-size: 16px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 7.5rem;
+      height: 5.375rem;
+
+      h2 {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 300px;
-    height: 250px;
+    width: 18.75rem;
+    height: 15.625rem;
 
     h2 {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -405,38 +503,50 @@ export const SRight = styled.div`
 
   @media(max-width: 320px) {
     span {
-      font-size: 16px;
+      font-size: 1rem;
     }
     
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     span {
-      font-size: 16px;
+      font-size: 1.75rem;
     }
     
     p {
-      font-size: 16px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      span {
+        font-size: 1rem;
+      }
+      
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     span {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
     
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
 
 export const Details = styled.div`
   width: 100%;
-  height: 220px;
+  height: 13.75rem;
   padding-inline: 2rem;
   padding-top: 0.5rem;
   display: flex;
@@ -447,25 +557,34 @@ export const Details = styled.div`
   overflow-y: scroll;
 
   @media(max-width: 320px) {
-    height: 160px;
-    padding-inline: 16px;
-    padding-top: 6px;
+    height: 10rem;
+    padding-inline: 1rem;
+    padding-top: 0.375rem;
   }
 
-  @media(min-width: 480px) {
-    width: 50%;
-    height: 200px;
-    padding-inline: 36px;
+  @media(min-width: 768px) {
+    height: 20rem;
+    margin-top: 2rem;
+    padding-inline: 7rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 50%;
+      height: 12.50rem;
+      margin-top: 0rem;
+      padding-inline: 2.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
     width: 50%;
-    height: 500px;
-    padding-inline: 52px;
+    height: 31.25rem;
+    padding-inline: 3.25rem;
   }
 
   @media(min-width: 1440px) {
-    height: 650px;
+    height: 40.625rem;
   }
 `;
 
@@ -495,22 +614,31 @@ export const DivBar = styled.div`
 
   @media(max-width: 320px) {
     p {
-      padding: 3px 4px;
-      font-size: 10px;
+      padding: 0.1875rem 0.25rem;
+      font-size: 0.625rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     p {
-      padding: 4px 10px;
-      font-size: 12px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      p {
+        padding: 0.25rem 0.625rem;
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     p {
-      padding: 8px 12px;
-      font-size: 16px;
+      padding: 0.5rem 0.75rem;
+      font-size: 1rem;
     }
   }
 `;
@@ -522,18 +650,25 @@ export const Bar = styled.div`
   position: relative;
 
   @media(max-width: 320px) {
-    width: 36px;
-    height: 52px;
+    width: 2.25rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 52px;
-    height: 80px;
+  @media(min-width: 768px) {
+    width: 4.5rem;
+    height: 6.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 3.25rem;
+      height: 5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 64px;
-    height: 100px;
+    width: 4rem;
+    height: 6.25rem;
   }
 `;
 
@@ -555,19 +690,27 @@ export const BarColor = styled.div`
 
   @media(max-width: 320px) {
     span {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
     span {
-      font-size: 12px;
+      font-size: 1rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      span {
+        font-size: 0.75rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
     span {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 `;
@@ -586,47 +729,62 @@ export const ViewDetails = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 180px;
+    width: 11.25rem;
 
     h2 {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     li {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
+  @media(min-width: 768px) {
+    width: 23rem;
 
     h2 {
-      font-size: 16px;
-      margin-bottom: 6px;
-    }
-
-    li {
-      font-size: 14px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 280px;
-
-    h2 {
-      font-size: 24px;
+      font-size: 1.5rem;
       margin-bottom: 0.5rem;
     }
 
     li {
-      font-size: 18px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 12.50rem;
+
+      h2 {
+        font-size: 1rem;
+        margin-bottom: 0.375rem
+      }
+
+      li {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 23rem;
+
+    h2 {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    li {
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -634,26 +792,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -675,29 +840,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

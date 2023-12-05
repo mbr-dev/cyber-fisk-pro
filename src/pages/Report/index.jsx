@@ -65,6 +65,54 @@ export const Report = () => {
               </SelectUl>
             }
           </Select>
+          <Select
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+            }}
+          >
+            <SelectTitle>
+              <p>Books</p>
+              <img src={arrowBottom} alt="" />
+            </SelectTitle>
+            {isOpen && 
+              <SelectUl>
+                <SelectLi onClick={handleRI}>1</SelectLi>
+              </SelectUl>
+            }
+          </Select>
+          <Select
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+            }}
+          >
+            <SelectTitle>
+              <p>Books</p>
+              <img src={arrowBottom} alt="" />
+            </SelectTitle>
+            {isOpen && 
+              <SelectUl>
+                <SelectLi onClick={handleRI}>1</SelectLi>
+              </SelectUl>
+            }
+          </Select>
+          <Select
+            onClick={() => setIsOpen(!isOpen)}
+            style={{
+              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+            }}
+          >
+            <SelectTitle>
+              <p>Books</p>
+              <img src={arrowBottom} alt="" />
+            </SelectTitle>
+            {isOpen && 
+              <SelectUl>
+                <SelectLi onClick={handleRI}>1</SelectLi>
+              </SelectUl>
+            }
+          </Select>
         </AreaSelect>
 
         <AreaFooter>

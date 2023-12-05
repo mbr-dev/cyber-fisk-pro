@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderText } from "../../components/HeaderText";
 
 import Email1Img from "./images/email1.png";
@@ -9,11 +8,16 @@ import Email3Img from "./images/email3.png";
 import FolderImg from "./images/folder.png";
 import PlusImg from "./images/plus.png";
 
-import { Container, Main, Div, DivImg } from "./styles";
+import { Container, Main, Div, DivImg, AreaFooter, ButtonHome } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Messages = () => {
   const navigate = useNavigate();
+
+  
+  const handleGoBillboard = () => {
+    navigate("/Billboard");
+  }
 
   const handleUnread = () => {
     navigate("/Unread");
@@ -72,7 +76,11 @@ export const Messages = () => {
         </Div>
       </Main>
 
-      <FooterBtnHome title="Billboard" rota="/Billboard" />
+      <AreaFooter>
+        <ButtonHome onClick={handleGoBillboard}>
+          <p>Billboard</p>
+        </ButtonHome>
+      </AreaFooter>
     </Container>
   )
 }

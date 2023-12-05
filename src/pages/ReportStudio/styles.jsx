@@ -10,26 +10,30 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 100%;
-  height: 100%;
-  display: grid;
+  width: 20rem;
+  display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  justify-content: center;
-  padding-inline: 12px;
-  grid-template-columns: repeat(2, 1fr);
+  justify-content: space-between;
 
-  @media (min-width: 480px) {
-    width: 600px;
-    grid-template-columns: repeat(5, 1fr);
+  @media (max-width: 320px) {
+    width: 15.625rem;
   }
 
-  @media (min-width: 1024px) {
-    width: 750px;
+  @media (min-width: 768px) {
+    width: 27rem;
   }
 
-  @media (min-width: 1920px) {
-    width: 1100px;
-    height: 200px;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 25rem;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 46.875rem;
+    gap: 2rem;
   }
 `;
 
@@ -37,38 +41,46 @@ export const Div = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 8px;
+  gap: 0.5rem;
 
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: normal;
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
 
-  @media (min-width: 480px) {
-    flex-direction: column;
-    gap: 6px;
-
+  @media (min-width: 768px) {
     p {
-      font-size: 14px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      flex-direction: column;
+      gap: 6px;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
 
 export const DivInside = styled.div`
-  width: 68px;
-  height: 68px;
+  width: 4.25rem;
+  height: 4.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -85,60 +97,76 @@ export const DivInside = styled.div`
   }
 
   span {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   p {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
   }
 
   @media (max-width: 320px) {
-    width: 52px;
-    height: 52px;
+    width: 3.25rem;
+    height: 3.25rem;
     border-radius: 6px;
     border-width: 2px;
 
     span {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     p {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
-  @media (min-width: 480px) {
-    width: 64px;
-    height: 64px;
+  @media (min-width: 768px) {
+    width: 6.875rem;
+    height: 6.875rem;
+    border-width: 3px;
 
     span {
-      font-size: 16px;
+      font-size: 2rem;
     }
 
     p {
-      font-size: 14px;
+      font-size: 1.375rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 4rem;
+      height: 4rem;
+
+      span {
+        font-size: 1rem;
+      }
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
-    width: 110px;
-    height: 110px;
+    width: 6.875rem;
+    height: 6.875rem;
     border-width: 3px;
 
     span {
-      font-size: 32px;
+      font-size: 2rem;
     }
 
     p {
-      font-size: 22px;
+      font-size: 1.375rem;
     }
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -146,26 +174,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -187,29 +222,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

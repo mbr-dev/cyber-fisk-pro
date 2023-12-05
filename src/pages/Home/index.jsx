@@ -40,16 +40,21 @@ export const Home = () => {
 
   function alterPage(index){
     console.log("==> ", index);
-    if(index === 0){
+    if (index === 0) {
       localStorage.setItem("lastAccess","Books");
       navigate("/Books");
-    }else if(index === 1){
+    } else if (index === 1) {
       const page = localStorage.getItem("lastAccess");
       navigate(`/${page}`);
-    }
-    else if(index === 2){
+    } else if(index === 2) {
       localStorage.setItem("lastAccess","Ranking");
       navigate("/Ranking");
+    } else if (index === 3) {
+      localStorage.setItem("lastAccess","Report");
+      navigate("/Report");
+    }else if (index === 4) {
+      localStorage.setItem("lastAccess","Billboard");
+      navigate("/Billboard");
     }
   }
 

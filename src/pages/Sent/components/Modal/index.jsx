@@ -6,7 +6,7 @@ import { LineSeparator } from "../../../../components/LineSeparator";
 import xImg from "../../../../assets/xImg.png";
 import arrowBottom from "../../../Report/img/arrowBottom.png";
 
-import { Content, Overlay, Close, CloseEnter, Main, Header, Div, DivRow, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck } from "./styles";
+import { Content, Overlay, Close, Enter, Main, Header, Div, DivRow, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck } from "./styles";
 import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
@@ -84,7 +84,7 @@ export const Modal = () => {
               <p>View your groups’ messages</p>
             </DivCheck>
           </DivRow>
-          <CloseEnter>Filter</CloseEnter>
+          <Enter>Filter</Enter>
         </Main>
       </Content>
     </Dialog.Portal>

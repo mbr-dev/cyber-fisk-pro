@@ -14,28 +14,35 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 120px;
-  padding-top: 100px;
+  gap: 7.5rem;
+  padding-top: 6.25rem;
 
   @media (max-width: 320px) {
-    gap: 32px;
+    gap: 2rem;
   }
 
-  @media (min-width: 480px) {
-    padding-top: 10px;
-    gap: 32px;
+  @media (min-width: 768px) {
+    padding-top: 10rem;
+    gap: 3.375rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      padding-top: 0.625rem;
+      gap: 2rem;
+    }
   }
 
   @media (min-width: 1280px) {
     padding-top: 0px;
-    gap: 54px;
+    gap: 3.375rem;
     justify-content: center;
   }
 `;
 
 export const DivInside = styled.div`
-  width: 68px;
-  height: 68px;
+  width: 4.25rem;
+  height: 4.25rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -45,39 +52,56 @@ export const DivInside = styled.div`
   transition: all ease 0.3s;
 
   span {
-    font-size: 28px;
+    font-size: 1.75rem;
   }
 
   p {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: 500;
   }
 
-  @media (min-width: 480px) {
-    width: 64px;
-    height: 64px;
+  @media (min-width: 768px) {
+    width: 8.875rem;
+    height: 8.875rem;
+    border-width: 3px;
 
     span {
-      font-size: 20px;
+      font-size: 2rem;
     }
 
     p {
-      font-size: 16px;
+      font-size: 1.375rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 4rem;
+      height: 4rem;
+      border-width: 1px;
+
+      span {
+        font-size: 1.25rem;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
-    width: 110px;
-    height: 110px;
+    width: 8.875rem;
+    height: 8.875rem;
     border-width: 3px;
 
     span {
-      font-size: 32px;
+      font-size: 2rem;
     }
 
     p {
-      font-size: 22px;
-  }
+      font-size: 1.375rem;
+    }
   }
 `;
 
@@ -112,29 +136,46 @@ export const ButtonRec = styled.button`
     height: 3rem;
 
     img {
-      width: 18px;
+      width: 1.125rem;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
-    height: 64px;
-    gap: 10px;
+  @media(min-width: 768px) {
+    width: 26.25rem;
+    height: 4.5rem;
+    gap: 1rem;
 
     img {
-      width: 32px;
-      height: 32px;
+      width: 54px;
+      height: 42px;
     }
 
     .ruido {
-      width: 120px;
+      width: 220px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 12.5rem;
+      height: 4rem;
+      gap: 10px;
+
+      img {
+        width: 32px;
+        height: 32px;
+      }
+
+      .ruido {
+        width: 120px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 420px;
-    height: 72px;
-    gap: 16px;
+    width: 26.25rem;
+    height: 4.5rem;
+    gap: 1rem;
 
     img {
       width: 54px;
@@ -148,8 +189,8 @@ export const ButtonRec = styled.button`
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -157,26 +198,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
+    width: 75rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonHome = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,29 +246,41 @@ export const ButtonHome = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

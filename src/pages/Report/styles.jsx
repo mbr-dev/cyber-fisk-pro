@@ -211,18 +211,38 @@ export const XP = styled.div`
 export const AreaSelect = styled.div`
   flex: 1;
   width: 100%;
-  padding-top: 1.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 2rem;
+  padding-top: 1.5rem;
+  gap: 1.5rem;
+
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+    padding-top: 0.5rem;
+  }
+
+  @media(min-width: 768px) {
+    padding-top: 2rem;
+    gap: 2rem;
+  }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-top: 1rem;
-      gap: 0.625rem;
+      width: 90%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      justify-content: center;
+      padding-top: 0.5rem;
+      gap: 1rem;
     }
   }
+
+  @media(min-width: 1280px) {
+      padding-top: 2rem;
+      gap: 2rem;
+    }
 `;
 
 export const Select = styled.div`
@@ -246,7 +266,7 @@ export const Select = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 50rem;
+    width: 31.25rem;
   }
 `;
 
@@ -274,11 +294,11 @@ export const SelectTitle = styled.div`
   }
 
   @media(max-width: 320px) {
-    height: 1.25rem;
+    height: 2rem;
   }
 
   @media(min-width: 768px) {
-    height: 3rem;
+    height: 3.5rem;
 
     p {
       font-size: 1.5rem;
@@ -348,11 +368,11 @@ export const SelectUl = styled.ul`
   }
 
   @media(min-width: 1280px) {
-    width: 50rem;
+    width: 31.25rem;
     padding-inline: 44px;
     gap: 1.25rem;  
   }
-`;/* parei aqui */
+`;
 
 export const SelectLi = styled.li`
   width: 100%;

@@ -14,40 +14,40 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 24px;
-  padding-top: 24px;
+  gap: 1.5rem;
+  padding-top: 1.5rem;
   background-color: ${props => props.theme["gray-050"]};
 
   @media(max-width: 360px) {
-    padding-top: 16px;
-    gap: 16px;
+    padding-top: 1rem;
+    gap: 1rem;
   }
 
   @media (max-width: 320px) {
-    gap: 12px;
-    padding-top: 12px;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
   }
 
   @media (min-width: 768px) {
-    padding-top: 32px;
-    gap: 24px;
+    padding-top: 2rem;
+    gap: 1.5rem;
   }
 `;
 
 export const DivButtons = styled.div`
-  width: 340px;
+  width: 21.25rem;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 0.75rem;
 
   @media(max-width: 320px) {
-    width: 290px;
-    gap: 6px;
+    width: 18.125rem;
+    gap: 0.375rem;
   }
 
   @media (min-width: 768px) {
-    width: 450px;
-    gap: 16px;
+    width: 29.125rem;
+    gap: 1rem;
   }
 `;
 
@@ -59,8 +59,8 @@ export const DivInside = styled.div`
 
 export const ButtonNews = styled.button`
   all: unset;
-  width: 160px;
-  height: 42px;
+  width: 10rem;
+  height: 2.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -71,16 +71,16 @@ export const ButtonNews = styled.button`
   transition: all ease 0.3s;
 
   img {
-    width: 20px;
+    width: 1.25rem;
   }
 
   @media(max-width: 320px) {
-    width: 140px;
-    height: 36px;
-    gap: 18px;
+    width: 8.75rem;
+    height: 2.25rem;
+    gap: 1.125rem;
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     img {
@@ -89,11 +89,11 @@ export const ButtonNews = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 210px;
-    height: 54px;
+    width: 13.125rem;
+    height: 3.375rem;
 
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
@@ -101,35 +101,35 @@ export const ButtonNews = styled.button`
 export const ButtonCreate = styled.button`
   all: unset;
   width: 100%;
-  height: 42px;
+  height: 2.625rem;
   display: flex;
   align-items: center;
-  gap: 10px;
+  gap: 0.625rem;
   justify-content: center;
   box-shadow: 0px 4px 10px 0px #00000033;
   border-radius: 8px;
   background-color: ${props => props.theme.white};
 
   @media(max-width: 320px) {
-    height: 36px;
+    height: 2.25rem;
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
   @media (min-width: 768px) {
-    height: 54px;
+    height: 3.375rem;
 
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const Image = styled.div`
-  width: 24px;
-  height: 24px;
+  width: 1.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -141,8 +141,8 @@ export const Image = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 20px;
-    height: 20px;
+    width: 1.25rem;
+    height: 1.25rem;
 
     img {
       width: 14px;
@@ -151,47 +151,47 @@ export const Image = styled.div`
 `;
 
 export const NewsItems = styled.div`
-  width: 340px;
-  height: 350px;
+  width: 21.25rem;
+  height: 21.875rem;
   overflow-y: scroll;
 
   @media(max-width: 360px) {
-    height: 300px;
+    height: 18.75rem;
   }
 
   @media(max-width: 320px) {
-    width: 290px;
-    height: 210px;
+    width: 18.125rem;
+    height: 13.125rem;
   }
 
   @media (min-width: 768px) {
-    width: 450px;
-    height: 520px;
+    width: 28.125rem;
+    height: 32.5rem;
   }
 `;
 
 export const AreaButton = styled.div`
   width: 100%;
-  height: 86px;
+  height: 5.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 20px;
+  gap: 1.25rem;
 
   @media (max-width: 320px) {
-    height: 64px;
+    height: 4rem;
   }
 
   @media (min-width: 768px) {
-    height: 120px;
-    gap: 32px;
+    height: 7.5rem;
+    gap: 2rem;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 150px;
-  height: 36px;
+  width: 9.375rem;
+  height: 2.25rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -205,7 +205,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
   &:disabled {
@@ -214,16 +214,16 @@ export const Button = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 130px;
-    height: 32px;
+    width: 8.125rem;
+    height: 2rem;
   }
 
   @media (min-width: 768px) {
-    width: 250px;
-    height: 56px;
+    width: 15.625rem;
+    height: 3.5rem;
     
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
@@ -231,7 +231,7 @@ export const Button = styled.button`
 export const CreateItems = styled.div`
   width: 100%;
   height: 100%;
-  padding: 10px;
+  padding: 0.625rem;
   display: flex;
   flex-direction: column;
   background-color: ${props => props.theme["gray-200"]};
@@ -244,34 +244,46 @@ export const CreateItemsInside = styled.div`
   justify-content: space-between;
   
   textarea {
-    width: 256px;
-    height: 326px;
+    width: 16rem;
+    height: 20.375rem;
     border: none;
     border-radius: 6px;
     background-color: ${props => props.theme["gray-200"]};
     color: ${props => props.theme["gray-700"]};
     resize: none;
-    padding: 8px;
+    padding: 0.5rem;
   }
 
   @media (max-width: 360px) {
     textarea {
-      height: 280px;
+      height: 17.5rem;
     }
   }
 
   @media (max-width: 320px) {
     textarea {
-      width: 210px;
-      height: 190px;
+      width: 13.125rem;
+      height: 11.875rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    textarea {
+      width: 21.875rem;
+      height: 30rem;
+      font-size: 1.25rem;
+
+      &::placeholder {
+        font-size: 1.25rem;
+      }
     }
   }
 `;
 
 export const ButtonFile = styled.button`
   all: unset;
-  width: 42px;
-  height: 36px;
+  width: 2.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -296,9 +308,9 @@ export const ButtonFile = styled.button`
 `;
 
 export const CreateFile = styled.div`
-  width: 280px;
-  height: 160px;
-  padding: 8px;
+  width: 17.5rem;
+  height: 10rem;
+  padding: 0.5rem;
 
   img {
     width: 100%;
@@ -306,35 +318,35 @@ export const CreateFile = styled.div`
   }
 
   p {
-    padding: 12px;
+    padding: 0.75rem;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
   }
 
   @media(max-width: 320px) {
-    height: 112px;
+    height: 7rem;
 
     p {
-      padding: 10px;
-      font-size: 16px;
+      padding: 0.625rem;
+      font-size: 1rem;
     }
   }
 
   @media (min-width: 768px) {
-    height: 232px;
+    height: 14.5rem;
 
     p {
-      padding: 16px;
-      font-size: 24px;
+      padding: 1rem;
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const ButtonSend = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -348,7 +360,7 @@ export const ButtonSend = styled.button`
   cursor: pointer;
 
   p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
   &:disabled {
@@ -357,40 +369,40 @@ export const ButtonSend = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
   }
 
   @media (min-width: 768px) {
     width: 350px;
-    height: 56px;
+    height: 3.5rem;
     
     p {
-      font-size: 28px;
+      font-size: 1.75rem;
     }
   }
 `;
 
 export const Items = styled.div`
   width: 100%;
-  height: 250px;
+  height: 15.625rem;
   border: 2px solid ${props => props.theme["red-200"]};
   border-radius: 8px;
-  margin-bottom: 12px;
+  margin-bottom: 0.75rem;
 
   @media(max-width: 320px) {
-    height: 170px;
-    margin-bottom: 6px;
+    height: 10.625rem;
+    margin-bottom: 0.375rem;
   }
 
   @media (min-width: 768px) {
-    height: 320px;
+    height: 20rem;
   }
 `;
 
 export const TitleItems = styled.div`
-  padding: 12px;
-  height: 64px;
+  padding: 0.75rem;
+  height: 4rem;
   background-color: ${props => props.theme.white};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
@@ -400,32 +412,32 @@ export const TitleItems = styled.div`
   }
 
   span {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 700;
   }
 
   @media(max-width: 320px) {
-    height: 48px;
-    padding: 6px;
+    height: 3rem;
+    padding: 0.375rem;
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     span {
-      font-size: 12px;
+      font-size: 0.75rem;
     }
   }
 
   @media (min-width: 768px) {
-    height: 72px;
+    height: 4.5rem;
 
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
 
     span {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
   }
 `;
@@ -441,7 +453,7 @@ export const InfoItems = styled.div`
 
 export const Div = styled.div`
   width: 100%;
-  height: 176px;
+  height: 11rem;
 
   img {
     width: 100%;
@@ -449,27 +461,27 @@ export const Div = styled.div`
   }
 
   p {
-    padding: 12px;
+    padding: 0.75rem;
     text-align: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 400;
   }
 
   @media(max-width: 320px) {
-    height: 112px;
+    height: 7rem;
 
     p {
-      padding: 10px;
-      font-size: 16px;
+      padding: 0.625rem;
+      font-size: 1rem;
     }
   }
 
   @media (min-width: 768px) {
-    height: 232px;
+    height: 14.5rem;
 
     p {
-      padding: 16px;
-      font-size: 24px;
+      padding: 1rem;
+      font-size: 1.5rem;
     }
   }
 `;
