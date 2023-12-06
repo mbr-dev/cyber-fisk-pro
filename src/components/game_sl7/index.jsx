@@ -4,13 +4,14 @@ import { useState, useCallback, useEffect, useContext } from "react";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL4 } from "../HeaderLessonSL4";
+import { AreaFooterTasks } from "../AreaFooterTasks";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme"; 
-import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys, Div, AreaFooter, ButtonTask } from "./styles";
+import { Container, Main, Keyboard, Photos, Photo, Types, Type, Keys, Div } from "./styles";
 
 export const GameSL7 = () => {
   const { 
@@ -36,10 +37,6 @@ export const GameSL7 = () => {
   const [intervalId, setIntervalId] = useState(null);
   const [countTimer, setCountTimer] = useState(0);
   const [isLoading, setIsLoading] = useState(false);
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -297,11 +294,7 @@ export const GameSL7 = () => {
         </Div>
       </Main>
 
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterTasks />
     </Container>
   )
 }

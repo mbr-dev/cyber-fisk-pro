@@ -1,16 +1,17 @@
-import { useEffect, useState, useContext, useCallback } from "react";
 import { X } from "lucide-react";
 import { useNavigate } from "react-router-dom";
+import { useEffect, useState, useContext, useCallback } from "react";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
+import { AreaFooterTasks } from "../AreaFooterTasks";
 import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right, AreaFooter, ButtonTask, Button, ButtonAnswer } from "./styles";
+import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right, Button, ButtonAnswer } from "./styles";
 
 export const GameSL5 = () => {
   const { setTimeElapsed } = useContext(LessonContext);
@@ -28,10 +29,6 @@ export const GameSL5 = () => {
   const [completedWords, setCompletedWords] = useState([]);
   const [shownWords, setShownWords] = useState(Array(questions.length).fill(false));
   const [clickedButtons, setClickedButtons] = useState(Array(letters.length).fill(false));
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -246,11 +243,7 @@ export const GameSL5 = () => {
         </Right>
       </Main>
 
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterTasks />
     </Container>
   )
 }

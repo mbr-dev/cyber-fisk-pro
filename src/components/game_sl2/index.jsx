@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL2 } from "../HeaderLessonSL2";
+import { AreaFooterTasks } from "../AreaFooterTasks";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -11,7 +12,7 @@ import { LessonContext } from "../../context/lesson";
 
 import LogoImg from "../../assets/logoIcon.png";
 
-import { Container, Main, Grid, Card, Icon, AreaFooter, ButtonTask } from "./styles";
+import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL2 = () => {
   const { setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada } = useContext(LessonContext);
@@ -29,10 +30,6 @@ export const GameSL2 = () => {
   const [countTimer, setCountTimer] = useState(0);
 
   const navigate = useNavigate();
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -339,11 +336,7 @@ export const GameSL2 = () => {
         </Grid>
       </Main>
       
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterTasks />
     </Container>
   )
 }
