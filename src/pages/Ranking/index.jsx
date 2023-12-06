@@ -7,6 +7,7 @@ import { useKeenSlider } from "keen-slider/react";
 import { apiQAS } from "../../lib/api";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import p1 from "./images/p1.png";
@@ -16,7 +17,7 @@ import p4 from "./images/p4.png";
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
 
-import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, AreaFooter, ButtonHome, DivMobile, DivDesk } from "./styles";
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, DivMobile, DivDesk } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Ranking = () => {
@@ -25,10 +26,6 @@ export const Ranking = () => {
   const [buttonSelected, setButtonSelected] = useState("National");
 
   const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
 
   const handleItemClick = (item) => {
     setButtonSelected((modal) => (modal === item ? null : item));
@@ -200,11 +197,7 @@ export const Ranking = () => {
         </DivMobile>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

@@ -1,10 +1,10 @@
 import "keen-slider/keen-slider.min.css";
-import { useNavigate } from "react-router-dom";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useKeenSlider } from "keen-slider/react";
 
 import { HeaderText } from "../../components/HeaderText";
 import { AvatarCustom } from "../../components/AvatarCustom";
+import { AreaFooterMiddleH } from "../../components/AreaFooterMiddleH";
 
 import bgImg from "./images/bgNatal.png";
 import cabeca from "../../assets/cabeca.png";
@@ -18,7 +18,7 @@ import pernas from "../../assets/pernas.png";
 import cadeado from "../../assets/cadeado.png";
 import dollar from "../../assets/Dollar.svg";
 
-import { Container, Main, Top, Bottom, Separator, Card, AvatarCard, CardReward, Title, DivMoney, DivBlock, DivMobile, AreaFooter, ButtonHome, DivBottom } from "./styles";
+import { Container, Main, Top, Bottom, Separator, Card, AvatarCard, CardReward, Title, DivMoney, DivBlock, DivMobile, DivBottom } from "./styles";
 import { Modal } from "./components/Modal";
 
 export const Avatar = () => {
@@ -42,12 +42,6 @@ export const Avatar = () => {
       },
     },
   });
-
-  const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
 
   return (
     <Container>
@@ -141,11 +135,8 @@ export const Avatar = () => {
               </Card>
             </Separator>
           </Bottom>
-          <AreaFooter>
-              <ButtonHome onClick={handleGoHome}>
-                <p>Home</p>
-              </ButtonHome>
-          </AreaFooter>
+
+          <AreaFooterMiddleH />
         </DivBottom>
       </Main>
     </Container>

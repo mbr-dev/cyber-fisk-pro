@@ -1,10 +1,10 @@
 import { useContext, useState } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { AvatarCustom } from "../../components/AvatarCustom";
-import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
+import { AreaFooterMiddleH } from "../../components/AreaFooterMiddleH";
+import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 
 import { CyberContext } from "../../context/cyber";
 
@@ -19,22 +19,16 @@ import LogoFisk from "../../assets/logoFisk2.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import arrowBottom from "../../assets/arrowBottom.svg";
 
-import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Div, DivBtnCH, AvatarPe, AreaFooter, ButtonHome } from "./styles";
+import { Container, Content, Main, Input, Header, AreaInput, HeaderDesktop, SelectIdioma, SelectLi, SelectTitle, SelectUl, TopHeader, BottomHeader, Div, DivBtnCH, AvatarPe } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Profile = () => {
   const { selectLanguage, chooseLanguage } = useContext(CyberContext);
 
   const [isOpen, setIsOpen] = useState("");
-
-  const navigate = useNavigate();
   
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
   
   return(
@@ -127,11 +121,7 @@ export const Profile = () => {
           </AreaInput>
         </Main>
 
-        <AreaFooter>
-          <ButtonHome onClick={handleGoHome}>
-            <p>Home</p>
-          </ButtonHome>
-        </AreaFooter>
+        <AreaFooterMiddleH />
       </Content>
     </Container>
   )

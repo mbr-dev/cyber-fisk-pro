@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import PrintImg from "../../assets/print.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div, AreaFooter, ButtonHome } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const ReportInfo = () => {
@@ -48,10 +49,6 @@ export const ReportInfo = () => {
 
   const handleReportStudio = () => {
     navigate("/ReportStudio");
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   const handlePrint = () => {
@@ -210,11 +207,7 @@ export const ReportInfo = () => {
         </Details> 
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

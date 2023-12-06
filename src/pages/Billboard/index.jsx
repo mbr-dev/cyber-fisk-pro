@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 
 import SinoImg from "./images/sino.png";
 
-import { Container, Main, Div, AreaFooter, ButtonHome } from "./styles";
+import { Container, Main, Div } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Billboard = () => {
   const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
 
   const handleNews = () => {
     navigate("/News");
@@ -38,11 +35,7 @@ export const Billboard = () => {
         </Div>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

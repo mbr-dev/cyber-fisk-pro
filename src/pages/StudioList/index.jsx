@@ -1,18 +1,15 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 
-import { Container, DivInside, Main, AreaFooter, ButtonHome } from "./styles";
+import { Container, DivInside, Main } from "./styles";
 
 export const StudioList = () => {
   const navigate = useNavigate();
 
   const handleGoStudio = () => {
     navigate("/Studio");
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   return (
@@ -71,11 +68,7 @@ export const StudioList = () => {
         </DivInside>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

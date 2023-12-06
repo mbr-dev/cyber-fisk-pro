@@ -2,11 +2,11 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 
-import Robo from "../../assets/avatarRobo.png";
 import arrowBottom from "./img/arrowBottom.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2, AreaFooter, ButtonHome } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, XP, AreaSelect, Select, SelectLi, SelectTitle, SelectUl, AvatarInfo2, Avatar2 } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
@@ -17,10 +17,6 @@ export const Report = () => {
 
   const handleRI = () => {
     navigate("/ReportInfo");
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   return (
@@ -115,11 +111,7 @@ export const Report = () => {
           </Select>
         </AreaSelect>
 
-        <AreaFooter>
-          <ButtonHome onClick={handleGoHome}>
-            <p>Home</p>
-          </ButtonHome>
-        </AreaFooter>
+        <AreaFooterFullH />
       </Main>
     </Container>
   )

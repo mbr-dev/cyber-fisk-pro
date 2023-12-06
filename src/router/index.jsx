@@ -34,7 +34,6 @@ import { TaskLesson } from "../components/taskLesson";
 import { MessageAnswer } from "../pages/MessageAnswer";
 import { ReportStudioL } from "../pages/ReportStudioL";
 import { QRCode } from "../features/qrCode/pages/Home";
-import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { LessonSelected } from "../pages/LessonSelected";
 import { QRReader } from "../features/qrCode/pages/qrReader";
 import { SuperTaskLesson } from "../components/supertaskLesson";
@@ -135,7 +134,6 @@ export const Router =() => {
       <Route path="/MessageAnswer" element={<MessageAnswer />}/>
       <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/qr-code/:code" element={<GamesTemplate />}/>
-      <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>
       <Route path="/LessonSelected" element={<LessonSelected />}/>
 
       <Route path = "/Game1" element={<Game1 />}/>

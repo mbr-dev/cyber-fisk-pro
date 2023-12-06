@@ -8,6 +8,7 @@ import { Loading } from "../../components/Loading";
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 import { Notifications } from "../../components/Notifications";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
@@ -21,7 +22,7 @@ import superImg from "./images/super.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 
-import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft, AreaFooter, ButtonHome } from "./styles"
+import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
 export const LessonSelected = () => {
   const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
@@ -173,11 +174,7 @@ export const LessonSelected = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

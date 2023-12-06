@@ -5,6 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { ModalBooks } from "./components/ModalBooks";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
@@ -14,7 +15,7 @@ import bookEss1 from "./images/capa53.jpg";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 import BgHeaderImg from "../../assets/bgHeaderImg.png";
 
-import { Container, Main, BooksArea, BooksImage, AreaFooter, HeaderMobile, DivDesk, HeaderMobileDiv, DivLine, ButtonHome, BooksInside } from "./styles";
+import { Container, Main, BooksArea, BooksImage, HeaderMobile, DivDesk, HeaderMobileDiv, DivLine, BooksInside } from "./styles";
 
 export const Books = () => {
   const navigate = useNavigate();
@@ -24,10 +25,6 @@ export const Books = () => {
   const clickLesson = () => {
     localStorage.setItem("lastAccess","SelectLesson");
     navigate("/SelectLesson");
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   return (
@@ -82,11 +79,7 @@ export const Books = () => {
         </BooksArea>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }

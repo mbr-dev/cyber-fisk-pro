@@ -5,11 +5,12 @@ import { HeaderText } from "../../components/HeaderText";
 
 import { CyberContext } from "../../context/cyber";
 import { translateHelp } from "../../utils/Translate";
+import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 
 import maisImg from "./images/mais.png";
 import menosImg from "./images/menos.png";
 
-import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight, AreaFooter, ButtonHome } from "./styles";
+import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {
@@ -23,10 +24,6 @@ export const Help = () => {
   const handleItemClick = (modalName) => {
     setOpenModal((modal) => (modal === modalName ? null : modalName));
   };
-
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
 
   return (
     <Container>
@@ -190,11 +187,7 @@ export const Help = () => {
         </Right>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullH />
     </Container>
   )
 }
