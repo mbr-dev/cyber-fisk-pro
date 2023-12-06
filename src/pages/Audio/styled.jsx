@@ -16,6 +16,10 @@ export const Main = styled.main`
   padding-top: 2rem;
   gap: 1rem;
 
+ /*  audio {
+    display: none;
+  } */
+
   @media (max-width: 320px) {
     padding-top: 0.75rem;
   }
@@ -165,8 +169,7 @@ export const Bar = styled.div`
   width: 18.75rem;
   height: 0.3125rem;
   border-radius: 6px;
-  background-color: ${props => props.theme["gray-800"]};
-
+  background-color: ${props => props.theme["gray-100"]};
  
   @media (min-width: 600px) {
     width: 100%;
@@ -178,6 +181,7 @@ export const Bar = styled.div`
 `;
 
 export const Carrega = styled.div`
+  width: 100%;
   height: 100%;
   position: relative;
   background-color: ${props => props.theme["gray-700"]};
@@ -239,12 +243,21 @@ export const ButtonsArea = styled.div`
 
   button {
     all: unset;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 6px;
+    border: 2px solid transparent;
     transition: all ease 0.3s;
     cursor: pointer;
 
     &:hover {
       scale: 1.1
     }
+  }
+
+  .hasBorder {
+    border-color: ${props => props.theme["red-200"]};
   }
 
   .playBtn {
