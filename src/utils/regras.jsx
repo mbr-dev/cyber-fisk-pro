@@ -81,7 +81,7 @@ export const ScoreFinal = (pontos, lesson, task) => {
     }
     //o usuario so vai ser redirecionado para a roleta se ele cumprir 100% na primeira tentativa
     if(pontos === 100 && frequencia === 1){
-      window.open('https://cyberhomolog.fisk.com.br:172/cyberfiskpro/roleta/');
+      //window.open('https://cyberhomolog.fisk.com.br:172/cyberfiskpro/roleta/');
       page = 'SpinWheel';
     }else{
       page = 'WellDone';

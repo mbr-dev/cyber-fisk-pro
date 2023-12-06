@@ -131,6 +131,14 @@ export const Login = () => {
   }
 
   useEffect(() =>{
+    const data = {
+      date: new Date(),
+      raf:'ABC123',
+      quantidade:2
+    }
+    const myJSON = JSON.stringify(data);
+    const str = encodeURIComponent(myJSON);
+    console.log('STR ===> ', str);
     const cookies = new Cookies();
     const token = cookies.get("token");
     const raf = cookies.get("raf");
