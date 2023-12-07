@@ -24,6 +24,7 @@ import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 import dayChImg from "./images/dayChallenge.gif";
 import dayChImgDt from "./images/dayChallengeDt.gif";
+import bgAvatarImg from "./images/bgAvatar.png";
 
 import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderBottom, HeaderTop } from "./styles";
 
@@ -39,16 +40,21 @@ export const Home = () => {
 
   function alterPage(index){
     console.log("==> ", index);
-    if(index === 0){
+    if (index === 0) {
       localStorage.setItem("lastAccess","Books");
       navigate("/Books");
-    }else if(index === 1){
+    } else if (index === 1) {
       const page = localStorage.getItem("lastAccess");
       navigate(`/${page}`);
-    }
-    else if(index === 2){
+    } else if(index === 2) {
       localStorage.setItem("lastAccess","Ranking");
       navigate("/Ranking");
+    } else if (index === 3) {
+      localStorage.setItem("lastAccess","Report");
+      navigate("/Report");
+    }else if (index === 4) {
+      localStorage.setItem("lastAccess","Billboard");
+      navigate("/Billboard");
     }
   }
 
@@ -124,9 +130,9 @@ export const Home = () => {
                   {selectLanguage === 2 && <p>{text.name[2]}</p>}
                 </Card>
                 :
-                <Dialog.Root>
+                <Dialog.Root key={index}>
                   <Dialog.Trigger asChild>
-                    <Card key={index}>
+                    <Card>
                       <img src={images[index]} alt="" />
                       {selectLanguage === 0 && <p>{text.name[0]}</p>}
                       {selectLanguage === 1 && <p>{text.name[1]}</p>}
@@ -146,7 +152,7 @@ export const Home = () => {
         </Left>
 
         <Right>
-          {/* <img src={bgAvatarImg} alt="" className="bgAvatarImg" /> */}
+          {/* <img src={bgAvatarImg} alt="" className="bgAvatarImg" />  */}
           <AvatarCustom hasName />
         </Right>
       </Main>
