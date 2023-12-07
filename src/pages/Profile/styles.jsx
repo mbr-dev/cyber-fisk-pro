@@ -142,7 +142,13 @@ export const AvatarPe = styled.div`
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       display: block;
+      width: 10rem;
     }
+  }
+
+  @media (min-width: 1280px) {
+    display: block;
+    width: 20rem;
   }
 `;
 

@@ -22,19 +22,19 @@ export const Container = styled.div`
     @media (min-width: 600px) {
       width: 9.375rem;
       height: 18.75rem;
-      margin-top: -6.25rem;
+      margin-top: -18rem;
     }
   }
 
   @media (min-width: 1280px) {
     width: 18.75rem;
     height: 50rem;
-    margin-top: -7.5rem;
+    margin-top: -50em;
   }
 
   @media (min-width: 1440px) {
     height: 53.125rem;
-    margin-top: -3.125rem;
+    margin-top: -52rem;
   }
 `;
 

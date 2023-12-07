@@ -99,7 +99,7 @@ export const LessonSelected = () => {
 
   useEffect(() => {
     verificaTask();
-  },[]);
+  }, []);
 
   if (isLoading) {
     return <Loading />
@@ -174,7 +174,7 @@ export const LessonSelected = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <AreaFooterFullBtn />
+      <AreaFooterFullBtn title="Lessons" rota="/SelectLesson" />
     </Container>
   )
 }

@@ -15,11 +15,12 @@ import { AppError } from "../../utils/AppError";
 import { ButtonLesson, Container, Main, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
-  const navigate = useNavigate();
-  const [activities, setActivities] = useState([]);
-  const [isLoading, setIsLoading] = useState(false);
   const { book, chooseNotification } = useContext(CyberContext);
   const { setNewSelLesson } = useContext(LessonContext);
+  const navigate = useNavigate();
+
+  const [activities, setActivities] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [msgError, setMsgError] = useState("");
   const [error, setError] = useState(false);
 

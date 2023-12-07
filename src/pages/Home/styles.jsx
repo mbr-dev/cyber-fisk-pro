@@ -448,7 +448,7 @@ export const Right = styled.div`
       scale: 0.8;
       position: absolute;
       right: 0;
-      bottom: -1.125rem;
+      bottom: -6rem;
 
       .bgAvatarImg {
         width: 100%;
@@ -463,15 +463,11 @@ export const Right = styled.div`
 
   @media(min-width: 1280px) {
     scale: 0.8;
-    bottom: -3rem;
+    bottom: -15rem;
   }
 
   @media(min-width: 1440px) {
     scale: 0.9;
-    bottom: 0px;
-  }
-
-  @media(min-width: 1920px) {
-    bottom: 4rem;
+    bottom: 5rem;
   }
 `;

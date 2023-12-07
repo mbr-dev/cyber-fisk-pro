@@ -152,12 +152,13 @@ export const AvatarArea = styled.div`
   align-items: center;
   justify-content: center;
   position: relative;
+  overflow-y: hidden;
 
   .bgConfetes {
     width: 350px;
     position: absolute;
     top: 0;
-    z-index: 1;
+    z-index: 100;
   }
 
   @media(max-width: 320px) {
@@ -174,13 +175,21 @@ export const AvatarArea = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 280px;
+      width: 17.5rem;
+
+      .bgConfetes {
+        width: 200px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
+    width: 37.5rem;
+
     .bgConfetes {
-      width: 90%;
+      width: 600px;
+      height: 500px;
+
     }
   }
 `;

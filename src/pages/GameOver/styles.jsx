@@ -45,6 +45,7 @@ export const Header = styled.header`
     @media(min-width: 600px) {
       width: 40%;
       height: 100vh;
+      overflow-y: hidden;
     }
   }
 `;

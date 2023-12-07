@@ -26,11 +26,11 @@ export const Modal = () => {
             <DivInside>
               <Div>
                 <p>Start Date</p>
-                <Input placeholder="00/00/0000" />
+                <Input type="date" placeholder="00/00/0000" />
               </Div>
               <Div>
                 <p>Finish Date</p>
-                <Input placeholder="00/00/0000" />
+                <Input type="date" placeholder="00/00/0000" />
               </Div>
             </DivInside>
             <LineSeparator wl="100%" bg={defaultTheme["gray-200"]} />
