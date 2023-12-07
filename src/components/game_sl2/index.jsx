@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL2 } from "../HeaderLessonSL2";
-import { AreaFooterTasks } from "../AreaFooterTasks";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -336,7 +336,7 @@ export const GameSL2 = () => {
         </Grid>
       </Main>
       
-      <AreaFooterTasks />
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

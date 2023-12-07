@@ -2,7 +2,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Container, ButtonHome } from "./styles";
 
-export const AreaFooterMiddleH = () => {
+export const AreaFooterMiddleBtn = () => {
   const navigate = useNavigate();
 
   const handleGoHome = () => {

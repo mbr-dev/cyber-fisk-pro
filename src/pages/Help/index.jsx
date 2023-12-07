@@ -5,7 +5,7 @@ import { HeaderText } from "../../components/HeaderText";
 
 import { CyberContext } from "../../context/cyber";
 import { translateHelp } from "../../utils/Translate";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import maisImg from "./images/mais.png";
 import menosImg from "./images/menos.png";
@@ -187,7 +187,7 @@ export const Help = () => {
         </Right>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

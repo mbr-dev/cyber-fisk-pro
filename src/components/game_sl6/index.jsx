@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL6 } from "../HeaderLessonSL6";
-import { AreaFooterTasks } from "../AreaFooterTasks";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -337,7 +337,7 @@ export const GameSL6 = () => {
         </Grid>
       </Main>
 
-      <AreaFooterTasks />
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

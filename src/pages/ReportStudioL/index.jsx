@@ -1,5 +1,5 @@
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import ruido2 from "../../assets/ruido2.svg";
 import micro1 from "../../assets/micro1.svg";
@@ -23,7 +23,7 @@ export const ReportStudioL = () => {
         </ButtonRec>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

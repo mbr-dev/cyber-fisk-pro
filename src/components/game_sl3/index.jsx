@@ -4,7 +4,7 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
-import { AreaFooterTasks } from "../AreaFooterTasks";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
@@ -380,7 +380,7 @@ export const GameSL3 = () => {
         }
       </Main>
 
-      <AreaFooterTasks />
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

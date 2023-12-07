@@ -4,7 +4,7 @@ import { useKeenSlider } from "keen-slider/react";
 
 import { HeaderText } from "../../components/HeaderText";
 import { AvatarCustom } from "../../components/AvatarCustom";
-import { AreaFooterMiddleH } from "../../components/AreaFooterMiddleH";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 
 import bgImg from "./images/bgNatal.png";
 import cabeca from "../../assets/cabeca.png";
@@ -136,7 +136,7 @@ export const Avatar = () => {
             </Separator>
           </Bottom>
 
-          <AreaFooterMiddleH />
+          <AreaFooterMiddleBtn />
         </DivBottom>
       </Main>
     </Container>

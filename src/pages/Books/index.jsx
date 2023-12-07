@@ -5,7 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import { ModalBooks } from "./components/ModalBooks";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 
@@ -79,7 +79,7 @@ export const Books = () => {
         </BooksArea>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

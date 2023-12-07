@@ -8,8 +8,8 @@ import { Loading } from "../../components/Loading";
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 import { Notifications } from "../../components/Notifications";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
@@ -174,7 +174,7 @@ export const LessonSelected = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

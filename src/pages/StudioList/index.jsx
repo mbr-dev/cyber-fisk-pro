@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import { Container, DivInside, Main } from "./styles";
 
@@ -68,7 +68,7 @@ export const StudioList = () => {
         </DivInside>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

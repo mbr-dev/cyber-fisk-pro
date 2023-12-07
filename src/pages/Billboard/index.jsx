@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import SinoImg from "./images/sino.png";
 
@@ -35,7 +35,7 @@ export const Billboard = () => {
         </Div>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

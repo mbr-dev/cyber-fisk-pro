@@ -7,7 +7,7 @@ import { LessonContext } from "../../context/lesson";
 import { Loading } from "../../components/Loading";
 import { HeaderText } from "../../components/HeaderText";
 import { Notifications } from "../../components/Notifications";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import { apiQAS } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
@@ -79,7 +79,7 @@ export const SelectLesson = () => {
         </SelectLessonArea>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

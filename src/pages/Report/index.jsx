@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import arrowBottom from "./img/arrowBottom.png";
 
@@ -111,7 +111,7 @@ export const Report = () => {
           </Select>
         </AreaSelect>
 
-        <AreaFooterFullH />
+        <AreaFooterFullBtn />
       </Main>
     </Container>
   )

@@ -1,5 +1,5 @@
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import { Container, Div, DivInside, Main } from "./styles";
 
@@ -91,7 +91,7 @@ export const ReportLesson = () => {
         </Div>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

@@ -7,7 +7,7 @@ import { useKeenSlider } from "keen-slider/react";
 import { apiQAS } from "../../lib/api";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import p1 from "./images/p1.png";
@@ -197,7 +197,7 @@ export const Ranking = () => {
         </DivMobile>
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }

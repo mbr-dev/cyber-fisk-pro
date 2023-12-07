@@ -4,7 +4,7 @@ import { useState, useCallback, useEffect, useContext } from "react";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL4 } from "../HeaderLessonSL4";
-import { AreaFooterTasks } from "../AreaFooterTasks";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { URL_FISKPRO } from "../../config/infos";
@@ -294,7 +294,7 @@ export const GameSL7 = () => {
         </Div>
       </Main>
 
-      <AreaFooterTasks />
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

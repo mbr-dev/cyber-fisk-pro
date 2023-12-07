@@ -4,14 +4,14 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { AreaFooterTasks } from "../AreaFooterTasks";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 import { HeaderLessonSLTitle } from "../HeaderLessonSLTitle";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right, AreaFooter, ButtonTask, Button, ButtonAnswer } from "./styles";
+import { Container, Main, Answer, WordSelected, WordsArea, Div, DivA, DivQuestion, Answers, Delete, Words, DivQ, ButtonArea, Left, Right, Button, ButtonAnswer } from "./styles";
 
 export const GameSL8 = () => {
   const { setTimeElapsed } = useContext(LessonContext);
@@ -243,7 +243,7 @@ export const GameSL8 = () => {
         </Right>
       </Main>
 
-      <AreaFooterTasks />
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

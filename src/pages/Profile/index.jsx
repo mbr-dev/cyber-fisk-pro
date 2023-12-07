@@ -3,7 +3,7 @@ import { useContext, useState } from "react";
 import { AvatarCustom } from "../../components/AvatarCustom";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { AreaFooterMiddleH } from "../../components/AreaFooterMiddleH";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
 
 import { CyberContext } from "../../context/cyber";
@@ -121,7 +121,7 @@ export const Profile = () => {
           </AreaInput>
         </Main>
 
-        <AreaFooterMiddleH />
+        <AreaFooterMiddleBtn />
       </Content>
     </Container>
   )

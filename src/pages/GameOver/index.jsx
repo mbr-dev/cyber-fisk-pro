@@ -6,7 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
-import { AreaFooterMiddleH } from "../../components/AreaFooterMiddleH";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
 
@@ -205,7 +205,7 @@ export const GameOver = () => {
           </Div>
         </Main>
 
-        <AreaFooterMiddleH />
+        <AreaFooterMiddleBtn />
       </Content>
     </Container>
   )

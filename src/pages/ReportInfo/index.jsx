@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
 import { HeaderText } from "../../components/HeaderText";
-import { AreaFooterFullH } from "../../components/AreaFooterFullH";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import PrintImg from "../../assets/print.png";
@@ -207,7 +207,7 @@ export const ReportInfo = () => {
         </Details> 
       </Main>
 
-      <AreaFooterFullH />
+      <AreaFooterFullBtn />
     </Container>
   )
 }
