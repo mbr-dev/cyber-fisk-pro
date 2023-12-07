@@ -1,38 +1,40 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 150px;
-  height: 300px;
-  margin-top: -100px;
+  width: 9.375rem;
+  height: 18.75rem;
+  margin-top: -6.25rem;
   position: relative;
   z-index: 10;
 
   @media (max-width: 320px) {
-    width: 54px;
-    height: 96px;
+    width: 3.375rem;
+    height: 6rem;
   }
 
-  @media screen and (max-width: 1280px) and (min-width: 1024px) {
-    width: 300px;
-    height: 800px;
-    /* margin-top: -120px; */
+  @media (min-width: 768px) {
+    width: 12.5rem;
+    height: 25rem;
+    margin-top: -3.125rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 9.375rem;
+      height: 18.75rem;
+      margin-top: -6.25rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 300px;
-    height: 800px;
-    margin-top: 120px;
-  }
-
-  @media (max-width: 1380px){
-    width: 300px;
-    height: 800px;
-    margin-top: -280px;
+    width: 18.75rem;
+    height: 50rem;
+    margin-top: -7.5rem;
   }
 
   @media (min-width: 1440px) {
-    height: 850px;
-    margin-top: -50px;
+    height: 53.125rem;
+    margin-top: -3.125rem;
   }
 `;
 
@@ -121,8 +123,8 @@ export const Pernas = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 150px;
-  height: 32px;
+  width: 9.375rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -134,7 +136,7 @@ export const Name = styled.div`
   bottom: 6px;
   
   span {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     overflow: hidden;
     white-space: nowrap;
@@ -142,40 +144,18 @@ export const Name = styled.div`
     color: ${props => props.theme.white};
   }
 
-  @media screen and (min-width: 481px) and (max-width: 1023px) {
-    width: 300px;
-    height: 72px;
-    bottom: 28px;
-    padding-inline: 16px;
-
-    span {
-      font-size: 32px;
-    }
-  }
-
-  @media (min-width: 1024px) {
-    width: 300px;
-    height: 72px;
-    bottom: 28px;
-    padding-inline: 16px;
-
-    span {
-      font-size: 32px;
-    }
-  }
-
   @media (min-width: 1280px) {
-    width: 300px;
-    height: 72px;
-    bottom: 28px;
-    padding-inline: 16px;
+    width: 18.75rem;
+    height: 4.5rem;
+    bottom: 1.75rem;
+    padding-inline: 1rem;
 
     span {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 
   @media (min-width: 1440px) {
-    bottom: 36px;
+    bottom: 1.25rem;
   }
 `;

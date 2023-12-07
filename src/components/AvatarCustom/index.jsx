@@ -5,13 +5,13 @@ import antenaImg from "./images/Antena/Antena_2.png";
 import cabecaImg from "./images/Cabeca/Cabeca_1.png";
 import faceImg from "./images/Face/Expressao_2.png";
 import oculosImg from "./images/Oculos/Oculos_Azul.png";
-import bracosImg from "./images/Bracos/Bracos_3.png";
+import bracosImg from "./images/Bracos/Bracos_4.png";
 import troncoImg from "./images/Tronco/Tronco_Branco_modelo_2_Laranja.png";
 import pernasImg from "./images/Pernas/Pernas_Branco_1_Azul.png";
 
 import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name } from "./styles";
 
-export const AvatarCustom = ({ hasName }) => {
+export const AvatarCustom = ({ hasName, avatar }) => {
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -23,7 +23,10 @@ export const AvatarCustom = ({ hasName }) => {
   }, []);
 
   return (
-    <Container>
+    <Container style={{
+      marginTop: avatar && "0px",
+      position: "absolute"
+    }}>
       <Antena>
         <img src={antenaImg} alt="" />
       </Antena>
