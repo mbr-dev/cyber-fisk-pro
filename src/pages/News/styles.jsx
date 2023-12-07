@@ -32,6 +32,20 @@ export const Main = styled.main`
     padding-top: 2rem;
     gap: 1.5rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      flex-direction: row;
+      padding-top: 0.5rem;
+      gap: 2rem;
+      justify-content: center;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    align-items: flex-start;
+    padding-top: 2rem;
+  }
 `;
 
 export const DivButtons = styled.div`
@@ -49,12 +63,36 @@ export const DivButtons = styled.div`
     width: 29.125rem;
     gap: 1rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 21.25rem;
+      height: 12rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 36rem;
+    height: 100%;
+    gap: 2rem;
+  }
 `;
 
 export const DivInside = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      flex-direction: column;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+      gap: 2rem;
+    }
 `;
 
 export const ButtonNews = styled.button`
@@ -96,6 +134,32 @@ export const ButtonNews = styled.button`
       font-size: 1.5rem;
     }
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 20rem;
+      height: 2.5rem;
+      gap: 10rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 36rem;
+    height: 4rem;
+    gap: 24rem;
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    img {
+      width: 1.5rem;
+    }
+  }
 `;
 
 export const ButtonCreate = styled.button`
@@ -123,6 +187,31 @@ export const ButtonCreate = styled.button`
 
     p {
       font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 20rem;
+      height: 2.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 36rem;
+    height: 4rem;
+    gap: 2rem;
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    img {
+      width: 1.5rem;
     }
   }
 `;
@@ -168,21 +257,52 @@ export const NewsItems = styled.div`
     width: 28.125rem;
     height: 32.5rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 40%;
+      height: 12rem;
+      padding-left: 10px;
+      border-left: 1px solid ${props => props.theme["gray-070"]};
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 36rem;
+    height: 33.25rem;
+    gap: 1rem;
+  }
 `;
 
 export const AreaButton = styled.div`
-  width: 100%;
+  width: 22.5rem;
   height: 5.375rem;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 1.25rem;
+  border-top: 1px solid ${props => props.theme["gray-070"]};
 
   @media (max-width: 320px) {
     height: 4rem;
   }
 
   @media (min-width: 768px) {
+    width: 42rem;
+    height: 7.5rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 43.75rem;
+      height: 4rem;
+      gap: 2rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 62.5rem;
     height: 7.5rem;
     gap: 2rem;
   }
@@ -219,6 +339,26 @@ export const Button = styled.button`
   }
 
   @media (min-width: 768px) {
+    width: 15rem;
+    height: 3.5rem;
+    
+    p {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15rem;
+      height: 2.25rem;
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
     width: 15.625rem;
     height: 3.5rem;
     
@@ -236,6 +376,12 @@ export const CreateItems = styled.div`
   flex-direction: column;
   background-color: ${props => props.theme["gray-200"]};
   border-radius: 8px;
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      background-color: ${props => props.theme["gray-060"]};
+    }
+  }
 `;
 
 export const CreateItemsInside = styled.div`
@@ -249,7 +395,7 @@ export const CreateItemsInside = styled.div`
     border: none;
     border-radius: 6px;
     background-color: ${props => props.theme["gray-200"]};
-    color: ${props => props.theme["gray-700"]};
+    color: ${props => props.theme["gray-600"]};
     resize: none;
     padding: 0.5rem;
   }
@@ -271,6 +417,33 @@ export const CreateItemsInside = styled.div`
     textarea {
       width: 21.875rem;
       height: 30rem;
+      font-size: 1.25rem;
+
+      &::placeholder {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      textarea {
+        width: 17rem;
+        height: 11rem;
+        font-size: 0.875rem;
+        background-color: ${props => props.theme["gray-060"]};
+
+        &::placeholder {
+          font-size: 0.875rem;
+        }
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    textarea {
+      width: 30rem;
+      height: 32rem;
       font-size: 1.25rem;
 
       &::placeholder {
@@ -304,6 +477,17 @@ export const ButtonFile = styled.button`
 
   &:hover {
     scale: 1.1;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+
+      img {
+        width: 18px;
+      }
+    }
   }
 `;
 
@@ -374,7 +558,27 @@ export const ButtonSend = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 350px;
+    width: 27rem;
+    height: 3.5rem;
+    
+    p {
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15.625rem;
+      height: 2.25rem;
+      
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 32rem;
     height: 3.5rem;
     
     p {
@@ -385,22 +589,17 @@ export const ButtonSend = styled.button`
 
 export const Items = styled.div`
   width: 100%;
-  height: 15.625rem;
   border: 2px solid ${props => props.theme["red-200"]};
   border-radius: 8px;
   margin-bottom: 0.75rem;
 
   @media(max-width: 320px) {
-    height: 10.625rem;
     margin-bottom: 0.375rem;
-  }
-
-  @media (min-width: 768px) {
-    height: 20rem;
   }
 `;
 
 export const TitleItems = styled.div`
+  flex: 1;
   padding: 0.75rem;
   height: 4rem;
   background-color: ${props => props.theme.white};
@@ -440,24 +639,45 @@ export const TitleItems = styled.div`
       font-size: 1.125rem;
     }
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      padding: 0;
+      padding-left: 1rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      span {
+        font-size: 0.5rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    height: 4rem;
+    padding-top: 0.5rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+
+    span {
+      font-size: 1.125rem;
+    }
+  }
 `;
 
 export const InfoItems = styled.div`
   width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["gray-100"]};
-`;
-
-export const Div = styled.div`
-  width: 100%;
-  height: 11rem;
+  height: 11.25rem;
 
   img {
     width: 100%;
     height: 100%;
+    object-fit: fill;
   }
 
   p {
@@ -468,8 +688,6 @@ export const Div = styled.div`
   }
 
   @media(max-width: 320px) {
-    height: 7rem;
-
     p {
       padding: 0.625rem;
       font-size: 1rem;
@@ -477,11 +695,33 @@ export const Div = styled.div`
   }
 
   @media (min-width: 768px) {
-    height: 14.5rem;
+    p {
+      padding: 1rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 9.375rem;
+
+      p {
+        padding: 0.5rem;
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    height: 21.875rem;
 
     p {
       padding: 1rem;
       font-size: 1.5rem;
     }
   }
+`;
+
+export const Div = styled.div`
+  
 `;

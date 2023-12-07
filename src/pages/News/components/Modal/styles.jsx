@@ -41,7 +41,7 @@ export const Close = styled(Dialog.Close)`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.9375;
+  top: -0.9375rem;
   right: -0.625rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
