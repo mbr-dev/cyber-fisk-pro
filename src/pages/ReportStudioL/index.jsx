@@ -1,18 +1,12 @@
-import { useNavigate } from "react-router-dom";
-
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import ruido2 from "../../assets/ruido2.svg";
 import micro1 from "../../assets/micro1.svg";
 
-import { Container, DivInside, Main, ButtonRec, AreaFooter, ButtonHome } from "./styles";
+import { Container, DivInside, Main, ButtonRec } from "./styles";
 
 export const ReportStudioL = () => {
-  const navigate = useNavigate();
-
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
   return (
     <Container>
       <HeaderText title="Report Studio" />
@@ -29,11 +23,7 @@ export const ReportStudioL = () => {
         </ButtonRec>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullBtn />
     </Container>
   )
 }

@@ -6,7 +6,7 @@ export const Container = styled.div`
 
 export const Main = styled.div`
   width: 100%;
-  height: 72px;
+  height: 4.5rem;
   display: flex;
   align-items: center;
   border-end-end-radius: 18px;
@@ -22,8 +22,18 @@ export const Main = styled.div`
     left: 0;
   }
 
-  @media(min-width: 1024px) {
-    height: 120px;
+  @media(min-width: 768px) {
+    height: 7.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 4rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 7.5rem;
     justify-content: space-between;
   }
 `;
@@ -39,18 +49,21 @@ export const BarStep = styled.div`
 
   @media(max-width: 320px) {
     padding: 0.5rem;
+    border-radius: 6px;
   }
 
-  @media(min-width: 600px) {
-    padding: 0.75rem 1rem;
+  @media(min-width: 768px) {
+    padding: 0.875rem 1.5rem;
   }
 
-  @media(min-width: 1024px) {
-    padding-inline: 24px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 0.75rem 1rem;
+    }
   }
 
-  @media(min-width: 1440px) {
-    padding-inline: 24px;
+  @media(min-width: 1280px) {
+    padding-inline: 1.5rem;
   }
 `;
 
@@ -63,7 +76,7 @@ export const Icons = styled.div`
   gap: 0.25rem;
 
   p {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
@@ -78,9 +91,26 @@ export const Icons = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 768px) {
+
+    img {
+      width: 44px;
+    }
+
     p {
-      font-size: 1rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      img {
+        width: 34px;
+      }
+
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
@@ -91,7 +121,7 @@ export const Icons = styled.div`
     }
 
     p {
-      font-size: 16px;
+      font-size: 1.5rem;
     }
   }
 `;

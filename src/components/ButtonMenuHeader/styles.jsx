@@ -21,18 +21,38 @@ export const Container = styled.div`
     height: 1.5rem;
   }
 
-  @media (min-width: 480px) {
-    width: 36px;
-    height: 36px;
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
 
     img {
-      width: 20px;
+      width: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 2.25rem;
+      height: 2.25rem;
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 2.625rem;
+    height: 2.625rem;
+
+    img {
+      width: 22px;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
 
     img {
       width: 24px;

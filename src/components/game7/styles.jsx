@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -12,18 +13,20 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 1rem;
 
-  @media(max-width: 320px) {
-    margin-top: 0.5rem;
+  @media(min-width: 768px) {
+    width: 40rem;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 0.5rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      width: 40rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    margin-top: 2rem;
+    width: 60rem;
   }
 `;
 
@@ -36,8 +39,14 @@ export const ButtonRow = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.75rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -79,17 +88,33 @@ export const ButtonAudio = styled.button`
     width: 7rem;
   }
 
-  @media(min-width: 600px) {
-    width: 10rem;
-    height: 2.5rem;
-    gap: 1rem;
+  @media(min-width: 768px) {
+    width: 16rem;
+    height: 4.5rem;
+    gap: 32px;
 
     img {
-      width: 50px;
+      width: 100px;
     }
 
     .btn2 {
-      width: 24px;
+      width: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 10rem;
+      height: 2.5rem;
+      gap: 1rem;
+
+      img {
+        width: 50px;
+      }
+
+      .btn2 {
+        width: 24px;
+      }
     }
   }
 
@@ -136,7 +161,7 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 11rem;
+    width: 8rem;
     height: 3.5rem;
 
     p {
@@ -144,12 +169,23 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 12rem;
-    height: 2.5rem;
+  @media(min-width: 768px) {
+    width: 18rem;
+    height: 5rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 2.5rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 

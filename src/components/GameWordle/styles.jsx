@@ -17,8 +17,8 @@ export const Main = styled.main`
   margin-top: 0.5rem;
 
   @media(max-width: 376px) {
-    margin-top: 6px;
-    gap: 6px;
+    margin-top: 0.375rem;
+    gap: 0.375rem;
   }
 
   @media(max-width: 360px) {
@@ -26,13 +26,19 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
-    margin-top: 4px;
-    gap: 4px;
+    margin-top: 0.25rem;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    margin-top: 10px;
-    justify-content: flex-start;
+  @media(min-width: 768px) {
+    margin-top: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      margin-top: 0.625rem;
+      justify-content: flex-start;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -42,22 +48,30 @@ export const Main = styled.main`
 
 export const MainInside = styled.div`
   display: flex;
+  align-items: center;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem;
 
   @media (max-width: 320px) {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
-  @media (min-width: 480px) {
-    width: 632px;
-    flex-direction: row-reverse;
-    align-items: center;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 39.5rem;
+      gap: 0rem;
+      flex-direction: row-reverse;
+      justify-content: space-between;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 1200px;
+    width: 75rem;
   }
 `;
 
@@ -67,35 +81,43 @@ export const Right = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
   
   @media(max-width: 320px) {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 420px;
-    gap: 0px;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 26.25rem;
+      gap: 0px;
+      justify-content: space-between;
+    }
   }
   
   @media(min-width: 1280px) {
-    width: 720px;
-    height: 450px;
+    width: 45rem;
+    height: 28.125rem;
   }
 `;
 
 export const Left = styled.div`
   height: 100%;
 
-  @media(min-width: 480px) {
-    width: 180px;
-    height: 212px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 11.25rem;
+      height: 13.25rem;
+    }
   }
   
   @media (min-width: 1280px) {
-    width: 380px;
-    height: 450px;
+    width: 23.75rem;
+    height: 28.125rem;
   }
 `;
 
@@ -104,20 +126,22 @@ export const InfoArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 16px;
+  padding-inline: 1rem;
 
-  @media(min-width: 480px) {
-    padding-inline: 0;
+  @media(min-width: 768px) {
+    padding-inline: 6rem;
   }
 
-  @media(min-width: 1024px) {
-    padding-inline: 0;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-inline: 0;
+    }
   }
 `;
 
 export const Info = styled.div`
-  width: 52px;
-  height: 44px;
+  width: 3.25rem;
+  height: 2.75rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -138,18 +162,33 @@ export const Info = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 36px;
-    height: 32px;
+    width: 2.25rem;
+    height: 2rem;
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
-    height: 32px;
+  @media(min-width: 768px) {
+    width: 15rem;
+    height: 3rem;
+
+    img {
+      height: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12.5rem;
+      height: 2rem;
+
+      img {
+        height: 24px;
+      }
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 350px;
-    height: 72px;
+    width: 21.875rem;
+    height: 4.5rem;
 
     img {
       height: 50px;
@@ -158,7 +197,7 @@ export const Info = styled.div`
 `;
 
 export const Coin = styled.div`
-  width: 94px;
+  width: 5.875rem;
   height: 2.75rem;
   display: flex;
   justify-content: center;
@@ -178,8 +217,8 @@ export const Coin = styled.div`
   }
 
   @media(max-width: 360px) {
-    width: 84px;
-    height: 38px;
+    width: 5.25rem;
+    height: 2.375rem;
 
     img {
       width: 1.5rem;
@@ -191,8 +230,8 @@ export const Coin = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 72px;
-    height: 32px;
+    width: 4.5rem;
+    height: 2rem;
 
     img {
       width: 1rem;
@@ -203,32 +242,50 @@ export const Coin = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
-    height: 32px;
-    gap: 8px;
+  @media(min-width: 768px) {
+    width: 15rem;
+    height: 3rem;
+    gap: 2rem;
 
     img {
-      width: 20px;
+      height: 32px;
     }
 
     span {
-      font-size: 20px;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12.5rem;
+      height: 2rem;
+      gap: 0.5rem;
+
+      img {
+        width: 20px;
+        height: 24px;
+      }
+
+      span {
+        font-size: 1.25rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 350px;
-    height: 72px;
-    gap: 52px;
+    width: 21.875rem;
+    height: 4.5rem;
+    gap: 3.25rem;
     border-width: 3px;
 
     img {
       width: 52px;
+      height: 42px;
     }
 
     span {
-      font-size: 36px;
+      font-size: 2.25rem;
     }
   }
 `;
@@ -240,15 +297,21 @@ export const Board = styled.div`
   gap: 0.75rem;
 
   @media(max-width: 375px) {
-    gap: 8px;
+    gap: 0.5rem;
   }
 
   @media(max-width: 320px) {
-    gap: 4px;
+    gap: 0.25rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 4px;
+  @media(max-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -286,10 +349,16 @@ export const BoardRow = styled.div`
     gap: 0.375rem;
   }
 
-  @media(min-width: 480px) {
-    width: 100%;
-    gap: 0px;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      gap: 0px;
+      justify-content: space-between;
+    }
   }
 `;
 
@@ -318,25 +387,35 @@ export const Letters = styled.div`
     font-size: 1rem;
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    font-size: 16px;
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
   }
   
   @media(min-width: 1280px) {
-    width: 64px;
-    height: 64px;
+    width: 4rem;
+    height: 4rem;
     border-width: 3px;
-    font-size: 32px;
+    font-size: 2rem;
   }
 `;
 
 export const DivMobile = styled.div`
   width: 100%;
 
-  @media (min-width: 480px) {
-    display: none;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: none;
+    }
   }
 `;
 
@@ -344,8 +423,10 @@ export const DivDesk = styled.div`
   display: none;
   width: 100%;
 
-  @media (min-width: 480px) {
-    display: block;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: block;
+    }
   }
 `;
 
@@ -354,25 +435,26 @@ export const ButtonArea = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 16px;
-
-  @media(max-width: 360px) {
-    gap: 1rem;
-  }
+  gap: 1rem;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
   }
 
+  @media(max-width: 768px) {
+    gap: 2rem;
+  }
+
   @media(min-width: 1280px) {
+    gap: 0;
     justify-content: space-between;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 172px;
-  height: 42px;
+  width: 10.75rem;
+  height: 2.625rem;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -396,9 +478,8 @@ export const Button = styled.button`
   }
 
   @media(max-width: 360px) {
-    width: 150px;
-    height: 42px;
-    font-size: 16px;
+    width: 9.375rem;
+    font-size: 1rem;
 
     img {
       width: 24px;
@@ -406,29 +487,42 @@ export const Button = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 130px;
+    width: 8.125rem;
     height: 2rem;
-    font-size: 14px;
+    font-size: 0.875rem;
 
     img {
       width: 16px;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 200px;
-    height: 32px;
-    font-size: 18px;
+  @media(min-width: 768px) {
+    width: 15rem;
+    height: 3rem;
+    gap: 0.5rem;
+    font-size: 1.25rem;
 
     img {
-      width: 24px;
+      width: 54px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12.5rem;
+      height: 2rem;
+      font-size: 1.125rem;
+
+      img {
+        width: 24px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 350px;
-    height: 72px;
-    gap: 16px;
+    width: 21.875rem;
+    height: 4.5rem;
+    gap: 1rem;
     font-size: 28px;
 
     img {
@@ -460,12 +554,18 @@ export const KeyBoard = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 550px;
+    width: 34.375rem;
   }
 
-  @media(min-width: 1204px) {
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 30rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 100%;
-    gap: 20px;
+    gap: 1.25rem;
   }
 `;
 
@@ -474,10 +574,20 @@ export const Line1 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.375rem;
+
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.375rem;
+    }
+  }
 
   @media (min-width: 1280px) {
-    gap: 16px;
+    gap: 1rem;
   }
 `;
 
@@ -487,10 +597,20 @@ export const Line2= styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.375rem;
+
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.375rem;
+    }
+  }
 
   @media (min-width: 1280px) {
-    gap: 16px;
+    gap: 1rem;
   }
 `;
 
@@ -499,7 +619,7 @@ export const Line3 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.375rem;
 
   .keyDelete {
     width: 3rem;
@@ -518,25 +638,37 @@ export const Line3 = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
+    gap: 0.5rem;
+
     .keyDelete {
-      width: 58px;
+      width: 4rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.375rem;
+
+      .keyDelete {
+        width: 3.625rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 16px;
+    gap: 1rem;
 
     .keyDelete {
-      width: 72px;
+      width: 4.5rem;
     }
   }
 `;
 
 export const Key = styled.button`
   all: unset;
-  width: 28px;
-  height: 40px;
+  width: 1.75rem;
+  height: 2.5rem;
   border-radius: 4px;
   display: flex;
   align-items: center;
@@ -547,7 +679,7 @@ export const Key = styled.button`
   border-radius: 3px;
   color: ${props => props.theme["gray-600"]};
   transition: all ease 0.3s;
-  font-size: 24px;
+  font-size: 1.5rem;
   cursor: pointer;
 
   img {
@@ -563,31 +695,43 @@ export const Key = styled.button`
   }
 
   @media(max-width: 360px) {
-    width: 24px;
-    height: 38px;
-    font-size: 22px;
+    width: 1.5rem;
+    height: 2.375rem;
+    font-size: 1.375rem;
   }
 
   @media(max-width: 320px) {
-    width: 20px;
-    height: 32px;
-    font-size: 16px;
+    width: 1.25rem;
+    height: 1rem;
+    font-size: 1rem;
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    font-size: 18px;
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3.5rem;
+    font-size: 1.5rem;
 
     img {
       width: 32px;
     }
   }
 
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      font-size: 1.125rem;
+
+      img {
+        width: 32px;
+      }
+    }
+  }
+
   @media(min-width: 1280px) {
-    width: 46px;
-    height: 72px;
-    font-size: 28px;
+    width: 2.875rem;
+    height: 4.5rem;
+    font-size: 1.75rem;
 
     img {
       width: 36px;

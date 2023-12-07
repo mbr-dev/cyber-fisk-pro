@@ -2,7 +2,6 @@ import { useContext } from "react";
 import { useState, useEffect } from "react";
 import Cookies from "universal-cookie";
 import { useNavigate } from "react-router-dom";
-import { Eye, EyeOff } from "lucide-react";
 
 import { Footer } from "../../components/Footer";
 import { Loading } from "../../components/Loading";
@@ -20,6 +19,8 @@ import Youtube from "../../assets/Youtube.png";
 import BrazilImg from "../../assets/Brazil.svg";
 import UserImg from "./image/user.png";
 import CadeadoImg from "./image/cadeado.png";
+import HideImg from "./image/hide.png";
+import ViewImg from "./image/view.png";
 import Facebook from "../../assets/Facebook.png";
 import Instagram from "../../assets/Instagram.png";
 import arrowBottomImg from "../../assets/arrowBottom.svg";
@@ -40,8 +41,6 @@ export const Login = () => {
   const [error, setError] = useState(false);
   const [loading, setLoading] = useState(false);
   const [viewPass, setViewPass] = useState(false);
-
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   const handleSelectLanguage = (item) => {
     chooseLanguage(item)
@@ -167,7 +166,7 @@ export const Login = () => {
       </Header>
 
       <Main>
-        <Form onKeyDown={(e) => {e.keyCode === 13 ? handleSignIn() : null}}>
+        <Form id="myForm" onSubmit={handleSignIn}>
           {error ? 
             <Notifications description={msgError} event={clickAlert}/> : null
           }
@@ -190,9 +189,9 @@ export const Login = () => {
             <DivInput>
               <img src={CadeadoImg} alt="Icon locker"  />
               {!viewPass ?
-                <EyeOff size={isDesktop ? 24 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>
+                <img src={HideImg} className="eyesImg" onClick={() => {passView()}}/>
                 :
-                <Eye size={isDesktop ? 24 :  16} strokeWidth={2.5} className="eye" onClick={() => {passView()}}/>  
+                <img src={ViewImg}  className="eyesImg" onClick={() => {passView()}}/>  
               }
               <Input 
                 type={viewPass ? "text" : "password"}

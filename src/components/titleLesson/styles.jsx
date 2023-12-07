@@ -22,8 +22,22 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 600px) {
-    padding: 0.5rem;
+  @media(min-width: 768px) {
+    padding: 1rem;
+
+    span {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 0.5rem;
+
+      span {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media(min-width: 1280px) {

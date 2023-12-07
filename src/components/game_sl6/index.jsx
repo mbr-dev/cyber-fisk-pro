@@ -4,13 +4,14 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL6 } from "../HeaderLessonSL6";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import LogoImg from "../../assets/logoIcon.png";
 
-import { Container, Main, Grid, Card, Icon, AreaFooter, ButtonTask } from "./styles";
+import { Container, Main, Grid, Card, Icon } from "./styles";
 
 export const GameSL6 = () => {
   const { setTimeElapsed, timeElapsed, statusColor, setStatusColor, rodadaGeral, setNewRodada } = useContext(LessonContext);
@@ -28,10 +29,6 @@ export const GameSL6 = () => {
   const [countTimer, setCountTimer] = useState(0);
 
   const navigate = useNavigate();
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -340,11 +337,7 @@ export const GameSL6 = () => {
         </Grid>
       </Main>
 
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

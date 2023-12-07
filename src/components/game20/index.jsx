@@ -2,7 +2,6 @@ import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
-import { ButtonBg } from "../ButtonBg";
 import { SubTitleLesson } from "../subTitleLesson";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 

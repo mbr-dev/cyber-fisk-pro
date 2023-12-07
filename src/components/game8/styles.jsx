@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -15,13 +15,26 @@ export const Main = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  padding-inline: 0.5rem;
   gap: 1rem;
   margin-top: 1rem;
 
-  @media(min-width: 600px) {
-    flex-direction: row;
-    gap: 1.5rem;
+  @media(max-width: 320px) {
+    gap: 0.5rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 20rem;
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      flex-direction: row;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -53,12 +66,30 @@ export const Title = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
     padding-block: 1rem;
-    padding-inline: 1rem;
+    padding-inline: 0;
 
     p {
-      font-size: 1.5rem;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-block: 1rem;
+
+    p {
+      font-size: 2rem;
     }
   }
 `;
@@ -98,12 +129,23 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 9rem;
-    height: 3rem;
+  @media (min-width: 768px) {
+    width: 15rem;
+    height: 4rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 9rem;
+      height: 3rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 

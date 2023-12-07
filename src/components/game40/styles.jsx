@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -17,12 +18,21 @@ export const Main = styled.main`
   margin-top: 1rem;
 
   @media(max-width: 320px) {
-    margin-top: 0.75rem;
-    gap: 0.75rem;
+    margin-top: 0.5rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    flex-direction: row;
+  @media(min-width: 768px) {
+    margin-top: 2rem;
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      margin-top: 0.5rem;
+      gap: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -48,6 +58,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     font-size: 1rem;
+    font-weight: 500;
   }
 
   &:hover {
@@ -67,12 +78,23 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 12rem;
-    height: 3rem;
+  @media(min-width: 768px) {
+    width: 18.75rem;
+    height: 5rem;
 
     p {
-      font-size: 0.875rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 3rem;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -81,7 +103,7 @@ export const ButtonAnswer = styled.button`
     height: 5rem;
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
     }
   }
 `;

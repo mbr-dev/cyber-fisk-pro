@@ -2,11 +2,9 @@ import React from "react";
 
 import { Container } from "./styles";
 
-export const TitleLesson = ({ title, mt }) => {
+export const TitleLesson = ({ title }) => {
   return(
-    <Container style={{
-      marginTop: mt
-    }}>
+    <Container>
       <span>{title}</span>
     </Container>  
   )

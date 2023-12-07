@@ -5,20 +5,23 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
   overflow: hidden;
 
-  @media(min-width: 480px) {
-    flex-direction: row;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+    }
   }
 `;
 
 export const Header = styled.header`
   width: 100vw;
-  height: 104px;
+  height: 6.5rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 16px 16px 0 16px;
+  padding: 1rem 1rem 0 1rem;
   position: relative;
 
   .bgHeaderImg {
@@ -33,24 +36,30 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 78px;
+    height: 4.875rem;
   }
 
-  @media(min-width: 480px) {
-    width: 40%;
-    height: 100vh;
-    flex-direction: column;
-    align-items: center;
-    padding: 16px;
+  @media(min-width: 768px) {
+    height: 9rem;
+  }
 
-    .bgHeaderImg {
-      border-end-end-radius: 0;
-      border-end-start-radius: 0;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40%;
+      height: 100vh;
+      flex-direction: column;
+      align-items: center;
+      padding: 1rem;
+
+      .bgHeaderImg {
+        border-end-end-radius: 0;
+        border-end-start-radius: 0;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    padding: 32px;
+    padding: 2rem;
   }
 `;
 
@@ -61,24 +70,32 @@ export const HeaderButton = styled.div`
 `;
 
 export const DivBtnCH = styled.div`
-  width: 240px;
+  width: 15rem;
   display: flex;
   justify-content: space-between;
 
   @media (max-width: 320px) {
-    width: 200px;
+    width: 12.5rem;
   }
 
-  @media (min-width: 480px) {
-    display: none;
+  @media (min-width: 768px) {
+    width: 27.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: none;
+    }
   }
 `; 
 
 export const AvatarPe = styled.div`
   display: none;
   
-  @media (min-width: 480px) {
-    display: block;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: block;
+    }
   }
 `;
 
@@ -89,42 +106,46 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 16px;
+  gap: 1rem;
   position: relative;
 
-  @media(min-width: 480px) {
-    width: 60%;
-    height: 100vh;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 60%;
+      height: 100vh;
+    }
   }
 `;
 
 export const BtnC = styled.div`
   display: none;
 
-  @media (min-width: 480px) {
-    display: block;
-    position: absolute;
-    top: 16px;
-    right: 16px;
-  }
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: block;
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+    }
+}
 
   @media (min-width: 1280px) {
-    top: 32px;
-    right: 32px;
+    top: 2rem;
+    right: 2rem;
   }
 `;
 
 export const Main = styled.main`
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
-  padding-top: 64px;
-  gap: 16px;
+  padding-top: 4rem;
+  gap: 1rem;
   
   p {
     display: flex;
     align-items: flex-start;
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: 500;
     cursor: pointer;
   }
@@ -142,32 +163,46 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 300px;
-    padding-top: 32px;
-    gap: 12px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    justify-content: center;
+    padding-top: 3rem;
+    gap: 1.5rem;
 
     p {
-      font-size: 20px;
+      font-size: 2rem;
+      padding-left: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      padding-top: 2rem;
+      gap: 0.75rem;
+
+      p {
+        font-size: 1.25rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 600px;
+    width: 37.5rem;
     justify-content: center;
-    padding-top: 100px;
-    gap: 24px;
+    padding-top: 6.25rem;
+    gap: 1.5rem;
 
     p {
-      font-size: 32px;
-      padding-left: 32px;
+      font-size: 2rem;
+      padding-left: 2rem;
     }
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -175,26 +210,33 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 300px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+    height: 4.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 600px;
-    height: 100px;
+    width: 37.5rem;
+    height: 6.25rem;
     border-width: 4px;
   }
 `;
 
 export const ButtonLogout = styled.button`
   all: unset;
-  width: 250px;
-  height: 36px;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -207,7 +249,7 @@ export const ButtonLogout = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 24px;
+    font-size: 1.5rem;
     font-weight: bold;
   }
 
@@ -216,29 +258,41 @@ export const ButtonLogout = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 18px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    width: 25rem;
+    height: 2.75rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

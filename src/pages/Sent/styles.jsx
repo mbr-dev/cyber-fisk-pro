@@ -14,26 +14,26 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding-top: 16px;
+  gap: 1rem;
+  padding-top: 1rem;
   background-color: ${props => props.theme["gray-100"]};
   overflow-y: scroll;
 
   @media (max-width: 320px) {
-    gap: 12px;
-    padding-top: 12px;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
   }
 
   @media (min-width: 768px) {
-    gap: 36px;
-    padding-top: 36px;
+    gap: 2.25rem;
+    padding-top: 2.25rem;
   }
 `;
 
 export const Div = styled.button`
   all: unset;
-  width: 300px;
-  height: 44px;
+  width: 18.75rem;
+  height: 2.75rem;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -48,7 +48,7 @@ export const Div = styled.button`
     align-items: center;
     justify-content: center;
     color: ${props => props.theme.white};
-    font-size: 12px;
+    font-size: 0.75rem;
     font-weight: 700;
     border: 2px solid ${props => props.theme["green-700"]};
     border-top-left-radius: 8px;
@@ -57,82 +57,24 @@ export const Div = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 250px;
-    height: 40px;
+    width: 15.625rem;
+    height: 2.5rem;
 
     .spanDay {
       padding-inline: 6px;
-      font-size: 10px;
+      font-size: 0.625rem;
       font-weight: 500;
     }
   }
 
   @media (min-width: 768px) {
-    width: 600px;
-    height: 64px;
-    padding-right: 12px;
+    width: 37.5rem;
+    height: 4rem;
+    padding-right: 0.75rem;
 
     .spanDay {
-      padding-inline: 12px;
-      font-size: 16px;
-    }
-  }
-`;
-
-export const AreaButton = styled.div`
-  width: 100%;
-  height: 86px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 20px;
-
-  @media (max-width: 320px) {
-    height: 64px;
-  }
-
-  @media (min-width: 768px) {
-    height: 120px;
-    gap: 32px;
-  }
-`;
-
-export const Button = styled.button`
-  all: unset;
-  width: 150px;
-  height: 36px;
-  border-radius: 8px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.25rem;
-  background-color: ${props => props.$variant === "red" ? props.theme["red-200"] : props.theme["yellow-300"]};
-  color: ${props => props.theme.white};
-  border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["yellow-200"]};
-  border-bottom-width: 3px;
-  border-left-width: 3px;
-  cursor: pointer;
-
-  p {
-      font-size: 18px;
-    }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
-  }
-
-  @media (max-width: 320px) {
-    width: 130px;
-    height: 32px;
-  }
-
-  @media (min-width: 768px) {
-    width: 250px;
-    height: 56px;
-    
-    p {
-      font-size: 28px;
+      padding-inline: 0.75rem;
+      font-size: 1rem;
     }
   }
 `;
@@ -140,48 +82,48 @@ export const Button = styled.button`
 export const Text = styled.div`
   flex: 1;
   width: 100%;
-  padding-left: 8px;
+  padding-left: 0.5rem;
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
   }
   
   span {
-    font-size: 10px;
+    font-size: 0.625rem;
   }
 
   @media (max-width: 320px) {
-    padding-left: 6px;
+    padding-left: 0.375rem;
 
     p {
-      font-size: 10px;
+      font-size: 0.625rem;
     }
     
     span {
-      font-size: 8px;
+      font-size: 0.5rem;
     }
   }
 
   @media (min-width: 768px) {
-    padding-left: 16px;
+    padding-left: 1rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
     
     span {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 `;
 
 export const DivImg = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${props => props.theme["green-600"]};
+  border: 2px solid ${props => props.theme["blue-50"]};
   border-radius: 8px;
 
   img {
@@ -190,8 +132,8 @@ export const DivImg = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
 
     img {
       width: 16px;
@@ -200,8 +142,8 @@ export const DivImg = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 52px;
-    height: 52px;
+    width: 3.25rem;
+    height: 3.25rem;
     border-width: 3px;
 
     img {

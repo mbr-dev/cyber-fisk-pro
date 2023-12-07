@@ -9,6 +9,7 @@ import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { ModalPronunciation } from "../../components/ModalPronunciation";
 
@@ -21,7 +22,7 @@ import superImg from "./images/super.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
 import LogoFiskImg from "../../assets/logoFisk2.png";
 
-import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft, AreaFooter, ButtonHome } from "./styles"
+import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
 export const LessonSelected = () => {
   const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
@@ -58,6 +59,14 @@ export const LessonSelected = () => {
 
   const handleGoHome = () => {
     navigate("/Home");
+  }
+
+  const handleGoAudio = () => {
+    navigate("/Audio");
+  }
+
+  const handleGoStudio = () => {
+    navigate("/StudioList");
   }
   
   const verificaTask = async () => {
@@ -135,7 +144,7 @@ export const LessonSelected = () => {
 
         <ButtonAreaBottom>
           <BottomLeft>
-            <ButtonBottom>
+            <ButtonBottom onClick={handleGoAudio}>
               <img src={foneImg} alt="" />
               <p>Audio</p>
             </ButtonBottom>
@@ -147,7 +156,7 @@ export const LessonSelected = () => {
           </BottomLeft>
 
           <BottomRight>
-            <ButtonBottom>
+            <ButtonBottom onClick={handleGoStudio}>
               <img src={studioImg} alt="" />
               <p>Studio</p>
             </ButtonBottom>
@@ -165,11 +174,7 @@ export const LessonSelected = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullBtn />
     </Container>
   )
 }

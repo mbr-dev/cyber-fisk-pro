@@ -1,16 +1,22 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 120px;
-  height: 200px;
+  width: 7.5rem;
+  height: 12.5rem;
   position: relative;
-  margin-top: -42px;
+  margin-top: -2.625rem;
   z-index: 10;
 
   @media (max-width: 320px) {
-    width: 100px;
-    height: 150px;
-    margin-top: -36px;
+    width: 6.25rem;
+    height: 9.375rem;
+    margin-top: -2.25rem;
+  }
+
+  @media (min-width: 768px) {
+    width: 8.25rem;
+    height: 13.75rem;
+    margin-top: -2.75rem;
   }
 `;
 
@@ -87,8 +93,8 @@ export const Bracos = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 120px;
-  height: 24px;
+  width: 7.5rem;
+  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -97,7 +103,7 @@ export const Name = styled.div`
   background-color: ${props => props.theme["red-200"]};
   position: absolute;
   z-index: 20;
-  bottom: 60px;
+  bottom: 3.75rem;
   
   p {
     overflow: hidden;
@@ -108,11 +114,21 @@ export const Name = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 100px;
-    bottom: 42px;
+    width: 6.25rem;
+    bottom: 2.625rem;
 
     p {
       font-size: 14px;
+    }
+  }
+
+  @media (max-width: 768px) {
+    width: 8.25rem;
+    height: 2rem;
+    bottom: 3.75rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 `;

@@ -1,22 +1,30 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 52px;
-  height: 92px;
+  width: 3.25rem;
+  height: 5.75rem;
   position: relative;
-  margin-bottom: -28px;
+  margin-bottom: -1.75rem;
   z-index: 1;
 
-  @media (min-width: 1280px) {
-    width: 72px;
-    height: 130px;
-    margin-bottom: -46px;
+  @media (min-width: 768px) {
+    width: 4rem;
+    height: 8rem;
+    margin-bottom: -2.75rem;
   }
 
-  @media (min-width: 1440px) {
-    width: 100px;
-    height: 180px;
-    margin-bottom: -66px;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 3.25rem;
+      height: 5.75rem;
+      margin-bottom: -1.75rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 4.5rem;
+    height: 8.125rem;
+    margin-bottom: -2.5rem;
   }
 `;
 

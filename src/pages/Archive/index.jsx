@@ -1,12 +1,11 @@
 import { useNavigate } from "react-router-dom";
-import * as Dialog from "@radix-ui/react-dialog";
 
-import { Modal } from "./components/Modal";
 import { HeaderText } from "../../components/HeaderText";
+import { AreaButtonMsg } from "../../components/AreaButtonMsg";
 
 import FolderImg from "./images/folder.png";
 
-import { Container, Main, Div, AreaButton, Button, Text, DivImg } from "./styles";
+import { Container, Main, Div, Text, DivImg } from "./styles";
 
 export const Archive = () => {
   const navigate = useNavigate();
@@ -92,21 +91,7 @@ export const Archive = () => {
         </Div>
       </Main>
 
-      <AreaButton>
-        <Button onClick={handleMessages} $variant="red">
-          <p>Messages</p>
-        </Button>
-
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <Button>
-              <p>Filter</p>
-            </Button>
-          </Dialog.Trigger>
-
-          <Modal />
-        </Dialog.Root>
-      </AreaButton>
+      <AreaButtonMsg />
     </Container>
   )
 }

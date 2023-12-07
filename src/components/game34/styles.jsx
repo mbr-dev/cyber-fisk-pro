@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -21,13 +22,22 @@ export const Main = styled.main`
     gap: 0.75rem;
   }
 
-  @media(min-width: 600px) {
-    flex-direction: row;
+  @media(min-width: 768px) {
+    margin-top: 2rem;
+    gap: 1.5rem;
+  } 
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+      margin-top: 1rem;
+      flex-direction: row;
+    }
   }
 
   @media(min-width: 1280px) {
     margin-top: 2rem;
-    gap: 1.5rem;
+    gap: 1rem;
   } 
 `;
 
@@ -46,7 +56,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 
   &:hover {
@@ -62,25 +72,36 @@ export const ButtonAnswer = styled.button`
     height: 3rem;
 
     p {
-      font-size: 0.75rem;
-    }
-  }
-
-  @media(min-width: 600px) {
-    width: 11rem;
-    height: 3rem;
-
-    p {
       font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 18rem;
+  @media(min-width: 768px) {
+    width: 18.75rem;
     height: 5rem;
 
     p {
-      font-size: 1.25rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12rem;
+      height: 3rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 18.75rem;
+    height: 5rem;
+
+    p {
+      font-size: 1.125rem;
     }
   }
 `;

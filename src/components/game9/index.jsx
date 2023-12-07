@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { ButtonAnswer } from "../ButtonAnswer";
 import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
@@ -11,6 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
 import { Container, Main } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game9 = () => {
   const {
@@ -19,6 +19,7 @@ export const Game9 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [sound, setSound] = useState(null);
   const [answers, setAnswers] = useState([]);
@@ -60,6 +61,7 @@ export const Game9 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -74,13 +76,14 @@ export const Game9 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setSelectedColor, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -101,12 +104,16 @@ export const Game9 = () => {
     setBlockButton(true);
 
     let tempPoint;
+    let tempSelectedColor = selectedColor;
     let answerSelected = answers[index].status;
 
     if (answerSelected === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempPoint = PointRule(nivel, correctPoints);
       setCorrectPoints(tempPoint);
@@ -115,6 +122,9 @@ export const Game9 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -179,6 +189,7 @@ export const Game9 = () => {
       <Loading />
     )
   }
+  /* game não utiliza caso sair game novo implementar aqui */
 
   return (
     <Container>
@@ -190,12 +201,13 @@ export const Game9 = () => {
           return (
             <ButtonAnswer 
               key={index}
-              w="14rem"
-              h="3rem"
-              onPress={() => handleClick(index)}
-              disabledButton={blockButton}
+              onClick={() => {handleClick(index)}}
+              disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
-              <p>{answer.label}</p>
+              <p>{answer.label}</p>GAME09
             </ButtonAnswer>
           )
         })}

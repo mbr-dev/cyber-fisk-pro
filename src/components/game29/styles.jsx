@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -24,11 +25,18 @@ export const Main = styled.main`
     gap: 0.375rem;
   }
 
-  @media(min-width: 600px) {
-    padding-block: 0rem;
-    flex-direction: row;
-    align-items: flex-start;
-    justify-content: center;
+  @media(min-width: 768px) {
+    padding-block: 1rem;
+    margin-bottom: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0rem;
+      flex-direction: row;
+      align-items: flex-start;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -44,12 +52,18 @@ export const Left = styled.div`
   justify-content: center;
   gap: 0.5rem;
 
-  @media(min-width: 600px) {
-    width: 45%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 45%;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -70,12 +84,20 @@ export const AreaWord = styled.div`
     width: 19rem;
   }
 
-  @media(min-width: 600px) {
-    width: 23rem;
-    height: 5rem;
+  @media(min-width: 768px) {
+    width: 35rem;
+    height: 9rem;
     gap: 0.5rem;
-    align-items: center;
-    justify-content: center;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 23rem;
+      height: 5rem;
+      gap: 0.5rem;
+      align-items: center;
+      justify-content: center;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -102,14 +124,21 @@ export const Words = styled.span`
     padding: 0.25rem 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  @media(min-width: 768px) {
+    font-size: 1.25rem;
+    padding: 0.625rem 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 18px;
-    padding: 10px 16px;
+    font-size: 1.25rem;
+    padding: 0.625rem 1rem;
   }
 `;
 
@@ -130,9 +159,17 @@ export const AreaAnswers = styled.div`
     height: 8rem;
   }
 
-  @media(min-width: 600px) {
-    width: 23rem;
-    height: 6rem;
+  @media(min-width: 768px) {
+    width: 42rem;
+    height: 10rem;
+    border-width: 3px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 23rem;
+      height: 6rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -159,14 +196,21 @@ export const WordsDrop = styled.span`
     padding: 0.25rem 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+  @media(min-width: 768px) {
+    font-size: 1.125rem;
+    padding: 0.625rem 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 18px;
-    padding: 10px 16px;
+    font-size: 1.125rem;
+    padding: 0.625rem 1rem;
   }
 `;
 
@@ -177,15 +221,16 @@ export const Right = styled.div`
   justify-content: center;
   gap: 0.5rem;
   
-  @media(min-width: 600px) {
-    width: 45%;
-    border-left: 2px solid ${props => props.theme["gray-200"]};
-    justify-content: space-between;
-    
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 45%;
+      border-left: 2px solid ${props => props.theme["gray-200"]};
+      justify-content: space-between;
+    }
   }
 
-  @media(min-width: 1024px) {
-    height: 360px;
+  @media(min-width: 1280px) {
+    height: 22.5;
   }
 `;
 
@@ -196,7 +241,7 @@ export const AreaButton = styled.div`
   justify-content: center;
   gap: 1rem;
 
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
     gap: 2rem;
   }
 `;
@@ -228,9 +273,23 @@ export const Button = styled.button`
     font-size: 0.875rem;
   }
 
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 15.625rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
+  }
+
   @media (min-width: 1280px) {
-    width: 250px;
-    height: 48px;
-    font-size: 24px;
+    width: 15.625rem;
+    height: 3rem;
+    font-size: 1.5rem;
   }
 `;

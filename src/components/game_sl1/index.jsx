@@ -4,12 +4,13 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLessonSL1 } from "../HeaderLessonSL1";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons, ButtonAnswer, Button, AreaFooter, ButtonTask, DivAnswer, Div, DivRow, Left, Right } from "./styles";
+import { Container, Main, ButtonArea, Letter, LettersArea, AreaButtons, ButtonAnswer, Button, DivAnswer, Div, DivRow, Left, Right } from "./styles";
 
 export const GameSL1 = () => {
   const { 
@@ -34,10 +35,6 @@ export const GameSL1 = () => {
   const [countTimer, setCountTimer] = useState(0);
 
   const navigate = useNavigate();
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
 
   const loadLesson = useCallback(async() => {
     try {
@@ -298,11 +295,7 @@ export const GameSL1 = () => {
         </Right>
       </Main>
 
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

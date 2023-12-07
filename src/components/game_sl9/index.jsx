@@ -4,11 +4,12 @@ import { useNavigate } from "react-router-dom";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { HeaderLesson } from "../HeaderLesson";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { api } from "../../lib/api";
 import { LessonContext } from "../../context/lesson";
 
-import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, AreaFooter, ButtonCheck, ButtonTask } from "./styles";
+import { Container, Main, DivLetter, Letters, LineSeparator, TypeLetters, Phrase, DivWord, Answer, Input, TypeLetters2, DivLetter2, ButtonCheck } from "./styles";
 
 export const GameSL9 = () => {
   const {
@@ -37,10 +38,6 @@ export const GameSL9 = () => {
   const [countTimer, setCountTimer] = useState(0);
   const [selectedIndexes, setSelectedIndexes] = useState([]);
   const [selectedWrongIndexes, setSelectedWrongIndexes] = useState([]);
-
-  const handleGoTasks = () => {
-    navigate("/lessonSelected");
-  }
  
   const loadLesson = useCallback(async() => {
     try {
@@ -388,11 +385,7 @@ export const GameSL9 = () => {
         }
       </Main>
 
-      <AreaFooter>
-        <ButtonTask onClick={handleGoTasks}>
-          <p>Tasks</p>
-        </ButtonTask>
-      </AreaFooter>
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

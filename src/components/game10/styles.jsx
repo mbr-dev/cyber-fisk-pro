@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -16,47 +17,61 @@ export const Main = styled.main`
   justify-content: flex-start;
   gap: 1rem;
   margin-top: 1rem;
-  
-  form {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding-block: 1rem;
-    background-color: ${props => props.theme["gray-100"]};
 
-    @media(max-width: 320px) {
-      padding-block: 0.5rem;
-    }
+  @media(min-width: 320px) {
+    gap:  0.5rem;
+    margin-top: 0.5rem;
+  }
 
+  @media(min-width: 768px) {
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-block: 0.5rem;
+      gap:  0.5rem;
+      margin-top: 0.5rem;
     }
-
-    @media(min-width: 1280px) {
-      padding-block: 1rem;
-    }
-  }
-
-  @media(max-width: 320px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem
-  }
-
-  @media(min-width: 600px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem
   }
 
   @media(min-width: 1280px) {
     gap: 2rem;
-    margin-top: 2rem
+    margin-top: 2rem;
+  }
+`;
+
+export const Form = styled.form`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding-block: 1rem;
+  background-color: ${props => props.theme["gray-100"]};
+
+  @media(max-width: 320px) {
+    padding-block: 0.5rem;
+  }
+
+  @media(min-width: 768px) {
+    padding-block: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding-block: 1rem;
   }
 `;
 
 export const Input = styled.input`
   all: unset;
-  width: 18.75rem;
+  width: 21rem;
   height: 2.5rem;
   padding-left: 0.5rem;
   border-radius: 6px;
@@ -75,10 +90,19 @@ export const Input = styled.input`
     font-size: 0.875rem;
   }
 
-  @media(min-width: 600px) {
-    width: 40rem;
-    height: 2rem;
-    font-size: 0.875rem;
+  @media(min-width: 768px) {
+    width: 42rem;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -122,9 +146,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

@@ -1,12 +1,12 @@
 import Confetti from "react-confetti";
 import Cookies from "universal-cookie";
 import { apiQAS } from "../../lib/api";
-import { useNavigate } from "react-router-dom";
 import { useState, useEffect, useContext } from "react";
 
 import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
@@ -19,7 +19,7 @@ import FundoWDImg from "./images/FundoWD.png";
 import Dollars from "../../assets/Dollar.svg";
 import Confetes from "../../assets/Confetes.png";
 
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div, AreaButton, ButtonHome, DivMobile, DivDesk, LineSeparator } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, Bottom2, AreaItem, AreaItem2, Text, ButtonRed, IconAvatar, Content, ButtonClose, Div, DivMobile, DivDesk, LineSeparator } from "./styles";
 
 export const WellDone = () => {
   const { timeElapsed, dataInicio, numTask, numSelLesson } = useContext(LessonContext);
@@ -33,8 +33,6 @@ export const WellDone = () => {
   const [error, setError] = useState(false);
   const [xpAtividade, setXPAtividade] = useState(0);
   const [salvou, setSalvou] = useState(false);
-
-  const navigate = useNavigate();
 
   const phrase = [
     "Good job!",
@@ -123,10 +121,6 @@ export const WellDone = () => {
 
   const clickAlert = () => {
     setError(false);
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   useEffect(() => {
@@ -244,11 +238,7 @@ export const WellDone = () => {
           </Div>
         </Main>
 
-        <AreaButton>
-          <ButtonHome onClick={handleGoHome}>
-            <p>Home</p>
-          </ButtonHome>
-        </AreaButton>
+        <AreaFooterMiddleBtn />
       </Content>
     </Container>
   )

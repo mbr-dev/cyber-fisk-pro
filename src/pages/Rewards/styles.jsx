@@ -13,8 +13,8 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 16px;
-  gap: 12px;
+  padding-top: 1rem;
+  gap: 0.75rem;
 
   @media(max-width: 320px) {
     padding-top: 10px;
@@ -22,19 +22,27 @@ export const Main = styled.main`
     gap: 0px;
   }
 
-  @media(min-width: 480px) {
-    flex-direction: row;
-    align-items: flex-start;
-    padding-top: 8px;
+  @media(min-width: 768px) {
+    padding-top: 1rem;
+    gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      align-items: flex-start;
+      padding-top: 0.5rem;
+      gap: 0;
+    }
   }
 
   @media(min-width: 1280px) {
     justify-content: center;
-    padding-top: 16px;
+    padding-top: 1rem;
   }
 
   @media(min-width: 1920px) {
-    padding-top: 100px;
+    padding-top: 6.25rem;
   }
 `;
 
@@ -42,15 +50,21 @@ export const Left = styled.div`
   width: 100%;
   display: flex;
 
-  @media(min-width: 480px) {
-    width: 300px;
-    height: 200px;
-    justify-content: flex-start;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      height: 12.5rem;
+      justify-content: flex-start;
+    }
   }
   
   @media(min-width: 1280px) {
-    width: 500px;
-    height: 500px;
+    width: 31.25rem;
+    height: 31.25rem;
   }
 `;
 
@@ -59,24 +73,30 @@ export const Top = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    gap: 6px;
+    gap: 0.375rem;
   }
 
-  @media(min-width: 480px) {
-    gap: 50px;
+  @media(min-width: 768px) {
+    gap: 3rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 3.125rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 120px;
+    gap: 7.5rem;
   }
 `;
 
 export const Button = styled.div`
-  width: 198px;
-  height: 32px;
+  width: 12.375rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,21 +106,29 @@ export const Button = styled.div`
   color: ${props => props.theme.white};
   
   @media(max-width: 320px) {
-    width: 120px;
-    height: 28px;
-    font-size: 14px;
+    width: 7.5rem;
+    height: 1.75rem;
+    font-size: 0.875rem;
   }
 
-  @media(min-width: 480px) {
-    width: 150px;
-    height: 32px;
-    font-size: 16px;
+  @media(min-width: 768px) {
+    width: 18.75;
+    height: 3.25rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 9.375rem;
+      height: 2rem;
+      font-size: 1rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 300px;
-    height: 52px;
-    font-size: 32px;
+    width: 18.75;
+    height: 3.25rem;
+    font-size: 2rem;
   }
 `;
 
@@ -115,18 +143,18 @@ export const Money = styled.div`
   }
 
   span {
-    width: 42px;
-    height: 42px;
+    width: 2.625rem;
+    height: 2.625rem;
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: 20px;
+    font-size: 1.25rem;
     border-radius: 6px;
     background-color: ${props => props.theme["gray-200"]};
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
   }
 
@@ -136,33 +164,55 @@ export const Money = styled.div`
     }
 
     span {
-      width: 28px;
-      height: 28px;
-      font-size: 14px;
+      width: 1.75rem;
+      height: 1.75rem;
+      font-size: 0.875rem;
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 768px) {
+    width: 100%;
+
     img {
-      width: 42px;
+      width: 72px;
     }
 
     span {
-      width: 38px;
-      height: 38px;
-      font-size: 18px;
+      width: 3.5rem;
+      height: 3.5rem;
+      font-size: 1.5rem;
     }
 
     p {
-      font-size: 22px;
+      font-size: 2rem;
     }
   }
 
-  @media(min-width: 1024px) {
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+
+      img {
+        width: 42px;
+      }
+
+      span {
+        width: 2.375rem;
+        height: 2.375rem;
+        font-size: 1.125rem;
+      }
+
+      p {
+        font-size: 1.375rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 100%;
 
     img {
@@ -170,13 +220,13 @@ export const Money = styled.div`
     }
 
     span {
-      width: 64px;
-      height: 64px;
-      font-size: 28px;
+      width: 4rem;
+      height: 4rem;
+      font-size: 1.75rem;
     }
 
     p {
-      font-size: 42px;
+      font-size: 2.625rem;
     }
   }
 `;
@@ -186,18 +236,24 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 8px;
+  gap: 0.5rem;
 
-  @media(min-width: 480px) {
-    width: 300px;
-    height: 200px;
-    gap: 4px;
-    border-left: 1px solid ${props => props.theme["gray-200"]};
+  @media(min-width: 768px) {
+    gap: 1rem;
   }
 
-  @media(min-width: 1024px) {
-    width: 700px;
-    height: 500px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      height: 12.5rem;
+      gap: 0.25rem;
+      border-left: 1px solid ${props => props.theme["gray-200"]};
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 43.75rem;
+    height: 31.25rem;
     border-left-width: 3px;
     gap: 0;
     justify-content: space-between;
@@ -205,17 +261,20 @@ export const Right = styled.div`
 `;
 
 export const DivMobile = styled.div`
-
-  @media (min-width: 480px) {
-    display: none;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: none;
+    }
   }
 `;
 
 export const DivDesk = styled.div`
   display: none;
 
-  @media (min-width: 480px) {
-    display: block;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: block;
+    }
   }
 `;
 
@@ -225,26 +284,31 @@ export const Separator = styled.div`
   align-items: center;
   justify-content: space-between;
   background-color: ${props => props.theme["gray-200"]};
-  padding: 10px;
+  padding: 0.625rem;
 
   @media(max-width: 320px) {
-    padding: 8px;
-  }
-  
-  @media(min-width: 480px) {
-    width: 100%;
-    padding: 6px;
+    padding: 0.5rem;
   }
 
-  @media(min-width: 1024px) {
-    width: 100%;
-    padding: 16px;
+  @media(min-width: 768px) {
+    padding: 1rem 2.5rem;
+  }
+  
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100%;
+      padding: 0.375rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    padding: 1rem;
   }
 `;
 
 export const Card = styled.div`
-  width: 42px;
-  height: 42px;
+  width: 2.625rem;
+  height: 2.625rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -264,26 +328,37 @@ export const Card = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 38px;
-    height: 38px;
+    width: 2.375rem;
+    height: 2.375rem;
 
     img {
       width: 24px;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
+  @media(min-width: 768px) {
+    width: 4.5rem;
+    height: 4rem;
 
     img {
-      width: 18px;
+      width: 40px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+
+      img {
+        width: 18px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 72px;
-    height: 72px;
+    width: 4.5rem;
+    height: 4.5rem;
 
     img {
       width: 44px;
@@ -293,68 +368,78 @@ export const Card = styled.div`
 
 export const Title = styled.div`
   width: 90%;
-  height: 32px;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
   border: 2px solid ${props => props.theme["blue-600"]};
   background-color: ${props => props.theme["blue-900"]};
-  color: white;
+  color: ${props => props.theme.white};
 
   @media (max-width: 320px) {
-    height: 28px;
+    height: 1.75rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 3px;
+  @media (min-width: 768px) {
+    height: 3.5rem;
 
     p {
-      font-size: 14px;
+      font-size: 1.5rem;
+    }
+  }
+
+  
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 2rem;
+      border-radius: 3px;
+
+      p {
+        font-size: 0.875rem;
+      }
     }
   }
 
   @media (min-width: 1280px) {
-    width: 90%;
-    height: 64px;
+    height: 4rem;
     border-radius: 6px;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;
 
 export const Bottom = styled.div`
   width: 100%;
-  height: 182px;
-  padding: 12px 10px;
+  height: 11.375rem;
+  padding: 0.75rem 0.625rem;
 
   div {
     width: 100%;
     height: 100%;
-    padding-block: 12px;
-    padding-left: 12px;
+    padding-block: 0.75rem;
+    padding-left: 0.75rem;
   }
 
   @media(max-width: 360px) {
-    height: 160px;
+    height: 10rem;
 
     div {
       width: 100%;
       height: 100%;
-      padding-block: 10px;
-      padding-left: 10px;
+      padding-block: 0.625rem;
+      padding-left: 0.625rem;
     }
   }
 
   @media(max-width: 320px) {
-    height: 120px;
+    height: 7.5rem;
 
     div {
       padding-block: 6px;
@@ -362,23 +447,35 @@ export const Bottom = styled.div`
     }
   }
 
-  @media(min-width: 480px) {
-    height: 100px;
-    padding: 8px 6px;
+  @media(min-width: 768px) {
+    height: 15.625rem;
+    padding: 0.875rem;
 
     div {
-      padding-block: 6px;
-      padding-left: 4px;
+      padding-block: 0.75rem;
+      padding-left: 0.5rem;
     }
   }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 6.25rem;
+      padding: 0.5rem 0.375rem;
+
+      div {
+        padding-block: 0.375rem;
+        padding-left: 0.25rem;
+      }
+    }
+}
 
   @media(min-width: 1280px) {
-    height: 220px;
-    padding: 14px;
+    height: 13.75rem;
+    padding: 0.875rem;
 
     div {
-      padding-block: 12px;
-      padding-left: 8px;
+      padding-block: 0.75rem;
+      padding-left: 0.5rem;
     }
   }
 `;
@@ -393,69 +490,82 @@ export const CardReward = styled.div`
   .RoboCard {
     width: 90px;
     height: 90px;
-    margin-right: 10px;
+    margin-right: 0.625rem,;
   }
 
   @media(max-width: 320px) {
     border-radius: 6px;
 
     .RoboCard {
-      width: 64px;
-      height: 64px;
-      margin-right: 10px;
+      width: 4rem;
+      height: 4rem;
+      margin-right: 0.625rem,;
     }
   }
 
-  @media(min-width: 480px) {
-
+  @media(min-width: 768px) {
     .RoboCard {
-      width: 64px;
-      height: 64px;
-      margin-right: 4px;
+      width: 9.375rem;
+      height: 9.375rem;
+      margin-right: 0px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      .RoboCard {
+        width: 4rem;
+        height: 4rem;
+        margin-right: 0.25rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-
     .RoboCard {
-      width: 150px;
-      height: 150px;
+      width: 9.375rem;
+      height: 9.375rem;
       margin-right: 0px;
     }
   }
 `;
 
 export const Footer = styled.div`
-  width: 320px;
-  height: 78px;
+  width: 18.75rem;
+  height: 4rem;
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-top: 1px solid ${props => props.theme["gray-200"]};
-  gap: 24px;
+  justify-content: space-around;
+  border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 280px;
-    height: 56px;
-    gap: 10px;
+    width: 15.625rem;
+    height: 3.25rem;
   }
 
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
+  @media(min-width: 768px) {
+    width: 37.5rem;
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 37.5rem;
+      height: 3.25rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    height: 100px;
-    border-top-width: 3px;
+    width: 75rem;
+    height: 6.25rem;
+    border-width: 4px;
   }
 `;
 
 export const BottomFooter = styled.button`
   all: unset;
-  width: 160px;
-  height: 36px;
+  width: 8.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -468,7 +578,7 @@ export const BottomFooter = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: bold;
   }
 
@@ -477,30 +587,41 @@ export const BottomFooter = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
+    width: 12.5rem;
+    height: 2rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    width: 200px;
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 17rem;
+    height: 3rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 480px) {
+      width: 12.5rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1rem;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 56px;
+    width: 25rem;
+    height: 3.5rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 `;

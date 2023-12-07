@@ -1,6 +1,5 @@
 import { useState, useCallback } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
 import { useSpeechSynthesis } from "react-speech-kit";
 
 import SomImg from "./images/Som.png";
@@ -8,6 +7,7 @@ import PauseImg from "./images/Pause.png";
 import EUAImg from "../../assets/Eua.svg";
 import SpainImg from "../../assets/Spain.svg";
 import BrazilImg from "../../assets/Brazil.svg";
+import xImg from "../../assets/xImg.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
 import { Content, Close, Overlay, Main, Header, Form, SelectLanguage, ButtonHear, ButtonFlag } from "./styles";
@@ -30,7 +30,7 @@ export const ModalPronunciation = () => {
       <Overlay />
       <Content>
         <Close>
-          <X size={18} color="white" strokeWidth={3} />
+          <img src={xImg} alt="X" />
         </Close>
         <Header>
           <p>Pronunciation</p>

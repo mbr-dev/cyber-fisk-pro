@@ -22,8 +22,10 @@ export const Main = styled.main`
     color: ${props => props.theme["gray-700"]};
   }
 
-  @media(min-width: 600px) {
-    width: 90%;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 90%;
+    }
   }
 `;
 
@@ -38,14 +40,20 @@ export const Grid = styled.div`
     padding-inline: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    width: 75%;
-    align-items: center;
+  @media(min-width: 768px) {
+    width: 30rem;
+    gap: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 28rem;
-    gap: 1rem;
+    width: 30rem;
+    gap: 1.5rem;
   }
 `;
 
@@ -82,16 +90,31 @@ export const Card = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 3.5rem;
-    height: 3.5rem;
+  @media(min-width: 768px) {
+    width: 6rem;
+    height: 6rem;
 
     p {
-      font-size: 0.75rem;
+      font-size: 1.125rem;
     }
 
     img {
-      width: 42px;
+      width: 64px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 3.5rem;
+      height: 3.5rem;
+
+      p {
+        font-size: 0.75rem;
+      }
+
+      img {
+        width: 42px;
+      }
     }
   }
 
@@ -111,82 +134,4 @@ export const Card = styled.button`
 
 export const Icon = styled.img`
   width: 60%;
-`;
-
-export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid ${props => props.theme["gray-200"]};
-
-  @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
-  }
-
-  @media(min-width: 600px) {
-    width: 600px;
-    height: 52px;
-  }
-
-  @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
-    border-width: 4px;
-  }
-`;
-
-export const ButtonTask = styled.button`
-  all: unset;
-  width: 250px;
-  height: 32px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
-
-    p {
-      font-size: 16px;
-    }
-  }
-
-  @media (min-width: 600px) {
-    height: 32px;
-    border-radius: 6px;
-
-    p {
-      font-size: 18px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
-
-    p {
-      font-size: 32px;
-    }
-  }
 `;

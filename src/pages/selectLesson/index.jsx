@@ -1,5 +1,5 @@
-import { useState, useEffect, useContext } from "react";
 import { useNavigate } from "react-router-dom";
+import { useState, useEffect, useContext } from "react";
 
 import { CyberContext } from "../../context/cyber";
 import { LessonContext } from "../../context/lesson";
@@ -7,11 +7,12 @@ import { LessonContext } from "../../context/lesson";
 import { Loading } from "../../components/Loading";
 import { HeaderText } from "../../components/HeaderText";
 import { Notifications } from "../../components/Notifications";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import { apiQAS } from "../../lib/api"
 import { AppError } from "../../utils/AppError";
 
-import { ButtonLesson, Container, Main, SelectLessonArea, AreaFooter, ButtonHome } from "./styles";
+import { ButtonLesson, Container, Main, SelectLessonArea } from "./styles";
 
 export const SelectLesson = () => {
   const navigate = useNavigate();
@@ -48,10 +49,6 @@ export const SelectLesson = () => {
     navigate("/LessonSelected");
   }
 
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
-
   useEffect(() => {
     fetchLessons();
   }, []);
@@ -82,11 +79,7 @@ export const SelectLesson = () => {
         </SelectLessonArea>
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullBtn />
     </Container>
   )
 }

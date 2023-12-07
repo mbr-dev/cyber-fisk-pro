@@ -1,7 +1,7 @@
 import { useNavigate } from "react-router-dom";
 
-import { FooterBtnHome } from "../../components/FooterBtnHome";
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import Email1Img from "./images/email1.png";
 import Email2Img from "./images/email2.png";
@@ -72,7 +72,7 @@ export const Messages = () => {
         </Div>
       </Main>
 
-      <FooterBtnHome title="Billboard" rota="/Billboard" />
+      <AreaFooterFullBtn title="Billboard" rota="/Billboard" />
     </Container>
   )
 }

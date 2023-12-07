@@ -1,5 +1,4 @@
-import { useState, useEffect } from "react";
-import { useGlobalAudioPlayer } from "react-use-audio-player";
+import { useState, useEffect, useRef } from "react";
 
 import { HeaderText } from "../../components/HeaderText";
 
@@ -12,131 +11,186 @@ import NextImg from "./images/Next.png";
 import PlayImg from "./images/Play.png";
 import PreviousImg from "./images/Previous.png";
 
-import msc1 from "./audios/L4_Task1_D_0.mp3";
-import msc2 from "./audios/L4_Task1_D_1.mp3";
-import msc3 from "./audios/L4_Task1_D_2.mp3";
-import msc4 from "./audios/L4_Task1_D_3.mp3";
-import msc5 from "./audios/L4_Task1_D_4.mp3";
-import msc6 from "./audios/L4_Task1_D_5.mp3";
+import msc1 from "./audios/audio0.mp3";
+import msc2 from "./audios/audio1.mp3";
+import msc3 from "./audios/audio2.mp3";
+import msc4 from "./audios/audio3.mp3";
+import msc5 from "./audios/audio4.mp3";
+import msc6 from "./audios/audio5.mp3";
+import msc7 from "./audios/audio6.mp3";
+import msc8 from "./audios/audio7.mp3";
+import msc9 from "./audios/audio8.mp3";
+import msc10 from "./audios/audio9.mp3";
 
 import { Container, Left, Main, Right, Title, AreaAudio, ButtonsArea, ButtonsVArea, TimeAudio, Bar, TimeArea, BarVolume, Div, Bolinha, Carrega } from "./styled";
 
 export const Audio = () => {
-  const { load, volume, getPosition, setVolume } = useGlobalAudioPlayer();
+  const songs = [msc1, msc2, msc3, msc4, msc5, msc6, msc7, msc8, msc9, msc10];
+  const audioRef = useRef(null);
 
   const [currentAudio, setCurrentAudio] = useState(0);
+  const [mixAudio, setMixAudio] = useState(false);
+  const [shuffledIndices, setShuffledIndices] = useState(Array.from({ length: songs.length }, (_, index) => index));
+  const [volume, setVolume] = useState(10);
   const [currentTime, setCurrentTime] = useState(0);
   const [duration, setDuration] = useState(0);
+  const [progress, setProgress] = useState(0);
 
-  const songs = [msc1, msc2, msc3, msc4, msc5, msc6]
-
-  const loadAudio = (index) => {
-    if (index < 0) return;
-
-    load(songs[index], {
-      autoplay: true,
-      onend: setCurrentAudio(index)
-    });
-  }
-
-  const nextAudio = () => {
-    const nextIndex = (currentAudio + 1) % songs.length;
-    loadAudio(nextIndex);
+  const playAudio = () => {
+    if (audioRef.current) {
+      audioRef.current.play();
+    }
   };
 
-  const previousAudio = () => {
-    const prevIndex = (currentAudio - 1 + songs.length) % songs.length;
-    loadAudio(prevIndex);
+  const handleNextAudio = () => {
+    setCurrentAudio(state => (state + 1) % songs.length);
   };
 
-  const mixAudio = () => {
-    const nextIndex = (currentAudio + 1) % songs.length;
-    loadAudio(nextIndex);
+  const handlePreviousAudio = () => {
+    setCurrentAudio(state => (state - 1 + songs.length) % songs.length);
   };
 
-  const increaseVolume = () => {
-    const newVolume = Math.min(volume + 0.1, 1);
-    setVolume(newVolume);
+  const handleMixAudio = () => {
+    setMixAudio(!mixAudio);
+
+    const newShuffledIndices = Array.from({ length: songs.length }, (_, index) => index);
+    for (let i = newShuffledIndices.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newShuffledIndices[i], newShuffledIndices[j]] = [newShuffledIndices[j], newShuffledIndices[i]];
+    }
+  
+    setShuffledIndices(newShuffledIndices);
   };
 
-  const decreaseVolume = () => {
-    const newVolume = Math.max(volume - 0.1, 0);
-    setVolume(newVolume);
+  const handleVolumeUp = () => {
+    if (audioRef.current) {
+      const newVolume = Math.min(volume + 1, 10);
+      setVolume(newVolume);
+      audioRef.current.volume = newVolume / 10;
+    }
+  };
+
+  const handleVolumeDown = () => {
+    if (audioRef.current) {
+      const newVolume = Math.max(volume - 1, 0);
+      setVolume(newVolume);
+      audioRef.current.volume = newVolume / 10;
+    }
+  };
+
+  const timeUpdate = () => {
+    if (audioRef.current) {
+      setCurrentTime(audioRef.current.currentTime);
+
+      if (!isNaN(duration) && duration !== Infinity && duration !== 0) {
+        let newProgress = progress;
+        newProgress = Math.floor((audioRef.current.currentTime / duration) * 100);
+        setProgress(newProgress);
+      }
+    }
+  };
+  const durationChange = () => {
+    if (audioRef.current) {
+      let time = duration;
+      time = audioRef.current.duration;
+      setDuration(time);
+    }
+  };
+
+  const formatTime = (time) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${String(minutes).padStart(2, "0")}:${String(seconds).padStart(2, "0")}`;
   };
 
   useEffect(() => {
-    const updateProgress = () => {
-      const position = getPosition();
-      setCurrentTime(position);
+    if (audioRef.current) {
+      const shuffledIndex = mixAudio ? shuffledIndices[currentAudio] : currentAudio;
+      audioRef.current.src = songs[shuffledIndex];
+      playAudio();
+      setProgress(0);
+      setDuration(0);
+      setCurrentTime(0);
+    }
+  }, [currentAudio, mixAudio, shuffledIndices]);
 
-      if (duration === 0) {
-        const totalDuration = getPosition({ seek: true });
-        setDuration(totalDuration);
-      }
-    };
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.addEventListener("timeupdate", timeUpdate);
+      audioRef.current.addEventListener("durationchange", durationChange);
 
-    const progressInterval = setInterval(updateProgress, 100);
-
-    return () => clearInterval(progressInterval);
-  }, [getPosition, duration]);
+      return () => {
+        audioRef.current.removeEventListener("timeupdate", timeUpdate);
+        audioRef.current.removeEventListener("durationchange", durationChange);
+      };
+    }
+  }, [audioRef.current]);
 
   return (
     <Container>
       <HeaderText title="Audio" />
 
       <Main>
+        <audio ref={audioRef} />
+
         <Left>
           <img src={LivroImg} alt="" />
         </Left>
 
         <Right>
           <Title>
-            <p><strong>01.</strong> L5 - Listen - P40 - A.mp3</p>
+            <p><strong>{mixAudio ? (shuffledIndices[currentAudio] + 1) : currentAudio + 1}.</strong> L5 - Listen - P40 - A.mp3</p>
           </Title>
 
           <AreaAudio>
             <TimeAudio>
               <Bar>
-                <Carrega style={{ width: `${(currentTime / duration) * 100}%` }}>
+                <Carrega style={{ width: `${progress}%` }}>
                   <Bolinha></Bolinha>
                 </Carrega>
               </Bar>
               <TimeArea>
-                <p>00:01</p>
-                <p>02:00</p>
+                <p>{formatTime(currentTime)}</p>
+                <p>{formatTime(duration)}</p>
               </TimeArea>
             </TimeAudio>
 
             <ButtonsArea>
-              <button onClick={mixAudio}>
-                <img src={MixImg} alt="" className="redBtn" />
-              </button>
-              <button onClick={previousAudio}>
+              {mixAudio ?
+                <button onClick={handleMixAudio} className="hasBorder">
+                  <img src={MixImg} alt="" className="redBtn" />
+                </button>
+                :
+                <button onClick={handleMixAudio}>
+                  <img src={MixImg} alt="" className="redBtn" />
+                </button>
+              }
+              <button onClick={handlePreviousAudio}>
                 <img src={PreviousImg} alt="" className="changeBtn" />
               </button>
-              <button onClick={() => loadAudio(0)}>
+              <button onClick={playAudio}>
                 <img src={PlayImg} alt="" className="playBtn" />
               </button>
-              <button onClick={nextAudio}>
+              <button onClick={handleNextAudio}>
                 <img src={NextImg} alt="" className="changeBtn" />
               </button>
-              <button>
+              <button onClick={playAudio}>
                 <img src={RepeatImg} alt="" className="redBtn" />
               </button>
             </ButtonsArea>
 
             <ButtonsVArea>
-              <button onClick={decreaseVolume}>
+              <button onClick={handleVolumeDown}>
                 <img src={LessImg} alt="" />
               </button>
               <BarVolume>
                 {[...Array(20)].map((_, index) => {
                   return (
-                    <Div key={index} className={index < volume * 20 ? "moreV" : ""}></Div>
+                    <Div key={index} className={index < volume * 2 ? "moreV" : ""}></Div>
                   )
                 })}
               </BarVolume>
-              <button onClick={increaseVolume}>
+              <button onClick={handleVolumeUp}>
                 <img src={MoreImg} alt="" />
               </button>
             </ButtonsVArea>

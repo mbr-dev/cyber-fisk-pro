@@ -1,11 +1,11 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
 `;
 
 export const Main = styled.main`
@@ -13,26 +13,27 @@ export const Main = styled.main`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  margin-top: 1rem;
 
-  @media(max-width: 320px) {
-    margin-top: 0.5rem;
+  @media(min-width: 768px) {
+    width: 40rem;
   }
 
-  @media(min-width: 600px) {
-    margin-top: 0.5rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: row;
+      width: 40rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    margin-top: 1rem;
+    width: 60rem;
   }
 `;
 
-export const Questions = styled.div`
+export const Div = styled.div`
   height: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: space-between;
   gap: 1rem;
 
@@ -40,28 +41,14 @@ export const Questions = styled.div`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
-  }
-
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
     gap: 1.5rem;
   }
-`;
 
-export const Answers = styled.div`
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-
-  @media(max-width: 320px) {
-    gap: 0.5rem;
-  }
-
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -71,7 +58,7 @@ export const Answers = styled.div`
 
 export const Button = styled.button`
   all: unset;
-  width: 8.25rem;
+  width: 9rem;
   height: 3.5rem;
   display: flex;
   padding-inline: 0.5rem;
@@ -85,7 +72,7 @@ export const Button = styled.button`
   p {
     font-size: 0.875rem;
     text-align: center;
-    font-weight: bold;
+    font-weight: 500;
     word-wrap: break-word;
   }
 
@@ -106,12 +93,25 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 600px) {
-    width: 180px;
-    height: 2.5rem;
-    
+  @media(min-width: 768px) {
+    width: 15rem;
+    height: 4rem;
+    border-width: 3px;
+
     p {
-      font-size: 0.75rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 180px;
+      height: 2rem;
+      border-radius: 6px;
+      
+      p {
+        font-size: 0.75rem;
+      }
     }
   }
 
@@ -119,6 +119,7 @@ export const Button = styled.button`
     width: 15rem;
     height: 4rem;
     border-width: 3px;
+    border-radius: 8px;
 
     p {
       font-size: 1.125rem;

@@ -1,31 +1,37 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 180px;
-  height: 350px;
+  width: 11.25rem;
+  height: 21.875rem;
   position: relative;
   z-index: 10;
 
   @media (max-width: 320px) {
-    width: 100px;
-    height: 220px;
+    width: 6.25rem;
+    height: 13.75rem;
   }
 
-  @media (min-width: 480px) {
-    width: 120px;
-    height: 280px;
-    margin-top: -20px;
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 34.375rem;
+    margin-top: -4rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 7.5rem;
+      height: 17.5rem;
+      margin-top: -1.25rem;
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 300px;
-    height: 700px;
-    margin-top: -20px;
+    width: 18.75rem;
+    height: 43.75rem;
   }
 
   @media (min-width: 1440px) {
-    height: 800px;
-    margin-top: -20px;
+    height: 50rem;
   }
 `;
 
@@ -102,8 +108,8 @@ export const Bracos = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 180px;
-  height: 36px;
+  width: 11.25rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,10 +118,10 @@ export const Name = styled.div`
   background-color: ${props => props.theme["red-200"]};
   position: absolute;
   z-index: 20;
-  bottom: 110px;
+  bottom: 6.875rem;
   
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
     overflow: hidden;
     white-space: nowrap;
@@ -124,31 +130,48 @@ export const Name = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 100px;
-    height: 32px;
-    bottom: 60px;
+    width: 6.25rem;
+    height: 2rem;
+    bottom: 3.75rem;
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
-  @media (min-width: 480px) {
-    width: 120px;
-    bottom: 82px;
+  @media (min-width: 768px) {
+    width: 15.625rem;
+    height: 3rem;
+    bottom: 11.5rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 7.5rem;
+      height: 2rem;
+      bottom: 5.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {
-    width: 300px;
-    height: 52px;
-    bottom: 250px;
+    width: 18.75rem;
+    height: 3.25rem;
+    bottom: 15.625rem;
 
     p {
-      font-size: 32px;
+      font-size: 2rem;
     }
   }
 
   @media (min-width: 1440px) {
-    bottom: 282px;
+    bottom: 17.625rem;
   }
 `;

@@ -10,12 +10,12 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 150px;
+  height: 9.375rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 10px;
+  gap: 0.625rem;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
   overflow: hidden;
@@ -31,19 +31,28 @@ export const Header = styled.header`
   }
 
   @media(max-width: 320px) {
-    height: 120px;
-    gap: 6px;
+    height: 7.5rem;
+    gap: 0.375rem;
   }
 
-  @media(min-width: 480px) {
-    height: 64px;
-    justify-content: center;
-    gap: 0px;
+  @media(min-width: 768px) {
+    height: 12rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 4rem;
+      justify-content: center;
+      gap: 0px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    height: 5.375rem;
   }
 
   @media(min-width: 1280px) {
-    height: 100px;
-    gap: 0px;
+    height: 6.25rem;
   }
 `;
 
@@ -52,56 +61,80 @@ export const HeaderTop = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 16px;
-  padding-top: 16px;
+  padding-inline: 1rem;
+  padding-top: 1rem;
 
   .logoFiskD {
     display: none;
   }
 
   p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    font-size: 18px;
-    padding-inline: 12px;
-    padding-top: 12px;
+    font-size: 1.5rem;
+    padding-inline: 0.75rem;
+    padding-top: 0.75rem;
   }
 
-  @media(min-width: 480px) {
-    padding-top: 0px;
-
+  @media(min-width: 768px) {
     .logoFiskD {
-      display: block;
-      width: 80px;
-      margin-left: -250px;
+      width: 100px;
     }
 
     p {
-      font-size: 28px;
-      margin-left: -100px;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-top: 0px;
+
+      .logoFiskD {
+        display: block;
+        width: 80px;
+        margin-left: -250px;
+      }
+
+      p {
+        font-size: 1.75rem;
+        margin-left: -100px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    .logoFiskD {
+      width: 100px;
+      margin-left: -21.875rem;
+    }
+
+    p {
+      font-size: 1.75rem;
+      margin-left: -6.25rem;
     }
   }
 
   @media(min-width: 1280px) {
     .logoFiskD {
       width: 100px;
-      margin-left: -480px;
+      margin-left: -30rem;
     }
 
     p {
-      font-size: 32px;
-      margin-left: -100px;
+      font-size: 2rem;
+      margin-left: -6.25rem;
     }
   }
 
   @media(min-width: 1920px) {
     .logoFiskD {
       width: 100px;
-      margin-left: -800px;
+      margin-left: -50rem;
     }
   }
 `;
@@ -114,71 +147,88 @@ export const HeaderBottom = styled.header`
     width: 164px;
   }
 
-  @media (min-width: 480px) {
+  @media (min-width: 768px) {
     .logoFisk {
-      display: none;
+      width: 220px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      .logoFisk {
+        display: none;
+      }
     }
   }
 `;
 
 export const Main = styled.main`
   flex: 1;
-  width: 300px;
+  width: 18.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 24px;
+  gap: 1.5rem;
 
   @media(max-width: 360px) {
-    gap: 14px
+    gap: 0.875rem;
   }
 
   @media(max-width: 320px) {
-    gap: 8px;
-    padding-block: 10px;
+    gap: 0.5rem;
+    padding-block: 0.625rem;
   }
 
-  @media(min-width: 480px) {
-    width: 580px;
-    gap: 0;
-    flex-direction: row;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    width: 31.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 36.25rem;
+      gap: 0;
+      flex-direction: row;
+      justify-content: space-between;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 1000px;
-    gap: 0;
-    
-    padding-block: 0;
+    width: 62.5rem;
   }
 `;
 
 export const ButtonAreaTop = styled.div`
   width: 100%;
-  height: 208px;
+  height: 13rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
   @media(max-width: 360px) {
-    height: 196px;
+    height: 12.25rem;
   }
 
   @media(max-width: 320px) {
-    width: 250px;
-    height: 128px;
+    width: 15.625rem;
+    height: 8rem;
   }
 
-  @media(min-width: 480px) {
-    width: 250px;
-    height: 200px;
+  @media(min-width: 768px) {
+    width: 27rem;
+    height: 20rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 15.625rem;
+      height: 12.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 450px;
-    height: 350px;
-    gap: 0;
+    width: 28.125rem;
+    height: 21.875rem;
   }
 `;
 
@@ -192,13 +242,13 @@ export const DivRight = styled.div`
 
 export const ButtonTask = styled.button`
   all: unset;
-  width: 110px;
-  height: 96px;
+  width: 6.875rem;
+  height: 6rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 6px;
+  gap: 0.375rem;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -210,7 +260,7 @@ export const ButtonTask = styled.button`
   }
 
   p {
-    font-size: 18px;
+    font-size: 1.125rem;
     font-weight: 500;
   }
 
@@ -221,70 +271,88 @@ export const ButtonTask = styled.button`
   }
 
   @media(max-width: 360px) {
-    height: 86px;
+    height: 5.375rem;
 
     img {
       width: 36px;
     }
 
     p {
-      font-size: 16px;
+      font-size: 1rem;
     }
   }
 
   @media(max-width: 320px) {
-    width: 96px;
-    height: 56px;
+    width: 6rem;
+    height: 3.5rem;
 
     img {
       width: 24px;
     }
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
   }
 
-  @media(min-width: 480px) {
-    width: 86px;
-    height: 92px;
-    gap: 4px;
-
-    img {
-      width: 32px;
-    }
-
-    p {
-      font-size: 14px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 180px;
-    border-radius: 16px;
+  @media(min-width: 768px) {
+    width: 11.25rem;
+    height: 8.5rem;
+    border-radius: 8px;
     border-width: 3px;
-    height: 150px;
-    gap: 10px;
+    gap: 0.625rem;
 
     img {
       width: 54px;
     }
 
     p {
-      font-size: 20px;
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 5.375rem;
+      height: 5.75rem;
+      gap: 0.25rem;
+
+      img {
+        width: 32px;
+      }
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 11.25rem;
+    height: 9.375rem;
+    border-radius: 16px;
+    border-width: 3px;
+    gap: 0.625rem;
+
+    img {
+      width: 54px;
+    }
+
+    p {
+      font-size: 1.25rem;
     }
   }
 `;
 
 export const ButtonSuperTask = styled.button`
   all: unset;
-  width: 150px;
+  width: 9.375rem;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 16px;
+  gap: 1rem;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -292,7 +360,7 @@ export const ButtonSuperTask = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 20px;
+    font-size: 1.25rem;
     font-weight: 500;
   }
 
@@ -307,11 +375,11 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 108px;
+    width: 6.75rem;
     gap: 6px;
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
     }
 
     img {
@@ -319,25 +387,40 @@ export const ButtonSuperTask = styled.button`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 120px;
+  @media(min-width: 768px) {
+    width: 12.5rem;
+    border-radius: 8px;
 
     p {
-      font-size: 16px;
+      font-size: 1.5rem;
     }
 
     img {
-      width: 52px;
+      width: 84px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 7.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+
+      img {
+        width: 52px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 220px;
+    width: 13.75rem;
     border-radius: 16px;
     border-width: 3px;
 
     p {
-      font-size: 24px;
+      font-size: 1.5rem;
     }
 
     img {
@@ -353,64 +436,82 @@ export const ButtonAreaBottom = styled.div`
   justify-content: space-between;
 
   @media(max-width: 320px) {
-    width: 250px;
+    width: 15.625rem;
   }
 
-  @media(min-width: 480px) {
-    width: 300px;
-    height: 200px;
+  @media(min-width: 768px) {
+    width: 27rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 18.75rem;
+      height: 12.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 460px;
-    height: 350px;
+    width: 28.75rem;
+    height: 21.875rem;
     gap: 0;
   }
 `;
 
 export const BottomRight = styled.div`
-  width: 150px;
+  width: 9.375rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    width: 108px;
-    gap: 8px;
+    width: 6.75rem;
+    gap: 0.5rem;
   }
 
-  @media(min-width: 480px) {
-    width: 150px;
-    height: 100%;
-    justify-content: space-between;
+  @media(min-width: 768px) {
+    width: 12.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 9.375rem;
+      height: 100%;
+      justify-content: space-between;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 230px;
+    width: 14.375rem;
     height: 100%;
     justify-content: space-between;
   }
 `;
 
 export const BottomLeft = styled.div`
-  width: 110px;
+  width: 6.875rem;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    width: 96px;
-    gap: 8px;
+    width: 6rem;
+    gap: 0.5rem
+  }
+
+  @media(min-width: 768px) {
+    width: 11.25rem;
   }
   
-  @media(min-width: 480px) {
-    width: 130px;
-    height: 100%;
-    justify-content: space-between;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 8.125rem;
+      height: 100%;
+      justify-content: space-between;
+    }
   }
 
   @media(min-width: 1280px) {
-    width: 200px;
+    width: 12.5rem;
     height: 100%;
     justify-content: space-between;
   }
@@ -419,11 +520,11 @@ export const BottomLeft = styled.div`
 export const ButtonBottom = styled.button`
   all: unset;
   width: 100%;
-  height: 76px;
+  height: 4.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 0.625rem;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -431,7 +532,7 @@ export const ButtonBottom = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 14px;
+    font-size: 0.875rem;
     font-weight: 500;
   }
 
@@ -454,11 +555,11 @@ export const ButtonBottom = styled.button`
   }
 
   @media(max-width: 320px) {
-    height: 48px;
-    gap: 8px;
+    height: 3rem;
+    gap: 0.5rem;
 
     p { 
-      font-size: 12px;
+      font-size: 0.75rem;
     }
 
     img {
@@ -466,110 +567,47 @@ export const ButtonBottom = styled.button`
     }
   }
 
-  @media(min-width: 480px) {
-    height: 94px;
-    gap: 6px;
-
-    p {
-      font-size: 16px;
-    }
-
-    img {
-      width: 42px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    border-radius: 16px;
-    border-width: 3px;
-    height: 150px;
-    justify-content: center;
-    gap: 12px;
+  @media(min-width: 768px) {
+    height: 7rem;
+    gap: 0.75rem;
 
     img {
       width: 52px;
     }
 
     p {
-      font-size: 20px;
-    }
-  }
-`;
-
-export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid ${props => props.theme["gray-200"]};
-
-  @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
-  }
-
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
-  }
-
-  @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
-    border-width: 4px;
-  }
-`;
-
-export const ButtonHome = styled.button`
-  all: unset;
-  width: 250px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
-
-    p {
-      font-size: 16px;
+      font-size: 1.25rem;
     }
   }
 
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 5.875rem;
+      gap: 0.375rem;
 
-    p {
-      font-size: 18px;
+      p {
+        font-size: 1rem;
+      }
+
+      img {
+        width: 42px;
+      }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
+    height: 9.375rem;
+    border-radius: 1rem;
+    border-width: 3px;
+    justify-content: center;
+    gap: 0.75rem;
+
+    img {
+      width: 52px;
+    }
 
     p {
-      font-size: 32px;
+      font-size: 1.25rem;
     }
   }
 `;

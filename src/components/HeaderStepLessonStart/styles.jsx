@@ -13,28 +13,29 @@ export const Main = styled.div`
   @media(max-width: 320px) {
     width: 1rem;
     height: 1rem;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
   }
 
-  @media(min-width: 600px) {
-    width: 48px;
-    height: 24px;
+  @media(min-width: 768px) {
+    width: 3.25rem;
+    height: 2rem;
   }
 
-  @media(min-width: 1024px) {
-    width: 100px;
-    height: 32px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 3.5rem;
+      height: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 6.25rem;
+    height: 2rem;
   }
 
   @media(min-width: 1440px) {
     width: 110px;
-    height: 36px;
-  }
-
-  @media(min-width: 1920px) {
-    width: 150px;
-  }
-
-  @media(min-width: 2560px) {
-    width: 200px;
+    height: 2.25rem;
   }
 `;

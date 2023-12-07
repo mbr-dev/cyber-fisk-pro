@@ -1,19 +1,14 @@
 import { useNavigate } from "react-router-dom";
-import * as Dialog from "@radix-ui/react-dialog";
 
-import { Modal } from "./components/Modal";
+import { AreaButtonMsg } from "../../components/AreaButtonMsg";
 import { HeaderText } from "../../components/HeaderText";
 
 import EmailImg from "./images/email.png";
 
-import { Container, Main, Div, AreaButton, Button, Text, DivImg } from "./styles";
+import { Container, Main, Div, Text, DivImg } from "./styles";
 
 export const Read = () => {
   const navigate = useNavigate();
-
-  const handleMessages = () => {
-    navigate("/Messages");
-  }
 
   const handleMessageOpen = () => {
     navigate("/MessageOpen");
@@ -96,21 +91,7 @@ export const Read = () => {
         </Div>
       </Main>
 
-      <AreaButton>
-        <Button onClick={handleMessages} $variant="red">
-          <p>Messages</p>
-        </Button>
-
-        <Dialog.Root>
-          <Dialog.Trigger asChild>
-            <Button>
-              <p>Filter</p>
-            </Button>
-          </Dialog.Trigger>
-
-          <Modal />
-        </Dialog.Root>
-      </AreaButton>
+      <AreaButtonMsg />
     </Container>
   )
 }

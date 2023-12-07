@@ -1,8 +1,10 @@
 import { useContext } from "react";
-import { Volume2, Headphones } from "lucide-react";
 
 import { LessonContext } from "../../context/lesson";
 import { URL_FISKPRO } from "../../config/infos";
+
+import AudioImg from "../../assets/Audio.png"
+import AudioPauseImg from "../../assets/AudioPause.png"
 
 import { Button, Container } from "./style";
 
@@ -26,11 +28,11 @@ export const SubTitleLessonAudioImg = (props) => {
     <Container>
       {playAudio ?
         <Button onClick={handleClick}>
-          <Headphones size={props.size ? props.size : '36'} strokeWidth={2.5} />
+          <img src={AudioPauseImg} alt="Audio ícon" />
         </Button>
         :
         <Button onClick={handleClick}>
-          <Volume2 size={props.size ? props.size : '36'} strokeWidth={2.5} />
+          <img src={AudioImg} alt="Audio ícon" />
         </Button>
       }
 

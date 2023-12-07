@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
 `;
 
@@ -15,12 +16,18 @@ export const Main = styled.main`
     gap: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    gap: 1rem;
+    gap: 2rem;
   }
 `;
 
@@ -43,12 +50,24 @@ export const Words = styled.div`
     width: 18.75rem;
   }
 
-  @media(min-width: 600px) {
-    width: 30rem;
+  @media(min-width: 768px) {
+    gap: 1rem;
+    width: 40rem;
 
     p {
-      padding: 0.375rem 0.875rem;
-      font-size: 0.875rem;
+      padding: 0.75rem 1.125rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 30rem;
+
+      p {
+        padding: 0.375rem 0.875rem;
+        font-size: 0.875rem;
+      }
     }
   }
 
@@ -76,8 +95,14 @@ export const Form = styled.form`
     padding-block: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    padding-block: 0.5rem;
+  @media(min-width: 768px) {
+    padding-block: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding-block: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -87,7 +112,7 @@ export const Form = styled.form`
 
 export const Input = styled.input`
   all: unset;
-  width: 18.75rem;
+  width: 21rem;
   height: 2.5rem;
   padding-left: 0.5rem;
   border-radius: 6px;
@@ -106,10 +131,19 @@ export const Input = styled.input`
     font-size: 0.875rem;
   }
 
-  @media(min-width: 600px) {
-    width: 40rem;
-    height: 2rem;
-    font-size: 0.875rem;
+  @media(min-width: 768px) {
+    width: 42rem;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 40rem;
+      height: 2rem;
+      font-size: 0.875rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -153,9 +187,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

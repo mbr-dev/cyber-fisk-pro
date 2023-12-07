@@ -2,37 +2,57 @@ import styled from "styled-components";
 
 export const Container = styled.button`
   all: unset;
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme['red-200']};
-  border-radius: 9999px;
+  background-color: ${props => props.theme["red-200"]};
+  border-radius: 99px;
   color: ${props => props.theme.white};
   cursor: pointer;
 
   img {
-    width: 14px;
+    width: 16px;
   }
 
   @media(max-width: 320px) {
-    width: 24px;
-    height: 24px;
+    width: 1.5rem;
+    height: 1.5rem;
   }
 
-  @media (min-width: 480px) {
-    width: 36px;
-    height: 36px;
+  @media(min-width: 768px) {
+    width: 3rem;
+    height: 3rem;
 
     img {
-      width: 20px;
+      width: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 2.25rem;
+      height: 2.25rem;
+
+      img {
+        width: 20px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 2.625rem;
+    height: 2.625rem;
+
+    img {
+      width: 22px;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 48px;
-    height: 48px;
+    width: 3rem;
+    height: 3rem;
 
     img {
       width: 24px;

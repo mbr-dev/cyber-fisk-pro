@@ -6,6 +6,7 @@ import { useState, useEffect, useContext } from "react";
 import { Loading } from "../../components/Loading";
 import { Notifications } from "../../components/Notifications";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
 import { AvatarCustomMetadeWG } from "../../components/AvatarCustomMetadeWG";
 
@@ -16,7 +17,7 @@ import FundoGoImg from "./images/FundoGO.png";
 import Dollars from "../../assets/Dollar.svg";
 import Xp from "../../assets/Xp.svg";
 
-import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2, AreaButton, ButtonHome, DivDesk, DivMobile, LineSeparator } from "./styles";
+import { Container, Header, Main, Top, Middle, AvatarArea, Bottom, AreaItem, Text, ButtonRed, Content, ButtonClose, Div, AreaItem2, Bottom2, DivDesk, DivMobile, LineSeparator } from "./styles";
 
 export const GameOver = () => {
   const {timeElapsed, dataInicio, numTask, numSelLesson} = useContext(LessonContext);
@@ -101,10 +102,6 @@ export const GameOver = () => {
 
   const clickAlert = () => {
     setError(false);
-  }
-
-  const handleGoHome = () => {
-    navigate("/Home");
   }
 
   useEffect(() => {
@@ -208,11 +205,7 @@ export const GameOver = () => {
           </Div>
         </Main>
 
-        <AreaButton>
-          <ButtonHome onClick={handleGoHome}>
-            <p>Home</p>
-          </ButtonHome>
-        </AreaButton>
+        <AreaFooterMiddleBtn />
       </Content>
     </Container>
   )

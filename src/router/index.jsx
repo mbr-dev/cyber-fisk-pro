@@ -23,8 +23,10 @@ import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
 import { Billboard } from "../pages/Billboard";
+import { StudioList } from "../pages/StudioList";
 import { ReportInfo } from "../pages/ReportInfo";
 import { MessageOpen } from "../pages/MessageOpen";
+import { PrintReport } from "../pages/PrintReport";
 import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
 import { SelectLesson } from "../pages/selectLesson";
@@ -32,7 +34,6 @@ import { TaskLesson } from "../components/taskLesson";
 import { MessageAnswer } from "../pages/MessageAnswer";
 import { ReportStudioL } from "../pages/ReportStudioL";
 import { QRCode } from "../features/qrCode/pages/Home";
-import { GravaAudioTest } from "../pages/GravaAudioTest";
 import { LessonSelected } from "../pages/LessonSelected";
 import { QRReader } from "../features/qrCode/pages/qrReader";
 import { SuperTaskLesson } from "../components/supertaskLesson";
@@ -121,7 +122,9 @@ export const Router =() => {
       <Route path="/WellDone" element={<WellDone />}/>
       <Route path="/SpinWheel" element={<SpinWheel />}/>
       <Route path="/Billboard" element={<Billboard />}/>
+      <Route path="/StudioList" element={<StudioList />}/>
       <Route path="/ReportInfo" element={<ReportInfo />}/>
+      <Route path="/PrintReport" element={<PrintReport />}/>
       <Route path="/MessageOpen" element={<MessageOpen />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
       <Route path="/ReportLesson" element={<ReportLesson />}/>
@@ -131,7 +134,6 @@ export const Router =() => {
       <Route path="/MessageAnswer" element={<MessageAnswer />}/>
       <Route path="/ReportStudioL" element={<ReportStudioL />}/>
       <Route path="/qr-code/:code" element={<GamesTemplate />}/>
-      <Route path="/GravaAudioTest" element={<GravaAudioTest />}/>
       <Route path="/LessonSelected" element={<LessonSelected />}/>
 
       <Route path = "/Game1" element={<Game1 />}/>

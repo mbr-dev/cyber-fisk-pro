@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+   flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -21,9 +22,16 @@ export const Main = styled.main`
     margin-top: 0.5rem;
   }
 
-  @media(min-width: 600px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+  @media(min-width: 768px) {
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+      margin-top: 0.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
@@ -51,12 +59,22 @@ export const Form = styled.form`
     }
   }
 
-  @media (min-width: 600px) {
-    padding: 0.5rem 4rem;
+  @media (min-width: 768px) {
+    padding: 1rem 5rem;
 
     label {
-      font-size: 0.875rem;
-      line-height: 2;
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      padding: 0.5rem 4rem;
+
+      label {
+        font-size: 0.875rem;
+        line-height: 2;
+      }
     }
   }
 
@@ -88,12 +106,19 @@ export const Select = styled.select`
     height: 1.375rem;
   }
 
-  @media(min-width: 600px) {
-    height: 1.5rem;
+  @media(min-width: 768px) {
+    font-size: 1.25rem;
+    height: 2.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 1.5rem;
+    }
   }
 
   @media(min-width: 1280px) {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     height: 2rem;
   }
 `;
@@ -131,9 +156,24 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 600px) {
-    width: 13rem;
-    height: 2rem;
+  @media (min-width: 768px) {
+    width: 21rem;
+    height: 3rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 13rem;
+      height: 2rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
   }
 
   @media (min-width: 1280px) {

@@ -157,12 +157,6 @@ export const Game12 = () => {
     }
   }
 
-  const handleKeyPress = (event) => {
-    if (event.key === "Enter") {
-      event.preventDefault();
-    }
-  };
-
   useEffect(() => {
     loadLesson();
   }, []);
@@ -196,7 +190,6 @@ export const Game12 = () => {
             placeholder="Type here"
             value={text}
             onChange={(e) => setText(e.target.value)}
-            onKeyPress={handleKeyPress}
           />
         </Form>
         <ButtonCheck form="myForm" type="submit" disabled={blockButton}>

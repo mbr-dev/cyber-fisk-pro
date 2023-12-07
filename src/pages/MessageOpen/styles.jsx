@@ -14,25 +14,25 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
-  padding-top: 16px;
+  gap: 1rem;
+  padding-top: 1rem;
   background-color: ${props => props.theme["gray-100"]};
 
   @media (max-width: 320px) {
-    gap: 12px;
-    padding-top: 12px;
+    gap: 0.75rem;
+    padding-top: 0.75rem;
   }
 
   @media (min-width: 768px) {
-    gap: 36px;
-    padding-top: 36px;
+    gap: 2.25rem;
+    padding-top: 2.25rem;
   }
 `;
 
 export const Div = styled.button`
   all: unset;
-  width: 300px;
-  height: 480px;
+  width: 18.75rem;
+  height: 30rem;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
@@ -40,35 +40,39 @@ export const Div = styled.button`
   background-color: ${props => props.theme.white};
 
   @media (max-width: 360px) {
-    height: 410px;
+    height: 25.625rem;
   }
 
   @media (max-width: 320px) {
-    width: 250px;
-    height: 300px;
+    width: 15.625rem;
+    height: 15.625rem;
     overflow-y: scroll;
   }
 
   @media (min-width: 768px) {
-    width: 600px;
-    height: 64px;
+    width: 37.5rem;
+    height: 43rem;
   }
 `;
 
 export const DivHeader = styled.div`
   width: 100%;
-  height: 64px;
+  height: 4rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 0.875rem;
   border: 2px solid ${props => props.theme["blue-200"]};
   background-color: ${props => props.theme["blue-50"]};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
 
   @media (max-width: 320px) {
-    height: 54px;
+    height: 3.375rem;
+  }
+
+  @media (min-width: 768px) {
+    height: 4.5rem;
   }
 `;
 
@@ -76,21 +80,27 @@ export const DivHText = styled.div`
   color: ${props => props.theme.white};
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
     margin-bottom: 5px;
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 10px;
-      margin-bottom: 4px;
+      font-size: 0.625rem;
+      margin-bottom: 0.25rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 1.125rem;
     }
   }
 `;
 
 export const DivImg = styled.div`
-  width: 32px;
-  height: 32px;
+  width: 2rem;
+  height: 2rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -104,8 +114,8 @@ export const DivImg = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 28px;
-    height: 28px;
+    width: 1.75rem;
+    height: 1.75rem;
 
     img {
       width: 16px;
@@ -114,8 +124,8 @@ export const DivImg = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 52px;
-    height: 52px;
+    width: 3.25rem;
+    height: 3.25rem;
     border-width: 3px;
 
     img {
@@ -127,34 +137,46 @@ export const DivImg = styled.div`
 
 export const Text = styled.div`
   flex: 1;
-  padding: 14px;
+  padding: 0.875rem;
   overflow-y: scroll;
 
   p {
-    font-size: 16px;
+    font-size: 1rem;
     font-weight: normal;
   }
 
   @media (max-width: 320px) {
-    padding: 12px;
+    padding: 0.75rem;
 
     p {
-      font-size: 14px;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media (min-width: 768px) {
+    padding: 1.5rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 `;
 
 export const AreaButtonDiv = styled.div`
   width: 100%;
-  height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-around;
+  padding-bottom: 0.5rem;
+
+  @media(min-width: 768px) {
+    padding-bottom: 1rem;
+  }
 `;
 
 export const ButtonDiv = styled.div`
-  width: 90px;
-  height: 36px;
+  width: 5.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -171,7 +193,7 @@ export const ButtonDiv = styled.div`
   }
 
   p {
-    font-size: 12px;
+    font-size: 0.75rem;
     color: ${props => props.theme.white};
   }
 
@@ -180,12 +202,12 @@ export const ButtonDiv = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 72px;
-    height: 32px;
+    width: 4.5rem;
+    height: 2rem;
     border-radius: 6px;
 
     p {
-      font-size: 10px;
+      font-size: 0.625rem;
     }
 
     img {
@@ -193,62 +215,110 @@ export const ButtonDiv = styled.div`
       height: 14px;
     }
   }
+
+  @media(min-width: 768px) {
+    width: 10rem;
+    height: 3rem;
+    border-radius: 6px;
+
+    p {
+      font-size: 1.125rem;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
+    }
+  }
 `;
 
 export const AreaButton = styled.div`
   width: 100%;
-  height: 86px;
+  height: 4rem;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 20px;
 
-  @media (max-width: 320px) {
-    height: 64px;
+  @media(max-width: 320px) {
+    height: 3.25rem;
   }
 
-  @media (min-width: 768px) {
-    height: 120px;
-    gap: 32px;
+  @media(min-width: 768px) {
+    height: 5.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 3.25rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 6.25rem;
   }
 `;
 
 export const Button = styled.button`
-  all: unset;
-  width: 250px;
-  height: 36px;
-  border-radius: 8px;
+   all: unset;
+  width: 15.625rem;
+  height: 2.25rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
-  border: 1px solid ${props =>  props.theme["red-300"]};
+  border: 2px solid ${props => props.theme["red-300"]};
   border-bottom-width: 3px;
-  border-left-width: 3px;
+  border-radius: 10px;
+  transition: all 0.2s;
   cursor: pointer;
 
   p {
-      font-size: 18px;
-    }
-
-  &:disabled {
-    cursor: not-allowed;
-    opacity: 0.6;
+    font-size: 24px;
+    font-weight: bold;
   }
 
-  @media (max-width: 320px) {
-    width: 230px;
-    height: 32px;
+  &:hover {
+    opacity: 0.8;
   }
 
-  @media (min-width: 768px) {
-    width: 250px;
-    height: 56px;
-    
+  @media(max-width: 320px) {
+    width: 12.5rem;
+    height: 2rem;
+
     p {
-      font-size: 28px;
+      font-size: 1rem;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 25rem;
+    height: 2.75rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 782px) {
+      width: 15.625rem;
+      height: 2rem;
+      border-radius: 6px;
+
+      p {
+        font-size: 1.125rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 25rem;
+    height: 2.75rem;
+
+    p {
+      font-size: 2rem;
     }
   }
 `;

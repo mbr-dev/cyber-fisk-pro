@@ -6,11 +6,12 @@ import { useNavigate } from "react-router-dom";
 
 import { ModalAC } from "./components/ModalAC";
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import PrintImg from "../../assets/print.png";
 
-import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div, AreaFooter, ButtonHome } from "./styles";
+import { Container, Main, Avatar, AvatarArea, AvatarInfo, Print, XP, Stage, Details, XPLeft, XPRight, XPDiv, XPInside, SLeft, SRight, DDiv, ViewDetails, DivBar, Bar, BarColor, Div } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const ReportInfo = () => {
@@ -50,8 +51,8 @@ export const ReportInfo = () => {
     navigate("/ReportStudio");
   }
 
-  const handleGoHome = () => {
-    navigate("/Home");
+  const handlePrint = () => {
+    navigate("/PrintReport");
   }
 
   return (
@@ -67,7 +68,7 @@ export const ReportInfo = () => {
               </Avatar>
               <p>Carlos Alberto</p>
             </AvatarInfo>
-            <Print>
+            <Print onClick={handlePrint}>
               <img src={PrintImg} alt="" />
               <p>Print Report</p>
             </Print>
@@ -206,11 +207,7 @@ export const ReportInfo = () => {
         </Details> 
       </Main>
 
-      <AreaFooter>
-        <ButtonHome onClick={handleGoHome}>
-          <p>Home</p>
-        </ButtonHome>
-      </AreaFooter>
+      <AreaFooterFullBtn />
     </Container>
   )
 }

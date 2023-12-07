@@ -18,39 +18,50 @@ export const Main = styled.main`
 `;
 
 export const SelectLessonArea = styled.div`
-  width: 230px;
+  width: 14.375rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 20px;
-
-  @media(max-width: 360px) {
-    gap: 12px;
-  }
+  gap: 1rem;
 
   @media(max-width: 320px) {
-    width: 180px;
-    gap: 8px;
+    width: 11.25rem;
+    gap: 0.5rem;
   }
 
-  @media (min-width: 480px) {
-    width: 400px;
-    height: 150px;
+  @media (min-width: 768px) {
+    width: 18rem;
+    gap: 2rem;
     justify-content: center;
     align-items: center;
   }
 
+  @media (orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 25rem;
+      height: 9.375rem;
+      gap: 1rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 38.75rem;
+    height: 9.375rem;
+    gap: 1.75rem;
+  }
+
   @media(min-width: 1280px) {
-    width: 700px;
-    height: 250px;
+    width: 43.75rem;
+    height: 15.625rem;
+    gap: 2rem;
   }
 `;
 
 export const ButtonLesson = styled.button`
   all: unset;
-  width: 72px;
-  height: 76px;
+  width: 4.5rem;
+  height: 4.75rem;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -63,7 +74,7 @@ export const ButtonLesson = styled.button`
 
   p {
     font-weight: bold;
-    font-size: 32px;
+    font-size: 2rem;
   }
 
   span {
@@ -78,131 +89,72 @@ export const ButtonLesson = styled.button`
 
   &:disabled{
     background-color: ${props => props.theme["gray-500"]};
-  }  
-
-  @media(max-width: 360px) {
-    width: 68px;
-    height: 72px;
-
-    p {
-      font-size: 28px
-    }
   }
 
   @media(max-width: 320px) {
-    width: 58px;
-    height: 54px;
+    width: 3.625rem;
+    height: 3.375rem;
 
     p {
-      font-size: 18px;
+      font-size: 1.125rem;
     }
 
     span {
-      font-size: 12px
+      font-size: 0.75rem;
     }
   }
 
-  @media (min-width: 480px) {
-    width: 56px;
-    height: 56px;
+  @media (min-width: 768px) {
+    width: 6.875rem;
+    height: 6.875rem;
 
     p {
-      font-size: 18px;
+      font-size: 3rem;
     }
 
     span {
-      font-size: 14px
+      font-size: 1.25rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 3.625rem;
+      height: 3.625rem;
+
+      p {
+        font-size: 1.125rem;
+      }
+
+      span {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 5.5rem;
+    height: 5.5rem;
+
+    p {
+      font-size: 2rem;
+    }
+
+    span {
+      font-size: 1rem;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 110px;
-    height: 110px;
+    width: 6.875rem;
+    height: 6.875rem;
 
     p {
-      font-size: 48px;
+      font-size: 3rem;
     }
 
     span {
-      font-size: 20px;
-    }
-  }
-`;
-
-export const AreaFooter = styled.div`
-  width: 300px;
-  height: 64px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  border-top: 2px solid ${props => props.theme["gray-200"]};
-
-  @media(max-width: 320px) {
-    width: 250px;
-    height: 52px;
-  }
-
-  @media(min-width: 480px) {
-    width: 600px;
-    height: 52px;
-  }
-
-  @media(min-width: 1280px) {
-    width: 1200px;
-    height: 100px;
-    border-width: 4px;
-  }
-`;
-
-export const ButtonHome = styled.button`
-  all: unset;
-  width: 250px;
-  height: 36px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media(max-width: 320px) {
-    width: 200px;
-    height: 32px;
-
-    p {
-      font-size: 16px;
-    }
-  }
-
-  @media (min-width: 480px) {
-    height: 32px;
-    border-radius: 6px;
-
-    p {
-      font-size: 18px;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    width: 400px;
-    height: 44px;
-
-    p {
-      font-size: 32px;
+      font-size: 1.25rem;
     }
   }
 `;

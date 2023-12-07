@@ -10,6 +10,7 @@ import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
 
 import { Container, Main, Photo } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Game27 = () => {
   const {
@@ -18,6 +19,7 @@ export const Game27 = () => {
 
   const navigate = useNavigate();
 
+  const [selectedColor, setSelectedColor] = useState([]);
   const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [sound, setSound] = useState(null);
@@ -59,6 +61,7 @@ export const Game27 = () => {
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -72,13 +75,14 @@ export const Game27 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setData, round, setSound, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setRandomNumber, setSelectedColor, setData, round, setSound, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
     setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
+    setSelectedColor(Array(items.resposta.length).fill(0));
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
@@ -99,12 +103,16 @@ export const Game27 = () => {
     setBlockButton(true);
 
     let tempRightPoints;
+    let tempSelectedColor = selectedColor;
     const selectedAnswer = answers[index];
 
     if (selectedAnswer.status === 1) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       tempRightPoints = PointRule(nivel, rightPoints);
       setNewPontos(nivel, tempRightPoints);
@@ -113,6 +121,9 @@ export const Game27 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
+
+      tempSelectedColor[index] = 1;
+      setSelectedColor(tempSelectedColor);
 
       let tempE = wrongPoints;
       tempE++;
@@ -190,6 +201,9 @@ export const Game27 = () => {
               key={index}
               onClick={() => handleClick(index)}
               disabled={blockButton}
+              style={{
+                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
+              }}
             >
               <img src={`${URL_FISKPRO}images/essentials1/lesson${numSelLesson}/${answer.image}.jpg`} alt="" />
             </Photo>
