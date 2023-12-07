@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   height: 100vh;
   display: flex;
@@ -266,6 +267,12 @@ export const Button = styled.button`
     opacity: 0.3;
   }
 
+  @media (max-width: 320px) {
+    width: 7.5rem;
+    height: 2rem;
+    font-size: 0.875rem;
+  }
+
   @media (min-width: 768px) {
     width: 15.625rem;
     height: 3rem;
@@ -273,8 +280,8 @@ export const Button = styled.button`
   }
 
   @media(orientation: landscape) {
-    @media (max-width: 320px) {
-      width: 7.5rem;
+    @media (min-width: 600px) {
+      width: 15.625rem;
       height: 2rem;
       font-size: 0.875rem;
     }

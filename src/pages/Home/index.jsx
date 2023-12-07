@@ -130,9 +130,9 @@ export const Home = () => {
                   {selectLanguage === 2 && <p>{text.name[2]}</p>}
                 </Card>
                 :
-                <Dialog.Root>
+                <Dialog.Root key={index}>
                   <Dialog.Trigger asChild>
-                    <Card key={index}>
+                    <Card>
                       <img src={images[index]} alt="" />
                       {selectLanguage === 0 && <p>{text.name[0]}</p>}
                       {selectLanguage === 1 && <p>{text.name[1]}</p>}

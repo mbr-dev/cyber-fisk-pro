@@ -154,7 +154,7 @@ export const Main = styled.main`
   }
 `;
 
-export const Form = styled.div`
+export const Form = styled.form`
   width: 20rem;
   display: flex;
   flex-direction: column;

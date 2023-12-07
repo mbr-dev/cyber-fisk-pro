@@ -159,7 +159,7 @@ export const Login = () => {
       </Header>
 
       <Main>
-        <Form id="myForm" onKeyDown={(e) => {e.keyCode === 13 ? handleSignIn() : null}}>
+        <Form id="myForm" onSubmit={handleSignIn}>
           {error ? 
             <Notifications description={msgError} event={clickAlert}/> : null
           }

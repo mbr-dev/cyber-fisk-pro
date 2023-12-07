@@ -188,6 +188,7 @@ export const Game18 = () => {
       <Loading />
     )
   }
+   /* game não utiliza caso sair game novo implementar aqui */
 
   return (
     <Container>

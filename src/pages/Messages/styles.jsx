@@ -26,6 +26,24 @@ export const Main = styled.main`
     gap: 2.25rem;
     padding-top: 2.25rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 80%;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      gap: 0rem;
+      padding-top: 0rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 2rem;
+    padding-top: 2rem;
+  }
 `;
 
 export const Div = styled.button`
@@ -55,6 +73,28 @@ export const Div = styled.button`
   }
 
   @media (min-width: 768px) {
+    width: 37.5rem;
+    height: 4rem;
+    padding-inline: 1rem;
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 18.75rem;
+      height: 2.75rem;
+      padding-inline: 0.75rem;
+
+      p {
+        font-size: 1.25rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
     width: 37.5rem;
     height: 4rem;
     padding-inline: 1rem;
@@ -93,6 +133,32 @@ export const DivImg = styled.div`
     width: 3.25rem;
     height: 3.25rem;
     border-width: 3px;
+    border-radius: 10px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      border-width: 1px;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-width: 3px;
+    border-radius: 10px;
 
     img {
       width: 24px;

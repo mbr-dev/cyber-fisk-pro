@@ -88,6 +88,8 @@ export const Game31 = () => {
       return
     }
 
+    setBlockButton(true);
+
     event.preventDefault();
 
     let tempWord = text.trim().toLowerCase();

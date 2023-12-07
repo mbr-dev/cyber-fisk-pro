@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -86,6 +87,7 @@ export const Select = styled.select`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 23rem;
+      height: 2.5rem;
       font-size: 0.875rem;
     }
   }

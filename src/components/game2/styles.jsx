@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -8,12 +9,10 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
 
@@ -30,6 +29,7 @@ export const Main = styled.div`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       flex-direction: row;
+      justify-content: center;
       margin-top: 1rem;
       gap: 1rem;
     }

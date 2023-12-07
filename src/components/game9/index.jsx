@@ -189,6 +189,7 @@ export const Game9 = () => {
       <Loading />
     )
   }
+  /* game não utiliza caso sair game novo implementar aqui */
 
   return (
     <Container>

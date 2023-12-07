@@ -2,6 +2,7 @@ import styled from "styled-components";
 import * as RadioGroup from '@radix-ui/react-radio-group';
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -13,7 +14,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.625rem;
+  gap: 0.25rem;
 
   @media (max-width: 320px) {
     gap: 0.5rem;
@@ -168,7 +169,7 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 0.5rem;
 
   @media(max-width: 320px) {
     gap: 0.25rem;

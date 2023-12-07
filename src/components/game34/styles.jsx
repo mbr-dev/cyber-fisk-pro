@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -28,13 +29,15 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      gap: 0.5rem;
+      margin-top: 1rem;
       flex-direction: row;
     }
   }
 
   @media(min-width: 1280px) {
     margin-top: 2rem;
-    gap: 1.5rem;
+    gap: 1rem;
   } 
 `;
 

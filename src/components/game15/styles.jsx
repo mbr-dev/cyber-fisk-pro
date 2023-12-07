@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -158,13 +159,25 @@ export const Words = styled.span`
 export const AreaButton = styled.div`
   width: 100%;
   display: flex;
-  margin-top: 32px;
+  margin-top: 2rem;
   align-items: center;
   justify-content: center;
   gap: 2rem;
 
   @media(max-width: 320px) {
     gap: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1rem;
+      margin-top: 0rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    gap: 2rem;
+    margin-top: 2rem;
   }
 `;
 

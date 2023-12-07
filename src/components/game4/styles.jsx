@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -31,6 +32,8 @@ export const Main = styled.main`
       display: flex;
       flex-wrap: wrap;
       width: 90%;
+      margin-top: 1rem;
+      gap: 1rem;
     }
   }
 

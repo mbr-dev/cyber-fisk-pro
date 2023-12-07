@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -105,6 +106,7 @@ export const Select = styled.select`
     @media(min-width: 600px) {
       width: 12rem;
       height: 2rem;
+      font-size: 0.875rem;
     }
   }
 

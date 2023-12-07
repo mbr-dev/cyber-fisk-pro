@@ -12,6 +12,7 @@ import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon"
 
 export const Report = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState("Aluno");
 
   const navigate = useNavigate();
 
@@ -45,70 +46,80 @@ export const Report = () => {
         </XP>
 
         <AreaSelect>
-          <Select
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
-            }}
-          >
-            <SelectTitle>
-              <p>Books</p>
-              <img src={arrowBottom} alt="" />
-            </SelectTitle>
-            {isOpen && 
-              <SelectUl>
-                <SelectLi onClick={handleRI}>1</SelectLi>
-              </SelectUl>
-            }
-          </Select>
-          <Select
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
-            }}
-          >
-            <SelectTitle>
-              <p>Books</p>
-              <img src={arrowBottom} alt="" />
-            </SelectTitle>
-            {isOpen && 
-              <SelectUl>
-                <SelectLi onClick={handleRI}>1</SelectLi>
-              </SelectUl>
-            }
-          </Select>
-          <Select
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
-            }}
-          >
-            <SelectTitle>
-              <p>Books</p>
-              <img src={arrowBottom} alt="" />
-            </SelectTitle>
-            {isOpen && 
-              <SelectUl>
-                <SelectLi onClick={handleRI}>1</SelectLi>
-              </SelectUl>
-            }
-          </Select>
-          <Select
-            onClick={() => setIsOpen(!isOpen)}
-            style={{
-              backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
-            }}
-          >
-            <SelectTitle>
-              <p>Books</p>
-              <img src={arrowBottom} alt="" />
-            </SelectTitle>
-            {isOpen && 
-              <SelectUl>
-                <SelectLi onClick={handleRI}>1</SelectLi>
-              </SelectUl>
-            }
-          </Select>
+          {(status === "Aluno" || status === "Professor" || status === "Adm") &&
+            <Select
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+              }}
+            >
+            
+              <SelectTitle>
+                <p>Books</p>
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={handleRI}>1</SelectLi>
+                </SelectUl>
+              }
+            </Select>
+          }
+
+          {status === "Adm" &&
+            <Select
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+              }}
+            >
+              <SelectTitle>
+                <p>Teacher</p>
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={handleRI}>1</SelectLi>
+                </SelectUl>
+              }
+            </Select>
+          }
+          {(status === "Professor" || status === "Adm") &&
+            <Select
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+              }}
+            >
+              <SelectTitle>
+                <p>Group</p>
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={handleRI}>1</SelectLi>
+                </SelectUl>
+              }
+            </Select>
+          }
+          {(status === "Professor" || status === "Adm") &&
+            <Select
+              onClick={() => setIsOpen(!isOpen)}
+              style={{
+                backgroundColor: isOpen ? defaultTheme["gray-200"] : "",
+              }}
+            >
+              <SelectTitle>
+                <p>Student</p>
+                <img src={arrowBottom} alt="" />
+              </SelectTitle>
+              {isOpen && 
+                <SelectUl>
+                  <SelectLi onClick={handleRI}>1</SelectLi>
+                </SelectUl>
+              }
+            </Select>
+          }
         </AreaSelect>
 
         <AreaFooterFullBtn />

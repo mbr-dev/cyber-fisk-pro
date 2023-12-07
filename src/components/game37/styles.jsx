@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -69,6 +70,7 @@ export const Form = styled.form`
     display: block;
     font-size: 1rem;
     color: ${props => props.theme["gray-700"]};
+    text-align: center;
   }
 
   @media(max-width: 320px) {

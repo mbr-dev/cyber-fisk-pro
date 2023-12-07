@@ -1,11 +1,16 @@
+import Cookies from "universal-cookie";
 import { useState, useContext, useEffect } from "react";
-import Cookies from 'universal-cookie';
-import { Container } from "./styles";
+
 import { LessonContext } from "../../context/lesson";
 import { CyberContext } from "../../context/cyber";
-import { HeaderLesson } from "../HeaderLesson";
 import { api } from "../../lib/api";
 import { apiQAS } from "../../lib/api";
+
+import { HeaderLesson } from "../HeaderLesson";
+import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
+
+
+import { Container } from "./styles";
 
 //Games
 import { Game1 } from "../game1";
@@ -221,6 +226,7 @@ export const TaskLesson = () => {
     <Container>
       <HeaderLesson numStart={strStart} numEnd={strEnd} />
       {content()}
+      <AreaFooterFullBtn title="Tasks" rota="/lessonSelected" />
     </Container>
   )
 }

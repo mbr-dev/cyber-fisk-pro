@@ -27,9 +27,13 @@ export const Container = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 75rem;
+    width: 50rem;
     height: 6.25rem;
     border-width: 4px;
+  }
+
+  @media(min-width: 1440px) {
+    width: 62.5rem;
   }
 `;
 

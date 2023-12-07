@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -8,7 +9,6 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.div`
-  flex: 1;
   width: 100%;
   display: flex;
   flex-direction: column;

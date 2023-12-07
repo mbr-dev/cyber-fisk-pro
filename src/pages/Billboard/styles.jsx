@@ -29,16 +29,12 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
+      padding-top: 1rem;
+      gap: 1rem;
     }
   }
 
   @media (min-width: 1280px) {
-    flex-direction: column;
-    align-items: center;
-    justify-content: flex-start;
     gap: 2.25rem;
     padding-top: 2.25rem;
   }
@@ -90,13 +86,12 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 18.75rem;
-      height: 2.75rem;
+      width: 37.5rem;
+      height: 3rem;
     }
   }
 
   @media (min-width: 1280px) {
-    width: 37.5rem;
     height: 4rem;
     padding-inline: 1rem;
 

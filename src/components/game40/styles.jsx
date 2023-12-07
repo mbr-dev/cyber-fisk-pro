@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
+  flex: 1;
   width: 100vw;
   display: flex;
   flex-direction: column;
@@ -30,7 +31,7 @@ export const Main = styled.main`
     @media(min-width: 600px) {
       flex-direction: row;
       margin-top: 0.5rem;
-      gap: 0.5rem;
+      gap: 1rem;
     }
   }
 
