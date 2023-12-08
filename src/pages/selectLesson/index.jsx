@@ -46,6 +46,7 @@ export const SelectLesson = () => {
   }
 
   const clickLesson = (id) => {
+    localStorage.setItem("Atividade_Selecionada", id);
     setNewSelLesson(id);
     navigate("/LessonSelected");
   }

@@ -39,7 +39,7 @@ export const Main = styled.main`
       padding-top: 0.5rem;
     }
   }
-
+  
   @media (min-width: 1280px) {
     align-items: flex-start;
     gap: 1.5rem;
@@ -99,7 +99,7 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 22.125rem;
+      width: 20rem;
       height: 3rem;
       padding-right: 0.5rem;
 

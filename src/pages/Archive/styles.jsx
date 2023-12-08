@@ -100,7 +100,7 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 22.125rem;
+      width: 20rem;
       height: 3rem;
       padding-right: 0.5rem;
 

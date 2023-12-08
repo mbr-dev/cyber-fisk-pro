@@ -282,6 +282,12 @@ export const Div = styled.div`
     p {
       padding-left: 0.75rem;
     }
+
+    .inputDate {
+      width: 6.5rem;
+      height: 2rem;
+      font-size: 0.75rem;
+    }
   }
 
   @media(min-width: 768px) {
@@ -291,7 +297,7 @@ export const Div = styled.div`
     }
 
     .inputDate {
-      width: 9.5rem;
+      width: 10.75rem;
       height: 3rem;
       font-size: 1.125rem;
     }
@@ -341,12 +347,13 @@ export const Input = styled.input`
   }
 
   @media(max-width: 320px) {
+    width: 15rem;
     height: 2rem;
     font-size: 0.875rem;
   }
 
   @media(min-width: 768px) {
-    width: 23rem;
+    width: 24.5rem;
     height: 3rem;
     font-size: 1.25rem;
   }
@@ -367,13 +374,32 @@ export const Input = styled.input`
 `;
 
 export const Select = styled.div`
+  width: 17.5rem;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
+
+  @media(max-width: 320px) {
+    width: 15rem;
+  }
+
+  @media(min-width: 768px) {
+    width: 24.5rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 19rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 22rem;
+  }
 `;
 
 export const SelectTitle = styled.div`
-  width: 17.5rem;
+  width: 100%;
   height: 2.625rem;
   display: flex;
   position: relative;
@@ -403,7 +429,6 @@ export const SelectTitle = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 23rem;
     height: 3rem;
 
     p {
@@ -413,7 +438,6 @@ export const SelectTitle = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 19rem;
       height: 2.25rem;
 
       p {
@@ -423,7 +447,6 @@ export const SelectTitle = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 22rem;
     height: 3rem;
 
     p {
@@ -447,7 +470,7 @@ export const SelectUl = styled.ul`
   background-color: ${props => props.theme["gray-200"]};
 
   @media(min-width: 768px) {
-    width: 23rem;
+    width: 24.5rem;
   }
 
   @media(orientation: landscape) {
@@ -472,7 +495,7 @@ export const SelectLi = styled.li`
     background-color: ${props => props.theme["gray-400"]};
   }
 
-  @media(min-width: 768px ) {
+  @media(min-width: 768px) {
     font-size: 1.5rem;
   }
 
@@ -480,6 +503,10 @@ export const SelectLi = styled.li`
     @media(min-width: 600px) {
       font-size: 1rem;
     }
+  }
+
+  @media(min-width: 1280px) {
+    font-size: 1.5rem;
   }
 `;
 

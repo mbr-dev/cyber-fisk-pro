@@ -53,13 +53,16 @@ export const Div = styled.div`
   }
 
   @media(orientation: landscape) {
-    @media(min-width: 768px) {
-      gap: 0.5rem;
+    @media(min-width: 600px) {
+      width: 43.75rem;
+      flex-direction: row;
+      gap: 0rem;
+      justify-content: space-between;
     }
   }
 
   @media(min-width: 1280px) {
-    gap: 1rem;
+    width: 68.75rem;
   }
 `;
 
@@ -203,7 +206,7 @@ export const Text = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 31.25rem;
+      width: 43.75rem;
       gap: 0.5rem;
       
       img {
@@ -212,13 +215,14 @@ export const Text = styled.div`
       }
       
       textarea {
+        width: 40rem;
         font-size: 0.75rem;
       }
     }
   }
   
   @media(min-width: 1280px) {
-    width: 50rem;
+    width: 68.75rem;
     
     img {
       width: 24px;
@@ -226,7 +230,7 @@ export const Text = styled.div`
     }
     
     textarea {
-      width: 45rem;
+      width: 64rem;
       font-size: 1.25rem;
     }
   }
@@ -246,8 +250,14 @@ export const Select = styled.div`
     width: 31.25rem;
   }
 
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 21rem;
+    }
+  }
+
   @media(min-width: 1280px) {
-    width: 50rem;
+    width: 33rem;
   }
 `;
 
@@ -348,13 +358,13 @@ export const SelectUl = styled.ul`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 31.25rem;
+      width: 21rem;
       padding: 0.5rem;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 50rem;
+    width: 33rem;
     padding-inline: 44px;
     gap: 1.25rem;  
   }

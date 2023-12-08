@@ -208,7 +208,7 @@ export const TaskLesson = () => {
       setStrEnd("Super Task");
     }
     loadContent();
-  },[])
+  },[]);
 
   useEffect(() => {
     const timer = setInterval(() => {

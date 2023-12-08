@@ -29,12 +29,13 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 80%;
+      width: 600px;
       flex-direction: row;
-      flex-wrap: wrap;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 0;
-      padding-top: 0rem;
+      flex-wrap: wrap;
+      padding-top: 0.5rem;
+      gap: 0.5rem;
 
       .composeBtn {
         width: 100%;
@@ -92,7 +93,7 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 18.75rem;
+      width: 15.625rem;
       height: 2.75rem;
       padding-inline: 0.75rem;
 
