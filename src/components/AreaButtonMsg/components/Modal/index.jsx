@@ -10,6 +10,7 @@ import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const [status, setStatus] = useState(null);
 
   return (
     <Dialog.Portal>
@@ -62,21 +63,23 @@ export const Modal = () => {
               </Div>
             </DivInside2>
           </Top>
-
-          <DivCheckRow>
-            <DivCheck>
-              <input type="checkbox" />
-              <p>View messages from teachers</p>
-            </DivCheck>
-            <DivCheck>
-              <input type="checkbox" />
-              <p>View teachers’ messages to groups</p>
-            </DivCheck>
-            <DivCheck>
-              <input type="checkbox" />
-              <p>View your groups’ messages</p>
-            </DivCheck>
-          </DivCheckRow>
+          
+          {status === "Coordenador" &&
+            <DivCheckRow>
+              <DivCheck>
+                <input type="checkbox" />
+                <p>View messages from teachers</p>
+              </DivCheck>
+              <DivCheck>
+                <input type="checkbox" />
+                <p>View teachers’ messages to groups</p>
+              </DivCheck>
+              <DivCheck>
+                <input type="checkbox" />
+                <p>View your groups’ messages</p>
+              </DivCheck>
+            </DivCheckRow>
+          }
           <Enter>Filter</Enter>
         </Main>
       </Content>

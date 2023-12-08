@@ -11,7 +11,7 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
-  height: 27rem;
+  //height: 27rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -20,28 +20,30 @@ export const Content = styled(Dialog.Content)`
   position: fixed;
   top: 50%;
   left: 50%;
+  padding-bottom: 1rem;
   transform: translate(-50%, -50%);
 
   @media(max-width: 320px) {
     width: 18rem;
-    height: 23,75rem;
+    //height: 23,75rem;
   }
 
   @media(min-width: 768px) {
     width: 28rem;
-    height: 35rem;
+    //height: 35rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 31rem;
-      height: 17.5rem;
+      padding-bottom: 0rem;
+     // height: 17.5rem;
     }
   }
 
   @media(min-width: 1280px) {
     width: 38rem;
-    height: 29rem;
+    //height: 29rem;
   }
 `;
 
@@ -141,7 +143,8 @@ export const Header = styled.header`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 3.5rem;
+      height: 2.5rem;
+
       p {
         font-size: 1rem;
       }
