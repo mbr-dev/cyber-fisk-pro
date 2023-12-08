@@ -11,7 +11,7 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
-  height: 30rem;
+  height: 27rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -28,19 +28,20 @@ export const Content = styled(Dialog.Content)`
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
-    height: 38.75rem;
+    width: 28rem;
+    height: 35rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 43.75rem;
-      height: 18.75rem;
+      width: 31rem;
+      height: 17.5rem;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 43.75rem;
+    width: 38rem;
+    height: 29rem;
   }
 `;
 
@@ -97,13 +98,13 @@ export const Close = styled(Dialog.Close)`
   }
 
   @media(min-width: 1280px) {
-    width: 4rem;
-    height: 4rem;
-    top: -1.875rem;
-    right: -1.875rem;
+    width: 3rem;
+    height: 3rem;
+    top: -1.25rem;
+    right: -1.25rem;
 
     img {
-      width: 32px;
+      width: 24px;
     }
   }
 `;
@@ -140,10 +141,18 @@ export const Header = styled.header`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 5rem;
+      height: 3.5rem;
       p {
-        font-size: 1.125rem;
+        font-size: 1rem;
       }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 4rem;
+
+    p {
+      font-size:1.5rem;
     }
   }
 `;
@@ -163,58 +172,73 @@ export const Main = styled.main`
   }
 
   @media(min-width: 768px) {
-    width: 22.5rem;
+    width: 25rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 100%;
+      width: 28rem;
+      gap: 0.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 34rem;
+    gap: 1rem;
+  }
+`;
+
+export const Top = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 28rem;
       flex-direction: row;
-      align-items: flex-start;
-      justify-content: center;
     }
+  }
+
+  @media(min-width: 1280px) {
+    width: 34rem;
+    justify-content: flex-start;
+    align-items: center;
   }
 `;
 
-export const Right = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 20rem;
-    }
-  }
-`;
-
-export const Left = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 20rem;
-    }
-  }
-`;
-
-export const DivRow = styled.div`
+export const DivCheckRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
 
-  @media(max-width: 320px) {
-    gap: 0.5rem;
-  }
-
-  @media(min-width: 768px) {
+  @media(min-width: 1280px) {
     gap: 1rem;
   }
+`;
+
+export const DivInside = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+  }
+  
+  @media(min-width: 1280px) {
+    gap: 1rem;
+  }
+`;
+
+export const DivInside2 = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
@@ -227,20 +251,26 @@ export const DivRow = styled.div`
   }
 `;
 
-export const DivInside = styled.div`
-  display: flex;
-  gap: 1.5rem;
-
-  @media(max-width: 320px) {
-    gap: 1.25rem;
-  }
-`;
-
 export const Div = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
-  gap: 0.5rem;
+  gap: 0.25rem;
+  text-align: left;
+
+  .inputDate {
+    all: unset;
+    width: 7.5rem;
+    height: 2.25rem;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid ${props => props.theme["gray-200"]};
+    font-size: 0.875rem;
+    padding-left: 0.5rem;
+    color: ${props => props.theme["gray-400"]};
+  }
 
   p {
     font-weight: 500;
@@ -259,11 +289,21 @@ export const Div = styled.div`
       font-size: 1.5rem;
       padding-left: 1rem;
     }
+
+    .inputDate {
+      width: 9.5rem;
+      height: 3rem;
+      font-size: 1.125rem;
+    }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.25rem;
+      .inputDate {
+        width: 7.5rem;
+        height: 2rem;
+        font-size: 0.75rem;
+      }
 
       p {
         font-size: 0.875rem;
@@ -271,11 +311,24 @@ export const Div = styled.div`
       }
     }
   }
+
+  @media(min-width: 1280px) {
+    p {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+    }
+
+    .inputDate {
+      width: 9.5rem;
+      height: 3rem;
+      font-size: 1.25rem;
+    }
+  }
 `;
 
 export const Input = styled.input`
   all: unset;
-  width: 100%;
+  width: 17.5rem;
   height: 2.25rem;
   display: flex;
   align-items: center;
@@ -287,43 +340,46 @@ export const Input = styled.input`
     color: ${props => props.theme["gray-100"]};
   }
 
-  .inputTxt {
-    text-align: right;
-  }
-
   @media(max-width: 320px) {
     height: 2rem;
     font-size: 0.875rem;
   }
 
   @media(min-width: 768px) {
+    width: 23rem;
     height: 3rem;
     font-size: 1.25rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 2.25rem;
+      width: 18.75rem;
+      height: 2rem;
       font-size: 0.875rem;
     }
+  }
+
+  @media(min-width: 1280px) {
+    width: 22rem;
+    height: 3rem;
+    font-size: 1.25rem;
   }
 `;
 
 export const Select = styled.div`
-  width: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
 `;
 
 export const SelectTitle = styled.div`
-  width: 100%;
+  width: 17.5rem;
   height: 2.625rem;
   display: flex;
   position: relative;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 1rem;
+  padding-inline: 0.5rem;
   border: 2px solid ${props => props.theme["gray-200"]};
   border-radius: 8px;
   background-color: ${props => props.theme.white};
@@ -347,6 +403,7 @@ export const SelectTitle = styled.div`
   }
 
   @media(min-width: 768px) {
+    width: 23rem;
     height: 3rem;
 
     p {
@@ -356,12 +413,21 @@ export const SelectTitle = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      width: 19rem;
       height: 2.25rem;
-      padding-inline: 0.5rem;
 
       p {
         font-size: 0.875rem;
       }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 22rem;
+    height: 3rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 `;
@@ -380,19 +446,22 @@ export const SelectUl = styled.ul`
   gap: 0.75rem;
   background-color: ${props => props.theme["gray-200"]};
 
-  @media(min-width: 768px ) {
-    width: 22.5rem;
+  @media(min-width: 768px) {
+    width: 23rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 20rem;
+      width: 19rem;
     }
+  }
+
+  @media(min-width: 1280px) {
+    width: 22rem;
   }
 `;
 
 export const SelectLi = styled.li`
-  width: 100%;
   list-style: none;
   color: ${props => props.theme["gray-700"]};
   font-weight: 500;
@@ -425,6 +494,11 @@ export const DivCheck = styled.div`
     color: ${props => props.theme["gray-700"]};
   }
 
+  input[type="checkbox"] {
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
   @media (max-width: 320px) {
     p {
       font-size: 0.75rem;
@@ -435,7 +509,7 @@ export const DivCheck = styled.div`
     gap: 0.5rem;
 
     p {
-      font-size: 1.125rem;
+      font-size: 1.25rem;
     }
 
     input[type="checkbox"] {
@@ -485,7 +559,6 @@ export const Enter = styled.button`
   border: 2px solid ${props => props.theme["yellow-200"]};
   border-radius: 8px;
   border-bottom-width: 4px;
-  margin-bottom: 1rem;
 
   @media(max-width: 320px) {
     height: 1.75rem;
@@ -504,9 +577,9 @@ export const Enter = styled.button`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 15.625rem;
-      height: 2.5rem;
+      height: 2rem;
       font-size: 1rem;
-      margin-bottom: 0.5rem
+      margin-bottom: -1rem;
     }
   }
 
@@ -514,6 +587,6 @@ export const Enter = styled.button`
     height: 3rem;
     width: 18.75rem;
     font-size: 2rem;
-    margin-bottom: 1rem;
+    margin-bottom: 0rem;
   }
 `;

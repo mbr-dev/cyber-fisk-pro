@@ -1,12 +1,11 @@
 import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 
-import { LineSeparator } from "../../../LineSeparator";
 
 import xImg from "../../../../assets/xImg.png";
 import arrowBottom from "../../../../pages/Report/img/arrowBottom.png";
 
-import { Content, Overlay, Close, Enter, Main, Header, Div, DivRow, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck, Right, Left } from "./styles";
+import { Content, Overlay, Close, Enter, Main, Header, Div, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck, DivInside2, Top, DivCheckRow } from "./styles";
 import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
@@ -25,22 +24,19 @@ export const Modal = () => {
         </Header>
 
         <Main>
-          <Left>
-            <DivRow>
-              <DivInside>
-                <Div>
-                  <p>Start Date</p>
-                  <Input type="date" />
-                </Div>
-                <Div>
-                  <p>Finish Date</p>
-                  <Input type="date" />
-                </Div>
-              </DivInside>
-              <LineSeparator wl="100%" bg={defaultTheme["gray-200"]} />
-            </DivRow>
+          <Top>
+            <DivInside>
+              <Div>
+                <p>Start Date</p>
+                <input type="date" className="inputDate" />
+              </Div>
+              <Div>
+                <p>Finish Date</p>
+                <input type="date" className="inputDate" />
+              </Div>
+            </DivInside>
 
-            <DivRow>
+            <DivInside2>
               <Div>
                 <p>Group</p>
                 <Select
@@ -60,36 +56,29 @@ export const Modal = () => {
                   }
                 </Select>
               </Div>
-              <LineSeparator wl="100%" bg={defaultTheme["gray-200"]} />
-            </DivRow>
-          </Left>
-
-          <Right>
-            <DivRow>
               <Div>
                 <p>User</p>
                 <Input type="text" className="inputTxt" />
               </Div>
-              <LineSeparator wl="100%" bg={defaultTheme["gray-200"]} />
-            </DivRow>
+            </DivInside2>
+          </Top>
 
-            <DivRow>
-              <DivCheck>
-                <input type="checkbox" />
-                <p>View messages from teachers</p>
-              </DivCheck>
-              <DivCheck>
-                <input type="checkbox" />
-                <p>View teachers’ messages to groups</p>
-              </DivCheck>
-              <DivCheck>
-                <input type="checkbox" />
-                <p>View your groups’ messages</p>
-              </DivCheck>
-            </DivRow>
-          </Right>
+          <DivCheckRow>
+            <DivCheck>
+              <input type="checkbox" />
+              <p>View messages from teachers</p>
+            </DivCheck>
+            <DivCheck>
+              <input type="checkbox" />
+              <p>View teachers’ messages to groups</p>
+            </DivCheck>
+            <DivCheck>
+              <input type="checkbox" />
+              <p>View your groups’ messages</p>
+            </DivCheck>
+          </DivCheckRow>
+          <Enter>Filter</Enter>
         </Main>
-        <Enter>Filter</Enter>
       </Content>
     </Dialog.Portal>
   )

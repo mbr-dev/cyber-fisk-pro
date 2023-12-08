@@ -161,7 +161,7 @@ export const TaskLesson = () => {
       case 22 :
         return(<Game22 />);
       case 23 :
-          return(<Game23 />);
+        return(<Game23 />);
       case 24 :
         return(<Game24 />);
       case 25 :

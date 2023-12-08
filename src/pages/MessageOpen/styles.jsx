@@ -16,7 +16,6 @@ export const Main = styled.main`
   align-items: center;
   gap: 1rem;
   padding-top: 1rem;
-  background-color: ${props => props.theme["gray-100"]};
 
   @media (max-width: 320px) {
     gap: 0.75rem;
@@ -26,6 +25,20 @@ export const Main = styled.main`
   @media (min-width: 768px) {
     gap: 2.25rem;
     padding-top: 2.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 70%;
+      padding-top: 0.5rem;
+      align-items: flex-start;
+      flex-direction: row;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 50rem;
+    padding-top: 1rem;
   }
 `;
 
@@ -53,6 +66,18 @@ export const Div = styled.button`
     width: 37.5rem;
     height: 43rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 29rem;
+      height: 12.75rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 37.5rem;
+    height: 32rem;
+  }
 `;
 
 export const DivHeader = styled.div`
@@ -74,6 +99,18 @@ export const DivHeader = styled.div`
   @media (min-width: 768px) {
     height: 4.5rem;
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      height: 2.5rem;
+      justify-content: space-between;
+      padding-inline: 1rem;
+    }
+  }
+
+  @media (min-width: 1280px) {
+    height: 4.5rem;
+  }
 `;
 
 export const DivHText = styled.div`
@@ -92,6 +129,20 @@ export const DivHText = styled.div`
   }
 
   @media (min-width: 768px) {
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      p {
+        font-size: 0.625rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
     p {
       font-size: 1.125rem;
     }
@@ -133,6 +184,30 @@ export const DivImg = styled.div`
       height: 24px;
     }
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2rem;
+      height: 2rem;
+      border-width: 1px;
+
+      img {
+        width: 12px;
+        height: 12px;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    width: 3.25rem;
+    height: 3.25rem;
+    border-width: 3px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 `;
 
 export const Text = styled.div`
@@ -160,6 +235,24 @@ export const Text = styled.div`
       font-size: 1.5rem;
     }
   }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      padding: 0.5rem;
+
+      p {
+        font-size: 0.875rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
+    padding: 1rem;
+
+    p {
+      font-size: 1.25rem;
+    }
+  }
 `;
 
 export const AreaButtonDiv = styled.div`
@@ -171,6 +264,24 @@ export const AreaButtonDiv = styled.div`
 
   @media(min-width: 768px) {
     padding-bottom: 1rem;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: none;
+    }
+  }
+`;
+
+export const AreaButtonDiv2 = styled.div`
+  display: none;
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
   }
 `;
 
@@ -198,7 +309,7 @@ export const ButtonDiv = styled.div`
   }
 
   &:hover {
-    scale: 1.1;
+    scale: 1.05;
   }
 
   @media(max-width: 320px) {
@@ -230,96 +341,36 @@ export const ButtonDiv = styled.div`
       height: 20px;
     }
   }
-`;
-
-export const AreaButton = styled.div`
-  width: 100%;
-  height: 4rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media(max-width: 320px) {
-    height: 3.25rem;
-  }
-
-  @media(min-width: 768px) {
-    height: 5.5rem;
-  }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 3.25rem;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    height: 6.25rem;
-  }
-`;
-
-export const Button = styled.button`
-   all: unset;
-  width: 15.625rem;
-  height: 2.25rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: ${props => props.theme["red-200"]};
-  color: ${props => props.theme.white};
-  border: 2px solid ${props => props.theme["red-300"]};
-  border-bottom-width: 3px;
-  border-radius: 10px;
-  transition: all 0.2s;
-  cursor: pointer;
-
-  p {
-    font-size: 24px;
-    font-weight: bold;
-  }
-
-  &:hover {
-    opacity: 0.8;
-  }
-
-  @media(max-width: 320px) {
-    width: 12.5rem;
-    height: 2rem;
-
-    p {
-      font-size: 1rem;
-    }
-  }
-
-  @media(min-width: 768px) {
-    width: 25rem;
-    height: 2.75rem;
-
-    p {
-      font-size: 2rem;
-    }
-  }
-
-  @media(orientation: landscape) {
-    @media (min-width: 782px) {
-      width: 15.625rem;
-      height: 2rem;
+      width: 8rem;
+      height: 2.5rem;
       border-radius: 6px;
 
       p {
-        font-size: 1.125rem;
+        font-size: 1rem;
+      }
+
+      img {
+        width: 18px;
+        height: 18px;
       }
     }
   }
 
   @media(min-width: 1280px) {
-    width: 25rem;
-    height: 2.75rem;
+    width: 10rem;
+    height: 3rem;
+    border-radius: 6px;
 
     p {
-      font-size: 2rem;
+      font-size: 1.125rem;
+    }
+
+    img {
+      width: 20px;
+      height: 20px;
     }
   }
 `;
-

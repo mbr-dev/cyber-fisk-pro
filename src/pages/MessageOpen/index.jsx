@@ -1,20 +1,17 @@
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
+import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
 import EmailImg from "./images/email.png";
 import LixoImg from "./images/lixo.png";
 import SetaImg from "./images/seta.png";
 import FolderImg from "./images/folder.png";
 
-import { Container, Main, Div, AreaButton, Button, DivImg, DivHText, DivHeader, Text, AreaButtonDiv, ButtonDiv } from "./styles";
+import { Container, Main, Div, DivImg, DivHText, DivHeader, Text, AreaButtonDiv, ButtonDiv, AreaButtonDiv2 } from "./styles";
 
 export const MessageOpen = () => {
   const navigate = useNavigate();
-
-  const handleMessages = () => {
-    navigate("/Read");
-  }
 
   const handleAnswer = () => {
     navigate("/MessageAnswer");
@@ -57,13 +54,24 @@ export const MessageOpen = () => {
             </ButtonDiv>
           </AreaButtonDiv>
         </Div>
+
+        <AreaButtonDiv2>
+          <ButtonDiv onClick={handleAnswer} $variant="green">
+            <img src={SetaImg} alt="" />
+            <p>Answer</p>
+          </ButtonDiv>
+          <ButtonDiv $variant="orange">
+            <img src={FolderImg} alt="" />
+            <p>Archive</p>
+          </ButtonDiv>
+          <ButtonDiv>
+            <img src={LixoImg} alt="" />
+            <p>Delete</p>
+          </ButtonDiv>
+        </AreaButtonDiv2>
       </Main>
 
-      <AreaButton>
-        <Button onClick={handleMessages}>
-          <p>Back</p>
-        </Button>
-      </AreaButton>
+      <AreaFooterFullBtn title="Back" rota="/read" />
     </Container>
   )
 }

@@ -33,16 +33,24 @@ export const Main = styled.main`
       flex-direction: row;
       flex-wrap: wrap;
       justify-content: space-between;
-      gap: 0rem;
+      gap: 0;
       padding-top: 0rem;
+
+      .composeBtn {
+        width: 100%;
+      }
     }
   }
 
   @media (min-width: 1280px) {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
     padding-top: 2rem;
+
+    .composeBtn {
+      width: 37.5rem;
+    }
   }
 `;
 
