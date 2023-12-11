@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 6.5rem;
+  height: 7.5rem;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;

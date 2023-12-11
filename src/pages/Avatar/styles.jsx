@@ -12,7 +12,7 @@ export const Main = styled.main`
   flex: 1;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme["gray-060"]};
+  background-color: ${props => props.theme.white};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -268,10 +268,11 @@ export const Title = styled.div`
   }
 `;
 
-export const AvatarCard = styled.div`
+export const ItemsCard = styled.div`
   width: 21.875rem;
   height: 11.25rem;
   display: flex;
+  padding-inline: 1rem;
   justify-content: space-between;
 
   @media (max-width: 360px) {
@@ -299,6 +300,7 @@ export const AvatarCard = styled.div`
   @media(min-width: 1280px) {
     width: 43.75rem;
     height: 23.75rem;
+    background-color: red;
   }
 
   @media (min-width: 1920px) {
@@ -315,7 +317,7 @@ export const CardReward = styled.div`
   justify-content: center;
   border-radius: 8px;
   background-color: ${props => props.theme.white};
-  box-shadow: 0px 4px 10px 0px #00000033;
+  border: 1px solid ${props => props.theme["gray-400"]};
   position: relative;
 
   .RoboCard {

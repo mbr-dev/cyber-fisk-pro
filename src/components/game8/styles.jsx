@@ -17,6 +17,7 @@ export const Main = styled.div`
   justify-content: center;
   gap: 1rem;
   margin-top: 1rem;
+  padding-inline: 2rem;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
@@ -53,7 +54,7 @@ export const Title = styled.div`
   padding-block: 0.5rem;
   
   p {
-    font-size: 1.5rem;
+    font-size: 1.125rem;
     font-weight: 500;
   }
   
@@ -96,9 +97,7 @@ export const Title = styled.div`
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 12rem;
-  height: 4rem;
-  padding-inline: 8px;
+  padding: 0.325rem 0.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -130,8 +129,7 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 15rem;
-    height: 4rem;
+    padding: 0.5rem 1rem;
 
     p {
       font-size: 1.5rem;
@@ -140,8 +138,7 @@ export const ButtonAnswer = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 9rem;
-      height: 3rem;
+      padding: 0.325rem 0.75rem;
 
       p {
         font-size: 0.875rem;
@@ -150,8 +147,7 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (min-width: 1280px) {
-    width: 15rem;
-    height: 4rem;
+    padding: 0.5rem 1rem;
 
     p {
       font-size: 1.5rem;

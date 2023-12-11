@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-const LessonContext = createContext();
+export const LessonContext = createContext();
 
-function LessonProvider({children}){
+export function LessonProvider({children}){
   const [numAtividade, setNumAtividade] = useState(1);
   const [numSelLesson, setNumSelLesson] = useState(1);
   const [numTask, setNumTask] = useState(1);
@@ -165,5 +165,3 @@ function LessonProvider({children}){
     </LessonContext.Provider>
   )
 }
-
-export {LessonProvider, LessonContext}

@@ -102,7 +102,7 @@ export const Bracos = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 13;
 
   img {
     width: 100%;
@@ -119,6 +119,30 @@ export const Pernas = styled.div`
   img {
     width: 100%;
     height: 100%;
+  }
+`;
+
+export const Pet = styled.div`
+  width: 4rem;
+  height: 4rem;
+  position: absolute;
+  bottom: 2.375rem;
+  left: -1rem;
+  z-index: 12;
+
+  img {
+    width: 100%;
+    height: 100%;
+  }
+
+  @media (min-width: 1280px) {
+    width: 9.375rem;
+    height: 9.375rem;
+    bottom: 6.25rem;
+    left: -3.25rem;
+  }
+
+  @media (min-width: 1440px) {
   }
 `;
 

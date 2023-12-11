@@ -205,6 +205,14 @@ export const Position = styled.div`
   border-radius: 12px;
   position: relative;
 
+  .numberPosition {
+    font-size: 2rem;
+    position: absolute;
+    top: 0.875rem;
+    left: 1.4375rem;
+    z-index: 1001;
+  }
+
   .pNumber {
     width: 32px;
     position: absolute;
