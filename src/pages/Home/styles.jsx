@@ -463,11 +463,11 @@ export const Right = styled.div`
 
   @media(min-width: 1280px) {
     scale: 0.8;
-    bottom: -15rem;
+    bottom: -16rem;
   }
 
   @media(min-width: 1440px) {
-    scale: 0.9;
-    bottom: 5rem;
+    scale: 0.8;
+    bottom: -16rem;
   }
 `;

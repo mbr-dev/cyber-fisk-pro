@@ -14,7 +14,7 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  gap: 0.75rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
     padding-top: 10px;
@@ -236,7 +236,7 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media(min-width: 768px) {
     gap: 1rem;
@@ -417,12 +417,8 @@ export const Title = styled.div`
 
 export const Bottom = styled.div`
   width: 100%;
-  height: 11rem;
+  height: 10rem;
   padding: 0.5rem 0.325rem;
-
-  @media(max-width: 360px) {
-    height: 10rem;
-  }
 
   @media(max-width: 320px) {
     height: 7.5rem;
@@ -449,7 +445,7 @@ export const CardReward = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["gray-500"]};
+  border: 2px solid ${props => props.theme["gray-200"]};
 
   .RoboCard {
     width: 100%;

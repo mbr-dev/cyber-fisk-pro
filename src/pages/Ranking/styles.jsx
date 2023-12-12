@@ -187,7 +187,7 @@ export const Carrousel = styled.div`
 
   @media (min-width: 1280px) {
     width: 98%;
-    height: 11.25rem;
+    height: 10rem;
   }
 `;
 
@@ -200,45 +200,101 @@ export const Position = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 1px solid ${props => props.theme["gray-400"]};
-  background-color: ${props => props.theme["gray-050"]};
-  border-radius: 12px;
   position: relative;
-
-  .numberPosition {
-    font-size: 2rem;
-    position: absolute;
-    top: 0.875rem;
-    left: 1.4375rem;
-    z-index: 1001;
-  }
 
   .pNumber {
     width: 32px;
     position: absolute;
-    top: 4px;
-    left: 6px;
+    top: 0.5rem;
+    left: 0;
     z-index: 1000;
   }
 
-  @media (min-width: 1280px) {
-    border-width: 2px;
+  .positionOne {
+    background-color: ${props => props.theme["red-200"]};
+  }
 
-    .pNumber {
-      width: 52px;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      .numberPosition {
+        position: absolute;
+        font-size: 1.25rem;
+        top: 0.875rem;
+        left: 0.625rem;
+        z-index: 1001;
+      }
     }
+  }
+
+  @media (min-width: 1280px) {
+    .pNumber {
+      width: 40px;
+    }
+
+    .numberPosition {
+      font-size: 1.5rem;
+      top: 1rem;
+      left: 0.875rem;
+    }
+  }
+
+  @media (min-width: 1440px) {
+    .pNumber {
+      top: 0.375rem;
+      left: 0.875rem;
+    }
+
+    .numberPosition {
+      top: 0.875rem;
+      left: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    .pNumber {
+      top: 0;
+      left: 3.75rem;
+    }
+
+    .numberPosition {
+      top: 0.5rem;
+      left: 4.625rem;
+    }
+  }
+`;
+
+export const PositionCard = styled.div`
+  padding: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  box-shadow: 6px 8px 12px 0px #00000040;
+  background-color: #F4F4F4;
+
+  @media (min-width: 1280px) {
+    padding: 1.25rem;
+    border-radius: 12px;
+  }
+
+  @media (min-width: 1920px) {
+    padding: 1.75rem;
   }
 `;
 
 export const PositionInside = styled.div`
   display: flex;
+  align-items: center;
+  justify-content: center;
   padding-inline: 0px;
   gap: 10px;
-  margin-top: 12px;
+
+  .positionOnep {
+    color: ${props => props.theme.white};
+  }
 
   @media (min-width: 1280px) {
     gap: 16px;
-    margin-top: 40px;
   }
 `;
 
@@ -264,7 +320,7 @@ export const DivName = styled.div`
     width: 150px;
 
     p {
-      font-size: 20px;
+      font-size: 24px;
     }
 
     span {
@@ -415,13 +471,17 @@ export const AvatarArea = styled.section`
     height: 4rem;
   }
 
-  @media (min-width: 1280px) {
-    width: 4.5rem;
-    height: 4.5rem;
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
   }
 
-  @media (min-width: 1440px) {
-    width: 6.25rem;
-    height: 6.25rem;
+  @media (min-width: 1280px) {
+    width: 4rem;
+    height: 4rem;
+    border-width: 2px;
+    border-radius: 12px;
   }
 `;

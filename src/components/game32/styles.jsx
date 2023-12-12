@@ -157,6 +157,7 @@ export const AnswersRow = styled.section`
 
   p {
     flex: 1;
+    font-size: 0.875rem;
     text-align: center;
     height: 3.5rem;
     padding-inline: 0.5rem;

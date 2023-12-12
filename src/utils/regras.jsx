@@ -141,5 +141,5 @@ export const DescriptografarJSON = (texto, chave) => {
 const jsonCriptografado = criptografarJSON(JSON.stringify(jsonToCript), chaveCriptografia);
 const jsonDescriptografado = JSON.parse(DescriptografarJSON(jsonCriptografado, chaveCriptografia));
 
-console.log("JSON criptografado:", jsonCriptografado);
-console.log("JSON descriptografado:", jsonDescriptografado);
+//console.log("JSON criptografado:", jsonCriptografado);
+//console.log("JSON descriptografado:", jsonDescriptografado);

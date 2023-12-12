@@ -9,7 +9,6 @@ import { apiQAS } from "../../lib/api";
 import { HeaderLesson } from "../HeaderLesson";
 import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
-
 import { Container } from "./styles";
 
 //Games

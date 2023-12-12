@@ -10,14 +10,16 @@ export function CyberProvider({children}) {
   });
   const [selectLanguage, setSelectLanguage] = useState(1);//0 portugues, 1 ingles, 2 espanhol
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
-  const [acessorios, setAcessorios] = useState("Headset_laranja");
-  const [cabeca, setCabeca] = useState("cabeca_3");
-  const [oculos, setOculos] = useState("Oculos_escuro");
+  const [acessorios, setAcessorios] = useState({
+    oculos: null,
+    chapeu: null
+  });
+  const [cabeca, setCabeca] = useState("Cabeca_1");
   const [face, setFace] = useState("Expressao_1");
-  const [bracos, setBracos] = useState("Bracos_4_com_Espada_Verde_Laranja");
-  const [tronco, setTronco] = useState("Tronco_Branco_modelo_1_Com_Mochila_Vermelho");
-  const [pernas, setPernas] = useState("Pernas_4_Azul");
-  const [pets, setPet] = useState("Robotdog");
+  const [bracos, setBracos] = useState("Bracos_1_Azul");
+  const [tronco, setTronco] = useState("Tronco_Cinza_modelo_2_Azul");
+  const [pernas, setPernas] = useState("Perna_Cinza_LIsa");
+  const [pets, setPet] = useState(null);
 
   const chooseLanguage = (item) => {
     const selectedOption = item
@@ -70,13 +72,45 @@ export function CyberProvider({children}) {
     setBook(data);
   }
 
+  const newCabeca = (item) => {
+    setCabeca(item);
+  }
+
+  const newAcessorio = (item) => {
+    const itemOculos = item.toLowerCase();
+    if (itemOculos.includes("oculos")) {
+      setAcessorios({...acessorios, oculos: item});
+    } else {
+      setAcessorios({...acessorios, chapeu: item});
+    }
+  }
+
+  const newFace = (item) => {
+    setFace(item);
+  }
+
+  const newBracos = (item) => {
+    setBracos(item);
+  }
+
+  const newTronco = (item) => {
+    setTronco(item);
+  }
+
+  const newPernas = (item) => {
+    setPernas(item);
+  }
+
+  const newPet = (item) => {
+    setPet(item);
+  }
+
   return(
     <CyberContext.Provider
       value={{
         book,
         acessorios,
         cabeca,
-        oculos,
         face,
         bracos,
         tronco,
@@ -88,6 +122,13 @@ export function CyberProvider({children}) {
         signIn,
         newBook,
         chooseLanguage,
+        newCabeca,
+        newAcessorio,
+        newFace,
+        newBracos,
+        newTronco,
+        newPernas,
+        newPet,
       }}
     >
       {children}

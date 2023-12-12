@@ -15,7 +15,7 @@ export const troncoItems = [
 ];
 
 export const bracosItems = [
-  "Bracos_1_Azul", "Bracos_1_Azul_com_espada_Verde", "Bracos_1_Azul_com_espada_Vermelho", "Bracos_1_Laranja", "Bracos_1_Laranja_com_espada_Verde", "Bracos_1_Laranja_com_espada_Vermelho", "Bracos_1_Roxo", "Bracos_1_Roxo_com_espada_Verde", "Bracos_1_Roxo_com_espada_Vermelho", "Bracos_1_tradicional", "Bracos_1_tradicional_com_espada_Verde", "Bracos_1_tradicional_com_espada_Vermelho", "Bracos_1_Verde", "Bracos_1_Verde_com_espada_Verde", "Bracos_1_Verde_com_espada_Vermelho", "Bracos_1_Vermelho", "Bracos_1_Vermelho_com_espada_Verde", "Bracos_1_Vermelho_com_espada_Vermelho", "Bracos_4_Azul", "Bracos_4_com_Espada_Verde_Azul", "Bracos_4_com_Espada_Verde_Laranja", "Bracos_4_com_Espada_Verde_Roxo", "Bracos_4_com_Espada_Verde_Tradicional", "Bracos_4_com_Espada_Verde_Verde", "Bracos_4_com_Espada_Verde_Vermelho", "Bracos_4_com_Espada_Vermelha_Azul", "Bracos_4_com_Espada_Vermelha_Laranja", "Bracos_4_com_Espada_Vermelha_Roxo", "Bracos_4_com_Espada_Vermelha_Tradicional", "Bracos_4_com_Espada_Vermelha_Verde", "Bracos_4_Laranja", "Bracos_4_Roxo", "Bracos_4_Tradicional", "Bracos_4_Verde", "Bracos_4_Vermelho", "Bracos_5_Azul", "Bracos_5_Com_espada_Verde_Azul", "Bracos_5_Com_espada_Verde_Laranja", "Bracos_5_Com_espada_Verde_Roxo", "Bracos_5_Com_espada_Verde_Verde", "Bracos_5_Com_espada_Verde_Vermelho", "Bracos_5_Com_espada_vermelha_Azul", "Bracos_5_Com_espada_vermelha_Laranja", "Bracos_5_Com_espada_vermelha_Verde", "Bracos_5_Com_espada_vermelha_Vermelho", "Bracos_5_Com_espadas_vermelha_Roxo", "Bracos_5_Laranja", "Bracos_5_Roxo", "Bracos_5_Tradicional", "Bracos_5_verde", "Bracos_5_Vermelho", "Bracos_modelo_1", "Bracos_modelo_1_1", "Bracos_modelo_1_Com_Sabre_Verde", "Bracos_modelo_1_Com_Sabre_Vermelha", "Bracos_modelo_2", "Bracos_modelo_2_com_espada_vermelha", "Bracos_modelo_2_com_espada_vermelha_2", "racos_4_com_Espada_Vermelha_Vermelho"
+  "Bracos_1_Azul", "Bracos_1_Azul_com_espada_Verde", "Bracos_1_Azul_com_espada_Vermelho", "Bracos_1_Laranja", "Bracos_1_Laranja_com_espada_Verde", "Bracos_1_Laranja_com_espada_Vermelho", "Bracos_1_Roxo", "Bracos_1_Roxo_com_espada_Verde", "Bracos_1_Roxo_com_espada_Vermelho", "Bracos_1_tradicional", "Bracos_1_tradicional_com_espada_Verde", "Bracos_1_tradicional_com_espada_Vermelho", "Bracos_1_Verde", "Bracos_1_Verde_com_espada_Verde", "Bracos_1_Verde_com_espada_Vermelho", "Bracos_1_Vermelho", "Bracos_1_Vermelho_com_espada_Verde", "Bracos_1_Vermelho_com_espada_Vermelho", "Bracos_4_Azul", "Bracos_4_com_Espada_Verde_Azul", "Bracos_4_com_Espada_Verde_Laranja", "Bracos_4_com_Espada_Verde_Roxo", "Bracos_4_com_Espada_Verde_Tradicional", "Bracos_4_com_Espada_Verde_Verde", "Bracos_4_com_Espada_Verde_Vermelho", "Bracos_4_com_Espada_Vermelha_Azul", "Bracos_4_com_Espada_Vermelha_Laranja", "Bracos_4_com_Espada_Vermelha_Roxo", "Bracos_4_com_Espada_Vermelha_Tradicional", "Bracos_4_com_Espada_Vermelha_Verde", "Bracos_4_Laranja", "Bracos_4_Roxo", "Bracos_4_Tradicional", "Bracos_4_Verde", "Bracos_4_Vermelho", "Bracos_5_Azul", "Bracos_5_Com_espada_Verde_Azul", "Bracos_5_Com_espada_Verde_Laranja", "Bracos_5_Com_espada_Verde_Roxo", "Bracos_5_Com_espada_Verde_Verde", "Bracos_5_Com_espada_Verde_Vermelho", "Bracos_5_Com_espada_vermelha_Azul", "Bracos_5_Com_espada_vermelha_Laranja", "Bracos_5_Com_espada_vermelha_Verde", "Bracos_5_Com_espada_vermelha_Vermelho", "Bracos_5_Com_espadas_vermelha_Roxo", "Bracos_5_Laranja", "Bracos_5_Roxo", "Bracos_5_Tradicional", "Bracos_5_verde", "Bracos_5_Vermelho", "Bracos_modelo_1", "Bracos_modelo_1_1", "Bracos_modelo_1_Com_Sabre_Verde", "Bracos_modelo_1_Com_Sabre_Vermelha", "Bracos_modelo_2", "Bracos_modelo_2_com_espada_vermelha", "Bracos_modelo_2_com_espada_vermelha_2", "Bracos_4_com_Espada_Vermelha_Vermelho"
 ];
 
 export const pernasItems = [
@@ -26,23 +26,12 @@ export const petItems = [
   "Robotcat", "Robotdog"
 ];
 
-export const cabecaItems2 = [
-  {
-    id: 1,
-    nome: "Cabeca_1",
-    preço: 600,
-    block: true,
-  },
-  {
-    id: 2,
-    nome: "Cabeca_2",
-    preço: 600,
-    block: true,
-  },
-  {
-    id: 3,
-    nome: "Cabeca_3",
-    preço: 600,
-    block: true,
-  }
-];
+export const itemsDoAvatar = {
+  cabeca: ["Cabeca_1", "Cabeca_2", "Cabeca_3"],
+  face: ["Expressao_1", "Expressao_2", "Expressao_3", "Expressao_4"],
+  acessorios: ["Antena_Lacinho_roxo", "Antena_Lacinho_Verde", "Antena_Lacinho_vermelho", "Antena_Laranja", "Antena_Rosa", "Antena_Roxo", "Headset_azul", "Headset_laranja", "Headset_roxo", "Headset_Verde", "Oculos_Azul", "Oculos_colorido", "Oculos_escuro", "Oculos_laranja"],
+  tronco: ["Tronco_Branco_modelo_1_Com_Mochila_Verde", "Tronco_Branco_modelo_1_Com_Mochila_Vermelho", "Tronco_Branco_Modelo_1_Laranja", "Tronco_Branco_Modelo_1_Roxo", "Tronco_Branco_Modelo_1_Tradicional"],
+  braco: ["Bracos_5_verde", "Bracos_5_Vermelho", "Bracos_modelo_1", "Bracos_modelo_1_1", "Bracos_modelo_1_Com_Sabre_Verde", "Bracos_modelo_1_Com_Sabre_Vermelha", "Bracos_modelo_2", "Bracos_modelo_2_com_espada_vermelha", "Bracos_modelo_2_com_espada_vermelha_2"],
+  pernas: ["Pernas_4_Azul", "Pernas_Branco_1_Tradicional", "Pernas_Branco_1_Verde", "Pernas_Branco_Lisa", "Pernas_Cinza_1_Azul", "Pernas_Cinza_1_Laranja", "Pernas_Cinza_1_Roxo", "Pernas_Cinza_1_Tradicional", "Pernas_Cinza_1_Verde", "Pernas_Cinza_1_Vermelho", "Roda_5_Azul", "Roda_5_Laranja", "Roda_5_Roxo", "Roda_5_Tradicional", "Roda_5_Verde", "Roda_5_Vermelho"],
+  pet: ["Robotcat"]
+}

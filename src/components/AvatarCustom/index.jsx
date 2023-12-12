@@ -7,9 +7,8 @@ import { CyberContext } from "../../context/cyber";
 import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name, Pet } from "./styles";
 
 export const AvatarCustom = ({ hasName, avatar }) => {
-  const { acessorios, cabeca, oculos, face, bracos, tronco, pernas, pets } = useContext(CyberContext);
+  const { acessorios, cabeca, face, bracos, tronco, pernas, pets } = useContext(CyberContext);
   const [name, setName] = useState("");
-  const [hasPet, setHasPet] = useState(true);
 
   useEffect(()=>{
     const cookies = new Cookies();
@@ -24,9 +23,11 @@ export const AvatarCustom = ({ hasName, avatar }) => {
       marginTop: avatar && "0px",
       position: "absolute"
     }}>
-      <Antena>
-        <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios}.png`} alt="Acessórios" />
-      </Antena>
+      {acessorios.chapeu !== null &&
+        <Antena>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.chapeu}.png`} alt="Acessórios" />
+        </Antena>
+      }
 
       <Cabeca>
         <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="Cabeça" />
@@ -36,9 +37,11 @@ export const AvatarCustom = ({ hasName, avatar }) => {
         <img src={`${URL_FISKPRO}/images/avatar/Expressao_Robot/${face}.png`} alt="Expressão facial" />
       </Face>
 
-      <Oculos>
-        <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${oculos}.png`} alt="Oculos" />
-      </Oculos>
+      {acessorios.oculos !== null &&
+        <Oculos>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.oculos}.png`} alt="Oculos" />
+        </Oculos>
+      }
 
       <Bracos>
         <img src={`${URL_FISKPRO}/images/avatar/Bracos/${bracos}.png`} alt="Braços" />
@@ -52,7 +55,7 @@ export const AvatarCustom = ({ hasName, avatar }) => {
         <img src={`${URL_FISKPRO}/images/avatar/Pernas/${pernas}.png`} alt="Pernas" />
       </Pernas>
 
-      {hasPet &&
+      {pets !== null &&
         <Pet>
           <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="Pernas" />
         </Pet>

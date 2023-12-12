@@ -10,7 +10,7 @@ export const Container = styled.div`
   text-align: center;
 
   span {
-    font-size: 1rem;
+    font-size: 1.125rem;
     font-weight: 500;
   }
 

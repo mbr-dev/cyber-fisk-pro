@@ -42,7 +42,7 @@ export const Antena = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 15;
+  z-index: 12;
 
   img {
     width: 100%;
@@ -54,7 +54,7 @@ export const Cabeca = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 13;
+  z-index: 11;
 
   img {
     width: 100%;
@@ -66,7 +66,7 @@ export const Face = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 14;
+  z-index: 12;
 
   img {
     width: 100%;
@@ -90,7 +90,7 @@ export const Tronco = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 11;
+  z-index: 10;
 
   img {
     width: 100%;
@@ -102,7 +102,7 @@ export const Bracos = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 13;
+  z-index: 10;
 
   img {
     width: 100%;

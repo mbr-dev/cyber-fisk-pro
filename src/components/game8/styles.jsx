@@ -14,7 +14,7 @@ export const Main = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: center;
+  justify-content: space-between;
   gap: 1rem;
   margin-top: 1rem;
   padding-inline: 2rem;
@@ -24,8 +24,8 @@ export const Main = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 20rem;
     margin-top: 2rem;
+    padding-inline: 5rem;
     gap: 2rem;
   }
 
@@ -40,6 +40,7 @@ export const Main = styled.div`
 
   @media(min-width: 1280px) {
     margin-top: 2rem;
+    justify-content: center;
     gap: 2rem;
   }
 `;
@@ -54,7 +55,7 @@ export const Title = styled.div`
   padding-block: 0.5rem;
   
   p {
-    font-size: 1.125rem;
+    font-size: 1rem;
     font-weight: 500;
   }
   
@@ -97,7 +98,9 @@ export const Title = styled.div`
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  padding: 0.325rem 0.75rem;
+  width: 7.5rem;
+  height: 3rem;
+  /* padding: 0.5rem 0.75rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -111,7 +114,7 @@ export const ButtonAnswer = styled.button`
 
   p {
     color: ${props => props.theme["gray-700"]};
-    font-size: 1rem;
+    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -120,16 +123,14 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2.5rem;
-
     p {
       font-size: 0.875rem;
     }
   }
 
   @media (min-width: 768px) {
-    padding: 0.5rem 1rem;
+    width: 15rem;
+    height: 4.5rem;
 
     p {
       font-size: 1.5rem;
@@ -138,7 +139,8 @@ export const ButtonAnswer = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      padding: 0.325rem 0.75rem;
+      width: 7.5rem;
+      height: 3rem;
 
       p {
         font-size: 0.875rem;
@@ -147,7 +149,8 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (min-width: 1280px) {
-    padding: 0.5rem 1rem;
+    width: 15rem;
+    height: 4.5rem;
 
     p {
       font-size: 1.5rem;

@@ -84,7 +84,7 @@ export const Bracos = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 15;
 
   img {
     width: 100%;

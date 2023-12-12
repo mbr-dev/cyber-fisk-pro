@@ -5,7 +5,7 @@ import { useNavigate } from "react-router-dom";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { HeaderText } from "../../components/HeaderText";
-import { cabecaItems, faceItems, petItems, acessorioItems, bracosItems, pernasItems, troncoItems } from "../../utils/avatarItems";
+import { itemsDoAvatar } from "../../utils/avatarItems";
 
 import cabecaImg from "../../assets/cabeca.png";
 import bracosImg from "../../assets/bracos.png";
@@ -23,14 +23,14 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Rewards = () => {
   const navigate = useNavigate();
 
-  const [selecionado, setSelecionado] = useState("");
+  const [selecionado, setSelecionado] = useState("Cabecas");
   const [itemSelecionado, setItemSeleciona] = useState([]);
-  const [temItem, setTemItem] = useState(false);
+  const [titulo, setTitulo] = useState("");
 
   const [sliderRef] = useKeenSlider({
-    loop: true,
+    initial: 0,
     slides: {
-      perView: 2,
+      perView: 2.5,
       spacing: 16,
     },
   });
@@ -44,66 +44,82 @@ export const Rewards = () => {
   }
 
   const handleSelecionarItem = (item) => {
-    setTemItem(true);
-
     if (item === "Cabecas") {
-      const cabecaL = cabecaItems.length;
+      const cabecaL = itemsDoAvatar.cabeca.length;
       let tempCabeca = [];
       for (let a = 0; a < cabecaL; a++) {
-        tempCabeca.push(cabecaItems[a])
+        tempCabeca.push(itemsDoAvatar.cabeca[a]);
       }
       setSelecionado(item);
       setItemSeleciona(tempCabeca);
+      setTitulo("Cabeça");
     } else if (item === "Acessorios") {
-      const acessoriosL = acessorioItems.length;
+      const acessoriosL = itemsDoAvatar.acessorios.length;
       let tempAcessorios = [];
       for (let a = 0; a < acessoriosL; a++) {
-        tempAcessorios.push(acessorioItems[a])
+        tempAcessorios.push(itemsDoAvatar.acessorios[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempAcessorios);
+      setTitulo("Acessórios");
     } else if (item === "Expressao_Robot") {
-      const faceL = faceItems.length;
+      const faceL = itemsDoAvatar.face.length;
       let tempFace = [];
       for (let a = 0; a < faceL; a++) {
-        tempFace.push(faceItems[a])
+        tempFace.push(itemsDoAvatar.face[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempFace);
+      setTitulo("Expressão Facil");
     } else if (item === "Bracos") {
-      const bracoL = bracosItems.length;
+      const bracoL = itemsDoAvatar.braco.length;
       let tempBracos = [];
       for (let a = 0; a < bracoL; a++) {
-        tempBracos.push(bracosItems[a])
+        tempBracos.push(itemsDoAvatar.braco[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempBracos);
+      setTitulo("Braço");
     } else if (item === "Tronco") {
-      const troncoL = troncoItems.length;
+      const troncoL = itemsDoAvatar.tronco.length;
       let tempTronco = [];
       for (let a = 0; a < troncoL; a++) {
-        tempTronco.push(troncoItems[a])
+        tempTronco.push(itemsDoAvatar.tronco[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempTronco);
+      setTitulo("Corpo");
     } else if (item === "Pernas") {
-      const pernasL = pernasItems.length;
+      const pernasL = itemsDoAvatar.pernas.length;
       let tempPernas = [];
       for (let a = 0; a < pernasL; a++) {
-        tempPernas.push(pernasItems[a])
+        tempPernas.push(itemsDoAvatar.pernas[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempPernas);
+      setTitulo("Perna");
     } else if (item === "Pets") {
-      const petL = petItems.length;
+      const petL = itemsDoAvatar.pet.length;
       let tempPet = [];
       for (let a = 0; a < petL; a++) {
-        tempPet.push(petItems[a])
+        tempPet.push(itemsDoAvatar.pet[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempPet);
+      setTitulo("Pet");
     }
   }
+
+  useEffect(() => {
+    const cabecaL = itemsDoAvatar.cabeca.length;
+    let tempCabeca = [];
+    for (let a = 0; a < cabecaL; a++) {
+      tempCabeca.push(itemsDoAvatar.cabeca[a])
+    }
+    setSelecionado("Cabecas");
+    setItemSeleciona(tempCabeca);
+    setTitulo("Cabeça");
+  }, []);
   
   return (
     <Container>
@@ -174,13 +190,106 @@ export const Rewards = () => {
             </Card>
           </Separator>
 
-          <Title><p>Head</p></Title>
-          
-          {temItem &&
+          <Title><p>{titulo}</p></Title>
+          {/* o carrousel ñ fica dinamico por isso cada parte tem que ter seu carrousel */}
+          {titulo === "Cabeça" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
-                  <CardReward key={index} className="keen-slider__slide">
+                  <CardReward 
+                    key={index} 
+                    className="keen-slider__slide" 
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Acessórios" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index} 
+                    className="keen-slider__slide" 
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Expressão Facil" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index} 
+                    className="keen-slider__slide" 
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Braço" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index}
+                    className="keen-slider__slide"
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Corpo" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index}
+                    className="keen-slider__slide"
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Perna" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index}
+                    className="keen-slider__slide"
+                  >
+                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                  </CardReward>
+                )
+              })}
+            </Bottom>
+          }
+
+          {titulo === "Pet" &&
+            <Bottom ref={sliderRef} className="keen-slider">
+              {itemSelecionado.map((item, index) => {
+                return (
+                  <CardReward 
+                    key={index}
+                    className="keen-slider__slide"
+                  >
                     <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )

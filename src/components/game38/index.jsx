@@ -27,6 +27,7 @@ export const Game38 = () => {
   const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [blockButton, setBlockButton] = useState(true);
+  const [blockButtonClean, setBlockButtonClean] = useState(false);
   const [wordsDropped, setWordsDropped] = useState([]);
   const [wordsIndex, setWordsIndex] = useState([]);
 
@@ -76,6 +77,7 @@ export const Game38 = () => {
   const newRound = (number) => {
     setWordsIndex([]);
     setWordsDropped([]);
+    setBlockButtonClean(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -90,6 +92,7 @@ export const Game38 = () => {
     if (blockButton) return;
 
     setBlockButton(true);
+    setBlockButtonClean(true);
 
     const word = wordsDropped.join("").toLowerCase();
 
@@ -260,7 +263,7 @@ export const Game38 = () => {
         </Main>
 
         <AreaButton>
-          <Button onClick={handleClear} $variant="red">Clear</Button>
+          <Button onClick={handleClear} $variant="red" disabled={blockButtonClean}>Clear</Button>
           <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
       </AreaButton>
     </Container>

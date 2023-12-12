@@ -3,7 +3,7 @@ import { useCallback, useContext, useState, useEffect } from "react";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -13,7 +13,7 @@ import { Container, Form, Main, Select, ButtonCheck } from "./styles";
 
 export const Game21 = () => {
   const {
-    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
@@ -136,7 +136,7 @@ export const Game21 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
-    if (blockButton) return;
+    if (blockButton || playAudio) return;
 
     setBlockButton(true);
 

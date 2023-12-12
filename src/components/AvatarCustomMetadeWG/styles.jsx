@@ -32,6 +32,7 @@ export const Container = styled.div`
 
   @media (min-width: 1440px) {
     height: 50rem;
+    margin-top: -5rem;
   }
 `;
 
@@ -99,7 +100,7 @@ export const Bracos = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 15;
 
   img {
     width: 100%;
@@ -172,6 +173,7 @@ export const Name = styled.div`
   }
 
   @media (min-width: 1440px) {
-    bottom: 17.625rem;
+    height: 4rem;
+    bottom: 17rem;
   }
 `;

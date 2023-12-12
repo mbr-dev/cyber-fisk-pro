@@ -181,7 +181,7 @@ export const GameWordle = () => {
                   <Dialog.Trigger asChild>
                     <Button $variant="green" disabled={gameEnd}>
                       <img src={DollarFiskImg} alt="coin" />
-                      Revelar Letra
+                      Reveal letter
                     </Button>
                   </Dialog.Trigger>
                   <ModalReveal onPress={handleShowLetter} />
@@ -190,7 +190,7 @@ export const GameWordle = () => {
                 {gameEnd ?
                   <Button $variant="red" onClick={handleHome}>Home</Button>
                   :
-                  <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
+                  <Button onClick={() => handleSelectLetter("ENTER")}>Send</Button>
                 }
               </ButtonArea>
             </DivMobile>
@@ -288,7 +288,7 @@ export const GameWordle = () => {
                 <Dialog.Root>
                   <Dialog.Trigger asChild>
                     <Button $variant="green" disabled={gameEnd}>
-                      <img src={DollarFiskImg} alt="coin" />Revelar Letra
+                      <img src={DollarFiskImg} alt="coin" />Reveal letter
                     </Button>
                   </Dialog.Trigger>
 
@@ -298,7 +298,7 @@ export const GameWordle = () => {
                 {gameEnd ?
                   <Button $variant="red" onClick={handleHome}>Home</Button>
                   :
-                  <Button onClick={() => handleSelectLetter("ENTER")}>Enviar</Button>
+                  <Button onClick={() => handleSelectLetter("ENTER")}>Send</Button>
                 }
               </ButtonArea>
             </DivDesk>
