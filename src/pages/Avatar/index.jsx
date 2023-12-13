@@ -10,7 +10,7 @@ import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { CyberContext } from "../../context/cyber";
-import { itemsDoAvatar } from "../../utils/avatarItems";
+import { cabecaItems, petItems, faceItems, acessorioItems, bracosItems, pernasItems, troncoItems } from "../../utils/avatarItems";
 
 import bgImg from "./images/bgNatal.png";
 import cabecaImg from "../../assets/cabeca.png";
@@ -33,77 +33,78 @@ export const Avatar = () => {
 
   const [selecionado, setSelecionado] = useState("Cabecas");
   const [itemSelecionado, setItemSeleciona] = useState([]);
-  const [itemLiberado, setItemLiberado] = useState(false);
   const [titulo, setTitulo] = useState("");
+  const [itemComprado, setItemComprado] = useState("");
 
   const [sliderRef] = useKeenSlider({
     initial: 0,
+    mode: "free",
     slides: {
-      perView: 3,
+      perView: 2.5,
       spacing: 16,
     },
   });
 
   const handleSelecionarItem = (item) => {
-    if (item === "Cabecas") {
-      const cabecaL = itemsDoAvatar.cabeca.length;
+    if (item === "cabecas") {
+      const cabecaL = cabecaItems.length;
       let tempCabeca = [];
       for (let a = 0; a < cabecaL; a++) {
-        tempCabeca.push(itemsDoAvatar.cabeca[a]);
+        tempCabeca.push(cabecaItems[a]);
       }
       setSelecionado(item);
       setItemSeleciona(tempCabeca);
       setTitulo("Cabeça");
-    } else if (item === "Acessorios") {
-      const acessoriosL = itemsDoAvatar.acessorios.length;
+    } else if (item === "acessorios") {
+      const acessoriosL = acessorioItems.length;
       let tempAcessorios = [];
       for (let a = 0; a < acessoriosL; a++) {
-        tempAcessorios.push(itemsDoAvatar.acessorios[a])
+        tempAcessorios.push(acessorioItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempAcessorios);
       setTitulo("Acessórios");
-    } else if (item === "Expressao_Robot") {
-      const faceL = itemsDoAvatar.face.length;
+    } else if (item === "face") {
+      const faceL = faceItems.length;
       let tempFace = [];
       for (let a = 0; a < faceL; a++) {
-        tempFace.push(itemsDoAvatar.face[a])
+        tempFace.push(faceItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempFace);
       setTitulo("Expressão Facil");
-    } else if (item === "Bracos") {
-      const bracoL = itemsDoAvatar.braco.length;
+    } else if (item === "bracos") {
+      const bracoL = bracosItems.length;
       let tempBracos = [];
       for (let a = 0; a < bracoL; a++) {
-        tempBracos.push(itemsDoAvatar.braco[a])
+        tempBracos.push(bracosItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempBracos);
       setTitulo("Braço");
-    } else if (item === "Tronco") {
-      const troncoL = itemsDoAvatar.tronco.length;
+    } else if (item === "tronco") {
+      const troncoL = troncoItems.length;
       let tempTronco = [];
       for (let a = 0; a < troncoL; a++) {
-        tempTronco.push(itemsDoAvatar.tronco[a])
+        tempTronco.push(troncoItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempTronco);
       setTitulo("Corpo");
-    } else if (item === "Pernas") {
-      const pernasL = itemsDoAvatar.pernas.length;
+    } else if (item === "pernas") {
+      const pernasL = pernasItems.length;
       let tempPernas = [];
       for (let a = 0; a < pernasL; a++) {
-        tempPernas.push(itemsDoAvatar.pernas[a])
+        tempPernas.push(pernasItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempPernas);
       setTitulo("Perna");
-    } else if (item === "Pets") {
-      const petL = itemsDoAvatar.pet.length;
+    } else if (item === "pets") {
+      const petL = petItems.length;
       let tempPet = [];
       for (let a = 0; a < petL; a++) {
-        tempPet.push(itemsDoAvatar.pet[a])
+        tempPet.push(petItems[a])
       }
       setSelecionado(item);
       setItemSeleciona(tempPet);
@@ -112,43 +113,114 @@ export const Avatar = () => {
   }
 
   const handleSelecionaCabeca = (item) => {
-    newCabeca(item);
+    newCabeca(item.name);
   }
 
   const handleSelecionaAcessorio = (item) => {
-    newAcessorio(item);
+    newAcessorio(item.name);
   }
 
   const handleSelecionaFace = (item) => {
-    newFace(item);
+    newFace(item.name);
   }
 
   const handleSelecionaBraco = (item) => {
-    newBracos(item);
+    newBracos(item.name);
   }
 
   const handleSelecionaCorpo = (item) => {
-    newTronco(item);
+    newTronco(item.name);
   }
 
   const handleSelecionaPerna = (item) => {
-    newPernas(item);
+    newPernas(item.name);
   }
 
   const handleSelecionaPet = (item) => {
-    newPet(item);
+    newPet(item.name);
+  }
+
+  const handleItemComprado = (item) => {
+    setItemComprado(item);
   }
 
   useEffect(() => {
-    const cabecaL = itemsDoAvatar.cabeca.length;
+    const cabecaL = cabecaItems.length;
     let tempCabeca = [];
     for (let a = 0; a < cabecaL; a++) {
-      tempCabeca.push(itemsDoAvatar.cabeca[a])
+      tempCabeca.push(cabecaItems[a])
     }
     setSelecionado("Cabecas");
     setItemSeleciona(tempCabeca);
     setTitulo("Cabeça");
   }, []);
+
+  useEffect(() => {
+    if (itemComprado === "cabecas") {
+      const cabecaL = cabecaItems.length;
+      let tempCabeca = [];
+      for (let a = 0; a < cabecaL; a++) {
+        tempCabeca.push(cabecaItems[a]);
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempCabeca);
+      setTitulo("Cabeça");
+    } else if (itemComprado === "acessorios") {
+      const acessoriosL = acessorioItems.length;
+      let tempAcessorios = [];
+      for (let a = 0; a < acessoriosL; a++) {
+        tempAcessorios.push(acessorioItems[a])
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempAcessorios);
+      setTitulo("Acessórios");
+    } else if (itemComprado === "face") {
+      const faceL = faceItems.length;
+      let tempFace = [];
+      for (let a = 0; a < faceL; a++) {
+        tempFace.push(faceItems[a])
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempFace);
+      setTitulo("Expressão Facil");
+    } else if (itemComprado === "bracos") {
+      const bracoL = bracosItems.length;
+      let tempBracos = [];
+      for (let a = 0; a < bracoL; a++) {
+        tempBracos.push(bracosItems[a])
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempBracos);
+      setTitulo("Braço");
+    } else if (itemComprado === "tronco") {
+      const troncoL = troncoItems.length;
+      let tempTronco = [];
+      for (let a = 0; a < troncoL; a++) {
+        tempTronco.push(troncoItems[a])
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempTronco);
+      setTitulo("Corpo");
+    } else if (itemComprado === "pernas") {
+      const pernasL = pernasItems.length;
+      let tempPernas = [];
+      for (let a = 0; a < pernasL; a++) {
+        tempPernas.push(pernasItems[a])
+      }
+      setSelecionado(itemComprado);
+      setItemSeleciona(tempPernas);
+      setTitulo("Perna");
+    } else if (itemComprado === "pets") {
+      const petL = petItems.length;
+      let tempPet = [];
+      for (let a = 0; a < petL; a++) {
+        tempPet.push(petItems[a])
+      }
+      setSelecionado(item);
+      setItemSeleciona(tempPet);
+      setTitulo("Pet");
+    }
+  }, [itemComprado]);
 
   return (
     <Container>
@@ -164,43 +236,43 @@ export const Avatar = () => {
           <Bottom>
             <DivMobile>
               <Separator>
-                <Card onClick={() => handleSelecionarItem("Cabecas")} style={{
-                  backgroundColor: selecionado === "Cabecas" && defaultTheme["red-200"],
-                  borderColor: selecionado === "Cabecas" && defaultTheme["gray-700"]
+                <Card onClick={() => handleSelecionarItem("cabecas")} style={{
+                  backgroundColor: selecionado === "cabecas" && defaultTheme["red-200"],
+                  borderColor: selecionado === "cabecas" && defaultTheme["gray-700"]
                 }} >
                   <img src={cabecaImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Tronco")} style={{
-                  backgroundColor: selecionado === "Tronco" && defaultTheme["red-200"],
-                  borderColor: selecionado === "Tronco" && defaultTheme["gray-700"]
+                <Card onClick={() => handleSelecionarItem("tronco")} style={{
+                  backgroundColor: selecionado === "tronco" && defaultTheme["red-200"],
+                  borderColor: selecionado === "tronco" && defaultTheme["gray-700"]
                 }} >
                   <img src={corpoImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Bracos")} style={{
-                  backgroundColor: selecionado === "Bracos" && defaultTheme["red-200"],
-                  borderColor: selecionado === "Bracos" && defaultTheme["gray-700"]
+                <Card onClick={() => handleSelecionarItem("bracos")} style={{
+                  backgroundColor: selecionado === "bracos" && defaultTheme["red-200"],
+                  borderColor: selecionado === "bracos" && defaultTheme["gray-700"]
                 }} >
                   <img src={bracosImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Pernas")} style={{
+                <Card onClick={() => handleSelecionarItem("pernas")} style={{
                   backgroundColor: selecionado === "Pernas" && defaultTheme["red-200"],
                   borderColor: selecionado === "Pernas" && defaultTheme["gray-700"]
                 }} >
                   <img src={pernasImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Expressao_Robot")} style={{
-                  backgroundColor: selecionado === "Expressao_Robot" && defaultTheme["red-200"],
-                  borderColor: selecionado === "Expressao_Robot" && defaultTheme["gray-700"]
+                <Card onClick={() => handleSelecionarItem("face")} style={{
+                  backgroundColor: selecionado === "face" && defaultTheme["red-200"],
+                  borderColor: selecionado === "face" && defaultTheme["gray-700"]
                 }} >
                   <img src={faceImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Acessorios")} style={{
+                <Card onClick={() => handleSelecionarItem("acessorios")} style={{
                   backgroundColor: selecionado === "Acessorios" && defaultTheme["red-200"],
                   borderColor: selecionado === "Acessorios" && defaultTheme["gray-700"]
                 }} >
                   <img src={oculosImg} alt="" />
                 </Card>
-                <Card onClick={() => handleSelecionarItem("Pets")} style={{
+                <Card onClick={() => handleSelecionarItem("pets")} style={{
                   backgroundColor: selecionado === "Pets" && defaultTheme["red-200"],
                   borderColor: selecionado === "Pets" && defaultTheme["gray-700"]
                 }} >
@@ -214,35 +286,36 @@ export const Avatar = () => {
             {/* o carrousel ñ fica dinamico por isso cada parte tem que ter seu carrousel */}
             {titulo === "Cabeça" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward 
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaCabeca(item)}
                       style={{
-                        borderColor: item === cabeca && defaultTheme["red-200"]
+                        borderColor: item.name === cabeca && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
-                    /* :
-                    <Dialog.Root key={index}>
+                    :
+                    <Dialog.Root key={item.id}>
                       <Dialog.Trigger asChild>
                         <CardReward className="keen-slider__slide">
                           <DivBlock>
                             <DivMoney>
                               <img src={dollar} alt="" />
-                              <p>$ 200</p>
+                              <p>$ {item.preco}</p>
                             </DivMoney>
           
                             <img src={cadeado} alt="" className="cadeadoImg" />
                           </DivBlock>
-                          <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                         </CardReward>
                       </Dialog.Trigger>
-                      <Modal />
-                    </Dialog.Root> */
+                      <Modal item={item} tipo={"cabecas"} onItemComprado={handleItemComprado} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -250,18 +323,36 @@ export const Avatar = () => {
 
             {titulo === "Acessórios" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaAcessorio(item)}
                       style={{
                         borderColor: (item === acessorios.oculos || item === acessorios.chapeu) && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"cabecas"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -269,18 +360,36 @@ export const Avatar = () => {
 
             {titulo === "Expressão Facil" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward 
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaFace(item)}
                       style={{
                         borderColor: item === face && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"acessorios"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -288,18 +397,36 @@ export const Avatar = () => {
 
             {titulo === "Braço" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward 
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaBraco(item)}
                       style={{
                         borderColor: item === bracos && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"bracos"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -307,18 +434,36 @@ export const Avatar = () => {
 
             {titulo === "Corpo" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaCorpo(item)}
                       style={{
                         borderColor: item === tronco && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"tronco"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -326,18 +471,36 @@ export const Avatar = () => {
 
             {titulo === "Perna" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaPerna(item)}
                       style={{
                         borderColor: item === pernas && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/store/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"pernas"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
@@ -345,66 +508,84 @@ export const Avatar = () => {
 
             {titulo === "Pet" &&
               <ItemsCard ref={sliderRef} className="keen-slider">
-                {itemSelecionado.map((item, index) => {
+                {itemSelecionado.map((item) => {
                   return (
+                    item.liberado ?
                     <CardReward
-                      key={index}
+                      key={item.id}
                       className="keen-slider__slide"
                       onClick={() => handleSelecionaPet(item)}
                       style={{
                         borderColor: item === pets && defaultTheme["red-200"]
                       }}
                     >
-                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                      <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
                     </CardReward>
+                    :
+                    <Dialog.Root key={item.id}>
+                      <Dialog.Trigger asChild>
+                        <CardReward className="keen-slider__slide">
+                          <DivBlock>
+                            <DivMoney>
+                              <img src={dollar} alt="" />
+                              <p>$ {item.preco}</p>
+                            </DivMoney>
+          
+                            <img src={cadeado} alt="" className="cadeadoImg" />
+                          </DivBlock>
+                          <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item.name}.png`} alt="" className="RoboCard" />
+                        </CardReward>
+                      </Dialog.Trigger>
+                      <Modal item={item} tipo={"pets"} />
+                    </Dialog.Root>
                   )
                 })}
               </ItemsCard>
             }     
 
             <Separator className="spDesk">
-              <Card onClick={() => handleSelecionarItem("Cabecas")} style={{
-                backgroundColor: selecionado === "Cabecas" && defaultTheme["red-200"],
-                borderColor: selecionado === "Cabecas" && defaultTheme["gray-700"]
-              }} >
-                <img src={cabecaImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Tronco")} style={{
-                backgroundColor: selecionado === "Tronco" && defaultTheme["red-200"],
-                borderColor: selecionado === "Tronco" && defaultTheme["gray-700"]
-              }} >
-                <img src={corpoImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Bracos")} style={{
-                backgroundColor: selecionado === "Bracos" && defaultTheme["red-200"],
-                borderColor: selecionado === "Bracos" && defaultTheme["gray-700"]
-              }} >
-                <img src={bracosImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Pernas")} style={{
-                backgroundColor: selecionado === "Pernas" && defaultTheme["red-200"],
-                borderColor: selecionado === "Pernas" && defaultTheme["gray-700"]
-              }} >
-                <img src={pernasImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Expressao_Robot")} style={{
-                backgroundColor: selecionado === "Expressao_Robot" && defaultTheme["red-200"],
-                borderColor: selecionado === "Expressao_Robot" && defaultTheme["gray-700"]
-              }} >
-                <img src={faceImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Acessorios")} style={{
-                backgroundColor: selecionado === "Acessorios" && defaultTheme["red-200"],
-                borderColor: selecionado === "Acessorios" && defaultTheme["gray-700"]
-              }} >
-                <img src={oculosImg} alt="" />
-              </Card>
-              <Card onClick={() => handleSelecionarItem("Pets")} style={{
-                backgroundColor: selecionado === "Pets" && defaultTheme["red-200"],
-                borderColor: selecionado === "Pets" && defaultTheme["gray-700"]
-              }} >
-                <img src={petsImg} alt="" />
-              </Card>
+                <Card onClick={() => handleSelecionarItem("cabecas")} style={{
+                  backgroundColor: selecionado === "cabecas" && defaultTheme["red-200"],
+                  borderColor: selecionado === "cabecas" && defaultTheme["gray-700"]
+                }} >
+                  <img src={cabecaImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("tronco")} style={{
+                  backgroundColor: selecionado === "tronco" && defaultTheme["red-200"],
+                  borderColor: selecionado === "tronco" && defaultTheme["gray-700"]
+                }} >
+                  <img src={corpoImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("bracos")} style={{
+                  backgroundColor: selecionado === "bracos" && defaultTheme["red-200"],
+                  borderColor: selecionado === "bracos" && defaultTheme["gray-700"]
+                }} >
+                  <img src={bracosImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("pernas")} style={{
+                  backgroundColor: selecionado === "Pernas" && defaultTheme["red-200"],
+                  borderColor: selecionado === "Pernas" && defaultTheme["gray-700"]
+                }} >
+                  <img src={pernasImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("face")} style={{
+                  backgroundColor: selecionado === "face" && defaultTheme["red-200"],
+                  borderColor: selecionado === "face" && defaultTheme["gray-700"]
+                }} >
+                  <img src={faceImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("acessorios")} style={{
+                  backgroundColor: selecionado === "Acessorios" && defaultTheme["red-200"],
+                  borderColor: selecionado === "Acessorios" && defaultTheme["gray-700"]
+                }} >
+                  <img src={oculosImg} alt="" />
+                </Card>
+                <Card onClick={() => handleSelecionarItem("pets")} style={{
+                  backgroundColor: selecionado === "Pets" && defaultTheme["red-200"],
+                  borderColor: selecionado === "Pets" && defaultTheme["gray-700"]
+                }} >
+                  <img src={petsImg} alt="" />
+                </Card>
             </Separator>
           </Bottom>
 

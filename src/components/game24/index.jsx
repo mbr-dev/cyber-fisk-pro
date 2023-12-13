@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -104,10 +104,11 @@ export const Game24 = () => {
   }
 
   const handleVerify = (event) => {
-    if (blockButton || playAudio) return;
-    setBlockButton(true);
-
     event.preventDefault();
+
+    if (blockButton || playAudio) return;
+
+    setBlockButton(true);
 
     let tempRightPoints;
 

@@ -183,7 +183,7 @@ export const Div = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled(Dialog.Close)`
   all: unset;
   width: 120px;
   height: 2rem;

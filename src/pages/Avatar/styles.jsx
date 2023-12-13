@@ -109,7 +109,7 @@ export const Bottom = styled.div`
       padding-top: 0.625rem;
       padding-bottom: 0.625rem;
       gap: 0.5rem;
-      justify-content: flex-end;
+      justify-content: flex-start;
 
       .spDesk {
         display: flex;
@@ -272,22 +272,17 @@ export const Title = styled.div`
 `;
 
 export const ItemsCard = styled.div`
-  flex: 1;
-  width: 21.875rem;
+  height: 11.25rem;
   display: flex;
   padding-inline: 1rem;
   justify-content: space-between;
 
-  @media (max-width: 360px) {
-    width: 320px;
-  }
-
   @media (max-width: 320px) {
-    width: 20rem;
+    height: 6.25rem;
   }
 
   @media(min-width: 768px) {
-    width: 40rem;
+    height: 15rem;
   }
 
   @media(orientation: landscape) {
@@ -297,31 +292,33 @@ export const ItemsCard = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 43.75rem;
+    height: 23.75rem;
   }
+  
+  @media (min-width: 1440px) {
+    height: 25rem;
 
-  @media (min-width: 1920px) {
-    width: 56.25rem;
   }
 `;
 
 export const CardReward = styled.div`
-  width: 6.875rem;
   height: 100%;
   display: flex;
-  align-items: flex-end;
+  align-items: center;
   justify-content: center;
+  padding:  1rem;
   border-radius: 8px;
   background-color: ${props => props.theme.white};
   border: 2px solid ${props => props.theme["gray-200"]};
   position: relative;
 
   .RoboCard {
-    width: 64px;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
   }
 
   @media (max-width: 320px) {
-    width: 5.375rem;
 
     .RoboCard {
       width: 40px;
@@ -329,16 +326,14 @@ export const CardReward = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 10rem;
-
     .RoboCard {
-      width: 84px;
+      width: 150px;
+      height: 150px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 6.875rem;
       border-radius: 12px;
 
       .RoboCard {
@@ -348,15 +343,14 @@ export const CardReward = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 12.5rem;
 
     .RoboCard {
-      width: 150px;
+      width: 250px;
+      height: 250px;
     }
   }
 
   @media(min-width: 1920px) {
-    width: 15.625rem;
 
     .RoboCard {
       width: 180px;
@@ -371,8 +365,8 @@ export const DivBlock = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
-  background-color: #ffffffc1;
+  gap: 3rem;
+  background-color: #ffffff82;
   position: absolute;
   border-radius: 8px;
 
@@ -393,7 +387,7 @@ export const DivBlock = styled.div`
     gap: 4rem;
 
     .cadeadoImg {
-      width: 32px;
+      width: 44px;
     }
   }
   
@@ -409,10 +403,10 @@ export const DivBlock = styled.div`
   }
 
   @media(min-width: 1280px) {
-    gap: 5.75rem;
+    gap: 8rem;
 
     .cadeadoImg {
-      width: 54px;
+      width: 44px;
     }
   }
 `;
@@ -423,7 +417,7 @@ export const DivMoney = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -3.125rem;
+  margin-top: -2rem;
   border-radius: 6px;
   gap: 0.375rem;
   border: 2px solid ${props => props.theme["red-300"]};
@@ -454,15 +448,16 @@ export const DivMoney = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 7.5rem;
-    height: 2rem;
+    width: 8rem;
+    height: 3rem;
+    margin-top: -2.5rem;
 
     p {
-      font-size: 1.125rem;
+      font-size: 1.5rem;
     }
 
     img {
-      width: 24px;
+      width: 28px;
     }
   }
 
@@ -483,16 +478,16 @@ export const DivMoney = styled.div`
   }
 
   @media(min-width: 1280px) {
-    width: 7.5rem;
-    height: 2rem;
-    margin-top: -6.25rem;
+    width: 8rem;
+    height: 3rem;
+    margin-top: -5rem;
 
     p {
-      font-size: 1.125rem;
+      font-size: 1.5rem;
     }
 
     img {
-      width: 24px;
+      width: 28px;
     }
   }
 `;

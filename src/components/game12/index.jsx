@@ -91,11 +91,9 @@ export const Game12 = () => {
   }
 
   const handleVerify = (event) => {
-    if (event.key === "Enter") {
-      return
-    }
-
     event.preventDefault();
+  
+    if (event.key === "Enter") return;
 
     setBlockButton(true);
     

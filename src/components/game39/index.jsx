@@ -80,12 +80,10 @@ export const Game39 = () => {
   }
 
   const handleVerify = (event) => {
-    if (event.key === "Enter") {
-      return
-    }
-
     event.preventDefault();
 
+    if (event.key === "Enter") return;
+  
     let tempWord = text;
     let tempRightPoints;
 

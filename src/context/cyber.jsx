@@ -15,10 +15,10 @@ export function CyberProvider({children}) {
     chapeu: null
   });
   const [cabeca, setCabeca] = useState("Cabeca_1");
-  const [face, setFace] = useState("Expressao_1");
-  const [bracos, setBracos] = useState("Bracos_1_Azul");
-  const [tronco, setTronco] = useState("Tronco_Cinza_modelo_2_Azul");
-  const [pernas, setPernas] = useState("Perna_Cinza_LIsa");
+  const [face, setFace] = useState("face_1");
+  const [bracos, setBracos] = useState("braco_1");
+  const [tronco, setTronco] = useState("tronco_3_tradicional");
+  const [pernas, setPernas] = useState("perna_1_liso");
   const [pets, setPet] = useState(null);
 
   const chooseLanguage = (item) => {

@@ -25,39 +25,39 @@ export const AvatarCustom = ({ hasName, avatar }) => {
     }}>
       {acessorios.chapeu !== null &&
         <Antena>
-          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.chapeu}.png`} alt="Acessórios" />
+          <img src={`${URL_FISKPRO}/images/avatar/acessorios/${acessorios.chapeu}.png`} alt="" />
         </Antena>
       }
 
       <Cabeca>
-        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="Cabeça" />
+        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="" />
       </Cabeca>
 
       <Face>
-        <img src={`${URL_FISKPRO}/images/avatar/Expressao_Robot/${face}.png`} alt="Expressão facial" />
+        <img src={`${URL_FISKPRO}/images/avatar/face/${face}.png`} alt="Expressão facial" />
       </Face>
 
       {acessorios.oculos !== null &&
         <Oculos>
-          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.oculos}.png`} alt="Oculos" />
+          <img src={`${URL_FISKPRO}/images/avatar/acessorios/${acessorios.oculos}.png`} alt="" />
         </Oculos>
       }
 
       <Bracos>
-        <img src={`${URL_FISKPRO}/images/avatar/Bracos/${bracos}.png`} alt="Braços" />
+        <img src={`${URL_FISKPRO}/images/avatar/bracos/${bracos}.png`} alt="" />
       </Bracos>
 
       <Tronco>
-        <img src={`${URL_FISKPRO}/images/avatar/Tronco/${tronco}.png`} alt="Tronco" />
+        <img src={`${URL_FISKPRO}/images/avatar/tronco/${tronco}.png`} alt="" />
       </Tronco>
 
       <Pernas>
-        <img src={`${URL_FISKPRO}/images/avatar/Pernas/${pernas}.png`} alt="Pernas" />
+        <img src={`${URL_FISKPRO}/images/avatar/pernas/${pernas}.png`} alt="" />
       </Pernas>
 
       {pets !== null &&
         <Pet>
-          <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="Pernas" />
+          <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="" />
         </Pet>
       }
 

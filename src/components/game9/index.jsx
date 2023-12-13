@@ -77,7 +77,9 @@ export const Game9 = () => {
     tempRandom = tempRandom.sort(() => Math.random() - 0.5);
     setRandomNumber(tempRandom);
 
+    console.log("tempData: ", tempData);
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
+    console.log("items: ", items);
 
     setSound(items.audio);
     setQuestion(items.pergunta);

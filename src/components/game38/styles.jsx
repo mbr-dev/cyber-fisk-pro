@@ -81,9 +81,9 @@ export const AreaWord = styled.div`
 `;
 
 export const Words = styled.span`
+  padding: 0.25rem 0.75rem;
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
   justify-content: center;
   border-radius: 6px;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -121,7 +121,7 @@ export const AreaAnswers = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 0.5rem;
   padding: 0.5rem;
   border: 2px solid ${props => props.theme["gray-700"]};
