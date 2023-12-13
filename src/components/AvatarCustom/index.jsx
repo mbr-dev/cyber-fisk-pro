@@ -1,17 +1,13 @@
 import Cookies from "universal-cookie";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
-import antenaImg from "./images/Antena/Antena_2.png";
-import cabecaImg from "./images/Cabeca/Cabeca_1.png";
-import faceImg from "./images/Face/Expressao_2.png";
-import oculosImg from "./images/Oculos/Oculos_Azul.png";
-import bracosImg from "./images/Bracos/Bracos_4.png";
-import troncoImg from "./images/Tronco/Tronco_Branco_modelo_2_Laranja.png";
-import pernasImg from "./images/Pernas/Pernas_Branco_1_Azul.png";
+import { URL_FISKPRO } from "../../config/infos";
+import { CyberContext } from "../../context/cyber";
 
-import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name } from "./styles";
+import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name, Pet } from "./styles";
 
 export const AvatarCustom = ({ hasName, avatar }) => {
+  const { acessorios, cabeca, face, bracos, tronco, pernas, pets } = useContext(CyberContext);
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -27,33 +23,43 @@ export const AvatarCustom = ({ hasName, avatar }) => {
       marginTop: avatar && "0px",
       position: "absolute"
     }}>
-      <Antena>
-        <img src={antenaImg} alt="" />
-      </Antena>
+      {acessorios.chapeu !== null &&
+        <Antena>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.chapeu}.png`} alt="Acessórios" />
+        </Antena>
+      }
 
       <Cabeca>
-        <img src={cabecaImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="Cabeça" />
       </Cabeca>
 
       <Face>
-        <img src={faceImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Expressao_Robot/${face}.png`} alt="Expressão facial" />
       </Face>
 
-      <Oculos>
-        <img src={oculosImg} alt="" />
-      </Oculos>
+      {acessorios.oculos !== null &&
+        <Oculos>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.oculos}.png`} alt="Oculos" />
+        </Oculos>
+      }
 
       <Bracos>
-        <img src={bracosImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Bracos/${bracos}.png`} alt="Braços" />
       </Bracos>
 
       <Tronco>
-        <img src={troncoImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Tronco/${tronco}.png`} alt="Tronco" />
       </Tronco>
 
       <Pernas>
-        <img src={pernasImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Pernas/${pernas}.png`} alt="Pernas" />
       </Pernas>
+
+      {pets !== null &&
+        <Pet>
+          <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="Pernas" />
+        </Pet>
+      }
 
       {hasName &&
         <Name>

@@ -33,14 +33,17 @@ export const Game40 = () => {
   const [isLoading, setIsLoading] = useState(false);
   const [cancelAudio, setCancelAudio] = useState(false);
 
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  const isTablet = window.matchMedia("(min-width: 600px)").matches;
-
   const loadLesson = useCallback(() => {
     setIsLoading(true);
 
     let dataLength = 0;
     let tempData;
+    
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
     if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;        

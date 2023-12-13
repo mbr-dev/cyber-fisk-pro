@@ -38,6 +38,12 @@ export const Game34 = () => {
 
     let dataLength = 0;
     let tempData;
+    
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
     if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;        

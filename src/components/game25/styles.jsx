@@ -13,15 +13,17 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 3rem;
+  margin-top: 3rem;
 
   p {
     font-size: 1rem;
     padding-inline: 1rem;
     text-align: center;
   }
-
-  @media(min-width: 320px) {
+  
+  @media(max-width: 320px) {
+    margin-top: 2rem;
     gap: 0.5rem;
 
     p {
@@ -39,7 +41,8 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 1rem;
+      margin-top: 1rem;
 
       p {
         font-size: 0.875rem;
@@ -48,7 +51,8 @@ export const Main = styled.main`
   }
 
   @media(min-width: 1280px) {
-    gap: 2rem;
+    gap: 3rem;
+    margin-top: 3rem;
 
     p {
       font-size: 1.5rem;

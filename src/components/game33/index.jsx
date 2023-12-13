@@ -43,6 +43,12 @@ export const Game33 = () => {
 
     let dataLength = 0;
     let tempData;
+    
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
     if(nivel === 0){
       setData(conteudoFacil);
       tempData = conteudoFacil;
@@ -186,6 +192,7 @@ export const Game33 = () => {
       backgroundColor: isDragging && defaultTheme["gray-300"],
       border: isDragging && `2px solid ${defaultTheme["red-200"]}`,
       borderRadius: isDragging && "8px",
+      touchAction: "none",
     };
 
     return (

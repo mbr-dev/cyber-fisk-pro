@@ -128,8 +128,10 @@ export const GameOver = () => {
   return (
     <Container>
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
-      <Header>
-        <img src={FundoGoImg} alt="" className="fundoBg" />
+      <Header style={{
+        backgroundImage: `url("${FundoGoImg}")`
+      }}>
+       {/*  <img src={FundoGoImg} alt="" className="fundoBg" /> */}
         <Top>
           <ButtonMenuHeader />
           <DivMobile>

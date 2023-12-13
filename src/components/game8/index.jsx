@@ -36,6 +36,12 @@ export const Game8 = () => {
 
     let dataLength = 0;
     let tempData;
+
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
     if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
@@ -168,6 +174,7 @@ export const Game8 = () => {
     const {attributes, listeners, setNodeRef, transform, isDragging} = useDraggable({
       id: `draggable-${index}`,
       touchAction: "none",
+      disabled: blockButton,
     });
 
     const style = transform ? {
@@ -210,7 +217,7 @@ export const Game8 = () => {
       const changeTxt = over ? answers[droppedIndex].label : "______";
       setChangeText(changeTxt);
       verifyAnswer(droppedIndex);
-      setButtonVisibility(state => state.map((_, index) => index === droppedIndex ? 1 : 0))
+      setButtonVisibility(state => state.map((_, index) => index === droppedIndex ? 1 : 0));
     }
   }
 
@@ -235,11 +242,15 @@ export const Game8 = () => {
           </Title>
         </Droppable>
 
-        <Main>
+        <Main style={{
+            flexDirection: answers.length === 3 && "column",
+            alignItems: answers.length === 3 && "center",
+          }}
+        >
           {answers.map((answer, index) => {
             return (
               <Draggable index={index} key={index}>
-                <ButtonAnswer style={{
+                <ButtonAnswer disabled={blockButton} style={{
                     display: buttonVisibility[index] === 1 ? "none" : ""
                 }}>
                   <p>{answer.label}</p>

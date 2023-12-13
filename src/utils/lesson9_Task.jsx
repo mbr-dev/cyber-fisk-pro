@@ -367,6 +367,7 @@ export const L9_T2_Medio = [
 
 export const L9_T2_Dificil = [
   {
+    audio: "L9_Modulo1_D_0",
     pergunta: [
       "Last Monday, Annie",
       "a lot till 12:30 and then she stopped for lunch. In the afternoon she",
@@ -397,6 +398,7 @@ export const L9_T2_Dificil = [
     }
   },
   {
+    audio: "L9_T2_D_1",
     pergunta: [
       "Timothy Collins",
       "the hotel to make a reservation for two nights. When he",
@@ -427,6 +429,7 @@ export const L9_T2_Dificil = [
     }
   },
   {
+    audio: "L9_T2_D_2",
     pergunta: [
       "Last",
       ", Ashley",

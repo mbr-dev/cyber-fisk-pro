@@ -107,3 +107,40 @@ export const PointRule = (nivel, points) => {
 
   return tempPoints;
 }
+
+const jsonToCript = {
+  raf: "ABC123",
+  quantidade: 2,
+  idioma: 1
+};
+
+const chaveCriptografia = "chaveSecreta";
+
+export const criptografarJSON = (texto, chave) => {
+  let resultado = "";
+
+  for (let i = 0; i < texto.length; i++) {
+    const charCode = texto.charCodeAt(i) ^ chave.charCodeAt(i % chave.length);
+    resultado += String.fromCharCode(charCode);
+  }
+
+  return btoa(resultado);
+};
+
+export const DescriptografarJSON = (texto, chave) => {
+  const textoDecodificado = atob(texto);
+  let resultado = "";
+
+  for (let i = 0; i < textoDecodificado.length; i++) {
+    const charCode = textoDecodificado.charCodeAt(i) ^ chave.charCodeAt(i % chave.length);
+    resultado += String.fromCharCode(charCode);
+  }
+
+  return resultado;
+}
+
+const jsonCriptografado = criptografarJSON(JSON.stringify(jsonToCript), chaveCriptografia);
+const jsonDescriptografado = JSON.parse(DescriptografarJSON(jsonCriptografado, chaveCriptografia));
+
+//console.log("JSON criptografado:", jsonCriptografado);
+//console.log("JSON descriptografado:", jsonDescriptografado);

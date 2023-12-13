@@ -4,7 +4,6 @@ import * as Dialog from "@radix-ui/react-dialog";
 
 import { Modal } from "./components/Modal";
 import { HeaderText } from "../../components/HeaderText";
-import { LineSeparator } from "../../components/LineSeparator";
 
 import newImg from "./images/image.png";
 import clipImg from "./images/clip.png";
@@ -14,7 +13,7 @@ import plusWImg from "./images/plusW.png";
 import plusRImg from "./images/plusR.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, Div, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, CreateFile, Image } from "./styles";
+import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, CreateFile, Image } from "./styles";
 
 export const News = () => {
   const [create, setCreate] = useState(false);
@@ -111,10 +110,7 @@ export const News = () => {
                     <span>06/06/2023 - 10:00</span>
                   </TitleItems>
                   <InfoItems>
-                    <LineSeparator wl="90%" bg={defaultTheme["gray-600"]} />
-                    <Div>
                       <img src={newImg} alt="" />
-                    </Div>
                   </InfoItems>
                 </Items>
 
@@ -124,11 +120,8 @@ export const News = () => {
                     <span>06/06/2023 - 10:00</span>
                   </TitleItems>
                   <InfoItems>
-                    <LineSeparator wl="90%" bg={defaultTheme["gray-600"]} />
-                    <Div>
                       <p>You are going to take your exam on:</p>
                       <p>October 31th</p>
-                    </Div>
                   </InfoItems>
                 </Items>
               </>

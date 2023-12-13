@@ -28,20 +28,32 @@ export const Content = styled(Dialog.Content)`
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
+    width: 28rem;
+    height: 25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 20rem;
+      height: 17.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 28rem;
     height: 25rem;
   }
 `;
 
 export const Close = styled(Dialog.Close)`
-   all: unset;
+  all: unset;
   position: absolute;
   width: 1.75rem;
   height: 1.75rem;
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.9375;
+  top: -0.9375rem;
   right: -0.625rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
@@ -71,7 +83,7 @@ export const Close = styled(Dialog.Close)`
       width: 2rem;
       height: 2rem;
       top: -1.125rem;
-      right: -0.625rem;
+      right: -1rem;
 
       img {
         width: 16px;
@@ -80,13 +92,13 @@ export const Close = styled(Dialog.Close)`
   }
 
   @media (min-width: 1280px) {
-    width: 4rem;
-    height: 4rem;
-    top: -1.875rem;
-    right: -1.875rem;
+    width: 3rem;
+    height: 3rem;
+    top: -1.5rem;
+    right: -1.5rem;
     
     img {
-      width: 32px;
+      width: 28px;
     }
   }
 `;
@@ -109,6 +121,20 @@ export const Enter = styled.button`
   }
 
   @media(min-width: 768px) {
+    height: 3rem;
+    width: 18.75rem;
+    font-size: 2rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 12.5rem;
+      height: 2rem;
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
     height: 3rem;
     width: 18.75rem;
     font-size: 2rem;
@@ -144,6 +170,24 @@ export const Header = styled.header`
       font-size: 2rem;
     }
   }
+  
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 3rem;
+
+      p {
+        font-size: 1.5rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    height: 4.5rem;
+
+    p {
+      font-size: 2rem;
+    }
+  }
 `;
 
 export const Main = styled.main`
@@ -160,6 +204,16 @@ export const Main = styled.main`
   }
 
   @media(min-width: 768px) {
+    width: 22.5rem;
+  }
+
+  @media (orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 17.5rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
     width: 22.5rem;
   }
 `;
@@ -185,6 +239,12 @@ export const DivInside = styled.div`
 
   @media(max-width: 320px) {
     gap: 1.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 1rem;
+    }
   }
 `;
 
@@ -212,6 +272,22 @@ export const Div = styled.div`
       padding-left: 1rem;
     }
   }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      p {
+        font-size: 1rem;
+        padding-left: 0.5rem;
+      }
+    }
+  }
+
+  @media(min-width: 1280px) {
+    p {
+      font-size: 1.5rem;
+      padding-left: 1rem;
+    }
+  }
 `;
 
 export const Input = styled.input`
@@ -219,7 +295,11 @@ export const Input = styled.input`
   width: 100%;
   height: 2.25rem;
   border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   border: 2px solid ${props => props.theme["gray-200"]};
+  color: ${props => props.theme["gray-400"]};
 
   &::placeholder {
     color: ${props => props.theme["gray-400"]};
@@ -233,6 +313,20 @@ export const Input = styled.input`
   @media(min-width: 768px) {
     height: 3rem;
     font-size: 1.25rem;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 7.75rem;
+      height: 2.25rem;
+      font-size: 0.875rem;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 10.5rem;
+    height: 3rem;
+    font-size: 1.125rem;
   }
 `;
 
@@ -253,6 +347,32 @@ export const DivCheck = styled.div`
   }
 
   @media (min-width: 768px) {
+    p {
+      font-size: 1.5rem;
+    }
+
+    input[type="checkbox"] {
+      width: 1.75rem;
+      height: 1.75rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 0.5rem;
+
+      p {
+        font-size: 1rem;
+      }
+
+      input[type="checkbox"] {
+        width: 1rem;
+        height: 1rem;
+      }
+    }
+  }
+
+  @media (min-width: 1280px) {
     p {
       font-size: 1.5rem;
     }

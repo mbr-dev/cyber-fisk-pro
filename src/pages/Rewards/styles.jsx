@@ -14,7 +14,7 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   padding-top: 1rem;
-  gap: 0.75rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
     padding-top: 10px;
@@ -236,7 +236,7 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 1rem;
 
   @media(min-width: 768px) {
     gap: 1rem;
@@ -417,66 +417,26 @@ export const Title = styled.div`
 
 export const Bottom = styled.div`
   width: 100%;
-  height: 11.375rem;
-  padding: 0.75rem 0.625rem;
-
-  div {
-    width: 100%;
-    height: 100%;
-    padding-block: 0.75rem;
-    padding-left: 0.75rem;
-  }
-
-  @media(max-width: 360px) {
-    height: 10rem;
-
-    div {
-      width: 100%;
-      height: 100%;
-      padding-block: 0.625rem;
-      padding-left: 0.625rem;
-    }
-  }
+  height: 10rem;
+  padding: 0.5rem 0.325rem;
 
   @media(max-width: 320px) {
     height: 7.5rem;
-
-    div {
-      padding-block: 6px;
-      padding-left: 8px;
-    }
   }
 
   @media(min-width: 768px) {
     height: 15.625rem;
-    padding: 0.875rem;
-
-    div {
-      padding-block: 0.75rem;
-      padding-left: 0.5rem;
-    }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       height: 6.25rem;
-      padding: 0.5rem 0.375rem;
-
-      div {
-        padding-block: 0.375rem;
-        padding-left: 0.25rem;
-      }
     }
 }
 
   @media(min-width: 1280px) {
     height: 13.75rem;
     padding: 0.875rem;
-
-    div {
-      padding-block: 0.75rem;
-      padding-left: 0.5rem;
-    }
   }
 `;
 
@@ -485,48 +445,15 @@ export const CardReward = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  box-shadow: 0px 4px 10px 0px #00000033;
+  border: 2px solid ${props => props.theme["gray-200"]};
 
   .RoboCard {
-    width: 90px;
-    height: 90px;
-    margin-right: 0.625rem,;
+    width: 100%;
+    height: 100%;
   }
 
   @media(max-width: 320px) {
     border-radius: 6px;
-
-    .RoboCard {
-      width: 4rem;
-      height: 4rem;
-      margin-right: 0.625rem,;
-    }
-  }
-
-  @media(min-width: 768px) {
-    .RoboCard {
-      width: 9.375rem;
-      height: 9.375rem;
-      margin-right: 0px;
-    }
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      .RoboCard {
-        width: 4rem;
-        height: 4rem;
-        margin-right: 0.25rem;
-      }
-    }
-  }
-
-  @media(min-width: 1280px) {
-    .RoboCard {
-      width: 9.375rem;
-      height: 9.375rem;
-      margin-right: 0px;
-    }
   }
 `;
 

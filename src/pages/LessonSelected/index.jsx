@@ -25,7 +25,7 @@ import LogoFiskImg from "../../assets/logoFisk2.png";
 import { Container, Header, HeaderBottom, HeaderTop, Main, ButtonAreaBottom, ButtonAreaTop, ButtonTask, ButtonSuperTask, DivRight, ButtonBottom, BottomRight, BottomLeft } from "./styles"
 
 export const LessonSelected = () => {
-  const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade } = useContext(LessonContext);
+  const { setNewTask, setNewSuperTask, numSelLesson, setNewAtividade, setNewSelLesson } = useContext(LessonContext);
   const { book, chooseNotification } = useContext(CyberContext);
 
   const [task1, setTask1] = useState(false);
@@ -57,10 +57,6 @@ export const LessonSelected = () => {
     
   }
 
-  const handleGoHome = () => {
-    navigate("/Home");
-  }
-
   const handleGoAudio = () => {
     navigate("/Audio");
   }
@@ -71,6 +67,13 @@ export const LessonSelected = () => {
   
   const verificaTask = async () => {
     setIsLoading(true);
+
+    const ifResetLesson = localStorage.getItem("Atividade_Selecionada");
+
+    if (ifResetLesson) {
+      setNewSelLesson(ifResetLesson)
+    }
+
     try {
       const cookies = new Cookies();
       const raf = cookies.get("raf");
@@ -99,7 +102,7 @@ export const LessonSelected = () => {
 
   useEffect(() => {
     verificaTask();
-  },[]);
+  }, []);
 
   if (isLoading) {
     return <Loading />
@@ -174,7 +177,7 @@ export const LessonSelected = () => {
         </ButtonAreaBottom>
       </Main>
 
-      <AreaFooterFullBtn />
+      <AreaFooterFullBtn title="Lessons" rota="/SelectLesson" />
     </Container>
   )
 }

@@ -1,35 +1,48 @@
-import { useState, useEffect, useContext, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
+import { useCallback, useContext, useState, useEffect } from "react";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
-
 import { URL_FISKPRO } from "../../config/infos";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
 
-import { Container, Main } from "./styles";
-import { defaultTheme } from "../../themes/defaultTheme";
+import { Container, Form, Main, Select, ButtonCheck } from "./styles";
 
 export const Game9 = () => {
   const {
-    setNewContainer, setNewPontos, rodadaGeral, setNewRodada, playAudio, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
+    rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor, playAudio
   } = useContext(LessonContext);
 
   const navigate = useNavigate();
 
-  const [selectedColor, setSelectedColor] = useState([]);
-  const [idClick, setIdClick] = useState([]);
+  const [data, setData] = useState([]);
+  const [question, setQuestion] = useState([]);
   const [sound, setSound] = useState(null);
-  const [answers, setAnswers] = useState([]);
+  const [answer0, setAnswer0] = useState("");
+  const [answer1, setAnswer1] = useState("");
+  const [answer2, setAnswer2] = useState("");
+  const [answer3, setAnswer3] = useState("");
+  const [answer4, setAnswer4] = useState("");
+  const [option0, setOption0] = useState([]);
+  const [option1, setOption1] = useState([]);
+  const [option2, setOption2] = useState([]);
+  const [option3, setOption3] = useState([]);
+  const [option4, setOption4] = useState([]);
   const [randomNumber, setRandomNumber] = useState([]);
-  const [round, setRound] = useState(7);
-  const [correctPoints, setCorrectPoints] = useState(0);
+  const [round, setRound] = useState(0);
+  const [rightPoints, setRightPoints] = useState(0);
   const [wrongPoints, setWrongPoints] = useState(0);
+  const [selected0, setSelected0] = useState("");
+  const [selected1, setSelected1] = useState("");
+  const [selected2, setSelected2] = useState("");
+  const [selected3, setSelected3] = useState("");
+  const [selected4, setSelected4] = useState("");
+  const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
-  const [data, setData] = useState([]);
   const [cancelAudio, setCancelAudio] = useState(false);
 
   const loadLesson = useCallback(() => {
@@ -37,15 +50,21 @@ export const Game9 = () => {
 
     let dataLength = 0;
     let tempData;
-    if(nivel === 0){
+    
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
+    if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;
       dataLength = conteudoFacil.length;
-    }else if(nivel === 1){
+    } else if (nivel === 1) {
       setData(conteudoMedio);
       tempData = conteudoMedio;
       dataLength = conteudoMedio.length;
-    }else{
+    } else {
       setData(conteudoDificil);
       tempData = conteudoDificil;
       dataLength = conteudoDificil.length;
@@ -60,78 +79,127 @@ export const Game9 = () => {
 
     const items = JSON.parse(tempData[tempRandom[round]].conteudo);
 
-    setSound(items.pergunta);
-    setSelectedColor(Array(items.resposta.length).fill(0));
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setOption0(items.option0.label);
+    setOption1(items.option1.label);
+    setOption2(items.option2.label);
+    setOption3(items.option3.label);
+    setOption4(items.option4.label);
 
-    let tempRandomNumber = [...Array(items.resposta.length).keys()];
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClick(tempRandomNumber);
+    setAnswer0(items.option0.status);
+    setAnswer1(items.option1.status);
+    setAnswer2(items.option2.status);
+    setAnswer3(items.option3.status);
+    setAnswer4(items.option4.status);
 
-    let tempAnswers = [];
-    for (let a = 0; a < items.resposta.length; a++) {
-      tempAnswers.push(items.resposta[a]);
-    }
-    tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
-    setAnswers(tempAnswers);
-
-    setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setSelectedColor, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, setQuestion, setOption0, setOption1, setOption2, setOption3, setOption4, setSound, setAnswer0, setAnswer1, setAnswer2, setAnswer3, setAnswer4]);
 
   const newRound = (number) => {
     setCancelAudio(false);
+    setCountClick(0);
+    setOption0("");
+    setOption1("");
+    setOption2("");
+    setOption3("");
+    setOption4("");
+    setSelected0("");
+    setSelected1("");
+    setSelected2("");
+    setSelected3("");
+    setSelected4("");
+
     const items = JSON.parse(data[randomNumber[number]].conteudo);
+    
+    setSound(items.audio);
+    setQuestion(items.pergunta);
+    setOption0(items.option0.label);
+    setOption1(items.option1.label);
+    setOption2(items.option2.label);
+    setOption3(items.option3.label);
+    setOption4(items.option4.label);
 
-    setSound(items.pergunta);
-    setSelectedColor(Array(items.resposta.length).fill(0));
-
-    let tempRandomNumber = [...Array(items.resposta.length).keys()];
-    tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
-    setIdClick(tempRandomNumber);
-
-    let tempAnswers = [];
-    for (let a = 0; a < items.resposta.length; a++) {
-      tempAnswers.push(items.resposta[a]);
-    }
-    setAnswers(tempAnswers);
-
-    setBlockButton(false);
+    setAnswer0(items.option0.status);
+    setAnswer1(items.option1.status);
+    setAnswer2(items.option2.status);
+    setAnswer3(items.option3.status);
+    setAnswer4(items.option4.status);
   }
 
-  const handleClick = (index) => {
-    if (blockButton || playAudio) return;
+  const handleSelect0 = (event) => {
+    const value = event.target.value;
+    setSelected0(value);
+
+    let click = countClick;
+    click++;
+    setCountClick(click);
+  }
+  const handleSelect1 = (event) => {
+    const value = event.target.value;
+    setSelected1(value);
+
+    let click = countClick;
+    click++;
+    setCountClick(click);
+  }
+  const handleSelect2 = (event) => {
+    const value = event.target.value;
+    setSelected2(value);
+
+    let click = countClick;
+    click++;
+    setCountClick(click);
+  }
+  const handleSelect3 = (event) => {
+    const value = event.target.value;
+    setSelected3(value);
+
+    let click = countClick;
+    click++;
+    setCountClick(click);
+  }
+  const handleSelect4 = (event) => {
+    const value = event.target.value;
+    setSelected4(value);
+
+    let click = countClick;
+    click++;
+    setCountClick(click);
+  }
+
+  const handleVerify = (event) => {
+    event.preventDefault();
+    if (blockButton ) return;
 
     setBlockButton(true);
+    setCancelAudio(true);
 
-    let tempPoint;
-    let tempSelectedColor = selectedColor;
-    let answerSelected = answers[index].status;
+    let tempRightPoints;
 
-    if (answerSelected === 1) {
+    if (
+      selected0 === answer0 && 
+      selected1 === answer1 && 
+      selected2 === answer2 && 
+      selected3 === answer3 && 
+      selected4 === answer4
+      ) {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 1;
       setStatusColor(newStatus);
 
-      tempSelectedColor[index] = 1;
-      setSelectedColor(tempSelectedColor);
-
-      tempPoint = PointRule(nivel, correctPoints);
-      setCorrectPoints(tempPoint);
-      setNewPontos(nivel, tempPoint);
+      tempRightPoints = PointRule(nivel, rightPoints);
+      setRightPoints(tempRightPoints);
+      setNewPontos(nivel, tempRightPoints);
     } else {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
 
-      tempSelectedColor[index] = 1;
-      setSelectedColor(tempSelectedColor);
-
       let tempE = wrongPoints;
       tempE++;
       setWrongPoints(tempE);
     }
-
-    setCancelAudio(true);
 
     let tempRound = round;
     tempRound++;
@@ -141,76 +209,107 @@ export const Game9 = () => {
     tempGeneralRound++;
     setNewRodada(tempGeneralRound);
 
-    const rule = TrocaAtividade(nivel, tempGeneralRound, tempPoint, tempRound);
+    const rule = TrocaAtividade(nivel, tempGeneralRound, tempRightPoints, tempRound);
 
     if (rule === "Continua") {
-      setTimeout(() => {
+      setTimeout(() =>{
         newRound(tempRound);
       }, 1500);
-    } else if (rule === "Game over") {
+    } else if (rule === "Game over"){
       setNewPontos(nivel, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
         setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       }, 2000);
-    } else if (rule === "Score"){
+    } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
         setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       }, 2000);
-    }else {
-      setTimeout(() => {
-        if(nivel === 0){
+    } else {
+      setTimeout(() =>{
+        if (nivel === 0) {
           setNewNivel(1);
           const atividade = conteudoMedio[0].id_tipo;
           setNewAtividade(atividade);
-        }else{
+        } else {
           setNewNivel(2);
           const atividade = conteudoDificil[0].id_tipo;
           setNewAtividade(atividade);
         }
-      }, 1500);
+      },1500);
     }
   }
 
   useEffect(() => {
     loadLesson();
-  } , []);
+  }, []);
 
   useEffect(() => {
-    playAudio ? setBlockButton(true) : setBlockButton(false);
-  }, [playAudio, setBlockButton]);
+    countClick >= 5 ? setBlockButton(false) : setBlockButton(true)
+  }, [countClick, setBlockButton]);
 
   if (isLoading) {
     return (
       <Loading />
     )
   }
-  /* game não utiliza caso sair game novo implementar aqui */
 
   return (
     <Container>
-      <TitleLesson title="Mark all the correct answer for each question you hear." />
-      <SubTitleLessonAudio stopAudio={cancelAudio} size={40} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
+      <TitleLesson title="Complete" />
+      <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
-        {answers.map((answer, index) => {
-          return (
-            <ButtonAnswer 
-              key={index}
-              onClick={() => {handleClick(index)}}
-              disabled={blockButton}
-              style={{
-                borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
-              }}
-            >
-              <p>{answer.label}</p>GAME09
-            </ButtonAnswer>
-          )
-        })}
+        <Form id="myForm" onSubmit={handleVerify}>
+          <label>{question[0]}</label>
+          <Select value={selected0} onChange={handleSelect0}>
+            {option0.map((option, index) => {
+              return (
+                <option key={index} value={option}>{option}</option>
+              )
+            })}
+          </Select>
+          <label>{question[1]}</label>
+          <Select value={selected1} onChange={handleSelect1}>
+            {option1.map((option, index) => {
+              return (
+                <option key={index} value={option}>{option}</option>
+              )
+            })}
+          </Select>
+          <label>{question[2]}</label>
+          <Select value={selected2} onChange={handleSelect2}>
+            {option2.map((option, index) => {
+              return (
+                <option key={index} value={option}>{option}</option>
+              )
+            })}
+          </Select>
+          <label>{question[3]}</label>
+          <Select value={selected3} onChange={handleSelect3}>
+            {option3.map((option, index) => {
+              return (
+                <option key={index} value={option}>{option}</option>
+              )
+            })}
+          </Select> 
+          <label>{question[4]}</label>
+          <Select value={selected4} onChange={handleSelect4}>
+            {option4.map((option, index) => {
+              return (
+                <option key={index} value={option}>{option}</option>
+              )
+            })}
+          </Select>
+          <label>{question[5]}</label>
+        </Form>
+        <ButtonCheck form="myForm" type="submit" disabled={blockButton}>
+          <p>Check</p>
+        </ButtonCheck>
       </Main>
     </Container>
   )

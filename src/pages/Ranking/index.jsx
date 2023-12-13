@@ -11,13 +11,11 @@ import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon";
 
 import p1 from "./images/p1.png";
-import p2 from "./images/p2.png";
-import p3 from "./images/p3.png";
-import p4 from "./images/p4.png";
+import positionImg from "./images/positionImg.png";
 import GoldImg from "./images/Gold.svg";
 import SilverImg from "./images/Silver.svg";
 
-import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, DivMobile, DivDesk } from "./styles";
+import { Container, Main, MainBottom, MainTop, ButtonRakingArea, ButtonNational, ButtonUnit, TextArea, CoinArea, LevelPosition, AvatarArea, Carrousel, CarrouselInside, Position, DivName, PositionInside, DivMobile, DivDesk, PositionCard } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Ranking = () => {
@@ -33,9 +31,16 @@ export const Ranking = () => {
 
   const [sliderRef] = useKeenSlider({
     slides: {
-      perView: 4,
+      perView: 3.5,
       spacing: 16,
-    }
+    },
+    breakpoints: {
+      "(min-width: 1440px)": {
+        slides: {
+          perView: 4,
+        }
+      },
+    },
   });
 
   const loadRank = async () =>{
@@ -95,67 +100,41 @@ export const Ranking = () => {
         <DivDesk>
           <Carrousel>
             <CarrouselInside ref={sliderRef} className="keen-slider">
-              <Position className="keen-slider__slide">
-                <img src={p1} alt="" className="pNumber" />
-                <PositionInside>
-                  <AvatarArea>
-                    <AvatarCustomMetadeIcon />
-                  </AvatarArea>
-                  <DivName>
-                    <p>Camila Eduarda</p>
-                    <span>500 xp</span>
-                  </DivName>
-                </PositionInside>
-              </Position>
-
-              <Position className="keen-slider__slide">
-                <img src={p2} alt="" className="pNumber" />
-                <PositionInside>
-                  <AvatarArea>
-                    <AvatarCustomMetadeIcon />
-                  </AvatarArea>
-                  <DivName>
-                    <p>Camila Eduarda</p>
-                    <span>400 xp</span>
-                  </DivName>
-                </PositionInside>
-              </Position>
-              <Position className="keen-slider__slide">
-                <img src={p3} alt="" className="pNumber" />
-                <PositionInside>
-                  <AvatarArea>
-                    <AvatarCustomMetadeIcon />
-                  </AvatarArea>
-                  <DivName>
-                    <p>Camila Eduarda</p>
-                    <span>340 xp</span>
-                  </DivName>
-                </PositionInside>
-              </Position>
-              <Position className="keen-slider__slide">
-                <img src={p4} alt="" className="pNumber" />
-                <PositionInside>
-                  <AvatarArea>
-                    <AvatarCustomMetadeIcon />
-                  </AvatarArea>
-                  <DivName>
-                    <p>Camila Eduarda</p>
-                    <span>200 xp</span>
-                  </DivName>
-                </PositionInside>
-              </Position>
-              <Position className="keen-slider__slide">
-                <img src={p4} alt="" className="pNumber" />
-                <PositionInside>
-                  <AvatarArea>
-                    <AvatarCustomMetadeIcon />
-                  </AvatarArea>
-                  <DivName>
-                    <p>Camila Eduarda</p>
-                    <span>500 xp</span>
-                  </DivName>
-                </PositionInside>
-              </Position>
+              {data !== null ? data.map((x, index) =>{
+                return(
+                  rafUser === x.raf ?
+                  <Position className="keen-slider__slide">
+                    <img src={p1} alt="" className="pNumber" />
+                    <PositionCard className="positionOne">
+                      <PositionInside>
+                        <AvatarArea>
+                          <AvatarCustomMetadeIcon />
+                        </AvatarArea>
+                        <DivName>
+                          <p className="positionOnep">{x.raf}</p>
+                          <span className="positionOnep">{x.xp} xp</span>
+                        </DivName>
+                      </PositionInside>
+                    </PositionCard>
+                  </Position>
+                  :
+                  <Position className="keen-slider__slide">
+                    <span className="numberPosition">{index+1}</span>
+                    <img src={positionImg} alt="" className="pNumber" />
+                    <PositionCard>
+                      <PositionInside>
+                        <AvatarArea>
+                          <AvatarCustomMetadeIcon />
+                        </AvatarArea>
+                        <DivName>
+                          <p>{x.raf}</p>
+                          <span>{x.xp} xp</span>
+                        </DivName>
+                      </PositionInside>
+                    </PositionCard>
+                  </Position>
+                )
+              }) : null}
             </CarrouselInside>
           </Carrousel>
         </DivDesk>

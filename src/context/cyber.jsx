@@ -1,17 +1,27 @@
 import { createContext, useState, useEffect } from "react";
 import { apiSignIn } from "../lib/api";
 
-const CyberContext = createContext();
+export const CyberContext = createContext();
 
-function CyberProvider({children}){
-  const [book, setbook] = useState({
-    id:'53',
-    name:'Essentials 1'
+export function CyberProvider({children}) {
+  const [book, setBook] = useState({
+    id:"53",
+    name:"Essentials 1"
   });
   const [selectLanguage, setSelectLanguage] = useState(1);//0 portugues, 1 ingles, 2 espanhol
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
+  const [acessorios, setAcessorios] = useState({
+    oculos: null,
+    chapeu: null
+  });
+  const [cabeca, setCabeca] = useState("Cabeca_1");
+  const [face, setFace] = useState("Expressao_1");
+  const [bracos, setBracos] = useState("Bracos_1_Azul");
+  const [tronco, setTronco] = useState("Tronco_Cinza_modelo_2_Azul");
+  const [pernas, setPernas] = useState("Perna_Cinza_LIsa");
+  const [pets, setPet] = useState(null);
 
-  function chooseLanguage(item) {
+  const chooseLanguage = (item) => {
     const selectedOption = item
 
     if (selectedOption === 0) {
@@ -23,7 +33,7 @@ function CyberProvider({children}){
     }
   }
 
-  function chooseNotification(value){
+  const chooseNotification = (value) => {
     setNotifications(value);
   }
 
@@ -58,45 +68,70 @@ function CyberProvider({children}){
     }
   }
 
- /*  const signIn = async(user, password) => {
-    try {
-      const response = await fetch("https://homologsgf.fisk.com.br/SGFAPI/api/Auth/loginAppsProfessor", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          key: "9Z#kvy88$LYZKb&",
-          usuario: user,
-          password: password
-        })
-      });
-      const data = await response.json()
-      console.log("data: ", data);
-    } catch (error) {
-      console.log(error)
-    }
-  } */
-
   const newBook = (data) => {
-    setbook(data);
+    setBook(data);
+  }
+
+  const newCabeca = (item) => {
+    setCabeca(item);
+  }
+
+  const newAcessorio = (item) => {
+    const itemOculos = item.toLowerCase();
+    if (itemOculos.includes("oculos")) {
+      setAcessorios({...acessorios, oculos: item});
+    } else {
+      setAcessorios({...acessorios, chapeu: item});
+    }
+  }
+
+  const newFace = (item) => {
+    setFace(item);
+  }
+
+  const newBracos = (item) => {
+    setBracos(item);
+  }
+
+  const newTronco = (item) => {
+    setTronco(item);
+  }
+
+  const newPernas = (item) => {
+    setPernas(item);
+  }
+
+  const newPet = (item) => {
+    setPet(item);
   }
 
   return(
     <CyberContext.Provider
       value={{
         book,
+        acessorios,
+        cabeca,
+        face,
+        bracos,
+        tronco,
+        pernas,
+        pets,
         notifications,
         chooseNotification,
         selectLanguage,
         signIn,
         newBook,
         chooseLanguage,
+        newCabeca,
+        newAcessorio,
+        newFace,
+        newBracos,
+        newTronco,
+        newPernas,
+        newPet,
       }}
     >
       {children}
     </CyberContext.Provider>
   )
 }
-
-export { CyberProvider, CyberContext }

@@ -84,7 +84,7 @@ export const Bracos = styled.div`
   width: 100%;
   height: 100%;
   position: absolute;
-  z-index: 10;
+  z-index: 15;
 
   img {
     width: 100%;
@@ -94,18 +94,17 @@ export const Bracos = styled.div`
 
 export const Name = styled.div`
   width: 7.5rem;
-  height: 1.5rem;
   display: flex;
   align-items: center;
   justify-content: center;
   border-radius: 6px;
-  padding-inline: 6px;
+  padding-inline: 0.25rem;
   background-color: ${props => props.theme["red-200"]};
   position: absolute;
   z-index: 20;
-  bottom: 3.75rem;
   
   p {
+    font-size: 0.25rem;
     overflow: hidden;
     font-weight: 500;
     white-space: nowrap;

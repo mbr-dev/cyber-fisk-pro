@@ -91,7 +91,7 @@ export const AreaAnswers = styled.div`
 
 export const AreaWord = styled.div`
   width: 18.75rem;
-  height: 8.25rem;
+  height: 10rem;
   display: flex;
   flex-wrap: wrap;
   align-items: center;

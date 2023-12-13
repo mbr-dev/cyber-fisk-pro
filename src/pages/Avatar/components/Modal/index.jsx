@@ -19,7 +19,7 @@ export const Modal = () => {
           <img src={xImg} alt="x" />
         </Close>
         <Header>
-          <p>{selectLanguage === 0 ? "Palavra chave" : selectLanguage === 1 ? "Answer Key" : "Clave de respuestas"}</p>
+          <p>{selectLanguage === 0 ? "Atenção" : selectLanguage === 1 ? "Attention" : "Atención"}</p>
         </Header>
 
         <Main>

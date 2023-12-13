@@ -14,10 +14,6 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-
-  @media(max-width: 320px) {
-    padding-top: 0rem;
-  }
 `;
 
 export const Phrase = styled.div`
@@ -26,7 +22,7 @@ export const Phrase = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
+  gap: 0.5rem;
 `;
 
 export const Letters = styled.div`

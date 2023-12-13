@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import FundoGoImg from "./images/FundoGo.png"
 
 export const Container = styled.div`
   width: 100vw;
@@ -23,15 +24,8 @@ export const Header = styled.header`
   align-items: center;
   justify-content: flex-start;
   position: relative;
-  
-  .fundoBg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -1px;
-    left: -1px;
-    z-index: -1;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media(max-width: 320px) {
     height: 15.625rem;
@@ -45,6 +39,7 @@ export const Header = styled.header`
     @media(min-width: 600px) {
       width: 40%;
       height: 100vh;
+      overflow-y: hidden;
     }
   }
 `;

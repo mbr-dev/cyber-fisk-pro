@@ -29,20 +29,29 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 80%;
+      width: 600px;
       flex-direction: row;
-      flex-wrap: wrap;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 0rem;
-      padding-top: 0rem;
+      flex-wrap: wrap;
+      padding-top: 0.5rem;
+      gap: 0.5rem;
+
+      .composeBtn {
+        width: 100%;
+      }
     }
   }
 
   @media (min-width: 1280px) {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 2rem;
+    gap: 1.5rem;
     padding-top: 2rem;
+
+    .composeBtn {
+      width: 37.5rem;
+    }
   }
 `;
 
@@ -84,7 +93,7 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 18.75rem;
+      width: 15.625rem;
       height: 2.75rem;
       padding-inline: 0.75rem;
 

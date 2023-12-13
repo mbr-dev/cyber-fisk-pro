@@ -1,16 +1,13 @@
 import Cookies from "universal-cookie";
-import { useEffect, useState } from "react";
+import { useContext, useState, useEffect } from "react";
 
-import antenaImg from "./images/Antena/Antena_1.png";
-import cabecaImg from "./images/Cabeca/Cabeca_1.png";
-import faceImg from "./images/Face/Expressao_4.png";
-import oculosImg from "./images/Oculos/1_oculos_netro.png";
-import bracosImg from "./images/Bracos/Bracos_4.png";
-import troncoImg from "./images/Tronco/Tronco_Branco_modelo_2_Laranja.png";
+import { URL_FISKPRO } from "../../config/infos";
+import { CyberContext } from "../../context/cyber";
 
 import { Container, Bracos, Cabeca, Face, Tronco , Antena, Oculos, Name } from "./styles";
 
 export const AvatarCustomMetadeWG = ({ hasName }) => {
+  const { acessorios, cabeca, face, bracos, tronco } = useContext(CyberContext);
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -23,28 +20,32 @@ export const AvatarCustomMetadeWG = ({ hasName }) => {
 
   return (
     <Container>
-      <Antena>
-        <img src={antenaImg} alt="" />
-      </Antena>
+      {acessorios.chapeu !== null &&
+        <Antena>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.chapeu}.png`} alt="Acessórios" />
+        </Antena>
+      }
 
       <Cabeca>
-        <img src={cabecaImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="Cabeça" />
       </Cabeca>
 
       <Face>
-        <img src={faceImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Expressao_Robot/${face}.png`} alt="Expressão facial" />
       </Face>
 
-      <Oculos>
-        <img src={oculosImg} alt="" />
-      </Oculos>
+      {acessorios.oculos !== null &&
+        <Oculos>
+          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.oculos}.png`} alt="Oculos" />
+        </Oculos>
+      }
 
       <Bracos>
-        <img src={bracosImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Bracos/${bracos}.png`} alt="Braços" />
       </Bracos>
 
       <Tronco>
-        <img src={troncoImg} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/Tronco/${tronco}.png`} alt="Tronco" />
       </Tronco>
 
       {hasName &&

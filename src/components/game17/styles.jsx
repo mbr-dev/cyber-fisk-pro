@@ -33,14 +33,15 @@ export const Main = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 100%;
+  width: 250px;
+  height: 200px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   img {
-    width: 250px;
-    height: 184px;
+    width: 100%;
+    height: 100%;
     object-fit: fill;
   }
 

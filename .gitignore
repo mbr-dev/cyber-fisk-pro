@@ -6,9 +6,11 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-*.lock
+.lock
+yarn.lock
 yarn.lock*
 package-lock.json*
+package-lock.json
 vite.config.js*
 
 package-lock.json

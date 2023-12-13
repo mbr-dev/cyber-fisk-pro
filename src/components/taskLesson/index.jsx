@@ -9,7 +9,6 @@ import { apiQAS } from "../../lib/api";
 import { HeaderLesson } from "../HeaderLesson";
 import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
-
 import { Container } from "./styles";
 
 //Games
@@ -161,7 +160,7 @@ export const TaskLesson = () => {
       case 22 :
         return(<Game22 />);
       case 23 :
-          return(<Game23 />);
+        return(<Game23 />);
       case 24 :
         return(<Game24 />);
       case 25 :
@@ -208,7 +207,7 @@ export const TaskLesson = () => {
       setStrEnd("Super Task");
     }
     loadContent();
-  },[])
+  },[]);
 
   useEffect(() => {
     const timer = setInterval(() => {

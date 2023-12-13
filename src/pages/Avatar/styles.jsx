@@ -12,7 +12,7 @@ export const Main = styled.main`
   flex: 1;
   width: 100%;
   height: 100%;
-  background-color: ${props => props.theme["gray-060"]};
+  background-color: ${props => props.theme.white};
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -72,7 +72,7 @@ export const DivBottom = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 100%;
+      width: 60%;
       height: 100%;
     }
   }
@@ -86,7 +86,7 @@ export const Bottom = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding-top: 0.625rem;
+  padding-block: 0.625rem;
   background-color: ${props => props.theme["gray-060"]};
   gap: 0.625rem;
 
@@ -107,7 +107,9 @@ export const Bottom = styled.div`
     @media(min-width: 600px) {
       height: 6.25rem;
       padding-top: 0.625rem;
-      gap: 1rem;
+      padding-bottom: 0.625rem;
+      gap: 0.5rem;
+      justify-content: flex-end;
 
       .spDesk {
         display: flex;
@@ -119,6 +121,7 @@ export const Bottom = styled.div`
   @media (min-width: 1280px) {
     height: 100%;
     padding-top: 1.5rem;
+    padding-bottom: 1.5rem;
     gap: 1.5rem;
   }
 
@@ -268,42 +271,37 @@ export const Title = styled.div`
   }
 `;
 
-export const AvatarCard = styled.div`
+export const ItemsCard = styled.div`
+  flex: 1;
   width: 21.875rem;
-  height: 11.25rem;
   display: flex;
+  padding-inline: 1rem;
   justify-content: space-between;
 
   @media (max-width: 360px) {
     width: 320px;
-    height: 9.375rem;
   }
 
   @media (max-width: 320px) {
     width: 20rem;
-    height: 9.375rem;
   }
 
   @media(min-width: 768px) {
     width: 40rem;
-    height: 13.75rem;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       width: 21.875rem;
-      height: 7.875rem;
     }
   }
 
   @media(min-width: 1280px) {
     width: 43.75rem;
-    height: 23.75rem;
   }
 
   @media (min-width: 1920px) {
     width: 56.25rem;
-    height: 28.125rem;
   }
 `;
 
@@ -315,7 +313,7 @@ export const CardReward = styled.div`
   justify-content: center;
   border-radius: 8px;
   background-color: ${props => props.theme.white};
-  box-shadow: 0px 4px 10px 0px #00000033;
+  border: 2px solid ${props => props.theme["gray-200"]};
   position: relative;
 
   .RoboCard {

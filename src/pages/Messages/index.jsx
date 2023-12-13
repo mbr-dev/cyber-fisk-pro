@@ -64,7 +64,7 @@ export const Messages = () => {
             <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
-        <Div onClick={handleCompose}>
+        <Div onClick={handleCompose} className="composeBtn">
           <p>Compose</p>
           <DivImg style={{ borderColor: defaultTheme["red-200"] }}>
             <img src={PlusImg} alt="" />

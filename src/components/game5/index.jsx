@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";
@@ -37,6 +37,12 @@ export const Game5 = () => {
 
     let dataLength = 0;
     let tempData;
+
+    if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
+      navigate("/LessonSelected");
+      return;
+    }
+
     if (nivel === 0) {
       setData(conteudoFacil);
       tempData = conteudoFacil;        
