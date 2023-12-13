@@ -6,6 +6,10 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media(min-width: 1440px) {
+    overflow: hidden;
+  }
 `;
 
 export const Main = styled.main`
@@ -132,12 +136,12 @@ export const Bottom = styled.div`
 `;
 
 export const Separator = styled.div`
-  width: 21.875rem;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: space-between;
 
-  @media(max-width: 360px) {
+ /*  @media(max-width: 360px) {
     width: 20rem;
   }
 
@@ -147,7 +151,7 @@ export const Separator = styled.div`
 
   @media(min-width: 768px) {
     width: 44rem;
-  }
+  } */
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
@@ -287,7 +291,6 @@ export const ItemsCard = styled.div`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 21.875rem;
     }
   }
 
@@ -311,6 +314,7 @@ export const CardReward = styled.div`
   background-color: ${props => props.theme.white};
   border: 2px solid ${props => props.theme["gray-200"]};
   position: relative;
+  cursor: pointer;
 
   .RoboCard {
     width: 100px;

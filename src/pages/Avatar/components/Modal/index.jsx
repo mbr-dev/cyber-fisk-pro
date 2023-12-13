@@ -9,14 +9,13 @@ import xImg from "../../../../assets/xImg.png";
 
 import { Content, Overlay, Close, CloseNo, Main, Header, Button, Div } from "./styles";
 
-export const Modal = ({ item, tipo, onItemComprado }) => {
+export const Modal = ({ item, tipo }) => {
   const { selectLanguage } = useContext(CyberContext);
 
   const handleComprarItem = () => {
     if (tipo === "cabecas") {
       item.liberado = true;
       itemsDoAvatar.cabeca.push(item.name);
-      onItemComprado("cabecas")
     } else if (tipo === "acessorios") {
       item.liberado = true;
       itemsDoAvatar.acessorios.push(item.name);
@@ -32,7 +31,6 @@ export const Modal = ({ item, tipo, onItemComprado }) => {
     } else if (tipo === "pets") {
       item.liberado = true;
       itemsDoAvatar.pet.push(item.name);
-      console.log(item.name)
     }
   }
 

@@ -52,6 +52,7 @@ export const Close = styled(Dialog.Close)`
   right: -0.75rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
+  cursor: pointer;
 
   img {
     width: 18px;
@@ -92,6 +93,7 @@ export const CloseNo = styled(Dialog.Close)`
   border: 2px solid ${props => props.theme["red-300"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  cursor: pointer;
 
   @media(max-width: 320px) {
     height: 1.75rem;
@@ -195,6 +197,7 @@ export const Button = styled(Dialog.Close)`
   border: 2px solid ${props => props.theme["green-700"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  cursor: pointer;
 
   @media(max-width: 320px) {
     height: 1.75rem;
