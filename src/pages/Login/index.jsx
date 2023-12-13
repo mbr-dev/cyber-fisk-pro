@@ -83,12 +83,11 @@ export const Login = () => {
             await salvarAcesso(raf);
             //navigate("/home");
           }else{
-            console.log("login invalido ");
             setLoading(false);
             chooseNotification(3);
             setMsgError(resp.message);
             setError(true);
-            if(resp.message === "Network Error"){
+            if(resp.message === "Network Error" || resp.message === "Usuário bloqueado "){
               const cookies = new Cookies();
               cookies.set("token", 'A123', { path: '/' });
               cookies.set("raf", raf, { path: '/' });
@@ -131,6 +130,14 @@ export const Login = () => {
   }
 
   useEffect(() =>{
+    const data = {
+      date: new Date(),
+      raf:'ABC123',
+      quantidade:2
+    }
+    const myJSON = JSON.stringify(data);
+    const str = encodeURIComponent(myJSON);
+    console.log('STR ===> ', str);
     const cookies = new Cookies();
     const token = cookies.get("token");
     const raf = cookies.get("raf");
