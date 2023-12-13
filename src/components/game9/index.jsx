@@ -4,7 +4,7 @@ import { useCallback, useContext, useState, useEffect } from "react";
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
 import { URL_FISKPRO } from "../../config/infos";
-import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
+import { SubTitleLessonAudio } from "../subTitleLessonAudio";
 
 import { LessonContext } from "../../context/lesson";
 import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras";
