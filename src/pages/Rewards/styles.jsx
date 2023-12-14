@@ -448,8 +448,9 @@ export const CardReward = styled.div`
   border: 2px solid ${props => props.theme["gray-200"]};
 
   .RoboCard {
-    width: 100%;
-    height: 100%;
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
   }
 
   @media(max-width: 320px) {

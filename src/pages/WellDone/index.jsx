@@ -154,8 +154,9 @@ export const WellDone = () => {
       {showConfetti && <Confetti numberOfPieces={100} tweenDuration={10000} />}
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
-      <Header>
-        <img src={FundoWDImg} alt="" className="fundoBg" />
+      <Header style={{
+        backgroundImage: `url("${FundoWDImg}")`
+      }}>
         <Top>
           <ButtonMenuHeader />
           <DivMobile>

@@ -8,8 +8,9 @@ import { Container } from "./styles";
 export const HeaderText = ({ title }) => {
 
   return (
-    <Container>
-      <img src={bgHeaderText} alt="" className="bgImg" />
+    <Container style={{
+      backgroundImage: `url("${bgHeaderText}")`
+    }}>
       <ButtonMenuHeader />
       <p>{title}</p>
       <ButtonCloseHeader />

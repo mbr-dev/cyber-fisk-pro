@@ -11,7 +11,6 @@ export const Overlay = styled(Dialog.Overlay)`
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
-  height: 18.75rem;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -198,23 +197,28 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  padding-block: 1rem;
+  gap: 1rem;
 
   @media(max-width: 320px) {
     width: 15.625rem;
   }
 
   @media(min-width: 768px) {
-    width: 22.5rem;
+    width: 23rem;
+    padding-block: 1.5rem;
   }
 
   @media (orientation: landscape) {
     @media(min-width: 600px) {
       width: 17.5rem;
+      padding-block: 0.5rem;
     }
   }
 
   @media(min-width: 1280px) {
     width: 22.5rem;
+    padding-block: 1.5rem;
   }
 `;
 
@@ -235,17 +239,7 @@ export const DivRow = styled.div`
 
 export const DivInside = styled.div`
   display: flex;
-  gap: 1.5rem;
-
-  @media(max-width: 320px) {
-    gap: 1.25rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      gap: 1rem;
-    }
-  }
+  justify-content: space-between;
 `;
 
 export const Div = styled.div`
@@ -292,7 +286,7 @@ export const Div = styled.div`
 
 export const Input = styled.input`
   all: unset;
-  width: 100%;
+  width: 8.25rem;
   height: 2.25rem;
   border-radius: 8px;
   display: flex;
@@ -311,6 +305,7 @@ export const Input = styled.input`
   }
 
   @media(min-width: 768px) {
+    width: 10.25rem;
     height: 3rem;
     font-size: 1.25rem;
   }

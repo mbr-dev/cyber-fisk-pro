@@ -169,13 +169,13 @@ export const acessorioItems = [
   },
   {
     id: 12,
-    name: "espada_verde",
+    name: "_e_verde",
     preco: 1200,
     liberado: false
   },
   {
     id: 13,
-    name: "espada_vermelha",
+    name: "_e_vermelho",
     preco: 1200,
     liberado: false
   },
@@ -211,7 +211,7 @@ export const acessorioItems = [
   },
   {
     id: 19,
-    name: "mochila",
+    name: "_mochila",
     preco: 500,
     liberado: false
   },
@@ -1018,5 +1018,3 @@ export const itemsDoAvatar = {
   pernas: ["perna_1_liso"],
   pet: []
 }
-
-console.log("itemsDoavatar: ", itemsDoAvatar);

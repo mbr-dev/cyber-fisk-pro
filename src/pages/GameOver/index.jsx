@@ -131,7 +131,6 @@ export const GameOver = () => {
       <Header style={{
         backgroundImage: `url("${FundoGoImg}")`
       }}>
-       {/*  <img src={FundoGoImg} alt="" className="fundoBg" /> */}
         <Top>
           <ButtonMenuHeader />
           <DivMobile>

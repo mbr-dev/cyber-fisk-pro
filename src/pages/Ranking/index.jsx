@@ -99,7 +99,10 @@ export const Ranking = () => {
 
         <DivDesk>
           <Carrousel>
-            <CarrouselInside ref={sliderRef} className="keen-slider">
+            <CarrouselInside 
+              ref={sliderRef}
+              className="keen-slider"
+            >
               {data !== null ? data.map((x, index) =>{
                 return(
                   rafUser === x.raf ?
@@ -158,7 +161,7 @@ export const Ranking = () => {
                     <AvatarCustomMetadeIcon />
                   </AvatarArea>
                   <span>{x.raf}</span>
-                  <p>{x.xp} xp</p>
+                  <p className="pXp">{x.xp} xp</p>
                 </LevelPosition>
                 :
                 <LevelPosition >
@@ -167,7 +170,7 @@ export const Ranking = () => {
                     <AvatarCustomMetadeIcon />
                   </AvatarArea>
                   <span>{x.raf}</span>
-                  <p>{x.xp} xp</p>
+                  <p className="pXp">{x.xp} xp</p>
                 </LevelPosition>
               )
             }) : null}

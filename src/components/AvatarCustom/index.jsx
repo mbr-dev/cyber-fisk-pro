@@ -7,7 +7,7 @@ import { CyberContext } from "../../context/cyber";
 import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name, Pet } from "./styles";
 
 export const AvatarCustom = ({ hasName, avatar }) => {
-  const { acessorios, cabeca, face, bracos, tronco, pernas, pets } = useContext(CyberContext);
+  const { acessorios, cabeca, face, bracos, tronco, pernas, pets, hasSword, hasBag } = useContext(CyberContext);
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -30,7 +30,7 @@ export const AvatarCustom = ({ hasName, avatar }) => {
       }
 
       <Cabeca>
-        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="" />
+        <img src={`${URL_FISKPRO}/images/avatar/cabecas/${cabeca}.png`} alt="" />
       </Cabeca>
 
       <Face>
@@ -44,11 +44,19 @@ export const AvatarCustom = ({ hasName, avatar }) => {
       }
 
       <Bracos>
-        <img src={`${URL_FISKPRO}/images/avatar/bracos/${bracos}.png`} alt="" />
+        {hasSword ? 
+          <img src={`${URL_FISKPRO}/images/avatar/bracos_espada/${bracos}.png`} alt="" />
+          :
+          <img src={`${URL_FISKPRO}/images/avatar/bracos/${bracos}.png`} alt="" />
+        }
       </Bracos>
 
       <Tronco>
-        <img src={`${URL_FISKPRO}/images/avatar/tronco/${tronco}.png`} alt="" />
+        {hasBag ? 
+          <img src={`${URL_FISKPRO}/images/avatar/tronco_mochila/${tronco}.png`} alt="" />
+          :  
+          <img src={`${URL_FISKPRO}/images/avatar/tronco/${tronco}.png`} alt="" />
+        }
       </Tronco>
 
       <Pernas>

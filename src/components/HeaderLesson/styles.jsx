@@ -13,14 +13,8 @@ export const Main = styled.div`
   border-end-start-radius: 18px;
   overflow: hidden;
   position: relative;
-
-  .bgImg {
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    position: absolute;
-    left: 0;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media(min-width: 768px) {
     height: 7.5rem;

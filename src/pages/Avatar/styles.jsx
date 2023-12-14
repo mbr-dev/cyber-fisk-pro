@@ -7,8 +7,10 @@ export const Container = styled.div`
   flex-direction: column;
   align-items: center;
 
-  @media(min-width: 1440px) {
-    overflow: hidden;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      overflow: hidden;
+    }
   }
 `;
 
@@ -110,8 +112,7 @@ export const Bottom = styled.div`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       height: 6.25rem;
-      padding-top: 0.625rem;
-      padding-bottom: 0.625rem;
+      padding-block: 0.625rem;
       gap: 0.5rem;
       justify-content: flex-start;
 
@@ -125,6 +126,7 @@ export const Bottom = styled.div`
   @media (min-width: 1280px) {
     height: 100%;
     padding-top: 1.5rem;
+    justify-content: center;
     padding-bottom: 1.5rem;
     gap: 1.5rem;
   }
@@ -140,25 +142,19 @@ export const Separator = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
- /*  @media(max-width: 360px) {
-    width: 20rem;
-  }
-
-  @media(max-width: 320px) {
-    width: 17.5rem;
-  }
-
-  @media(min-width: 768px) {
-    width: 44rem;
-  } */
+  padding-inline: 0.5rem;
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       justify-content: space-around;
       background-color: ${props => props.theme["gray-950"]};
       padding-block: 0.375rem;
+      padding-inline: 0rem;
     }
+  }
+
+  @media(min-width: 1920px) {
+    padding-block: 1rem;
   }
 `;
 
@@ -291,6 +287,7 @@ export const ItemsCard = styled.div`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
+      height: 8rem;
     }
   }
 
@@ -341,13 +338,13 @@ export const CardReward = styled.div`
       border-radius: 12px;
 
       .RoboCard {
-        width: 42px;
+        width: 100px;
+        height: 100px;
       }
     }
   }
 
   @media(min-width: 1280px) {
-
     .RoboCard {
       width: 250px;
       height: 250px;
@@ -355,9 +352,9 @@ export const CardReward = styled.div`
   }
 
   @media(min-width: 1920px) {
-
     .RoboCard {
-      width: 180px;
+      width: 250px;
+      height: 250px;
     }
   }
 `;

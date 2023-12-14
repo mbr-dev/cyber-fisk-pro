@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState } from "react";
 import { apiSignIn } from "../lib/api";
 
 export const CyberContext = createContext();
@@ -12,7 +12,7 @@ export function CyberProvider({children}) {
   const [notifications, setNotifications] = useState(3); // 0 success, 1 information, 2 attention, 3 error
   const [acessorios, setAcessorios] = useState({
     oculos: null,
-    chapeu: null
+    chapeu: null,
   });
   const [cabeca, setCabeca] = useState("Cabeca_1");
   const [face, setFace] = useState("face_1");
@@ -20,6 +20,8 @@ export function CyberProvider({children}) {
   const [tronco, setTronco] = useState("tronco_3_tradicional");
   const [pernas, setPernas] = useState("perna_1_liso");
   const [pets, setPet] = useState(null);
+  const [hasSword, setHasSword] = useState(false);
+  const [hasBag, setHasBag] = useState(false);
 
   const chooseLanguage = (item) => {
     const selectedOption = item
@@ -49,8 +51,8 @@ export function CyberProvider({children}) {
           headers: { "Content-Type": "application/json" }
         }
       );
-      console.log('DATA LOGIN ::: ', data);
-      let respData = '';
+      console.log("DATA LOGIN ::: ", data);
+      let respData = "";
       if (data) {
         if(!data.succeeded){
           respData = data;
@@ -60,7 +62,7 @@ export function CyberProvider({children}) {
           return data;
         }
       }else{
-        respData = {message:'Erro ao comunicar com o servidor de login!'};
+        respData = {message:"Erro ao comunicar com o servidor de login!"};
         return respData;
       }
     } catch (error) {
@@ -105,10 +107,43 @@ export function CyberProvider({children}) {
     setPet(item);
   }
 
+  const removerSward = () => {
+    setHasSword(!hasSword);
+  }
+
+  const removeBackpack = () => {
+    setHasBag(!hasBag);
+  }
+
+  const newSword = (item, name) => {
+    if (!hasSword) {
+      setHasSword(item);
+      setBracos(state => state + name);
+    } else {
+      setHasSword(false);
+      if (bracos.includes("_e_verde")) {
+        setBracos(state => state.replace(/_e_verde$/, ""));
+      } else {
+        setBracos(state => state.replace(/_e_vermelho$/, ""));
+      }
+    }
+  }
+
+  const newBag = (item, name) => {
+    if (!hasBag) {
+      setHasBag(item);
+      setTronco(state => state + name);
+    } else {
+      setHasBag(false);
+      setTronco(state => state.replace(/_mochila$/, ""));
+    }
+  }
+
   return(
     <CyberContext.Provider
       value={{
         book,
+        hasBag,
         acessorios,
         cabeca,
         face,
@@ -116,6 +151,7 @@ export function CyberProvider({children}) {
         tronco,
         pernas,
         pets,
+        hasSword,
         notifications,
         chooseNotification,
         selectLanguage,
@@ -129,6 +165,10 @@ export function CyberProvider({children}) {
         newTronco,
         newPernas,
         newPet,
+        newSword,
+        newBag,
+        removerSward,
+        removeBackpack
       }}
     >
       {children}

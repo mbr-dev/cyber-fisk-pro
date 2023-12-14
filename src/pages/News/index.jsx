@@ -13,10 +13,11 @@ import plusWImg from "./images/plusW.png";
 import plusRImg from "./images/plusR.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, CreateFile, Image } from "./styles";
+import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, CreateFile, Image, ItemsScroll } from "./styles";
 
 export const News = () => {
   const [create, setCreate] = useState(false);
+  const [userRule, setUserRule] = useState("Admin");
   const [schoolNews, setSchoolNews] = useState(false);
   const [courseNews, setCourseNews] = useState(false);
 
@@ -103,7 +104,7 @@ export const News = () => {
                 </CreateFile> */}
               </CreateItems>
             :
-              <>
+              <ItemsScroll>
                 <Items>
                   <TitleItems>
                     <p>Nome do professor</p>
@@ -124,7 +125,7 @@ export const News = () => {
                       <p>October 31th</p>
                   </InfoItems>
                 </Items>
-              </>
+              </ItemsScroll>
           }
         </NewsItems>
       </Main>
@@ -147,7 +148,7 @@ export const News = () => {
                 </Button>
               </Dialog.Trigger>
 
-              <Modal />
+              <Modal rule={userRule} />
             </Dialog.Root>
         </>
         }

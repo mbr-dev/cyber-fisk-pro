@@ -10,7 +10,7 @@ import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState(null);
+  const [userRule, setUserRule] = useState("Admin");
 
   return (
     <Dialog.Portal>
@@ -64,7 +64,7 @@ export const Modal = () => {
             </DivInside2>
           </Top>
           
-          {status === "Coordenador" &&
+          {userRule === "Admin" &&
             <DivCheckRow>
               <DivCheck>
                 <input type="checkbox" />

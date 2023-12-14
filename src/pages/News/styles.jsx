@@ -6,6 +6,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  justify-content: space-between;
 `;
 
 export const Main = styled.main`
@@ -241,12 +242,9 @@ export const Image = styled.div`
 
 export const NewsItems = styled.div`
   width: 21.25rem;
-  height: 21.875rem;
+  height: 25rem;
+  display: flex;
   overflow-y: scroll;
-
-  @media(max-width: 360px) {
-    height: 18.75rem;
-  }
 
   @media(max-width: 320px) {
     width: 18.125rem;
@@ -272,6 +270,10 @@ export const NewsItems = styled.div`
     height: 33.25rem;
     gap: 1rem;
   }
+`;
+
+export const ItemsScroll = styled.div`
+  width: 100%;
 `;
 
 export const AreaButton = styled.div`
@@ -720,8 +722,4 @@ export const InfoItems = styled.div`
       font-size: 1.5rem;
     }
   }
-`;
-
-export const Div = styled.div`
-  
 `;

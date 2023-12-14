@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import FundoGoImg from "./images/FundoGo.png"
 
 export const Container = styled.div`
   width: 100vw;
