@@ -41,8 +41,9 @@ export const Content = styled(Dialog.Content)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 38rem;
+    padding-bottom: 0.5rem;
     //height: 29rem;
   }
 `;
@@ -99,7 +100,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3rem;
     height: 3rem;
     top: -1.25rem;
@@ -151,7 +152,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
 
     p {
@@ -185,7 +186,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 34rem;
     gap: 1rem;
   }
@@ -204,7 +205,7 @@ export const Top = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 34rem;
     justify-content: flex-start;
     align-items: center;
@@ -217,7 +218,7 @@ export const DivCheckRow = styled.div`
   flex-direction: column;
   gap: 0.75rem;
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -233,7 +234,7 @@ export const DivInside = styled.div`
     }
   }
   
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -249,7 +250,7 @@ export const DivInside2 = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -321,7 +322,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 1.5rem;
       padding-left: 1rem;
@@ -369,7 +370,7 @@ export const Input = styled.input`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 22rem;
     height: 3rem;
     font-size: 1.25rem;
@@ -396,7 +397,7 @@ export const Select = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 22rem;
   }
 `;
@@ -449,7 +450,7 @@ export const SelectTitle = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3rem;
 
     p {
@@ -482,7 +483,7 @@ export const SelectUl = styled.ul`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 22rem;
   }
 `;
@@ -508,7 +509,7 @@ export const SelectLi = styled.li`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.5rem;
   }
 `;
@@ -563,7 +564,7 @@ export const DivCheck = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 0.5rem;
 
     p {
@@ -613,7 +614,7 @@ export const Enter = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3rem;
     width: 18.75rem;
     font-size: 2rem;

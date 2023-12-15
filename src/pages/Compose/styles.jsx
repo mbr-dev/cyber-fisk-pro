@@ -35,7 +35,12 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    gap: 1.5rem;
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 1366px) {
     gap: 1rem;
     padding-top: 2rem;
   }
@@ -61,7 +66,11 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 800px;
+  }
+
+  @media(min-width: 1366px) {
     width: 68.75rem;
   }
 `;
@@ -89,9 +98,13 @@ export const AreaButton = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    height: 100px;
+    gap: 54px;
+  }
+
+  @media (min-width: 1366px) {
     height: 7.5rem;
-    gap: 2rem;
   }
 `;
 
@@ -145,12 +158,20 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 15.625rem;
-    height: 3.5rem;
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 54px;
     
     p {
       font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    height: 3.5rem;
+    
+    p {
+      font-size: 2rem;
     }
   }
 `;
@@ -220,6 +241,20 @@ export const Text = styled.div`
       }
     }
   }
+
+  @media(min-width: 1024px) {
+    width: 800px;
+    
+    img {
+      width: 22px;
+      height: 22px;
+    }
+    
+    textarea {
+      width: 64rem;
+      font-size: 1.125rem;
+    }
+  }
   
   @media(min-width: 1280px) {
     width: 68.75rem;
@@ -256,7 +291,11 @@ export const Select = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 380px;
+  }
+
+  @media(min-width: 1366px) {
     width: 33rem;
   }
 `;
@@ -289,7 +328,7 @@ export const SelectTitle = styled.div`
     height: 2.25rem;
   }
 
-  @media(min-width: 600px) {
+  @media(min-width: 768px) {
     height: 3.75rem;
     gap: 1.125rem;
 
@@ -318,7 +357,7 @@ export const SelectTitle = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
     gap: 1.25rem;
 
@@ -363,7 +402,13 @@ export const SelectUl = styled.ul`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 380px;
+    padding-inline: 32px;
+    gap: 1.25rem;  
+  }
+
+  @media(min-width: 1366px) {
     width: 33rem;
     padding-inline: 44px;
     gap: 1.25rem;  
@@ -390,7 +435,11 @@ export const SelectLi = styled.li`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    font-size: 1.5rem;
+  }
+
+  @media(min-width: 1366px) {
     font-size: 1.75rem;
   }
 `;

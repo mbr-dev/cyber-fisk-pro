@@ -62,7 +62,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 2rem;
   }
 `;
@@ -146,8 +146,12 @@ export const AvatarPe = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     display: block;
+    width: 18rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 20rem;
   }
 `;
@@ -186,7 +190,7 @@ export const HeaderDesktop = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-top: 2rem;
     padding-right: 2rem;
 
@@ -224,7 +228,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
     justify-content: center;
   }
@@ -281,14 +285,18 @@ export const AreaInput = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 420px;
 
     label {
       padding-left: 1.75rem;
       font-size: 1.5rem;
       margin-bottom: 1rem;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -311,7 +319,11 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 420px;
+  }
+
+  @media(min-width: 1366px) {
     width: 37.5rem;
   }
 `;
@@ -383,7 +395,7 @@ export const Input = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
     padding-left: 0.875rem;
 
@@ -470,7 +482,7 @@ export const SelectTitle = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
     gap: 1.25rem;
 
@@ -516,10 +528,10 @@ export const SelectUl = styled.ul`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-inline: 2.75rem;
     gap: 1.25rem;
-    bottom: -10.5rem;
+    bottom: -10rem;
   }
 `;
 
@@ -547,7 +559,7 @@ export const SelectLi = styled.li`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.75rem;
   }
 `;

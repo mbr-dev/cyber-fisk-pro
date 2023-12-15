@@ -51,7 +51,7 @@ export const Header = styled.header`
     height: 5.375rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1366px) {
     height: 6.25rem;
   }
 `;
@@ -119,9 +119,8 @@ export const HeaderTop = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1366px) {
     .logoFiskD {
-      width: 100px;
       margin-left: -30rem;
     }
 
@@ -193,7 +192,11 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 850px;
+  }
+
+  @media(min-width: 1366px) {
     width: 62.5rem;
   }
 `;
@@ -226,9 +229,13 @@ export const ButtonAreaTop = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 28.125rem;
+  @media(min-width: 1024px) {
+    width: 400px;
     height: 21.875rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 28.125rem;
   }
 `;
 
@@ -327,9 +334,9 @@ export const ButtonTask = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 11.25rem;
-    height: 9.375rem;
+  @media(min-width: 1024px) {
+    width: 10rem;
+    height: 9rem;
     border-radius: 16px;
     border-width: 3px;
     gap: 0.625rem;
@@ -341,6 +348,11 @@ export const ButtonTask = styled.button`
     p {
       font-size: 1.25rem;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 11.25rem;
+    height: 9.375rem;
   }
 `;
 
@@ -414,17 +426,25 @@ export const ButtonSuperTask = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 13.75rem;
+  @media(min-width: 1024px) {
+    width: 184px;
     border-radius: 16px;
     border-width: 3px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 1.25rem;
     }
 
     img {
       width: 84px;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    width: 13.75rem;
+
+    p {
+      font-size: 1.5rem;
     }
   }
 `;
@@ -450,7 +470,13 @@ export const ButtonAreaBottom = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 400px;
+    height: 21.875rem;
+    gap: 0;
+  }
+
+  @media(min-width: 1366px) {
     width: 28.75rem;
     height: 21.875rem;
     gap: 0;
@@ -480,10 +506,14 @@ export const BottomRight = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 14.375rem;
+  @media(min-width: 1024px) {
+    width: 12rem;
     height: 100%;
     justify-content: space-between;
+  }
+
+  @media(min-width: 1366px) {
+    width: 14.375rem;
   }
 `;
 
@@ -510,10 +540,14 @@ export const BottomLeft = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 12.5rem;
+  @media(min-width: 1024px) {
+    width: 11rem;
     height: 100%;
     justify-content: space-between;
+  }
+
+  @media(min-width: 1366px) {
+    width: 12.5rem;
   }
 `;
 
@@ -595,12 +629,24 @@ export const ButtonBottom = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 9.375rem;
     border-radius: 1rem;
     border-width: 3px;
     justify-content: center;
     gap: 0.75rem;
+
+    img {
+      width: 48px;
+    }
+
+    p {
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    height: 9.375rem;
 
     img {
       width: 52px;

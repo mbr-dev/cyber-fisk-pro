@@ -43,7 +43,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     align-items: flex-start;
     padding-top: 2rem;
   }
@@ -72,10 +72,14 @@ export const DivButtons = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 36rem;
+  @media (min-width: 1024px) {
+    width: 400px;
     height: 100%;
     gap: 2rem;
+  }
+
+  @media (min-width: 1366px) {
+    width: 36rem;
   }
 `;
 
@@ -91,7 +95,7 @@ export const DivInside = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
       gap: 2rem;
     }
 `;
@@ -148,9 +152,22 @@ export const ButtonNews = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 36rem;
+  @media (min-width: 1024px) {
+    width: 400px;
     height: 4rem;
+    gap: 12rem;
+
+    p {
+      font-size: 1.25rem;
+    }
+
+    img {
+      width: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 36rem;
     gap: 24rem;
 
     p {
@@ -202,8 +219,8 @@ export const ButtonCreate = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 36rem;
+  @media (min-width: 1024px) {
+    width: 400px;
     height: 4rem;
     gap: 2rem;
 
@@ -214,6 +231,10 @@ export const ButtonCreate = styled.button`
     img {
       width: 1.5rem;
     }
+  }
+
+  @media (min-width: 1366px) {
+    width: 36rem;
   }
 `;
 
@@ -265,10 +286,15 @@ export const NewsItems = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 400px;
+    height: 26rem;
+    gap: 1rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 36rem;
     height: 33.25rem;
-    gap: 1rem;
   }
 `;
 
@@ -303,7 +329,7 @@ export const AreaButton = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 62.5rem;
     height: 7.5rem;
     gap: 2rem;
@@ -360,7 +386,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 15.625rem;
     height: 3.5rem;
     
@@ -442,15 +468,22 @@ export const CreateItemsInside = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     textarea {
-      width: 30rem;
-      height: 32rem;
+      width: 320px;
+      height: 23.5rem;
       font-size: 1.25rem;
 
       &::placeholder {
         font-size: 1.25rem;
       }
+    }
+  }
+
+  @media (min-width: 1366px) {
+    textarea {
+      width: 30rem;
+      height: 32rem;
     }
   }
 `;
@@ -579,7 +612,7 @@ export const ButtonSend = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 32rem;
     height: 3.5rem;
     
@@ -658,7 +691,7 @@ export const TitleItems = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 4rem;
     padding-top: 0.5rem;
 
@@ -714,12 +747,16 @@ export const InfoItems = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
-    height: 21.875rem;
+  @media (min-width: 1024px) {
+    height: 17rem;
 
     p {
       padding: 1rem;
       font-size: 1.5rem;
     }
+  }
+
+  @media (min-width: 1366px) {
+    height: 21.875rem;
   }
 `;

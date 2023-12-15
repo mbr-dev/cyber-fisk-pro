@@ -43,7 +43,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     flex-direction: column;
     justify-content: flex-start;
     gap: 1.5rem;
@@ -103,7 +103,7 @@ export const Div = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 37.5rem;
     height: 4rem;
     padding-inline: 1rem;
@@ -163,7 +163,7 @@ export const DivImg = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 3.25rem;
     height: 3.25rem;
     border-width: 3px;

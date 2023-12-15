@@ -26,10 +26,14 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 30rem;
     height: 6.25rem;
     border-width: 4px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -87,7 +91,7 @@ export const ButtonHome = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 25rem;
     height: 2.75rem;
 

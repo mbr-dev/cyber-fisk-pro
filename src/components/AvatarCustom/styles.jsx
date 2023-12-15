@@ -26,7 +26,13 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 16rem;
+    height: 44rem;
+    margin-top: -43rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 18.75rem;
     height: 50rem;
     margin-top: -50em;
@@ -173,9 +179,13 @@ export const Name = styled.div`
     color: ${props => props.theme.white};
   }
 
-  @media (min-width: 1280px) {
-    width: 18.75rem;
+  @media (min-width: 1024px) {
+    width: 16rem;
     height: 4.5rem;
+  }
+
+  @media (min-width: 1366px) {
+    width: 18.75rem;
     bottom: 1.75rem;
     padding-inline: 1rem;
 

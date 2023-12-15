@@ -40,7 +40,11 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 850px;
+  }
+
+  @media(min-width: 1366px) {
     width: 62.5rem;
   }
 
@@ -70,12 +74,16 @@ export const Left = styled.main`
     }
   }
   
-  @media(min-width: 1280px) {
-    width: 30rem;
+  @media(min-width: 1024px) {
+    width: 400px;
     height: 25rem;
     gap: 0;
     align-items: center;
     justify-content: space-between;
+  }
+
+  @media(min-width: 1366px) {
+    width: 30rem;
   }
 
   @media(min-width: 1920px) {
@@ -100,9 +108,13 @@ export const Right = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 30rem;
+  @media(min-width: 1024px) {
+    width: 400px;
     height: 25rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 30rem;
   }
 
   @media(min-width: 1920px) {
@@ -136,11 +148,15 @@ export const TopRight = styled.main`
     }
 }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 1rem;
 
     h2 {
       font-size: 1.5rem;
+    }
+
+    img {
+      width: 24px;
     }
   }
 `;
@@ -197,7 +213,7 @@ export const Items = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     padding-block: 1rem;
 
@@ -251,7 +267,7 @@ export const Top = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     img {
       width: 24px;
     }
@@ -303,7 +319,7 @@ export const Inside = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.5rem;
     padding-block: 0.625rem;
     

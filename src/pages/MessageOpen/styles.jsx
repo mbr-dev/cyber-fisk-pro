@@ -36,7 +36,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 50rem;
     padding-top: 1rem;
   }
@@ -74,7 +74,12 @@ export const Div = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 35rem;
+    height: 28rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 37.5rem;
     height: 32rem;
   }
@@ -108,7 +113,7 @@ export const DivHeader = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 4.5rem;
   }
 `;
@@ -142,7 +147,7 @@ export const DivHText = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     p {
       font-size: 1.125rem;
     }
@@ -198,7 +203,7 @@ export const DivImg = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 3.25rem;
     height: 3.25rem;
     border-width: 3px;
@@ -246,7 +251,7 @@ export const Text = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding: 1rem;
 
     p {
@@ -359,7 +364,7 @@ export const ButtonDiv = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 10rem;
     height: 3rem;
     border-radius: 6px;

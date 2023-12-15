@@ -26,10 +26,14 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 50rem;
-    height: 6.25rem;
+    height: 6rem;
     border-width: 4px;
+  }
+
+  @media(min-width: 1280px) {
+    height: 6.25rem;
   }
 
   @media(min-width: 1440px) {
@@ -91,7 +95,7 @@ export const ButtonHome = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 25rem;
     height: 2.75rem;
 

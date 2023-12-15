@@ -37,7 +37,11 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    gap: 2rem;
+  }
+
+  @media (min-width: 1366px) {
     gap: 4rem;
   }
 `;
@@ -69,7 +73,12 @@ export const Left = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 22rem;
+    height: 22rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 28.125rem;
     height: 28.125rem;
   }
@@ -96,8 +105,12 @@ export const Right = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1.5rem;
+  }
+
+  @media(min-width: 1366px) {
+    gap: 2rem;
   }
 `;
 
@@ -121,9 +134,15 @@ export const Title = styled.section`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     p {
       font-size: 1.75rem;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    p {
+      font-size: 2rem;
     }
   }
 `;
@@ -149,7 +168,11 @@ export const AreaAudio = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 30rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 34.375rem;
   }
 `;
@@ -160,7 +183,7 @@ export const TimeAudio = styled.div`
   flex-direction: column;
   gap: 0.25rem;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 0.5rem;
   }
 `;
@@ -175,7 +198,7 @@ export const Bar = styled.div`
     width: 100%;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 0.4375rem;
   }
 `;
@@ -196,7 +219,7 @@ export const Bolinha = styled.div`
   right: 0;
   background-color: ${props => props.theme["gray-700"]};
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 14px;
     height: 14px;
     top: -3px;
@@ -228,7 +251,7 @@ export const TimeArea = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     p {
       font-size: 1.5rem
     }
@@ -312,7 +335,24 @@ export const ButtonsArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    .playBtn {
+      width: 5rem;
+      height: 5rem;
+    }
+
+    .changeBtn {
+      width: 3rem;
+      height: 3rem;
+    }
+
+    .redBtn {
+      width: 2.5rem;
+      height: 2.5rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
     .playBtn {
       width: 5.25rem;
       height: 5.25rem;
@@ -372,11 +412,11 @@ export const ButtonsVArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     button {
       img {
-        width: 1.75rem;
-        height: 1.75rem;
+        width: 2rem;
+        height: 2rem;
       }
     }
   }
@@ -408,7 +448,12 @@ export const BarVolume = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 23rem;
+    height: 2rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 28.125rem;
     height: 2rem;
   }
@@ -423,7 +468,11 @@ export const Div = styled.div`
     width: 0.5rem;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 12px;
+  }
+
+  @media (min-width: 1366px) {
     width: 1.125rem;
   }
 `;

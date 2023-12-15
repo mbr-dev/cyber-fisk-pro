@@ -45,7 +45,7 @@ export const Container = styled.footer`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 1.25rem;
       padding-inline: 2.75rem;
@@ -102,7 +102,17 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    img {
+      width: 72px;
+    }
+
+    .iconFooter {
+      width: 54px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     img {
       width: 86px;
     }

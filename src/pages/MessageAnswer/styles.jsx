@@ -35,8 +35,12 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 1rem;
+    padding-top: 1.5rem;
+  }
+
+  @media (min-width: 1366px) {
     padding-top: 2rem;
   }
 `;
@@ -83,7 +87,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 31.25rem;
     height: 3.625rem;
 
@@ -116,7 +120,7 @@ export const AreaButton = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 7.5rem;
     gap: 2rem;
   }
@@ -172,7 +176,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 15.625rem;
     height: 3.5rem;
     
@@ -248,7 +252,21 @@ export const Text = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 500px;
+
+    img {
+      width: 22px;
+      height: 22px;
+    }
+
+    textarea {
+      width: 25rem;
+      font-size: 1.125rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
     width: 31.25rem;
 
     img {

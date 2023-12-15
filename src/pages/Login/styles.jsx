@@ -75,7 +75,19 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    gap: 16px;
+
+    .logoFisk {
+      width: 232px;
+    }
+
+    .buddyImg {
+      width: 360px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     gap: 20px;
 
     .logoFisk {
@@ -118,7 +130,7 @@ export const FooterBlue = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 20px;
 
     p {
@@ -149,7 +161,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -182,9 +194,13 @@ export const Form = styled.form`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 420px;
     gap: 2rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -228,11 +244,18 @@ export const AreaInput = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    label {
+      padding-left: 1.25rem;
+      font-size: 1.25rem;
+      margin-bottom: 1rem
+    }
+  }
+
+  @media(min-width: 1366px) {
     label {
       padding-left: 1.5rem;
       font-size: 1.5rem;
-      margin-bottom: 1rem
     }
   }
 `;
@@ -308,7 +331,7 @@ export const DivInput = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     img {
       width: 20px;
       margin-top: 1rem;
@@ -320,8 +343,14 @@ export const DivInput = styled.div`
 
     .eyesImg {
       width: 28px;
-      margin-left: 34rem;
+      margin-left: 23rem;
       margin-top: 1.25rem;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    .eyesImg {
+      margin-left: 34rem;
     }
   }
 `;
@@ -373,7 +402,7 @@ export const Input = styled.input`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3.75rem;
     padding-left: 2.625rem;
     font-size: 1.5rem;
@@ -439,7 +468,7 @@ export const SelectTitle = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
     gap: 1rem;
 
@@ -482,7 +511,7 @@ export const SelectUl = styled.ul`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-inline: 2.75rem;
     gap: 1.25rem;
     bottom: -8.75rem;
@@ -509,7 +538,7 @@ export const SelectLi = styled.li`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.5rem;
   }
 `;
@@ -542,10 +571,14 @@ export const AreaButton = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 37.5rem;
+  @media (min-width: 1024px) {
+    width: 450px;
     height: 6rem;
     border-top-width: 4px;
+  }
+
+  @media (min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -602,7 +635,7 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 25rem;
     height: 2.75rem;
 

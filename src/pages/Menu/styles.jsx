@@ -58,7 +58,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 2rem;
   }
 `;
@@ -99,7 +99,7 @@ export const AvatarPe = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     display: block;
     width: 20rem;
   }
@@ -135,7 +135,7 @@ export const BtnC = styled.div`
     }
 }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     top: 2rem;
     right: 2rem;
   }
@@ -193,11 +193,20 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 420px;
     justify-content: center;
     padding-top: 6.25rem;
     gap: 1.5rem;
+
+    p {
+      font-size: 1.5rem;
+      padding-left: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
 
     p {
       font-size: 2rem;
@@ -232,10 +241,14 @@ export const AreaFooter = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 420px;
     height: 6.25rem;
     border-width: 4px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -293,7 +306,7 @@ export const ButtonLogout = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 25rem;
     height: 2.75rem;
 

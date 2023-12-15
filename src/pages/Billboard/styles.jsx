@@ -34,7 +34,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 2.25rem;
     padding-top: 2.25rem;
   }
@@ -91,7 +91,7 @@ export const Div = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 4rem;
     padding-inline: 1rem;
 

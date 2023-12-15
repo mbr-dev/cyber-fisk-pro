@@ -123,7 +123,7 @@ export const Bottom = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     height: 100%;
     padding-top: 1.5rem;
     justify-content: center;
@@ -199,6 +199,15 @@ export const Card = styled.div`
       img {
         width: 32px;
       }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 4rem;
+    height: 4rem;
+
+    img {
+      width: 32px;
     }
   }
 
@@ -291,7 +300,11 @@ export const ItemsCard = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    height: 20rem;
+  }
+
+  @media(min-width: 1366px) {
     height: 23.75rem;
   }
   
@@ -344,7 +357,14 @@ export const CardReward = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    .RoboCard {
+      width: 200px;
+      height: 200px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     .RoboCard {
       width: 250px;
       height: 250px;
@@ -403,11 +423,19 @@ export const DivBlock = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    gap: 8rem;
+  @media(min-width: 1024px) {
+    gap: 6rem;
 
     .cadeadoImg {
       width: 44px;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    gap: 8rem;
+
+    .cadeadoImg {
+      width: 56px;
     }
   }
 `;
@@ -478,7 +506,7 @@ export const DivMoney = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 8rem;
     height: 3rem;
     margin-top: -5rem;

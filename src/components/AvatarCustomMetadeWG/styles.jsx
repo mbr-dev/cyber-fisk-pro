@@ -25,7 +25,12 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 18rem;
+    height: 40rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 18.75rem;
     height: 43.75rem;
   }
@@ -162,10 +167,16 @@ export const Name = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 18rem;
+    height: 3.75rem;
+    bottom: 13rem;
+  }
+
+  @media (min-width: 1366px) {
     width: 18.75rem;
-    height: 3.25rem;
-    bottom: 15.625rem;
+    height: 4rem;
+    bottom: 14.25rem;
 
     p {
       font-size: 2rem;

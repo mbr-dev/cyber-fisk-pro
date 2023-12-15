@@ -121,12 +121,18 @@ export const Middle = styled.section`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 3.125rem;
 
     h2 {
       font-size: 3.25rem;
-      margin-top: -15.625rem;
+      margin-top: -12.625rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    h2 {
+      margin-top: -13rem;
     }
   }
 
@@ -306,7 +312,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 6.25rem;
 
     p {
@@ -393,7 +399,7 @@ export const ButtonRed = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 21.875rem;
     height: 4.5rem;
     gap: 2rem;
@@ -430,8 +436,8 @@ export const Bottom2 = styled.section`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 43.75rem;
+  @media(min-width: 1024px) {
+    width: 550px;
     height: 11.25rem;
     gap: 0.75rem;
     margin-top: 1.25rem;
@@ -441,6 +447,10 @@ export const Bottom2 = styled.section`
       border-bottom-left-radius: 20px;
     }
   }
+
+  @media(min-width: 1366px) {
+    width: 43.75rem;
+  }
 `;
 
 export const LineSeparator = styled.div`
@@ -448,9 +458,13 @@ export const LineSeparator = styled.div`
   height: 1px;
   background-color: ${props => props.theme.white};
 
-  @media (min-width: 1280px) {
-    width: 31.25rem;
+  @media (min-width: 1024px) {
+    width: 25rem;
     height: 2px;
+  }
+
+  @media (min-width: 1366px) {
+    width: 31.25rem;
   }
 `;
 
@@ -482,7 +496,25 @@ export const AreaItem2 = styled.section`
     font-weight: 500;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    gap: 3rem;
+
+    img {
+      width: 44px;
+    }
+
+    span {
+      width: 3rem;
+      height: 3rem;
+      font-size: 1.5rem;
+    }
+
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
     gap: 3.25rem;
 
     img {
@@ -524,7 +556,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 3.125rem;
   }
 `;
@@ -571,10 +603,18 @@ export const Text = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 25rem;
+  @media(min-width: 1024px) {
+    width: 280px;
     height: 11.25rem;
     border-width: 3px;
+    
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    width: 25rem;
     
     p {
       font-size: 1.5rem;

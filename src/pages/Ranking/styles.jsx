@@ -34,7 +34,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-top: 2rem;
     gap: 3.25rem;
   }
@@ -81,7 +81,7 @@ const ButtonRaking = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 9.375rem;
     height: 3.25rem;
     padding: 0;
@@ -185,7 +185,7 @@ export const Carrousel = styled.div`
   width: 100%;
   height: 7.5rem;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 98%;
     height: 10rem;
   }
@@ -226,7 +226,7 @@ export const Position = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     .pNumber {
       width: 40px;
     }
@@ -235,6 +235,18 @@ export const Position = styled.div`
       font-size: 1.5rem;
       top: 1rem;
       left: 0.875rem;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    .pNumber {
+      left: 24px;
+    }
+
+    .numberPosition {
+      font-size: 1.5rem;
+      top: 1rem;
+      left: 36px;
     }
   }
 
@@ -272,7 +284,7 @@ export const PositionCard = styled.div`
   box-shadow: 6px 8px 12px 0px #00000040;
   background-color: #F4F4F4;
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding: 1.25rem;
     border-radius: 12px;
   }
@@ -293,7 +305,7 @@ export const PositionInside = styled.div`
     color: ${props => props.theme.white};
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 16px;
   }
 `;
@@ -316,7 +328,7 @@ export const DivName = styled.div`
     font-weight: 500;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 150px;
 
     p {
@@ -377,7 +389,7 @@ export const TextArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     h2 {
       font-size: 3.25rem;
       margin-bottom: 1rem;
@@ -420,7 +432,6 @@ export const LevelPosition = styled.section`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
-  background-color: red;
   background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme["gray-100"]};
 
   p {
@@ -484,7 +495,7 @@ export const AvatarArea = styled.section`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
     border-width: 2px;

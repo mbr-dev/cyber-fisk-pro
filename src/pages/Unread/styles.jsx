@@ -17,7 +17,7 @@ export const Main = styled.main`
   gap: 1rem;
   padding-top: 1rem;
   background-color: ${props => props.theme["gray-100"]};
-  overflow: scroll;
+  overflow-y: scroll;
 
   @media (max-width: 320px) {
     gap: 0.75rem;
@@ -40,11 +40,15 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     align-items: flex-start;
-    gap: 1.5rem;
+    gap: 20px;
     padding-inline: 4rem;
-    padding-top: 2rem;
+    padding-top: 32px;
+  }
+
+  @media (min-width: 1366px) {
+    gap: 1.5rem;
   }
 `;
 
@@ -112,9 +116,9 @@ export const Div = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 34rem;
-    height: 4rem;
+  @media (min-width: 1024px) {
+    width: 420px;
+    height: 64px;
     padding-right: 0.75rem;
 
     .spanDay {
@@ -122,6 +126,10 @@ export const Div = styled.button`
       padding-inline: 0.75rem;
       font-size: 1rem;
     }
+  }
+
+  @media (min-width: 1366px) {
+    width: 34rem;
   }
 
   @media (min-width: 1440px) {
@@ -180,7 +188,7 @@ export const Text = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding-left: 1rem;
 
     p {
@@ -241,7 +249,7 @@ export const DivImg = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 3rem;
     height: 3rem;
     border-width: 3px;

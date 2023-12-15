@@ -45,7 +45,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 6.25rem;
   }
 `;
@@ -91,7 +91,7 @@ export const HeaderTop = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-inline: 2rem;
 
     .logoFiskD {
@@ -170,7 +170,11 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 800px;
+  }
+
+  @media(min-width: 1366px) {
     width: 68.75rem;
   }
 `;
@@ -208,10 +212,14 @@ export const Left = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 37.5rem;
+  @media(min-width: 1024px) {
+    width: 32rem;
     padding-top: 0;
     gap: 2rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 37.5rem;
   }
 `;
 
@@ -242,7 +250,7 @@ export const Cards = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     gap: 1.5rem;
   }
@@ -325,7 +333,7 @@ export const Card = styled.a`
   }
 
   @media(orientation: landscape) {
-    @media(min-width: 480px) {
+    @media(min-width: 600px) {
       width: 4.5rem;
       height: 4rem;
       border-radius: 10px;
@@ -340,7 +348,20 @@ export const Card = styled.a`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 8rem;
+    height: 8rem;
+
+    p {
+      font-size: 1rem;
+    }
+    
+    img {
+      height: 58px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     width: 8.75rem;
     height: 8.75rem;
 
@@ -425,7 +446,7 @@ export const ButtonDayCh = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     height: 6.25rem;
 
@@ -462,13 +483,12 @@ export const Right = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     scale: 0.8;
-    bottom: -16rem;
+    bottom: -3rem;
   }
 
-  @media(min-width: 1440px) {
-    scale: 0.8;
+  @media(min-width: 1366px) {
     bottom: -16rem;
   }
 `;

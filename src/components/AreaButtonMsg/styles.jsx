@@ -24,9 +24,14 @@ export const Container = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media(min-width: 1024px) {
+    height: 100px;
+    gap: 64px;
+  }
+
+  @media (min-width: 1366px) {
     height: 7.5rem;
-    gap: 2rem;
+    gap: 150px;
   }
 `;
 
@@ -80,12 +85,21 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 15.625rem;
-    height: 3.5rem;
+  @media (min-width: 1024px) {
+    width: 300px;
+    height: 64px;
     
     p {
-      font-size: 1.75rem;
+      font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 400px;
+    height: 72px;
+    
+    p {
+      font-size: 36px;
     }
   }
 `;

@@ -127,6 +127,10 @@ export const Main = styled.main`
     }
   }
 
+  @media(min-width: 1024px) {
+    width: 800px;
+  }
+
   @media(min-width: 1280px) {
     width: 1200px;
   }
@@ -158,7 +162,13 @@ export const BooksArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    p {
+      font-size: 1.5rem;
+    }
+  }
+
+  @media(min-width: 1366px) {
     p {
       font-size: 2rem;
     }
@@ -185,7 +195,11 @@ export const BooksInside = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    height: 10rem;
+  }
+
+  @media (min-width: 1366px) {
     height: 12.5rem;
   }
 `;
@@ -198,7 +212,13 @@ export const BooksImage = styled.div`
     height: 100%;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    img {
+      width: 120px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     img {
       width: 150px;
     }
