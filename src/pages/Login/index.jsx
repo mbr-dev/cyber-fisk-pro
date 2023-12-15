@@ -11,20 +11,21 @@ import { apiQAS } from "../../lib/api";
 import { Mensagens } from "../../utils/Mensagens";
 import { CyberContext } from "../../context/cyber";
 
+import UserImg from "./image/user.png";
 import logoImg from "./image/logo.png";
+import ViewImg from "./image/view.png";
+import HideImg from "./image/hide.png";
+import CadeadoImg from "./image/cadeado.png";
+
 import EuaImg from "../../assets/Eua.svg";
 import Buddy from "../../assets/Buddy.png";
 import SpainImg from "../../assets/Spain.svg";
 import Youtube from "../../assets/Youtube.png";
 import BrazilImg from "../../assets/Brazil.svg";
-import UserImg from "./image/user.png";
-import CadeadoImg from "./image/cadeado.png";
-import HideImg from "./image/hide.png";
-import ViewImg from "./image/view.png";
 import Facebook from "../../assets/Facebook.png";
 import Instagram from "../../assets/Instagram.png";
-import arrowBottomImg from "../../assets/arrowBottom.svg";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
+import arrowBottomImg from "../../assets/arrowBottom.svg";
 
 import { Container, Main, Header, Form, AreaInput, Input, SelectIdioma, SelectTitle, SelectLi, SelectUl, FooterBlue, AreaButton, Button, FooterArea, DivInput } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -149,8 +150,9 @@ export const Login = () => {
   return (
     <Container>
       {loading ? <Loading /> : null}
-      <Header>
-        <img src={bgHeaderImg} alt="" className="bgImg" />
+      <Header style={{
+        backgroundImage: `url("${bgHeaderImg}")`
+      }}>
         <img src={logoImg} alt="Logo do Fisk Pro" className="logoFisk" />
         <img src={Buddy} alt="" className="buddyImg" />
         
