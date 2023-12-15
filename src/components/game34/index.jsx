@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { TrocaAtividade, PointRule, Score, ScoreFinal } from "../../utils/regras";

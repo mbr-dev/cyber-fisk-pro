@@ -23,9 +23,9 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Rewards = () => {
   const navigate = useNavigate();
 
-  const [selecionado, setSelecionado] = useState("Cabecas");
+  const [selected, setSelected] = useState("");
   const [itemSelecionado, setItemSeleciona] = useState([]);
-  const [titulo, setTitulo] = useState("");
+  const [title, setTitle] = useState("");
 
   const [sliderRef] = useKeenSlider({
     initial: 0,
@@ -44,81 +44,80 @@ export const Rewards = () => {
   }
 
   const handleSelecionarItem = (item) => {
-    if (item === "Cabecas") {
+    if (item === "cabecas") {
       const cabecaL = itemsDoAvatar.cabeca.length;
       let tempCabeca = [];
       for (let a = 0; a < cabecaL; a++) {
         tempCabeca.push(itemsDoAvatar.cabeca[a]);
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempCabeca);
-      setTitulo("Cabeça");
-    } else if (item === "Acessorios") {
+      setTitle("Cabeça");
+
+    } else if (item === "acessorios") {
       const acessoriosL = itemsDoAvatar.acessorios.length;
       let tempAcessorios = [];
       for (let a = 0; a < acessoriosL; a++) {
         tempAcessorios.push(itemsDoAvatar.acessorios[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempAcessorios);
-      setTitulo("Acessórios");
-    } else if (item === "Expressao_Robot") {
+      setTitle("Acessórios");
+
+    } else if (item === "face") {
       const faceL = itemsDoAvatar.face.length;
       let tempFace = [];
       for (let a = 0; a < faceL; a++) {
         tempFace.push(itemsDoAvatar.face[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempFace);
-      setTitulo("Expressão Facil");
-    } else if (item === "Bracos") {
+      setTitle("Expressão Facil");
+
+    } else if (item === "bracos") {
       const bracoL = itemsDoAvatar.braco.length;
       let tempBracos = [];
       for (let a = 0; a < bracoL; a++) {
         tempBracos.push(itemsDoAvatar.braco[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempBracos);
-      setTitulo("Braço");
-    } else if (item === "Tronco") {
+      setTitle("Braço");
+
+    } else if (item === "tronco") {
       const troncoL = itemsDoAvatar.tronco.length;
       let tempTronco = [];
       for (let a = 0; a < troncoL; a++) {
         tempTronco.push(itemsDoAvatar.tronco[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempTronco);
-      setTitulo("Corpo");
-    } else if (item === "Pernas") {
+      setTitle("Corpo");
+
+    } else if (item === "pernas") {
       const pernasL = itemsDoAvatar.pernas.length;
       let tempPernas = [];
       for (let a = 0; a < pernasL; a++) {
         tempPernas.push(itemsDoAvatar.pernas[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempPernas);
-      setTitulo("Perna");
-    } else if (item === "Pets") {
+      setTitle("Perna");
+
+    } else if (item === "pets") {
       const petL = itemsDoAvatar.pet.length;
       let tempPet = [];
       for (let a = 0; a < petL; a++) {
         tempPet.push(itemsDoAvatar.pet[a])
       }
-      setSelecionado(item);
+      setSelected(item);
       setItemSeleciona(tempPet);
-      setTitulo("Pet");
+      setTitle("Pet");
     }
   }
 
   useEffect(() => {
-    const cabecaL = itemsDoAvatar.cabeca.length;
-    let tempCabeca = [];
-    for (let a = 0; a < cabecaL; a++) {
-      tempCabeca.push(itemsDoAvatar.cabeca[a])
-    }
-    setSelecionado("Cabecas");
-    setItemSeleciona(tempCabeca);
-    setTitulo("Cabeça");
+    handleSelecionarItem("cabecas");
   }, []);
   
   return (
@@ -146,53 +145,53 @@ export const Rewards = () => {
           </DivDesk>
 
           <Separator>
-            <Card onClick={() => handleSelecionarItem("Cabecas")} style={{
-              backgroundColor: selecionado === "Cabecas" && defaultTheme["red-200"],
-              borderColor: selecionado === "Cabecas" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("cabecas")} style={{
+              backgroundColor: selected === "cabecas" && defaultTheme["red-200"],
+              borderColor: selected === "cabecas" && defaultTheme["gray-700"]
             }} >
               <img src={cabecaImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Tronco")} style={{
-              backgroundColor: selecionado === "Tronco" && defaultTheme["red-200"],
-              borderColor: selecionado === "Tronco" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("tronco")} style={{
+              backgroundColor: selected === "tronco" && defaultTheme["red-200"],
+              borderColor: selected === "tronco" && defaultTheme["gray-700"]
             }} >
               <img src={corpoImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Bracos")} style={{
-              backgroundColor: selecionado === "Bracos" && defaultTheme["red-200"],
-              borderColor: selecionado === "Bracos" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("bracos")} style={{
+              backgroundColor: selected === "bracos" && defaultTheme["red-200"],
+              borderColor: selected === "bracos" && defaultTheme["gray-700"]
             }} >
               <img src={bracosImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Pernas")} style={{
-              backgroundColor: selecionado === "Pernas" && defaultTheme["red-200"],
-              borderColor: selecionado === "Pernas" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("pernas")} style={{
+              backgroundColor: selected === "pernas" && defaultTheme["red-200"],
+              borderColor: selected === "pernas" && defaultTheme["gray-700"]
             }} >
               <img src={pernasImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Expressao_Robot")} style={{
-              backgroundColor: selecionado === "Expressao_Robot" && defaultTheme["red-200"],
-              borderColor: selecionado === "Expressao_Robot" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("face")} style={{
+              backgroundColor: selected === "face" && defaultTheme["red-200"],
+              borderColor: selected === "face" && defaultTheme["gray-700"]
             }} >
               <img src={faceImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Acessorios")} style={{
-              backgroundColor: selecionado === "Acessorios" && defaultTheme["red-200"],
-              borderColor: selecionado === "Acessorios" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("acessorios")} style={{
+              backgroundColor: selected === "acessorios" && defaultTheme["red-200"],
+              borderColor: selected === "acessorios" && defaultTheme["gray-700"]
             }} >
               <img src={oculosImg} alt="" />
             </Card>
-            <Card onClick={() => handleSelecionarItem("Pets")} style={{
-              backgroundColor: selecionado === "Pets" && defaultTheme["red-200"],
-              borderColor: selecionado === "Pets" && defaultTheme["gray-700"]
+            <Card onClick={() => handleSelecionarItem("pets")} style={{
+              backgroundColor: selected === "pets" && defaultTheme["red-200"],
+              borderColor: selected === "pets" && defaultTheme["gray-700"]
             }} >
               <img src={petsImg} alt="" />
             </Card>
           </Separator>
 
-          <Title><p>{titulo}</p></Title>
+          <Title><p>{title}</p></Title>
           {/* o carrousel ñ fica dinamico por isso cada parte tem que ter seu carrousel */}
-          {titulo === "Cabeça" &&
+          {selected === "cabecas" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -200,14 +199,14 @@ export const Rewards = () => {
                     key={index} 
                     className="keen-slider__slide" 
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Acessórios" &&
+          {selected === "acessorios" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -215,14 +214,14 @@ export const Rewards = () => {
                     key={index} 
                     className="keen-slider__slide" 
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Expressão Facil" &&
+          {selected === "face" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -230,14 +229,14 @@ export const Rewards = () => {
                     key={index} 
                     className="keen-slider__slide" 
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Braço" &&
+          {selected === "bracos" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -245,14 +244,14 @@ export const Rewards = () => {
                     key={index}
                     className="keen-slider__slide"
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Corpo" &&
+          {selected === "tronco" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -260,14 +259,14 @@ export const Rewards = () => {
                     key={index}
                     className="keen-slider__slide"
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Perna" &&
+          {selected === "pernas" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -275,14 +274,14 @@ export const Rewards = () => {
                     key={index}
                     className="keen-slider__slide"
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}
             </Bottom>
           }
 
-          {titulo === "Pet" &&
+          {selected === "pets" &&
             <Bottom ref={sliderRef} className="keen-slider">
               {itemSelecionado.map((item, index) => {
                 return (
@@ -290,7 +289,7 @@ export const Rewards = () => {
                     key={index}
                     className="keen-slider__slide"
                   >
-                    <img src={`${URL_FISKPRO}/images/avatar/${selecionado}/${item}.png`} alt="" className="RoboCard" />
+                    <img src={`${URL_FISKPRO}/images/store/${selected}/${item}.png`} alt="" className="RoboCard" />
                   </CardReward>
                 )
               })}

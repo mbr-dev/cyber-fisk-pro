@@ -136,6 +136,7 @@ export const Game21 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
+
     if (blockButton || playAudio) return;
 
     setBlockButton(true);

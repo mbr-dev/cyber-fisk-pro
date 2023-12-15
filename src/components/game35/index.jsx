@@ -85,6 +85,7 @@ export const Game35 = () => {
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
+
     if (playAudio) return;
 
     setBlockButton(true);

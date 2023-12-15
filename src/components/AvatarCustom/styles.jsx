@@ -36,6 +36,11 @@ export const Container = styled.div`
     height: 53.125rem;
     margin-top: -52rem;
   }
+
+  @media (min-width: 1440px) {
+    width: 22rem;
+    height: 60rem;
+  }
 `;
 
 export const Antena = styled.div`

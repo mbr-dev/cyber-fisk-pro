@@ -1,37 +1,1020 @@
 export const cabecaItems = [
-  "Cabeca_1", "Cabeca_2", "Cabeca_3"
+  {
+    id: 0,
+    name: "Cabeca_1",
+    preco: 600,
+    liberado: true
+  },
+  {
+    id: 1,
+    name: "Cabeca_2",
+    preco: 600,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "Cabeca_3",
+    preco: 600,
+    liberado: false
+  }
 ];
 
 export const faceItems = [
-  "Expressao_1", "Expressao_2", "Expressao_3", "Expressao_4", "Expressao_5", "Expressao_6", "Expressao_7", "Expressao_8", "Expressao_9", "Expressao_10", "Expressao_11", "Expressao_Coracao"
+  {
+    id: 0,
+    name: "face_1",
+    preco: 400,
+    liberado: true
+  },
+  {
+    id: 1,
+    name: "face_2",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "face_3",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 3,
+    name: "face_4",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 4,
+    name: "face_5",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 5,
+    name: "face_6",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 6,
+    name: "face_7",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 7,
+    name: "face_8",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 8,
+    name: "face_9",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 9,
+    name: "face_10",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 10,
+    name: "face_11",
+    preco: 400,
+    liberado: false
+  },
+  {
+    id: 11,
+    name: "face_12",
+    preco: 400,
+    liberado: false
+  }
 ];
 
 export const acessorioItems = [
-  "1_oculos_netro", "Antena", "Antena_1", "Antena_2", "Antena_3", "Antena_4", "Antena_Azul", "Antena_Lacinho_laranja", "Antena_Lacinho_roxo", "Antena_Lacinho_Verde", "Antena_Lacinho_vermelho", "Antena_Laranja", "Antena_Rosa", "Antena_Roxo", "Headset_azul", "Headset_laranja", "Headset_roxo", "Headset_Verde", "Headset_vermelho", "Mochila_Vitrine", "Oculos_Azul", "Oculos_colorido", "Oculos_escuro", "Oculos_laranja", "Oculos_Rosa", "Prancheta_1"
+  {
+    id: 0,
+    name: "antena_1",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 1,
+    name: "antena_2",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "antena_3",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 3,
+    name: "antena_4",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 4,
+    name: "antena_5",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 5,
+    name: "antena_6",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 6,
+    name: "antena_7",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 7,
+    name: "antena_8_azul",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 8,
+    name: "antena_8_laranja",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 9,
+    name: "antena_8_rosa",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 10,
+    name: "antena_8_verde",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 11,
+    name: "antena_8_vermelho",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 12,
+    name: "_e_verde",
+    preco: 1200,
+    liberado: false
+  },
+  {
+    id: 13,
+    name: "_e_vermelho",
+    preco: 1200,
+    liberado: false
+  },
+  {
+    id: 14,
+    name: "headset_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 15,
+    name: "headset_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 16,
+    name: "headset_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 17,
+    name: "headset_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 18,
+    name: "headset_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 19,
+    name: "_mochila",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 20,
+    name: "oculos_1_colorido",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 21,
+    name: "oculos_1_escuro",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 22,
+    name: "oculos_1_laranja",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 23,
+    name: "oculos_1_neutro",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 24,
+    name: "oculos_1_rosa",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 25,
+    name: "oculos_1_roxo",
+    preco: 100,
+    liberado: false
+  },
+  {
+    id: 26,
+    name: "orelha_1",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 27,
+    name: "orelha_2",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 28,
+    name: "orelha_3",
+    preco: 200,
+    liberado: false
+  },
 ];
 
 export const troncoItems = [
-  "Tronco_Branco_Modelo_1_Azul", "Tronco_Branco_modelo_1_Com_Mochila_Azul", "Tronco_Branco_modelo_1_Com_Mochila_Laranja", "Tronco_Branco_modelo_1_Com_Mochila_Roxo", "Tronco_Branco_modelo_1_Com_Mochila_Tradicional", "Tronco_Branco_modelo_1_Com_Mochila_Verde", "Tronco_Branco_modelo_1_Com_Mochila_Vermelho", "Tronco_Branco_Modelo_1_Laranja", "Tronco_Branco_Modelo_1_Roxo", "Tronco_Branco_Modelo_1_Tradicional", "Tronco_Branco_Modelo_1_Verde", "Tronco_Branco_Modelo_1_Vermelho", "Tronco_Branco_modelo_2_Azul", "Tronco_Branco_modelo_2_Com_Mochila_Azul", "Tronco_Branco_modelo_2_Com_Mochila_Laranja", "Tronco_Branco_modelo_2_Com_Mochila_Roxo", "Tronco_Branco_modelo_2_Com_Mochila_Tradicional", "Tronco_Branco_modelo_2_Com_Mochila_Verde", "Tronco_Branco_modelo_2_Com_Mochila_Vermelho", "Tronco_Branco_modelo_2_Laranja", "Tronco_Branco_modelo_2_Roxo", "Tronco_Branco_modelo_2_Tradicional", "Tronco_Branco_modelo_2_Verde", "Tronco_Branco_modelo_2_Vermelho", "Tronco_Branco_modelo_3_Azul", "Tronco_Branco_modelo_3_Com_Mochila_Azul", "Tronco_Branco_modelo_3_Com_Mochila_Laranja", "Tronco_Branco_modelo_3_Com_Mochila_Roxo", "Tronco_Branco_modelo_3_Com_Mochila_Tradicional", "Tronco_Branco_modelo_3_Com_Mochila_Verde", "Tronco_Branco_modelo_3_Com_Mochila_Vermelho", "Tronco_Branco_modelo_3_Laranja", "Tronco_Branco_modelo_3_Roxo", "Tronco_Branco_modelo_3_Tradicional", "Tronco_Branco_modelo_3_Verde", "Tronco_Branco_modelo_3_Vermelho", "Tronco_Cinza_Modelo_1_Azul", "Tronco_Cinza_modelo_1_Com_Mochila_Azul", "Tronco_Cinza_modelo_1_Com_Mochila_Laranja", "Tronco_Cinza_modelo_1_Com_Mochila_Roxo", "Tronco_Cinza_modelo_1_Com_Mochila_Tradicional", "Tronco_Cinza_modelo_1_Com_Mochila_Verde", "Tronco_Cinza_modelo_1_Com_Mochila_Vermelho", "Tronco_Cinza_Modelo_1_Laranja", "Tronco_Cinza_Modelo_1_roxo", "Tronco_Cinza_Modelo_1_tradicional", "Tronco_Cinza_Modelo_1_Verde", "Tronco_Cinza_Modelo_1_Vermelho", "Tronco_Cinza_modelo_2_Azul", "Tronco_Cinza_modelo_2_Com_Mochila_Azul", "Tronco_Cinza_modelo_2_Com_Mochila_Laranja", "Tronco_Cinza_modelo_2_Com_Mochila_Roxo", "Tronco_Cinza_modelo_2_Com_Mochila_Tradicional", "Tronco_Cinza_modelo_2_Com_Mochila_Verde", "Tronco_Cinza_modelo_2_Com_Mochila_Vermelho", "Tronco_Cinza_modelo_2_Laranja", "Tronco_Cinza_modelo_2_Roxo", "Tronco_Cinza_modelo_2_Tradicional", "Tronco_Cinza_modelo_2_Verde", "Tronco_Cinza_modelo_2_Vermelho", "Tronco_Cinza_modelo_3_Azul", "Tronco_Cinza_modelo_3_Com_Mochila_Azul", "Tronco_Cinza_modelo_3_Com_Mochila_Laranja", "Tronco_Cinza_modelo_3_Com_Mochila_Roxo", "Tronco_Cinza_modelo_3_Com_Mochila_Verde", "Tronco_Cinza_modelo_3_Com_Mochila_Vermelho", "Tronco_Cinza_modelo_3_Laranja", "Tronco_Cinza_modelo_3_Roxo", "Tronco_Cinza_modelo_3_Tradicional", "Tronco_Cinza_modelo_3_Verde", "Tronco_Cinza_modelo_3_Vermelho" 
+  {
+    id: 0,
+    name: "tronco_1_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 1,
+    name: "tronco_1_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "tronco_1_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 3,
+    name: "tronco_1_tradicional",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 4,
+    name: "tronco_1_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 5,
+    name: "tronco_1_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 6,
+    name: "tronco_2_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 7,
+    name: "tronco_2_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 8,
+    name: "tronco_2_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 9,
+    name: "tronco_2_tradicional",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 10,
+    name: "tronco_2_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 11,
+    name: "tronco_2_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 12,
+    name: "tronco_3_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 13,
+    name: "tronco_3_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 14,
+    name: "tronco_3_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 15,
+    name: "tronco_3_tradicional",
+    preco: 500,
+    liberado: true
+  },
+  {
+    id: 16,
+    name: "tronco_3_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 17,
+    name: "tronco_3_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 18,
+    name: "tronco_4_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 19,
+    name: "tronco_4_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 20,
+    name: "tronco_4_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 21,
+    name: "tronco_4_tradicional",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 22,
+    name: "tronco_4_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 23,
+    name: "tronco_4_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 24,
+    name: "tronco_5_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 25,
+    name: "tronco_5_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 26,
+    name: "tronco_5_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 27,
+    name: "tronco_5_tradicional",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 28,
+    name: "tronco_5_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 29,
+    name: "tronco_5_vermelho",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 30,
+    name: "tronco_6_azul",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 31,
+    name: "tronco_6_laranja",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 32,
+    name: "tronco_6_roxo",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 33,
+    name: "tronco_6_tradicional",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 34,
+    name: "tronco_6_verde",
+    preco: 500,
+    liberado: false
+  },
+  {
+    id: 35,
+    name: "tronco_6_vermelho",
+    preco: 500,
+    liberado: false
+  },
 ];
 
 export const bracosItems = [
-  "Bracos_1_Azul", "Bracos_1_Azul_com_espada_Verde", "Bracos_1_Azul_com_espada_Vermelho", "Bracos_1_Laranja", "Bracos_1_Laranja_com_espada_Verde", "Bracos_1_Laranja_com_espada_Vermelho", "Bracos_1_Roxo", "Bracos_1_Roxo_com_espada_Verde", "Bracos_1_Roxo_com_espada_Vermelho", "Bracos_1_tradicional", "Bracos_1_tradicional_com_espada_Verde", "Bracos_1_tradicional_com_espada_Vermelho", "Bracos_1_Verde", "Bracos_1_Verde_com_espada_Verde", "Bracos_1_Verde_com_espada_Vermelho", "Bracos_1_Vermelho", "Bracos_1_Vermelho_com_espada_Verde", "Bracos_1_Vermelho_com_espada_Vermelho", "Bracos_4_Azul", "Bracos_4_com_Espada_Verde_Azul", "Bracos_4_com_Espada_Verde_Laranja", "Bracos_4_com_Espada_Verde_Roxo", "Bracos_4_com_Espada_Verde_Tradicional", "Bracos_4_com_Espada_Verde_Verde", "Bracos_4_com_Espada_Verde_Vermelho", "Bracos_4_com_Espada_Vermelha_Azul", "Bracos_4_com_Espada_Vermelha_Laranja", "Bracos_4_com_Espada_Vermelha_Roxo", "Bracos_4_com_Espada_Vermelha_Tradicional", "Bracos_4_com_Espada_Vermelha_Verde", "Bracos_4_Laranja", "Bracos_4_Roxo", "Bracos_4_Tradicional", "Bracos_4_Verde", "Bracos_4_Vermelho", "Bracos_5_Azul", "Bracos_5_Com_espada_Verde_Azul", "Bracos_5_Com_espada_Verde_Laranja", "Bracos_5_Com_espada_Verde_Roxo", "Bracos_5_Com_espada_Verde_Verde", "Bracos_5_Com_espada_Verde_Vermelho", "Bracos_5_Com_espada_vermelha_Azul", "Bracos_5_Com_espada_vermelha_Laranja", "Bracos_5_Com_espada_vermelha_Verde", "Bracos_5_Com_espada_vermelha_Vermelho", "Bracos_5_Com_espadas_vermelha_Roxo", "Bracos_5_Laranja", "Bracos_5_Roxo", "Bracos_5_Tradicional", "Bracos_5_verde", "Bracos_5_Vermelho", "Bracos_modelo_1", "Bracos_modelo_1_1", "Bracos_modelo_1_Com_Sabre_Verde", "Bracos_modelo_1_Com_Sabre_Vermelha", "Bracos_modelo_2", "Bracos_modelo_2_com_espada_vermelha", "Bracos_modelo_2_com_espada_vermelha_2", "Bracos_4_com_Espada_Vermelha_Vermelho"
+  {
+    id: 0,
+    name: "braco_1",
+    preco: 200,
+    liberado: true
+  },
+  {
+    id: 1,
+    name: "braco_2",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "braco_2_1",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 3,
+    name: "braco_3_azul",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 4,
+    name: "braco_3_laranja",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 5,
+    name: "braco_3_roxo",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 6,
+    name: "braco_3_tradiconal",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 7,
+    name: "braco_3_verde",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 8,
+    name: "braco_3_vermelho",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 9,
+    name: "braco_4_azul",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 10,
+    name: "braco_4_laranja",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 11,
+    name: "braco_4_roxo",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 12,
+    name: "braco_4_tradicional",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 13,
+    name: "braco_4_verde",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 14,
+    name: "braco_4_vermelho",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 15,
+    name: "braco_5_azul",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 16,
+    name: "braco_5_laranja",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 17,
+    name: "braco_5_roxo",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 18,
+    name: "braco_5_tradicional",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 19,
+    name: "braco_5_verde",
+    preco: 200,
+    liberado: false
+  },
+  {
+    id: 20,
+    name: "braco_5_vermelho",
+    preco: 200,
+    liberado: false
+  }
 ];
 
 export const pernasItems = [
-  "Flutuante_8_Azul", "Flutuante_8_Laranja", "Flutuante_8_Roxo", "Flutuante_8_Verde", "Flutuante_8_Vermelho", "Perna_Cinza_LIsa", "Pernas Branco_1_Vermelho", "Pernas_2_Azul", "Pernas_2_Laranja", "Pernas_2_LIsa", "Pernas_2_Roxo", "Pernas_2_Verde", "Pernas_2_Vermelho", "Pernas_3_lisa", "Pernas_3_Tenis_Azul", "Pernas_3_Tenis_laranja", "Pernas_3_Tenis_Roxo", "Pernas_3_Tenis_tradicional", "Pernas_3_Tenis_Verde", "Pernas_3_Tenis_Vermelho", "Pernas_4_Azul", "Pernas_4_Laranja", "Pernas_4_Roxo", "Pernas_4_tradicional", "Pernas_4_Verde", "Pernas_4_Vermelho", "Pernas_6_Azul", "Pernas_6_Laranja", "Pernas_6_Roxo", "Pernas_6_Tradicional", "Pernas_6_Verde", "Pernas_6_Vermelho", "Pernas_7_Azul", "Pernas_7_Laranja", "Pernas_7_Lisas", "Pernas_7_Roxo", "Pernas_7_Verde", "Pernas_7_Vermelho", "Pernas_8_tenis_azul", "Pernas_8_tenis_laranja", "Pernas_8_tenis_roxo", "Pernas_8_tenis_tradicional", "Pernas_8_tenis_verde", "Pernas_8_tenis_vermelho", "Pernas_Branco_1_Azul", "Pernas_Branco_1_Laranja", "Pernas_Branco_1_Roxo", "Pernas_Branco_1_Tradicional", "Pernas_Branco_1_Verde", "Pernas_Branco_Lisa", "Pernas_Cinza_1_Azul", "Pernas_Cinza_1_Laranja", "Pernas_Cinza_1_Roxo", "Pernas_Cinza_1_Tradicional", "Pernas_Cinza_1_Verde", "Pernas_Cinza_1_Vermelho", "Roda_5_Azul", "Roda_5_Laranja", "Roda_5_Roxo", "Roda_5_Tradicional", "Roda_5_Verde", "Roda_5_Vermelho"
+  {
+    id: 0,
+    name: "perna_1_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 1,
+    name: "perna_1_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 2,
+    name: "perna_1_liso",
+    preco: 300,
+    liberado: true
+  },
+  {
+    id: 3,
+    name: "perna_1_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 4,
+    name: "perna_1_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 5,
+    name: "perna_1_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 6,
+    name: "perna_1_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 7,
+    name: "perna_2_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 8,
+    name: "perna_2_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 9,
+    name: "perna_2_liso",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 10,
+    name: "perna_2_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 11,
+    name: "perna_2_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 12,
+    name: "perna_2_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 13,
+    name: "perna_2_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 14,
+    name: "perna_3_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 15,
+    name: "perna_3_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 16,
+    name: "perna_3_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 17,
+    name: "perna_3_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 18,
+    name: "perna_3_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 19,
+    name: "perna_3_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 20,
+    name: "perna_4_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 21,
+    name: "perna_4_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 22,
+    name: "perna_4_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 23,
+    name: "perna_4_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 24,
+    name: "perna_4_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 25,
+    name: "perna_4_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 26,
+    name: "perna_5_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 27,
+    name: "perna_5_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 28,
+    name: "perna_5_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 29,
+    name: "perna_5_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 30,
+    name: "perna_5_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 31,
+    name: "perna_5_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 32,
+    name: "perna_6_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 33,
+    name: "perna_6_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 34,
+    name: "perna_6_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 35,
+    name: "perna_6_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 36,
+    name: "perna_6_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 37,
+    name: "perna_6_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 38,
+    name: "perna_7_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 39,
+    name: "perna_7_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 40,
+    name: "perna_7_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 41,
+    name: "perna_7_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 42,
+    name: "perna_7_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 43,
+    name: "perna_7_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 44,
+    name: "perna_8_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 45,
+    name: "perna_8_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 46,
+    name: "perna_8_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 47,
+    name: "perna_8_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 48,
+    name: "perna_8_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 49,
+    name: "perna_8_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 50,
+    name: "perna_9_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 51,
+    name: "perna_9_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 52,
+    name: "perna_9_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 53,
+    name: "perna_9_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 54,
+    name: "perna_9_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 55,
+    name: "perna_9_vermelho",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 56,
+    name: "perna_10_azul",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 57,
+    name: "perna_10_laranja",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 58,
+    name: "perna_10_roxo",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 59,
+    name: "perna_10_tradicional",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 60,
+    name: "perna_10_verde",
+    preco: 300,
+    liberado: false
+  },
+  {
+    id: 61,
+    name: "perna_10_vermelho",
+    preco: 300,
+    liberado: false
+  },
 ];
 
 export const petItems = [
-  "Robotcat", "Robotdog"
+  {
+    id: 0,
+    name: "Robot_cat",
+    preco: 1200,
+    liberado: false
+  },
+  {
+    id: 1,
+    name: "Robot_dog",
+    preco: 1200,
+    liberado: false
+  },
 ];
 
 export const itemsDoAvatar = {
-  cabeca: ["Cabeca_1", "Cabeca_2", "Cabeca_3"],
-  face: ["Expressao_1", "Expressao_2", "Expressao_3", "Expressao_4"],
-  acessorios: ["Antena_Lacinho_roxo", "Antena_Lacinho_Verde", "Antena_Lacinho_vermelho", "Antena_Laranja", "Antena_Rosa", "Antena_Roxo", "Headset_azul", "Headset_laranja", "Headset_roxo", "Headset_Verde", "Oculos_Azul", "Oculos_colorido", "Oculos_escuro", "Oculos_laranja"],
-  tronco: ["Tronco_Branco_modelo_1_Com_Mochila_Verde", "Tronco_Branco_modelo_1_Com_Mochila_Vermelho", "Tronco_Branco_Modelo_1_Laranja", "Tronco_Branco_Modelo_1_Roxo", "Tronco_Branco_Modelo_1_Tradicional"],
-  braco: ["Bracos_5_verde", "Bracos_5_Vermelho", "Bracos_modelo_1", "Bracos_modelo_1_1", "Bracos_modelo_1_Com_Sabre_Verde", "Bracos_modelo_1_Com_Sabre_Vermelha", "Bracos_modelo_2", "Bracos_modelo_2_com_espada_vermelha", "Bracos_modelo_2_com_espada_vermelha_2"],
-  pernas: ["Pernas_4_Azul", "Pernas_Branco_1_Tradicional", "Pernas_Branco_1_Verde", "Pernas_Branco_Lisa", "Pernas_Cinza_1_Azul", "Pernas_Cinza_1_Laranja", "Pernas_Cinza_1_Roxo", "Pernas_Cinza_1_Tradicional", "Pernas_Cinza_1_Verde", "Pernas_Cinza_1_Vermelho", "Roda_5_Azul", "Roda_5_Laranja", "Roda_5_Roxo", "Roda_5_Tradicional", "Roda_5_Verde", "Roda_5_Vermelho"],
-  pet: ["Robotcat"]
+  cabeca: ["Cabeca_1"],
+  face: ["face_1"],
+  acessorios: [],
+  tronco: ["tronco_3_tradicional"],
+  braco: ["braco_1"],
+  pernas: ["perna_1_liso"],
+  pet: []
 }

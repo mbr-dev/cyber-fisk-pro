@@ -20,8 +20,9 @@ export function HeaderLesson({ numStart, numEnd, superTaskEnd, superTaskStart, t
 
   return(
     <Container>
-      <Main>
-      <img src={bgHeader} alt="" className="bgImg" />
+      <Main style={{
+        backgroundImage: `url("${bgHeader}")`
+      }}>
         <Icons>
           {superTaskStart ?
             <img src={iconSuper} alt="iconStart" style={{ marginTop: "-0.75rem"}} />

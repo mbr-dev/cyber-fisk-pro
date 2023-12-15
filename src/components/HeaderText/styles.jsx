@@ -11,15 +11,8 @@ export const Container = styled.header`
   border-end-start-radius: 18px;
   overflow: hidden;
   position: relative;
-
-  .bgImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
   
   p {
     font-size: 1.5rem;

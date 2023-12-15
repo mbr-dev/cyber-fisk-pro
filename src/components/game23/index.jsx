@@ -3,7 +3,7 @@ import { useState, useEffect, useContext, useCallback } from "react";
 
 import { Loading } from "../Loading";
 import { SubTitleLesson } from "../subTitleLesson";
-import { SubTitleLessonAudio } from "../subTitleLessonAudio";
+import { SubTitleLessonAudio } from "../SubTitleLessonAudio";
 
 import { URL_FISKPRO } from "../../config/infos";
 import { LessonContext } from "../../context/lesson";
@@ -82,6 +82,7 @@ export const Game23 = () => {
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
+
     if (playAudio) return;
 
     let tempWord = text.trim().toLowerCase();

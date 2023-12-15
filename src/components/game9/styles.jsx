@@ -15,23 +15,28 @@ export const Main = styled.main`
   justify-content: center;
   align-items: center;
   gap: 1rem;
+  margin-top: 1rem;
 
   @media(max-width: 320px) {
     gap: 0.5rem;
+    margin-top: 0.5rem;
   }
 
   @media (min-width: 768px) {
-    gap: 2rem;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       gap: 0.5rem;
+      margin-top: 0.5rem;
     }
   }
 
   @media (min-width: 1280px) {
-    gap: 2rem;
+    gap: 1rem;
+    margin-top: 1rem;
   }
 `;
 
@@ -88,9 +93,11 @@ export const Select = styled.select`
   height: 1.5rem;
   margin-left: 0.5rem;
   margin-right: 0.5rem;
+  padding-inline: 0.5rem;
   box-shadow: 0px 4px 10px 0px #00000033;
 
   option {
+    font-size: 1rem;
     font-weight: 500;
     border: 0;
   }
@@ -102,18 +109,19 @@ export const Select = styled.select`
   }
 
   @media(min-width: 768px) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     height: 2.5rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       height: 1.5rem;
+      font-size: 1rem;
     }
   }
 
   @media(min-width: 1280px) {
-    font-size: 1.25rem;
+    font-size: 1.5rem;
     height: 2rem;
   }
 `;

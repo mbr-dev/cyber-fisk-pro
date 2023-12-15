@@ -1,4 +1,5 @@
 import { useNavigate } from "react-router-dom";
+import { useState } from "react";
 
 import { HeaderText } from "../../components/HeaderText";
 import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
@@ -14,6 +15,8 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Messages = () => {
   const navigate = useNavigate();
+
+  const [userRule, setUserRule] = useState("Aluno");
 
   const handleUnread = () => {
     navigate("/Unread");
@@ -64,12 +67,14 @@ export const Messages = () => {
             <img src={FolderImg} alt="" />
           </DivImg>
         </Div>
-        <Div onClick={handleCompose} className="composeBtn">
-          <p>Compose</p>
-          <DivImg style={{ borderColor: defaultTheme["red-200"] }}>
-            <img src={PlusImg} alt="" />
-          </DivImg>
-        </Div>
+        {(userRule === "Professor" || userRule === "Admin") &&
+          <Div onClick={handleCompose} className="composeBtn">
+            <p>Compose</p>
+            <DivImg style={{ borderColor: defaultTheme["red-200"] }}>
+              <img src={PlusImg} alt="" />
+            </DivImg>
+          </Div>
+        }
       </Main>
 
       <AreaFooterFullBtn title="Billboard" rota="/Billboard" />

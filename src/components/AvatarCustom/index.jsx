@@ -7,7 +7,7 @@ import { CyberContext } from "../../context/cyber";
 import { Container, Bracos, Cabeca, Face, Pernas, Tronco , Antena, Oculos, Name, Pet } from "./styles";
 
 export const AvatarCustom = ({ hasName, avatar }) => {
-  const { acessorios, cabeca, face, bracos, tronco, pernas, pets } = useContext(CyberContext);
+  const { acessorios, cabeca, face, bracos, tronco, pernas, pets, hasSword, hasBag } = useContext(CyberContext);
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -25,39 +25,47 @@ export const AvatarCustom = ({ hasName, avatar }) => {
     }}>
       {acessorios.chapeu !== null &&
         <Antena>
-          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.chapeu}.png`} alt="Acessórios" />
+          <img src={`${URL_FISKPRO}/images/avatar/acessorios/${acessorios.chapeu}.png`} alt="" />
         </Antena>
       }
 
       <Cabeca>
-        <img src={`${URL_FISKPRO}/images/avatar/Cabecas/${cabeca}.png`} alt="Cabeça" />
+        <img src={`${URL_FISKPRO}/images/avatar/cabecas/${cabeca}.png`} alt="" />
       </Cabeca>
 
       <Face>
-        <img src={`${URL_FISKPRO}/images/avatar/Expressao_Robot/${face}.png`} alt="Expressão facial" />
+        <img src={`${URL_FISKPRO}/images/avatar/face/${face}.png`} alt="Expressão facial" />
       </Face>
 
       {acessorios.oculos !== null &&
         <Oculos>
-          <img src={`${URL_FISKPRO}/images/avatar/Acessorios/${acessorios.oculos}.png`} alt="Oculos" />
+          <img src={`${URL_FISKPRO}/images/avatar/acessorios/${acessorios.oculos}.png`} alt="" />
         </Oculos>
       }
 
       <Bracos>
-        <img src={`${URL_FISKPRO}/images/avatar/Bracos/${bracos}.png`} alt="Braços" />
+        {hasSword ? 
+          <img src={`${URL_FISKPRO}/images/avatar/bracos_espada/${bracos}.png`} alt="" />
+          :
+          <img src={`${URL_FISKPRO}/images/avatar/bracos/${bracos}.png`} alt="" />
+        }
       </Bracos>
 
       <Tronco>
-        <img src={`${URL_FISKPRO}/images/avatar/Tronco/${tronco}.png`} alt="Tronco" />
+        {hasBag ? 
+          <img src={`${URL_FISKPRO}/images/avatar/tronco_mochila/${tronco}.png`} alt="" />
+          :  
+          <img src={`${URL_FISKPRO}/images/avatar/tronco/${tronco}.png`} alt="" />
+        }
       </Tronco>
 
       <Pernas>
-        <img src={`${URL_FISKPRO}/images/avatar/Pernas/${pernas}.png`} alt="Pernas" />
+        <img src={`${URL_FISKPRO}/images/avatar/pernas/${pernas}.png`} alt="" />
       </Pernas>
 
       {pets !== null &&
         <Pet>
-          <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="Pernas" />
+          <img src={`${URL_FISKPRO}/images/avatar/pets/${pets}.png`} alt="" />
         </Pet>
       }
 

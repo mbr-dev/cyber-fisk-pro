@@ -1,7 +1,13 @@
 import styled from "styled-components";
-import * as Dialog from "@radix-ui/react-dialog";
 
-export const Overlay = styled(Dialog.Overlay)`
+export const Container = styled.div`
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  z-index: 1000;
+`;
+
+export const Overlay = styled.div`
   position: fixed;
   width: 100vw;
   height: 100vh;
@@ -10,7 +16,7 @@ export const Overlay = styled(Dialog.Overlay)`
   background-color: rgba(0, 0, 0, 0.75);
 `;
 
-export const Content = styled(Dialog.Content)`
+export const Content = styled.div`
   width: 21rem;
   border-radius: 8px;
   display: flex;
@@ -40,7 +46,7 @@ export const Content = styled(Dialog.Content)`
   }
 `;
 
-export const Close = styled(Dialog.Close)`
+export const Close = styled.div`
   all: unset;
   position: absolute;
   width: 2rem;
@@ -52,6 +58,7 @@ export const Close = styled(Dialog.Close)`
   right: -0.75rem;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
+  cursor: pointer;
 
   img {
     width: 18px;
@@ -80,7 +87,7 @@ export const Close = styled(Dialog.Close)`
   }
 `;
 
-export const CloseNo = styled(Dialog.Close)`
+export const CloseNo = styled.div`
   all: unset;
   width: 120px;
   height: 2rem;
@@ -92,6 +99,7 @@ export const CloseNo = styled(Dialog.Close)`
   border: 2px solid ${props => props.theme["red-300"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  cursor: pointer;
 
   @media(max-width: 320px) {
     height: 1.75rem;
@@ -183,7 +191,7 @@ export const Div = styled.div`
   }
 `;
 
-export const Button = styled.button`
+export const Button = styled.div`
   all: unset;
   width: 120px;
   height: 2rem;
@@ -195,6 +203,7 @@ export const Button = styled.button`
   border: 2px solid ${props => props.theme["green-700"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  cursor: pointer;
 
   @media(max-width: 320px) {
     height: 1.75rem;

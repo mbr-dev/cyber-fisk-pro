@@ -87,6 +87,7 @@ export const Game37 = () => {
 
   const handleVerify = (event) => {
     event.preventDefault();
+
     if (blockButton) return;
 
     setBlockButton(true);

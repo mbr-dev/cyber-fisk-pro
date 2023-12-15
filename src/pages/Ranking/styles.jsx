@@ -420,17 +420,23 @@ export const LevelPosition = styled.section`
   align-items: center;
   justify-content: space-between;
   padding: 1rem 2rem;
+  background-color: red;
   background-color: ${props => props.$selected ? props.theme["red-100"] : props.theme["gray-100"]};
 
   p {
     font-size: 1.25rem;
     font-weight: bold;
     color: ${props => props.theme["red-200"]};
+    text-align: left;
     white-space: nowrap;
   }
 
+  .pXp {
+    width: 5rem;
+  }
+
   span {
-    width: 6rem;
+    width: 8rem;
     font-weight: 500;
     white-space: nowrap;
     overflow: hidden;

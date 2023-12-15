@@ -77,11 +77,11 @@ export const Game16 = () => {
   }
 
   const handleVerify = (event) => {
+    event.preventDefault();
+
     if (blockButton) return;
 
     setBlockButton(true);
-
-    event.preventDefault();
 
     let tempWord = text;
     let tempRightPoints;
