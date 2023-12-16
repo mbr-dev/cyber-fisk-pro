@@ -10,8 +10,7 @@ export const Overlay = styled(Dialog.Overlay)`
 `;
 
 export const Content = styled(Dialog.Content)`
-  width: 21rem;
-  //height: 27rem;
+  width: 300px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -20,39 +19,36 @@ export const Content = styled(Dialog.Content)`
   position: fixed;
   top: 50%;
   left: 50%;
-  padding-bottom: 1rem;
+  padding-bottom: 16px;
   transform: translate(-50%, -50%);
 
   @media(max-width: 320px) {
-    width: 18rem;
-    //height: 23,75rem;
+    width: 250px;
+    padding-bottom: 10px;
   }
 
   @media(min-width: 768px) {
-    width: 28rem;
-    //height: 35rem;
+    width: 500px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 31rem;
-      padding-bottom: 0rem;
-     // height: 17.5rem;
+      width: 400px;
+      padding-bottom: 10px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 38rem;
-    padding-bottom: 0.5rem;
-    //height: 29rem;
+    width: 600px;
+    padding-bottom: 16px;
   }
 `;
 
 export const Close = styled(Dialog.Close)`
   all: unset;
   position: absolute;
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -62,49 +58,49 @@ export const Close = styled(Dialog.Close)`
   border-radius: 9999px;
 
   img {
-    width: 20px;
+    width: 16px;
   }
 
   @media(max-width: 320px) {
-    width: 1.5rem;
-    height: 1.5rem;
-    top: -0.5rem;
-    right: -0.5rem;
+    width: 28px;
+    height: 28px;
+    top: -12px;
+    right: -12px;
 
     img {
-      width: 16px;
+      width: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 4rem;
-    height: 4rem;
-    top: -1.875rem;
-    right: -1.875rem;
+    width: 52px;
+    height: 52px;
+    top: -26px;
+    right: -26px;
 
     img {
-      width: 32px;
+      width: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 2rem;
-      height: 2rem;
-      top: -1rem;
-      right: -1rem;
+      width: 28px;
+    height: 28px;
+    top: -12px;
+    right: -12px;
 
-      img {
-        width: 16px;
-      }
+    img {
+      width: 14px;
+    }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 3rem;
-    height: 3rem;
-    top: -1.25rem;
-    right: -1.25rem;
+    width: 52px;
+    height: 52px;
+    top: -26px;
+    right: -26px;
 
     img {
       width: 24px;
@@ -114,7 +110,7 @@ export const Close = styled(Dialog.Close)`
 
 export const Header = styled.header`
   width: 100%;
-  height: 3.625rem;
+  padding-block: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -124,71 +120,85 @@ export const Header = styled.header`
   border-end-start-radius: 8px;
 
   p {
-    font-size: 1.5rem;
+    font-size: 20px;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
+    padding-block: 6px;
+
     p {
-     font-size: 1.125rem;
+     font-size: 16px;
     }
   }
 
   @media(min-width: 768px) {
-    height: 4.5rem;
+    padding-block: 10px;
 
     p {
-      font-size: 2rem;
+      font-size: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 2.5rem;
+      padding-block: 6px;
 
       p {
-        font-size: 1rem;
+      font-size: 16px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    height: 4rem;
+    padding-block: 10px;
 
     p {
-      font-size:1.5rem;
+      font-size: 28px;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    border-end-end-radius: 16px;
+    border-end-start-radius: 16px;
+    p {
+      font-size: 32px;
     }
   }
 `;
 
 export const Main = styled.main`
-  width: 17.5rem;
+  width: 250px;
   height: 100%;
   text-align: center;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 0.5rem;
-
+  gap: 12px;
+  margin-top: 16px;
+  
   @media(max-width: 320px) {
-    width: 15.625rem;
+    width: 200px;
+    margin-top: 8px;
+    gap: 6px;
   }
 
   @media(min-width: 768px) {
-    width: 25rem;
+    width: 400px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 28rem;
-      gap: 0.5rem;
+      width: 350px;
+      margin-top: 8px;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 34rem;
-    gap: 1rem;
+    width: 520px;
+    margin-top: 16px;
+    gap: 16px;
   }
 `;
 
@@ -196,19 +206,232 @@ export const Top = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 12px;
+
+  @media(max-width: 320px) {
+    gap: 6px
+  }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 28rem;
       flex-direction: row;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 34rem;
     justify-content: flex-start;
     align-items: center;
+  }
+`;
+
+export const DivInside = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      flex-direction: column;
+      gap: 6px;
+    }
+  }
+  
+  @media(min-width: 1024px) {
+    gap: 16px;
+  }
+`;
+
+export const Div = styled.div`
+  width: 108px;
+  display: flex;
+  align-items: flex-start;
+  flex-direction: column;
+  gap: 4px;
+
+  p {
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding-left: 10px;
+  }
+
+  .inputDate {
+    width: 100%;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    border: 2px solid ${props => props.theme["gray-200"]};
+    font-size: 12px;
+    padding-inline: 4px;
+    color: ${props => props.theme["gray-400"]};
+  }
+
+  @media(max-width: 320px) {
+    width: 86px;
+
+    p {
+      padding-left: 6px;
+      font-size: 12px;
+    }
+
+    .inputDate {
+      height: 36px;
+      padding-inline: 0px;
+      font-size: 10px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: 180px;
+
+    p {
+      font-size: 20px;
+      padding-left: 1rem;
+    }
+
+    .inputDate {
+      height: 52px;
+      font-size: 18px;
+      padding-inline: 8px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 100px;
+
+      p {
+        padding-left: 6px;
+        font-size: 12px;
+      }
+
+      .inputDate {
+        height: 32px;
+        font-size: 10px;
+        padding-inline: 4px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 180px;
+
+    p {
+      font-size: 20px;
+      padding-left: 1rem;
+    }
+
+    .inputDate {
+      height: 52px;
+      font-size: 18px;
+      padding-inline: 8px;
+    }
+  }
+`;
+
+export const DivFull = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 4px;
+
+  p {
+    font-weight: 500;
+    font-size: 0.875rem;
+    padding-left: 10px;
+  }
+
+  @media(max-width: 320px) {
+    p {
+      padding-left: 6px;
+      font-size: 12px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    p {
+      font-size: 20px;
+      padding-left: 1rem;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      p {
+        padding-left: 6px;
+        font-size: 12px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    p {
+      font-size: 20px;
+      padding-left: 1rem;
+    }
+  }
+`;
+
+export const Input = styled.input`
+  width: 100%;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  border-radius: 8px;
+  border: 2px solid ${props => props.theme["gray-200"]};
+  font-size: 14px;
+  padding-left: 10px;
+  
+  &::placeholder {
+    color: ${props => props.theme["gray-100"]};
+  }
+
+  @media(max-width: 320px) {
+    height: 36px;
+    font-size: 12px;
+  }
+
+  @media(min-width: 768px) {
+    height: 52px;
+    font-size: 20px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      height: 32px;
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 100%;
+    height: 52px;
+    font-size: 1.25rem;
+  }
+`;
+
+export const DivInside2 = styled.div`
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+
+  @media(max-width: 320px) {
+    gap: 6px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 700px;
+      gap: 6px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 700px;
+    gap: 16px;
   }
 `;
 
@@ -216,275 +439,143 @@ export const DivCheckRow = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
-
-  @media(min-width: 1024px) {
-    gap: 1rem;
-  }
-`;
-
-export const DivInside = styled.div`
-  display: flex;
-  gap: 1rem;
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      flex-direction: column;
-      gap: 0.5rem;
-    }
-  }
-  
-  @media(min-width: 1024px) {
-    gap: 1rem;
-  }
-`;
-
-export const DivInside2 = styled.div`
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      gap: 0.5rem;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    gap: 1rem;
-  }
-`;
-
-export const Div = styled.div`
-  width: 100%;
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 0.25rem;
-  text-align: left;
-
-  .inputDate {
-    all: unset;
-    width: 7.5rem;
-    height: 2.25rem;
-    display: flex;
-    align-items: center;
-    border-radius: 8px;
-    border: 2px solid ${props => props.theme["gray-200"]};
-    font-size: 0.875rem;
-    padding-left: 0.5rem;
-    color: ${props => props.theme["gray-400"]};
-  }
-
-  p {
-    font-weight: 500;
-    font-size: 0.875rem;
-    padding-left: 1rem;
-  }
+  gap: 8px;
 
   @media(max-width: 320px) {
-    p {
-      padding-left: 0.75rem;
-    }
-
-    .inputDate {
-      width: 6.5rem;
-      height: 2rem;
-      font-size: 0.75rem;
-    }
+    gap: 6px;
   }
 
   @media(min-width: 768px) {
-    p {
-      font-size: 1.5rem;
-      padding-left: 1rem;
-    }
-
-    .inputDate {
-      width: 10.75rem;
-      height: 3rem;
-      font-size: 1.125rem;
-    }
+    gap: 12px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      .inputDate {
-        width: 7.5rem;
-        height: 2rem;
-        font-size: 0.75rem;
-      }
-
-      p {
-        font-size: 0.875rem;
-        padding-left: 0.75rem;
-      }
+      gap: 6px;
     }
   }
 
   @media(min-width: 1024px) {
-    p {
-      font-size: 1.5rem;
-      padding-left: 1rem;
-    }
-
-    .inputDate {
-      width: 9.5rem;
-      height: 3rem;
-      font-size: 1.25rem;
-    }
-  }
-`;
-
-export const Input = styled.input`
-  all: unset;
-  width: 17.5rem;
-  height: 2.25rem;
-  display: flex;
-  align-items: center;
-  border-radius: 8px;
-  border: 2px solid ${props => props.theme["gray-200"]};
-  font-size: 0.875rem;
-  
-  &::placeholder {
-    color: ${props => props.theme["gray-100"]};
-  }
-
-  @media(max-width: 320px) {
-    width: 15rem;
-    height: 2rem;
-    font-size: 0.875rem;
-  }
-
-  @media(min-width: 768px) {
-    width: 24.5rem;
-    height: 3rem;
-    font-size: 1.25rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 18.75rem;
-      height: 2rem;
-      font-size: 0.875rem;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    width: 22rem;
-    height: 3rem;
-    font-size: 1.25rem;
+    gap: 12px;
   }
 `;
 
 export const Select = styled.div`
-  width: 17.5rem;
+  width: 100%;
   border-top-right-radius: 8px;
   border-top-left-radius: 8px;
   overflow: hidden;
-
-  @media(max-width: 320px) {
-    width: 15rem;
-  }
-
-  @media(min-width: 768px) {
-    width: 24.5rem;
-  }
-
-  @media(orientation: landscape) {
-    @media (min-width: 600px) {
-      width: 19rem;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    width: 22rem;
-  }
 `;
 
 export const SelectTitle = styled.div`
   width: 100%;
-  height: 2.625rem;
+  height: 42px;
   display: flex;
   position: relative;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 0.5rem;
+  padding-inline: 6px;
   border: 2px solid ${props => props.theme["gray-200"]};
   border-radius: 8px;
   background-color: ${props => props.theme.white};
   color: ${props => props.theme["gray-700"]};
 
   p {
-    font-size: 1.125rem;
+    font-size: 16px;
     color: ${props => props.theme["gray-400"]};
   }
 
   img {
-    width: 18px;
+    width: 16px;
   }
 
   @media(max-width: 320px) {
-    height: 2.25rem;
+    height: 36px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
+    }
+
+    img {
+      width: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    height: 3rem;
+    height: 52px;
+    padding-inline: 10px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 22px;
+    }
+
+    img {
+      width: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 2.25rem;
+      height: 36px;
+      padding-inline: 6px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
+      }
+
+      img {
+        width: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    height: 3rem;
+    height: 52px;
+    padding-inline: 10px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 22px;
+    }
+
+    img {
+      width: 20px;
     }
   }
 `;
 
 export const SelectUl = styled.ul`
-  width: 17.5rem;
+  width: 250px;
   position: absolute;
-  z-index: 100;
-  padding: 8px;
+  z-index: 10;
   display: flex;
   flex-direction: column;
   align-items: flex-start;
   border-bottom-right-radius: 8px;
   border-bottom-left-radius: 8px;
-  padding-inline: 1.125rem;
-  gap: 0.75rem;
+  padding: 8px 16px;
+  gap: 12px;
   background-color: ${props => props.theme["gray-200"]};
 
+  @media(max-width: 320px) {
+    width: 200px;
+    padding: 6px 14px;
+  }
+
   @media(min-width: 768px) {
-    width: 24.5rem;
+    width: 400px;
+    padding: 10px 18px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 19rem;
+      width: 224px;
+      padding: 6px 12px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 22rem;
+    width: 290px;
+    padding: 10px 18px;
   }
 `;
 
@@ -492,47 +583,53 @@ export const SelectLi = styled.li`
   list-style: none;
   color: ${props => props.theme["gray-700"]};
   font-weight: 500;
-  font-size: 1rem;
-  text-align: left;
+  font-size: 16px;
 
   &:hover {
     background-color: ${props => props.theme["gray-400"]};
   }
 
   @media(min-width: 768px) {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 1024px) {
-    font-size: 1.5rem;
+    font-size: 24px;
   }
 `;
 
-export const DivCheck = styled.div`
+export const DivCheck = styled.label`
   width: 100%;
   display: flex;
   gap: 0.625rem;
 
   p {
-    font-size: 0.875rem;
-    font-weight: 700;
+    font-size: 12px;
+    font-weight: 500;
     color: ${props => props.theme["gray-700"]};
   }
 
   input[type="checkbox"] {
-    width: 1.125rem;
-    height: 1.125rem;
+    width: 18px;
+    height: 18px;
   }
 
   @media (max-width: 320px) {
+    gap: 8px;
+
     p {
-      font-size: 0.75rem;
+      font-size: 10px;
+    }
+
+    input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
     }
   }
 
@@ -540,21 +637,19 @@ export const DivCheck = styled.div`
     gap: 0.5rem;
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
 
     input[type="checkbox"] {
-      width: 1.625rem;
-      height: 1.625rem;
+      width: 24px;
+      height: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.5rem;
-
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
       }
 
       input[type="checkbox"] {
@@ -565,23 +660,21 @@ export const DivCheck = styled.div`
   }
 
   @media (min-width: 1024px) {
-    gap: 0.5rem;
-
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
 
     input[type="checkbox"] {
-      width: 1.625rem;
-      height: 1.625rem;
+      width: 24px;
+      height: 24px;
     }
   }
 `;
 
 export const Enter = styled.button`
   all: unset;
-  width: 12.5rem;
-  height: 2rem;
+  width: 180px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -590,34 +683,31 @@ export const Enter = styled.button`
   border: 2px solid ${props => props.theme["yellow-200"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  font-size: 16px;
 
   @media(max-width: 320px) {
-    height: 1.75rem;
-  }
-
-  @media(max-width: 320px) {
-    height: 1.75rem;
+    width: 150px;
+    height: 28px;
+    font-size: 14px;
   }
 
   @media(min-width: 768px) {
-    height: 3rem;
-    width: 18.75rem;
-    font-size: 2rem;
+    width: 250px;
+    height: 48px;
+    font-size: 28px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 15.625rem;
-      height: 2rem;
-      font-size: 1rem;
-      margin-bottom: -1rem;
+      width: 150px;
+      height: 28px;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 1024px) {
-    height: 3rem;
-    width: 18.75rem;
-    font-size: 2rem;
-    margin-bottom: 0rem;
+    width: 250px;
+    height: 48px;
+    font-size: 28px;
   }
 `;

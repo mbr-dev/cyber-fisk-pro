@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
@@ -10,6 +11,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Billboard = () => {
   const navigate = useNavigate();
+  const [notifications, setNotifications] = useState(["news"])
 
   const handleNews = () => {
     navigate("/News");
@@ -24,12 +26,16 @@ export const Billboard = () => {
       <HeaderText title="Billboard" />
 
       <Main>
-        <Div onClick={handleNews}>
+        <Div onClick={handleNews} style={{ 
+          borderColor: (notifications[0] === "news" || notifications[1] === "news") && defaultTheme["red-200"]
+        }}>
           <p>News</p>
           <img src={SinoImg} alt="" />
         </Div>
 
-        <Div onClick={handleMessages} style={{ borderColor: defaultTheme["red-200"]}}>
+        <Div onClick={handleMessages} style={{ 
+          borderColor: (notifications[0] === "messages" || notifications[1] === "messages") && defaultTheme["red-200"]
+        }}>
           <p>Messages</p>
           <img src={SinoImg} alt="" />
         </Div>

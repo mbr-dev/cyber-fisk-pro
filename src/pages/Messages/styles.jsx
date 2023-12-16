@@ -11,20 +11,21 @@ export const Container = styled.div`
 export const Main = styled.main`
   flex: 1;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1.5rem;
-  padding-top: 1.5rem;
+  gap: 24px;
+  padding-top: 24px;
 
   @media (max-width: 320px) {
-    gap: 0.75rem;
-    padding-top: 0.75rem;
+    gap: 16px;
+    padding-top: 16px;
   }
 
   @media (min-width: 768px) {
-    gap: 2.25rem;
-    padding-top: 2.25rem;
+    gap: 36px;
+    padding-top: 36px;
   }
 
   @media(orientation: landscape) {
@@ -46,19 +47,29 @@ export const Main = styled.main`
   @media (min-width: 1024px) {
     flex-direction: column;
     justify-content: flex-start;
-    gap: 1.5rem;
-    padding-top: 2rem;
+    padding-top: 24px;
+    gap: 24px;
 
     .composeBtn {
-      width: 37.5rem;
+      width: 100%;
     }
+  }
+
+  @media (min-width: 1366px) {
+    padding-top: 32px;
+    gap: 32px;
+  }
+
+  @media (min-width: 1920px) {
+    padding-top: 48px;
+    gap: 48px;
   }
 `;
 
 export const Div = styled.button`
   all: unset;
-  width: 18.75rem;
-  height: 2.75rem;
+  width: 300px;
+  height: 44px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -68,33 +79,33 @@ export const Div = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   p {
-    font-size: 1.125rem;
+    font-size: 20px;
     font-weight: 700;
   }
 
   @media (max-width: 320px) {
-    width: 15.625rem;
-    height: 2.5rem;
+    width: 250px;
+    height: 40px;
 
     p {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 37.5rem;
-    height: 4rem;
+    width: 500px;
+    height: 72px;
     padding-inline: 1rem;
 
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 15.625rem;
-      height: 2.75rem;
+      width: 250px;
+      height: 44px;
       padding-inline: 0.75rem;
 
       p {
@@ -104,7 +115,7 @@ export const Div = styled.button`
   }
 
   @media (min-width: 1024px) {
-    width: 37.5rem;
+    width: 100%;
     height: 4rem;
     padding-inline: 1rem;
 

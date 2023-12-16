@@ -11,110 +11,99 @@ export const Container = styled.div`
 export const Main = styled.main`
   flex: 1;
   width: 100%;
+  height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-top: 1rem;
+  padding-block: 16px;
 
   @media (max-width: 320px) {
-    gap: 0.75rem;
-    padding-top: 0.75rem;
+    padding-block: 12px;
   }
 
   @media (min-width: 768px) {
-    gap: 2.25rem;
-    padding-top: 2.25rem;
+    padding-block: 32px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 70%;
-      padding-top: 0.5rem;
-      align-items: flex-start;
-      flex-direction: row;
+      padding-block: 4px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 50rem;
-    padding-top: 1rem;
+    padding-block: 36px;
   }
 `;
 
-export const Div = styled.button`
-  all: unset;
-  width: 18.75rem;
-  height: 30rem;
+export const Div = styled.div`
+  flex: 1;
+  width: 300px;
   display: flex;
   flex-direction: column;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   background-color: ${props => props.theme.white};
 
-  @media (max-width: 360px) {
-    height: 25.625rem;
-  }
-
   @media (max-width: 320px) {
-    width: 15.625rem;
-    height: 15.625rem;
-    overflow-y: scroll;
+    width: 250px;
   }
 
   @media (min-width: 768px) {
-    width: 37.5rem;
-    height: 43rem;
+    width: 600px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 29rem;
-      height: 12.75rem;
+      width: 650px;
+      flex-direction: row;
+      position: relative;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 35rem;
-    height: 28rem;
+    width: 800px;
   }
 
   @media (min-width: 1366px) {
-    width: 37.5rem;
-    height: 32rem;
+    width: 1000px;
   }
 `;
 
 export const DivHeader = styled.div`
   width: 100%;
-  height: 4rem;
+  height: 54px;
   display: flex;
   align-items: center;
-  justify-content: center;
-  gap: 0.875rem;
+  justify-content: space-between;
   border: 2px solid ${props => props.theme["blue-200"]};
   background-color: ${props => props.theme["blue-50"]};
   border-top-left-radius: 8px;
   border-top-right-radius: 8px;
+  padding-inline: 14px;
 
   @media (max-width: 320px) {
-    height: 3.375rem;
+    height: 48px;
   }
 
   @media (min-width: 768px) {
-    height: 4.5rem;
+    height: 72px;
+    padding-inline: 16px
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      height: 2.5rem;
-      justify-content: space-between;
-      padding-inline: 1rem;
+      height: 42px;
+      padding-inline: 14px;
+      position: absolute;
+      top: 0;
+      left: 0;
     }
   }
 
   @media (min-width: 1024px) {
-    height: 4.5rem;
+    height: 72px;
+    padding-inline: 32px;
   }
 `;
 
@@ -122,41 +111,41 @@ export const DivHText = styled.div`
   color: ${props => props.theme.white};
 
   p {
-    font-size: 0.75rem;
-    margin-bottom: 5px;
+    font-size: 12px;
+    line-height: 1.5;
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 0.625rem;
-      margin-bottom: 0.25rem;
+      font-size: 10px;
+      line-height: 1.3;
     }
   }
 
   @media (min-width: 768px) {
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       p {
-        font-size: 0.625rem;
+        font-size: 10px;
       }
     }
   }
 
   @media (min-width: 1024px) {
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
   }
 `;
 
 export const DivImg = styled.div`
-  width: 2rem;
-  height: 2rem;
+  width: 36px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -165,17 +154,17 @@ export const DivImg = styled.div`
   border-radius: 8px;
 
   img {
-    width: 22px;
-    height: 22px;
+    width: 24px;
+    height: 24px;
   }
 
   @media (max-width: 320px) {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 32px;
+    height: 32px;
 
     img {
-      width: 16px;
-      height: 16px;
+      width: 18px;
+      height: 18px;
     }
   }
 
@@ -185,20 +174,20 @@ export const DivImg = styled.div`
     border-width: 3px;
 
     img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 2rem;
-      height: 2rem;
+      width: 30px;
+      height: 30px;
       border-width: 1px;
 
       img {
-        width: 12px;
-        height: 12px;
+        width: 16px;
+        height: 16px;
       }
     }
   }
@@ -209,53 +198,54 @@ export const DivImg = styled.div`
     border-width: 3px;
 
     img {
-      width: 24px;
-      height: 24px;
+      width: 28px;
+      height: 28px;
     }
   }
 `;
 
 export const Text = styled.div`
   flex: 1;
-  padding: 0.875rem;
-  overflow-y: scroll;
+  padding: 16px;
 
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: normal;
   }
 
   @media (max-width: 320px) {
-    padding: 0.75rem;
+    padding: 12px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media (min-width: 768px) {
-    padding: 1.5rem;
+    padding: 24px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 22px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      padding: 0.5rem;
+      padding: 8px;
+      margin-top: 42px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    padding: 1rem;
+    padding: 18px 32px;
+    margin-top: 64px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
 `;
@@ -265,34 +255,37 @@ export const AreaButtonDiv = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-around;
-  padding-bottom: 0.5rem;
+  padding-block: 8px;
 
   @media(min-width: 768px) {
-    padding-bottom: 1rem;
+    padding-block: 10px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      display: none;
-    }
-  }
-`;
-
-export const AreaButtonDiv2 = styled.div`
-  display: none;
-
-  @media(orientation: landscape) {
-    @media (min-width: 600px) {
-      display: flex;
+      width: 120px;
+      padding-block: 0;
       flex-direction: column;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 8px;
+      margin-top: 38px;
     }
+  }
+
+  @media(min-width: 1024px) {
+    width: 200px;
+    gap: 24px;
+    margin-top: 0;
+  }
+
+  @media(min-width: 1366px) {
+    padding-block: 16px;
   }
 `;
 
 export const ButtonDiv = styled.div`
-  width: 5.625rem;
-  height: 2.25rem;
+  width: 92px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -309,7 +302,7 @@ export const ButtonDiv = styled.div`
   }
 
   p {
-    font-size: 0.75rem;
+    font-size: 14px;
     color: ${props => props.theme.white};
   }
 
@@ -333,12 +326,12 @@ export const ButtonDiv = styled.div`
   }
 
   @media(min-width: 768px) {
-    width: 10rem;
-    height: 3rem;
-    border-radius: 6px;
+    width: 172px;
+    height: 52px;
+    border-radius: 12px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
 
     img {
@@ -349,8 +342,8 @@ export const ButtonDiv = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 8rem;
-      height: 2.5rem;
+      width: 100px;
+      height: 42px;
       border-radius: 6px;
 
       p {
@@ -366,16 +359,17 @@ export const ButtonDiv = styled.div`
 
   @media(min-width: 1024px) {
     width: 10rem;
-    height: 3rem;
-    border-radius: 6px;
+    height: 64px;
+    border-radius: 12px;
+    gap: 16px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 24px;
     }
 
     img {
-      width: 20px;
-      height: 20px;
+      width: 24px;
+      height: 24px;
     }
   }
 `;

@@ -1,14 +1,14 @@
-import { useNavigate } from "react-router-dom";
 import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
 import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
+import PlusImg from "./images/plus.png";
 import Email1Img from "./images/email1.png";
 import Email2Img from "./images/email2.png";
 import Email3Img from "./images/email3.png";
 import FolderImg from "./images/folder.png";
-import PlusImg from "./images/plus.png";
 
 import { Container, Main, Div, DivImg } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
@@ -16,22 +16,10 @@ import { defaultTheme } from "../../themes/defaultTheme";
 export const Messages = () => {
   const navigate = useNavigate();
 
-  const [userRule, setUserRule] = useState("Aluno");
+  const [userRule, setUserRule] = useState("Professor");
 
-  const handleUnread = () => {
-    navigate("/Unread");
-  }
-
-  const handleRead = () => {
-    navigate("/Read");
-  }
-
-  const handleSend = () => {
-    navigate("/Sent");
-  }
-
-  const handleArchive = () => {
-    navigate("/Archive");
+  const handleMessages = () => {
+    navigate("/MessagesHome");
   }
 
   const handleCompose = () => {
@@ -43,25 +31,25 @@ export const Messages = () => {
       <HeaderText title="Messages" />
 
       <Main>
-        <Div onClick={handleUnread}>
+        <Div onClick={handleMessages}>
           <p>Unread</p>
           <DivImg style={{ borderColor: defaultTheme["blue-600"] }}>
             <img src={Email1Img} alt="" />
           </DivImg>
         </Div>
-        <Div onClick={handleRead}>
+        <Div onClick={handleMessages}>
           <p>Read</p>
           <DivImg style={{ borderColor: defaultTheme["blue-300"] }}>
             <img src={Email2Img} alt="" />
           </DivImg>
         </Div>
-        <Div onClick={handleSend}>
+        <Div onClick={handleMessages}>
           <p>Sent</p>
-          <DivImg style={{ borderColor: defaultTheme["green-600"] }}>
+          <DivImg style={{ borderColor: defaultTheme["green-1000"] }}>
             <img src={Email3Img} alt="" />
           </DivImg>
         </Div>
-        <Div onClick={handleArchive}>
+        <Div onClick={handleMessages}>
           <p>Archive</p>
           <DivImg style={{ borderColor: defaultTheme["yellow-200"] }}>
             <img src={FolderImg} alt="" />

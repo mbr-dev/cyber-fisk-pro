@@ -5,7 +5,7 @@ import * as Dialog from "@radix-ui/react-dialog";
 import xImg from "../../../../assets/xImg.png";
 import arrowBottom from "../../../../pages/Report/img/arrowBottom.png";
 
-import { Content, Overlay, Close, Enter, Main, Header, Div, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck, DivInside2, Top, DivCheckRow } from "./styles";
+import { Content, Overlay, Close, Enter, Main, Header, Div, Input, DivInside, Select, SelectLi, SelectTitle, SelectUl, DivCheck, DivInside2, Top, DivCheckRow, DivFull } from "./styles";
 import { defaultTheme } from "../../../../themes/defaultTheme";
 
 export const Modal = () => {
@@ -38,7 +38,7 @@ export const Modal = () => {
             </DivInside>
 
             <DivInside2>
-              <Div>
+              <DivFull>
                 <p>Group</p>
                 <Select
                   onClick={() => setIsOpen(!isOpen)}
@@ -56,11 +56,12 @@ export const Modal = () => {
                     </SelectUl>
                   }
                 </Select>
-              </Div>
-              <Div>
+              </DivFull>
+
+              <DivFull>
                 <p>User</p>
                 <Input type="text" className="inputTxt" />
-              </Div>
+              </DivFull>
             </DivInside2>
           </Top>
           

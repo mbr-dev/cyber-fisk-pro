@@ -1,26 +1,27 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 100%;
-  height: 5.375rem;
+  width: 100vw;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1.25rem;
+  gap: 24px;
 
   @media (max-width: 320px) {
-    height: 4rem;
+    height: 64px;
+    gap: 16px;
   }
 
   @media (min-width: 768px) {
-    height: 7.5rem;
-    gap: 2rem;
+    height: 100px;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      height: 4rem;
-      gap: 2rem;
+      height: 52px;
+      gap: 32px;
     }
   }
 
@@ -30,20 +31,18 @@ export const Container = styled.div`
   }
 
   @media (min-width: 1366px) {
-    height: 7.5rem;
-    gap: 150px;
+    gap: 72px;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 9.375rem;
-  height: 2.25rem;
+  width: 150px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
   background-color: ${props => props.$variant === "red" ? props.theme["red-200"] : props.theme["yellow-300"]};
   color: ${props => props.theme.white};
   border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["yellow-200"]};
@@ -52,7 +51,7 @@ export const Button = styled.button`
   cursor: pointer;
 
   p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
 
   &:disabled {
@@ -61,42 +60,46 @@ export const Button = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 8.125rem;
-    height: 2rem;
+    width: 120px;
+    height: 36px;
+
+    p {
+      font-size: 16px;
+    }
   }
 
   @media (min-width: 768px) {
-    width: 15.625rem;
-    height: 3.5rem;
+    width: 250px;
+    height: 54px;
     
     p {
-      font-size: 1.75rem;
+      font-size: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 15rem;
-      height: 2.25rem;
+      width: 180px;
+      height: 28px;
       
       p {
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 300px;
-    height: 64px;
+    width: 250px;
+    height: 54px;
     
     p {
-      font-size: 32px;
+      font-size: 28px;
     }
   }
 
   @media (min-width: 1366px) {
     width: 400px;
-    height: 72px;
+    height: 64px;
     
     p {
       font-size: 36px;

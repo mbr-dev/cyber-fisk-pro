@@ -28,6 +28,8 @@ export const defaultTheme = {
   "green-600": "#599F00",
   "green-700": "#4A8500",
   "green-800": "#52C948",
+  "green-900": "#00BC6D",
+  "green-1000": "#008D52",
 
   "red-100": "#FFB8BB",
   "red-200": "#E0131C",

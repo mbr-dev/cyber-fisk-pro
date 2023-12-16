@@ -3,8 +3,6 @@ import {Routes, Route} from "react-router-dom";
 import { Home } from "../pages/Home";
 import { Help } from "../pages/Help";
 import { Menu } from "../pages/Menu";
-import { Read } from "../pages/Read";
-import { Sent } from "../pages/Sent";
 import { News } from "../pages/News";
 import { Books } from "../pages/Books";
 import { Login } from "../pages/Login";
@@ -12,9 +10,7 @@ import { Audio } from "../pages/Audio";
 import { Avatar } from "../pages/Avatar";
 import { Report } from "../pages/Report";
 import { Studio } from "../pages/Studio";
-import { Unread } from "../pages/Unread";
 import { Compose } from "../pages/Compose";
-import { Archive } from "../pages/Archive";
 import { Rewards } from "../pages/Rewards";
 import { Profile } from "../pages/Profile";
 import { Ranking } from "../pages/Ranking";
@@ -29,6 +25,7 @@ import { MessageOpen } from "../pages/MessageOpen";
 import { PrintReport } from "../pages/PrintReport";
 import { ReportLesson } from "../pages/ReportLesson";
 import { ReportStudio } from "../pages/ReportStudio";
+import { MessagesHome } from "../pages/MessagesHome";
 import { SelectLesson } from "../pages/selectLesson";
 import { TaskLesson } from "../components/taskLesson";
 import { MessageAnswer } from "../pages/MessageAnswer";
@@ -101,12 +98,9 @@ export const Router =() => {
       <Route path="/Menu" element={<Menu />}/>
       <Route path="/News" element={<News />}/>
       <Route path="/Help" element={<Help />}/>
-      <Route path="/Sent" element={<Sent />}/>
-      <Route path="/Read" element={<Read />}/>
       <Route path="/Audio" element={<Audio />}/>
       <Route path="/Books" element={<Books />}/>
       <Route path="/Login" element={<Login />}/>
-      <Route path="/Unread" element={<Unread />}/>
       <Route path="/Avatar" element={<Avatar />}/>
       <Route path="/Studio" element={<Studio />}/>
       <Route path="/Report" element={<Report />}/>
@@ -114,7 +108,6 @@ export const Router =() => {
       <Route path="/Profile" element={<Profile/>}/>
       <Route path="/Rewards" element={<Rewards />}/>
       <Route path="/Compose" element={<Compose />}/>
-      <Route path="/Archive" element={<Archive />}/>
       <Route path="/Ranking" element={<Ranking />}/>
       <Route path="/Messages" element={<Messages />}/>
       <Route path="/GameOver" element={<GameOver />}/>
@@ -127,6 +120,7 @@ export const Router =() => {
       <Route path="/PrintReport" element={<PrintReport />}/>
       <Route path="/MessageOpen" element={<MessageOpen />}/>
       <Route path="/qr-code/reader" element={<QRReader />}/>
+      <Route path="/MessagesHome" element={<MessagesHome />}/>
       <Route path="/ReportLesson" element={<ReportLesson />}/>
       <Route path="/ReportStudio" element={<ReportStudio />}/>
       <Route path="/SelectLesson" element={<SelectLesson />}/>

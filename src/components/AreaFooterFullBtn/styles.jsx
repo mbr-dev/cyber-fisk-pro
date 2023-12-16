@@ -97,7 +97,8 @@ export const ButtonHome = styled.button`
 
   @media(min-width: 1024px) {
     width: 25rem;
-    height: 2.75rem;
+    height: 52px;
+    border-radius: 12px;
 
     p {
       font-size: 2rem;

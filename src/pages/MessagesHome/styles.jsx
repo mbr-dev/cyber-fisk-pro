@@ -6,56 +6,61 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  cursor: pointer;
 `;
 
 export const Main = styled.main`
   flex: 1;
   width: 100%;
+  padding-top: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  padding-top: 1rem;
+  gap: 16px;
   background-color: ${props => props.theme["gray-100"]};
   overflow-y: scroll;
 
   @media (max-width: 320px) {
-    gap: 0.75rem;
-    padding-top: 0.75rem;
+    padding-top: 10px;
+    gap: 10px;
   }
 
   @media (min-width: 768px) {
-    gap: 1.5rem;
-    padding-top: 2rem;
+    padding-top: 24px;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      padding-inline: 3rem;
+      padding-top: 8px;
+      padding-inline: 48px;
       flex-direction: row;
       flex-wrap: wrap;
+      align-items: flex-start;
       justify-content: space-between;
-      gap: 0.5rem;
-      padding-top: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media (min-width: 1024px) {
-    align-items: flex-start;
-    gap: 20px;
-    padding-inline: 4rem;
-    padding-top: 32px;
+    padding-inline: 64px;
+    padding-top: 24px;
+    gap: 24px;
   }
 
   @media (min-width: 1366px) {
-    gap: 1.5rem;
+    padding-inline: 100px;
+  }
+
+  @media (min-width: 1920px) {
+    padding-inline: 300px;
   }
 `;
 
 export const Div = styled.button`
   all: unset;
-  width: 18.75rem;
-  height: 3rem;
+  width: 300px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -64,7 +69,7 @@ export const Div = styled.button`
   box-shadow: 0px 4px 10px 0px #00000033;
 
   .spanDay {
-    height: 3rem;
+    height: 48px;
     padding-inline: 8px;
     display: flex;
     align-items: center;
@@ -72,17 +77,17 @@ export const Div = styled.button`
     color: ${props => props.theme.white};
     font-size: 0.75rem;
     font-weight: 700;
-    border: 2px solid ${props => props.theme["blue-300"]};
+    border: 2px solid transparent;
     border-top-left-radius: 8px;
     border-end-start-radius: 8px;
-    background-color: ${props => props.theme["blue-50"]};
   }
 
   @media (max-width: 320px) {
-    width: 15.625rem;
-    height: 2.5rem;
+    width: 250px;
+    height: 40px;
 
     .spanDay {
+      height: 40px;
       padding-inline: 6px;
       font-size: 0.625rem;
       font-weight: 500;
@@ -90,12 +95,12 @@ export const Div = styled.button`
   }
 
   @media (min-width: 768px) {
-    width: 37.5rem;
-    height: 4rem;
+    width: 500px;
+    height: 64px;
     padding-right: 0.75rem;
 
     .spanDay {
-      height: 4rem;
+      height: 64px;
       padding-inline: 0.75rem;
       font-size: 1rem;
     }
@@ -103,12 +108,12 @@ export const Div = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 20rem;
-      height: 3rem;
+      width: 320px;
+      height: 48px;
       padding-right: 0.5rem;
 
       .spanDay {
-        height: 3rem;
+        height: 48px;
         padding-inline: 0.5rem;
         font-size: 0.75rem;
       }
@@ -121,92 +126,106 @@ export const Div = styled.button`
     padding-right: 0.75rem;
 
     .spanDay {
-      height: 4rem;
+      height: 64px;
       padding-inline: 0.75rem;
-      font-size: 1rem;
+      font-size: 18px;
     }
   }
 
   @media (min-width: 1366px) {
-    width: 34rem;
-  }
+    width: 600px;
+    height: 72px;
 
-  @media (min-width: 1440px) {
-    width: 38rem;
+    .spanDay {
+      height: 72px;
+      padding-inline: 14px;
+      font-size: 20px;
+    }
   }
 `;
 
 export const Text = styled.div`
   flex: 1;
-  width: 100%;
   padding-left: 0.5rem;
 
   p {
-    font-size: 0.75rem;
+    font-size: 12px;
   }
   
   span {
-    font-size: 0.625rem;
+    font-size: 10px;
   }
 
   @media (max-width: 320px) {
-    padding-left: 0.375rem;
+    padding-left: 8px;
 
     p {
-      font-size: 0.625rem;
+      font-size: 10px;
     }
     
     span {
-      font-size: 0.5rem;
+      font-size: 8px;
     }
   }
 
   @media (min-width: 768px) {
-    padding-left: 1rem;
+    padding-left: 16px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
     
     span {
-      font-size: 0.875rem;
+      font-size: 16px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      padding-left: 0.5rem;
+      padding-left: 8px;
 
       p {
-        font-size: 0.75rem;
+        font-size: 12px;
       }
       
       span {
-        font-size: 0.5rem;
+        font-size: 10px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    padding-left: 1rem;
+    padding-left: 16px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
-    
+
     span {
-      font-size: 0.875rem;
+      font-size: 14px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    padding-left: 20px;
+
+    p {
+      font-size: 20px;
+    }
+
+    span {
+      font-size: 16px;
     }
   }
 `;
 
 export const DivImg = styled.div`
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 2px solid ${props => props.theme["blue-300"]};
+  border: 2px solid transparent;
   border-radius: 8px;
 
   img {
@@ -215,8 +234,8 @@ export const DivImg = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 1.75rem;
-    height: 1.75rem;
+    width: 30px;
+    height: 30px;
 
     img {
       width: 16px;
@@ -225,8 +244,8 @@ export const DivImg = styled.div`
   }
 
   @media (min-width: 768px) {
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     border-width: 3px;
 
     img {
@@ -256,6 +275,16 @@ export const DivImg = styled.div`
     img {
       width: 24px;
       height: 24px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 52px;
+    height: 52px;
+
+    img {
+      width: 28px;
+      height: 28px;
     }
   }
 `;
