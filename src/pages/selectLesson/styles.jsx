@@ -18,50 +18,46 @@ export const Main = styled.main`
 `;
 
 export const SelectLessonArea = styled.div`
-  width: 14.375rem;
+  width: 230px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    width: 11.25rem;
-    gap: 0.5rem;
+    width: 160px;
+    gap: 8px;
   }
 
   @media (min-width: 768px) {
-    width: 18rem;
-    gap: 2rem;
+    width: 400px;
+    gap: 32px;
     justify-content: center;
-    align-items: center;
   }
 
   @media (orientation: landscape) {
     @media (min-width: 600px) {
-      width: 25rem;
-      height: 9.375rem;
-      gap: 1rem;
+      width: 420px;
+      gap: 24px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 38.75rem;
-    height: 9.375rem;
-    gap: 1.75rem;
+    width: 700px;
+    gap: 32px;
   }
-
+  
   @media(min-width: 1280px) {
-    width: 43.75rem;
-    height: 15.625rem;
-    gap: 2rem;
+    width: 800px;
+    gap: 40px;
   }
 `;
 
 export const ButtonLesson = styled.button`
   all: unset;
-  width: 4.5rem;
-  height: 4.75rem;
+  width: 72px;
+  height: 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,10 +70,11 @@ export const ButtonLesson = styled.button`
 
   p {
     font-weight: bold;
-    font-size: 2rem;
+    font-size: 32px;
   }
 
   span {
+    font-size: 16px;
     font-weight: 500;
   }
 
@@ -92,28 +89,28 @@ export const ButtonLesson = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 3.625rem;
-    height: 3.375rem;
+    width: 52px;
+    height: 52px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
 
     span {
-      font-size: 0.75rem;
+      font-size: 12px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 6.875rem;
-    height: 6.875rem;
+    width: 110px;
+    height: 110px;
 
     p {
-      font-size: 3rem;
+      font-size: 44px;
     }
 
     span {
-      font-size: 1.25rem;
+      font-size: 22px;
     }
   }
 
@@ -133,21 +130,21 @@ export const ButtonLesson = styled.button`
   }
 
   @media (min-width: 1024px) {
-    width: 5.5rem;
-    height: 5.5rem;
+    width: 100px;
+    height: 100px;
 
     p {
-      font-size: 2rem;
+      font-size: 44px;
     }
 
     span {
-      font-size: 1rem;
+      font-size: 24px;
     }
   }
 
   @media(min-width: 1280px) {
-    width: 6.875rem;
-    height: 6.875rem;
+    width: 120px;
+    height: 120px;
 
     p {
       font-size: 3rem;

@@ -2,34 +2,37 @@ import styled from "styled-components"
 
 export const Container = styled.footer`
   width: 100vw;
+  height: 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
-  gap: 0.5rem;
-  padding-block: 0.75rem;
+  padding-top: 6px;
   background-color: ${props => props.theme["red-200"]};
   border-top-left-radius: 18px;
   border-top-right-radius: 18px;
 
   p {
+    font-size: 16px;
     font-weight: normal;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    padding-block: 0.5rem;
-    gap: 0.25rem;
+    height: 64px;
+    padding-top: 4px;
 
     p {
-      font-size: 0.865rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
+    height: 100px;
+    padding-top: 10px;
+
     p {
-      font-size: 1.25rem;
-      padding-inline: 2.75rem;
+      font-size: 20px;
     }
   }
 
@@ -58,7 +61,7 @@ export const Main = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
 
   img {
     width: 64px;
@@ -69,22 +72,24 @@ export const Main = styled.div`
   }
 
   @media(max-width: 320px) {
+    gap: 12px;
+
     img {
       width: 48px;
     }
 
     .iconFooter {
-      width: 1.75rem;
+      width: 24px;
     }
   }
 
   @media(min-width: 768px) {
     img {
-      width: 64px;
+      width: 84px;
     }
 
     .iconFooter {
-      width: 52px;
+      width: 44px;
     }
   }
 

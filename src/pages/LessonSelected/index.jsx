@@ -110,8 +110,9 @@ export const LessonSelected = () => {
 
   return (
     <Container>
-      <Header>
-        <img src={bgHeaderImg} className="bgHeaderImg" alt=""/>
+      <Header style={{
+        backgroundImage: `url("${bgHeaderImg}")`
+      }}>
         <HeaderTop>
           <ButtonMenuHeader />
           <img src={LogoFiskImg} className="logoFiskD" alt="Logo Fisk"/>

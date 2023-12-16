@@ -84,7 +84,7 @@ export const ButtonHome = styled.button`
   }
 
   @media(orientation: landscape) {
-    @media (min-width: 782px) {
+    @media (min-width: 600px) {
       width: 15.625rem;
       height: 2rem;
       border-radius: 6px;

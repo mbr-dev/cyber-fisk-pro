@@ -29,8 +29,9 @@ export const Books = () => {
 
   return (
     <Container>
-      <HeaderMobile>
-        <img src={BgHeaderImg} alt="" className="bgHeaderImg" />
+      <HeaderMobile style={{
+        backgroundImage: `url("${BgHeaderImg}")`
+      }}>
         <HeaderMobileDiv>
           <ButtonMenuHeader />
           <p>{selectLanguage === 0 ? "Livros" : selectLanguage === 1 ? "Books" : "Libros"}</p>
@@ -66,12 +67,6 @@ export const Books = () => {
         <BooksArea>
           <p>{selectLanguage === 0 ? "Anterior" : selectLanguage === 1 ? "Previous" : "Anterior"}:</p>
           <BooksInside>
-            <BooksImage style={{ opacity: 0.2 }}>
-              <img src={bookEss1} alt=""/>
-            </BooksImage>
-            <BooksImage style={{ opacity: 0.2 }}>
-              <img src={bookEss1} alt=""/>
-            </BooksImage>
             <BooksImage style={{ opacity: 0.2 }}>
               <img src={bookEss1} alt=""/>
             </BooksImage>

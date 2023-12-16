@@ -10,42 +10,33 @@ export const Container = styled.div`
 
 export const HeaderMobile = styled.div`
   width: 100vw;
-  height: 7.5rem;
+  height: 120px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 1rem 1rem 0 1rem;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
-  overflow: hidden;
-  position: relative;
-
-  .bgHeaderImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
-
+  background-repeat: no-repeat;
+  background-size: cover;
+  
   .logoFisk {
     width: 132px;
   }
 
   @media (max-width: 320px) {
-    height: 6.25rem;
+    height: 100px;
 
     .logoFisk {
-      width: 110px;
+      width: 116px;
     }
   }
 
-  @media (max-width: 768px) {
-    height: 9.375rem;
+  @media (min-width: 768px) {
+    height: 150px;
 
     .logoFisk {
-      width: 150px;
+      width: 164px;
     }
   }
 
@@ -59,18 +50,24 @@ export const HeaderMobile = styled.div`
 export const HeaderMobileDiv = styled.div`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
 
   p {
     color: ${props => props.theme.white};
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 500;
   }
 
   @media (max-width: 320px) {
     p {
-      font-size: 1.25rem;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 768px) {
+    p {
+      font-size: 36px;
     }
   }
 `;
@@ -91,17 +88,17 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 2rem;
-  gap: 2rem;
+  padding-top: 16px;
+  gap: 16px;
 
   p {
-    font-size: 1.25rem;
+    font-size: 18px;
     font-weight: 500;
   }
 
   @media(max-width: 320px) {
-    padding-top: 0.625rem;
-    gap: 0.625rem;
+    padding-top: 10px;
+    gap: 10px;
     width: 15.625rem;
 
     p {
@@ -110,19 +107,19 @@ export const Main = styled.main`
   }
 
   @media(min-width: 768px) {
-    width: 37rem;
-    padding-top: 2.5rem;
-    gap: 2.5rem;
+    width: 550px;
+    padding-top: 32px;
+    gap: 32px;
     align-items: flex-start;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 700px;
+      width: 600px;
       flex-direction: row;
       align-items: center;
       justify-content: space-between;
-      gap: 1rem;
+      gap: 0px;
       padding-top: 0rem;
     }
   }
@@ -131,8 +128,12 @@ export const Main = styled.main`
     width: 800px;
   }
 
-  @media(min-width: 1280px) {
-    width: 1200px;
+  @media(min-width: 1366px) {
+    width: 1000px;
+  }
+  
+  @media(min-width: 1920px) {
+    width: 1300px;
   }
 `;
 
@@ -140,67 +141,73 @@ export const BooksArea = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.75rem;
+  gap: 12px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
     width: 100%;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      gap: 4px;
+
       p {
-        font-size: 1.125rem;
+        font-size: 16px;
       }
     }
   }
 
   @media(min-width: 1024px) {
+    gap: 16px;
+
     p {
-      font-size: 1.5rem;
+      font-size: 28px;
     }
   }
 
   @media(min-width: 1366px) {
+    gap: 24px;
+
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;
 
 export const BooksInside = styled.div`
   width: 100%;
-  height: 7.5rem;
+  height: 120px;
   display: flex;
   justify-content: space-between;
 
   @media (max-width: 320px) {
-    height: 6.25rem;
+    height: 100px;
   }
 
   @media (min-width: 768px) {
-    height: 10.5rem;
+    height: 160px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      height: 7.5rem;
+      height: 120px;
     }
   }
 
   @media (min-width: 1024px) {
-    height: 10rem;
+    height: 160px;
   }
 
   @media (min-width: 1366px) {
-    height: 12.5rem;
+    height: 200px;
   }
 `;
 
@@ -210,18 +217,6 @@ export const BooksImage = styled.div`
   img {
     width: 100%;
     height: 100%;
-  }
-
-  @media(min-width: 1024px) {
-    img {
-      width: 120px;
-    }
-  }
-
-  @media(min-width: 1366px) {
-    img {
-      width: 150px;
-    }
   }
 `;
 

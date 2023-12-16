@@ -32,12 +32,6 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
-    img {
-      width: 150px;
-    }
-  }
-
-  @media(min-width: 480px) {
     gap: 16px;
 
     img {
@@ -45,9 +39,29 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 768px) {
+    gap: 32px;
+
     img {
-      width: 280px;
+      width: 300px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+    gap: 16px;
+
+    img {
+      width: 142px;
+    }
+  }
+  }
+
+  @media(min-width: 1024px) {
+    gap: 32px;
+
+    img {
+      width: 300px;
     }
   }
 `;
@@ -55,8 +69,8 @@ export const Main = styled.main`
 export const Close = styled(Dialog.Close)`
   all: unset;
   position: absolute;
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 28px;
+  height: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -72,13 +86,47 @@ export const Close = styled(Dialog.Close)`
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
+    top: -12px;
+    right: -8px;
+
+    img {
+      width: 12px;
+    }
   }
 
-  @media(min-width: 480px) {
-    width: 32px;
-    height: 32px;
-    top: -18px;
-    right: -10px;
+  @media(min-width: 768px) {
+    width: 52px;
+    height: 52px;
+    top: -28px;
+    right: -24px;
+
+    img {
+      width: 24px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 1.5rem;
+      height: 1.5rem;
+      top: -14px;
+      right: -0px;
+
+      img {
+        width: 12px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 52px;
+    height: 52px;
+    top: -28px;
+    right: -24px;
+
+    img {
+      width: 24px;
+    }
   }
 `;
 
@@ -110,18 +158,28 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 480px) {
-    width: 150px;
-    height: 32px;
-    border-radius: 6px;
+  @media(min-width: 768px) {
+    width: 300px;
+    height: 56px;
 
     p {
-      font-size: 16px;
+      font-size: 24px;
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 280px;
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 142px;
+      height: 32px;
+
+      p {
+        font-size: 16px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 300px;
     height: 56px;
 
     p {

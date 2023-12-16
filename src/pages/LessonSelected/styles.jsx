@@ -10,83 +10,63 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 9.375rem;
+  height: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  gap: 0.625rem;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
-  overflow: hidden;
-  position: relative;
-
-  .bgHeaderImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media(max-width: 320px) {
-    height: 7.5rem;
-    gap: 0.375rem;
+    height: 100px;
   }
 
   @media(min-width: 768px) {
-    height: 12rem;
+    height: 150px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 4rem;
+      height: 54px;
       justify-content: center;
-      gap: 0px;
     }
   }
 
   @media(min-width: 1024px) {
-    height: 5.375rem;
-  }
-
-  @media(min-width: 1366px) {
-    height: 6.25rem;
+    height: 100px;
   }
 `;
 
 export const HeaderTop = styled.header`
   width: 100%;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
-  padding-inline: 1rem;
-  padding-top: 1rem;
+  padding-inline: 16px;
+  padding-top: 16px;
 
   .logoFiskD {
     display: none;
   }
 
   p {
-    font-size: 1.25rem;
+    font-size: 20px;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    font-size: 1.5rem;
-    padding-inline: 0.75rem;
-    padding-top: 0.75rem;
+    font-size: 18px;
+    padding-inline: 12px;
+    padding-top: 12px;
   }
 
   @media(min-width: 768px) {
-    .logoFiskD {
-      width: 100px;
-    }
-
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
@@ -96,7 +76,7 @@ export const HeaderTop = styled.header`
 
       .logoFiskD {
         display: block;
-        width: 80px;
+        width: 84px;
         margin-left: -250px;
       }
 
@@ -109,31 +89,29 @@ export const HeaderTop = styled.header`
 
   @media(min-width: 1024px) {
     .logoFiskD {
-      width: 100px;
-      margin-left: -21.875rem;
+      width: 132px;
+      margin-left: -280px;
     }
 
     p {
-      font-size: 1.75rem;
+      font-size: 48px;
       margin-left: -6.25rem;
     }
   }
 
   @media(min-width: 1366px) {
     .logoFiskD {
-      margin-left: -30rem;
+      margin-left: -480px;
     }
 
     p {
-      font-size: 2rem;
       margin-left: -6.25rem;
     }
   }
 
   @media(min-width: 1920px) {
     .logoFiskD {
-      width: 100px;
-      margin-left: -50rem;
+      margin-left: -650px;
     }
   }
 `;
@@ -143,12 +121,18 @@ export const HeaderBottom = styled.header`
   align-items: center;
   
   .logoFisk {
-    width: 164px;
+    width: 140px;
+  }
+
+  @media (max-width: 320px) {
+    .logoFisk {
+      width: 116px;
+    }
   }
 
   @media (min-width: 768px) {
     .logoFisk {
-      width: 220px;
+      width: 164px;
     }
   }
 
@@ -163,29 +147,28 @@ export const HeaderBottom = styled.header`
 
 export const Main = styled.main`
   flex: 1;
-  width: 18.75rem;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 1.5rem;
-
-  @media(max-width: 360px) {
-    gap: 0.875rem;
-  }
+  margin-top: 24px;
+  gap: 24px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
-    padding-block: 0.625rem;
+    width: 250px;
+    margin-top: 8px;
+    gap: 16px;
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
+    width: 500px;
+    margin-top: 32px;
+    gap: 32px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 36.25rem;
+      width: 570px;
+      margin-top: 8px;
       gap: 0;
       flex-direction: row;
       justify-content: space-between;
@@ -194,8 +177,10 @@ export const Main = styled.main`
 
   @media(min-width: 1024px) {
     width: 850px;
+    margin-top: 0px;
+    align-items: center;
   }
-
+  
   @media(min-width: 1366px) {
     width: 62.5rem;
   }
@@ -203,39 +188,34 @@ export const Main = styled.main`
 
 export const ButtonAreaTop = styled.div`
   width: 100%;
-  height: 13rem;
+  height: 210px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
 
-  @media(max-width: 360px) {
-    height: 12.25rem;
-  }
-
   @media(max-width: 320px) {
-    width: 15.625rem;
-    height: 8rem;
+    height: 150px;
   }
-
+  
   @media(min-width: 768px) {
-    width: 27rem;
-    height: 20rem;
+    height: 320px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 15.625rem;
-      height: 12.5rem;
+      width: 250px;
+      height: 180px;
     }
   }
-
+  
   @media(min-width: 1024px) {
     width: 400px;
-    height: 21.875rem;
+    height: 350px;
   }
 
   @media(min-width: 1366px) {
-    width: 28.125rem;
+    width: 450px;
+    height: 400px;
   }
 `;
 
@@ -249,8 +229,8 @@ export const DivRight = styled.div`
 
 export const ButtonTask = styled.button`
   all: unset;
-  width: 6.875rem;
-  height: 6rem;
+  width: 100px;
+  height: 94px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -267,7 +247,7 @@ export const ButtonTask = styled.button`
   }
 
   p {
-    font-size: 1.125rem;
+    font-size: 16px;
     font-weight: 500;
   }
 
@@ -277,51 +257,39 @@ export const ButtonTask = styled.button`
     border-color: ${props => props.theme.black};
   }
 
-  @media(max-width: 360px) {
-    height: 5.375rem;
-
-    img {
-      width: 36px;
-    }
-
-    p {
-      font-size: 1rem;
-    }
-  }
-
   @media(max-width: 320px) {
-    width: 6rem;
-    height: 3.5rem;
+    width: 88px;
+    height: 64px;
 
     img {
-      width: 24px;
+      width: 32px;
     }
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 11.25rem;
-    height: 8.5rem;
+    width: 164px;
+    height: 140px;
     border-radius: 8px;
     border-width: 3px;
-    gap: 0.625rem;
+    gap: 10px;
 
     img {
       width: 54px;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 5.375rem;
-      height: 5.75rem;
+      width: 84px;
+      height: 76px;
       gap: 0.25rem;
 
       img {
@@ -329,42 +297,53 @@ export const ButtonTask = styled.button`
       }
 
       p {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 10rem;
-    height: 9rem;
+    width: 164px;
+    height: 150px;
     border-radius: 16px;
     border-width: 3px;
-    gap: 0.625rem;
+    gap: 10px;
 
     img {
       width: 54px;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
 
   @media(min-width: 1366px) {
-    width: 11.25rem;
-    height: 9.375rem;
+    width: 172px;
+    height: 164px;
+    border-radius: 16px;
+    border-width: 3px;
+    gap: 10px;
+
+    img {
+      width: 64px;
+    }
+
+    p {
+      font-size: 24px;
+    }
   }
 `;
 
 export const ButtonSuperTask = styled.button`
   all: unset;
-  width: 9.375rem;
+  width: 150px;
   height: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -387,7 +366,7 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 6.75rem;
+    width: 120px;
     gap: 6px;
 
     p {
@@ -400,11 +379,10 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 12.5rem;
-    border-radius: 8px;
+    width: 220px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
 
     img {
@@ -414,10 +392,10 @@ export const ButtonSuperTask = styled.button`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 7.5rem;
+      width: 120px;
 
       p {
-        font-size: 1rem;
+        font-size: 16px;
       }
 
       img {
@@ -427,12 +405,12 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 184px;
+    width: 192px;
     border-radius: 16px;
     border-width: 3px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 24px;
     }
 
     img {
@@ -441,11 +419,7 @@ export const ButtonSuperTask = styled.button`
   }
 
   @media(min-width: 1366px) {
-    width: 13.75rem;
-
-    p {
-      font-size: 1.5rem;
-    }
+    width: 220px;
   }
 `;
 
@@ -456,109 +430,109 @@ export const ButtonAreaBottom = styled.div`
   justify-content: space-between;
 
   @media(max-width: 320px) {
-    width: 15.625rem;
+    width: 250px;
   }
-
+  
   @media(min-width: 768px) {
-    width: 27rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 18.75rem;
-      height: 12.5rem;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    width: 400px;
-    height: 21.875rem;
-    gap: 0;
-  }
-
-  @media(min-width: 1366px) {
-    width: 28.75rem;
-    height: 21.875rem;
-    gap: 0;
-  }
-`;
-
-export const BottomRight = styled.div`
-  width: 9.375rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media(max-width: 320px) {
-    width: 6.75rem;
-    gap: 0.5rem;
-  }
-
-  @media(min-width: 768px) {
-    width: 12.5rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 9.375rem;
-      height: 100%;
-      justify-content: space-between;
-    }
-  }
-
-  @media(min-width: 1024px) {
-    width: 12rem;
-    height: 100%;
-    justify-content: space-between;
-  }
-
-  @media(min-width: 1366px) {
-    width: 14.375rem;
-  }
-`;
-
-export const BottomLeft = styled.div`
-  width: 6.875rem;
-  display: flex;
-  flex-direction: column;
-  gap: 1rem;
-
-  @media(max-width: 320px) {
-    width: 6rem;
-    gap: 0.5rem
-  }
-
-  @media(min-width: 768px) {
-    width: 11.25rem;
+    width: 500px;
   }
   
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 8.125rem;
+      width: 300px;
+      height: 180px;
+    }
+  }
+  
+  @media(min-width: 1024px) {
+    width: 400px;
+    height: 350px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 500px;
+    height: 400px;
+  }
+`;
+
+export const BottomRight = styled.div`
+  width: 150px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media(max-width: 320px) {
+    width: 120px;
+    gap: 8px;
+  }
+
+  @media(min-width: 768px) {
+    width: 220px;
+    gap: 24px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 150px;
       height: 100%;
+      gap: 16px;
       justify-content: space-between;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 11rem;
+    width: 184px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 252px;
+  }
+`;
+
+export const BottomLeft = styled.div`
+  width: 100px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  @media(max-width: 320px) {
+    width: 94px;
+    gap: 8px
+  }
+
+  @media(min-width: 768px) {
+    width: 164px;
+    gap: 24px;
+  }
+  
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 120px;
+      height: 100%;
+      gap: 16px;
+      justify-content: space-between;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 172px;
     height: 100%;
     justify-content: space-between;
   }
 
   @media(min-width: 1366px) {
-    width: 12.5rem;
+    width: 200px;
   }
 `;
 
 export const ButtonBottom = styled.button`
   all: unset;
   width: 100%;
-  height: 4.75rem;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.625rem;
+  gap: 10px;
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -580,17 +554,9 @@ export const ButtonBottom = styled.button`
     border-color: ${props => props.theme.black};
   }
 
-  @media(max-width: 360px) {
-    height: 62px;
-
-    img {
-      width: 32px;
-    }
-  }
-
   @media(max-width: 320px) {
-    height: 3rem;
-    gap: 0.5rem;
+    height: 48px;
+    gap: 8px;
 
     p { 
       font-size: 0.75rem;
@@ -602,58 +568,54 @@ export const ButtonBottom = styled.button`
   }
 
   @media(min-width: 768px) {
-    height: 7rem;
-    gap: 0.75rem;
+    height: 124px;
+    gap: 16px;
 
     img {
       width: 52px;
     }
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 5.875rem;
-      gap: 0.375rem;
+      height: 84px;
+      gap: 6px;
 
       p {
-        font-size: 1rem;
+        font-size: 14px;
       }
 
       img {
-        width: 42px;
+        width: 38px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    height: 9.375rem;
+    height: 150px;
     border-radius: 1rem;
     border-width: 3px;
     justify-content: center;
-    gap: 0.75rem;
+    gap: 16px;
 
     img {
       width: 48px;
     }
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
 
   @media(min-width: 1366px) {
-    height: 9.375rem;
+    height: 164px;
 
     img {
       width: 52px;
-    }
-
-    p {
-      font-size: 1.25rem;
     }
   }
 `;

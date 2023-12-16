@@ -2,8 +2,8 @@ import styled from "styled-components";
 
 export const Container = styled.div`
   all: unset;
-  width: 2rem;
-  height: 2rem;
+  width: 32px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -17,13 +17,17 @@ export const Container = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 1.5rem;
-    height: 1.5rem;
+    width: 24px;
+    height: 24px;
+
+    img {
+      width: 12px;
+    }
   }
 
   @media(min-width: 768px) {
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
 
     img {
       width: 24px;
@@ -31,22 +35,22 @@ export const Container = styled.div`
   }
 
   @media(orientation: landscape) {
-    @media (min-width: 782px) {
-      width: 2.25rem;
-      height: 2.25rem;
+    @media (min-width: 600px) {
+      width: 32px;
+      height: 32px;
 
       img {
-        width: 20px;
+        width: 16px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
 
     img {
-      width: 24px;
+      width: 28px;
     }
   }
 `;
