@@ -1,52 +1,43 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-  width: 9.375rem;
-  height: 18.75rem;
-  margin-top: -6.25rem;
+  width: 150px;
+  height: 320px;
   position: relative;
   z-index: 10;
 
   @media (max-width: 320px) {
-    width: 3.375rem;
-    height: 6rem;
+    width: 100px;
+    height: 200px;
   }
 
   @media (min-width: 768px) {
     width: 12.5rem;
     height: 25rem;
-    margin-top: -3.125rem;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 9.375rem;
-      height: 18.75rem;
-      margin-top: -18rem;
+      width: 150px;
+      height: 320px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 16rem;
-    height: 44rem;
-    margin-top: -43rem;
+    width: 250px;
+    height: 720px;
   }
-
+  
   @media (min-width: 1366px) {
-    width: 18.75rem;
-    height: 50rem;
-    margin-top: -50em;
+    width: 320px;
+    height: 800px;
   }
 
-  @media (min-width: 1440px) {
-    height: 53.125rem;
-    margin-top: -52rem;
+  @media (min-width: 1920px) {
+    width: 400px;
+    height: 1000px;
   }
 
-  @media (min-width: 1440px) {
-    width: 22rem;
-    height: 60rem;
-  }
 `;
 
 export const Antena = styled.div`
@@ -158,7 +149,7 @@ export const Pet = styled.div`
 `;
 
 export const Name = styled.div`
-  width: 9.375rem;
+  width: 150px;
   height: 2rem;
   display: flex;
   align-items: center;
@@ -180,21 +171,23 @@ export const Name = styled.div`
   }
 
   @media (min-width: 1024px) {
-    width: 16rem;
-    height: 4.5rem;
+    width: 250px;
+    height: 72px;
   }
 
   @media (min-width: 1366px) {
-    width: 18.75rem;
-    bottom: 1.75rem;
-    padding-inline: 1rem;
+    width: 320px;
+    bottom: 22px;
+    padding-inline: 16px;
 
     span {
       font-size: 2rem;
     }
   }
 
-  @media (min-width: 1440px) {
-    bottom: 1.25rem;
+  @media (min-width: 1920px) {
+    width: 400px;
+    height: 84px;
+    bottom: 40px;
   }
 `;

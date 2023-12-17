@@ -25,7 +25,7 @@ import msc10 from "./audios/audio9.mp3";
 import { Container, Left, Main, Right, Title, AreaAudio, ButtonsArea, ButtonsVArea, TimeAudio, Bar, TimeArea, BarVolume, Div, Bolinha, Carrega } from "./styled";
 
 export const Audio = () => {
-  const songs = [msc1, msc2, msc3, msc4, msc5, msc6, msc7, msc8, msc9, msc10];
+  const songs = [/* msc1, msc2, msc3, msc4, msc5, msc6, msc7, msc8, msc9, msc10 */];
   const audioRef = useRef(null);
 
   const [currentAudio, setCurrentAudio] = useState(0);

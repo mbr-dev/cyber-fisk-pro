@@ -14,26 +14,30 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 2rem;
+  gap: 32px;
 
   @media(max-width: 320px) {
-    gap: 0.25rem;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 32.25rem;
+      width: 600px;
       height: 100%;
       flex-direction: row;
       align-items: flex-start;
-      gap: 1.5rem;
+      justify-content: space-between;
+      gap: 0;
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 62.5rem;
-    gap: 4rem;
-    padding-top: 2rem;
+  @media(min-width: 1024px) {
+    width: 900px;
+    padding-top: 24px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 1100px;
   }
 `;
 
@@ -41,52 +45,60 @@ export const Right = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.25rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 480px) {
-      gap: 0.375rem;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    gap: 2.25rem;
-  }
-`;
-
-export const Info = styled.section`
-  width: 18rem;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
-  border-radius: 20px;
-  background-color: ${props => props.theme["gray-700"]};
-
-  @media(max-width: 320px) {
-    width: 15.625rem;
-    gap: 0.25rem;
-  }
-
-  @media(min-width: 768px) {
-    width: 25rem;
-    gap: 0.25rem;
+    gap: 8px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 15.625rem;
-      gap: 0.25rem;
+      gap: 6px;
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 28.125rem;
-    gap: 2.25rem;
+  @media(min-width: 1024px) {
+    gap: 16px;
+  }
+
+  @media(min-width: 1366px) {
+    gap: 24px;
+  }
+`;
+
+export const Info = styled.section`
+  width: 300px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  border-radius: 20px;
+  background-color: ${props => props.theme["gray-700"]};
+
+  @media(max-width: 320px) {
+    width: 250px;
+    gap: 8px;
+  }
+
+  @media(min-width: 768px) {
+    width: 450px;
+    gap: 16px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 280px;
+      gap: 4px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: 400px;
+    gap: 24px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 450px;
   }
 `;
 
@@ -94,51 +106,56 @@ export const User = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: 1rem;
+  gap: 10px;
+  margin-top: 16px;
 
   span {
+    font-size: 16px;
     color: ${props => props.theme.white};
   }
 
   @media(max-width: 320px) {
-    margin-top: 0.375rem;
+    gap: 6px;
+    margin-top: 10px;
 
     span {
-      font-size: 0.75rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    margin-top: 1.5rem;
+    gap: 12px;
+    margin-top: 20px;
 
     span {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
-    @media(min-width: 480px) {
-      margin-top: 0.375rem;
+    @media(min-width: 600px) {
+      gap: 6px;
+      margin-top: 10px;
 
       span {
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    margin-top: 1.5rem;
+  @media(min-width: 1024px) {
+    gap: 12px;
+    margin-top: 20px;
 
     span {
-      font-size: 1.25rem;
+      font-size: 24px;
     }
   }
 `;
 
 export const UserImg = styled.div`
-  width: 4.125rem;
-  height: 4.125rem;
+  width: 66px;
+  height: 66px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -147,8 +164,8 @@ export const UserImg = styled.div`
   position: relative;
 
   div {
-    width: 2rem;
-    height: 4.125rem;
+    width: 32px;
+    height: 66px;
     position: absolute;
     top: -2px;
     left: -10px;
@@ -158,31 +175,31 @@ export const UserImg = styled.div`
 
   img {
     z-index: 1;
-    width: 3.5rem;
+    width: 56px;
     border-radius: 9999px;
   }
 
   @media(max-width: 320px) {
-    width: 3.125rem;
-    height: 3.125rem;
+    width: 50px;
+    height: 50px;
 
     div {
-      height: 3rem;
+      height: 48px;
       top: -2px;
       left: -20px;
     }
 
     img {
-      width: 2.5rem;
+      width: 40px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 5.25rem;
-    height: 5.25rem;
+    width: 84px;
+    height: 84px;
 
     div {
-      height: 4.375rem;
+      height: 70px;
     }
 
     img {
@@ -192,25 +209,26 @@ export const UserImg = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 3.625rem;
-      height: 3.625rem;
+      width: 42px;
+      height: 42px;
 
       div {
-        height: 1.25rem;
+        width: 24px;
+        height: 32px;
       }
 
       img {
-        width: 48px;
+        width: 34px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 5.25rem;
-    height: 5.25rem;
+  @media(min-width: 1024px) {
+    width: 84px;
+    height: 84px;
 
     div {
-      height: 4.375rem;
+      height: 70px;
     }
 
     img {
@@ -220,34 +238,17 @@ export const UserImg = styled.div`
 `;
 
 export const UserInfo = styled.div`
+  width: 84%;
   display: flex;
   align-items: center;
-  gap: 3rem;
-
-  @media(max-width: 320px) {
-    gap: 2rem;
-  }
-
-  @media(min-width: 768px) {
-    gap: 4rem;
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 480px) {
-      gap: 2rem;
-    }
-  }
-
-  @media(min-width: 1280px) {
-    gap: 6rem;
-  }
+  justify-content: space-between;
 `;
 
 export const From = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.25rem;
+  gap: 8px;
   color: ${props => props.theme.white};
 
   img {
@@ -255,28 +256,31 @@ export const From = styled.div`
   }
 
   p {
-    padding: 0.125rem 0.25rem;
+    padding: 2px 4px;
     display: flex;
     align-items: center;
     justify-content: center;
     border-radius: 3px;
     font-weight: 500;
+    font-size: 16px;
     background-color: ${props => props.theme["red-200"]};
   }
 
   span {
-    font-weight: 300;
+    font-size: 14px;
+    font-weight: normal;
   }
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 6px;
 
     p {
-      font-size: 0.75rem;
+      padding: 2px 4px;
+      font-size: 14px;
     }
 
     span {
-      font-size: 0.75rem;
+      font-size: 12px;
     }
 
     img {
@@ -285,61 +289,55 @@ export const From = styled.div`
   }
 
   @media(min-width: 768px) {
-    gap: 1rem;
-
-    img {
-      width: 52px;
-    }
+    gap: 10px;
 
     p {
-      padding: 0.375rem 0.625rem;
-      font-size: 1.25rem;
-      margin-bottom: 10px;
-      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 24px;
     }
 
     span {
-      font-size: 1.25rem;
+      font-size: 24px;
+    }
+
+    img {
+      width: 56px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.375rem;
+      gap: 6px;
+
+      p {
+        padding: 2px 4px;
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 12px;
+      }
 
       img {
         width: 32px;
       }
-
-      p {
-        padding: 0.1875rem 0.375rem;
-        font-size: 0.875rem;
-        margin-bottom: 4px;
-        border-radius: 4px;
-      }
-
-      span {
-        font-size: 0.875rem;
-      }
     }
   }
 
-  @media(min-width: 1280px) {
-    gap: 1rem;
-
-    img {
-      width: 52px;
-    }
+  @media(min-width: 1024px) {
+    gap: 10px;
 
     p {
-      padding: 0.375rem 0.625rem;
-      font-size: 1rem;
-      margin-bottom: 10px;
-      border-radius: 6px;
+      padding: 4px 8px;
+      font-size: 18px;
     }
 
     span {
-      font-size: 1rem;
+      font-size: 18px;
+    }
+
+    img {
+      width: 56px;
     }
   }
 `;
@@ -349,51 +347,52 @@ export const SocialMedia = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
-  padding-block: 0.75rem;
+  gap: 16px;
+  padding-block: 10px;
   color: ${props => props.theme.white};
   border-end-end-radius: 20px;
   border-end-start-radius: 20px;
   background-color: ${props => props.theme["red-200"]};
 
   img {
-    width: 18px;
+    width: 24px;
   }
 
   @media(max-width: 320px) {
-    gap: 0.75rem;
+    padding-block: 10px;
+    gap: 12px;
 
     img {
-      width: 16px;
+      width: 18px;
     }
   }
 
   @media(min-width: 768px) {
-    padding-block: 1.25rem;
-    gap: 1.125rem;
+    gap: 24px;
+    padding-block: 14px;
 
     img {
-      width: 32px;
+      width: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-block: 0.375rem;
-      gap: 0.75rem;
+      padding-block: 8px;
+      gap: 12px;
 
       img {
-        width: 20px;
+        width: 18px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    padding-block: 1.25rem;
-    gap: 1.125rem;
+  @media(min-width: 1024px) {
+    gap: 24px;
+    padding-block: 14px;
 
     img {
-      width: 32px;
+      width: 28px;
     }
   }
 `;
@@ -403,61 +402,60 @@ export const Text = styled.section`
   color: ${props => props.theme["gray-700"]};
 
   p {
+    font-size: 16px;
     font-weight: bold;
-    margin-bottom: 0.5rem;
+    margin-bottom: 8px;
   }
-
+  
   span {
+    font-size: 16px;
     display: block;
     font-weight: normal;
   }
 
   @media(max-width: 320px) {
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
+      margin-bottom: 4px;
     }
-
+    
     span {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 30rem;
-
     p {
-      font-size: 1.75rem;
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-
+    
     span {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 17.5rem;
-
       p {
-        font-size: 1rem;
-        margin-bottom: 0px;
+        font-size: 14px;
+        margin-bottom: 4px;
       }
-
+      
       span {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 30rem;
-
+  @media(min-width: 1024px) {
     p {
-      font-size: 1.75rem;
+      font-size: 24px;
+      margin-bottom: 8px;
     }
-
+    
     span {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 `;
@@ -466,33 +464,37 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   .hasBorder {
     border-color: ${props => props.theme["red-200"]};
   }
 
+  @media(max-width: 320px) {
+    gap: 8px;
+  }
+
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 1rem;
-      height: 220px;
+      height: 80%;
+      gap: 24px;
       justify-content: center;
     }
   }
 
-  @media(min-width: 1280px) {
-    gap: 2rem;
-    height: 480px;
+  @media(min-width: 1024px) {
+    gap: 32px;
   }
 `;
 
 export const ButtonArea = styled.section`
+  width: 250px;
   display: flex;
-  gap: 2rem;
+  justify-content: space-between;
 
   .hasBorder {
     border-color: ${props => props.theme["gray-700"]};
@@ -500,8 +502,8 @@ export const ButtonArea = styled.section`
 
   button {
     all: unset;
-    width: 3rem;
-    height: 3rem;
+    width: 48px;
+    height: 48px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -530,11 +532,11 @@ export const ButtonArea = styled.section`
   }
 
   @media(max-width: 320px) {
-    gap: 1.5rem;
+    width: 180px;
 
     button {
-      width: 2.25rem;
-      height: 2.25rem;
+      width: 36px;
+      height: 36px;
 
       img {
         width: 18px;
@@ -547,11 +549,12 @@ export const ButtonArea = styled.section`
   }
 
   @media(min-width: 768px) {
-    gap: 3.25rem;
+    width: 400px;
 
     button {
-      width: 5rem;
-      height: 5rem;
+      width: 80px;
+      height: 80px;
+      border-radius: 8px;
 
       img {
         width: 32px;
@@ -565,7 +568,7 @@ export const ButtonArea = styled.section`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 2rem;
+      width: 250px;
 
       button {
         width: 3.25rem;
@@ -582,8 +585,8 @@ export const ButtonArea = styled.section`
     }
   }
 
-  @media(min-width: 1280px) {
-    gap: 3.25rem;
+  @media(min-width: 1024px) {
+    width: 400px;
 
     button {
       width: 6.25rem;
@@ -606,12 +609,12 @@ export const Hide = styled.div`
 
 export const ButtonRec = styled.button`
   all: unset;
-  width: 13.75rem;
-  height: 3rem;
+  width: 250px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 10px;
   border-radius: 8px;
   border: 2px solid transparent;
   cursor: pointer;
@@ -640,7 +643,7 @@ export const ButtonRec = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 10.75rem;
+    width: 180px;
     height: 3rem;
 
     img {
@@ -649,26 +652,25 @@ export const ButtonRec = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 26rem;
-    height: 3.5rem;
+    width: 400px;
+    height: 92px;
     gap: 1rem;
 
     img {
-      width: 54px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
     }
 
     .ruido {
-      width: 13rem;
+      width: 250px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 15rem;
-      height: 3.25rem;
+      width: 250px;
+      height: 54px;
       border-radius: 6px;
-      gap: 10px;
 
       img {
         width: 28px;
@@ -682,18 +684,18 @@ export const ButtonRec = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 26.25rem;
-    height: 3.5rem;
-    gap: 1rem;
+  @media(min-width: 1024px) {
+    width: 400px;
+    height: 92px;
+    gap: 32px;
 
     img {
-      width: 54px;
-      height: 42px;
+      width: 44px;
+      height: 44px;
     }
 
     .ruido {
-      width: 13.75rem;
+      width: 250px;
     }
   }
 `;

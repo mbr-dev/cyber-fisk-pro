@@ -10,36 +10,54 @@ export const Container = styled.div`
 
 export const Main = styled.main`
   flex: 1;
-  width: 12rem;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+`;
+
+export const AreaButtons = styled.div`
+  width: 230px;
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
+  gap: 16px;
 
-  @media (max-width: 320px) {
-    width: 9rem;
+  @media(max-width: 320px) {
+    width: 160px;
+    gap: 8px;
   }
 
   @media (min-width: 768px) {
-    width: 20rem;
+    width: 400px;
+    gap: 32px;
+    justify-content: center;
   }
 
-  @media(orientation: landscape) {
+  @media (orientation: landscape) {
     @media (min-width: 600px) {
-      width: 25rem;
-      gap: 1rem;
+      width: 420px;
+      gap: 24px;
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 46.875rem;
-    gap: 2rem;
+  @media (min-width: 1024px) {
+    width: 700px;
+    gap: 32px;
+  }
+  
+  @media(min-width: 1280px) {
+    width: 800px;
+    gap: 40px;
   }
 `;
 
-export const DivInside = styled.div`
-  width: 4.25rem;
-  height: 4.25rem;
+export const DivInside = styled.button`
+  all: unset;
+  width: 72px;
+  height: 72px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -47,78 +65,93 @@ export const DivInside = styled.div`
   border-radius: 8px;
   border: 2px solid transparent;
   box-shadow: 0px 4px 10px 0px #00000033;
+  cursor: pointer;
   transition: all ease 0.3s;
 
-  &:hover {
-    background-color: ${props => props.theme["red-200"]};
-    border-color: ${props => props.theme["gray-700"]};
-    color: ${props => props.theme.white};
+  p {
+    font-weight: bold;
+    font-size: 32px;
   }
 
   span {
-    font-size: 1.75rem;
-  }
-
-  p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
   }
 
-  @media (max-width: 320px) {
-    width: 3.25rem;
-    height: 3.25rem;
-    border-radius: 6px;
-    border-width: 2px;
+  &:hover {
+    color: ${props => props.theme.white};
+    background-color: ${props => props.theme["red-200"]};
+    border: 2px solid ${props => props.theme.black};
+  }
 
-    span {
-      font-size: 1.125rem;
-    }
+  &:disabled{
+    background-color: ${props => props.theme["gray-500"]};
+  }
+
+  @media(max-width: 320px) {
+    width: 52px;
+    height: 52px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 18px;
+    }
+
+    span {
+      font-size: 12px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 6.875rem;
-    height: 6.875rem;
-    border-width: 3px;
-
-    span {
-      font-size: 2rem;
-    }
+    width: 110px;
+    height: 110px;
 
     p {
-      font-size: 1.375rem;
+      font-size: 44px;
+    }
+
+    span {
+      font-size: 22px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 4rem;
-      height: 4rem;
-
-      span {
-        font-size: 1rem;
-      }
+      width: 3.625rem;
+      height: 3.625rem;
 
       p {
+        font-size: 1.125rem;
+      }
+
+      span {
         font-size: 0.875rem;
       }
     }
   }
 
-  @media (min-width: 1280px) {
-    width: 6.875rem;
-    height: 6.875rem;
-    border-width: 3px;
-
-    span {
-      font-size: 2rem;
-    }
+  @media (min-width: 1024px) {
+    width: 100px;
+    height: 100px;
 
     p {
-      font-size: 1.375rem;
+      font-size: 44px;
+    }
+
+    span {
+      font-size: 24px;
+    }
+  }
+
+  @media(min-width: 1280px) {
+    width: 120px;
+    height: 120px;
+
+    p {
+      font-size: 3rem;
+    }
+
+    span {
+      font-size: 1.25rem;
     }
   }
 `;

@@ -45,24 +45,56 @@ export const DivMobile = styled.div`
 
 export const Top = styled.div`
   width: 100%;
-  height: 40%;
+  height: 42%;
   display: flex;
+  margin-top: -14px;
   align-items: center;
   justify-content: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: bottom;
   position: relative;
 
-  .bgImg {
-    width: 100%;
-    height: 100%;
-    object-fit: fill;
+  div {
     position: absolute;
-    z-index: 1;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  @media(max-width: 320px) {
+    div {
+      top: -8px;
+    }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       height: 100%;
       width: 40%;
+      margin-top: 0px;
+
+      div {
+        top: -6px;
+      }
+    }
+
+    @media(min-width: 1024px) {
+      div {
+        top: -24px;
+      }
+    }
+
+    @media(min-width: 1366px) {
+      div {
+        top: -28px;
+      }
+    }
+
+    @media(min-width: 1920px) {
+      div {
+        top: -32px;
+      }
     }
   }
 `;

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { HeaderText } from "../../components/HeaderText";
 import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
-import { Container, DivInside, Main } from "./styles";
+import { Container, DivInside, Main, AreaButtons } from "./styles";
 
 export const StudioList = () => {
   const navigate = useNavigate();
@@ -17,55 +17,57 @@ export const StudioList = () => {
       <HeaderText title="Studio" />
 
       <Main>
-        <DivInside onClick={handleGoStudio}>
-          <span>1</span>
-          <p>Lesson</p>
-        </DivInside>
+        <AreaButtons>
+          <DivInside onClick={handleGoStudio}>
+            <p>1</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>2</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>2</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>3</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>3</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>4</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>4</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>5</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>5</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>6</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>6</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>7</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>7</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>8</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>8</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>9</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>9</p>
+            <span>Lesson</span>
+          </DivInside>
 
-        <DivInside>
-          <span>10</span>
-          <p>Lesson</p>
-        </DivInside>
+          <DivInside>
+            <p>10</p>
+            <span>Lesson</span>
+          </DivInside>
+        </AreaButtons>
       </Main>
 
       <AreaFooterFullBtn />

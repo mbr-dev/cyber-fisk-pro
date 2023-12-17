@@ -17,49 +17,37 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 7.5rem;
+  height: 120px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  padding: 1rem 1rem 0 1rem;
+  padding: 16px 16px 0 16px;
+  border-end-end-radius: 18px;
+  border-end-start-radius: 18px;
+  background-repeat: no-repeat;
+  background-size: cover;
   position: relative;
 
-  .bgHeaderImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: -1px;
-    left: 0;
-    z-index: -1;
-    border-end-end-radius: 18px;
-    border-end-start-radius: 18px;
-  }
-
   @media(max-width: 320px) {
-    height: 4.875rem;
+    height: 100px;
   }
 
   @media(min-width: 768px) {
-    height: 9rem;
+    height: 150px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 40%;
       height: 100vh;
-      flex-direction: column;
-      align-items: center;
+      border-end-end-radius: 0;
+      border-end-start-radius: 0;
       padding: 1rem;
-
-      .bgHeaderImg {
-        border-end-end-radius: 0;
-        border-end-start-radius: 0;
-      }
     }
   }
 
   @media(min-width: 1024px) {
-    padding: 2rem;
+    padding: 32px;
   }
 `;
 
@@ -70,16 +58,16 @@ export const HeaderButton = styled.div`
 `;
 
 export const DivBtnCH = styled.div`
-  width: 15rem;
+  width: 232px;
   display: flex;
   justify-content: space-between;
-
+  
   @media (max-width: 320px) {
-    width: 12.5rem;
+    width: 200px;
   }
 
   @media (min-width: 768px) {
-    width: 27.5rem;
+    width: 420px;
   }
 
   @media(orientation: landscape) {
@@ -95,13 +83,26 @@ export const AvatarPe = styled.div`
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       display: block;
-      width: 10rem;
+      position: absolute;
+      top: -20px;
+      left: 92px;
+      z-index: 1000;
     }
   }
-
+  
   @media (min-width: 1024px) {
-    display: block;
-    width: 20rem;
+    top: -52px;
+    left: 80px;
+  }
+
+  @media (min-width: 1366px) {
+    top: -82px;
+    left: 132px;
+  }
+
+  @media (min-width: 1920px) {
+    top: -52px;
+    left: 200px;
   }
 `;
 
@@ -112,7 +113,6 @@ export const Content = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
   position: relative;
 
   @media(orientation: landscape) {
@@ -130,34 +130,30 @@ export const BtnC = styled.div`
     @media (min-width: 600px) {
       display: block;
       position: absolute;
-      top: 1rem;
-      right: 1rem;
+      top: 16px;
+      right: 16px;
     }
 }
 
   @media (min-width: 1024px) {
-    top: 2rem;
-    right: 2rem;
+    top: 32px;
+    right: 32px;
   }
 `;
 
 export const Main = styled.main`
-  width: 18.75rem;
+  width: 300px;
   display: flex;
   flex-direction: column;
-  padding-top: 4rem;
-  gap: 1rem;
+  padding-top: 32px;
+  gap: 16px;
   
   p {
     display: flex;
     align-items: flex-start;
-    font-size: 1.5rem;
+    font-size: 24px;
     font-weight: 500;
     cursor: pointer;
-  }
-
-  @media(max-width: 360px) {
-    padding-top: 42px;
   }
 
   @media(max-width: 320px) {
@@ -170,25 +166,25 @@ export const Main = styled.main`
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
+    width: 500px;
     justify-content: center;
-    padding-top: 3rem;
-    gap: 1.5rem;
+    padding-top: 48px;
+    gap: 24px;
 
     p {
-      font-size: 2rem;
-      padding-left: 2rem;
+      font-size: 32px;
+      padding-left: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 18.75rem;
-      padding-top: 2rem;
-      gap: 0.75rem;
+      width: 300px;
+      padding-top: 24px;
+      gap: 10px;
 
       p {
-        font-size: 1.25rem;
+        font-size: 18px;
       }
     }
   }
@@ -196,28 +192,34 @@ export const Main = styled.main`
   @media(min-width: 1024px) {
     width: 420px;
     justify-content: center;
-    padding-top: 6.25rem;
-    gap: 1.5rem;
+    padding-top: 64px;
+    gap: 24px;
 
     p {
-      font-size: 1.5rem;
-      padding-left: 1.5rem;
+      font-size: 32px;
+      padding-left: 32px;
     }
   }
 
   @media(min-width: 1366px) {
-    width: 37.5rem;
+    width: 600px;
+    padding-top: 92px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 800px;
+    padding-top: 120px;
 
     p {
-      font-size: 2rem;
-      padding-left: 2rem;
+      font-size: 36px;
+      padding-left: 36px;
     }
   }
 `;
 
 export const AreaFooter = styled.div`
-  width: 18.75rem;
-  height: 4rem;
+  width: 300px;
+  height: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -225,30 +227,35 @@ export const AreaFooter = styled.div`
   border-top: 2px solid ${props => props.theme["gray-200"]};
 
   @media(max-width: 320px) {
-    width: 15.625rem;
-    height: 3.25rem;
+    width: 250px;
+    height: 54px;
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
-    height: 4.5rem;
+    width: 500px;
+    height: 100px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 18.75rem;
-      height: 3.25rem;
+      width: 300px;
+      height: 52px;
     }
   }
 
   @media(min-width: 1024px) {
     width: 420px;
-    height: 6.25rem;
+    height: 100px;
     border-width: 4px;
   }
 
   @media(min-width: 1366px) {
-    width: 37.5rem;
+    width: 600px;
+    height: 120px
+  }
+
+  @media(min-width: 1920px) {
+    width: 800px;
   }
 `;
 
@@ -286,7 +293,7 @@ export const ButtonLogout = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 25rem;
+    width: 300px;
     height: 2.75rem;
 
     p {
@@ -296,7 +303,7 @@ export const ButtonLogout = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 15.625rem;
+      width: 200px;
       height: 2rem;
       border-radius: 6px;
 
@@ -307,11 +314,17 @@ export const ButtonLogout = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 25rem;
+    width: 300px;
     height: 2.75rem;
+    border-radius: 12px;
 
     p {
       font-size: 2rem;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 400px;
+    height: 48px;
   }
 `;

@@ -32,9 +32,9 @@ export const Menu = () => {
 
   return (
     <Container>
-      <Header>
-        <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
-
+      <Header style={{
+        backgroundImage: `url("${bgHeaderImg}")`
+      }}>
         <HeaderButton>
           <ButtonMenuHeader />
           <DivBtnCH>

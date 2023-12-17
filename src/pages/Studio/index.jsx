@@ -9,21 +9,22 @@ import { HeaderText } from "../../components/HeaderText";
 import { CyberContext } from "../../context/cyber";
 
 import devIcon from "./image/Dev.svg";
-import keyIcon from "../../assets/key.svg";
 import gitHubIcon from "./image/GitHub.svg";
 import twitterIcon from "./image/Twitter.svg";
-import microIcon from "../../assets/micro1.png";
-import micro1Icon from "../../assets/micro2.png";
-import audioPauseIcon from "../../assets/AudioPause.png";
 import linkedInIcon from "./image/LinkedIn.svg";
 import ruidoIcon from "../../assets/ruido2.svg";
 import dribbbleIcon from "./image/Dribbble.svg";
 import microRedIcon from "./image/microRed.png";
 import microRed2Icon from "./image/microRed2.png";
 import instagramIcon from "./image/Instagram.svg";
+
+import eua from "../../assets/Eua.svg";
+import keyIcon from "../../assets/key.svg";
+import micro1Icon from "../../assets/micro2.png";
+import microIcon from "../../assets/micro1.png";
 import volumeIcon from "../../assets/btnAudio.svg";
 import australia from "../../assets/Australia.png";
-import eua from "../../assets/Eua.svg";
+import audioPauseIcon from "../../assets/AudioPause.png";
 
 import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec, Right, Left, Hide } from "./styles";
 

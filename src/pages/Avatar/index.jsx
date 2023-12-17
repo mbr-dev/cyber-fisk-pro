@@ -191,9 +191,12 @@ export const Avatar = () => {
       <HeaderText title="Avatar " />
 
       <Main>
-        <Top>
-          <img src={bgImg} alt="" className="bgImg" />
-          <AvatarCustom avatar />
+        <Top style={{
+          backgroundImage: `url("${bgImg}")`
+        }}>
+          <div>
+            <AvatarCustom avatar />
+          </div>
         </Top>
 
         <DivBottom>

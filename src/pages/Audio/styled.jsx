@@ -5,6 +5,7 @@ export const Container = styled.div`
   height: 100vh;
   display: flex;
   flex-direction: column;
+  align-items: center;
 `;
 
 export const Main = styled.main`
@@ -13,42 +14,44 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding-top: 2rem;
-  gap: 1rem;
-
- /*  audio {
-    display: none;
-  } */
+  padding-top: 16px;
+  gap: 16px;
 
   @media (max-width: 320px) {
-    padding-top: 0.75rem;
+    padding-top: 8px;
+    gap: 8px;
   }
 
   @media (min-width: 768px) {
-    gap: 2rem;
+    padding-top: 24px;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      flex: 1;
-      padding-top: 0;
+      width: 550px;
       flex-direction: row;
-      gap: 1.5rem;
+      justify-content: space-between;
+      padding-top: 8px;
+      gap: 0px;
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 2rem;
+    width: 800px;
+    padding-top: 64px;
   }
 
   @media (min-width: 1366px) {
-    gap: 4rem;
+    width: 1100px;
+    height: 100%;
+    align-items: center;
   }
 `;
 
 export const Left = styled.div`
-  width: 13.75rem;
-  height: 13.75rem;
+  width: 200px;
+  height: 200px;
   border-radius: 18px;
 
   img {
@@ -57,123 +60,129 @@ export const Left = styled.div`
   }
 
   @media (max-width: 320px) {
-    width: 9.375rem;
-    height: 9.375rem;
+    width: 120px;
+    height: 120px;
   }
 
   @media (min-width: 768px) {
-    width: 18rem;
-    height: 18rem;
+    width: 250px;
+    height: 250px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13.125rem;
-      height: 13.125rem;
+      width: 180px;
+      height: 180px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 22rem;
-    height: 22rem;
+    width: 300px;
+    height: 300px;
   }
 
   @media (min-width: 1366px) {
-    width: 28.125rem;
-    height: 28.125rem;
+    width: 400px;
+    height: 400px;
   }
 `;
 
 export const Right = styled.div`
+  width: 300px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1.5rem;
-
+  gap: 16px;
+  
   @media(max-width: 320px) {
-    gap: 1.125rem;
+    width: 220px;
+    gap: 14px;
   }
 
   @media(min-width: 768px) {
-    gap: 1.5rem;
+    width: 500px;
+    gap: 20px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.25rem;
+      width: 300px;
+      gap: 10px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 1.5rem;
+    width: 420px;
+    gap: 20px;
   }
 
   @media(min-width: 1366px) {
-    gap: 2rem;
+    width: 600px;
   }
 `;
 
 export const Title = styled.section`
   p {
     font-weight: normal;
-    font-size: 1.25rem;
+    font-size: 16px;
+  }
+
+  @media (max-width: 320px) {
+    p {
+      font-size: 14px;
+    }
   }
 
   @media (min-width: 768px) {
     p {
-      font-size: 1.75rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       p {
-        font-size: 1.125rem;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
     p {
-      font-size: 1.75rem;
+      font-size: 24px;
     }
   }
 
   @media (min-width: 1366px) {
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;
 
 export const AreaAudio = styled.div`
-  width: 18.75rem;
+  width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 1.5rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    width: 250px;
-    gap: 1.125rem;
+    gap: 14px;
   }
 
   @media (min-width: 768px) {
-    width: 25rem;
+    gap: 18px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 1.5rem
+      gap: 8px
     }
   }
 
   @media (min-width: 1024px) {
-    width: 30rem;
-  }
-
-  @media (min-width: 1366px) {
-    width: 34.375rem;
+    gap: 24px;
   }
 `;
 
@@ -181,26 +190,18 @@ export const TimeAudio = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 10px;
 
   @media (min-width: 1024px) {
-    gap: 0.5rem;
+    gap: 14px;
   }
 `;
 
 export const Bar = styled.div`
-  width: 18.75rem;
+  width: 100%;
   height: 0.3125rem;
   border-radius: 6px;
   background-color: ${props => props.theme["gray-100"]};
- 
-  @media (min-width: 600px) {
-    width: 100%;
-  }
-
-  @media (min-width: 1024px) {
-    height: 0.4375rem;
-  }
 `;
 
 export const Carrega = styled.div`
@@ -216,13 +217,14 @@ export const Bolinha = styled.div`
   border-radius: 9999px;
   position: absolute;
   top: -2px;
-  right: 0;
+  right: -10px;
   background-color: ${props => props.theme["gray-700"]};
 
   @media (min-width: 1024px) {
     width: 14px;
     height: 14px;
-    top: -3px;
+    top: -4px;
+    right: -12px;
   }
 `;
 
@@ -233,27 +235,27 @@ export const TimeArea = styled.div`
   justify-content: space-between;
 
   p {
-    font-size: 0.875rem;
+    font-size: 14px;
     font-weight: 700;
   }
 
   @media (min-width: 768px) {
     p {
-      font-size: 1.5rem
+      font-size: 24px
     }
   }
 
   @media(orientation: landscape) {
-    @media (min-width: 480px) {
+    @media (min-width: 600px) {
       p {
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
     p {
-      font-size: 1.5rem
+      font-size: 24px;
     }
   }
 `;
@@ -297,6 +299,23 @@ export const ButtonsArea = styled.div`
   .redBtn {
     width: 2rem;
     height: 2rem;
+  }
+
+  @media(max-width: 320px) {
+    .playBtn {
+      width: 38px;
+      height: 38px;
+    }
+
+    .changeBtn {
+      width: 32px;
+      height: 32px;
+    }
+
+    .redBtn {
+      width: 28px;
+      height: 28px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -382,21 +401,30 @@ export const ButtonsVArea = styled.div`
     cursor: pointer;
 
     img {
-      width: 1rem;
-      height: 1rem;
+      width: 28px;
+      height: 28px;
       transition: all ease 0.3s;
     } 
 
     &:hover {
-      scale: 1.1
+      scale: 1.1;
+    }
+  }
+
+  @media(max-width: 320px) {
+    button {
+      img {
+        width: 24px;
+        height: 24px;
+      }
     }
   }
 
   @media(min-width: 768px) {
     button {
       img {
-        width: 1.75rem;
-        height: 1.75rem;
+        width: 40px;
+        height: 40px;
       }
     }
   }
@@ -405,8 +433,8 @@ export const ButtonsVArea = styled.div`
     @media(min-width: 600px) {
       button {
         img {
-          width: 1.5rem;
-          height: 1.5rem;
+          width: 28px;
+          height: 28px;
         }
       }
     }
@@ -415,16 +443,16 @@ export const ButtonsVArea = styled.div`
   @media(min-width: 1024px) {
     button {
       img {
-        width: 2rem;
-        height: 2rem;
+        width: 42px;
+        height: 42px;
       }
     }
   }
 `;
 
 export const BarVolume = styled.div`
-  width: 15.625rem;
-  height: 1.5rem;
+  width: 232px;
+  height: 28px;
   display: flex;
   justify-content: space-between;
 
@@ -433,46 +461,56 @@ export const BarVolume = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 12.5;
+    width: 164px;
   }
 
   @media (min-width: 768px) {
-    width: 20rem;
-    height: 2rem;
+    width: 380px;
+    height: 46px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 20rem;
-      height: 1.5rem;
+      width: 232px;
+      height: 26px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 23rem;
-    height: 2rem;
+    width: 320px;
+    height: 46px;
   }
 
   @media (min-width: 1366px) {
-    width: 28.125rem;
-    height: 2rem;
+    width: 480px;
   }
 `;
 
 export const Div = styled.div`
-  width: 0.625rem;
+  width: 8px;
   height: 100%;
   background-color: ${props => props.theme["gray-800"]};
 
   @media(max-width: 320px) {
-    width: 0.5rem;
+    width: 5px;
   }
 
-  @media (min-width: 1024px) {
+  
+  @media (min-width: 768px) {
     width: 12px;
   }
 
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 8px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    width: 10px;
+  }
+
   @media (min-width: 1366px) {
-    width: 1.125rem;
+    width: 18px;
   }
 `;
