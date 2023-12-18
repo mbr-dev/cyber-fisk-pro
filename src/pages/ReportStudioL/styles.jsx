@@ -14,7 +14,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 7.5rem;
+  gap: 100px;
   padding-top: 6.25rem;
 
   @media (max-width: 320px) {
@@ -33,7 +33,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding-top: 0px;
     gap: 3.375rem;
     justify-content: center;
@@ -48,7 +48,7 @@ export const DivInside = styled.div`
   align-items: center;
   justify-content: center;
   border-radius: 8px;
-  border: 1px solid ${props => props.theme["red-200"]};
+  border: 2px solid ${props => props.theme["red-200"]};
   transition: all ease 0.3s;
 
   span {
@@ -78,7 +78,7 @@ export const DivInside = styled.div`
     @media (min-width: 600px) {
       width: 4rem;
       height: 4rem;
-      border-width: 1px;
+      border-width: 2px;
 
       span {
         font-size: 1.25rem;
@@ -90,7 +90,7 @@ export const DivInside = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 8.875rem;
     height: 8.875rem;
     border-width: 3px;
@@ -142,7 +142,7 @@ export const ButtonRec = styled.button`
 
   @media(min-width: 768px) {
     width: 26.25rem;
-    height: 4.5rem;
+    height: 100px;
     gap: 1rem;
 
     img {
@@ -151,7 +151,7 @@ export const ButtonRec = styled.button`
     }
 
     .ruido {
-      width: 220px;
+      width: 250px;
     }
   }
 
@@ -172,7 +172,7 @@ export const ButtonRec = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 26.25rem;
     height: 4.5rem;
     gap: 1rem;

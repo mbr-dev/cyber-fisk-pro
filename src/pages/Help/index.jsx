@@ -1,5 +1,4 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 
 import { HeaderText } from "../../components/HeaderText";
 
@@ -10,16 +9,12 @@ import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 import maisImg from "./images/mais.png";
 import menosImg from "./images/menos.png";
 
-import { Container, Main, Items, Top, Inside, Left, Right, TopRight, MainRight } from "./styles";
+import { Container, Main, Items, Top, InsideRight, Left, Right, TopRight, MainRight, InsideLeft } from "./styles";
 import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {
   const { selectLanguage } = useContext(CyberContext);
-  const [openModal, setOpenModal] = useState(null);
-
-  const navigate = useNavigate();
-
-  const isDesktop = window.matchMedia("(min-width: 780px)").matches;
+  const [openModal, setOpenModal] = useState("XPRanking");
 
   const handleItemClick = (modalName) => {
     setOpenModal((modal) => (modal === modalName ? null : modalName));
@@ -32,9 +27,7 @@ export const Help = () => {
       <Main>
         <Left>
           <Items onClick={() => handleItemClick("XPRanking")} style={{
-            borderColor: openModal === "XPRanking" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "XPRanking" && !isDesktop ? "220px" : "",
-            overflowY: openModal === "XPRanking" && !isDesktop ? "scroll" : "",
+            borderColor: openModal === "XPRanking" ? defaultTheme["red-200"] : "",
           }}>
             <Top>
               <h2>{selectLanguage === 0 ? translateHelp[0].title[0].ranking[0] : selectLanguage === 1 ? translateHelp[0].title[0].ranking[1] : translateHelp[0].title[0].ranking[2]}</h2>
@@ -45,17 +38,15 @@ export const Help = () => {
                 <img src={menosImg} alt="ícone menos" />}
             </Top>
 
-            {openModal === "XPRanking" && !isDesktop &&
-              <Inside>
+            {openModal === "XPRanking" &&
+              <InsideLeft>
                 <p>{selectLanguage === 0 ? translateHelp[1].ranking[0] : selectLanguage === 1 ? translateHelp[1].ranking[1] : translateHelp[1].ranking[2]}</p>
-              </Inside>
+              </InsideLeft>
             }
           </Items>
 
           <Items onClick={() => handleItemClick("FiskDollars")} style={{
-            borderColor: openModal === "FiskDollars" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "FiskDollars" && !isDesktop ? "220px" : "",
-            overflowY: openModal === "FiskDollars" && !isDesktop ? "scroll" : "",
+            borderColor: openModal === "FiskDollars" ? defaultTheme["red-200"] : "",
           }}>
             <Top>
               <h2>{selectLanguage === 0 ? translateHelp[0].title[0].dollar[0] : selectLanguage === 1 ? translateHelp[0].title[0].dollar[1] : translateHelp[0].title[0].dollar[2]}</h2>
@@ -66,8 +57,8 @@ export const Help = () => {
                 <img src={menosImg} alt="ícone menos" />}
             </Top>
 
-            {openModal === "FiskDollars" && !isDesktop &&
-              <Inside>
+            {openModal === "FiskDollars" &&
+              <InsideLeft>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].text : selectLanguage === 1 ? translateHelp[2].dollars[1].text : translateHelp[2].dollars[2].text}</p>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].one[0] : selectLanguage === 1 ? translateHelp[2].dollars[1].one[0] : translateHelp[2].dollars[2].one[0]}</p>
                 <p style={{ paddingLeft: "0.375rem"}}>{selectLanguage === 0 ? translateHelp[2].dollars[0].one[1] : selectLanguage === 1 ? translateHelp[2].dollars[1].one[1] : translateHelp[2].dollars[2].one[1]}</p>
@@ -85,14 +76,12 @@ export const Help = () => {
 
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].three : selectLanguage === 1 ? translateHelp[2].dollars[1].three : translateHelp[2].dollars[2].three}</p>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].four : selectLanguage === 1 ? translateHelp[2].dollars[1].four : translateHelp[2].dollars[2].four}</p>
-              </Inside>
+              </InsideLeft>
             }
           </Items>
 
           <Items onClick={() => handleItemClick("DailyGame")} style={{
-            borderColor: openModal === "DailyGame" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "DailyGame" && !isDesktop ? "220px" : "",
-            overflowY: openModal === "DailyGame" && !isDesktop ? "scroll" : "",
+            borderColor: openModal === "DailyGame" ? defaultTheme["red-200"] : "",
           }}>
             <Top>
               <h2>{selectLanguage === 0 ? translateHelp[0].title[0].game[0] : selectLanguage === 1 ? translateHelp[0].title[0].game[1] : translateHelp[0].title[0].game[2]}</h2>
@@ -103,17 +92,15 @@ export const Help = () => {
                 <img src={menosImg} alt="ícone menos" />}
             </Top>
 
-            {openModal === "DailyGame" && !isDesktop &&
-              <Inside>
+            {openModal === "DailyGame" &&
+              <InsideLeft>
                 <p>{selectLanguage === 0 ? translateHelp[3].game[0] : selectLanguage === 1 ? translateHelp[3].game[1] : translateHelp[3].game[2]}</p>
-              </Inside>
+              </InsideLeft>
             }
           </Items>
 
           <Items onClick={() => handleItemClick("SpinWheel")} style={{
-            borderColor: openModal === "SpinWheel" && !isDesktop ? defaultTheme["red-200"] : "",
-            height: openModal === "SpinWheel" && !isDesktop ? "220px" : "",
-            overflowY: openModal === "SpinWheel" && !isDesktop ? "scroll" : "",
+            borderColor: openModal === "SpinWheel" ? defaultTheme["red-200"] : "",
           }}>
             <Top>
               <h2>{selectLanguage === 0 ? translateHelp[0].title[0].wheel[0] : selectLanguage === 1 ? translateHelp[0].title[0].wheel[1] : translateHelp[0].title[0].wheel[2]}</h2>
@@ -124,17 +111,17 @@ export const Help = () => {
                 <img src={menosImg} alt="ícone menos" />}
             </Top>
 
-            {openModal === "SpinWheel" && !isDesktop &&
-              <Inside>
+            {openModal === "SpinWheel" &&
+              <InsideLeft>
                 <p>{selectLanguage === 0 ? translateHelp[4].wheel[0] : selectLanguage === 1 ? translateHelp[4].wheel[1] : translateHelp[4].wheel[2]}</p>
-              </Inside>
+              </InsideLeft>
             }
           </Items>
         </Left>
        
         <Right style={{
           borderColor: (openModal === "XPRanking" || openModal === "FiskDollars" || openModal === "DailyGame" || openModal === "SpinWheel") && defaultTheme["red-200"],
-          overflowY: openModal === "FiskDollars" ? "scroll" : "",
+          overflowY: openModal ? "scroll" : ""
         }}>
           <TopRight>
             {openModal === "XPRanking" ?
@@ -148,12 +135,12 @@ export const Help = () => {
 
           <MainRight>
             {openModal === "XPRanking" && 
-              <Inside>
+              <InsideRight>
                 <p>{selectLanguage === 0 ? translateHelp[1].ranking[0] : selectLanguage === 1 ? translateHelp[1].ranking[1] : translateHelp[1].ranking[2]}</p>
-              </Inside>
+              </InsideRight>
             }
             {openModal === "FiskDollars" && 
-              <Inside>
+              <InsideRight>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].text : selectLanguage === 1 ? translateHelp[2].dollars[1].text : translateHelp[2].dollars[2].text}</p>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].one[0] : selectLanguage === 1 ? translateHelp[2].dollars[1].one[0] : translateHelp[2].dollars[2].one[0]}</p>
                 <p style={{ paddingLeft: "0.375rem"}}>{selectLanguage === 0 ? translateHelp[2].dollars[0].one[1] : selectLanguage === 1 ? translateHelp[2].dollars[1].one[1] : translateHelp[2].dollars[2].one[1]}</p>
@@ -171,17 +158,17 @@ export const Help = () => {
 
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].three : selectLanguage === 1 ? translateHelp[2].dollars[1].three : translateHelp[2].dollars[2].three}</p>
                 <p>{selectLanguage === 0 ? translateHelp[2].dollars[0].four : selectLanguage === 1 ? translateHelp[2].dollars[1].four : translateHelp[2].dollars[2].four}</p>
-              </Inside>
+              </InsideRight>
             }
             {openModal === "DailyGame" && 
-              <Inside>
+              <InsideRight>
                 <p>{selectLanguage === 0 ? translateHelp[3].game[0] : selectLanguage === 1 ? translateHelp[3].game[1] : translateHelp[3].game[2]}</p>
-              </Inside>
+              </InsideRight>
             }
             {openModal === "SpinWheel" && 
-              <Inside>
+              <InsideRight>
                 <p>{selectLanguage === 0 ? translateHelp[4].wheel[0] : selectLanguage === 1 ? translateHelp[4].wheel[1] : translateHelp[4].wheel[2]}</p>
-              </Inside>
+              </InsideRight>
             }
           </MainRight>
         </Right>

@@ -58,7 +58,7 @@ export const AvatarCustomMetade = ({ hasName }) => {
 
       {hasName &&
         <Name>
-          <p>{name}</p>
+          <p>{name}Maria Santos</p>
         </Name>
       }
     </Container>

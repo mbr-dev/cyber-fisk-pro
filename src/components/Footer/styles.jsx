@@ -38,8 +38,9 @@ export const Container = styled.footer`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      height: 48px;
       gap: 0.25rem;
-      padding-block: 6px;
+      padding-top: 6px;
 
       p {
         font-size: 0.875rem;
@@ -49,6 +50,8 @@ export const Container = styled.footer`
   }
 
   @media(min-width: 1024px) {
+    height: 100px;
+
     p {
       font-size: 1.25rem;
       padding-inline: 2.75rem;

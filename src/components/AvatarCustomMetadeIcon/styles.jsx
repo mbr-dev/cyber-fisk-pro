@@ -4,27 +4,23 @@ export const Container = styled.div`
   width: 3.25rem;
   height: 5.75rem;
   position: relative;
-  margin-bottom: -1.75rem;
   z-index: 1;
 
   @media (min-width: 768px) {
     width: 4rem;
     height: 8rem;
-    margin-bottom: -2.75rem;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       width: 3.25rem;
       height: 5.75rem;
-      margin-bottom: -1.75rem;
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4.5rem;
     height: 8.125rem;
-    margin-bottom: -2.5rem;
   }
 `;
 

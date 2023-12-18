@@ -3,14 +3,15 @@ import { useContext, useState } from "react";
 import { AvatarCustom } from "../../components/AvatarCustom";
 import { ButtonMenuHeader } from "../../components/ButtonMenuHeader";
 import { ButtonCloseHeader } from "../../components/ButtonCloseHeader";
-import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 import { AvatarCustomMetade } from "../../components/AvatarCustomMetade";
+import { AreaFooterMiddleBtn } from "../../components/AreaFooterMiddleBtn";
 
 import { CyberContext } from "../../context/cyber";
 
 import data from "./images/data.png";
-import escola from "./images/escola.png";
 import mail from "./images/mail.png";
+import escola from "./images/escola.png";
+
 import userImg from "../../assets/user.png";
 import Eua from "../../assets/Eua.svg";
 import Spain from "../../assets/Spain.svg";
@@ -33,8 +34,9 @@ export const Profile = () => {
   
   return(
     <Container>
-      <Header>
-        <img src={bgHeaderImg} alt="" className="bgHeaderImg" />
+      <Header style={{
+        backgroundImage: `url("${bgHeaderImg}")`
+      }}>
         <TopHeader>
           <ButtonMenuHeader />
           <p>{selectLanguage === 0 ? "Perfil" : selectLanguage === 1 ? "Profile" : "Perfil"}</p>
@@ -74,7 +76,7 @@ export const Profile = () => {
               }}>
                 {selectLanguage === 0 ? <img src={Brazil} alt="" /> : selectLanguage === 1 ? <img src={Eua} alt="" /> : <img src={Spain} alt="" />}
                 {selectLanguage === 0 ? <p>Português</p> : selectLanguage === 1 ? <p>English</p> : <p>Spanish</p>}
-                <img src={arrowBottom} alt="" />
+                <img src={arrowBottom} alt="" className="setaImg" />
               </SelectTitle>
               {isOpen && 
                 <SelectUl>

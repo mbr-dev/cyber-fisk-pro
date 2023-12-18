@@ -30,6 +30,10 @@ export const Main = styled.main`
       flex-direction: row;
     }
   }
+
+  @media(min-width: 1024px) {
+    align-items: flex-start;
+  }
 `;
 
 export const Div = styled.div`
@@ -46,12 +50,8 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    height: 31.25rem;
-  }
-
-  @media(min-width: 1440px) {
-    height: 40.625rem;
+  @media(min-width: 1024px) {
+    height: 100%;
   }
 `;
 
@@ -81,9 +81,9 @@ export const AvatarArea = styled.div`
     }
   }
   
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 80%;
-    padding: 1rem 2rem;
+    padding: 1rem 0rem;
     justify-content: space-between;
   }
 `;
@@ -99,6 +99,8 @@ export const AvatarInfo = styled.div`
   }
 
   @media(max-width: 320px) {
+    gap: 14px;
+
     p {
       font-size: 0.875rem;
     }
@@ -122,7 +124,7 @@ export const AvatarInfo = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1.25rem;
 
     p {
@@ -138,30 +140,34 @@ export const Avatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 28px;
   background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
   overflow: hidden;
 
+  @media (max-width: 320px) {
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+
   @media (min-width: 768px) {
     width: 4.5rem;
     height: 4.5rem;
+    padding-top: 44px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       width: 3rem;
       height: 3rem;
+      padding-top: 28px;
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4.5rem;
     height: 4.5rem;
-  }
-
-  @media (min-width: 1440px) {
-    width: 6.25rem;
-    height: 6.25rem;
+    padding-top: 46px;
   }
 `;
 
@@ -221,22 +227,22 @@ export const Print = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 2rem;
-      height: 2rem;
+      width: 3rem;
+      height: 3rem;
       gap: 0;
 
       p {
-        font-size: 0.375rem;
+        font-size: 10px;
       }
 
       img {
-        width: 12px;
+        width: 20px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 5.25rem;
+  @media(min-width: 1024px) {
+    width: 6rem;
     height: 5.25rem;
     gap: 0.375rem;
 
@@ -275,7 +281,7 @@ export const XP = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4.5rem;
   }
 `;
@@ -292,6 +298,10 @@ export const XPDiv = styled.div`
 
   @media (min-width: 768px) {
     width: 80%;
+  }
+
+  @media (min-width: 1024px) {
+    width: 90%;
   }
 `;
 
@@ -352,7 +362,7 @@ export const XPInside = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     span {
       font-size: 1.5rem;
     }
@@ -403,7 +413,7 @@ export const XPRight = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 1.5rem;
     }
@@ -433,7 +443,7 @@ export const Stage = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 2rem;
   }
 `;
@@ -478,13 +488,23 @@ export const SLeft = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 18.75rem;
-    height: 15.625rem;
+   @media(min-width: 1024px) {
+    width: 280px;
+    height: 240px;
 
     h2 {
       font-size: 1.5rem;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 18.75rem;
+    height: 15.625rem;
+  }
+
+  @media(min-width: 1920px) {
+    width: 400px;
+    height: 500px;
   }
 `;
 
@@ -539,7 +559,7 @@ export const SRight = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     span {
       font-size: 1.75rem;
     }
@@ -552,7 +572,7 @@ export const SRight = styled.div`
 
 export const Details = styled.div`
   width: 100%;
-  height: 13.75rem;
+  height: 250px;
   padding-inline: 2rem;
   padding-top: 0.5rem;
   display: flex;
@@ -569,7 +589,7 @@ export const Details = styled.div`
   }
 
   @media(min-width: 768px) {
-    height: 20rem;
+    height: 340px;
     margin-top: 2rem;
     padding-inline: 7rem;
   }
@@ -583,14 +603,20 @@ export const Details = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 50%;
-    height: 31.25rem;
+  @media(min-width: 1024px) {
+    height: 500px;
     padding-inline: 3.25rem;
   }
 
-  @media(min-width: 1440px) {
-    height: 40.625rem;
+  @media(min-width: 1366px) {
+    height: 580px;
+  }
+
+  @media(min-width: 1920px) {
+    height: 100%;
+    padding-inline: 164px;
+    align-items: center;
+    justify-content: center;
   }
 `;
 
@@ -641,7 +667,7 @@ export const DivBar = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       padding: 0.5rem 0.75rem;
       font-size: 1rem;
@@ -672,7 +698,7 @@ export const Bar = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 4rem;
     height: 6.25rem;
   }
@@ -714,7 +740,7 @@ export const BarColor = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     span {
       font-size: 1rem;
     }
@@ -774,16 +800,29 @@ export const ViewDetails = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 23rem;
+  @media(min-width: 1024px) {
+    width: 250px;
 
     h2 {
-      font-size: 1.5rem;
+      font-size: 20px;
       margin-bottom: 0.5rem;
     }
 
     li {
-      font-size: 1.5rem;
+      font-size: 16px;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    width: 23rem;
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 0.5rem;
+    }
+
+    li {
+      font-size: 20px;
     }
   }
 `;

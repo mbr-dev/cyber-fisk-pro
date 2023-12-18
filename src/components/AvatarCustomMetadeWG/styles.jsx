@@ -14,14 +14,12 @@ export const Container = styled.div`
   @media (min-width: 768px) {
     width: 15.625rem;
     height: 34.375rem;
-    margin-top: -4rem;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       width: 7.5rem;
       height: 17.5rem;
-      margin-top: -1.25rem;
     }
   }
 
@@ -37,7 +35,6 @@ export const Container = styled.div`
 
   @media (min-width: 1440px) {
     height: 50rem;
-    margin-top: -5rem;
   }
 `;
 
@@ -147,8 +144,8 @@ export const Name = styled.div`
 
   @media (min-width: 768px) {
     width: 15.625rem;
-    height: 3rem;
-    bottom: 11.5rem;
+    height: 54px;
+    bottom: 178px;
 
     p {
       font-size: 2rem;

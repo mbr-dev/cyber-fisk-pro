@@ -1,8 +1,7 @@
 import Cookies from "universal-cookie";
-import "keen-slider/keen-slider.min.css";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import { useKeenSlider } from "keen-slider/react";
+import "keen-slider/keen-slider.min.css";
 
 import { apiQAS } from "../../lib/api";
 import { HeaderText } from "../../components/HeaderText";
@@ -23,25 +22,23 @@ export const Ranking = () => {
   const [rafUser, setRafUser] = useState(null);
   const [buttonSelected, setButtonSelected] = useState("National");
 
-  const navigate = useNavigate();
-
-  const handleItemClick = (item) => {
-    setButtonSelected((modal) => (modal === item ? null : item));
-  };
-
-  const [sliderRef] = useKeenSlider({
+  const [ref] = useKeenSlider({
     slides: {
       perView: 3.5,
       spacing: 16,
     },
     breakpoints: {
-      "(min-width: 1440px)": {
+      "(min-width: 1366px)": {
         slides: {
           perView: 4,
         }
-      },
-    },
-  });
+      }
+    }
+  })
+
+  const handleItemClick = (item) => {
+    setButtonSelected((modal) => (modal === item ? null : item));
+  };
 
   const loadRank = async () =>{
     const cookies = new Cookies();
@@ -99,10 +96,7 @@ export const Ranking = () => {
 
         <DivDesk>
           <Carrousel>
-            <CarrouselInside 
-              ref={sliderRef}
-              className="keen-slider"
-            >
+            <CarrouselInside ref={ref} className="keen-slider">
               {data !== null ? data.map((x, index) =>{
                 return(
                   rafUser === x.raf ?

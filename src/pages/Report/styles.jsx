@@ -13,7 +13,6 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: space-around;
 `;
 
 export const AvatarArea = styled.div`
@@ -72,28 +71,13 @@ export const Avatar = styled.div`
   justify-content: center;
   background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
+  padding-top: 26px;
   overflow: hidden;
-
+  
   @media (min-width: 768px) {
     width: 4.5rem;
     height: 4.5rem;
-  }
-
-  @media(orientation: landscape) {
-    @media (min-width: 600px) {
-      width: 3rem;
-      height: 3rem;
-    }
-  }
-
-  @media (min-width: 1280px) {
-    width: 4.5rem;
-    height: 4.5rem;
-  }
-
-  @media (min-width: 1440px) {
-    width: 6.25rem;
-    height: 6.25rem;
+    padding-top: 46px;
   }
 `;
 
@@ -102,7 +86,7 @@ export const AvatarInfo2 = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 12.5rem;
+      width: 250px;
       height: 3.625rem;
       display: flex;
       align-items: center;
@@ -118,7 +102,7 @@ export const AvatarInfo2 = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 37.5rem;
     height: 5.375rem;
     gap: 1.5rem;
@@ -127,11 +111,6 @@ export const AvatarInfo2 = styled.div`
     p {
       font-size: 2rem;
     }
-  }
-
-  @media (min-width: 1440px) {
-    height: 110px;
-    gap: 52px;
   }
 `;
 
@@ -142,18 +121,15 @@ export const Avatar2 = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 28px;
   background-color: ${props => props.theme.white};
   border: 1px solid ${props => props.theme["red-200"]};
   overflow: hidden;
-
-  @media (min-width: 1280px) {
+  
+  @media (min-width: 1024px) {
     width: 4.5rem;
     height: 4.5rem;
-  }
-
-  @media (min-width: 1440px) {
-    width: 6.25rem;
-    height: 6.25rem;
+    padding-top: 48px;
   }
 `;
 
@@ -199,7 +175,7 @@ export const XP = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4.5rem;
 
     .compose {
@@ -214,35 +190,42 @@ export const AreaSelect = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1.5rem;
-  gap: 1.5rem;
+  padding-top: 20px;
+  gap: 20px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
-    padding-top: 0.5rem;
+    padding-top: 14px;
+    gap: 14px;
   }
 
   @media(min-width: 768px) {
-    padding-top: 2rem;
-    gap: 2rem;
+    padding-top: 32px;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 90%;
-      flex-direction: row;
-      flex-wrap: wrap;
-      align-items: flex-start;
-      justify-content: center;
-      padding-top: 0.5rem;
-      gap: 1rem;
+      width: 650px;
+      padding-top: 8px;
+      gap: 8px;
     }
   }
+  
+  @media(min-width: 1024px) {
+    width: 700px;
+    padding-top: 16px;
+    gap: 16px;
+  }
 
-  @media(min-width: 1280px) {
-      padding-top: 2rem;
-      gap: 2rem;
-    }
+  @media(min-width: 1366px) {
+    padding-top: 24px;
+    gap: 24px;
+  }
+
+  @media(min-width: 1920px) {
+    padding-top: 32px;
+    gap: 32px;
+  }
 `;
 
 export const Select = styled.div`
@@ -265,8 +248,12 @@ export const Select = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 31.25rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 600px;
   }
 `;
 
@@ -324,7 +311,7 @@ export const SelectTitle = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4rem;
 
     p {
@@ -367,10 +354,14 @@ export const SelectUl = styled.ul`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 31.25rem;
     padding-inline: 44px;
     gap: 1.25rem;  
+  }
+
+  @media(min-width: 1366px) {
+    width: 600px;  
   }
 `;
 
@@ -394,7 +385,7 @@ export const SelectLi = styled.li`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.75rem;
   }
 `;

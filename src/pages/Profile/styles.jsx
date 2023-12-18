@@ -16,34 +16,26 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 9.75rem;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
-  padding: 1rem;
+  padding: 16px 16px 0 16px;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
-  overflow: hidden;
   position: relative;
-
-  .bgHeaderImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media(max-width: 320px) {
-    height: 6.875rem;
-    padding: 0.75rem;
+    height: 110px;
+    padding: 10px 10px 0 10px;
   }
 
   @media(min-width: 768px) {
-    padding: 1rem;
-    height: 11.75rem;
+    height: 220px;
+    padding: 24px 24px 0 24px;
   }
 
   @media(orientation: landscape) {
@@ -52,65 +44,64 @@ export const Header = styled.header`
       height: 100vh;
       align-items: center;
       justify-content: space-between;
-      padding: 1rem;
+      padding: 16px 16px 0 16px;
       border-end-end-radius: 0;
       border-end-start-radius: 0;
-
-      p {
-        display: none;
-      }
     }
   }
 
   @media(min-width: 1024px) {
-    padding: 2rem;
+    padding: 32px 32px 0 32px;
   }
 `;
 
 export const TopHeader = styled.div`  
   width: 100%;
   display: flex;
+  align-items: flex-start;
   justify-content: space-between;
 
   p {
-    font-size: 1.5rem;
+    font-size: 20px;
     font-weight: 500;
     color: ${props => props.theme.white};
   }
 
-  @media(max-width: 360px) {
-    p {
-      font-size: 20px;
-    }
-  }
-
   @media(max-width: 320px) {
     p {
-      font-size: 1rem;
+      font-size: 16px;
     }
   }
 
   @media(min-width: 768px) {
     p {
-      font-size: 2rem;
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      p {
+        display: none;
+      }
     }
   }
 `;
 
 export const BottomHeader = styled.div`
-  width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 24px;
+  margin-top: -54px;
   
   .logoFisk {
-    width: 172px;
-    padding-top: 0.375rem;
+    width: 164px;
   }
 
   @media(max-width: 320px) {
-    gap: 0.375rem;
+    margin-top: -40px;
+    gap: 20px;
 
     .logoFisk {
       width: 120px;
@@ -118,7 +109,12 @@ export const BottomHeader = styled.div`
   }
 
   @media(min-width: 768px) {
-    gap: 3rem;
+    margin-top: -120px;
+    gap: 100px;
+
+    .logoFisk {
+      width: 280px;
+    }
   }
 
   @media(orientation: landscape) {
@@ -142,17 +138,26 @@ export const AvatarPe = styled.div`
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       display: block;
-      width: 10rem;
+      position: absolute;
+      top: -20px;
+      left: 92px;
+      z-index: 1000;
     }
   }
-
+  
   @media (min-width: 1024px) {
-    display: block;
-    width: 18rem;
+    top: -52px;
+    left: 80px;
   }
 
   @media (min-width: 1366px) {
-    width: 20rem;
+    top: -82px;
+    left: 132px;
+  }
+
+  @media (min-width: 1920px) {
+    top: -52px;
+    left: 200px;
   }
 `;
 
@@ -178,12 +183,12 @@ export const HeaderDesktop = styled.div`
       display: flex;
       align-items: center;
       justify-content: flex-end;
-      padding-top: 1rem;
-      padding-right: 1rem;
+      padding-top: 16px;
+      padding-right: 16px;
       gap: calc(80% / 2);
 
       p {
-        font-size: 1.375rem;
+        font-size: 24px;
         font-weight: 500;
         color: ${props => props.theme["gray-700"]};
       }
@@ -191,11 +196,11 @@ export const HeaderDesktop = styled.div`
   }
 
   @media(min-width: 1024px) {
-    padding-top: 2rem;
-    padding-right: 2rem;
+    padding-top: 32px;
+    padding-right: 32px;
 
     p {
-      font-size: 2rem;
+      font-size: 36px;
     }
   }
 `;
@@ -208,46 +213,45 @@ export const Main = styled.main`
   align-items: center;
   justify-content: flex-start;
   background-color: ${props => props.theme.white};
-  padding-top: 1rem;
-  gap: 0.625rem;
+  padding-top: 16px;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    padding-top: 0.375rem;
-    gap: 0.25rem;
+    padding-top: 4px;
+    gap: 4px;
   }
 
   @media(min-width: 768px) {
-    gap: 1rem;
-    padding-top: 2rem;
+    padding-top: 20px;
+    gap: 20px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.25rem;
       padding-top: 0px;
+      gap: 4px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 1rem;
+    gap: 16px;
     justify-content: center;
   }
 `;
 
 export const AreaInput = styled.div`
-  width: 18.75rem;
-  text-align: left;
+  width: 300px;
   display: flex;
   flex-direction: column;
+  gap: 4px;
   background-color: ${props => props.theme.white};
   position: relative;
 
   label {
     color: ${props => props.theme["gray-600"]};
-    padding-left: 1rem;
-    font-size: 1.125rem;
+    padding-left: 12px;
+    font-size: 16px;
     font-weight: 500;
-    margin-bottom: 0.5rem;
   }
 
   .inputDate::-webkit-calendar-picker-indicator {
@@ -255,48 +259,48 @@ export const AreaInput = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 15.625rem;
+    width: 250px;
 
     label {
-      font-size: 0.75rem;
-      padding-left: 0.75rem;
-      margin-bottom: 0.375rem;
+      font-size: 12px;
+      padding-left: 8px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
+    width: 500px;
+    gap: 6px;
 
     label {
-      padding-left: 1.75rem;
-      font-size: 1.5rem;
-      margin-bottom: 0.25rem;
+      padding-left: 16px;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 22rem;
+      width: 350px;
+      gap: 4px;
 
       label {
-        padding-left: 0.5rem;
-        font-size: 0.75rem;
+        padding-left: 8px;
+        font-size: 12px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 420px;
+    width: 500px;
+    gap: 6px;
 
     label {
-      padding-left: 1.75rem;
-      font-size: 1.5rem;
-      margin-bottom: 1rem;
+      padding-left: 16px;
+      font-size: 24px;
     }
   }
 
   @media(min-width: 1366px) {
-    width: 37.5rem;
+    width: 700px;
   }
 `;
 
@@ -307,12 +311,16 @@ export const Div = styled.div`
   flex-direction: column;
   align-items: center;
   position: relative;
-  gap: 0.625rem;
+  gap: 16px;
+
+  @media(max-width: 320px) {
+    gap: 4px;
+  }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 22rem;
-      gap: 1rem;
+      width: 350px;
+      gap: 32px;
       flex-direction: row;
       align-items: center;
       justify-content: center;
@@ -320,58 +328,59 @@ export const Div = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 420px;
+    width: 500px;
+    gap: 72px;
   }
 
   @media(min-width: 1366px) {
-    width: 37.5rem;
+    width: 700px;
+    gap: 120px;
   }
 `;
 
 export const Input = styled.div`
   width: 100%;
-  height: 2.625rem;
+  height: 44px;
   display: flex;
   align-items: center;
-  gap: 0.625rem;
+  gap: 8px;
   border-radius: 8px;
-  padding-left: 0.625rem;
+  padding-left: 12px;
   border: 2px solid ${props => props.theme["gray-400"]};
   background-color: transparent;
   box-shadow: 0px 1px 10px 0px #00000040;
 
-
   p {
+    font-size: 16px;
     font-weight: normal;
     font-family: "Ubuntu", sans-serif;
-    font-size: 1rem;
     color: ${props => props.theme["gray-600"]};
   }
 
   img {
-    width: 20px;
-  }
-
-  @media(max-width: 360px) {
-    height: 2.25rem;
+    width: 24px;
   }
 
   @media(max-width: 320px) {
-    height: 2rem;
-    gap: 0.375rem;
-    padding-left: 0.375rem;
+    height: 36px;
+    gap: 6px;
+    padding-left: 8px;
 
     p {
       font-size: 12px;
     }
+
+    img {
+      width: 18px;
+    }
   }
 
   @media(min-width: 768px) {
-    height: 4rem;
-    padding-left: 0.875rem;
+    height: 64px;
+    padding-left: 14px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
 
     img {
@@ -418,15 +427,15 @@ export const SelectIdioma = styled.div`
 
 export const SelectTitle = styled.div`
   width: 100%;
-  height: 2.625rem;
+  height: 44px;
   display: flex;
   position: relative;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 5px;
+  padding-inline: 12px;
   border: 2px solid transparent;
   border-radius: 8px;
-  gap: 0.625rem;
+  gap: 10px;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
 
@@ -436,62 +445,82 @@ export const SelectTitle = styled.div`
     font-weight: 500;
   }
 
+  img {
+    width: 28px;
+  }
+
+  .setaImg {
+    width: 40px;
+  }
+
   @media(max-width: 320px) {
-    width: 15.625rem;
-    height: 0.625rem;
+    height: 36px;
+    padding-inline: 10px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 14px;
     }
 
     img {
-      width: 18px;
+      width: 24px;
     }
-  }
 
-  @media(max-width: 360px) {
-    height: 2.25rem;
+    .setaImg {
+      width: 32px;
+    }
   }
 
   @media(min-width: 768px) {
-    height: 4rem;
-    gap: 1.25rem;
+    height: 64px;
+    gap: 16px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 32px;
     }
 
     img {
-      width: 38px;
+      width: 36px;
+    }
+
+    .setaImg {
+      width: 40px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       height: 2rem;
-      gap: 0.5rem;
+      gap: 8px;
       padding-inline: 0.625rem;
 
       p {
-        font-size: 1.125rem;
+        font-size: 16px;
       }
 
       img {
-        width: 18px;
+        width: 20px;
+      }
+
+      .setaImg {
+        width: 32px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    height: 4rem;
-    gap: 1.25rem;
+    height: 64px;
+    gap: 16px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 32px;
     }
 
     img {
-      width: 38px;
+      width: 36px;
+    }
+
+    .setaImg {
+      width: 40px;
     }
   }
 `;

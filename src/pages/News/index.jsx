@@ -13,7 +13,7 @@ import plusWImg from "./images/plusW.png";
 import plusRImg from "./images/plusR.png";
 
 import { defaultTheme } from "../../themes/defaultTheme";
-import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, CreateFile, Image, ItemsScroll } from "./styles";
+import { Container, Main, AreaButton, Button, DivButtons, ButtonCreate, ButtonNews, DivInside, Items, NewsItems, InfoItems, TitleItems, CreateItems, ButtonSend, ButtonFile, CreateItemsInside, Image, ItemsScroll } from "./styles";
 
 export const News = () => {
   const [create, setCreate] = useState(false);
@@ -98,10 +98,6 @@ export const News = () => {
                     </label>
                   </ButtonFile>
                 </CreateItemsInside>
-
-                {/* <CreateFile>
-                  <img src={newImg} alt="" />
-                </CreateFile> */}
               </CreateItems>
             :
               <ItemsScroll>
@@ -112,6 +108,17 @@ export const News = () => {
                   </TitleItems>
                   <InfoItems>
                       <img src={newImg} alt="" />
+                  </InfoItems>
+                </Items>
+
+                <Items>
+                <TitleItems>
+                    <p>Nome do professor</p>
+                    <span>06/06/2023 - 10:00</span>
+                  </TitleItems>
+                  <InfoItems>
+                      <p>You are going to take your exam on:</p>
+                      <p>October 31th</p>
                   </InfoItems>
                 </Items>
 

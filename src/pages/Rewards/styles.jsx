@@ -36,13 +36,13 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     justify-content: center;
-    padding-top: 1rem;
+    padding-top: 32px;
   }
 
   @media(min-width: 1920px) {
-    padding-top: 6.25rem;
+    padding-top: 32px;
   }
 `;
 
@@ -62,9 +62,13 @@ export const Left = styled.div`
     }
   }
   
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 480px;
+    height: 100%;
+  }
+
+  @media(min-width: 1366px) {
     width: 31.25rem;
-    height: 31.25rem;
   }
 `;
 
@@ -89,7 +93,11 @@ export const Top = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    gap: 100px;
+  }
+
+  @media(min-width: 1366px) {
     gap: 7.5rem;
   }
 `;
@@ -125,8 +133,8 @@ export const Button = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 18.75;
+  @media(min-width: 1024px) {
+    width: 250px;
     height: 3.25rem;
     font-size: 2rem;
   }
@@ -212,9 +220,25 @@ export const Money = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 100%;
+  @media(min-width: 1024px) {
+    width: 94%;
 
+    img {
+      width: 72px;
+    }
+
+    span {
+      width: 54px;
+      height: 54px;
+      font-size: 28px;
+    }
+
+    p {
+      font-size: 36px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     img {
       width: 96px;
     }
@@ -251,12 +275,16 @@ export const Right = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 43.75rem;
-    height: 31.25rem;
-    border-left-width: 3px;
+  @media(min-width: 1024px) {
+    width: 480px;
+    height: 100%;
     gap: 0;
     justify-content: space-between;
+  }
+
+  @media(min-width: 1366px) {
+    width: 43.75rem;
+    border-left-width: 3px;
   }
 `;
 
@@ -301,7 +329,7 @@ export const Separator = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 1rem;
   }
 `;
@@ -356,7 +384,16 @@ export const Card = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 52px;
+    height: 52px;
+
+    img {
+      width: 32px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     width: 4.5rem;
     height: 4.5rem;
 
@@ -405,7 +442,16 @@ export const Title = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    height: 44px;
+    border-radius: 6px;
+
+    p {
+      font-size: 28px;
+    }
+  }
+
+  @media (min-width: 1366px) {
     height: 4rem;
     border-radius: 6px;
 
@@ -434,8 +480,13 @@ export const Bottom = styled.div`
     }
 }
 
-  @media(min-width: 1280px) {
-    height: 13.75rem;
+  @media(min-width: 1024px) {
+    height: 232px;
+    padding: 0.875rem;
+  }
+
+  @media(min-width: 1366px) {
+    height: 280px;
     padding: 0.875rem;
   }
 `;
@@ -483,7 +534,13 @@ export const Footer = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 950px;
+    height: 6.25rem;
+    border-width: 4px;
+  }
+
+  @media(min-width: 1366px) {
     width: 75rem;
     height: 6.25rem;
     border-width: 4px;
@@ -544,7 +601,16 @@ export const BottomFooter = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 300px;
+    height: 52px;
+
+    p {
+      font-size: 28px;
+    }
+  }
+
+  @media(min-width: 1366px) {
     width: 25rem;
     height: 3.5rem;
 

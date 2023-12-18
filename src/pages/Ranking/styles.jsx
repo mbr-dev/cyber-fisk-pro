@@ -14,28 +14,24 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 1rem;
+  justify-content: center;
   gap: 0.5rem;
 
   @media(max-width: 320px) {
-    padding-top: 0.625rem;
     gap: 0.625rem;
   }
 
   @media(min-width: 768px) {
-    padding-top: 1rem;
     gap: 2rem;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-top: 0.625rem;
       gap: 0.5rem
     }
   }
 
   @media(min-width: 1024px) {
-    padding-top: 2rem;
     gap: 3.25rem;
   }
 `;
@@ -46,8 +42,12 @@ export const MainTop = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.75rem;
+  gap: 12px;
   text-align: center;
+
+  @media(max-width: 320px) {
+    gap: 8px;
+  }
 `;
 
 export const ButtonRakingArea = styled.div`
@@ -68,7 +68,6 @@ const ButtonRaking = styled.button`
   @media(min-width: 768px) {
     width: 9.375rem;
     height: 3.25rem;
-    padding: 0;
     font-size: 1.75rem;
   }
 
@@ -76,7 +75,6 @@ const ButtonRaking = styled.button`
     @media(min-width: 600px) {
       width: 100px;
       height: 2rem;
-      padding: 0;
       font-size: 1rem;
     }
   }
@@ -84,7 +82,6 @@ const ButtonRaking = styled.button`
   @media(min-width: 1024px) {
     width: 9.375rem;
     height: 3.25rem;
-    padding: 0;
     font-size: 1.75rem;
   }
 `;
@@ -122,16 +119,20 @@ export const DivMobile = styled.div`
 `;
 
 export const DivDesk = styled.div`
-  width: 100%;
-  padding-inline: 1rem;
   display: none;
-
+  
   @media(orientation: landscape) {
     @media (min-width: 600px) {
+      width: 100%;
       display: flex;
+      padding-inline: 16px;
       justify-content: center;
       align-items: center;
     }
+  }
+
+  @media (min-width: 1024px) {
+    padding-inline: 32px;
   }
 `;
 
@@ -183,11 +184,10 @@ export const CoinArea = styled.div`
 
 export const Carrousel = styled.div`
   width: 100%;
-  height: 7.5rem;
+  height: 132px;
 
   @media (min-width: 1024px) {
-    width: 98%;
-    height: 10rem;
+    height: 180px;
   }
 `;
 
@@ -240,37 +240,24 @@ export const Position = styled.div`
 
   @media (min-width: 1366px) {
     .pNumber {
-      left: 24px;
+      left: 6px;
     }
 
     .numberPosition {
       font-size: 1.5rem;
       top: 1rem;
-      left: 36px;
-    }
-  }
-
-  @media (min-width: 1440px) {
-    .pNumber {
-      top: 0.375rem;
-      left: 0.875rem;
-    }
-
-    .numberPosition {
-      top: 0.875rem;
-      left: 1.75rem;
+      left: 20px;
     }
   }
 
   @media (min-width: 1920px) {
     .pNumber {
-      top: 0;
-      left: 3.75rem;
+      left: 68px;
     }
 
     .numberPosition {
-      top: 0.5rem;
-      left: 4.625rem;
+      top: 16px;
+      left: 82px;
     }
   }
 `;
@@ -407,22 +394,18 @@ export const TextArea = styled.div`
 
 export const MainBottom = styled.section`
   width: 100vw;
-  height: 20.625rem;
+  height: 350px;
   display: flex;
   flex-direction: column;
   overflow-y: scroll;
   background-color: ${props => props.theme["gray-100"]};
 
-  @media(max-width: 360px) {
-    height: 18.125rem;
-  }
-
   @media(max-width: 320px) {
-    height: 12.5rem;
+    height: 200px;
   }
 
   @media(min-width: 768px) {
-    height: 28rem;
+    height: 450px;
   }
 `;
 

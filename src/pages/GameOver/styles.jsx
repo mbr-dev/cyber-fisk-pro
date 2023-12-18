@@ -17,7 +17,7 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100%;
-  height: 26.875rem;
+  height: 60%;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,14 +25,6 @@ export const Header = styled.header`
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-
-  @media(max-width: 320px) {
-    height: 15.625rem;
-  }
-
-  @media(min-width: 768px) {
-    height: 33.5rem;
-  }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
@@ -47,15 +39,25 @@ export const Top = styled.section`
   width: 100%;
   display: flex;
   justify-content: space-between;
-  padding: 1rem 1rem 0 1rem;
+  padding: 16px 16px 0 16px;
   z-index: 2;
 
   @media(max-width: 320px) {
-    padding: 0.75rem 0.75rem 0 0.75rem;
+    padding: 10px 10px 0 10px;
   }
 
-  @media(min-width: 1280px) {
-    padding: 1.5rem 1.5rem 0 1.5rem;
+  @media(min-width: 768px) {
+    padding: 32px 32px 0 32px;
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      padding: 10px 10px 0 10px;
+    }
+  }
+
+  @media(min-width: 1024px) {
+    padding: 32px 32px 0 32px;
   }
 `;
 
@@ -83,7 +85,7 @@ export const Middle = styled.section`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  margin-top: -3.75rem;
+  margin-top: -80px;
 
   h2 {
     color: ${props => props.theme.white};
@@ -92,7 +94,7 @@ export const Middle = styled.section`
   }
 
   @media(max-width: 320px) {
-    margin-top: -3.375rem;
+    margin-top: -52px;
 
     h2 {
       font-size: 1.5rem;
@@ -101,7 +103,7 @@ export const Middle = styled.section`
   }
 
   @media(min-width: 768px) {
-    margin-top: -3.5rem;
+    margin-top: -164px;
 
     h2 {
       font-size: 3.25rem;
@@ -111,7 +113,7 @@ export const Middle = styled.section`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      margin-top: 0px;
+      margin-top: -32px;
 
       h2 {
         font-size: 1.5rem;
@@ -122,7 +124,6 @@ export const Middle = styled.section`
   }
 
   @media(min-width: 1024px) {
-    margin-top: 3.125rem;
 
     h2 {
       font-size: 3.25rem;
@@ -135,14 +136,6 @@ export const Middle = styled.section`
       margin-top: -13rem;
     }
   }
-
-  @media(min-width: 1440px) {
-    margin-top: 5rem;
-
-    h2 {
-      margin-top: -16.875rem;
-    }
-  }
 `;
 
 export const AvatarArea = styled.div`
@@ -151,7 +144,6 @@ export const AvatarArea = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  position: relative;
 `;
 
 export const Bottom = styled.section`
@@ -253,8 +245,7 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
-  margin-top: -2rem;
+  gap: 16px;
   position: relative;
 
   p {
@@ -274,11 +265,10 @@ export const Main = styled.main`
   }
 
   @media(max-width: 320px) {
-    margin-top: -1.25rem;
+    gap: 10px;
   }
 
   @media(min-width: 768px) {
-    margin-top: -2.5rem;
 
     p {
       font-size: 1.25rem;
@@ -295,7 +285,6 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      margin-top: 0px;
       align-items: flex-end;
       gap: 20px;
 
@@ -313,7 +302,7 @@ export const Main = styled.main`
   }
 
   @media(min-width: 1024px) {
-    gap: 6.25rem;
+    gap: 92px;
 
     p {
       font-size: 1.5rem;
@@ -336,15 +325,21 @@ export const ButtonClose = styled.section`
     @media(min-width: 600px) {
       display: block;
       position: absolute;
-      top: 0.75rem;
-      right: 0.75rem;
+      top: 10px;
+      right: 10px;
     }
+  }
+
+  @media(min-width: 1024px) {
+    top: 32px;
+    right: 32px;
   }
 `;
 
 export const ButtonRed = styled.button`
   all: unset;
   width: 17.5rem;
+  margin-top: -32px;
   height: 3.625rem;
   display: flex;
   align-items: center;
@@ -369,6 +364,7 @@ export const ButtonRed = styled.button`
   @media(max-width: 320px) {
     width: 13.75rem;
     height: 2.375rem;
+    margin-top: -24px;
     gap: 1rem;
 
     p {
@@ -379,6 +375,7 @@ export const ButtonRed = styled.button`
   @media(min-width: 768px) {
     width: 21.875rem;
     height: 4.5rem;
+    margin-top: -40px;
     gap: 2rem;
 
     p {
@@ -389,7 +386,8 @@ export const ButtonRed = styled.button`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 12.5rem;
-      height: 1.5rem;
+      height: 32px;
+      margin-top: 0px;
       border-radius: 6px;
       gap: 0.625rem;
 
@@ -402,6 +400,7 @@ export const ButtonRed = styled.button`
   @media(min-width: 1024px) {
     width: 21.875rem;
     height: 4.5rem;
+    border-radius: 12px;
     gap: 2rem;
 
     p {
@@ -423,7 +422,7 @@ export const Bottom2 = styled.section`
       justify-content: center;
       gap: 0.25rem;
       position: relative;
-      margin-top: 1.5rem;
+      margin-top: 24px;
 
       .fundoBg {
         width: 100%;
@@ -440,7 +439,7 @@ export const Bottom2 = styled.section`
     width: 550px;
     height: 11.25rem;
     gap: 0.75rem;
-    margin-top: 1.25rem;
+    margin-top: 56px;
 
     .fundoBg {
       border-top-left-radius: 20px;
@@ -450,6 +449,10 @@ export const Bottom2 = styled.section`
 
   @media(min-width: 1366px) {
     width: 43.75rem;
+  }
+
+  @media(min-width: 1920px) {
+    width: 850px;
   }
 `;
 

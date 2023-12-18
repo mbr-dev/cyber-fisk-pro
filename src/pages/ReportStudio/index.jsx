@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { HeaderText } from "../../components/HeaderText";
 import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
 
-import { Container, Div, DivInside, Main } from "./styles";
+import { Container, Div, DivInside, Main, MainInside } from "./styles";
 
 export const ReportStudio = () => {
   const navigate = useNavigate();
@@ -12,90 +12,28 @@ export const ReportStudio = () => {
     navigate("/ReportStudioL");
   }
 
+  const reportLength = [
+    0, 1, 2, 3, 4, 5, 6, 7, 8, 9
+  ]
+
   return (
     <Container>
       <HeaderText title="Report Studio" />
 
       <Main>
-        <Div>
-          <DivInside onClick={handleGoToRSL}>
-            <span>1</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside onClick={handleGoToRSL}>
-            <span>2</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside onClick={handleGoToRSL}>
-            <span>3</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside onClick={handleGoToRSL}>
-            <span>4</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>5</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>6</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>7</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>8</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>9</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
-
-        <Div>
-          <DivInside>
-            <span>10</span>
-            <p>Lesson</p>
-          </DivInside>
-          <p>100%</p>
-        </Div>
+        <MainInside>
+          {reportLength.map((item, index) => {
+            return (
+              <Div key={index}>
+                <DivInside onClick={handleGoToRSL}>
+                  <p>{index+1}</p>
+                  <span>Lesson</span>
+                </DivInside>
+                <p>100%</p>
+              </Div>
+            )
+          })}
+        </MainInside>
       </Main>
 
       <AreaFooterFullBtn />

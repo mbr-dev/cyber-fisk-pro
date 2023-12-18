@@ -41,8 +41,12 @@ export const Content = styled(Dialog.Content)`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 62.5rem;
+  @media(min-width: 1024px) {
+    width: 700px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 900px;
   }
 `;
 
@@ -54,8 +58,8 @@ export const Close = styled(Dialog.Close)`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.9375;
-  right: -0.625rem;
+  top: -16px;
+  right: -16px;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
@@ -66,6 +70,8 @@ export const Close = styled(Dialog.Close)`
   @media(max-width: 320px) {
     width: 1.5rem;
     height: 1.5rem;
+    top: -10px;
+    right: -10px;
   }
 
   @media (min-width: 768px) {
@@ -92,7 +98,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
     top: -1.875rem;
@@ -138,7 +144,7 @@ export const CloseEnter = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3.25rem;
     width: 18.75rem;
     font-size: 2rem;
@@ -188,7 +194,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 0.75rem;
 
     p {
@@ -256,7 +262,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 2rem;
     }
@@ -274,7 +280,7 @@ export const Text = styled.div`
     margin-bottom: 0.5rem;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     p {
       margin-bottom: 1.5rem;
     }
@@ -312,7 +318,7 @@ export const Separator = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding-block: 1rem;
     margin-block: 1rem;
 

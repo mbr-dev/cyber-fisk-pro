@@ -12,7 +12,7 @@ import { AvatarCustomMetadeIcon } from "../../components/AvatarCustomMetadeIcon"
 
 export const Report = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [status, setStatus] = useState("Aluno");
+  const [status, setStatus] = useState("Adm");
 
   const navigate = useNavigate();
 

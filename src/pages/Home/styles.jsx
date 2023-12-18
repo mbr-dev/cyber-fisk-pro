@@ -11,42 +11,34 @@ export const Container = styled.div`
 
 export const Header = styled.header`
   width: 100vw;
-  height: 9.75rem;
+  height: 150px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: flex-start;
   border-end-end-radius: 18px;
   border-end-start-radius: 18px;
-  overflow: hidden;
   position: relative;
-
-  .bgHeaderImg {
-    width: 100%;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 0;
-    z-index: -1;
-  }
+  background-repeat: no-repeat;
+  background-size: cover;
 
   @media(max-width: 320px) {
-    height: 6.875rem;
+    height: 120px;
   }
 
   @media(min-width: 768px) {
-    height: 10.75rem;
+    height: 200px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      height: 4rem;
+      height: 48px;
       justify-content: center;
     }
   }
 
   @media(min-width: 1024px) {
-    height: 6.25rem;
+    height: 100px;
   }
 `;
 
@@ -55,53 +47,36 @@ export const HeaderTop = styled.header`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding-inline: 1rem;
-  padding-top: 1rem;
+  padding-inline: 16px;
+  padding-top: 16px;
 
   .logoFiskD {
     display: none;
   }
 
-  p {
-    font-size: 1.25rem;
-    font-weight: 500;
-    color: ${props => props.theme.white};
-  }
-
   @media(max-width: 320px) {
-    font-size: 1.125rem;
-    padding-inline: 0.75rem;
-    padding-top: 0.75rem;
+    padding-inline: 12px;
+    padding-top: 12px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-top: 0px;
+      padding-top: 10px;
+      padding-inline: 10px;
 
       .logoFiskD {
         display: block;
         width: 80px;
-        margin-left: -15.625rem;
-      }
-
-      p {
-        font-size: 1.75rem;
-        margin-left: -100px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    padding-inline: 2rem;
+    padding-top: 0;
+    padding-inline: 32px;
 
     .logoFiskD {
-      width: 6.25rem;
-      margin-left: -30rem;
-    }
-
-    p {
-      font-size: 2rem;
-      margin-left: -100px;
+      width: 120px;
     }
   }
 `;
@@ -109,17 +84,18 @@ export const HeaderTop = styled.header`
 export const HeaderBottom = styled.header`
   width: 100%;
   display: flex;
-  align-items: flex-start;
+  align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
+  position: absolute;
+  top: -10px;
   
   .logoFisk {
-    width: 172px;
-    padding-top: 0.375rem;
+    width: 164px;
   }
 
   @media (max-width: 320px) {
-    gap: 0.625rem;
+    top: -2px;
 
     .logoFisk {
       width: 120px;
@@ -127,11 +103,11 @@ export const HeaderBottom = styled.header`
   }
 
   @media (min-width: 768px) {
-    gap: 3rem;
-    margin-top: -1.5rem;
+    gap: 64px;
+    top: -60px;
 
     .logoFisk {
-      width: 220px;
+      width: 250px;
     }
   }
 
@@ -148,22 +124,22 @@ export const HeaderBottom = styled.header`
 
 export const Main = styled.div`
   flex: 1;
-  width: 18.75rem;
+  width: 300px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   @media(max-width: 320px) {
-    width: 15.625rem;
+    width: 250px;
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
+    width: 500px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 43.75rem;
+      width: 650px;
       align-items: center;
       justify-content: flex-start;
       position: relative;
@@ -175,7 +151,11 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1366px) {
-    width: 68.75rem;
+    width: 1100px;
+  }
+
+  @media(min-width: 1920px) {
+    width: 1200px;
   }
 `;
 
@@ -185,41 +165,31 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.875rem;
+  gap: 16px;
   justify-content: center;
 
-  @media(max-width: 375px) {
-    padding-top: 0.25rem;
-    gap: 0.25rem;
-  }
-
-  @media(max-width: 360px) {
-    gap: 0.625rem;
-  }
-
   @media(max-width: 320px) {
-    padding-top: 0.5rem;
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 31.25rem;
+      width: 400px;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 32rem;
-    padding-top: 0;
-    gap: 2rem;
+    width: 500px;
+    gap: 32px;
   }
 
   @media(min-width: 1366px) {
-    width: 37.5rem;
+    width: 600px;
   }
 `;
 
@@ -229,41 +199,37 @@ export const Cards = styled.div`
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem;
-
-  @media(max-width: 376px) {
-    gap: 0.625rem;
-  }
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 17.5rem;
-      gap: 0.75rem;
+      width: 300px;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
     width: 100%;
-    gap: 1.5rem;
+    gap: 32px;
   }
 `;
 
 export const Card = styled.a`
-  width: 6.875rem;
-  height: 5.75rem;
+  width: 110px;
+  height: 92px;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
   border: 2px solid transparent;
   background-color: ${props => props.theme.white};
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -276,39 +242,22 @@ export const Card = styled.a`
   }
 
   p {
+    font-size: 12px;
     font-weight: 500;
     text-align: center;
-    font-size: 0.75rem;
     color: ${props => props.theme.black};
   }
   
   &:hover {
     border-color: ${props => props.theme["gray-700"]};
     background-color: ${props => props.theme["red-200"]};
-    
-    p {
-    color: ${props => props.theme.white};
-  }
-  }
-
-  @media(max-width: 360px) {
-    width: 6.25rem;
-    height: 4.875rem;
-
-    img {
-      height: 38px;
-    }
-
-    p {
-      font-size: 0.75rem;
-    }
   }
   
   @media(max-width: 320px) {
     width: 84px;
     height: 56px;
-    border-radius: 8px;
-    gap: 0.125rem;
+    border-radius: 12px;
+    gap: 4px;
     
     p {
       font-size: 0.625rem;
@@ -351,6 +300,7 @@ export const Card = styled.a`
   @media(min-width: 1024px) {
     width: 8rem;
     height: 8rem;
+    border-radius: 18px;
 
     p {
       font-size: 1rem;
@@ -378,7 +328,7 @@ export const Card = styled.a`
 export const ButtonDayCh = styled.button`
   all: unset;
   width: 100%;
-  height: 4.25rem;
+  height: 64px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -403,24 +353,16 @@ export const ButtonDayCh = styled.button`
     background-color: ${props => props.theme["red-200"]};
   }
 
-  @media(max-width: 360px) {
-    height: 3.625rem;
-
-    img {
-      width: 220px;
-    }
-  }
-
   @media(max-width: 320px) {
-    height: 3.25rem;
+    height: 52px;
     
     img {
-      width: 190px;
+      width: 184px;
     }
   }
 
   @media(min-width: 768px) {
-    height: 6.25rem;
+    height: 120px;
 
     img {
       width: 372px;
@@ -429,11 +371,11 @@ export const ButtonDayCh = styled.button`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 17.5rem;
-      height: 2rem;
+      width: 300px;
+      height: 42px;
 
       img {
-        width: 200px;
+        width: 250px;
       }
 
       .btnChMobile {
@@ -451,7 +393,7 @@ export const ButtonDayCh = styled.button`
     height: 6.25rem;
 
     img {
-      width: 500px;
+      width: 450px;
     }
   }
 `;
@@ -470,25 +412,19 @@ export const Right = styled.div`
       scale: 0.8;
       position: absolute;
       right: 0;
-      bottom: -6rem;
-
-      .bgAvatarImg {
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-      }
+      bottom: 24px;
     }
   }
 
   @media(min-width: 1024px) {
-    scale: 0.8;
-    bottom: -3rem;
+    bottom: 64px;
   }
 
   @media(min-width: 1366px) {
-    bottom: -16rem;
+    bottom: 64px;
+  }
+
+  @media(min-width: 1920px) {
+    bottom: 100px;
   }
 `;
