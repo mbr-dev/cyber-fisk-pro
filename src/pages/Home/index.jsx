@@ -31,7 +31,7 @@ import { Container, Main, Card, Cards, ButtonDayCh, Right, Left, Header, HeaderB
 export const Home = () => {
   const { selectLanguage } = useContext(CyberContext);
   const images = [Livros, Cursor, Medalha, Reporte, Note, Micro];
-  const [modal, setModal] = useState(false);
+  const [modal, setModal] = useState(true);
   const [valor, setValor] = useState(0);
   const [salvou, setSalvou] = useState();
 

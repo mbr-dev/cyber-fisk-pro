@@ -55,14 +55,14 @@ export const Content = styled(Dialog.Content)`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 31.25rem;
-    height: 40.625rem;
+  @media(min-width: 1024px) {
+    width: 520px;
+    height: 500px;
   }
 
-  @media(min-width: 1440px) {
-    width: 43.75rem;
-    height: 45.75rem;
+  @media(min-width: 1366px) {
+    width: 800px;
+    height: 600px
   }
 `;
 
@@ -112,7 +112,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
     top: -1.875rem;
@@ -145,13 +145,16 @@ export const Avatar = styled.div`
     top: 0;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    top: -100px;
+    
     .bgMoney {
+      top: 100px;
       width: 500px;
     }
   }
 
-  @media (min-width: 1440px) {
+  @media (min-width: 1366px) {
     .bgMoney {
       width: 650px;
     }
@@ -200,18 +203,18 @@ export const Position = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 15.625rem;
-    height: 3rem;
-    margin-top: -18.125rem;
+    height: 72px;
+    margin-top: -370px;
 
     p {
       font-size: 2rem;
     }
   }
 
-  @media(min-width: 1440px) {
-    margin-top: -20.875rem;
+  @media(min-width: 1366px) {
+    margin-top: -400px;
   }
 `;
 
@@ -431,6 +434,7 @@ export const MiniAvatar = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  padding-top: 30px;
   background-color: ${props => props.theme.white};
   overflow: hidden;
 
@@ -446,13 +450,9 @@ export const MiniAvatar = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1366px) {
     width: 4.5rem;
+    padding-top: 48px;
     height: 4.5rem;
-  }
-
-  @media (min-width: 1440px) {
-    width: 6.25rem;
-    height: 6.25rem;
   }
 `;
