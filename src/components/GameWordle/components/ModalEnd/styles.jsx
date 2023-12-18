@@ -43,10 +43,18 @@ export const Container = styled.div`
     gap: 10px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     top: 320px;
-    left: 950px;
+    left: 620px;
     gap: 16px;
+  }
+
+  @media(min-width: 1366px) {
+    left: 872px;
+  }
+
+  @media(min-width: 1920px) {
+    left: 1150px;
   }
 `;
 
@@ -75,7 +83,13 @@ export const Letter = styled.div`
     font-size: 20px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 64px;
+    height: 64px;
+    font-size: 32px;
+  }
+
+  @media(min-width: 1366px) {
     width: 76px;
     height: 76px;
     font-size: 36px;

@@ -41,11 +41,11 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    gap: 350px;
+    gap: 220px;
     height: 100px;
   }
 
-  @media(min-width: 1440px) {
+  @media(min-width: 1366px) {
     gap: 420px;
 
     h2 {
@@ -56,10 +56,6 @@ export const Main = styled.div`
   @media(min-width: 1920px) {
     gap: 580px;
     height: 120px;
-  }
-
-  @media(min-width: 2560px) {
-    gap: 850px;
   }
 `
 
@@ -132,16 +128,6 @@ export const Icons = styled.div`
 
     img {
       width: 52px;
-    }
-  }
-
-  @media(min-width: 2560px) {
-    p {
-      font-size: 24px;
-    }
-
-    img {
-      width: 64px;
     }
   }
 `;

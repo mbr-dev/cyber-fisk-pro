@@ -26,7 +26,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -71,7 +71,7 @@ export const Words = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
     width: 40rem;
 
@@ -105,7 +105,7 @@ export const Form = styled.form`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 1rem;
   }
 `;
@@ -146,7 +146,14 @@ export const Input = styled.input`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 900px;
+    height: 3rem;
+    padding-left: 1rem;
+    font-size: 1.5rem;
+  }
+
+  @media(min-width: 1366px) {
     width: 68rem;
     height: 3rem;
     padding-left: 1rem;
@@ -207,7 +214,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

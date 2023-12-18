@@ -35,7 +35,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 2rem;
     gap: 2rem;
   }
@@ -96,7 +96,7 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 18.75rem;
     height: 5rem;
 

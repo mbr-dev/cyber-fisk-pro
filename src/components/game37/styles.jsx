@@ -47,7 +47,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
 
     p {
@@ -93,7 +93,7 @@ export const Form = styled.form`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     label {
       font-size: 1.5rem;
     }
@@ -133,7 +133,7 @@ export const Select = styled.select`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 27rem;
     height: 3rem;
     font-size: 1rem;
@@ -193,7 +193,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

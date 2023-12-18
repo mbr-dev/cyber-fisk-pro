@@ -25,18 +25,14 @@ export const Main = styled.div`
     height: 100px;
   }
 
-  @media(min-width: 1440px) {
+  @media(min-width: 1366px) {
     height: 110px;
   }
 
   @media(min-width: 1920px) {
     height: 120px;
   }
-
-  @media(min-width: 2560px) {
-    height: 130px;
-  }
-`
+`;
 
 export const BarStep = styled.div`
   display: flex;
@@ -107,16 +103,6 @@ export const Icons = styled.div`
 
     img {
       width: 52px;
-    }
-  }
-
-  @media(min-width: 2560px) {
-    p {
-      font-size: 24px;
-    }
-
-    img {
-      width: 64px;
     }
   }
 `;

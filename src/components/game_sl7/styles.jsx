@@ -55,7 +55,7 @@ export const Photos = styled.div`
     }
   }
 
-  @media (min-width: 1280px)  {
+  @media (min-width: 1024px)  {
     width: 450px;
     height: 300px;
   }
@@ -93,7 +93,7 @@ export const Photo = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 200px;
     height: 130px;
   }
@@ -122,7 +122,7 @@ export const Div = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 33.125rem;
     height: 18.75rem;
   }
@@ -149,7 +149,7 @@ export const Types = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.75rem;
     font-size: 1.5rem;
   }
@@ -182,7 +182,7 @@ export const Type = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 42px;
     height: 56px;
     border-width: 2px;
@@ -212,7 +212,7 @@ export const Keyboard = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 14px;
     padding: 12px 42px;
   }
@@ -260,7 +260,7 @@ export const Keys = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3.5rem;
     height: 3.5rem;
     font-size: 1.5rem;

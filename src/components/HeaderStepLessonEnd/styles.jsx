@@ -30,13 +30,16 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 6.25rem;
+  @media(min-width: 1024px) {
+    width: 72px;
     height: 2rem;
   }
 
-  @media(min-width: 1440px) {
-    width: 110px;
-    height: 2.25rem;
+  @media(min-width: 1366px) {
+    width: 6.25rem;
+  }
+
+  @media(min-width: 1920px) {
+    width: 120px;
   }
 `;

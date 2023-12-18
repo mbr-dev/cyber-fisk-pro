@@ -51,7 +51,7 @@ export const Grid = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 30rem;
     gap: 1.5rem;
   }
@@ -118,7 +118,7 @@ export const Card = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 6rem;
     height: 6rem;
 

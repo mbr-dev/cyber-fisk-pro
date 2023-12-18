@@ -7,7 +7,7 @@ export const Overlay = styled(Dialog.Overlay)`
   height: 100vh;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
-`;
+  `;
 
 export const Content = styled(Dialog.Content)`
   width: 100%;

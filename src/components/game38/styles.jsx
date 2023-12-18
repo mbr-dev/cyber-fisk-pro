@@ -33,13 +33,11 @@ export const Main = styled.main`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       padding-block: 0rem;
-      flex-direction: row;
-      align-items: flex-start;
       justify-content: center;
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 1rem;
     margin-bottom: 1rem;
   }
@@ -73,7 +71,7 @@ export const AreaWord = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 35rem;
     height: 9rem;
     gap: 0.5rem;
@@ -109,7 +107,7 @@ export const Words = styled.span`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.25rem;
     padding: 0.625rem 1rem;
   }
@@ -148,7 +146,7 @@ export const AreaAnswers = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 35rem;
     height: 13rem;
     border-width: 3px;
@@ -184,7 +182,7 @@ export const WordsDrop = styled.span`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1.125rem;
     padding: 0.625rem 1rem;
   }
@@ -237,7 +235,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 15.625rem;
     height: 3rem;
     font-size: 1.5rem;

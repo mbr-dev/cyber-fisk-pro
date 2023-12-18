@@ -37,12 +37,12 @@ export const Left = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 50%;
+      width: 54%;
       gap: 0.5rem;
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -60,12 +60,12 @@ export const Right = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 50%;
+      width: 46%;
       gap: 0.5rem;
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -90,7 +90,7 @@ export const LettersArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -133,7 +133,7 @@ export const Letter = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3rem;
     height: 4rem;
     
@@ -166,7 +166,7 @@ export const ButtonArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1.5rem;
   }
 `;
@@ -222,7 +222,7 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3rem;
     height: 4rem;
 
@@ -249,7 +249,7 @@ export const AreaButtons = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -289,7 +289,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 12rem;
     height: 2.5rem;
     font-size: 1.5rem;
@@ -314,7 +314,7 @@ export const DivAnswer = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.75rem;
   }
 `;
@@ -348,7 +348,7 @@ export const DivRow = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.75rem;
 
     p {
@@ -382,7 +382,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 2.5rem;
     height: 3rem;
     font-size: 1.5rem

@@ -70,7 +70,7 @@ export const Image = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     img {
       width: 400px;
       height: 250px;
@@ -100,7 +100,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -156,7 +156,7 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 18.75rem;
     height: 5rem;
 

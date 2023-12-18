@@ -23,8 +23,12 @@ export const Main = styled.div`
     height: 1.5rem;
   }
 
-  @media(min-width: 1280px) {
-    width: 400px;
+  @media(min-width: 1024px) {
+    width: 300px;
     height: 2rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 400px;
   }
 `

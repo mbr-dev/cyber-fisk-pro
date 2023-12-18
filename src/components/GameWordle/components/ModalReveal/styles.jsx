@@ -6,6 +6,7 @@ export const Overlay = styled(Dialog.Overlay)`
   width: 100vw;
   height: 100vh;
   inset: 0;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.75);
 `;
 
@@ -20,6 +21,7 @@ export const Content = styled(Dialog.Content)`
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
+  z-index: 3;
 
   @media(max-width: 360px) {
     width: 20rem;
@@ -34,7 +36,7 @@ export const Content = styled(Dialog.Content)`
     height: 250px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 800px;
     height: 500px;
   }
@@ -79,7 +81,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 64px;
     height: 64px;
     top: -30px;
@@ -118,7 +120,7 @@ export const CloseEnter = styled(Dialog.Close)`
     margin-bottom: 0;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 250px;
     height: 56px;
     font-size:32px;
@@ -162,7 +164,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 86px;
 
     p {
@@ -199,7 +201,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 52px;
     }
@@ -225,7 +227,7 @@ export const MainInside = styled.main`
     padding-block: 24px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 400px;
     gap: 16px;
     padding-block: 36px;

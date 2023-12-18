@@ -40,7 +40,7 @@ export const SubtitleLessonContainer = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 1rem;
 
     span {

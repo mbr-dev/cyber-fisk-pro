@@ -6,8 +6,9 @@ export const Overlay = styled(Dialog.Overlay)`
   width: 100vw;
   height: 100vh;
   inset: 0;
+  z-index: 2;
   background-color: rgba(0, 0, 0, 0.75);
-`;
+  `;
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
@@ -19,6 +20,7 @@ export const Content = styled(Dialog.Content)`
   position: fixed;
   top: 50%;
   left: 50%;
+  z-index: 3;
   transform: translate(-50%, -50%);
 
   @media(max-width: 360px) {
@@ -34,9 +36,13 @@ export const Content = styled(Dialog.Content)`
     height: 280px;
   }
 
-  @media(min-width: 1280px) {
-    width: 1000px;
+  @media(min-width: 1024px) {
+    width: 900px;
     height: 550px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 1000px;
   }
 `;
 
@@ -79,7 +85,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 64px;
     height: 64px;
     top: -30px;
@@ -118,7 +124,7 @@ export const CloseEnter = styled(Dialog.Close)`
     margin-bottom: 0;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 250px;
     height: 56px;
     font-size:32px;
@@ -162,7 +168,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 86px;
 
     p {
@@ -225,7 +231,7 @@ export const Text = styled.section`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 350px;
     align-items: center;
     justify-content: center;
@@ -252,7 +258,7 @@ export const Info = styled.section`
     justify-content: center;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 10px;
     width: 400px;
     gap: 20px;
@@ -268,7 +274,7 @@ export const Line = styled.div`
     width: 300px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 400px;
   }
 `;
@@ -292,7 +298,7 @@ export const Row = styled.section`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 10px;
 
     p {
@@ -339,7 +345,7 @@ export const Letters = styled.div`
     font-size: 16px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 48px;
     height: 48px;
     border-width: 3px;

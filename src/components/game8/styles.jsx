@@ -38,7 +38,7 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 2rem;
     justify-content: center;
     gap: 2rem;
@@ -87,7 +87,7 @@ export const Title = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 1rem;
 
     p {
@@ -100,7 +100,6 @@ export const ButtonAnswer = styled.button`
   all: unset;
   width: 7.5rem;
   height: 3rem;
-  /* padding: 0.5rem 0.75rem; */
   display: flex;
   align-items: center;
   justify-content: center;
@@ -148,7 +147,16 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 200px;
+    height: 64px;
+
+    p {
+      font-size: 20px;
+    }
+  }
+
+  @media (min-width: 1366px) {
     width: 15rem;
     height: 4.5rem;
 

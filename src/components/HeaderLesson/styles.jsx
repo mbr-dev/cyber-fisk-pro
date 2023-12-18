@@ -26,7 +26,7 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 7.5rem;
     justify-content: space-between;
   }
@@ -56,7 +56,7 @@ export const BarStep = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-inline: 1.5rem;
   }
 `;

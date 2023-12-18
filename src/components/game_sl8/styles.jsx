@@ -34,7 +34,12 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    width: 94%;
+    gap: 3rem;
+  }
+
+  @media(min-width: 1366px) {
     width: 80%;
     gap: 3rem;
   }
@@ -74,7 +79,7 @@ export const Answers = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     gap: 1rem;
   }
@@ -103,7 +108,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
     justify-content: center;
   }
@@ -160,7 +165,7 @@ export const DivQuestion = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 200px;
     height: 64px;
 
@@ -206,7 +211,7 @@ export const DivA = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 14rem;
     gap: 1rem;
 
@@ -243,7 +248,7 @@ export const Answer = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 4rem;
     height: 4rem;
   }
@@ -256,7 +261,7 @@ export const Right = styled.div`
   align-items: center;
   gap: 0.75rem;
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 45%;
     justify-content: flex-start;
     gap: 2rem;
@@ -283,7 +288,7 @@ export const WordSelected = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 54px;
     border-radius: 8px;
   }
@@ -326,7 +331,7 @@ export const Words = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3.375rem;
     border-radius: 8px;
     padding-left: 1rem;
@@ -366,7 +371,7 @@ export const Delete = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3.375rem;
     height: 3.375rem;
   }
@@ -440,7 +445,7 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 0.75rem 1rem;
 
     p {
@@ -497,9 +502,13 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width:1280px) {
-    width: 15.625rem;
+  @media (min-width: 1024px) {
+    width: 200px;
     height: 3rem;
     font-size: 1.5rem;
+  }
+
+  @media (min-width: 1366px) {
+    width: 15.625rem;
   }
 `;

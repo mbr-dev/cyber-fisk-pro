@@ -120,7 +120,7 @@ export const Letters = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 16px;
 
     button {
@@ -172,7 +172,7 @@ export const TypeLetters = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     padding: 1.5rem;
   }
@@ -201,7 +201,7 @@ export const DivWord = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.5rem;
     margin-right: 1rem;
   }
@@ -231,7 +231,7 @@ export const DivLetter = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 2.5rem;
     height: 3.5rem;
     font-size: 1.5rem;
@@ -282,7 +282,7 @@ export const Answer = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
     width: 100vw;
 
@@ -337,11 +337,15 @@ export const Input = styled.input`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 68rem;
+  @media(min-width: 1024px) {
+    width: 900px;
     height: 3rem;
     padding-left: 1rem;
     font-size: 1.5rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 68rem;
   }
 `;
 
@@ -398,7 +402,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

@@ -41,7 +41,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 36px;
   }
 `;
@@ -70,7 +70,11 @@ export const MainInside = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
+    width: 990px;
+  }
+
+  @media (min-width: 1366px) {
     width: 75rem;
   }
 `;
@@ -99,9 +103,13 @@ export const Right = styled.div`
     }
   }
   
-  @media(min-width: 1280px) {
-    width: 45rem;
+  @media(min-width: 1024px) {
+    width: 594px;
     height: 28.125rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 45rem;
   }
 `;
 
@@ -115,7 +123,7 @@ export const Left = styled.div`
     }
   }
   
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 23.75rem;
     height: 28.125rem;
   }
@@ -186,13 +194,17 @@ export const Info = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 21.875rem;
+  @media(min-width: 1024px) {
+    width: 280px;
     height: 4.5rem;
 
     img {
       height: 50px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 21.875rem;
   }
 `;
 
@@ -273,8 +285,8 @@ export const Coin = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 21.875rem;
+  @media(min-width: 1024px) {
+    width: 280px;
     height: 4.5rem;
     gap: 3.25rem;
     border-width: 3px;
@@ -287,6 +299,10 @@ export const Coin = styled.div`
     span {
       font-size: 2.25rem;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 21.875rem;
   }
 `;
 
@@ -314,7 +330,7 @@ export const Board = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0px;
     height: 100%;
     justify-content: space-between;
@@ -401,7 +417,7 @@ export const Letters = styled.div`
     }
   }
   
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 4rem;
     height: 4rem;
     border-width: 3px;
@@ -445,7 +461,7 @@ export const ButtonArea = styled.div`
     gap: 2rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0;
     justify-content: space-between;
   }
@@ -519,8 +535,8 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 21.875rem;
+  @media(min-width: 1024px) {
+    width: 280px;
     height: 4.5rem;
     gap: 1rem;
     font-size: 28px;
@@ -528,6 +544,10 @@ export const Button = styled.button`
     img {
       width: 54px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 21.875rem;
   }
 `;
 
@@ -563,7 +583,7 @@ export const KeyBoard = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 100%;
     gap: 1.25rem;
   }
@@ -586,7 +606,7 @@ export const Line1 = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -609,7 +629,7 @@ export const Line2= styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -656,7 +676,7 @@ export const Line3 = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
 
     .keyDelete {
@@ -728,7 +748,7 @@ export const Key = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 2.875rem;
     height: 4.5rem;
     font-size: 1.75rem;

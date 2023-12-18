@@ -37,7 +37,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 2rem;
     gap: 2rem;
   }

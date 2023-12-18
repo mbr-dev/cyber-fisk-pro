@@ -31,7 +31,7 @@ export const Main = styled.div`
     height: 3.5rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 6.25rem;
   }
 `
@@ -53,7 +53,7 @@ export const BarStep = styled.div`
     padding: 0.5rem 0.875rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 1rem;
   }
 `;
@@ -96,7 +96,7 @@ export const Icons = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 20px;
     }

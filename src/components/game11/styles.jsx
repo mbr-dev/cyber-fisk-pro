@@ -25,7 +25,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 60rem;
   }
 `;
@@ -51,7 +51,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1.5rem;
   }
 `;
@@ -115,7 +115,7 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 15rem;
     height: 4rem;
     border-width: 3px;

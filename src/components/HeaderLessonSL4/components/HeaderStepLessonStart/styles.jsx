@@ -24,19 +24,15 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 190px;
+    width: 120px;
   }
 
-  @media(min-width: 1440px) {
-    width: 220px;
+  @media(min-width: 1366px) {
+    width: 200px;
     height: 36px;
   }
 
   @media(min-width: 1920px) {
     width: 300px;
-  }
-
-  @media(min-width: 2560px) {
-    width: 350px;
   }
 `;

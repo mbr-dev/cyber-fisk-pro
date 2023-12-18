@@ -34,7 +34,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 1rem;
     gap: 1rem;
   }
@@ -80,7 +80,7 @@ export const Form = styled.form`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     padding: 1rem 7.5rem;
 
     label {
@@ -124,10 +124,14 @@ export const Input = styled.input`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 19rem;
     font-size: 1.25rem;
     height: 2rem;
+  }
+
+  @media (min-width: 1366px) {
+    width: 19rem;
   }
 `;
 
@@ -184,7 +188,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

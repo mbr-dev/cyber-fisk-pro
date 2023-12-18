@@ -32,7 +32,7 @@ export const Container = styled.div`
     border-width: 4px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1366px) {
     height: 6.25rem;
   }
 

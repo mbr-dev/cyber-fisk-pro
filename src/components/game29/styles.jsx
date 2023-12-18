@@ -39,7 +39,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 1rem;
     margin-bottom: 1rem;
   }
@@ -66,7 +66,7 @@ export const Left = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 360px;
     justify-content: space-between;
   }
@@ -100,10 +100,15 @@ export const AreaWord = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 35rem;
+  @media(min-width: 1024px) {
+    width: 450px;
     height: 9rem;
     gap: 0.5rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 35rem;
+    height: 9rem;
   }
 `;
 
@@ -136,7 +141,12 @@ export const Words = styled.span`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  @media(min-width: 1366px) {
     font-size: 1.25rem;
     padding: 0.625rem 1rem;
   }
@@ -172,10 +182,14 @@ export const AreaAnswers = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 35rem;
-    height: 13rem;
+  @media(min-width: 1024px) {
+    width: 450px;
     border-width: 3px;
+    height: 13rem;
+  }
+
+  @media(min-width: 1366px) {
+    width: 35rem;
   }
 `;
 
@@ -208,8 +222,13 @@ export const WordsDrop = styled.span`
     }
   }
 
-  @media(min-width: 1280px) {
-    font-size: 1.125rem;
+  @media(min-width: 1024px) {
+    font-size: 16px;
+    padding: 6px 12px;
+  }
+
+  @media(min-width: 1366px) {
+    font-size: 1.25rem;
     padding: 0.625rem 1rem;
   }
 `;
@@ -229,7 +248,7 @@ export const Right = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 22.5;
   }
 `;
@@ -287,7 +306,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 15.625rem;
     height: 3rem;
     font-size: 1.5rem;

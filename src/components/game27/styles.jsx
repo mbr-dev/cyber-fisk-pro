@@ -35,7 +35,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 53.125rem;
     height: 25rem;
     margin-top: 1rem;
@@ -89,7 +89,7 @@ export const Photo = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 15.625rem;
     height: 11.25rem;
     border-width: 3px;

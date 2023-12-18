@@ -17,19 +17,15 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 250px;
+    width: 200px;
   }
 
-  @media(min-width: 1440px) {
+  @media(min-width: 1366px) {
     width: 350px;
     height: 36px;
   }
 
   @media(min-width: 1920px) {
     width: 500px;
-  }
-
-  @media(min-width: 2560px) {
-    width: 700px;
   }
 `;

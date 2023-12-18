@@ -19,7 +19,7 @@ export const Container = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding-block: 1rem;
   }
 `;
@@ -76,7 +76,7 @@ export const Button = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 4.5rem;
     height: 4.5rem;
 

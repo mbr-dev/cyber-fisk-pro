@@ -34,7 +34,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-top: 2rem;
     gap: 2rem;
   }
@@ -82,7 +82,7 @@ export const AreaAnswers = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 1.5rem;
     }
@@ -115,7 +115,7 @@ export const AreaWord = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 36rem;
     height: 12.5rem;
   }
@@ -150,7 +150,7 @@ export const Words = styled.span`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     padding: 0.875rem 1.5rem;
     font-size: 1.5rem;
   }
@@ -175,7 +175,7 @@ export const AreaButton = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
     margin-top: 2rem;
   }
@@ -222,7 +222,7 @@ export const Button = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 15.625rem;
     height: 3rem;
     font-size: 1.5rem;

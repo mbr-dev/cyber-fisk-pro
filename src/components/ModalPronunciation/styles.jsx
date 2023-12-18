@@ -7,7 +7,7 @@ export const Overlay = styled(Dialog.Overlay)`
   height: 100vh;
   inset: 0;
   background-color: rgba(0, 0, 0, 0.75);
-  z-index: 150;
+  z-index: 10;
 `;
 
 export const Content = styled(Dialog.Content)`
@@ -20,7 +20,7 @@ export const Content = styled(Dialog.Content)`
   position: fixed;
   top: 50%;
   left: 50%;
-  z-index: 151;
+  z-index: 11;
   transform: translate(-50%, -50%);
 
   @media(max-width: 360px) {
@@ -41,7 +41,7 @@ export const Content = styled(Dialog.Content)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 32rem;
   }
 `;
@@ -88,7 +88,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 2rem;
     }
@@ -141,7 +141,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
     top: -1.875rem;
@@ -170,7 +170,7 @@ export const Main = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-block: 1rem;
   }
 `;
@@ -264,7 +264,7 @@ export const Form = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 1rem;
     
     textarea {
@@ -324,7 +324,7 @@ export const ButtonHear = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 20rem;
     height: 3rem;
 

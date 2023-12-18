@@ -34,7 +34,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 1rem;
     margin-top: 1rem;
   }  
@@ -92,8 +92,8 @@ export const Select = styled.select`
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 27rem;
+  @media(min-width: 1024px) {
+    width: 700px;
     height: 3rem;
     font-size: 1.5rem;
   }
@@ -152,7 +152,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

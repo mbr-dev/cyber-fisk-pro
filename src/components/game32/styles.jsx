@@ -33,7 +33,7 @@ export const Main = styled.main`
     }
   }
 
-  @media (min-width: 1280px) {    
+  @media (min-width: 1024px) {    
     gap: 2rem;
   }
 `;
@@ -71,7 +71,7 @@ export const Answers = styled.section`
     }
   }
 
-  @media (min-width: 1280px) {    
+  @media (min-width: 1024px) {    
     gap: 1rem;
   }
 `;
@@ -114,7 +114,7 @@ export const Options = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 0.5rem;
     padding-right: 1.25rem;
 
@@ -143,7 +143,7 @@ export const Form = styled.form`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 1rem;
   }
 `;
@@ -203,7 +203,7 @@ export const AnswersRow = styled.section`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     gap: 1rem;
 
     p {
@@ -248,7 +248,7 @@ export const Radio = styled(RadioGroup.Item)`
     border-radius: 2px;
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
   }
@@ -261,7 +261,7 @@ export const Radio = styled(RadioGroup.Item)`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
   }
@@ -320,7 +320,7 @@ export const ButtonCheck = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 21rem;
     height: 3rem;
 

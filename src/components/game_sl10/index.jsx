@@ -235,7 +235,7 @@ export const GameSL10 = () => {
   return (
     <Container>
       <HeaderLessonSL1 trophyEnd superTaskStart numStart="Super task" numEnd="Finish" />
-      <TitleLesson title="How many nationalities can you write with these letters?"/>
+      <TitleLesson title="How many musical styles can you write with these letters?"/>
 
       <Main>
         <Left>

@@ -29,7 +29,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -88,7 +88,7 @@ export const Image = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     img {
       width: 400px;
       height: 250px;
@@ -137,7 +137,7 @@ export const ButtonArea = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     gap: 2rem;
   }
 `;
@@ -196,7 +196,7 @@ export const ButtonAnswer = styled.button`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 18rem;
     height: 3.5rem;
   }
