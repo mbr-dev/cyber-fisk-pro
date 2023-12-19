@@ -1,4 +1,4 @@
-import { useState, useCallback } from "react";
+import { useState } from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { useSpeechSynthesis } from "react-speech-kit";
 
@@ -23,7 +23,7 @@ export const ModalPronunciation = () => {
     speak({ text: valueTxt, voice });
   }
 
-  const isDesktop = window.matchMedia("(min-width: 1280px)").matches;
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
 
   return (
     <Dialog.Portal>

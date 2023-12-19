@@ -47,7 +47,7 @@ export const BarStep = styled.div`
   }
 
   @media(min-width: 768px) {
-    padding: 0.875rem 1.5rem;
+    padding: 12px 16px;
   }
 
   @media(orientation: landscape) {

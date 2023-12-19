@@ -16,7 +16,7 @@ import { ModalPronunciation } from "../../components/ModalPronunciation";
 import taskImg from "./images/task.png";
 import studioImg from "./images/studio.png";
 import foneImg from "./images/fone.png";
-import microImg from "./images/micro.png";
+import microImg from "../../assets/microImage.png";
 import qrImg from "./images/qrcode.png";
 import superImg from "./images/super.png";
 import bgHeaderImg from "../../assets/bgHeaderImg.png";
@@ -168,7 +168,7 @@ export const LessonSelected = () => {
              <Dialog.Root>
                 <Dialog.Trigger style={{border: 'none', backgroundColor: 'white', width: '100%'}}>
                   <ButtonBottom>
-                    <img src={microImg} alt="" />
+                    <img src={microImg} alt="" className="microImg" />
                     <p>Pronunciation</p>
                   </ButtonBottom>
                 </Dialog.Trigger>

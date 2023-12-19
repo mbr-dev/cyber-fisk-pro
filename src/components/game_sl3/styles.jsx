@@ -22,7 +22,11 @@ export const Phrase = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
+
+  @media(min-width: 1024px) {
+    gap: 16px;
+  }
 `;
 
 export const Letters = styled.div`
@@ -174,7 +178,7 @@ export const TypeLetters = styled.div`
 
   @media(min-width: 1024px) {
     width: 100%;
-    padding: 1.5rem;
+    padding: 16px;
   }
 `;
 
@@ -295,7 +299,7 @@ export const Answer = styled.div`
 export const TypeLetters2 = styled(TypeLetters)``;
 
 export const DivLetter2 = styled(DivLetter)`
-  border-color: transparent;
+  border: none;
   background-color: ${props => props.theme["red-200"]};
   color: ${props => props.theme.white};
 `;

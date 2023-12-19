@@ -7,7 +7,7 @@ import { CyberContext } from "../../context/cyber";
 import { Container, Bracos, Cabeca, Face, Tronco , Antena, Name, Oculos } from "./styles";
 
 export const AvatarCustomMetade = ({ hasName }) => {
-  const { acessorios, cabeca, face, bracos, tronco, pernas, pets, hasSword, hasBag } = useContext(CyberContext);
+  const { acessorios, cabeca, face, bracos, tronco, hasSword, hasBag } = useContext(CyberContext);
   const [name, setName] = useState("");
 
   useEffect(()=>{
@@ -58,7 +58,7 @@ export const AvatarCustomMetade = ({ hasName }) => {
 
       {hasName &&
         <Name>
-          <p>{name}Maria Santos</p>
+          <p>{name}</p>
         </Name>
       }
     </Container>

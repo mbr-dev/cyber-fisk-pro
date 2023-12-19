@@ -168,6 +168,10 @@ export const Name = styled.div`
     width: 18rem;
     height: 3.75rem;
     bottom: 13rem;
+
+    p {
+      font-size: 2rem;
+    }
   }
 
   @media (min-width: 1366px) {

@@ -33,7 +33,7 @@ export const Header = styled.header`
   }
 
   @media(min-width: 768px) {
-    height: 150px;
+    height: 160px;
   }
 
   @media(orientation: landscape) {
@@ -55,21 +55,19 @@ export const HeaderButton = styled.div`
   width: 100%;
   display: flex;
   justify-content: space-between;
-`;
 
-export const DivBtnCH = styled.div`
-  width: 232px;
-  display: flex;
-  justify-content: space-between;
-  
-  @media (max-width: 320px) {
-    width: 200px;
+  .avatarDivBtnCH {
+    margin-top: -32px;
   }
 
   @media (min-width: 768px) {
-    width: 420px;
+    .avatarDivBtnCH {
+      margin-top: -90px;
+    }
   }
+`;
 
+export const DivBtnCH = styled.div`
   @media(orientation: landscape) {
     @media (min-width: 600px) {
       display: none;

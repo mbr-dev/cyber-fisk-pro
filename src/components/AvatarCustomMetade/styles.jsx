@@ -123,11 +123,11 @@ export const Name = styled.div`
 
   @media (min-width: 768px) {
     width: 200px;
-    height: 40px;
-    bottom: 124px;
+    height: 52px;
+    bottom: 120px;
 
     p {
-      font-size: 20px;
+      font-size: 24px;
     }
   }
 `;

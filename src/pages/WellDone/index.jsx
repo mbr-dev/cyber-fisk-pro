@@ -151,7 +151,7 @@ export const WellDone = () => {
 
   return (
     <Container>
-      {showConfetti && <Confetti numberOfPieces={100} tweenDuration={10000} />}
+      {showConfetti && <Confetti numberOfPieces={800} tweenDuration={10000} />}
       {error ? <Notifications description={msgError} event={clickAlert}/> : null}
 
       <Header style={{
@@ -239,7 +239,7 @@ export const WellDone = () => {
           </Div>
         </Main>
 
-        <AreaFooterMiddleBtn />
+        <AreaFooterMiddleBtn title="Tasks" rota="/selectLesson" />
       </Content>
     </Container>
   )

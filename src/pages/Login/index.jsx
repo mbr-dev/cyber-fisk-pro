@@ -145,11 +145,16 @@ export const Login = () => {
     if(token){
       salvarAcesso(raf);
     }
-  },[])
+  },[]);
+
+  if (loading) {
+    return (
+      <Loading />
+    )
+  }
 
   return (
     <Container>
-      {loading ? <Loading /> : null}
       <Header style={{
         backgroundImage: `url("${bgHeaderImg}")`
       }}>

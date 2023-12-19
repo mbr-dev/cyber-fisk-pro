@@ -87,15 +87,15 @@ export const Home = () => {
     navigate("/GameWordle");
   }
 
-  // useEffect(()=>{
-  //   const cookies = new Cookies();
-  //   const token = cookies.get("token");
-  //   if(!token){
-  //     navigate("/Login");
-  //   }else{
-  //     verificaPremio();
-  //   }
-  // },[]);
+  useEffect(()=>{
+    const cookies = new Cookies();
+    const token = cookies.get("token");
+    if(!token){
+      navigate("/Login");
+    }else{
+      verificaPremio();
+    }
+  },[]);
 
   return (
     <Container>

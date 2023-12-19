@@ -11,6 +11,7 @@ export const Container = styled.div`
   border-radius: 3px;
   color: ${props => props.theme.white};
   cursor: pointer;
+  z-index: 1000000;
 
   img {
     width: 16px;

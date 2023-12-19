@@ -357,10 +357,10 @@ export const GameSL3 = () => {
                         </DivLetter2>
                       )
                     })}
+                    <DivLetter2>?</DivLetter2>
                   </DivWord>
                 )
               })}
-              <DivLetter2>?</DivLetter2>
             </TypeLetters2>
 
             <form id="myForm" onSubmit={handleVerifyAnswers} >

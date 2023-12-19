@@ -51,13 +51,19 @@ export const Top = styled.div`
   align-items: center;
   justify-content: center;
   background-repeat: no-repeat;
-  background-size: cover;
-  background-position: bottom;
   position: relative;
+
+  .bgImg {
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+    position: absolute;
+    z-index: 0;
+  }
 
   div {
     position: absolute;
-    top: -12px;
+    top: -10px;
     left: 50%;
     transform: translateX(-50%);
   }

@@ -14,7 +14,7 @@ import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Help = () => {
   const { selectLanguage } = useContext(CyberContext);
-  const [openModal, setOpenModal] = useState("XPRanking");
+  const [openModal, setOpenModal] = useState(null);
 
   const handleItemClick = (modalName) => {
     setOpenModal((modal) => (modal === modalName ? null : modalName));

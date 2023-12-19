@@ -8,7 +8,7 @@ export const Overlay = styled(Dialog.Overlay)`
   inset: 0;
   z-index: 100;
   background-color: rgba(0, 0, 0, 0.75);
-`;
+  `;
 
 export const Content = styled(Dialog.Content)`
   width: 21rem;
@@ -17,17 +17,17 @@ export const Content = styled(Dialog.Content)`
   display: flex;
   flex-direction: column;
   align-items: center;
-  background-color: ${(props) => props.theme.white};
   position: fixed;
   top: 50%;
   left: 50%;
   z-index: 100;
   transform: translate(-50%, -50%);
-
+  
   .bgModal {
     width: 100%;
     height: 100%;
     position: absolute;
+    border-radius: 12px;
     top: 0;
     left: 0;
     z-index: -1;

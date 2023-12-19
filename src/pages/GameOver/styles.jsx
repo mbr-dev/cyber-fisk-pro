@@ -566,7 +566,7 @@ export const Div = styled.div`
 
 export const Text = styled.div`
   width: 17.5rem;
-  height: 3rem;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -577,16 +577,16 @@ export const Text = styled.div`
 
   @media(max-width: 320px) {
     width: 15.625rem;
-    height: 3.25rem;
+    height: 44px;
     
     p {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
     width: 20rem;
-    height: 10rem;
+    height: 120px;
     border-width: 3px;
     
     p {

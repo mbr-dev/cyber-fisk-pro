@@ -37,11 +37,11 @@ export const Content = styled.div`
     width: 18rem;
   }
 
-  @media(min-width: 480px) {
+  @media(min-width: 600px) {
     width: 500px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 800px;
   }
 `;
@@ -75,7 +75,7 @@ export const Close = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 52px;
     height: 52px;
     top: -28px;
@@ -105,7 +105,7 @@ export const CloseNo = styled.div`
     height: 1.75rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 200px;
     height: 44px;
     font-size: 32px;
@@ -141,7 +141,7 @@ export const Header = styled.header`
     padding-block: 8px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     font-size: 32px;
     padding-block: 16px;
   }
@@ -172,7 +172,7 @@ export const Main = styled.main`
     height: 182px;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 300px;
 
     p {
@@ -186,7 +186,7 @@ export const Div = styled.div`
   gap: 16px;
   margin-bottom: -1rem;
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     margin-bottom: -20px;
   }
 `;
@@ -209,7 +209,7 @@ export const Button = styled.div`
     height: 1.75rem;
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 200px;
     height: 44px;
     font-size: 32px;

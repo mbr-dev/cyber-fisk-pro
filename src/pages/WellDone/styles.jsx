@@ -463,6 +463,7 @@ export const ButtonRed = styled.button`
 export const IconAvatar = styled.div`
   width: 2.5rem;
   height: 2.5rem;
+  padding-top: 22px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -478,18 +479,21 @@ export const IconAvatar = styled.div`
   @media (min-width: 768px) {
     width: 3.75rem;
     height: 3.75rem;
+    padding-top: 36px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 2rem;
       height: 2rem;
+      padding-top: 18px;
     }
   }
 
   @media (min-width: 1024px) {
     width: 3.5rem;
     height: 3.5rem;
+    padding-top: 32px;
   }
 
   @media (min-width: 1366px) {
@@ -655,7 +659,7 @@ export const Div = styled.div`
 
 export const Text = styled.div`
   width: 17.5rem;
-  height: 3rem;
+  height: 72px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -666,16 +670,16 @@ export const Text = styled.div`
 
   @media(max-width: 320px) {
     width: 15.625rem;
-    height: 3.25rem;
+    height: 44px;
     
     p {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
     width: 20rem;
-    height: 10rem;
+    height: 120px;
     border-width: 3px;
     
     p {

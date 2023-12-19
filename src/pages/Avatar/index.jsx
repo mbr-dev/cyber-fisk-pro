@@ -74,7 +74,7 @@ export const Avatar = () => {
       }
       setSelected(item);
       setItemSeleciona(tempFace);
-      setTitle("Expressão Facil");
+      setTitle("Expressão Facial");
 
     } else if (item === "bracos") {
       const bracoL = bracosItems.length;
@@ -191,9 +191,8 @@ export const Avatar = () => {
       <HeaderText title="Avatar " />
 
       <Main>
-        <Top style={{
-          backgroundImage: `url("${bgImg}")`
-        }}>
+        <Top>
+          <img src={bgImg} alt="" className="bgImg" />
           <div>
             <AvatarCustom avatar />
           </div>

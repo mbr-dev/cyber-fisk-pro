@@ -61,18 +61,17 @@ export const HeaderTop = styled.header`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-top: 10px;
-      padding-inline: 10px;
+      padding-top: 0px;
+      padding-inline: 24px;
 
       .logoFiskD {
         display: block;
-        width: 80px;
+        width: 72px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    padding-top: 0;
     padding-inline: 32px;
 
     .logoFiskD {
@@ -312,7 +311,7 @@ export const Card = styled.a`
   }
 
   @media(min-width: 1366px) {
-    width: 8.75rem;
+    width: 10rem;
     height: 8.75rem;
 
     p {

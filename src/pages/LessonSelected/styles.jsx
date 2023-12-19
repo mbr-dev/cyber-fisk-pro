@@ -448,12 +448,12 @@ export const ButtonAreaBottom = styled.div`
     width: 400px;
     height: 350px;
   }
-
+  
   @media(min-width: 1366px) {
     width: 500px;
     height: 400px;
   }
-`;
+  `;
 
 export const BottomRight = styled.div`
   width: 150px;
@@ -481,7 +481,7 @@ export const BottomRight = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 184px;
+    width: 192px;
   }
 
   @media(min-width: 1366px) {
@@ -547,6 +547,10 @@ export const ButtonBottom = styled.button`
   img {
     width: 42px;
   }
+
+  .microImg {
+    width: 24px;
+  }
   
   &:hover {
     color: ${props => props.theme.white};
@@ -565,6 +569,10 @@ export const ButtonBottom = styled.button`
     img {
       width: 18px;
     }
+
+    .microImg {
+      width: 16px;
+    }
   }
 
   @media(min-width: 768px) {
@@ -577,6 +585,10 @@ export const ButtonBottom = styled.button`
 
     p {
       font-size: 20px;
+    }
+
+    .microImg {
+      width: 34px;
     }
   }
 
@@ -592,6 +604,10 @@ export const ButtonBottom = styled.button`
       img {
         width: 38px;
       }
+
+      .microImg {
+        width: 16px;
+      }
     }
   }
 
@@ -600,19 +616,24 @@ export const ButtonBottom = styled.button`
     border-radius: 1rem;
     border-width: 3px;
     justify-content: center;
-    gap: 16px;
-
+    gap: 8px;
+    
     img {
       width: 48px;
     }
-
+    
     p {
       font-size: 20px;
     }
-  }
 
+    .microImg {
+      width: 34px;
+    }
+  }
+  
   @media(min-width: 1366px) {
     height: 164px;
+    gap: 16px;
 
     img {
       width: 52px;

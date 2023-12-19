@@ -206,7 +206,7 @@ export const GameOver = () => {
           </Div>
         </Main>
 
-        <AreaFooterMiddleBtn />
+        <AreaFooterMiddleBtn title="Tasks" rota="/selectLesson" />
       </Content>
     </Container>
   )

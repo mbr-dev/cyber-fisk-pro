@@ -52,47 +52,38 @@ export const DivDesk = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 100%;
+  width: 300px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
 
   img {
-    width: 250px;
-    height: 184px;
+    width: 100%;
+    height: 100%;
     object-fit: fill;
   }
 
   @media(max-width: 320px) {
-    img {
-      width: 200px;
-      height: 120px;
-    }
+    width: 200px;
+    height: 120px;
   }
 
   @media(min-width: 768px) {
-    img {
-      width: 400px;
-      height: 250px;
-    }
+    width: 300px;
+    height: 220px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 40%;
-
-      img {
-        width: 250px;
-        height: 184px;
-      }
+      width: 220px;
+      height: 150px;
     }
   }
 
   @media(min-width: 1024px) {
-    img {
-      width: 400px;
-      height: 250px;
-    }
+    width: 450px;
+    height: 250px;
   }
 `;
 
@@ -100,6 +91,7 @@ export const Div = styled.div`
   width: 100%;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 1rem;
 
   @media(max-width: 320px) {
@@ -199,5 +191,9 @@ export const ButtonAnswer = styled.button`
   @media (min-width: 1024px) {
     width: 18rem;
     height: 3.5rem;
+
+    p {
+      font-size: 20px;
+    }
   }
 `;

@@ -37,8 +37,10 @@ export const Menu = () => {
       }}>
         <HeaderButton>
           <ButtonMenuHeader />
-          <DivBtnCH>
+          <DivBtnCH className="avatarDivBtnCH">
             <AvatarCustomMetade hasName />
+          </DivBtnCH>
+          <DivBtnCH>
             <ButtonCloseHeader />
           </DivBtnCH>
         </HeaderButton>

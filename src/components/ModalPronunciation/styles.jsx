@@ -142,10 +142,10 @@ export const Close = styled(Dialog.Close)`
   }
 
   @media (min-width: 1024px) {
-    width: 4rem;
-    height: 4rem;
-    top: -1.875rem;
-    right: -1.875rem;
+    width: 3rem;
+    height: 3rem;
+    top: -24px;
+    right: -24px;
     
     img {
       width: 32px;

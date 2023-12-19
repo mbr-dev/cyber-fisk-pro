@@ -281,14 +281,16 @@ export const ButtonsArea = styled.div`
     }
   }
 
-  .hasBorder {
-    border-color: ${props => props.theme["red-200"]};
-  }
-
   .playBtn {
     width: 4rem;
     height: 4rem;
+    background-color: ${props => props.theme["red-200"]};
+    border-radius: 6px;
+    box-shadow: 0px 4px 10px 0px #00000033;
     
+    img {
+      width: 36px;
+    }
   }
 
   .changeBtn {
