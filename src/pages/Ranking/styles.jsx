@@ -183,11 +183,16 @@ export const CoinArea = styled.div`
 `;
 
 export const Carrousel = styled.div`
-  width: 100%;
+  width: 86%;
   height: 132px;
-
+  
   @media (min-width: 1024px) {
+    width: 100%;
     height: 180px;
+  }
+
+  @media (min-width: 1920px) {
+    height: 320px;
   }
 `;
 
@@ -206,7 +211,7 @@ export const Position = styled.div`
     width: 32px;
     position: absolute;
     top: 0.5rem;
-    left: 0;
+    left: 14px;
     z-index: 1000;
   }
 
@@ -220,7 +225,7 @@ export const Position = styled.div`
         position: absolute;
         font-size: 1.25rem;
         top: 0.875rem;
-        left: 0.625rem;
+        left: 24px;
         z-index: 1001;
       }
     }
@@ -234,30 +239,31 @@ export const Position = styled.div`
     .numberPosition {
       font-size: 1.5rem;
       top: 1rem;
-      left: 0.875rem;
+      left: 28px;
     }
   }
 
   @media (min-width: 1366px) {
     .pNumber {
-      left: 6px;
+      left: 64px;
     }
 
     .numberPosition {
-      font-size: 1.5rem;
-      top: 1rem;
-      left: 20px;
+      left: 78px;
     }
   }
 
   @media (min-width: 1920px) {
     .pNumber {
-      left: 68px;
+      width: 52px;
+      top: 36px;
+      left: 60px;
     }
-
+    
     .numberPosition {
-      top: 16px;
-      left: 82px;
+      font-size: 32px;
+      top: 46px;
+      left: 76px;
     }
   }
 `;
@@ -277,7 +283,9 @@ export const PositionCard = styled.div`
   }
 
   @media (min-width: 1920px) {
-    padding: 1.75rem;
+    padding: 0;
+    width: 450px;
+    height: 200px;
   }
 `;
 
@@ -324,6 +332,19 @@ export const DivName = styled.div`
 
     span {
       font-size: 32px;
+    }
+  }
+
+  @media (min-width: 1920px) {
+    width: 250px;
+
+    p {
+      font-size: 36px;
+    }
+
+    span {
+      font-size: 32px;
+      font-weight: 700;
     }
   }
 `;
@@ -458,17 +479,19 @@ export const LevelPosition = styled.section`
 export const AvatarArea = styled.section`
   width: 3rem;
   height: 3rem;
-  border-radius: 8px;
+  padding-top: 28px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: ${props => props.theme.white};
+  border-radius: 8px;
   border: 1px solid ${props => props.theme["red-200"]};
+  background-color: ${props => props.theme.white};
   overflow: hidden;
 
   @media (min-width: 768px) {
     width: 4rem;
     height: 4rem;
+    padding-top: 36px;
   }
 
   @media(orientation: landscape) {
@@ -481,7 +504,13 @@ export const AvatarArea = styled.section`
   @media (min-width: 1024px) {
     width: 4rem;
     height: 4rem;
-    border-width: 2px;
+    border-width: 3px;
     border-radius: 12px;
+  }
+
+  @media (min-width: 1920px) {
+    width: 100px;
+    height: 100px;
+    padding-top: 56px;
   }
 `;

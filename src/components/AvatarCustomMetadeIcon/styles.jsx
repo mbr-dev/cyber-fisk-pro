@@ -22,6 +22,11 @@ export const Container = styled.div`
     width: 4.5rem;
     height: 8.125rem;
   }
+
+  @media (min-width: 1920px) {
+    width: 100px;
+    height: 232px;
+  }
 `;
 
 export const Antena = styled.div`

@@ -147,7 +147,7 @@ export const InfoArea = styled.div`
   }
 `;
 
-export const Info = styled.div`
+export const Info = styled.button`
   width: 3.25rem;
   height: 2.75rem;
   border-radius: 8px;
@@ -162,6 +162,11 @@ export const Info = styled.div`
 
   img {
     height: 80%;
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
   }
 
   @media(max-width: 360px) {

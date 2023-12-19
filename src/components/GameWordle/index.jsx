@@ -126,10 +126,10 @@ export const GameWordle = () => {
       
       <Main>
         <DivMobile>
-          <InfoArea>
+          <InfoArea sty>
             <Dialog.Root>
               <Dialog.Trigger asChild>
-                <Info><img src={IImg} alt="" /></Info>
+                <Info disabled={gameEnd}><img src={IImg} alt="" /></Info>
               </Dialog.Trigger>
               <Modal />
             </Dialog.Root>
@@ -199,7 +199,7 @@ export const GameWordle = () => {
               <InfoArea>
                 <Dialog.Root>
                   <Dialog.Trigger asChild>
-                    <Info><img src={IImg} alt="" /></Info>
+                    <Info disabled={gameEnd}><img src={IImg} alt="" /></Info>
                   </Dialog.Trigger>
                   <Modal />
                 </Dialog.Root>

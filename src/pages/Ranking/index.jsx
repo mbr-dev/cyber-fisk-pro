@@ -4,6 +4,7 @@ import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
 
 import { apiQAS } from "../../lib/api";
+import { Loading } from "../../components/Loading";
 import { HeaderText } from "../../components/HeaderText";
 import { LineSeparator } from "../../components/LineSeparator";
 import { AreaFooterFullBtn } from "../../components/AreaFooterFullBtn";
@@ -21,6 +22,7 @@ export const Ranking = () => {
   const [data, setData] = useState(null);
   const [rafUser, setRafUser] = useState(null);
   const [buttonSelected, setButtonSelected] = useState("National");
+  const [loadRanking, setLoadRanking] = useState(false);
 
   const [ref] = useKeenSlider({
     slides: {
@@ -28,9 +30,9 @@ export const Ranking = () => {
       spacing: 16,
     },
     breakpoints: {
-      "(min-width: 1366px)": {
+      "(min-width: 600px)": {
         slides: {
-          perView: 4,
+          perView: 3,
         }
       }
     }
@@ -40,15 +42,34 @@ export const Ranking = () => {
     setButtonSelected((modal) => (modal === item ? null : item));
   };
 
+  // const loadRank = async () =>{
+  //   const cookies = new Cookies();
+  //   setRafUser(cookies.get("raf"));
+  //   await apiQAS.get(`/Rank/Ranking?tipo=all`)
+  //   .then((resp) =>{
+  //     if(resp.data.erro === null){
+  //       setData(resp.data.dados);
+  //     }
+  //   })
+  // }
+
   const loadRank = async () =>{
-    const cookies = new Cookies();
-    setRafUser(cookies.get("raf"));
-    await apiQAS.get(`/Rank/Ranking?tipo=all`)
-    .then((resp) =>{
-      if(resp.data.erro === null){
-        setData(resp.data.dados);
+    try {
+      setLoadRanking(true);
+
+      const cookies = new Cookies();
+      setRafUser(cookies.get("raf"));
+
+      const res = await apiQAS.get(`/Rank/Ranking?tipo=all`);
+
+      if (res) {
+        setData(res.data.dados);
       }
-    })
+
+      setLoadRanking(false);
+    } catch(error) {
+      console.log(error);
+    }
   }
 
   useEffect(() =>{
@@ -95,45 +116,50 @@ export const Ranking = () => {
         </MainTop>
 
         <DivDesk>
-          <Carrousel>
-            <CarrouselInside ref={ref} className="keen-slider">
-              {data !== null ? data.map((x, index) =>{
-                return(
-                  rafUser === x.raf ?
-                  <Position className="keen-slider__slide">
-                    <img src={p1} alt="" className="pNumber" />
-                    <PositionCard className="positionOne">
-                      <PositionInside>
-                        <AvatarArea>
-                          <AvatarCustomMetadeIcon />
-                        </AvatarArea>
-                        <DivName>
-                          <p className="positionOnep">{x.raf}</p>
-                          <span className="positionOnep">{x.xp} xp</span>
-                        </DivName>
-                      </PositionInside>
-                    </PositionCard>
-                  </Position>
-                  :
-                  <Position className="keen-slider__slide">
-                    <span className="numberPosition">{index+1}</span>
-                    <img src={positionImg} alt="" className="pNumber" />
-                    <PositionCard>
-                      <PositionInside>
-                        <AvatarArea>
-                          <AvatarCustomMetadeIcon />
-                        </AvatarArea>
-                        <DivName>
-                          <p>{x.raf}</p>
-                          <span>{x.xp} xp</span>
-                        </DivName>
-                      </PositionInside>
-                    </PositionCard>
-                  </Position>
-                )
-              }) : null}
-            </CarrouselInside>
-          </Carrousel>
+          {loadRanking ? 
+            <Loading /> 
+            :
+            <Carrousel>
+              <CarrouselInside ref={ref} className="keen-slider">
+                {data !== null ? data.map((x, index) =>{
+                  return(
+                    rafUser === x.raf ?
+                    <Position className="keen-slider__slide">
+                      <img src={p1} alt="" className="pNumber" />
+                      <PositionCard className="positionOne">
+                        <PositionInside>
+                          <AvatarArea>
+                            <AvatarCustomMetadeIcon />
+                          </AvatarArea>
+                          <DivName>
+                            <p className="positionOnep">{x.raf}</p>
+                            <span className="positionOnep">{x.xp} xp</span>
+                          </DivName>
+                        </PositionInside>
+                      </PositionCard>
+                    </Position>
+                    :
+                    <Position className="keen-slider__slide">
+                      <span className="numberPosition">{index+1}</span>
+                      <img src={positionImg} alt="" className="pNumber" />
+                      <PositionCard>
+                        <PositionInside>
+                          <AvatarArea>
+                            <AvatarCustomMetadeIcon />
+                          </AvatarArea>
+                          <DivName>
+                            <p>{x.raf}</p>
+                            <span>{x.xp} xp</span>
+                          </DivName>
+                        </PositionInside>
+                      </PositionCard>
+                    </Position>
+                  )
+                }) : null}
+              </CarrouselInside>
+            </Carrousel>
+          }
+          
         </DivDesk>
 
         <DivDesk>

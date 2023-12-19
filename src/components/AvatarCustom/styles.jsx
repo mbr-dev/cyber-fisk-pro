@@ -173,6 +173,11 @@ export const Name = styled.div`
   @media (min-width: 1024px) {
     width: 250px;
     height: 72px;
+
+    
+    span {
+      font-size: 36px;
+    }
   }
 
   @media (min-width: 1366px) {

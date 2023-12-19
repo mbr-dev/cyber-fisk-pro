@@ -19,6 +19,7 @@ import { WellDone } from "../pages/WellDone";
 import { GameOver } from "../pages/GameOver";
 import { SpinWheel } from "../pages/SpinWheel";
 import { Billboard } from "../pages/Billboard";
+import { Loading } from "../components/Loading";
 import { StudioList } from "../pages/StudioList";
 import { ReportInfo } from "../pages/ReportInfo";
 import { MessageOpen } from "../pages/MessageOpen";
@@ -109,6 +110,7 @@ export const Router =() => {
       <Route path="/Rewards" element={<Rewards />}/>
       <Route path="/Compose" element={<Compose />}/>
       <Route path="/Ranking" element={<Ranking />}/>
+      <Route path="/Loading" element={<Loading />}/>
       <Route path="/Messages" element={<Messages />}/>
       <Route path="/GameOver" element={<GameOver />}/>
       <Route path="/Lesson" element={<TaskLesson />}/>

@@ -38,7 +38,7 @@ export const Content = styled(Dialog.Content)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 28rem;
     height: 25rem;
   }
@@ -90,7 +90,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     width: 3rem;
     height: 3rem;
     top: -1.5rem;
@@ -133,7 +133,7 @@ export const Enter = styled.button`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 3rem;
     width: 18.75rem;
     font-size: 2rem;
@@ -180,7 +180,7 @@ export const Header = styled.header`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     height: 4.5rem;
 
     p {
@@ -216,7 +216,7 @@ export const Main = styled.main`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 22.5rem;
     padding-block: 1.5rem;
   }
@@ -276,7 +276,7 @@ export const Div = styled.div`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     p {
       font-size: 1.5rem;
       padding-left: 1rem;
@@ -318,7 +318,7 @@ export const Input = styled.input`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 10.5rem;
     height: 3rem;
     font-size: 1.125rem;
@@ -367,7 +367,7 @@ export const DivCheck = styled.div`
     }
   }
 
-  @media (min-width: 1280px) {
+  @media (min-width: 1024px) {
     p {
       font-size: 1.5rem;
     }
