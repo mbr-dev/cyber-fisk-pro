@@ -1,5 +1,6 @@
-import { useContext, useEffect, useState } from "react"; 
+import ReactWaves from "@dschoon/react-waves";
 import * as Dialog from "@radix-ui/react-dialog";
+import { useContext, useEffect, useState } from "react"; 
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 
 import { Modal } from "./components/Modal";
@@ -32,6 +33,7 @@ export const Studio = () => {
   const { selectLanguage } = useContext(CyberContext);
 
   const [recordedBlob, setRecordedBlob] = useState(null);
+  const [ruido, setRuido] = useState(null);
   const [audioElement, setAudioElement] = useState(null);
   const [listenAudio, setListenAudio] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
@@ -39,7 +41,9 @@ export const Studio = () => {
 
   const recorderControls = useAudioRecorder();
 
+  console.log("ruido :", ruido);
   const addAudioElement = (blob) => {
+    setRuido(blob);
     const reader = new FileReader();
 
     reader.onloadend = () => {
@@ -163,15 +167,26 @@ export const Studio = () => {
               <Modal />
             </Dialog.Root>
           </ButtonArea>
-          {listenAudio ?
-            <ButtonRec className="hasBorder">
-              <img src={microRed2Icon} alt="" />
-              <img src={ruidoIcon} className="ruido" alt="" />
-            </ButtonRec>
-            :
+           {ruido &&
             <ButtonRec onClick={handlePlayAudio}>
-              <img src={microRedIcon} alt="" />
-              <img src={ruidoIcon} className="ruido" alt="" />
+              <img src={listenAudio ? microRed2Icon : microRedIcon} alt="" />
+              <ReactWaves
+                audioFile={ruido}
+                className={"react-waves"}
+                options={{
+                  barWidth: 1,
+                  barHeight: 2,
+                  cursorWidth: 0,
+                  height: 50,
+                  hideScrollbar: true,
+                  progressColor: "#EC407A",
+                  responsive: true,
+                  waveColor: "#000",
+                }}
+                volume={1}
+                zoom={1}
+                playing={listenAudio}
+              />
             </ButtonRec>
           }
         </Left>

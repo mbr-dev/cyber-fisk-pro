@@ -60,10 +60,12 @@ export const Audio = () => {
   }
 
   const handleNextAudio = () => {
+    setIsPlaying(true);
     setCurrentAudio(state => (state + 1) % songs.length);
   };
 
   const handlePreviousAudio = () => {
+    setIsPlaying(true);
     setCurrentAudio(state => (state - 1 + songs.length) % songs.length);
   };
 
@@ -84,13 +86,14 @@ export const Audio = () => {
   }
 
   const handleEnded = () => {
-    if (isRepeat) {
-      audioRef.current.currentTime = 0;
-      handlePlayAudio();
-    } else {
-      setCurrentAudio((prevAudio) => (prevAudio + 1) % songs.length);
-    }
+    setIsPlaying(false);
   };
+
+  const repeatAudio = () => {
+    if (isRepeat) {
+      playAudio();
+    }
+  }
 
   const handleVolumeUp = () => {
     if (audioRef.current) {
@@ -136,9 +139,9 @@ export const Audio = () => {
 
   useEffect(() => {
     if (audioRef.current) {
-      audioRef.current.addEventListener("ended", handleEnded);
+      audioRef.current.addEventListener("ended", repeatAudio);
       return () => {
-        audioRef.current.removeEventListener("ended", handleEnded);
+        audioRef.current.removeEventListener("ended", repeatAudio);
       };
     }
   }, [isRepeat, currentAudio]);
@@ -156,10 +159,12 @@ export const Audio = () => {
 
   useEffect(() => {
     if (audioRef.current) {
+      audioRef.current.addEventListener("ended", handleEnded);
       audioRef.current.addEventListener("timeupdate", timeUpdate);
       audioRef.current.addEventListener("durationchange", durationChange);
 
       return () => {
+        audioRef.current.removeEventListener("ended", handleEnded);
         audioRef.current.removeEventListener("timeupdate", timeUpdate);
         audioRef.current.removeEventListener("durationchange", durationChange);
       };

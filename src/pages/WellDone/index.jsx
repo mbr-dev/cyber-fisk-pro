@@ -215,12 +215,11 @@ export const WellDone = () => {
 
           <Bottom2>
             <img src={FundoWDImg} alt="" className="fundoBg" />
-            <AreaItem2>
+            <AreaItem2 className="AreaItem2Left">
               <img src={Dollars} alt="" />
               <span>{dollar}</span>
               <p>Fisk Dollars</p>
             </AreaItem2>
-            <LineSeparator />
             <AreaItem2>
             <img src={Xp} alt="" />
             <span>{xpAtividade}</span>

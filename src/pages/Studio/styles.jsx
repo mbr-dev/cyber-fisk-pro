@@ -614,12 +614,13 @@ export const ButtonRec = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 8px;
   border-radius: 8px;
   border: 2px solid transparent;
   cursor: pointer;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
+  background-color: gray;
 
   img {
     height: 24px;

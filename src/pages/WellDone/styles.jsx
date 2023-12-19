@@ -511,11 +511,17 @@ export const Bottom2 = styled.section`
       width: 25rem;
       height: 6.25rem;
       flex-direction: column;
-      align-items: center;
+      align-items: flex-start;
       justify-content: center;
       gap: 0.25rem;
+      padding-left: 30px;
       position: relative;
       margin-top: 24px;
+
+      .AreaItem2Left {
+        border-bottom: 1px solid white;
+      }
+
 
       .fundoBg {
         width: 100%;
@@ -537,6 +543,11 @@ export const Bottom2 = styled.section`
     .fundoBg {
       border-top-left-radius: 20px;
       border-bottom-left-radius: 20px;
+    }
+
+    .AreaItem2Left {
+      border-width: 2px;
+      padding-bottom: 10px;
     }
   }
 
@@ -565,14 +576,17 @@ export const LineSeparator = styled.div`
 `;
 
 export const AreaItem2 = styled.section`
+  width: 90%;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  align-items: flex-start;
+  justify-content: flex-start;
   gap: 1.25rem;
   color: ${props => props.theme.white};
+  margin-left: 50px;
 
   img {
     width: 32px;
+    margin-left: 36px;
   }
 
   span {
@@ -597,6 +611,7 @@ export const AreaItem2 = styled.section`
 
     img {
       width: 44px;
+      margin-left: 60px;
     }
 
     span {
@@ -615,6 +630,7 @@ export const AreaItem2 = styled.section`
 
     img {
       width: 56px;
+      margin-left: 100px;
     }
 
     span {
