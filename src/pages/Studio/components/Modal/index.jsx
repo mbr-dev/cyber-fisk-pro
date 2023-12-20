@@ -1,6 +1,5 @@
 import { useContext } from "react"; 
 import * as Dialog from "@radix-ui/react-dialog";
-import { X } from "lucide-react";
 
 import { CyberContext } from "../../../../context/cyber";
 
@@ -24,18 +23,14 @@ export const Modal = () => {
         </Header>
 
         <Main>
-          <div>
-            <p>How are you?</p>
-            <span>Fine, Thanks./ I’m ok. / Pretty Good.</span>
-            <p>What’s your name?</p>
-            <span>my name is mike ross.</span>
-          </div>
-          <div>
-            <p>Are you from Brazil?</p>
-            <span>no, i am not.</span>
-            <p>Do you live in Australia?</p>
-            <span>yes, i do.</span>
-          </div>
+          <p>How are you?</p>
+          <span>Fine, Thanks./ I’m ok. / Pretty Good.</span>
+          <p>What’s your name?</p>
+          <span>my name is mike ross.</span>
+          <p>Are you from Brazil?</p>
+          <span>no, i am not.</span>
+          <p>Do you live in Australia?</p>
+          <span>yes, i do.</span>
         </Main>
 
         <CloseEnter>

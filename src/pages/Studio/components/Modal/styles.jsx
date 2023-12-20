@@ -11,7 +11,7 @@ export const Overlay = styled(Dialog.Overlay)`
 `;
 
 export const Content = styled(Dialog.Content)`
-  width: 21rem;
+  width: 280px;
   border-radius: 8px;
   display: flex;
   flex-direction: column;
@@ -21,31 +21,33 @@ export const Content = styled(Dialog.Content)`
   top: 50%;
   left: 50%;
   z-index: 3;
+  padding-bottom: 16px;
   transform: translate(-50%, -50%);
-
-  @media(max-width: 360px) {
-    width: 20rem;
-  }
 
   @media(max-width: 320px) {
     width: 18rem;
+    padding-bottom: 10px;
   }
 
   @media(min-width: 768px) {
-    width: 31.25rem;
-    height: 500px;
+    width: 500px;
+    padding-bottom: 16px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 31.25rem;
-      height: 15.625rem;
+      width: 600px;
+      padding-bottom: 10px;
     }
   }
 
-  @media(min-width: 1280px) {
-    width: 40rem;
-    height: 31.25rem;
+  @media(min-width: 1024px) {
+    width: 600px;
+    padding-bottom: 24px;
+  }
+
+  @media(min-width: 1366px) {
+    width: 600px;
   }
 `;
 
@@ -57,8 +59,8 @@ export const Close = styled(Dialog.Close)`
   display: flex;
   align-items: center;
   justify-content: center;
-  top: -0.75rem;
-  right: -0.75rem;
+  top: -16px;
+  right: -16px;
   background-color: ${props => props.theme["red-200"]};
   border-radius: 9999px;
 
@@ -67,11 +69,6 @@ export const Close = styled(Dialog.Close)`
   }
 
   @media(max-width: 320px) {
-    width: 1.5rem;
-    height: 1.5rem;
-    top: -0.5rem;
-    right: -0.5rem;
-
     img {
       width: 14px;
     }
@@ -92,8 +89,8 @@ export const Close = styled(Dialog.Close)`
     @media(min-width: 600px) {
       width: 2rem;
       height: 2rem;
-      top: -0.5rem;
-      right: -0.5rem;
+      top: -16px;
+      right: -16px;
 
       img {
         width: 14px;
@@ -101,7 +98,7 @@ export const Close = styled(Dialog.Close)`
     }
   }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 3.25rem;
     height: 3.25rem;
     top: -1.75rem;
@@ -115,9 +112,8 @@ export const Close = styled(Dialog.Close)`
 
 export const CloseEnter = styled(Dialog.Close)`
   all: unset;
-  margin-bottom: -1rem;
-  width: 12rem;
-  height: 2rem;
+  width: 200px;
+  height: 36px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -126,16 +122,18 @@ export const CloseEnter = styled(Dialog.Close)`
   border: 2px solid ${props => props.theme["blue-200"]};
   border-radius: 8px;
   border-bottom-width: 4px;
+  font-size: 18px;
 
   @media(max-width: 320px) {
-    height: 1.75rem;
+    width: 180px;
+    height: 32px;
+    font-size: 18px;
   }
 
   @media(min-width: 768px) {
     width: 18.75rem;
-    height: 2.75rem;
-    font-size: 1.5rem;
-    margin-bottom: -1.25rem;
+    height: 48px;
+    font-size: 32px;
   }
 
   @media(orientation: landscape) {
@@ -146,10 +144,10 @@ export const CloseEnter = styled(Dialog.Close)`
     }
 }
 
-  @media(min-width: 1280px) {
+  @media(min-width: 1024px) {
     width: 18.75rem;
-    height: 2.75rem;
-    font-size: 2rem;
+    height: 48px;
+    font-size: 32px;
   }
 `;
 
@@ -163,120 +161,112 @@ export const Header = styled.header`
   border-end-start-radius: 8px;
 
   p {
-    font-size: 1.5rem;
+    font-size: 20px;
     color: ${props => props.theme.white};
     -webkit-text-stroke-width: 1px;
     -webkit-text-stroke-color: ${props => props.theme["blue-200"]};
   }
 
-  @media(max-width: 360px) {
-    padding-block: 0.5rem;
-  }
-
   @media(max-width: 320px) {
-    font-size: 1rem;
-  }
-
-  @media(min-width: 768px) {
-    font-size: 2rem;
-    padding-block: 1rem;
-
     p {
-      font-size: 2rem;
-    }
-  }
-
-  @media(orientation: landscape) {
-    @media(min-width: 480px) {
-      font-size: 24px;
-      padding-block: 0.5rem;
-
-      p {
-        font-size: 1.5rem;
-      }
-    }
-  }
-
-  @media(min-width: 1280px) {
-    font-size: 2rem;
-    padding-block: 1rem;
-  }
-`;
-
-export const Main = styled.main`
-  width: 100%;
-  padding: 1.5rem;
-  padding-right: 3rem;
-  display: flex;
-  flex-direction: column;
-  color: ${props => props.theme["gray-700"]};
-  
-  p {
-    font-weight: 700;
-  }
-  
-  span {
-    display: block;
-    font-weight: 500;
-    margin-bottom: 0.5rem;
-  }
-
-  @media(max-width: 320px) {
-    padding: 1rem;
-    padding-right: 2rem;
-
-    p {
-      font-size: 0.875rem;
-    }
-
-    span {
-      font-size: 0.875rem;
+      font-size: 18px;
     }
   }
 
   @media(min-width: 768px) {
-    gap: 1.5rem;
-    height: 31.25rem;
+    padding-block: 1rem;
 
     p {
-      font-size: 1.75rem;
-    }
-
-    span {
-      font-size: 1.5rem
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      flex-direction: row;
-      align-items: center;
-      justify-content: center;
-      gap: 1.5rem;
-      padding: 1rem;
-      padding-right: 0;
-      height: 11.375rem;
+      padding-block: 0.5rem;
 
       p {
-        font-size: 1.25rem;
-      }
-
-      span {
-        font-size: 1rem;
+        font-size: 18px;
       }
     }
   }
 
-  @media(min-width: 1280px) {
-    gap: 1.5rem;
-    height: 31.25rem;
+  @media(min-width: 1024px) {
+    padding-block: 1rem;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
+    }
+  }
+`;
+
+export const Main = styled.main`
+  width: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  color: ${props => props.theme["gray-700"]};
+  
+  p {
+    font-size: 16px;
+    font-weight: 700;
+  }
+  
+  span {
+    font-size: 14px;
+    font-weight: normal;
+  }
+
+  @media(max-width: 320px) {
+    padding: 12px;
+
+    p {
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+  }
+
+  @media(min-width: 768px) {
+    gap: 8px;
+
+    p {
+      font-size: 24px;
+    }
+    
+    span {
+      font-size: 20px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      gap: 3px;
+      align-items: center;
+      padding: 6px;
+      text-align: left;
+
+      p {
+        font-size: 14px;
+      }
+
+      span {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    padding: 16px;
+    gap: 4px;
+  
+    p {
+      font-size: 24px;
     }
 
     span {
-      font-size: 1.5rem
+      font-size: 20px
     }
   }
 `;

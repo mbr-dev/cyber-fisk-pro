@@ -14,7 +14,7 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 32px;
+  gap: 24px;
 
   @media(max-width: 320px) {
     gap: 16px;
@@ -464,7 +464,7 @@ export const Left = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 16px;
+  gap: 24px;
 
   .hasBorder {
     border-color: ${props => props.theme["red-200"]};
@@ -615,12 +615,12 @@ export const ButtonRec = styled.button`
   align-items: center;
   justify-content: center;
   gap: 8px;
+  padding-inline: 10px;
   border-radius: 8px;
   border: 2px solid transparent;
   cursor: pointer;
   box-shadow: 0px 4px 10px 0px #00000033;
   transition: all ease 0.3s;
-  background-color: gray;
 
   img {
     height: 24px;
@@ -653,7 +653,7 @@ export const ButtonRec = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 400px;
+    width: 380px;
     height: 92px;
     gap: 1rem;
 
@@ -669,7 +669,7 @@ export const ButtonRec = styled.button`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 250px;
+      width: 220px;
       height: 54px;
       border-radius: 6px;
 
@@ -686,7 +686,7 @@ export const ButtonRec = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 400px;
+    width: 380px;
     height: 92px;
     gap: 32px;
 

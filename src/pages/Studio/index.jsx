@@ -1,6 +1,5 @@
-import ReactWaves from "@dschoon/react-waves";
 import * as Dialog from "@radix-ui/react-dialog";
-import { useContext, useEffect, useState } from "react"; 
+import { useContext, useEffect, useState, useRef } from "react"; 
 import { AudioRecorder, useAudioRecorder } from "react-audio-voice-recorder";
 
 import { Modal } from "./components/Modal";
@@ -27,60 +26,144 @@ import volumeIcon from "../../assets/btnAudio.svg";
 import australia from "../../assets/Australia.png";
 import audioPauseIcon from "../../assets/AudioPause.png";
 
+import audio0 from "./audio/audio0.mp3";
+import audio2 from "./audio/audio1.mp3";
+import audio1 from "./audio/audio2.mp3";
+
 import { Container, Main, Info, User, SocialMedia, UserInfo, UserImg, From, Text, ButtonArea, ButtonRec, Right, Left, Hide } from "./styles";
+import { defaultTheme } from "../../themes/defaultTheme";
 
 export const Studio = () => {
   const { selectLanguage } = useContext(CyberContext);
+  const dialogues = [audio0, audio1, audio2];
 
-  const [recordedBlob, setRecordedBlob] = useState(null);
-  const [ruido, setRuido] = useState(null);
-  const [audioElement, setAudioElement] = useState(null);
+  const [voicesBase64, setVoicesBase64] = useState([]);
+  const [tempVoice, setTempVoice] = useState([]);
+  const [dialogueWithVoice, setDialogueWithVoice] = useState([]);
+  const [data, setData] = useState([]);
+  const [dialogueIndex, setDialogueIndex] = useState(0);
   const [listenAudio, setListenAudio] = useState(false);
-  const [isPlaying, setIsPlaying] = useState(false);
-  const [blockAudio, setBlockAudio] = useState(false);
+  const [dwvIndex, setDwvIndex] = useState(0);
+  const [isPlayDialogue, setIsPlayDialogue] = useState(false);
+  const [blockButton, setBlockButton] = useState(false);
+  const [showButton, setShowButton] = useState(false);
 
   const recorderControls = useAudioRecorder();
+  const audioRef = useRef(new Audio());
 
-  console.log("ruido :", ruido);
+  const fetchDialogue = () => {
+    const dialogueLength = dialogues.length;
+
+    let tempDialogue = [];
+    for (let a = 0; a < dialogueLength; a++) {
+      tempDialogue.push(dialogues[a]);
+    }
+    setData(tempDialogue);
+  }
+
   const addAudioElement = (blob) => {
-    setRuido(blob);
     const reader = new FileReader();
 
     reader.onloadend = () => {
-      const base64String = reader.result;
-      
-      console.log("Base64 :", base64String);
-    };
-
-    reader.readAsDataURL(blob);
-
-    setRecordedBlob(blob);
-
-    const audio = new Audio(URL.createObjectURL(blob));
-    setAudioElement(audio);
-
-  };
-
-  const handlePlayAudio = () => {
-    if (recordedBlob && audioElement) {
-      audioElement.play();
-      setListenAudio(true);
-      setBlockAudio(true);
-
-      audioElement.addEventListener("ended", () => {
-        setListenAudio(false);
-        setBlockAudio(false);
-      });
+      const base64 = reader.result;
+      setVoicesBase64(state => [...state, base64]); //convertido base64
     }
+    
+    reader.readAsDataURL(blob)
+    setTempVoice(state => [...state, URL.createObjectURL(blob)]);
   };
+
+  const handlePlayDialogue = () => {
+      setIsPlayDialogue(true);
+      setBlockButton(true);
+
+      const audio = new Audio(data[dialogueIndex]);
+      audio.play();
+
+      let count = dialogueIndex;
+      count++;
+      setDialogueIndex(count);
+
+      audio.addEventListener("ended", () => {
+        recorderControls.startRecording();
+        setIsPlayDialogue(false);
+        setBlockButton(false);
+      });
+  }
+
+  const handlePlayDialogueWithVoice = () => {
+    setListenAudio(true);
+  };
+
+  const handleJoinAudios = () => {
+    const firstArray = data;
+    const secondArray = tempVoice;
+
+    const newArray = [];
+
+    firstArray.forEach((item, index) => {
+      const newItem = [item, secondArray[index]];
+      newArray.push(newItem);
+    });
+
+    const joinArray = newArray.flat();
+
+    setDialogueWithVoice(joinArray);
+    setShowButton(true);
+  }
+
+  const handleStopRecordeVoice = () => {
+    recorderControls.stopRecording();
+  }
+
+  useEffect(() => {
+    fetchDialogue();
+  }, []);
 
   useEffect(() => {
     if (recorderControls.isRecording) {
-      setBlockAudio(true);
+      setBlockButton(true);
     } else {
-      setBlockAudio(false);
+      setBlockButton(false);
     }
-  }, [recorderControls.isRecording])
+  }, [recorderControls.isRecording]);
+
+  useEffect(() => {
+    if (data.length > 0) {
+      if (tempVoice.length === data.length) {
+        handleJoinAudios();
+      }
+    }
+  }, [data, tempVoice]);
+
+  useEffect(() => {
+    const playNextAudio = () => {
+      if (dwvIndex < dialogueWithVoice.length) {
+        const audioSrc = dialogueWithVoice[dwvIndex];
+        audioRef.current.src = audioSrc;
+        audioRef.current.play();
+      }
+    };
+
+    const handleAudioEnd = () => {
+      setDwvIndex(state => state + 1);
+      //playNextAudio();
+
+      if (dwvIndex === dialogueWithVoice.length - 1) {
+        setListenAudio(false);
+      }
+    };
+
+    if (listenAudio) {
+      audioRef.current.addEventListener("ended", handleAudioEnd);
+
+      playNextAudio();
+
+      return () => {
+        audioRef.current.removeEventListener("ended", handleAudioEnd);
+      };
+    }
+  }, [listenAudio, dwvIndex, dialogueWithVoice])
 
   return (
     <Container>
@@ -131,22 +214,22 @@ export const Studio = () => {
 
         <Left>
           <ButtonArea>
-            {isPlaying ?
-              <button className="hasBorder">
-                <img src={audioPauseIcon} alt="" />
-              </button>
-              :
-              <button disabled={blockAudio}>
-                <img src={volumeIcon} alt="" />
-              </button>
-            }
-            
+            <button 
+              onClick={handlePlayDialogue}
+              disabled={recorderControls.isRecording || showButton}
+              style={{
+                borderColor: isPlayDialogue && defaultTheme["gray-700"],
+              }}
+            >
+              <img src={volumeIcon} alt="" />
+            </button>
+
             {recorderControls.isRecording ?
-              <button onClick={recorderControls.stopRecording} className="hasBorder">
+              <button onClick={handleStopRecordeVoice} className="hasBorder">
                 <img src={micro1Icon} alt="" className="microImg" />
               </button>
               :
-              <button onClick={recorderControls.startRecording} disabled={blockAudio}>
+              <button disabled={blockButton || showButton}>
                 <img src={microIcon} alt="" />
               </button>
             }
@@ -159,7 +242,7 @@ export const Studio = () => {
 
             <Dialog.Root>
               <Dialog.Trigger asChild>
-                <button disabled={blockAudio}>
+                <button disabled={blockButton || showButton}>
                   <img src={keyIcon} alt="" />
                 </button>
               </Dialog.Trigger>
@@ -167,26 +250,10 @@ export const Studio = () => {
               <Modal />
             </Dialog.Root>
           </ButtonArea>
-           {ruido &&
-            <ButtonRec onClick={handlePlayAudio}>
+          {showButton &&
+            <ButtonRec onClick={handlePlayDialogueWithVoice}>
               <img src={listenAudio ? microRed2Icon : microRedIcon} alt="" />
-              <ReactWaves
-                audioFile={ruido}
-                className={"react-waves"}
-                options={{
-                  barWidth: 1,
-                  barHeight: 2,
-                  cursorWidth: 0,
-                  height: 50,
-                  hideScrollbar: true,
-                  progressColor: "#EC407A",
-                  responsive: true,
-                  waveColor: "#000",
-                }}
-                volume={1}
-                zoom={1}
-                playing={listenAudio}
-              />
+              <img src={ruidoIcon} alt="ruido" className="ruido" />
             </ButtonRec>
           }
         </Left>
