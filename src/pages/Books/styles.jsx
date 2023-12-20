@@ -19,6 +19,7 @@ export const HeaderMobile = styled.div`
   border-end-start-radius: 18px;
   background-repeat: no-repeat;
   background-size: cover;
+  z-index: 0;
   
   .logoFisk {
     width: 132px;

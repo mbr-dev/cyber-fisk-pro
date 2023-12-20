@@ -124,7 +124,6 @@ export const Middle = styled.section`
   }
 
   @media(min-width: 1024px) {
-
     h2 {
       font-size: 3.25rem;
       margin-top: -12.625rem;
@@ -132,9 +131,16 @@ export const Middle = styled.section`
   }
 
   @media(min-width: 1366px) {
+    margin-top: -120px;
+    overflow: hidden;
+
     h2 {
       margin-top: -13rem;
     }
+  }
+
+  @media(min-width: 1920px) {
+    margin-top: 0;
   }
 `;
 
@@ -182,7 +188,6 @@ export const AvatarArea = styled.div`
     .bgConfetes {
       width: 400px;
       height: 350px;
-
     }
   }
 
@@ -192,7 +197,6 @@ export const AvatarArea = styled.div`
     .bgConfetes {
       width: 600px;
       height: 500px;
-
     }
   }
 `;

@@ -38,7 +38,11 @@ export const Main = styled.div`
   @media(min-width: 1024px) {
     width: 65rem;
     margin-top: 2rem;
-    gap: 2rem;
+    gap: 24px;
+  }
+
+  @media(min-width: 1366px) {
+    gap: 32px;
   }
 `;
 

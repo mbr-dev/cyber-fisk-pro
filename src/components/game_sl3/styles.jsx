@@ -14,6 +14,10 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  @media(min-width: 1366px) {
+    padding-top: 32px;
+  }
 `;
 
 export const Phrase = styled.div`
@@ -26,6 +30,10 @@ export const Phrase = styled.div`
 
   @media(min-width: 1024px) {
     gap: 16px;
+  }
+
+  @media(min-width: 1366px) {
+    gap: 52px;
   }
 `;
 
@@ -140,6 +148,10 @@ export const Letters = styled.div`
       }
     }
   }
+
+  @media(min-width: 1366px) {
+    padding-inline: 200px;
+  }
 `;
 
 export const LineSeparator = styled.div`
@@ -179,6 +191,10 @@ export const TypeLetters = styled.div`
   @media(min-width: 1024px) {
     width: 100%;
     padding: 16px;
+  }
+
+  @media(min-width: 1366px) {
+    padding: 16px 100px;
   }
 `;
 

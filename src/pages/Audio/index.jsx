@@ -150,7 +150,7 @@ export const Audio = () => {
     if (audioRef.current) {
       const shuffledIndex = mixAudio ? shuffledIndices[currentAudio] : currentAudio;
       audioRef.current.src = songs[shuffledIndex];
-      playAudio();
+      //playAudio();
       setProgress(0);
       setDuration(0);
       setCurrentTime(0);

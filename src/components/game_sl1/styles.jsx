@@ -167,6 +167,10 @@ export const ButtonArea = styled.div`
   }
 
   @media(min-width: 1024px) {
+    gap: 12px;
+  }
+
+  @media(min-width: 1366px) {
     gap: 1.5rem;
   }
 `;

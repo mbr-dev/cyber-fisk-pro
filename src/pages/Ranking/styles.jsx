@@ -185,6 +185,7 @@ export const CoinArea = styled.div`
 export const Carrousel = styled.div`
   width: 86%;
   height: 132px;
+  padding-left: 10px;
   
   @media (min-width: 1024px) {
     width: 100%;
@@ -232,24 +233,34 @@ export const Position = styled.div`
   }
 
   @media (min-width: 1024px) {
-    .pNumber {
-      width: 40px;
-    }
-
     .numberPosition {
       font-size: 1.5rem;
       top: 1rem;
       left: 28px;
     }
+  
+    .pNumber {
+      width: 40px;
+    }
   }
 
   @media (min-width: 1366px) {
     .pNumber {
-      left: 64px;
+      left: 10px;
     }
 
     .numberPosition {
-      left: 78px;
+      left: 22px;
+    }
+  }
+
+  @media (min-width: 1536px) {
+    .pNumber {
+      left: 32px;
+    }
+
+    .numberPosition {
+      left: 46px;
     }
   }
 

@@ -12,7 +12,6 @@ export const Container = styled.header`
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
-  z-index: 1;
   
   p {
     font-size: 24px;

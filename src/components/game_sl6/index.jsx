@@ -32,6 +32,7 @@ export const GameSL6 = () => {
 
   const loadLesson = useCallback(async() => {
     try {
+      setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       setIsLoading(true);
 
       const response = await api.get("/SuperTaskAtividades/Retorno?id_livro=53&num_lesson=6&num_task=1");

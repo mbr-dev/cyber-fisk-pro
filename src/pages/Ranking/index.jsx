@@ -34,6 +34,11 @@ export const Ranking = () => {
         slides: {
           perView: 3,
         }
+      },
+      "(min-width: 1366px)": {
+        slides: {
+          perView: 4,
+        }
       }
     }
   })
