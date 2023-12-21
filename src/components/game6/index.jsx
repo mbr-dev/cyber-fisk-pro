@@ -28,7 +28,6 @@ export const Game6 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -41,7 +40,7 @@ export const Game6 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -84,16 +83,15 @@ export const Game6 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setImage, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setImage, setData, setRandomNumber, round, setSound, setIdClick, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
-    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
+    
     setSound(items.pergunta);
     setImage(items.image);
     setSelectedColor(Array(items.resposta.length).fill(0));
-
+    
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
@@ -103,12 +101,13 @@ export const Game6 = () => {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
+
+    setCancelAudio(false);
     setBlockButton(false);
   }
 
   const handleClick = (index) => {
     if (blockButton || playAudio || (selectedColor[index] === 1)) return;
-
     setBlockButton(false);
 
     let clicks = countClick;
@@ -119,7 +118,6 @@ export const Game6 = () => {
     let tempRound = round;
     let tempGeneralRound = rodadaGeral;
     let tempSelectedColor = selectedColor;
-
     const answer = answers[index];
 
     if (answer.status === 1) {
@@ -148,12 +146,7 @@ export const Game6 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
-
     setCancelAudio(true);
 
     tempRound++;
@@ -173,19 +166,17 @@ export const Game6 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -217,7 +208,7 @@ export const Game6 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the 3 correct alternatives." />
+      <TitleLesson title="Choose the 3 correct alternatives.game6" />
       <SubTitleLessonAudioImg stopAudio={cancelAudio}  img={image} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>

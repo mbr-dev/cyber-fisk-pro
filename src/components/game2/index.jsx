@@ -19,14 +19,13 @@ export const Game2 = () => {
   const navigate = useNavigate();
 
   const [selectedColor, setSelectedColor] = useState([]);
-  const [idClick, setIdClick] = useState([0, 1, 2]);
+  const [idClick, setIdClick] = useState([]);
   const [data, setData] = useState([]);
   const [question, setQuestion] = useState("");
   const [answers, setAnswers] = useState([]);
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,7 +36,7 @@ export const Game2 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -102,7 +101,6 @@ export const Game2 = () => {
 
   const handleClick = (index) => {
     if(blockButton) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -127,10 +125,6 @@ export const Game2 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -148,19 +142,17 @@ export const Game2 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
+      setNewPontos(0, 0);
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         console.log("MUDA DE RODADA!!");
@@ -189,7 +181,7 @@ export const Game2 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative." />
+      <TitleLesson title="Choose the correct alternative.game2" />
       <SubTitleLesson title={question}/>
 
       <Main>

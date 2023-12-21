@@ -6,42 +6,42 @@ export const Container = styled.div`
   flex-direction: row;
   justify-content: center;
   align-items: center;
-  padding: 0.75rem;
+  padding: 14px;
   text-align: center;
 
   span {
-    font-size: 1.125rem;
+    font-size: 20px;
     font-weight: 500;
   }
 
   @media(max-width: 320px) {
-    padding: 0.375rem;
+    padding: 10px;
 
     span {
-      font-size: 0.875rem;
+      font-size: 16px;
     }
   }
 
   @media(min-width: 768px) {
-    padding: 1rem;
+    padding: 16px;
 
     span {
-      font-size: 2rem;
+      font-size: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding: 0.5rem;
+      padding: 6px;
 
       span {
-        font-size: 0.875rem;
+        font-size: 16px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    padding: 1rem;
+    padding: 16px;
     
     span {
       font-size: 32px;

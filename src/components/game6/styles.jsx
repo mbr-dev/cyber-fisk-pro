@@ -14,12 +14,12 @@ export const Main = styled.div`
   flex-wrap: wrap;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-top: 16px;
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
@@ -36,25 +36,25 @@ export const Main = styled.div`
   }
 
   @media(min-width: 1024px) {
-    width: 65rem;
-    margin-top: 2rem;
+    margin-top: 24px;
     gap: 24px;
   }
 
   @media(min-width: 1366px) {
+    width: 1050px;
     gap: 32px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 9rem;
-  height: 4rem;
+  width: 132px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
   border: 2px solid transparent;
-  padding-inline: 8px;
+  padding: 8px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
@@ -62,8 +62,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 1rem;
-    font-weight: 500;
+    font-size: 14px;
   }
 
   &:hover {
@@ -75,11 +74,11 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 7.5rem;
-    height: 3rem;
+    width: 120px;
+    height: 36px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 12px;
     }
   }
 
@@ -104,11 +103,16 @@ export const ButtonAnswer = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 18rem;
-    height: 5rem;
+    width: 264px;
+    height: 64px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 300px;
+    height: 72px;
   }
 `;

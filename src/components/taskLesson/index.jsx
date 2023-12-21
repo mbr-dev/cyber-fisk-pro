@@ -1,17 +1,16 @@
 import Cookies from "universal-cookie";
 import { useState, useContext, useEffect } from "react";
 
-import { LessonContext } from "../../context/lesson";
-import { CyberContext } from "../../context/cyber";
 import { api } from "../../lib/api";
 import { apiQAS } from "../../lib/api";
+import { CyberContext } from "../../context/cyber";
+import { LessonContext } from "../../context/lesson";
 
 import { HeaderLesson } from "../HeaderLesson";
 import { AreaFooterFullBtn } from "../AreaFooterFullBtn";
 
 import { Container } from "./styles";
 
-//Games
 import { Game1 } from "../game1";
 import { Game2 } from "../game2";
 import { Game3 } from "../game3";
@@ -58,8 +57,8 @@ export const TaskLesson = () => {
     setNewRodada, numTask, numAtividade, numSelLesson, setNewAtividade, setNewConteudoFacil, setNewConteudoMedio, setNewConteudoDificil, setNewNivel, setTimeElapsed, setNewDataInicio, setStatusColor 
   } = useContext(LessonContext);
   const { book } = useContext(CyberContext);
-  const [strStart, setStrStart] = useState('');
-  const [strEnd, setStrEnd] = useState('');
+  const [strStart, setStrStart] = useState("");
+  const [strEnd, setStrEnd] = useState("");
 
   const loadContent = async () => {
     setStatusColor([0,0,0,0,0,0,0,0,0,0]);

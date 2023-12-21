@@ -13,37 +13,46 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-top: 16px;
+
+  @media(max-width: 320px) {
+    margin-top: 10px;
+    gap: 10px;
+  }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 24px;
+    gap: 24px;
   }
   
   @media(orientation: landscape) {
-    gap: 1rem;
-    margin-top: 1rem;
-
     @media(min-width: 600px) {
+      gap: 32px;
+      margin-top: 16px;
       flex-direction: row;
       justify-content: center;
     }
   }
   
   @media(min-width: 1024px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 24px;
+    gap: 48px;
+  }
+
+  @media(min-width: 1366px) {
+    margin-top: 32px;
+    gap: 52px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 6rem;
-  height: 7rem;
+  width: 100px;
+  height: 110px;
   display: flex;
   align-items: center;
-  padding-inline: 1rem;
+  padding-inline: 16px;
   justify-content: center;
   border: 2px solid transparent;
   border-radius: 8px;
@@ -67,28 +76,31 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 4rem;
-    height: 4.5rem;
-    padding-inline: 0.5rem;
+    width: 68px;
+    height: 68px;
+    padding-inline: 8px;
   }
 
   @media(min-width: 768px) {
-    width: 7.5rem;
-    height: 9.375rem;
-    padding-inline: 1rem;
+    width: 150px;
+    height: 164px;
+    padding-inline: 16px;
+    border-radius: 12px
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 4.5rem;
-      height: 6rem;
-      padding-inline: 0.5rem;
+      width: 72px;
+      height: 84px;
+      padding-inline: 8px;
+      border-radius: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 7.5rem;
-    height: 9.375rem;
-    padding-inline: 1rem;
+    width: 150px;
+    height: 164px;
+    padding-inline: 16px;
+    border-radius: 12px
   }
 `;

@@ -26,7 +26,6 @@ export const Game3 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -37,7 +36,7 @@ export const Game3 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -79,7 +78,7 @@ export const Game3 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton]);
+  }, [setIsLoading, setData, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -126,10 +125,6 @@ export const Game3 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -147,19 +142,17 @@ export const Game3 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         console.log("MUDA DE RODADA!!");
@@ -187,7 +180,7 @@ export const Game3 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct sentences." />
+      <TitleLesson title="Choose the correct sentences.game3" />
       <SubTitleLesson title={question}/>
 
       <Main>

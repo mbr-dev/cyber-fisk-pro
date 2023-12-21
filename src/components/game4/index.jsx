@@ -28,7 +28,6 @@ export const Game4 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [type, setType] = useState(null);
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
@@ -42,7 +41,7 @@ export const Game4 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -92,7 +91,6 @@ export const Game4 = () => {
   }, [setIsLoading, setData, round, setRandomNumber, setSounds, setType, setIdTipo3, setIdTipo4, setAnswers, setBlockButton, setSelectedColor]);
 
   const newRound = (number) => {
-    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setType(items.tipo);
@@ -112,13 +110,13 @@ export const Game4 = () => {
       tempAnswers.push(items.resposta[tempSortNum[a]]);
     }
     setAnswers(tempAnswers);
-
+    
+    setCancelAudio(false);
     setBlockButton(false);
   }
 
   const handleClick = (index) => {
     if(blockButton || playAudio || (selectedColor[index] === 1)) return;
-
     setBlockButton(false);
 
     let clicks = countClick;
@@ -156,10 +154,6 @@ export const Game4 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     setCancelAudio(true);
@@ -183,18 +177,16 @@ export const Game4 = () => {
           newRound(tempRound);
         }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(0,0);
+      setNewPontos(0, 0);
       setTimeout(() =>{
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       },1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       }, 2000);
     } else {
       setTimeout(() =>{
@@ -227,26 +219,21 @@ export const Game4 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the 3 correct alternatives." />
+      <TitleLesson title="Choose the 3 correct alternatives.game4" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sounds}.mp3`} />
 
       <Main>
         {answers.map((answer, index) => {
           return (
             <Button key={index}
-              onClick={() => {handleClick(index)}} 
+              onClick={() => {handleClick(index)}}
+              $variant={type === 3 ? "pequeno" : "medio"}
               style={{
-                width: type === 3 ? "4rem" : "10rem",
-                height: type === 3 ? "4rem" : "4rem",
                 borderColor: selectedColor[index] === 1 && defaultTheme["red-200"],
               }}
               disabled={blockButton}
             >
-              <p style={{
-                fontSize: type === 3 ? "1.5rem" : "1rem"
-              }}>
-                {answer.label}
-              </p>
+              <p>{answer.label}</p>
             </Button>
           )
         })}

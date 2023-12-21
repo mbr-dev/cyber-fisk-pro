@@ -6,45 +6,53 @@ export const SubtitleLessonContainer = styled.div`
   align-items: center;
   width: 100%;
   background-color: ${props => props.theme["gray-300"]};
-  padding: 1rem;
+  padding: 16px;
   text-align: center;
 
   span {
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: 500;
   }
 
   @media(max-width: 320px) {
-    padding: 0.5rem;
+    padding: 10px;
 
     span {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    padding: 1rem;
+    padding: 16px;
 
     span {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding: 0.5rem;
+      padding: 6px;
 
       span {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    padding: 1rem;
+    padding: 16px;
 
     span {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
-`
+
+  @media(min-width: 1366px) {
+    padding: 16px;
+
+    span {
+      font-size: 28px;
+    }
+  }
+`;

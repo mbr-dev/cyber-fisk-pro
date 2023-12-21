@@ -14,26 +14,25 @@ export const Main = styled.main`
   grid-template-columns: repeat(2, auto);
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: 16px;
+  gap: 24px;
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    margin-top: 10px;
+    gap: 16px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 24px;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       display: flex;
       flex-wrap: wrap;
-      width: 90%;
-      margin-top: 1rem;
-      gap: 1rem;
+      margin-top: 10px;
+      gap: 18px;
     }
   }
 
@@ -45,6 +44,8 @@ export const Main = styled.main`
 
 export const Button = styled.button`
   all: unset;
+  width: ${props => props.$variant === "pequeno" ? "64px" : "150px"};
+  height: ${props => props.$variant === "pequeno" ? "64px" : "64px"};
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +57,7 @@ export const Button = styled.button`
   text-align: center;
 
   p {
-    font-size: 1rem;
+    font-size: 18px;
     font-weight: bold;
   }
 
@@ -66,5 +67,44 @@ export const Button = styled.button`
 
   &:disabled {
     cursor: not-allowed;
+  }
+
+  @media(max-width: 320px) {
+    width: ${props => props.$variant === "pequeno" ? "52px" : "120px"};
+    height: ${props => props.$variant === "pequeno" ? "52px" : "48px"};
+
+    p {
+      font-size: 14px;
+    }
+  }
+
+  @media(min-width: 768px) {
+    width: ${props => props.$variant === "pequeno" ? "100px" : "250px"};
+    height: ${props => props.$variant === "pequeno" ? "100px" : "84px"};
+
+    p {
+      font-size: 32px;
+    }
+  }
+
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: ${props => props.$variant === "pequeno" ? "52px" : "120px"};
+      height: ${props => props.$variant === "pequeno" ? "52px" : "48px"};
+
+      p {
+        font-size: 14px;
+      }
+    }
+  }
+
+  @media(min-width: 1024px) {
+    width: ${props => props.$variant === "pequeno" ? "100px" : "250px"};
+    height: ${props => props.$variant === "pequeno" ? "100px" : "84px"};
+    border-width: 3px;
+
+    p {
+      font-size: 32px;
+    }
   }
 `;

@@ -27,7 +27,6 @@ export const Game1 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -38,7 +37,7 @@ export const Game1 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -80,7 +79,7 @@ export const Game1 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, setQuestion, setRandomNumber]);
+  }, [setIsLoading, setData, round, setAnswers, setBlockButton, setIdClick, setQuestion, setRandomNumber, setSelectedColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -127,10 +126,6 @@ export const Game1 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -148,19 +143,17 @@ export const Game1 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -188,7 +181,7 @@ export const Game1 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative." />
+      <TitleLesson title="Choose the correct alternative.game1" />
       <SubTitleLesson title={question} />
 
       <Main>
