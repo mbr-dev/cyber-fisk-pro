@@ -15,53 +15,53 @@ export const Main = styled.main`
   justify-content: space-around;
 
   @media(min-width: 768px) {
-    width: 40rem;
+    width: 700px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       flex-direction: row;
-      width: 40rem;
+      width: 500px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 60rem;
+    width: 800px;
   }
 `;
 
 export const ButtonRow = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 10px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 1rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 2rem;
+    gap: 32px;
   }
 `;
 
 export const ButtonAudio = styled.button`
   all: unset;
-  width: 8rem;
-  height: 2.625rem;
+  width: 132px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
   border: 2px solid transparent;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
@@ -85,13 +85,21 @@ export const ButtonAudio = styled.button`
   }
 
   @media(max-width: 320px) {
-    width: 7rem;
+    width: 100px;
+
+    img {
+      width: 42px;
+    }
+
+    .btn2 {
+      width: 18px;
+    }
   }
 
   @media(min-width: 768px) {
-    width: 16rem;
-    height: 4.5rem;
-    gap: 32px;
+    width: 250px;
+    height: 72px;
+    gap: 24px;
 
     img {
       width: 100px;
@@ -104,9 +112,9 @@ export const ButtonAudio = styled.button`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 10rem;
-      height: 2.5rem;
-      gap: 1rem;
+      width: 150px;
+      height: 40px;
+      gap: 16px;
 
       img {
         width: 50px;
@@ -119,24 +127,29 @@ export const ButtonAudio = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 18rem;
-    height: 5rem;
-    gap: 32px;
+    width: 250px;
+    height: 72px;
+    gap: 24px;
+    border-width: 3px;
 
     img {
-      width: 120px;
+      width: 100px;
     }
 
     .btn2 {
-      width: 36px;
+      width: 32px;
+    }
+
+    &:disabled {
+      border-width: 3px;
     }
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 11rem;
-  height: 3.5rem;
+  width: 164px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -149,7 +162,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 1rem;
+    font-size: 14px;
   }
 
   &:hover {
@@ -158,43 +171,49 @@ export const ButtonAnswer = styled.button`
 
   &:disabled {
     cursor: not-allowed;
+    border: 2px solid ${props => props.theme["red-200"]};
   }  
 
   @media(max-width: 320px) {
-    width: 8rem;
-    height: 3.5rem;
+    width: 132px;
+    height: 52px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 12px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 18rem;
-    height: 5rem;
+    width: 300px;
+    height: 80px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 12rem;
-      height: 2.5rem;
+      width: 150px;
+      height: 44px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 18rem;
-    height: 5rem;
+    width: 300px;
+    height: 80px;
+    border-width: 3px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 20px;
+    }
+
+    &:disabled {
+      border-width: 3px;
     }
   }
 `;

@@ -27,7 +27,6 @@ export const Game22 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [cancelAudio, setCancelAudio] = useState(false);
@@ -39,7 +38,7 @@ export const Game22 = () => {
     let tempData;
     
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -84,28 +83,27 @@ export const Game22 = () => {
   }, [setIsLoading, setData, setRandomNumber, setSound, round, setIdClick, setAnswers, setBlockButton]);
 
   const newRound = (number) => {
-    setCancelAudio(false);
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
+    
     setSound(items.pergunta);
     setSelectedColor(Array(items.resposta.length).fill(0));
-
+    
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
     tempRandomNumber = tempRandomNumber.sort(() => Math.random() - 0.5);
     setIdClick(tempRandomNumber);
-
+    
     let tempAnswers = [];
     for (let a = 0; a < tempRandomNumber.length; a++) {
       tempAnswers.push(items.resposta[tempRandomNumber[a]]);
     }
     setAnswers(tempAnswers);
-
+    
+    setCancelAudio(false);
     setBlockButton(false);
   }
 
   const handleClick = (index) => {
     if (blockButton || playAudio) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -130,10 +128,6 @@ export const Game22 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     setCancelAudio(true);
@@ -157,15 +151,13 @@ export const Game22 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if(nivel === 0){
@@ -197,7 +189,7 @@ export const Game22 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct word or sentences." />
+      <TitleLesson title="Choose the correct word or sentences.game22" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>

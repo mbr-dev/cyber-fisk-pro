@@ -15,12 +15,12 @@ export const Main = styled.div`
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: space-between;
-  gap: 1rem;
-  margin-top: 1rem;
-  padding-inline: 2rem;
+  gap: 16px;
+  margin-top: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
+    margin-top: 8px;
   }
 
   @media(min-width: 768px) {

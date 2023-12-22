@@ -43,7 +43,7 @@ export const Game7 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -85,14 +85,8 @@ export const Game7 = () => {
   }, [setIsLoading, setRandomNumber, setAudios, round, setAnswers, setData]);
 
   const newRound = (number) => {
-    setRightAudios([]);
-    setRightAnswers([]);
-    setCountClick(0);
-    setColorAnswer([0, 0, 0]);
-    setCancelAudio(false);
-
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
+    
     let tempAudios = [];
     let tempAnswers = [];
     for (let a = 0; a < items.pergunta.length; a++) {
@@ -103,17 +97,22 @@ export const Game7 = () => {
     tempAnswers = tempAnswers.sort(() => Math.random() - 0.5);
     setAudios(tempAudios);
     setAnswers(tempAnswers);
-
+    
+    setRightAudios([]);
+    setRightAnswers([]);
+    setCountClick(0);
     setSelectAudio(null);
+    setCancelAudio(false);
     setBlockAnswer(true);
+    setColorAnswer([0, 0, 0]);
   }
 
   const handlePlayAudio = (sound) => {
     if (playAudio || cancelAudio) return;
+    setBlockAnswer(false);
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
-    setBlockAnswer(false);
 
     const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
 
@@ -127,7 +126,6 @@ export const Game7 = () => {
 
   const handleGetAnswer = (answer, index) => {
     if (blockAnswer || playAudio) return;
-
     setBlockAnswer(true);
 
     let clicks = countClick;

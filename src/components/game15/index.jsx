@@ -23,7 +23,6 @@ export const Game15 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [phrase, setPhrase] = useState([]);
   const [phraseFix, setPhraseFix] = useState("");
@@ -37,7 +36,7 @@ export const Game15 = () => {
     let tempData;
     
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/LessonSelected");
+      navigate("/SelectLesson");
       return;
     }
 
@@ -75,8 +74,6 @@ export const Game15 = () => {
   }, [setIsLoading, setData, setRandomNumber, round, setWords, setAnswer]);
 
   const newRound = (number) => {
-    setPhrase([]);
-
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempWords = items.pergunta;
@@ -85,6 +82,8 @@ export const Game15 = () => {
 
     let tempAnswer = items.resposta;
     setAnswer(tempAnswer);
+
+    setPhrase([]);
     setBlockButton(true);
   }
 
@@ -94,7 +93,6 @@ export const Game15 = () => {
 
   const verifyWord = () => {
     if (blockButton) return;
-
     setBlockButton(true);
 
     const word = phrase.join("").toLowerCase();
@@ -114,10 +112,6 @@ export const Game15 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -135,19 +129,17 @@ export const Game15 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -244,7 +236,7 @@ export const Game15 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Unscramble the words to form sentences." />
+      <TitleLesson title="Unscramble the words to form sentences.game15" />
 
         <Main>
           <DndContext onDragEnd={handleDragEnd}>

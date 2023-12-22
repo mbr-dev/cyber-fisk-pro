@@ -14,37 +14,37 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-top: 16px;
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 32px;
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       flex-direction: row;
-      margin-top: 1rem;
-      gap: 1rem;
+      margin-top: 10px;
+      gap: 10px;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 2rem;
-    gap: 1rem;
+    margin-top: 32px;
+    gap: 24px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 16rem;
-  height: 4rem;
+  width: 250px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +56,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 
   &:hover {
@@ -68,41 +68,46 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 11rem;
-    height: 3.5rem;
+    width: 200px;
+    height: 44px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 12px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 20rem;
-    height: 5rem;
+    width: 400px;
+    height: 80px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 16px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 11rem;
-      height: 3rem;
+      width: 172px;
+      height: 52px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
       }
     }
 }
 
   @media(min-width: 1024px) {
-    width: 18rem;
-    height: 5rem;
-    padding-inline: 8px;
+    width: 216px;
+    height: 80px;
+    padding-inline: 6px;
+    border-width: 3px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 250px;
   }
 `;

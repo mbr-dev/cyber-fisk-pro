@@ -13,78 +13,79 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: 16px;
+  gap: 16px;
   overflow: hidden;
-
+  
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 32px;
+    gap: 32px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      margin-top: 0.5rem;
-      gap: 0.5rem;
+      margin-top: 8px;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 2rem;
-    gap: 2rem;
+    margin-top: 32px;
+    gap: 32px;
   }
 `;
 
 export const AreaAnswers = styled.div`
-  width: 20rem;
-  height: 2rem;
+  width: 300px;
+  height: 32px;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
   border-bottom: 2px solid ${props => props.theme.black};
-  padding-bottom: 3px;
-  border-top-right-radius: 8px;
-  border-top-left-radius: 8px;
 
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: bold;
   }
 
   
   @media(max-width: 320px) {
-    width: 15rem;
+    width: 250px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 32rem;
+    width: 600px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      width: 500px;
+
       p {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
+    width: 800px;
+
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 `;
