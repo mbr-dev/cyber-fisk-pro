@@ -26,7 +26,6 @@ export const Game17 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -104,7 +103,6 @@ export const Game17 = () => {
 
   const handleClick = (index) => {
     if(blockButton) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -129,10 +127,6 @@ export const Game17 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -150,19 +144,17 @@ export const Game17 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -190,7 +182,7 @@ export const Game17 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative."/>
+      <TitleLesson title="Choose the correct alternative.game17"/>
 
       <Main>
         <Image>

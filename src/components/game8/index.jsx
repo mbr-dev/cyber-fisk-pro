@@ -24,7 +24,6 @@ export const Game8 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [correctPoints, setCorrectPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(true);
   const [blockButton, setBlockButton] = useState(true);
   const [changeText, setChangeText] = useState("______");
   const [data, setData] = useState([]);
@@ -82,11 +81,8 @@ export const Game8 = () => {
   }, [setIsLoading, setRandomNumber, round, setQuestion, setIdClick, setAnswers, setBlockButton, setData]);
 
   const newRound = (number) => {
-    setChangeText("______");
-    setButtonVisibility([0, 0, 0]);
-
     const items = JSON.parse(data[randomNumber[number]].conteudo);
-
+    
     setQuestion(items.pergunta);
 
     let tempRandomNumber = [...Array(items.resposta.length).keys()];
@@ -98,14 +94,16 @@ export const Game8 = () => {
       tempAnswers.push(items.resposta[tempRandomNumber[a]])
     }
     setAnswers(tempAnswers);
-
+    
+    setChangeText("______");
+    setButtonVisibility([0, 0, 0]);
     setBlockButton(false);
   }
 
   const verifyAnswer = (index) => {
     if (blockButton) return;
-
     setBlockButton(true);
+
     let tempPoint;
     const rightAnswer = answers[index];
 
@@ -121,10 +119,6 @@ export const Game8 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -146,14 +140,12 @@ export const Game8 = () => {
       setTimeout(() => {
         setNewContainer(1);
         navigate("/GameOver");
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       }, 2000);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
       }, 2000);
     } else {
       setTimeout(() => {
@@ -233,7 +225,7 @@ export const Game8 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Drag and drop / Choose the correct answers." />
+      <TitleLesson title="Drag and drop / Choose the correct answers.game8" />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>

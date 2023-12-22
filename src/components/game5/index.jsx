@@ -38,7 +38,7 @@ export const Game5 = () => {
     let tempData;
 
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/SelectLesson");
+      navigate("/LessonSelected");
       return;
     }
 

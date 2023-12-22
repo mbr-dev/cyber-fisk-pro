@@ -24,24 +24,22 @@ export const Main = styled.div`
   }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    padding-inline: 5rem;
-    gap: 2rem;
+    margin-top: 32px;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 100%;
       flex-direction: row;
-      gap: 1rem;
-      margin-top: 1rem;
+      gap: 8px;
+      margin-top: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 2rem;
     justify-content: center;
-    gap: 2rem;
+    margin-top: 32px;
+    gap: 24px;
   }
 `;
 
@@ -52,54 +50,54 @@ export const Title = styled.div`
   align-items: center;
   background-color: ${props => props.theme["gray-100"]};
   text-align: center;
-  padding-block: 0.5rem;
+  padding-block: 10px;
   
   p {
-    font-size: 1rem;
+    font-size: 16px;
     font-weight: 500;
   }
   
   @media(max-width: 320px) {
-    padding-block: 0.375rem;
-    padding-inline: 0.5rem;
+    padding-block: 8px;
+    padding-inline: 8px;
 
     p {
-      font-size: 1rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    padding-block: 1rem;
+    padding-block: 16px;
     padding-inline: 0;
 
     p {
-      font-size: 2rem;
+      font-size: 28px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-block: 0.5rem;
+      padding-block: 8px;
 
       p {
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    padding-block: 1rem;
+    padding-block: 16px;
 
     p {
-      font-size: 2rem;
+      font-size: 28px;
     }
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 7.5rem;
-  height: 3rem;
+  width: 150px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -112,8 +110,8 @@ export const ButtonAnswer = styled.button`
   transition: all ease 0.3s;
 
   p {
+    font-size: 16px;
     color: ${props => props.theme["gray-700"]};
-    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -122,46 +120,40 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
+    width: 120px;
+    height: 40px;
+
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 15rem;
-    height: 4.5rem;
+    width: 240px;
+    height: 72px;
 
     p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 7.5rem;
-      height: 3rem;
+      width: 120px;
+      height: 40px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 200px;
-    height: 64px;
+    width: 240px;
+    height: 72px;
 
     p {
-      font-size: 20px;
-    }
-  }
-
-  @media (min-width: 1366px) {
-    width: 15rem;
-    height: 4.5rem;
-
-    p {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 `;

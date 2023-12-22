@@ -49,7 +49,7 @@ export const Main = styled.main`
 export const ButtonAnswer = styled.button`
   all: unset;
   width: 280px;
-  height: 64px;
+  height: 60px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -110,6 +110,7 @@ export const ButtonAnswer = styled.button`
   @media(min-width: 1024px) {
     width: 290px;
     height: 76px;
+    border-width: 3px;
 
     p {
       font-size: 20px;

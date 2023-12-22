@@ -27,6 +27,7 @@ export const Game15 = () => {
   const [phrase, setPhrase] = useState([]);
   const [phraseFix, setPhraseFix] = useState("");
   const [blockButton, setBlockButton] = useState(true);
+  const [blockClean, setBlockClean] = useState(false);
   const [data, setData] = useState([]);
 
   const loadLesson = useCallback(() => {
@@ -36,7 +37,7 @@ export const Game15 = () => {
     let tempData;
     
     if (!conteudoFacil || !conteudoMedio || !conteudoDificil) {
-      navigate("/SelectLesson");
+      navigate("/LessonSelected");
       return;
     }
 
@@ -85,6 +86,7 @@ export const Game15 = () => {
 
     setPhrase([]);
     setBlockButton(true);
+    setBlockClean(false);
   }
 
   const handleClear = () => {
@@ -94,6 +96,7 @@ export const Game15 = () => {
   const verifyWord = () => {
     if (blockButton) return;
     setBlockButton(true);
+    setBlockClean(true);
 
     const word = phrase.join("").toLowerCase();
     const answerRight = answer.split(" ").join("").toLowerCase();
@@ -212,9 +215,7 @@ export const Game15 = () => {
 
   useEffect(() => {
     const text = phrase.join(" ");
-
     const textUp = text.charAt(0).toUpperCase()+text.slice(1);
-
     setPhraseFix(textUp);
   }, [phrase, setPhraseFix]);
 
@@ -264,7 +265,7 @@ export const Game15 = () => {
         </Main>
         
         <AreaButton>
-          <Button onClick={handleClear} $variant="red">Clear</Button>
+          <Button onClick={handleClear} $variant="red" disabled={blockClean}>Clear</Button>
           <Button onClick={verifyWord} disabled={blockButton}>Check</Button>
         </AreaButton>
     </Container>

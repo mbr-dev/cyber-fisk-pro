@@ -14,14 +14,14 @@ export const Main = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
-  @media(max-width: 768px) {
-    gap: 2rem;
+  @media(min-width: 768px) {
+    gap: 32px;
   }
 
   @media(orientation: landscape) {
@@ -33,8 +33,8 @@ export const Main = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 250px;
-  height: 200px;
+  width: 280px;
+  height: 180px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -46,35 +46,25 @@ export const Image = styled.div`
   }
 
   @media(max-width: 320px) {
-    img {
-      width: 200px;
-      height: 120px;
-    }
+    width: 232px;
+    height: 120px;
   }
 
   @media(min-width: 768px) {
-    img {
-      width: 400px;
-      height: 250px;
-    }
+    width: 420px;
+    height: 250px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 40%;
-
-      img {
-        width: 250px;
-        height: 184px;
-      }
+      width: 280px;
+      height: 150px
     }
   }
 
   @media(min-width: 1024px) {
-    img {
-      width: 400px;
-      height: 250px;
-    }
+    width: 420px;
+    height: 250px;
   }
 `;
 
@@ -83,32 +73,32 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 40%;
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 2rem;
+    gap: 24px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 16rem;
-  height: 4rem;
+  width: 250px;
+  height: 58px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -120,7 +110,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 0.875rem;
+    font-size: 14px;
   }
 
   &:hover {
@@ -132,36 +122,41 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 13rem;
-    height: 3rem;
+    width: 200px;
+    height: 44px;
+
+    p {
+      font-size: 12px;
+    }
   }
 
   @media(min-width: 768px) {
-    width: 18.75rem;
-    height: 5rem;
+    width: 400px;
+    height: 84px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 12rem;
-      height: 3rem;
+      width: 200px;
+      height: 44px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 12px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 18.75rem;
-    height: 5rem;
+    width: 380px;
+    height: 84px;
+    border-width: 3px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
 `;
