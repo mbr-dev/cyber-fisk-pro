@@ -22,7 +22,6 @@ export const Game12 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [correctPoints, setCorrectPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [data, setData] = useState([]);
@@ -94,7 +93,6 @@ export const Game12 = () => {
     event.preventDefault();
   
     if (event.key === "Enter") return;
-
     setBlockButton(true);
     
     let tempWord = text.toLowerCase();
@@ -112,10 +110,6 @@ export const Game12 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempEr = wrongPoints;
-      tempEr++;
-      setWrongPoints(tempEr);
     }
 
     let tempRound = round;
@@ -133,19 +127,17 @@ export const Game12 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -177,7 +169,7 @@ export const Game12 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Make questions with the words below. You don’t need to use all the words." />
+      <TitleLesson title="Make questions with the words below. You don’t need to use all the words.game12" />
 
       <Main>
         <Words>

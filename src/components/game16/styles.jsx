@@ -148,13 +148,14 @@ export const Input = styled.input`
 
   @media(min-width: 1366px) {
     width: 1200px;
+    padding-left: 24px;
   }
 `;
 
 export const ButtonCheck = styled.button`
   all: unset;
-  width: 10rem;
-  height: 2.5rem;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -167,7 +168,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -176,40 +177,40 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 20px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;

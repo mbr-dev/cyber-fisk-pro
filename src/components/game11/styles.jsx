@@ -15,18 +15,18 @@ export const Main = styled.main`
   justify-content: space-around;
 
   @media(min-width: 768px) {
-    width: 40rem;
+    width: 700px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       flex-direction: row;
-      width: 40rem;
+      width: 600px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 60rem;
+    width: 900px;
   }
 `;
 
@@ -35,31 +35,31 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 24px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 6px;
   }
 
   @media(min-width: 768px) {
-    gap: 1.5rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 6px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 1.5rem;
+    gap: 24px;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 9rem;
-  height: 3.5rem;
+  width: 150px;
+  height: 52px;
   display: flex;
   padding-inline: 0.5rem;
   align-items: center;
@@ -70,7 +70,7 @@ export const Button = styled.button`
   transition: all ease 0.3s;
 
   p {
-    font-size: 0.875rem;
+    font-size: 14px;
     text-align: center;
     font-weight: 500;
     word-wrap: break-word;
@@ -84,45 +84,57 @@ export const Button = styled.button`
     cursor: not-allowed;
   }
 
-  @media(max-width: 320px) {
-    width: 7.5rem;
-    height: 3rem;
+  @media(max-width: 360px) {
+    width: 132px;
     
     p {
-      font-size: 0.75rem;
+      font-size: 14px;
+    }
+  }
+
+  @media(max-width: 320px) {
+    width: 120px;
+    height: 46px;
+    
+    p {
+      font-size: 12px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 15rem;
-    height: 4rem;
+    width: 280px;
+    height: 72px;
     border-width: 3px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 16px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 180px;
-      height: 2rem;
-      border-radius: 6px;
+      width: 220px;
+      height: 30px;
       
       p {
-        font-size: 0.75rem;
+        font-size: 10px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 15rem;
-    height: 4rem;
+    width: 280px;
+    height: 58px;
     border-width: 3px;
-    border-radius: 8px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 16px;
     }
+  }
+
+  
+  @media(min-width: 1366px) {
+    width: 300px;
+    height: 64px;
   }
 `;

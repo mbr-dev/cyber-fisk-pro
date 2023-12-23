@@ -99,11 +99,15 @@ export const ButtonAnswer = styled.button`
   }
 
   @media(min-width: 1024px) {
-    width: 350px;
+    width: 300px;
     height: 80px;
 
     p {
       font-size: 20px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    width: 350px;
   }
 `;

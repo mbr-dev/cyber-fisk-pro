@@ -28,7 +28,6 @@ export const Game14 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -82,7 +81,7 @@ export const Game14 = () => {
 
     setBlockButton(false);
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setIdClick, setQuestion, setAnswers, setBlockButton, setImage]);
+  }, [setIsLoading, setData, setRandomNumber, round, setIdClick, setQuestion, setAnswers, setBlockButton, setImage, setSelectedColor]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -106,7 +105,6 @@ export const Game14 = () => {
 
   const handleClick = (index) => {
     if (blockButton) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -131,10 +129,6 @@ export const Game14 = () => {
 
       tempSelectedColor[index] = 1;
       setSelectedColor(tempSelectedColor);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -192,7 +186,7 @@ export const Game14 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct alternative." /> 
+      <TitleLesson title="Choose the correct alternative.game14" /> 
 
       <Main>
         <DivDesk>

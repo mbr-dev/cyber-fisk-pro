@@ -10,85 +10,85 @@ export const Container = styled.div`
 `;
 
 export const Main = styled.main`
-  width: 20rem;
+  width: 340px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.25rem;
+  gap: 6px;
 
   @media (max-width: 320px) {
-    gap: 0.5rem;
+    width: 290px;
+    gap: 4px;
   }
 
   @media (min-width: 768px) {
-    width: 25rem;
-    gap: 2rem;
+    width: 600px;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 80%;
-      justify-content: center;
+      width: 700px;
       flex-direction: row;
-      gap: 0.5rem;
+      justify-content: center;
+      gap: 16px;
     }
   }
 
-  @media (min-width: 1024px) {    
-    gap: 3rem;
+  @media (min-width: 1024px) {
+    width: 900px; 
+    gap: 32px;
+  }
+
+  @media (min-width: 1366px) {
+    width: 1200px; 
   }
 `;
 
 export const Question = styled.section`
   width: 100%;
-  padding: 0.75rem;
+  padding: 10px;
   border-radius: 8px;
   box-shadow: 0px 4px 10px 0px #00000033;
   text-align: center;
 
   p {
-    font-size: 1rem;
-    font-weight: bold;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   @media (max-width: 320px) {
-    width: 18.75rem;
+    padding: 6px;
 
     p {
-      font-size: 0.875rem;
-      font-weight: 500;
+      font-size: 14px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 25rem;
-    height: 10rem;
-    display: flex;
-    align-items: center;
+    padding: 16px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 25rem;
-      height: 12rem;
-      
+      width: 50%;
+      padding: 14px;
 
       p {
-        font-size: 1rem;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 30rem;
-    height: 15rem;
+    padding: 16px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 20px;
     }
   }
 `;
@@ -98,21 +98,27 @@ export const Answers = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 6px;
+
+  @media (max-width: 320px) {
+    gap: 4px;
+  }
 
   @media (min-width: 768px) {
-    gap: 1rem;
+    width: 500px;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.5rem;
+      width: 320px;
+      gap: 4px;
     }
   }
-
+  
   @media (min-width: 1024px) {
-    width: 40%;
-    gap: 1rem;
+    width: 500px;
+    gap: 6px;
   }
 `;
 
@@ -120,47 +126,54 @@ export const Options = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  padding-right: 0.5rem;
-
+  gap: 20px;
+  padding-right: 10px;
+  
   p {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 14px;
   }
-
+  
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 12px;
+    padding-right: 6px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 10px;
     }
   }
 
   @media(min-width: 768px) {
-    gap: 1rem;
+    gap: 28px;
+    padding-right: 16px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 18px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 20px;
+      padding-right: 6px;
 
       p {
-        font-size: 0.75rem;
+        font-size: 10px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 0.5rem;
-    padding-right: 1.25rem;
+    gap: 16px;
+    padding-right: 8px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 18px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    gap: 24px;
   }
 `;
 
@@ -169,24 +182,24 @@ export const Form = styled.form`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.5rem;
+  gap: 8px;
 
   @media(max-width: 320px) {
-    gap: 0.25rem;
+    gap: 4px;
   }
 
   @media (min-width: 768px) {
-    gap: 0.5rem;
+    gap: 14px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.25rem;
+      gap: 4px;
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 1rem;
+    gap: 14px;
   }
 `;
 
@@ -195,75 +208,87 @@ export const AnswersRow = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
 
   p {
-    flex: 1;
+    width: 200px;
+    height: 54px;
     text-align: center;
-    height: 3.5rem;
-    padding-inline: 0.5rem;
+    padding-inline: 6px;
     display: flex;
     align-items: center;
     justify-content: center;
     border: 2px solid ${props => props.theme.black};
     border-radius: 8px;
+    font-size: 16px;
+    font-weight: 500;
   }
 
   @media (max-width: 320px) {
-    padding-inline: 0.5rem;
-    gap: 0.5rem;
-
     p {
-      height: 2.5rem;
-      font-size: 0.75rem;
+      width: 180px;
+      height: 38px;
+      padding-inline: 4px;
+      font-size: 12px;
       border-radius: 6px;
     }
   }
 
   @media (min-width: 768px) {
-    gap: 1rem;
-    padding-inline: 0rem;
-
     p {
-      height: 4.5rem;
-      font-size: 0.875rem;
-      border-width: 3px;
+      width: 300px;
+      height: 76px;
+      padding-inline: 4px;
+      font-size: 18px;
+      border-radius: 6px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.5rem;
-      padding-inline: 0.75rem;
-
       p {
-        height: 2.5rem;
-        font-size: 0.75rem;
+        width: 220px;
+        height: 38px;
+        padding-inline: 4px;
+        font-size: 12px;
         border-radius: 6px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 1rem;
-
     p {
-      height: 4.5rem;
-      font-size: 0.875rem;
-      border-width: 3px;
+      width: 300px;
+      height: 54px;
+      padding-inline: 4px;
+      font-size: 16px;
+      border-radius: 6px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    p {
+      height: 60px;
     }
   }
 `;
 
 export const RadioG = styled(RadioGroup.Root)`
   display: flex;
-  gap: 0.5rem;
+  gap: 12px;
+
+  @media (max-width: 320px) {
+    gap: 8px;
+  }
+
+  @media (min-width: 1024px) {
+    gap: 24px;
+  }
 `;
 
 export const Radio = styled(RadioGroup.Item)`
   all: unset;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 54px;
+  height: 54px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -276,42 +301,84 @@ export const Radio = styled(RadioGroup.Item)`
 
   &[data-state="checked"] {
     span {
-      width: 3rem;
-      height: 3rem;
+      width: 48px;
+      height: 48px;
       border-radius: 8px;
       background-color: transparent;
     }
   }
 
   @media (max-width: 320px) {
-    width: 2rem;
-    height: 2rem;
-    border-radius: 2px;
+    width: 38px;
+    height: 38px;
+    border-radius: 6px;
+    
+    &[data-state="checked"] {
+      span {
+        width: 32px;
+        height: 32px;
+        border-radius: 6px;
+      }
+    }
   }
 
-  @media (min-width: 1024px) {
-    width: 4rem;
-    height: 4rem;
+  @media (min-width: 768px) {
+    width: 76px;
+    height: 76px;
+    
+    &[data-state="checked"] {
+      span {
+        width: 66px;
+        height: 66px;
+      }
+    }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 2rem;
-      height: 2rem;
-      border-radius: 2px;
+      width: 38px;
+      height: 38px;
+      border-radius: 6px;
+      
+      &[data-state="checked"] {
+        span {
+          width: 32px;
+          height: 32px;
+          border-radius: 6px;
+        }
+      }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 4rem;
-    height: 4rem;
+    width: 54px;
+    height: 54px;
+    
+    &[data-state="checked"] {
+      span {
+        width: 46px;
+        height: 46px;
+      }
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 60px;
+    height: 60px;
+    
+    &[data-state="checked"] {
+      span {
+        width: 52px;
+        height: 52px;
+      }
+    }
   }
 `;
 
 export const ButtonCheck = styled.button`
   all: unset;
-  width: 10rem;
-  height: 2.5rem;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -324,7 +391,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -333,40 +400,40 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 20px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;

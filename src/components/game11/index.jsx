@@ -26,7 +26,6 @@ export const Game11 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswers, setBlockAnswers] = useState(true);
   const [countClick, setCountClick] = useState(0);
   const [selectedQuestionIndex, setSelectedQuestionIndex] = useState(null);
@@ -93,11 +92,6 @@ export const Game11 = () => {
   }, [setIsLoading, setData, setRandomNumber, round, setIdClickQuestion, setQuestions, setIdClickAnswer, setAnswers])
 
   const newRound = (number) => {
-    setRightQuestions([]);
-    setRightAnswers([]);
-    setColorAnswer([0, 0, 0, 0, 0]);
-    setColorQuestions([0, 0, 0]);
-
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     let tempRandomQ = [...Array(items.pergunta.length).keys()];
@@ -120,8 +114,12 @@ export const Game11 = () => {
     }
     setAnswers(tempAnswers);
 
-    setSelectedQuestionIndex(null);
+    setRightAnswers([]);
+    setRightQuestions([]);
     setBlockAnswers(true);
+    setSelectedQuestionIndex(null);
+    setColorQuestions([0, 0, 0]);
+    setColorAnswer([0, 0, 0, 0, 0]);
   }
 
   const handleGetQuestion = (index) => {
@@ -176,10 +174,6 @@ export const Game11 = () => {
 
       tempColorA[index] = 1;
       setColorAnswer(tempColorQ);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -198,19 +192,17 @@ export const Game11 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         setCountClick(0);
@@ -254,7 +246,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Match the questions to their answers." />
+      <TitleLesson title="Match the questions to their answers.game11" />
 
       <Main>
         <Div>

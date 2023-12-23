@@ -13,24 +13,24 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 2rem;
+    gap: 24px;
   }
 `;
 
@@ -52,8 +52,8 @@ export const DivDesk = styled.div`
 `;
 
 export const Image = styled.div`
-  width: 300px;
-  height: 180px;
+  width: 280px;
+  height: 164px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -65,24 +65,24 @@ export const Image = styled.div`
   }
 
   @media(max-width: 320px) {
-    width: 200px;
-    height: 120px;
+    width: 150px;
+    height: 92px;
   }
-
+  
   @media(min-width: 768px) {
-    width: 300px;
-    height: 220px;
+    width: 364px;
+    height: 200px;
   }
   
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 220px;
-      height: 150px;
+      width: 420px;
+      height: 132px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 450px;
+    width: 480px;
     height: 250px;
   }
 `;
@@ -92,19 +92,23 @@ export const Div = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 80%;
-      gap: 0.5rem;
+      width: 600px;
+      gap: 0;
       align-items: flex-start;
       flex-direction: row;
     }
+  }
+
+  @media(min-width: 1024px) {
+    width: 800px;
   }
 `;
 
@@ -113,31 +117,31 @@ export const ButtonArea = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 6px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 4px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 2rem;
+    gap: 24px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 18rem;
-  height: 3.5rem;
+  width: 250px;
+  height: 54px;
   padding-inline: 8px;
   display: flex;
   align-items: center;
@@ -151,8 +155,8 @@ export const ButtonAnswer = styled.button`
   transition: all ease 0.3s;
 
   p {
+    font-size: 14px;
     color: ${props => props.theme["gray-700"]};
-    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -160,38 +164,38 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2.5rem;
+    width: 200px;
+    height: 40px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 12px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 20rem;
-    height: 4rem;
+    width: 300px;
+    height: 80px;
     
     p {
-      font-size: 1.5rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 15rem;
-      height: 3rem;
+      width: 180px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 10px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 18rem;
-    height: 3.5rem;
-
+    width: 300px;
+    height: 72px;
+    
     p {
       font-size: 20px;
     }
