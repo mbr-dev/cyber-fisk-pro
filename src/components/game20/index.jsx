@@ -11,7 +11,7 @@ import { TrocaAtividade, Score, ScoreFinal, PointRule } from "../../utils/regras
 
 import { Main, Container, Input, ButtonCheck, Form } from "./styles";
 
-export const Game20 = () => {
+export const Game20 = () => {/* arruma o backend */
   const {
     rodadaGeral, setNewRodada, setNewContainer, setNewPontos, nivel, conteudoFacil, conteudoMedio, conteudoDificil, pontosD, pontosF, pontosM, setNewAtividade, setNewNivel, numSelLesson, numTask, statusColor, setStatusColor
   } = useContext(LessonContext);
@@ -27,7 +27,6 @@ export const Game20 = () => {
   const [round, setRound] = useState(0);
   const [countQ, setCountQ] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [cancelAudio, setCancelAudio] = useState(false);
@@ -87,7 +86,8 @@ export const Game20 = () => {
   const handleVerifyWord = (event) => {
     event.preventDefault();
 
-    if (event.key === "Enter") return;
+    if (event.key === "Enter" || blockButton) return;
+    setBlockButton(true);
 
     let tempWord = text;
     let tempRightPoints;
@@ -117,10 +117,6 @@ export const Game20 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempEr = wrongPoints;
-      tempEr++;
-      setWrongPoints(tempEr);
     }
 
     setCancelAudio(true);
@@ -144,15 +140,13 @@ export const Game20 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -190,7 +184,7 @@ export const Game20 = () => {
 
   return (
     <Container>
-      <SubTitleLesson title="Listen and answer the questions." />
+      <SubTitleLesson title="Listen and answer the questions.game20" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>

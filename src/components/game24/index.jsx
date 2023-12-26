@@ -29,7 +29,6 @@ export const Game24 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [text0, setText0] = useState("");
   const [text1, setText1] = useState("");
   const [text2, setText2] = useState("");
@@ -107,7 +106,6 @@ export const Game24 = () => {
     event.preventDefault();
 
     if (blockButton || playAudio) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -130,10 +128,6 @@ export const Game24 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     setCancelAudio(true);
@@ -153,19 +147,17 @@ export const Game24 = () => {
         newRound(tempRound);
       }, 1500);
     } else if (rule === "Game over") {
-      setNewPontos(nivel, 0);
+      setNewPontos(0, 0);
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -202,7 +194,7 @@ export const Game24 = () => {
 
   return (
     <Container>
-      <TitleLesson title="LISTEN TO COMPLETE THE PARAGRAPH." />
+      <TitleLesson title="Listen to complete the paragraph.game24" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>
@@ -210,6 +202,7 @@ export const Game24 = () => {
           <label>{question[0]}</label>
           <Input
             type="text"
+            $variant="medium"
             value={text0}
             onChange={(e) => setText0(e.target.value)}
             required
@@ -218,6 +211,7 @@ export const Game24 = () => {
           <label>{question[1]}</label>
           <Input
             type="text"
+            $variant="little"
             value={text1}
             onChange={(e) => setText1(e.target.value)}
             required
@@ -226,6 +220,7 @@ export const Game24 = () => {
           <label>{question[2]}</label>
           <Input
             type="text"
+            $variant="big"
             value={text2}
             onChange={(e) => setText2(e.target.value)}
             required
@@ -234,6 +229,7 @@ export const Game24 = () => {
           <label>{question[3]}</label>
           <Input
             type="text"
+            $variant="medium"
             value={text3}
             onChange={(e) => setText3(e.target.value)}
             required
@@ -242,6 +238,7 @@ export const Game24 = () => {
           <label>{question[4]}</label>
           <Input
             type="text"
+            $variant="medium"
             value={text4}
             onChange={(e) => setText4(e.target.value)}
             required

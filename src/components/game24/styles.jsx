@@ -14,131 +14,138 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  margin-top: 1rem;
-  gap: 1rem;
+  margin-top: 16px;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    margin-top: 0.5rem;
-    gap: 0.5rem;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 1rem;
-    gap: 1rem;
+    margin-top: 24px;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      margin-top: 0.5rem;
-      gap: 0.5rem;
+      margin-top: 8px;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 1rem;
-    gap: 1rem;
+    margin-top: 24px;
+    gap: 24px;
   }
 `;
 
 export const Form = styled.form`
   width: 100%;
-  padding: 1rem 2rem;
+  padding: 16px 32px;
   background-color: ${props => props.theme["gray-100"]};
 
   label {
-    font-size: 1rem;
-    line-height: 1.7;
+    font-size: 16px;
+    line-height: 2;
     color: ${props => props.theme["gray-700"]};
-    margin-bottom: 0.5rem;
   }
 
   @media(max-width: 320px) {
-    padding: 0.5rem 1.5rem;
+    padding: 8px 24px;
 
     label {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   
   @media (min-width: 768px) {
-    padding: 1rem 5rem;
+    padding: 16px 54px;
 
     label {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      padding: 0.5rem 4rem;
+      padding: 8px 64px;
 
       label {
-        font-size: 0.875rem;
-        line-height: 2;
+        font-size: 14px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    padding: 1rem 7.5rem;
+    padding: 16px 54px;
 
     label {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
+  }
+
+  @media (min-width: 1366px) {
+    padding: 16px 120px;
   }
 `;
 
 export const Input = styled.input`
-  width: 10rem;
-  height: 1.5rem;
+  width: ${props => props.$variant === "little" ? "80px" : props.$variant === "medium" ? "124px" : "168px"};
+  height: 36px;
   border: none;
   border-radius: 6px;
-  padding-left: 0.5rem;
-  margin-left: 0.5rem;
-  margin-right: 0.5rem;
+  padding-left: 8px;
+  margin-inline: 8px;
+  margin-bottom: 6px;
   box-shadow: 0px 4px 10px 0px #00000033;
-  font-size: 0.875rem;
+  font-size: 16px;
   font-weight: 500;
 
   @media(max-width: 320px) {
-    width: 9rem;
-    margin-left: 0.25rem;
-    margin-right: 0.25rem;
-    height: 1.375rem;
-    font-size: 0.75rem;
+    width: ${props => props.$variant === "little" ? "72px" : props.$variant === "medium" ? "110px" : "150px"};
+    margin-inline: 4px;
+    height: 18px;
+    font-size: 14px;
+    margin-bottom: 4px;
   }
 
   @media (min-width: 768px) {
-    width: 19rem;
-    font-size: 1.25rem;
-    height: 2rem;
+    width: ${props => props.$variant === "little" ? "116px" : props.$variant === "medium" ? "184px" : "248px"};
+    margin-inline: 10px;
+    height: 40px;
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      margin-left: 0.25rem;
-      margin-right: 0.25rem;
-      height: 1.375rem;
-      font-size: 0.75rem;
+      width: ${props => props.$variant === "little" ? "72px" : props.$variant === "medium" ? "110px" : "150px"};
+      margin-inline: 4px;
+      height: 18px;
+      font-size: 14px;
+      margin-bottom: 4px;
     }
   }
 
   @media (min-width: 1024px) {
-    width: 19rem;
-    font-size: 1.25rem;
-    height: 2rem;
+    width: ${props => props.$variant === "little" ? "116px" : props.$variant === "medium" ? "184px" : "248px"};
+    margin-inline: 10px;
+    height: 40px;
+    font-size: 24px;
+    margin-bottom: 8px;
   }
 
   @media (min-width: 1366px) {
-    width: 19rem;
+    width: ${props => props.$variant === "little" ? "110px" : props.$variant === "medium" ? "184px" : "246px"};
   }
 `;
 
 export const ButtonCheck = styled.button`
   all: unset;
-  width: 10rem;
-  height: 2.5rem;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -151,7 +158,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -160,40 +167,40 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 20px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;
