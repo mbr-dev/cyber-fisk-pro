@@ -1,0 +1,110 @@
+LESSON 1
+TASK 1
+Fácil game1 selecionar btn com imagem ok
+Médio game2 selecionar btn com texto ok
+Difícil game3 selecionar btn com text ok
+
+TASK 2
+Fácil game4 audio selecionar btn 3x ok
+Médio game5 audio selecionar btn ok
+Difícil game6 audio seleciona btn ok
+==============================================
+LESSON 2
+TASK 1
+Fácil game7 audio fazer par 3 btn ok
+Médio game7 audio fazer par 3 btn ok
+Difícil game22 audio selecionar btn tem 4 ok
+
+TASK 2
+Fácil game15 Drag Drop text ok
+Médio game2 selecionar btn com texto ok
+Difícil game16 input txt baixo ok
+==============================================
+LESSON 3
+TASK 1
+Fácil game17 selecionar btn imagem ok
+Médio game8 Drag Drop btn ok
+Difícil game3 selecionar btn com text ok
+
+TASK 2
+Fácil game5 audio selecionar btn ok
+Médio game40 audio selecionar btn 2x ok
+Difícil game10 audio input ok
+==============================================
+LESSON 4
+TASK 1
+Fácil game22 audio selecionar btn tem 4 ok
+Médio game22 audio selecionar btn tem 4 ok
+Difícil game22 audio selecionar btn tem 4 ok
+
+TASK 2
+Fácil game11 audio fazer par 5 btn ok
+Médio game12 input txt cima red ok
+Difícil game13 true false ok
+==============================================
+LESSON 5
+TASK 1
+Fácil game14 img txt baixo seleciona btn ok
+Médio game2 selecionar btn com texto ok
+Difícil game19 select 5x ok
+
+TASK 2
+Fácil game21 select audio 3x ok
+Médio game10 audio input ok
+Difícil game20 audio input txt cima ok
+==============================================
+LESSON 6
+TASK 1
+Fácil game5 audio selecionar btn ok
+Médio game23 audio input ok
+Difícil game24 audio input 5x ok
+
+TASK 2
+Fácil game25 input txt cima ok/
+Médio game15 Drag Drop text ok
+Difícil game16 input txt baixo ok
+==============================================
+LESSON 7
+TASK 1
+Fácil game14 img txt baixo seleciona btn ok
+Médio game3 selecionar btn com text ok
+Difícil game8 Drag Drop btn ok
+
+TASK 2
+Fácil game5 audio selecionar btn ok
+Médio game26 arrasta cima baixo ok/
+Difícil game27 audio click img ok/
+==============================================
+LESSON 8
+TASK 1
+Fácil
+Médio
+Difícil
+
+TASK 2
+Fácil
+Médio
+Difícil
+==============================================
+LESSON 9
+TASK 1
+Fácil
+Médio
+Difícil
+
+TASK 2
+Fácil
+Médio
+Difícil
+==============================================
+LESSON 10
+TASK 1
+Fácil
+Médio
+Difícil
+
+TASK 2
+Fácil
+Médio
+Difícil
+==============================================

@@ -17,15 +17,18 @@ export const Main = styled.div`
   justify-content: space-between;
   gap: 16px;
   margin-top: 16px;
+  padding-inline: 16px;
 
   @media(max-width: 320px) {
     gap: 8px;
     margin-top: 8px;
+    padding-inline: 8px;
   }
 
   @media(min-width: 768px) {
     margin-top: 32px;
     gap: 24px;
+    padding-inline: 100px;
   }
 
   @media(orientation: landscape) {
@@ -33,6 +36,7 @@ export const Main = styled.div`
       flex-direction: row;
       gap: 8px;
       margin-top: 8px;
+      padding-inline: 36px;
     }
   }
 
@@ -40,6 +44,7 @@ export const Main = styled.div`
     justify-content: center;
     margin-top: 32px;
     gap: 24px;
+    padding-inline: 40px;
   }
 `;
 

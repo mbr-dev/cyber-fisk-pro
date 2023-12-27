@@ -238,7 +238,7 @@ export const L6_T2_Facil = [
   },
   {
     pergunta: "Can you lift weights? (No)",
-    resposta: "No, I can’t (lift weights)."
+    resposta: "No, I can’t lift weights."
   },
   {
     pergunta: "What can you do to be fit? (work out and eat healthy food)",

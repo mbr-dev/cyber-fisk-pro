@@ -75,11 +75,11 @@ export const ButtonHome = styled.button`
   }
 
   @media(min-width: 768px) {
-    width: 25rem;
-    height: 2.75rem;
+    width: 400px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
@@ -90,18 +90,18 @@ export const ButtonHome = styled.button`
       border-radius: 6px;
 
       p {
-        font-size: 1.125rem;
+        font-size: 20px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 25rem;
-    height: 52px;
+    width: 400px;
+    height: 54px;
     border-radius: 12px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;
