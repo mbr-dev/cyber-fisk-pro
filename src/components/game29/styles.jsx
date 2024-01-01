@@ -3,7 +3,6 @@ import styled from "styled-components";
 export const Container = styled.div`
   flex: 1;
   width: 100vw;
-  height: 100vh;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -14,178 +13,178 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-block: 0.5rem;
-  gap: 0.5rem;
-  margin-bottom: 0.5rem;
+  padding-block: 6px;
+  gap: 6px;
+  margin-bottom: 6px;
   background-color: ${props => props.theme["gray-300"]};
   overflow: hidden;
 
   @media(max-width: 320px) {
-    padding-block: 0.375rem;
-    gap: 0.375rem;
+    padding-block: 3px;
+    gap: 3px;
   }
 
   @media(min-width: 768px) {
-    padding-block: 1rem;
-    margin-bottom: 1rem;
+    padding-block: 16px;
+    margin-bottom: 16px;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      padding-block: 0rem;
       flex-direction: row;
       align-items: flex-start;
       justify-content: center;
+      padding-block: 3px;
+      gap: 0;
+      margin-bottom: 6px;
     }
   }
 
   @media(min-width: 1024px) {
-    padding-block: 1rem;
-    margin-bottom: 1rem;
+    padding-block: 16px;
+    margin-bottom: 8px;
+  }
+
+  
+  @media(min-width: 1366px) {
+    margin-bottom: 16px;
   }
 `;
 
 export const Left = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
+  padding-inline: 8px;
+  gap: 6px;
 
   @media(min-width: 768px) {
-    gap: 1rem;
+    gap: 14px;
+    padding-inline: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 45%;
+      width: 50%;
       display: flex;
+      padding-inline: 16px;
       flex-direction: column;
       align-items: center;
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    height: 360px;
     justify-content: space-between;
+    gap: 16px;
   }
 `;
 
 export const AreaWord = styled.div`
-  width: 23rem;
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: center;
-  gap: 0.5rem;
+  gap: 8px;
 
   @media(max-width: 320px) {
-    width: 19rem;
+    gap: 6;
   }
 
   @media(min-width: 768px) {
-    width: 35rem;
-    height: 9rem;
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 23rem;
-      height: 5rem;
-      gap: 0.5rem;
+      gap: 6px;
       align-items: center;
-      justify-content: center;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 450px;
-    height: 9rem;
-    gap: 0.5rem;
-  }
-
-  @media(min-width: 1366px) {
-    width: 35rem;
-    height: 9rem;
+    gap: 8px;
   }
 `;
 
 export const Words = styled.span`
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 4px 8px;
   justify-content: center;
   border-radius: 6px;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.875rem;
+  font-size: 14px;
   text-align: center;
 
   @media(max-width: 320px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 10px;
+    padding: 3px 6px;
   }
 
   @media(min-width: 768px) {
-    font-size: 1.25rem;
-    padding: 0.625rem 1rem;
+    font-size: 20px;
+    padding: 8px 14px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
+      font-size: 10px;
+      padding: 3px 6px;
     }
   }
 
   @media(min-width: 1024px) {
-    font-size: 16px;
-    padding: 6px 12px;
-  }
-
-  @media(min-width: 1366px) {
-    font-size: 1.25rem;
-    padding: 0.625rem 1rem;
+    font-size: 20px;
+    padding: 8px 14px;
   }
 `;
 
 export const AreaAnswers = styled.div`
-  width: 20rem;
-  height: 8.5rem;
+  width: 360px;
+  height: 120px;
   display: flex;
   flex-wrap: wrap;
   align-items: flex-start;
   justify-content: flex-start;
-  gap: 0.5rem;
-  padding: 0.5rem;
+  gap: 6px;
+  padding: 6px;
   border: 2px solid ${props => props.theme["gray-700"]};
   border-radius: 8px;
+
+  @media(max-width: 360px) {
+    width: 340px;
+  }
   
   @media(max-width: 320px) {
-    width: 18.5rem;
-    height: 8rem;
+    width: 300px;
+    height: 96px;
   }
 
   @media(min-width: 768px) {
-    width: 42rem;
-    height: 10rem;
+    width: 700px;
+    height: 172px;
     border-width: 3px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 23rem;
-      height: 6rem;
+      width: 400px;
+      height: 96px;
+      border-width: 2px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 450px;
+    width: 464px;
+    height: 190px;
     border-width: 3px;
-    height: 13rem;
   }
 
   @media(min-width: 1366px) {
@@ -196,60 +195,67 @@ export const AreaAnswers = styled.div`
 export const WordsDrop = styled.span`
   display: flex;
   align-items: center;
-  padding: 0.25rem 0.75rem;
+  padding: 4px 8px;
   justify-content: center;
   border-radius: 6px;
   box-shadow: 0px 4px 10px 0px #00000033;
   cursor: pointer;
   transition: all 0.2s;
-  font-size: 0.875rem;
+  font-size: 14px;
   text-align: center;
 
   @media(max-width: 320px) {
-    font-size: 0.75rem;
-    padding: 0.25rem 0.5rem;
+    font-size: 10px;
+    padding: 3px 6px;
   }
 
   @media(min-width: 768px) {
-    font-size: 1.125rem;
-    padding: 0.625rem 1rem;
+    font-size: 20px;
+    padding: 8px 14px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      font-size: 0.75rem;
-      padding: 0.25rem 0.5rem;
+      font-size: 10px;
+      padding: 3px 6px;
     }
   }
 
   @media(min-width: 1024px) {
-    font-size: 16px;
-    padding: 6px 12px;
-  }
-
-  @media(min-width: 1366px) {
-    font-size: 1.25rem;
-    padding: 0.625rem 1rem;
+    font-size: 20px;
+    padding: 8px 14px;
   }
 `;
 
 export const Right = styled.div`
+  width: 100%;
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 0.5rem;
-  
-  @media(orientation: landscape) {
-    @media(min-width: 600px) {
-      width: 45%;
-      border-left: 2px solid ${props => props.theme["gray-200"]};
-      justify-content: space-between;
-    }
+  padding-inline: 8px;
+  gap: 6px;
+
+  @media(min-width: 768px) {
+    gap: 14px;
+    padding-inline: 24px;
   }
 
+  @media(orientation: landscape) {
+    @media(min-width: 600px) {
+      width: 50%;
+      border-left: 2px solid ${props => props.theme["gray-200"]};
+      display: flex;
+      padding-inline: 16px;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+    }
+  }
+  
   @media(min-width: 1024px) {
-    height: 22.5;
+    justify-content: space-between;
+    gap: 16px;
   }
 `;
 
@@ -258,17 +264,17 @@ export const AreaButton = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 36px;
   }
 `;
 
 export const Button = styled.button`
   all: unset;
-  width: 10rem;
-  height: 2rem;
+  width: 164px;
+  height: 32px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -279,6 +285,7 @@ export const Button = styled.button`
   border: 1px solid ${props => props.$variant === "red" ? props.theme["red-300"] :  props.theme["green-700"]};
   border-bottom-width: 3px;
   border-left-width: 3px;
+  font-size: 16px;
   cursor: pointer;
 
   &:disabled {
@@ -287,9 +294,10 @@ export const Button = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 7.5rem;
-    height: 2rem;
-    font-size: 0.875rem;
+    width: 100px;
+    height: 20px;
+    font-size: 14px;
+    border-radius: 6px;
   }
 
   @media (min-width: 768px) {
@@ -300,9 +308,9 @@ export const Button = styled.button`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 15.625rem;
-      height: 2rem;
-      font-size: 0.875rem;
+      width: 150px;
+      height: 28px;
+      font-size: 14px;
     }
   }
 

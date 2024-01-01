@@ -291,6 +291,7 @@ export const ButtonTask = styled.button`
       width: 84px;
       height: 76px;
       gap: 0.25rem;
+      border-width: 2px;
 
       img {
         width: 32px;
@@ -380,6 +381,7 @@ export const ButtonSuperTask = styled.button`
 
   @media(min-width: 768px) {
     width: 220px;
+    border-width: 3px;
 
     p {
       font-size: 24px;
@@ -393,6 +395,7 @@ export const ButtonSuperTask = styled.button`
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 120px;
+      border-width: 2px;
 
       p {
         font-size: 16px;
@@ -578,6 +581,7 @@ export const ButtonBottom = styled.button`
   @media(min-width: 768px) {
     height: 124px;
     gap: 16px;
+    border-width: 3px;
 
     img {
       width: 52px;
@@ -596,6 +600,7 @@ export const ButtonBottom = styled.button`
     @media(min-width: 600px) {
       height: 84px;
       gap: 6px;
+      border-width: 2px;
 
       p {
         font-size: 14px;

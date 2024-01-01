@@ -14,24 +14,24 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
+  gap: 16px;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    gap: 2rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 2rem;
+    gap: 24px;
   }
 `;
 
@@ -41,86 +41,89 @@ export const Form = styled.form`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 0.5rem;
-  padding: 0.5rem 1rem;
+  gap: 8px;
+  padding-block: 12px;
   background-color: ${props => props.theme["gray-100"]};
 
   label {
     display: block;
-    font-size: 1rem;
+    font-size: 16px;
     color: ${props => props.theme["gray-700"]};
   }
 
   @media(max-width: 320px) {
+    padding-block: 10px;
+    gap: 6px;
+
     label {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
+    padding-block: 16px;
+    gap: 12px;
+
     label {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
+      padding-block: 10px;
+      gap: 6px;
+
       label {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
+    padding-block: 16px;
+    gap: 12px;
+
     label {
-      font-size: 1.5rem;
+      font-size: 24px;
     }
   }
 `;
 
 export const Select = styled.select`
-  width: 15rem;
-  height: 2.5rem;
+  height: 36px;
   border: none;
   border-radius: 6px;
-  padding-left: 0.5rem;
+  font-size: 16px;
   box-shadow: 0px 4px 10px 0px #00000033;
-  
-  option {
-    font-weight: 500;
-    border: 0;
-  }
 
   @media(max-width: 320px) {
-    width: 12rem;
-    height: 2rem;
+    height: 32px;
+    font-size: 14px;
   }
 
   @media(min-width: 768px) {
-    width: 15rem;
-    height: 2.5rem;
-    font-size: 1.25rem;
+    height: 40px;
+    font-size: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 12rem;
-      height: 2rem;
-      font-size: 0.875rem;
+      height: 32px;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 1024px) {
-    width: 15rem;
-    height: 2.5rem;
-    font-size: 1.25rem;
+    height: 40px;
+    font-size: 24px;
   }
 `;
 
 export const ButtonCheck = styled.button`
   all: unset;
-  width: 10rem;
-  height: 2.5rem;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -133,7 +136,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -142,40 +145,44 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 20px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 44px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
+  }
+
+  @media (min-width: 1920px) {
+    height: 52px;
   }
 `;

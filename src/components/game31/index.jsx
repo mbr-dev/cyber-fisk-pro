@@ -26,7 +26,6 @@ export const Game31 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(3);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [countClick, setCountClick] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [blockAudio, setBlockAudio] = useState(false);
@@ -79,21 +78,19 @@ export const Game31 = () => {
     setText("");
     setCountClick(0);
     setCancelAudio(false);
+    setBlockAudio(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
     setSound(items.pergunta);
     setWord(items.resposta.label);
     setAnswers(items.resposta.status);
-
-    setBlockAudio(false);
   }
 
   const handleVerifyWord = (event) => {
     event.preventDefault();
 
     if (playAudio) return;
-
     setBlockButton(true);
 
     let tempWord = text.trim().toLowerCase();
@@ -119,10 +116,6 @@ export const Game31 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempEr = wrongPoints;
-      tempEr++;
-      setWrongPoints(tempEr);
     }
 
     setCancelAudio(true);
@@ -146,15 +139,13 @@ export const Game31 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -192,7 +183,7 @@ export const Game31 = () => {
 
   return (
     <Container>
-      <SubTitleLesson title="Listen and write a question." />
+      <SubTitleLesson title="Listen and write a question.game31" />
       <SubTitleLessonAudio
         stopAudio={cancelAudio}
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}

@@ -1,8 +1,8 @@
-import {CSS} from '@dnd-kit/utilities';
-import { useSortable, arrayMove, SortableContext,   sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
-import { useState, useContext, useEffect, useCallback } from "react";
+import {CSS} from "@dnd-kit/utilities";
 import { useNavigate } from "react-router-dom";
-import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from '@dnd-kit/core';
+import { useState, useContext, useEffect, useCallback } from "react";
+import { useSortable, arrayMove, SortableContext, sortableKeyboardCoordinates, verticalListSortingStrategy } from "@dnd-kit/sortable";
+import { DndContext, closestCenter, KeyboardSensor, PointerSensor, useSensor, useSensors } from "@dnd-kit/core";
 
 import { Loading } from "../Loading";
 import { TitleLesson } from "../titleLesson";
@@ -162,13 +162,13 @@ export const Game26 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {

@@ -81,7 +81,7 @@ export const ButtonLesson = styled.button`
   &:hover {
     color: ${props => props.theme.white};
     background-color: ${props => props.theme["red-200"]};
-    border: 2px solid ${props => props.theme.black};
+    border-color: ${props => props.theme.black};
   }
 
   &:disabled{
@@ -104,6 +104,7 @@ export const ButtonLesson = styled.button`
   @media (min-width: 768px) {
     width: 110px;
     height: 110px;
+    border-width: 3px;
 
     p {
       font-size: 44px;
@@ -118,6 +119,7 @@ export const ButtonLesson = styled.button`
     @media (min-width: 600px) {
       width: 3.625rem;
       height: 3.625rem;
+      border-width: 2px;
 
       p {
         font-size: 1.125rem;
@@ -132,6 +134,7 @@ export const ButtonLesson = styled.button`
   @media (min-width: 1024px) {
     width: 100px;
     height: 100px;
+    border-width: 3px;
 
     p {
       font-size: 44px;

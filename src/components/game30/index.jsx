@@ -25,7 +25,6 @@ export const Game30 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [selected, setSelected] = useState("");
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -90,7 +89,6 @@ export const Game30 = () => {
     event.preventDefault();
 
     if (blockButton || playAudio) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -107,10 +105,6 @@ export const Game30 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     setCancelAudio(true);
@@ -134,15 +128,13 @@ export const Game30 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
@@ -174,7 +166,7 @@ export const Game30 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Listen and choose the correct alternative." />
+      <TitleLesson title="Listen and choose the correct alternative.game30" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>

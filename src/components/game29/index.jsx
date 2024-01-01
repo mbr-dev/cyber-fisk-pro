@@ -26,9 +26,9 @@ export const Game29 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [blockButton, setBlockButton] = useState(true);
+  const [blockClean, setBlockClean] = useState(false);
   const [wordsDropped, setWordsDropped] = useState([]);
   const [wordsIndex, setWordsIndex] = useState([]);
   const [wordsIndex1, setWordsIndex1] = useState([]);
@@ -80,13 +80,15 @@ export const Game29 = () => {
     setAnswer1(items.option1.resposta);
 
     setIsLoading(false);
-  }, [setIsLoading, setData, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
+    setBlockClean(false);
+  }, [setIsLoading, setBlockClean, setData, setRandomNumber, round, setWords, setWords1, setAnswer, setAnswer1]);
 
   const newRound = (number) => {
     setWordsIndex([]);
     setWordsIndex1([]);
     setWordsDropped([]);
     setWordsDropped1([]);
+    setBlockClean(false);
 
     const items = JSON.parse(data[randomNumber[number]].conteudo);
 
@@ -104,8 +106,8 @@ export const Game29 = () => {
 
   const handleVerify = () => {
     if (blockButton) return;
-
     setBlockButton(true);
+    setBlockClean(true);
 
     const word = wordsDropped.join("").toLowerCase();
     const word1 = wordsDropped1.join("").toLowerCase();
@@ -124,10 +126,6 @@ export const Game29 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -149,15 +147,13 @@ export const Game29 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -274,7 +270,7 @@ export const Game29 = () => {
   
   return (
     <Container>
-      <TitleLesson title="Drag and Drop the words to make sentences." />
+      <TitleLesson title="Drag and Drop the words to make sentences.game29" />
 
       <Main>
         <Left>
@@ -333,7 +329,7 @@ export const Game29 = () => {
       </Main>
 
       <AreaButton>
-        <Button onClick={handleClear} $variant="red">Clear</Button>
+        <Button onClick={handleClear} $variant="red" disabled={blockClean}>Clear</Button>
         <Button onClick={handleVerify} disabled={blockButton}>Check</Button>
       </AreaButton>
     </Container>
