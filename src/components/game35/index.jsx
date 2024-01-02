@@ -26,7 +26,6 @@ export const Game35 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [cancelAudio, setCancelAudio] = useState(false);
@@ -79,7 +78,6 @@ export const Game35 = () => {
 
     setSound(items.audio);
     setQuestion(items.pergunta);
-
     setAnswer(items.resposta);
   }
 
@@ -87,7 +85,6 @@ export const Game35 = () => {
     event.preventDefault();
 
     if (playAudio) return;
-
     setBlockButton(true);
 
     let tempWord = text;
@@ -105,10 +102,6 @@ export const Game35 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempEr = wrongPoints;
-      tempEr++;
-      setWrongPoints(tempEr);
     }
     setCancelAudio(true);
 
@@ -131,15 +124,13 @@ export const Game35 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -171,7 +162,7 @@ export const Game35 = () => {
 
   return (
     <Container>
-      <SubTitleLesson title="write what you hear." />
+      <SubTitleLesson title="write what you hear.game35" />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
 
       <Main>

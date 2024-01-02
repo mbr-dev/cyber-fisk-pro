@@ -15,37 +15,32 @@ export const Main = styled.main`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
   overflow: hidden;
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
-    margin-top: 0.5rem;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 1.5rem;
-    gap: 1.5rem;
+    gap: 24px;
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
-      margin-top: 0.5rem;
+      gap: 8px;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 1rem;
-    gap: 1rem;
+    gap: 16px;
   }
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 16rem;
-  height: 2.5rem;
+  width: 250px;
+  height: 54px;
   padding-inline: 8px;
   display: flex;
   align-items: center;
@@ -59,8 +54,8 @@ export const ButtonAnswer = styled.button`
   transition: all ease 0.3s;
 
   p {
+    font-size: 14px;
     color: ${props => props.theme["gray-700"]};
-    font-size: 0.875rem;
   }
 
   &:disabled {
@@ -69,48 +64,57 @@ export const ButtonAnswer = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9.5rem;
-    height: 2.5rem;
+    width: 200px;
+    height: 40px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 12px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 18rem;
-    height: 3.25rem;
+    width: 320px;
+    height: 72px;
 
     p {
-      font-size: 1rem;
+      font-size: 20px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 9.5rem;
-      height: 2.5rem;
+      width: 200px;
+      height: 40px;
 
       p {
-        font-size: 0.75rem;
+        font-size: 12px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 18rem;
-    height: 3.25rem;
+    width: 300px;
+    height: 60px;
 
     p {
-      font-size: 1rem;
+      font-size: 16px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 320px;
+    height: 72px;
+
+    p {
+      font-size: 20px;
     }
   }
 `;
 
 export const ButtonCheck = styled.button`
-  all: unset;
-  width: 10rem;
-  height: 2.5rem;
+ all: unset;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -123,7 +127,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -132,40 +136,44 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 32px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 20px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 44px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
+  }
+
+  @media (min-width: 1920px) {
+    height: 52px;
   }
 `;

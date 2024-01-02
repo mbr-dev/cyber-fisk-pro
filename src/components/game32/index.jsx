@@ -25,7 +25,6 @@ export const Game32 = () => {
   const [randomNumber, setRandomNumber] = useState([]);
   const [round, setRound] = useState(0);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
   const [selectedRadio, setSelectedRadio] = useState([]);
@@ -118,7 +117,6 @@ export const Game32 = () => {
     event.preventDefault();
 
     if (blockButton || playAudio) return;
-
     setBlockButton(true);
 
     let tempAnswers = selectedRadio;
@@ -138,10 +136,6 @@ export const Game32 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     setCancelAudio(true);
@@ -165,15 +159,13 @@ export const Game32 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {
@@ -205,7 +197,7 @@ export const Game32 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Read and choose TRUE or FALSE." />
+      <TitleLesson title="Read and choose TRUE or FALSE.game32" />
       
       <Main>
         <Div>

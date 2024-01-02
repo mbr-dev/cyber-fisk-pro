@@ -15,10 +15,10 @@ export const Main = styled.main`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  gap: 1rem;
+  gap: 10px;
 
   @media (max-width: 320px) {
-    gap: 0.5rem;
+    gap: 6px;
   }
 
   @media (min-width: 768px) {
@@ -27,14 +27,9 @@ export const Main = styled.main`
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 80%;
       flex-direction: row;
-      gap: 0.5rem;
+      gap: 0;
     }
-  }
-
-  @media (min-width: 1024px) {    
-    gap: 2rem;
   }
 `;
 
@@ -43,7 +38,7 @@ export const Div = styled.div`
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 7.5rem;
+      width: 35%;
     }
   }
 `;
@@ -53,26 +48,25 @@ export const Answers = styled.section`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 1rem;
+  gap: 10px;
 
   @media (max-width: 320px) {
-    gap: 0.5rem;
+    gap: 6px;
   }
 
   @media (min-width: 768px) {
-    width: 30rem;    
-    gap: 1rem;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 30rem;
-      gap: 0.5rem;
+      width: 50%;
+      gap: 4px;
     }
   }
 
   @media (min-width: 1024px) {    
-    gap: 1rem;
+    gap: 8px;
   }
 `;
 
@@ -80,47 +74,54 @@ export const Options = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-end;
-  gap: 1rem;
-  padding-right: 0.5rem;
+  gap: 16px;
+  padding-inline: 20px;
 
   p {
     font-weight: bold;
-    font-size: 1rem;
+    font-size: 16px;
   }
 
   @media(max-width: 320px) {
-    gap: 0.5rem;
+    gap: 14px;
+    padding-inline: 12px;
 
     p {
-      font-size: 0.75rem;
+      font-size: 10px;
     }
   }
 
   @media(min-width: 768px) {
-    gap: 1rem;
+    gap: 28px;
+    padding-inline: 84px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
+      gap: 20px;
+      padding-inline: 42px;
 
       p {
-        font-size: 0.75rem;
+        font-size: 10px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    gap: 0.5rem;
-    padding-right: 1.25rem;
+    gap: 28px;
+    padding-inline: 32px;
 
     p {
-      font-size: 1.25rem;
+      font-size: 24px;
     }
+  }
+
+  @media(min-width: 1366px) {
+    padding-inline: 140px;
   }
 `;
 
@@ -130,21 +131,26 @@ export const Form = styled.form`
   flex-direction: column;
   align-items: center;
   padding-inline: 0.75rem;
-  gap: 1rem;
+  gap: 10px;
   
   @media(max-width: 320px) {
-    padding-inline: 0.5rem;
-    gap: 0.25rem;
+    padding-inline: 8px;
+    gap: 4px;
+  }
+
+  @media(min-width: 768px) {
+    padding-inline: 32px;
+    gap: 16px;
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.25rem;
+      gap: 4px;
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 1rem;
+    gap: 8px;
   }
 `;
 
@@ -153,14 +159,14 @@ export const AnswersRow = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  gap: 1rem;
+  gap: 16px;
 
   p {
-    flex: 1;
-    font-size: 0.875rem;
+    width: 228px;
+    height: 56px;
+    font-size: 14px;
     text-align: center;
-    height: 3.5rem;
-    padding-inline: 0.5rem;
+    padding-inline: 4px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -169,60 +175,91 @@ export const AnswersRow = styled.section`
   }
 
   @media (max-width: 320px) {
-    padding-inline: 0.5rem;
-    gap: 0.5rem;
+    gap: 14px;
 
     p {
-      height: 2.5rem;
-      font-size: 0.75rem;
+      width: 200px;
+      height: 34px;
+      font-size: 12px;
+      font-weight: normal;
       border-radius: 6px;
     }
   }
 
   @media (min-width: 768px) {
-    gap: 1rem;
-    padding-inline: 0rem;
+    width: 620px;
+    gap: 16px;
 
     p {
-      height: 4.5rem;
-      font-size: 0.875rem;
+      width: 400px;
+      height: 84px;
+      font-size: 16px;
       border-width: 3px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      gap: 0.5rem;
-      padding-inline: 0.75rem;
+      width: 350px;
+      gap: 10px;
 
       p {
-        height: 2.5rem;
-        font-size: 0.75rem;
+        width: 232px;
+        height: 34px;
+        font-size: 12px;
+        font-weight: normal;
         border-radius: 6px;
+        border-width: 2px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    gap: 1rem;
+    width: 450px;
+    gap: 16px;
 
     p {
-      height: 4.5rem;
-      font-size: 0.875rem;
+      width: 300px;
+      height: 72px;
+      font-size: 16px;
       border-width: 3px;
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 500px;
+
+    p {
+      width: 320px;
+      height: 76px;
+      font-size: 20px;
     }
   }
 `;
 
 export const RadioG = styled(RadioGroup.Root)`
   display: flex;
-  gap: 0.5rem;
+  gap: 10px;
+
+  @media (min-width: 768px) {
+    gap: 24px;
+  }
+
+  @media(orientation: landscape) {
+    @media (min-width: 600px) {
+      gap: 16px;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    gap: 24px;
+  }
 `;
 
 export const Radio = styled(RadioGroup.Item)`
   all: unset;
-  width: 3.5rem;
-  height: 3.5rem;
+  width: 56px;
+  height: 56px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -235,42 +272,88 @@ export const Radio = styled(RadioGroup.Item)`
 
   &[data-state="checked"] {
     span {
-      width: 3rem;
-      height: 3rem;
+      width: 48px;
+      height: 48px;
       border-radius: 8px;
       background-color: transparent;
     }
   }
 
   @media (max-width: 320px) {
-    width: 2rem;
-    height: 2rem;
+    width: 34px;
+    height: 34px;
     border-radius: 2px;
+
+    &[data-state="checked"] {
+      span {
+        width: 30px;
+        height: 30px;
+        border-radius: 2px;
+      }
+    }
   }
 
-  @media (min-width: 1024px) {
-    width: 4rem;
-    height: 4rem;
+  @media (min-width: 768px) {
+    width: 84px;
+    height: 84px;
+    border-radius: 8px;
+
+    &[data-state="checked"] {
+      span {
+        width: 72px;
+        height: 72px;
+        border-radius: 8px;
+      }
+    }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 2rem;
-      height: 2rem;
+      width: 34px;
+      height: 34px;
       border-radius: 2px;
+
+      &[data-state="checked"] {
+        span {
+          width: 30px;
+          height: 30px;
+          border-radius: 2px;
+        }
+      }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 4rem;
-    height: 4rem;
+    width: 72px;
+    height: 72px;
+    border-radius: 8px;
+
+    &[data-state="checked"] {
+      span {
+        width: 60px;
+        height: 60px;
+        border-radius: 8px;
+      }
+    }
+  }
+
+  @media (min-width: 1366px) {
+    width: 76px;
+    height: 76px;
+
+    &[data-state="checked"] {
+      span {
+        width: 62px;
+        height: 62px;
+      }
+    }
   }
 `;
 
 export const ButtonCheck = styled.button`
-  all: unset;
-  width: 10rem;
-  height: 2.5rem;
+   all: unset;
+  width: 200px;
+  height: 40px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -283,7 +366,7 @@ export const ButtonCheck = styled.button`
   cursor: pointer;
 
   p {
-    font-size: 1rem;
+    font-size: 24px;
   }
 
   &:disabled {
@@ -292,40 +375,40 @@ export const ButtonCheck = styled.button`
   }
 
   @media (max-width: 320px) {
-    width: 9rem;
-    height: 2rem;
+    width: 200px;
+    height: 32px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 20px;
     }
   }
 
   @media (min-width: 768px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 
   @media(orientation: landscape) {
     @media (min-width: 600px) {
-      width: 13rem;
-      height: 2rem;
+      width: 200px;
+      height: 28px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 16px;
       }
     }
   }
 
   @media (min-width: 1024px) {
-    width: 21rem;
-    height: 3rem;
+    width: 300px;
+    height: 54px;
 
     p {
-      font-size: 2rem;
+      font-size: 32px;
     }
   }
 `;

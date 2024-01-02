@@ -78,24 +78,24 @@ Difícil game27 audio click img ok
 LESSON 8
 TASK 1
 Fácil game3 selecionar btn com text ok
-Médio game28 select txt cima baixo ok/
-Difícil game29 drag and drop 2 caixa ok/
+Médio game28 select txt cima baixo ok
+Difícil game29 drag and drop 2 caixa ok
 
 TASK 2
-Fácil game30 audio select ok/
-Médio game31 audio input txt cima ok/
-Difícil
+Fácil game30 audio select ok
+Médio game31 audio input txt cima ok
+Difícil game32 true false 4x ok/
 ==============================================
 LESSON 9
 TASK 1
-Fácil
-Médio
-Difícil
+Fácil game17 selecionar btn imagem ok
+Médio game2 selecionar btn com texto ok
+Difícil game33 arrasta cima baixo ok/
 
 TASK 2
-Fácil
-Médio
-Difícil
+Fácil game34 seleciona 4btn ok/
+Médio game35 audio input txt baixo ok/
+Difícil game9 audio select 5x ok/
 ==============================================
 LESSON 10
 TASK 1

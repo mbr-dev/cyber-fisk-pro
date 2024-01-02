@@ -14,37 +14,37 @@ export const Main = styled.main`
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1rem;
+  gap: 16px;
+  margin-top: 16px;
 
   @media(max-width: 320px) {
-    margin-top: 0.75rem;
-    gap: 0.75rem;
+    margin-top: 8px;
+    gap: 8px;
   }
 
   @media(min-width: 768px) {
-    margin-top: 2rem;
-    gap: 1.5rem;
+    margin-top: 24px;
+    gap: 24px;
   } 
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      gap: 0.5rem;
-      margin-top: 1rem;
+      gap: 8px;
+      margin-top: 16px;
       flex-direction: row;
     }
   }
 
   @media(min-width: 1024px) {
-    margin-top: 2rem;
-    gap: 1rem;
+    margin-top: 24px;
+    gap: 24px;
   } 
 `;
 
 export const ButtonAnswer = styled.button`
   all: unset;
-  width: 16rem;
-  height: 4rem;
+  width: 250px;
+  height: 64px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -56,7 +56,7 @@ export const ButtonAnswer = styled.button`
   text-align: center;
 
   p {
-    font-size: 0.875rem;
+    font-size: 16px;
   }
 
   &:hover {
@@ -68,40 +68,49 @@ export const ButtonAnswer = styled.button`
   }  
 
   @media(max-width: 320px) {
-    width: 11rem;
-    height: 3rem;
+    width: 200px;
+    height: 40px;
 
     p {
-      font-size: 0.875rem;
+      font-size: 14px;
     }
   }
 
   @media(min-width: 768px) {
-    width: 18.75rem;
-    height: 5rem;
+    width: 350px;
+    height: 86px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 24px;
     }
   }
 
   @media(orientation: landscape) {
     @media(min-width: 600px) {
-      width: 12rem;
-      height: 3rem;
+      width: 200px;
+      height: 40px;
 
       p {
-        font-size: 0.875rem;
+        font-size: 14px;
       }
     }
   }
 
   @media(min-width: 1024px) {
-    width: 18.75rem;
-    height: 5rem;
+    width: 228px;
+    height: 72px;
 
     p {
-      font-size: 1.125rem;
+      font-size: 18px;
+    }
+  }
+
+  @media(min-width: 1366px) {
+    width: 350px;
+    height: 86px;
+
+    p {
+      font-size: 24px;
     }
   }
 `;
