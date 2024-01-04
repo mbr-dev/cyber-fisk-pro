@@ -162,7 +162,7 @@ export const Game28 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Choose the correct word or phrases.game28" />
+      <TitleLesson title="Choose the correct word or phrases." />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>

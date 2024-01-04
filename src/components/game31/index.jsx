@@ -183,7 +183,7 @@ export const Game31 = () => {
 
   return (
     <Container>
-      <SubTitleLesson title="Listen and write a question.game31" />
+      <SubTitleLesson title="Listen and write a question." />
       <SubTitleLessonAudio
         stopAudio={cancelAudio}
         audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`}

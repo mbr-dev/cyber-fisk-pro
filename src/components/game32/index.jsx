@@ -197,7 +197,7 @@ export const Game32 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Read and choose TRUE or FALSE.game32" />
+      <TitleLesson title="Read and choose TRUE or FALSE." />
       
       <Main>
         <Div>

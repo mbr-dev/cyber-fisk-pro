@@ -157,7 +157,7 @@ export const Game25 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Answer the questions using the words given.game25" />
+      <TitleLesson title="Answer the questions using the words given." />
 
       <Main>
         <p>{question}</p>

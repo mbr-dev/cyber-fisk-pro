@@ -169,7 +169,7 @@ export const Game12 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Make questions with the words below. You don’t need to use all the words.game12" />
+      <TitleLesson title="Make questions with the words below. You don’t need to use all the words." />
 
       <Main>
         <Words>

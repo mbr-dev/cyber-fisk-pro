@@ -36,6 +36,11 @@ export const Main = styled.main`
   @media(min-width: 1024px) {
     margin-top: 16px;
     gap: 16px;
+    padding-inline: 120px;
+  }
+
+  @media(min-width: 1366px) {
+    padding-inline: 120px;
   }
 `;
 
@@ -80,20 +85,23 @@ export const Photo = styled.button`
     width: 300px;
     height: 180px;
     border-width: 3px;
+    border-radius: 14px;
   }
-
+  
   @media(orientation: landscape) {
     @media(min-width: 600px) {
       width: 150px;
       height: 92px;
       border-width: 2px;
+      border-radius: 8px;
     }
   }
-
+  
   @media(min-width: 1024px) {
     width: 250px;
     height: 120px;
     border-width: 3px;
+    border-radius: 14px;
   }
 
   @media(min-width: 1366px) {

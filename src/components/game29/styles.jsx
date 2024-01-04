@@ -45,7 +45,6 @@ export const Main = styled.main`
     padding-block: 16px;
     margin-bottom: 8px;
   }
-
   
   @media(min-width: 1366px) {
     margin-bottom: 16px;

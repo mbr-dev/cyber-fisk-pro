@@ -245,7 +245,7 @@ export const Game19 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Complete.game19" />
+      <TitleLesson title="Complete." />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>

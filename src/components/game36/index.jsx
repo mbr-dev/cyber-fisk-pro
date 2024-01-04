@@ -30,7 +30,6 @@ export const Game36 = () => {
   const [rightAudios, setRightAudios] = useState([]);
   const [rightAnswers, setRightAnswers] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [blockAnswer, setBlockAnswer] = useState(true);
   const [selectAudio, setSelectAudio] = useState(null);
   const [countClick, setCountClick] = useState(0);
@@ -116,10 +115,10 @@ export const Game36 = () => {
 
   const handlePlayAudio = (sound) => {
     if (playAudio) return;
+    setBlockAnswer(false);    
 
     let tempSound = sound.status;
     setSelectAudio(tempSound);
-    setBlockAnswer(false);    
 
     const audio = new Audio(`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound.audio}.mp3`);
 
@@ -133,7 +132,6 @@ export const Game36 = () => {
 
   const handleGetAnswer = (index) => {
     if (blockAnswer || playAudio) return;
-
     setBlockAnswer(true);
 
     let clicks = countClick;
@@ -169,10 +167,6 @@ export const Game36 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE += 1;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -194,15 +188,13 @@ export const Game36 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score") {
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() =>{
         if (nivel === 0) {

@@ -246,7 +246,7 @@ export const Game11 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Match the questions to their answers.game11" />
+      <TitleLesson title="Match the questions to their answers." />
 
       <Main>
         <Div>

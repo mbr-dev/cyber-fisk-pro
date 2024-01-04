@@ -237,7 +237,7 @@ export const Game15 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Unscramble the words to form sentences.game15" />
+      <TitleLesson title="Unscramble the words to form sentences." />
 
         <Main>
           <DndContext onDragEnd={handleDragEnd}>

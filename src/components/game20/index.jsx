@@ -184,7 +184,7 @@ export const Game20 = () => {/* arruma o backend */
 
   return (
     <Container>
-      <SubTitleLesson title="Listen and answer the questions.game20" />
+      <SubTitleLesson title="Listen and answer the questions." />
       <SubTitleLessonAudio stopAudio={cancelAudio} audio={`${URL_FISKPRO}sounds/essentials1/lesson${numSelLesson}/${sound}.mp3`} />
       
       <Main>

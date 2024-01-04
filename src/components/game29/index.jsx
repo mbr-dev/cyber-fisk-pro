@@ -270,7 +270,7 @@ export const Game29 = () => {
   
   return (
     <Container>
-      <TitleLesson title="Drag and Drop the words to make sentences.game29" />
+      <TitleLesson title="Drag and Drop the words to make sentences." />
 
       <Main>
         <Left>

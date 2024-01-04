@@ -219,7 +219,7 @@ export const Game33 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Organizar a ordem das frases.game33" />
+      <TitleLesson title="Organizar a ordem das frases." />
 
       <Main>
         <DndContext

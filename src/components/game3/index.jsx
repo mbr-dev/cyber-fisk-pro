@@ -180,7 +180,7 @@ export const Game3 = () => {
 
   return(
     <Container>
-      <TitleLesson title="Choose the correct sentences.game3" />
+      <TitleLesson title="Choose the correct sentences." />
       <SubTitleLesson title={question}/>
 
       <Main>

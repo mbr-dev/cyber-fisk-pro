@@ -156,7 +156,7 @@ export const Game16 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Make questions for the answers.game16" />
+      <TitleLesson title="Make questions for the answers." />
 
       <Main>
         <Form id="myForm" onSubmit={handleVerify}>

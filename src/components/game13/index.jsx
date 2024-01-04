@@ -187,7 +187,7 @@ export const Game13 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Read and choose TRUE or FALSE.game13" />
+      <TitleLesson title="Read and choose TRUE or FALSE." />
 
       <Main>
         <Question>

@@ -225,7 +225,7 @@ export const Game8 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Drag and drop / Choose the correct answers.game8" />
+      <TitleLesson title="Drag and drop / Choose the correct answers." />
 
       <DndContext onDragEnd={handleDragEnd}>
         <Droppable>

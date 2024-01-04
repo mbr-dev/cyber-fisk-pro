@@ -220,7 +220,7 @@ export const Game7 = () => {
 
   return (
     <Container>
-      <TitleLesson title="Make pairs.game7" />
+      <TitleLesson title="Make pairs." />
 
       <Main>
         <ButtonRow>

@@ -24,7 +24,6 @@ export const Game37 = () => {
   const [round, setRound] = useState(0);
   const [randomNumber, setRandomNumber] = useState([]);
   const [rightPoints, setRightPoints] = useState(0);
-  const [wrongPoints, setWrongPoints] = useState(0);
   const [selected, setSelected] = useState("");
   const [blockButton, setBlockButton] = useState(true);
   const [isLoading, setIsLoading] = useState(false);
@@ -69,7 +68,7 @@ export const Game37 = () => {
     setOption(items.resposta.label);
 
     setIsLoading(false);
-  }, [setIsLoading, setRandomNumber, setOption, setData, round, setAnswers, setLabelQ, setBlockButton]);
+  }, [setIsLoading, setQuestion, setRandomNumber, setOption, setData, round, setAnswers, setLabelQ, setBlockButton]);
 
   const newRound = (number) => {
     const items = JSON.parse(data[randomNumber[number]].conteudo);
@@ -89,7 +88,6 @@ export const Game37 = () => {
     event.preventDefault();
 
     if (blockButton) return;
-
     setBlockButton(true);
 
     let tempRightPoints;
@@ -106,10 +104,6 @@ export const Game37 = () => {
       const newStatus = [...statusColor];
       newStatus[rodadaGeral] = 2;
       setStatusColor(newStatus);
-
-      let tempE = wrongPoints;
-      tempE++;
-      setWrongPoints(tempE);
     }
 
     let tempRound = round;
@@ -131,15 +125,13 @@ export const Game37 = () => {
       setTimeout(() => {
         navigate("/GameOver");
         setNewContainer(1);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else if (rule === "Score"){
       const pontos = Score(pontosF, pontosM, pontosD);
       const page = ScoreFinal(pontos, numSelLesson, numTask);
       setTimeout(() => {
         navigate(`/${page}`);
-        setStatusColor([0,0,0,0,0,0,0,0,0,0]);
-      }, 2000);
+      }, 1500);
     } else {
       setTimeout(() => {
         if (nivel === 0) {
